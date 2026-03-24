@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Easy Learn — Gamified, accessible learning for dyslexic and learning-disabled children. A Futuresight Analytics initiative." />
+    <meta name="author" content="Futuresight Analytics Limited" />
+    <meta name="theme-color" content="#6c63ff" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Easy Learn" />
+    <meta property="og:description" content="Gamified learning for every mind." />
+    <meta property="og:type" content="website" />
+
+    <title>Easy Learn 🧠 — Hello World</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/dyslexia.css" />
+
+    <!-- Inline critical styles for this page -->
+    <style>
+      /* ── Navigation ── */
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        padding: 1rem 0;
+        background: rgba(26, 26, 46, 0.85);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #fff;
+        font-size: 1.35rem;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .nav-brand .brand-emoji { font-size: 1.6rem; }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: rgba(255,255,255,0.75);
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover { color: #6c63ff; }
+
+      /* ── HUD (game status bar) ── */
+      .hud {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 99px;
+        padding: 0.4rem 1rem;
+      }
+
+      .hud-level {
+        color: #a78bfa;
+        font-weight: 800;
+        font-size: 0.85rem;
+      }
+
+      .hud-xp-wrap {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        min-width: 100px;
+      }
+
+      .hud-xp-label {
+        color: rgba(255,255,255,0.55);
+        font-size: 0.7rem;
+      }
+
+      .hud-streak {
+        color: #f7971e;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      /* ── Hero ── */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 7rem 1rem 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 60% 50% at 50% -10%, rgba(108,99,255,0.35) 0%, transparent 70%),
+          radial-gradient(ellipse 40% 40% at 90% 90%,  rgba(255,101,132,0.2) 0%, transparent 70%);
+        pointer-events: none;
+      }
+
+      .hero-emoji {
+        font-size: clamp(4rem, 12vw, 8rem);
+        margin-bottom: 1rem;
+        display: block;
+        filter: drop-shadow(0 0 30px rgba(108,99,255,0.6));
+      }
+
+      .hero-eyebrow {
+        display: inline-block;
+        background: rgba(108,99,255,0.18);
+        border: 1px solid rgba(108,99,255,0.35);
+        color: #a78bfa;
+        border-radius: 99px;
+        padding: 0.3rem 1rem;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 8vw, 5.5rem);
+        font-weight: 900;
+        line-height: 1.1;
+        color: #fff;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.35rem);
+        color: rgba(255,255,255,0.65);
+        max-width: 580px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.7;
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* ── Features Section ── */
+      .features { background: rgba(255,255,255,0.02); }
+
+      .section-label {
+        text-align: center;
+        color: #a78bfa;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(1.8rem, 4vw, 2.8rem);
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 0.75rem;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: rgba(255,255,255,0.55);
+        max-width: 520px;
+        margin: 0 auto 3rem;
+        line-height: 1.7;
+      }
+
+      .feature-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        text-align: center;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(108,99,255,0.4);
+        box-shadow: 0 20px 50px rgba(108,99,255,0.15);
+      }
+
+      .feature-icon {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        display: block;
+      }
+
+      .feature-title {
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+
+      .feature-desc {
+        color: rgba(255,255,255,0.55);
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      /* ── Team Section ── */
+      .team-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .team-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(108,99,255,0.4);
+      }
+
+      .team-avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6c63ff, #ff6584);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        margin: 0 auto 1rem;
+        border: 3px solid rgba(255,255,255,0.15);
+      }
+
+      .team-role {
+        color: #a78bfa;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 0.4rem;
+      }
+
+      .team-name {
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+      }
+
+      .team-branch {
+        display: inline-block;
+        background: rgba(108,99,255,0.15);
+        border: 1px solid rgba(108,99,255,0.3);
+        color: #a78bfa;
+        border-radius: 99px;
+        padding: 0.2rem 0.75rem;
+        font-size: 0.78rem;
+        font-family: 'Courier New', monospace;
+        font-weight: 600;
+      }
+
+      /* ── CTA Section ── */
+      .cta-section {
+        background: linear-gradient(135deg, rgba(108,99,255,0.15), rgba(255,101,132,0.1));
+        border: 1px solid rgba(108,99,255,0.2);
+        border-radius: 24px;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin: 0 auto;
+        max-width: 700px;
+      }
+
+      .cta-section h2 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 1rem;
+      }
+
+      .cta-section p {
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 2rem;
+        font-size: 1.05rem;
+      }
+
+      /* ── Footer ── */
+      .footer {
+        border-top: 1px solid rgba(255,255,255,0.06);
+        padding: 2.5rem 0;
+        text-align: center;
+        color: rgba(255,255,255,0.35);
+        font-size: 0.88rem;
+      }
+
+      .footer a { color: rgba(108,99,255,0.8); }
+      .footer a:hover { color: #a78bfa; }
+
+      .footer-company {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-weight: 600;
+        color: rgba(255,255,255,0.55);
+        margin-top: 0.5rem;
+      }
+
+      /* ── Toast & Badge styles ── */
+      .toast {
+        position: fixed;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(26, 26, 46, 0.95);
+        border: 1px solid rgba(108,99,255,0.4);
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        font-weight: 600;
+        z-index: 9999;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      }
+
+      .badge-popup {
+        position: fixed;
+        top: 5rem;
+        right: 1.5rem;
+        background: rgba(26, 26, 46, 0.96);
+        border: 1px solid rgba(108,99,255,0.5);
+        color: #fff;
+        padding: 1rem 1.25rem;
+        border-radius: 16px;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 12px 40px rgba(108,99,255,0.25);
+        max-width: 280px;
+      }
+
+      .badge-icon { font-size: 2.2rem; }
+
+      /* ── Responsive ── */
+      @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .hud { display: none; }
+        .grid-3 { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ═══════════════════════════════════════════════════════════
+         NAVIGATION
+    ════════════════════════════════════════════════════════════ -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+      <div class="container nav-inner">
+        <a href="/" class="nav-brand" aria-label="Easy Learn Home">
+          <span class="brand-emoji" aria-hidden="true">🧠</span>
+          Easy Learn
+        </a>
+
+        <ul class="nav-links" role="list">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#start">Get Started</a></li>
+        </ul>
+
+        <!-- Game HUD -->
+        <div class="hud" role="status" aria-label="Your game progress">
+          <span class="hud-level" data-hud="level">Level 1</span>
+          <div class="hud-xp-wrap">
+            <span class="hud-xp-label" data-hud="xp">0 / 100 XP</span>
+            <div class="xp-bar-track" aria-hidden="true">
+              <div class="xp-bar-fill" data-hud="xp-bar"></div>
+            </div>
+          </div>
+          <span class="hud-streak" data-hud="streak">🔥 0-day streak</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         ACCESSIBILITY TOOLBAR
+    ════════════════════════════════════════════════════════════ -->
+    <aside class="a11y-toolbar" role="complementary" aria-label="Accessibility options">
+      <button class="a11y-btn" data-a11y="dyslexia"  aria-label="Toggle Dyslexia Font">Aa</button>
+      <button class="a11y-btn" data-a11y="contrast"  aria-label="Toggle High Contrast">◑</button>
+      <button class="a11y-btn" data-a11y="large-text" aria-label="Toggle Large Text">T↑</button>
+      <button class="a11y-btn" data-a11y="tts"        aria-label="Toggle Click-to-Read">🔊</button>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════════════════════════ -->
+    <main id="main-content">
+      <section class="hero gradient-hero" aria-labelledby="hero-heading">
+        <div class="container" style="position:relative; z-index:1;">
+
+          <span class="hero-emoji animate-float" aria-hidden="true">🧠</span>
+
+          <span class="hero-eyebrow animate-fade-in">
+            ✨ Hello World — Template v0.1
+          </span>
+
+          <h1 id="hero-heading" class="hero-title animate-fade-in-down">
+            Learning That Fits
+            <span class="shimmer-text"> Every Mind</span>
+          </h1>
+
+          <p class="hero-subtitle animate-fade-in-up">
+            An interactive, gamified learning platform built for children with
+            dyslexia and learning disabilities. Because every child deserves
+            an education tailored to the way <em>they</em> think.
+          </p>
+
+          <div class="hero-actions animate-fade-in">
+            <a href="#start" class="btn btn-primary">
+              🚀 Start Learning
+            </a>
+            <a href="#features" class="btn btn-secondary">
+              Explore Features
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════════════
+           FEATURES
+      ═════════════════════════════════════════════════════════ -->
+      <section class="features" id="features" aria-labelledby="features-heading">
+        <div class="container">
+          <p class="section-label" data-animate="animate-fade-in">What We Offer</p>
+          <h2 id="features-heading" class="section-title" data-animate="animate-fade-in-up">
+            Built for Every Learner
+          </h2>
+          <p class="section-subtitle" data-animate="animate-fade-in-up">
+            Every feature is designed with accessibility, engagement, and joy at its core.
+          </p>
+
+          <div class="grid grid-3 stagger">
+            <div class="feature-card card-glow" data-animate="animate-fade-in-up">
+              <span class="feature-icon" aria-hidden="true">🎮</span>
+              <h3 class="feature-title">Gamified Lessons</h3>
+              <p class="feature-desc">
+                Earn XP, unlock badges, and level up as you complete
+                lessons. Learning feels like an adventure.
+              </p>
+            </div>
+
+            <div class="feature-card card-glow" data-animate="animate-fade-in-up">
+              <span class="feature-icon" aria-hidden="true">📖</span>
+              <h3 class="feature-title">Dyslexia Mode</h3>
+              <p class="feature-desc">
+                Switch to OpenDyslexic font, wider letter spacing,
+                and warm cream backgrounds to reduce visual stress.
+              </p>
+            </div>
+
+            <div class="feature-card card-glow" data-animate="animate-fade-in-up">
+              <span class="feature-icon" aria-hidden="true">🔊</span>
+              <h3 class="feature-title">Click-to-Read</h3>
+              <p class="feature-desc">
+                Tap any word or paragraph and hear it read aloud,
+                clearly and at the perfect pace.
+              </p>
+            </div>
+
+            <div class="feature-card card-glow" data-animate="animate-fade-in-up">
+              <span class="feature-icon" aria-hidden="true">🧩</span>
+              <h3 class="feature-title">Mini-Games</h3>
+              <p class="feature-desc">
+                Word puzzles, memory matching, and pattern games that
+                reinforce concepts through play.
+              </p>
+            </div>
+
+            <div class="feature-card card-glow" data-animate="animate-fade-in-up">
+              <span class="feature-icon" aria-hidden="true">📊</span>
+              <h3 class="feature-title">Progress Reports</h3>
+              <p class="feature-desc">
+                Parents and teachers get clear, friendly dashboards
+                showing each child's growth over time.
+              </p>
+            </div>
+
+            <div class="feature-card card-glow" data-animate="animate-fade-in-up">
+              <span class="feature-icon" aria-hidden="true">🤖</span>
+              <h3 class="feature-title">AI Personalisation</h3>
+              <p class="feature-desc">
+                Adaptive difficulty powered by AI ensures lessons are
+                always just the right challenge.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════════════
+           TEAM
+      ═════════════════════════════════════════════════════════ -->
+      <section id="team" aria-labelledby="team-heading">
+        <div class="container">
+          <p class="section-label">The People Behind It</p>
+          <h2 id="team-heading" class="section-title">Meet the Team</h2>
+          <p class="section-subtitle">
+            A dedicated group building the future of inclusive education.
+          </p>
+
+          <div class="grid grid-3 stagger">
+            <div class="team-card" data-animate="animate-scale-in">
+              <div class="team-avatar" aria-hidden="true">🏆</div>
+              <p class="team-role">Project Owner</p>
+              <h3 class="team-name">Sutirtha Chakraborty</h3>
+              <p class="feature-desc" style="margin-bottom:1rem;">
+                Product vision, architecture &amp; project management.
+              </p>
+              <span class="team-branch">features-sutirtha</span>
+            </div>
+
+            <div class="team-card" data-animate="animate-scale-in">
+              <div class="team-avatar" aria-hidden="true">💻</div>
+              <p class="team-role">Developer</p>
+              <h3 class="team-name">Parichay</h3>
+              <p class="feature-desc" style="margin-bottom:1rem;">
+                Frontend development, feature implementation &amp; code quality.
+              </p>
+              <span class="team-branch">features-parichay</span>
+            </div>
+
+            <div class="team-card" data-animate="animate-scale-in">
+              <div class="team-avatar" aria-hidden="true">🚀</div>
+              <p class="team-role">Company Owner</p>
+              <h3 class="team-name">Raunak</h3>
+              <p class="feature-desc" style="margin-bottom:1rem;">
+                Strategic direction, business requirements &amp; stakeholder management.
+              </p>
+              <span class="team-branch">features-raunak</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════════════════════════════════════════════════
+           CTA
+      ═════════════════════════════════════════════════════════ -->
+      <section id="start">
+        <div class="container">
+          <div class="cta-section" data-animate="animate-scale-in">
+            <span style="font-size:3rem;" aria-hidden="true">🌟</span>
+            <h2>Ready to Begin the Adventure?</h2>
+            <p>
+              Join us in building a world where every child can learn,
+              grow, and shine — on their own terms.
+            </p>
+            <div class="hero-actions">
+              <a href="#features" class="btn btn-primary">Explore Features 🚀</a>
+              <a href="mailto:talent@futuresightanalytics.eu" class="btn btn-secondary">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FOOTER
+    ════════════════════════════════════════════════════════════ -->
+    <footer class="footer" role="contentinfo">
+      <div class="container">
+        <p>
+          Made with ❤️ for every child who learns differently.
+        </p>
+        <p class="footer-company">
+          🔭
+          <a href="mailto:talent@futuresightanalytics.eu">
+            Futuresight Analytics Limited
+          </a>
+          &nbsp;·&nbsp; Registered in Ireland 🍀
+          &nbsp;·&nbsp;
+          <a href="tel:+353899776644">+353 899 77 66 44</a>
+        </p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; opacity:0.4;">
+          © 2026 Futuresight Analytics Limited. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- JavaScript (ES Module) -->
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

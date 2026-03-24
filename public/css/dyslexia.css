@@ -1,0 +1,131 @@
+/* ============================================
+   Easy Learn — Dyslexia Accessibility Theme
+   Futuresight Analytics Limited
+   ============================================ */
+
+/* --- Dyslexia Mode Toggle --- */
+body.dyslexia-mode {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', cursive;
+  font-size: 1.1rem;
+  line-height: 2;
+  letter-spacing: 0.1em;
+  word-spacing: 0.2em;
+  background-color: #fffde7; /* Warm cream — reduces visual stress */
+  color: #2d2d2d;
+}
+
+body.dyslexia-mode h1,
+body.dyslexia-mode h2,
+body.dyslexia-mode h3 {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', cursive;
+  letter-spacing: 0.08em;
+}
+
+body.dyslexia-mode p,
+body.dyslexia-mode li,
+body.dyslexia-mode a {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', cursive;
+  max-width: 70ch; /* Optimal line length for reading */
+}
+
+/* --- High Contrast Mode --- */
+body.high-contrast {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.high-contrast .card {
+  background: #111111;
+  border: 2px solid #ffffff;
+}
+
+body.high-contrast .btn-primary {
+  background: #ffff00;
+  color: #000000;
+}
+
+/* --- Large Text Mode --- */
+body.large-text {
+  font-size: 1.3rem;
+}
+
+body.large-text .btn {
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+}
+
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- Color Overlay Options (for visual stress) --- */
+.overlay-blue   { background-color: rgba(173, 216, 230, 0.15); }
+.overlay-yellow { background-color: rgba(255, 255, 153, 0.15); }
+.overlay-green  { background-color: rgba(144, 238, 144, 0.15); }
+.overlay-pink   { background-color: rgba(255, 182, 193, 0.15); }
+
+/* --- OpenDyslexic Web Font --- */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../assets/fonts/OpenDyslexic-Regular.woff2') format('woff2'),
+       url('../assets/fonts/OpenDyslexic-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../assets/fonts/OpenDyslexic-Bold.woff2') format('woff2'),
+       url('../assets/fonts/OpenDyslexic-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Accessibility Toolbar --- */
+.a11y-toolbar {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: rgba(26, 26, 46, 0.95);
+  border-radius: 12px 0 0 12px;
+  padding: 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 9999;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.a11y-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a11y-btn:hover {
+  background: rgba(108, 99, 255, 0.6);
+  transform: scale(1.1);
+}
+
+.a11y-btn.active {
+  background: var(--color-primary, #6c63ff);
+}
