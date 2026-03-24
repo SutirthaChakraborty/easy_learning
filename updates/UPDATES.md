@@ -1,7 +1,7 @@
 # 📅 Easy Learn — Project Updates 2026
 
-> **Project:** Easy Learn  
-> **Team:** Sutirtha Chakraborty · Parichay · Raunak  
+> **Project:** Easy Learn
+> **Team:** Sutirtha Chakraborty · Parichay · Raunak
 > **Period:** January 2026 — December 2026
 
 ---
