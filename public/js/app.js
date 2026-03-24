@@ -8,6 +8,8 @@
 
 import { AccessibilityManager } from './accessibility.js';
 import { GameEngine } from './game-engine.js';
+import { ParticleSystem } from './particle-system.js';
+import { VideoManager } from './video-manager.js';
 
 // ─── App Bootstrap ────────────────────────────────────────────────────────────
 
@@ -29,9 +31,33 @@ const App = {
     AccessibilityManager.init();
     GameEngine.init();
 
+    // Boot particle system on hero canvas
+    this.initParticles();
+
+    // Boot video background manager
+    this.initVideo();
+
     // Register global UI interactions
     this.registerNavToggle();
     this.animateOnScroll();
+  },
+
+  // ─── Particle System ──────────────────────────────────────────────────────
+
+  initParticles() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const theme = localStorage.getItem('easylearn_theme') || 'space';
+    const particleTheme = theme === 'ocean' ? 'bubbles' : theme === 'forest' ? 'leaves' : 'stars';
+    this.particles = new ParticleSystem(canvas, particleTheme);
+    this.particles.start();
+  },
+
+  // ─── Video Background ─────────────────────────────────────────────────────
+
+  initVideo() {
+    if (!this.particles) return;
+    VideoManager.init(this.particles);
   },
 
   // ─── Preference Persistence ───────────────────────────────────────────────
