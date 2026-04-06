@@ -1,0 +1,57 @@
+/* ── Reset & Base ─────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Design Tokens ────────────────────────────────────────────────────────── */
+:root {
+  --color-primary:    #6c63ff;
+  --color-secondary:  #ff6584;
+  --color-accent:     #43e97b;
+  --color-bg:         #0d0d1a;
+  --color-surface:    #1a1a2e;
+  --color-text:       #f0f0f0;
+  --color-text-muted: #a0a0b8;
+  --color-success:    #51cf66;
+  --color-error:      #ff6b6b;
+  --font-main:        'Nunito', sans-serif;
+  --radius-sm:        6px;
+  --radius-md:        12px;
+  --radius-lg:        20px;
+  --shadow-card:      0 4px 24px rgba(108, 99, 255, 0.15);
+  --transition-fast:  150ms ease;
+  --transition-mid:   300ms ease;
+}
+
+/* ── Body ─────────────────────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Links ────────────────────────────────────────────────────────────────── */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Utility: visually-hidden (for screen-reader text) ────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

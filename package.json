@@ -1,0 +1,18 @@
+{
+  "name": "easy-learn",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Easy Learn monorepo — client (React + Vite) + server (Node.js + Express). Futuresight Analytics Limited.",
+  "scripts": {
+    "client":        "npm run dev --prefix client",
+    "server":        "npm run dev --prefix server",
+    "dev":           "concurrently -n CLIENT,SERVER -c cyan,magenta \"npm run client\" \"npm run server\"",
+    "build":         "npm run build --prefix client",
+    "install:client": "npm install --prefix client",
+    "install:server": "npm install --prefix server",
+    "install:all":   "npm install && npm run install:client && npm run install:server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

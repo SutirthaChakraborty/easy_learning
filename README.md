@@ -61,40 +61,61 @@ Through the power of:
 
 ## 🏗️ Project Architecture
 
+This is a **full-stack monorepo** with a React + Vite frontend and a Node.js + Express backend, plus the original vanilla prototype files.
+
 ```
-easy_learning/
+easy_learning/                     ← Monorepo root
 │
-├── 📁 public/                    # Static web assets
-│   ├── index.html                # Main entry point (Hello World template)
-│   ├── 📁 css/
-│   │   ├── main.css              # Global styles
-│   │   ├── dyslexia.css          # Accessibility theme
-│   │   └── animations.css        # Game-like animations
-│   ├── 📁 js/
-│   │   ├── app.js                # App entry point
-│   │   ├── game-engine.js        # Gamification logic
-│   │   └── accessibility.js      # Accessibility helpers
-│   └── 📁 assets/
-│       ├── 📁 images/            # Icons, backgrounds, characters
-│       ├── 📁 audio/             # Sound effects & narration
-│       └── 📁 fonts/             # OpenDyslexic & custom fonts
+├── 📁 client/                     ← React + Vite frontend (port 3000)
+│   ├── index.html
+│   ├── vite.config.js             # Vite config — proxies /api → server
+│   ├── package.json
+│   ├── .env.example               # Copy to .env and customise
+│   └── 📁 src/
+│       ├── main.jsx               # App entry point
+│       ├── App.jsx                # Root component + router
+│       ├── index.css              # Global styles / design tokens
+│       ├── 📁 components/         # Reusable UI components (Navbar, etc.)
+│       ├── 📁 pages/              # Route-level page components
+│       ├── 📁 hooks/              # Custom React hooks (useFetch, etc.)
+│       ├── 📁 services/           # Axios API helpers
+│       ├── 📁 utils/              # Pure utility functions
+│       └── 📁 assets/             # Images, SVGs, icons
 │
-├── 📁 src/                       # Source / component files
-│   ├── 📁 components/            # Reusable UI components
-│   ├── 📁 modules/               # Learning modules (Math, Reading, etc.)
-│   └── 📁 utils/                 # Shared utility functions
+├── 📁 server/                     ← Node.js + Express API (port 5000)
+│   ├── server.js                  # Entry point — starts HTTP server
+│   ├── package.json
+│   ├── .env.example               # Copy to .env with real secrets
+│   └── 📁 src/
+│       ├── app.js                 # Express app — middleware + routes
+│       ├── 📁 routes/             # Route definitions (testRoutes.js, …)
+│       ├── 📁 controllers/        # Request handlers (testController.js, …)
+│       ├── 📁 models/             # DB models / schemas
+│       ├── 📁 middleware/         # Global middleware (errorHandler, …)
+│       └── 📁 config/             # App configuration (db.js, …)
 │
-├── 📁 updates/                   # 📅 Team progress reports
-│   ├── 📁 daily/                 # Daily standup reports
-│   └── 📁 weekly/                # Weekly sprint summaries
+├── 📁 assets/                     ← Shared static assets (legacy)
+├── 📁 css/                        ← Vanilla CSS (legacy prototype)
+├── 📁 js/                         ← Vanilla JS modules (legacy prototype)
+├── 📁 docs/                       ← Project documentation
+├── 📁 updates/                    ← Team progress reports
 │
-├── 📁 docs/                      # Project documentation
-│   ├── design-guide.md           # UI/UX guidelines
-│   └── accessibility-spec.md     # Accessibility standards
-│
-├── README.md                     # You are here 📍
-└── .gitignore
+├── index.html                     ← Legacy vanilla prototype entry point
+├── package.json                   ← Root — `concurrently` scripts
+├── .gitignore
+├── setup.sh                       ← Auto-install script (Linux / macOS)
+├── setup.bat                      ← Auto-install script (Windows CMD)
+├── setup.ps1                      ← Auto-install script (Windows PowerShell)
+└── README.md                      ← You are here 📍
 ```
+
+### API Routes
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/api/test` | Health-check — confirms API is live |
+
+> Routes are added in `server/src/routes/` and wired into `server/src/app.js`.
 
 ---
 
@@ -199,25 +220,50 @@ We maintain **daily** and **weekly** progress reports in the `/updates` director
 
 ### Prerequisites
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
+- **Node.js ≥ 18** — [nodejs.org](https://nodejs.org)
+- **npm ≥ 9** (bundled with Node.js)
 - [Git](https://git-scm.com/) for version control
 - A code editor (we recommend [VS Code](https://code.visualstudio.com/))
 
-### Quick Start
+### ⚡ One-Command Setup (Recommended)
+
+The setup scripts install all dependencies for root, client, and server, and copy `.env.example` → `.env` automatically.
+
+| OS | Command |
+|----|---------|
+| **Linux / macOS** | `bash setup.sh` |
+| **Windows CMD** | `setup.bat` |
+| **Windows PowerShell** | `powershell -ExecutionPolicy Bypass -File setup.ps1` |
+
+### Manual Setup
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/SutirthaChakraborty/easy_learning.git
-
-# Navigate to the project
 cd easy_learning
 
-# Open in VS Code
-code .
+# 2. Install all dependencies (root + client + server)
+npm run install:all
 
-# Open the Hello World page in your browser
-open public/index.html
+# 3. Copy environment files
+cp server/.env.example server/.env
+cp client/.env.example client/.env
 ```
+
+### Running the App
+
+```bash
+# Start BOTH client and server concurrently (recommended)
+npm run dev
+
+# Start only the React frontend  →  http://localhost:3000
+npm run client
+
+# Start only the Express API     →  http://localhost:5000
+npm run server
+```
+
+The Vite dev server automatically proxies `/api/*` requests to the Express server, so you never have to worry about CORS during development.
 
 ---
 

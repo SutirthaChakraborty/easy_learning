@@ -1,0 +1,5 @@
+# Server Models
+# Add your database model/schema files here.
+# Examples:
+#   userModel.js     — User schema (Mongoose / Sequelize / Prisma)
+#   lessonModel.js   — Lesson content schema
