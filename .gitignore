@@ -1,8 +1,39 @@
-.DS_Store
-Thumbs.db
-*.log
-*.env
-.env.local
+# ── Dependencies ──────────────────────────────────────────────────────────────
 node_modules/
+client/node_modules/
+server/node_modules/
+
+# ── Build Output ──────────────────────────────────────────────────────────────
+client/dist/
+client/.vite/
+server/dist/
 dist/
 .cache/
+
+# ── Environment Variables ─────────────────────────────────────────────────────
+# NEVER commit real .env files — they may contain secrets.
+.env
+.env.local
+.env.*.local
+server/.env
+client/.env
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ── OS & Editor ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*.suo
+
+# ── Coverage & Testing ────────────────────────────────────────────────────────
+coverage/
+.nyc_output/
