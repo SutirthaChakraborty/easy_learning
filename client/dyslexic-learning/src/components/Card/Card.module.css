@@ -1,0 +1,52 @@
+.card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-light-gray);
+  transition: all 0.3s ease;
+}
+
+.default {
+  background-color: var(--color-bg-primary);
+}
+
+.elevated {
+  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-light) 100%);
+  box-shadow: var(--shadow-lg);
+}
+
+.gradient {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: var(--color-white);
+}
+
+.outline {
+  background-color: transparent;
+  border: 2px solid var(--color-primary);
+}
+
+.interactive {
+  cursor: pointer;
+}
+
+.interactive:hover {
+  box-shadow: var(--shadow-xl);
+}
+
+.interactive:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .card {
+    background-color: var(--color-bg-primary);
+    border-color: var(--color-dark-gray);
+  }
+
+  .elevated {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  }
+}

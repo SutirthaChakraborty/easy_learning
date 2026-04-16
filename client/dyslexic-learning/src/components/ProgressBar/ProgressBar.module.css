@@ -1,0 +1,68 @@
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.progressBar {
+  width: 100%;
+  background-color: var(--color-light-gray);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar.sm {
+  height: 6px;
+}
+
+.progressBar.md {
+  height: 12px;
+}
+
+.progressBar.lg {
+  height: 16px;
+}
+
+.progress {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.3s ease;
+}
+
+.primary {
+  background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.secondary {
+  background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-secondary-light) 100%);
+}
+
+.success {
+  background: linear-gradient(90deg, var(--color-success) 0%, var(--color-success-light) 100%);
+}
+
+.warning {
+  background: linear-gradient(90deg, var(--color-warning) 0%, var(--color-warning-light) 100%);
+}
+
+.percentage {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .progressBar {
+    background-color: var(--color-dark-gray);
+  }
+}

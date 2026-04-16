@@ -1,0 +1,170 @@
+.storiesPage {
+  min-height: calc(100vh - 200px);
+  background: linear-gradient(135deg, var(--color-light) 0%, var(--color-bg-primary) 100%);
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.header {
+  max-width: 1000px;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 var(--space-md);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+.storiesGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-xl);
+}
+
+.storyCard {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg);
+  gap: var(--space-md);
+}
+
+.storyIcon {
+  font-size: 50px;
+  text-align: center;
+}
+
+.storyTitle {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.author {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
+
+.description {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  flex-grow: 1;
+}
+
+.storyMeta {
+  display: flex;
+  gap: var(--space-md);
+  font-size: var(--font-size-sm);
+  flex-wrap: wrap;
+}
+
+.duration {
+  background: var(--color-primary-light);
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+.level {
+  background: var(--color-secondary-light);
+  color: var(--color-white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+.readButton {
+  width: 100%;
+}
+
+.container {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-lg);
+  background: linear-gradient(135deg, var(--color-light) 0%, var(--color-bg-primary) 100%);
+}
+
+.emptyState {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.emptyIcon {
+  font-size: 80px;
+}
+
+.emptyState h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+.storyContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.storyText {
+  background: var(--color-light-gray);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+  line-height: var(--line-height-loose);
+}
+
+.storyText p {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+}
+
+.storyActions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+.storyActions button {
+  flex: 1;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .storiesPage {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .storiesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+}

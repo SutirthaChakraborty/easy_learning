@@ -1,0 +1,83 @@
+@import './variables.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: more) {
+  body {
+    color: var(--color-dark);
+    background-color: var(--color-white);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dyslexic Font Override */
+body.dyslexic-font {
+  font-family: 'OpenDyslexic', sans-serif;
+  letter-spacing: 1.5px;
+  word-spacing: 3px;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  --color-text-primary: #000000;
+  --color-bg-primary: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  body.high-contrast {
+    --color-text-primary: #ffffff;
+    --color-bg-primary: #000000;
+  }
+}
+
+/* Focus Visible for Accessibility */
+*:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-gray);
+}

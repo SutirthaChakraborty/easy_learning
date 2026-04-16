@@ -1,0 +1,133 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: var(--z-modal);
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: calc(var(--z-modal) + 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal.sm {
+  width: 90%;
+  max-width: 300px;
+}
+
+.modal.md {
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal.lg {
+  width: 90%;
+  max-width: 700px;
+}
+
+.modal.xl {
+  width: 90%;
+  max-width: 900px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-lg);
+  border-bottom: 2px solid var(--color-light-gray);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: var(--font-size-2xl);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+  background-color: var(--color-light-gray);
+  color: var(--color-text-primary);
+}
+
+.closeButton:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.content {
+  padding: var(--space-lg);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  border-top: 2px solid var(--color-light-gray);
+  justify-content: flex-end;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .modal {
+    background-color: var(--color-bg-primary);
+  }
+
+  .modalHeader,
+  .actions {
+    border-color: var(--color-dark-gray);
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .modal {
+    width: calc(100% - var(--space-md) * 2) !important;
+    max-width: unset !important;
+    max-height: calc(100vh - var(--space-md) * 2);
+  }
+
+  .modalHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+  }
+
+  .closeButton {
+    align-self: flex-end;
+  }
+
+  .actions {
+    flex-direction: column;
+    justify-content: stretch;
+  }
+}

@@ -1,0 +1,101 @@
+.button {
+  padding: var(--space-md) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  white-space: nowrap;
+}
+
+/* Variants */
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-lg);
+}
+
+.secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-secondary-dark);
+  box-shadow: var(--shadow-lg);
+}
+
+.success {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+.success:hover:not(:disabled) {
+  background-color: var(--color-success-light);
+  box-shadow: var(--shadow-lg);
+}
+
+.outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.outline:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.danger {
+  background-color: var(--color-error);
+  color: var(--color-white);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: var(--color-error-light);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Sizes */
+.sm {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.md {
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-lg);
+}
+
+.lg {
+  padding: var(--space-lg) var(--space-xl);
+  font-size: var(--font-size-xl);
+}
+
+.xl {
+  padding: var(--space-xl) 2rem;
+  font-size: var(--font-size-2xl);
+}
+
+/* Disabled state */
+.button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Focus visible */
+.button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}

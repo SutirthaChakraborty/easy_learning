@@ -1,0 +1,217 @@
+.practiceContainer {
+  min-height: calc(100vh - 200px);
+  background: linear-gradient(135deg, var(--color-light) 0%, var(--color-bg-primary) 100%);
+  padding: var(--space-2xl) var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto var(--space-2xl);
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 var(--space-md);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+.quizCard {
+  max-width: 600px;
+  width: 100%;
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.questionSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.question {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: var(--line-height-normal);
+}
+
+.optionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 2px solid var(--color-light-gray);
+  background: var(--color-white);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  text-align: left;
+  transition: all 0.3s ease;
+  min-height: 60px;
+}
+
+.option:hover {
+  border-color: var(--color-primary);
+  background: var(--color-light);
+}
+
+.option.selected {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.optionLetter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  width: 32px;
+  height: 32px;
+  background: var(--color-light-gray);
+  border-radius: 50%;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.option.selected .optionLetter {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.optionText {
+  flex: 1;
+  line-height: var(--line-height-normal);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: space-between;
+  margin-top: var(--space-lg);
+}
+
+.actions button {
+  flex: 1;
+}
+
+.results {
+  max-width: 500px;
+  width: 100%;
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.resultIcon {
+  font-size: 80px;
+}
+
+.results h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+}
+
+.score {
+  margin: 0;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.message {
+  margin: 0;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.results button {
+  width: 100%;
+}
+
+.container {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-lg);
+  background: linear-gradient(135deg, var(--color-light) 0%, var(--color-bg-primary) 100%);
+}
+
+.emptyState {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.emptyIcon {
+  font-size: 80px;
+}
+
+.emptyState h2 {
+  margin: 0;
+  font-size: var(--font-size-2xl);
+  color: var(--color-text-primary);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 640px) {
+  .practiceContainer {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .quizCard {
+    padding: var(--space-lg);
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .option {
+    min-height: 50px;
+  }
+}

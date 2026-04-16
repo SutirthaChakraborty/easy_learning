@@ -1,0 +1,136 @@
+.audioPlayer {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  color: var(--color-white);
+  box-shadow: var(--shadow-lg);
+}
+
+.playerHeader {
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  text-align: center;
+}
+
+.playerControls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.playButton {
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.playButton:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.playButton:focus-visible {
+  outline: 3px solid var(--color-white);
+  outline-offset: 2px;
+}
+
+.progressContainer {
+  flex: 1;
+}
+
+.progressBar {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+  height: 8px;
+  cursor: pointer;
+  margin-bottom: var(--space-sm);
+  position: relative;
+}
+
+.progress {
+  background: var(--color-white);
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.1s linear;
+}
+
+.timeDisplay {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  opacity: 0.9;
+}
+
+.volumeControl {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.volumeLabel {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.volumeSlider {
+  flex: 1;
+  min-width: 100px;
+  cursor: pointer;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius-full);
+  outline: none;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-white);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-white);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 640px) {
+  .audioPlayer {
+    padding: var(--space-md);
+  }
+
+  .playerControls {
+    gap: var(--space-sm);
+  }
+
+  .playButton {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+}
