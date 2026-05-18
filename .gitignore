@@ -1,39 +1,42 @@
-# ── Dependencies ──────────────────────────────────────────────────────────────
+# Dependencies
 node_modules/
-client/node_modules/
-server/node_modules/
+.pnp
+.pnp.js
 
-# ── Build Output ──────────────────────────────────────────────────────────────
-client/dist/
-client/.vite/
-server/dist/
+# Build output
 dist/
-.cache/
+build/
+.output/
+out/
 
-# ── Environment Variables ─────────────────────────────────────────────────────
-# NEVER commit real .env files — they may contain secrets.
+# Environment files — copy from .env.example and fill in your values
 .env
 .env.local
 .env.*.local
-server/.env
-client/.env
 
-# ── Logs ──────────────────────────────────────────────────────────────────────
+# Logs
 logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 
-# ── OS & Editor ───────────────────────────────────────────────────────────────
+# Testing
+coverage/
+
+# Editor & OS
 .DS_Store
 Thumbs.db
-desktop.ini
-*.swp
-*.swo
 *.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.idea/
+.vscode/settings.json
 
-# ── Coverage & Testing ────────────────────────────────────────────────────────
-coverage/
-.nyc_output/
+# Claude Code local settings (machine-specific)
+.claude/settings.local.json
+
+# Vite
+*.local

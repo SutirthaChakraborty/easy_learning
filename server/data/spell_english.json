@@ -1,0 +1,282 @@
+[
+    {
+        "id": 1,
+        "word": "big",
+        "hint": "Large in size",
+        "emoji": "🦣",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 2,
+        "word": "sit",
+        "hint": "To rest in a chair",
+        "emoji": "🪑",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 3,
+        "word": "run",
+        "hint": "To move very fast on your feet",
+        "emoji": "🏃",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 4,
+        "word": "hop",
+        "hint": "To jump on one foot",
+        "emoji": "🐇",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 5,
+        "word": "wet",
+        "hint": "Soaked with water",
+        "emoji": "💧",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 6,
+        "word": "red",
+        "hint": "The colour of a fire engine",
+        "emoji": "🔴",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 7,
+        "word": "top",
+        "hint": "The highest part of something",
+        "emoji": "⬆️",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 8,
+        "word": "mud",
+        "hint": "Wet, sticky earth",
+        "emoji": "🟤",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 9,
+        "word": "nap",
+        "hint": "A short sleep during the day",
+        "emoji": "😴",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 10,
+        "word": "zip",
+        "hint": "A fastener on a jacket",
+        "emoji": "🧥",
+        "level": 1,
+        "xp": 10
+    },
+    {
+        "id": 11,
+        "word": "trip",
+        "hint": "A journey to a new place",
+        "emoji": "🧳",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 12,
+        "word": "snap",
+        "hint": "To break with a sharp sound",
+        "emoji": "💥",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 13,
+        "word": "grin",
+        "hint": "A big, wide smile",
+        "emoji": "😁",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 14,
+        "word": "plan",
+        "hint": "An idea to do something",
+        "emoji": "📝",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 15,
+        "word": "drip",
+        "hint": "Water falling drop by drop",
+        "emoji": "💧",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 16,
+        "word": "flat",
+        "hint": "Smooth, with no bumps",
+        "emoji": "📄",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 17,
+        "word": "grip",
+        "hint": "To hold something tightly",
+        "emoji": "✊",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 18,
+        "word": "plus",
+        "hint": "To add one thing to another",
+        "emoji": "➕",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 19,
+        "word": "hunt",
+        "hint": "To search carefully for something",
+        "emoji": "🔍",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 20,
+        "word": "soft",
+        "hint": "Smooth and gentle to touch",
+        "emoji": "🧸",
+        "level": 2,
+        "xp": 15
+    },
+    {
+        "id": 21,
+        "word": "brave",
+        "hint": "Not scared, facing fear",
+        "emoji": "🦁",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 22,
+        "word": "cheer",
+        "hint": "To shout with happiness",
+        "emoji": "🎉",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 23,
+        "word": "stone",
+        "hint": "A small hard rock",
+        "emoji": "🪨",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 24,
+        "word": "dream",
+        "hint": "Pictures in your mind when you sleep",
+        "emoji": "💭",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 25,
+        "word": "shout",
+        "hint": "To call out very loudly",
+        "emoji": "📣",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 26,
+        "word": "think",
+        "hint": "To use your brain to work out ideas",
+        "emoji": "🧠",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 27,
+        "word": "found",
+        "hint": "To discover something lost",
+        "emoji": "🔍",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 28,
+        "word": "quick",
+        "hint": "Very fast",
+        "emoji": "⚡",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 29,
+        "word": "great",
+        "hint": "Very very good",
+        "emoji": "🌟",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 30,
+        "word": "proud",
+        "hint": "Feeling very pleased with yourself",
+        "emoji": "🏆",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 31,
+        "word": "again",
+        "hint": "One more time",
+        "emoji": "🔁",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 32,
+        "word": "every",
+        "hint": "Each one, without leaving any out",
+        "emoji": "✅",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 33,
+        "word": "laugh",
+        "hint": "What you do when something is funny",
+        "emoji": "😂",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 34,
+        "word": "build",
+        "hint": "To make something with your hands",
+        "emoji": "🔨",
+        "level": 3,
+        "xp": 20
+    },
+    {
+        "id": 35,
+        "word": "enjoy",
+        "hint": "To really like doing something",
+        "emoji": "😊",
+        "level": 3,
+        "xp": 20
+    }
+]

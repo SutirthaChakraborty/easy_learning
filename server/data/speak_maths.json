@@ -1,0 +1,402 @@
+[
+ {
+ "id": 1,
+ "text": "Can you count from one to ten out loud?"
+ },
+ {
+ "id": 2,
+ "text": "What is two plus three? Tell me how you worked it out."
+ },
+ {
+ "id": 3,
+ "text": "Can you name three shapes and describe them?"
+ },
+ {
+ "id": 4,
+ "text": "How do you use maths when you go shopping?"
+ },
+ {
+ "id": 5,
+ "text": "What is your favourite number and why?"
+ },
+ {
+ "id": 6,
+ "text": "Can you explain what an even number is?"
+ },
+ {
+ "id": 7,
+ "text": "Tell me the five times table up to fifty."
+ },
+ {
+ "id": 8,
+ "text": "What is the difference between addition and subtraction?"
+ },
+ {
+ "id": 9,
+ "text": "How would you explain what a fraction is to a friend?"
+ },
+ {
+ "id": 10,
+ "text": "Can you describe what a clock face looks like and how to read it?"
+ },
+ {
+ "id": 11,
+ "text": "What is half of twenty? Tell me how you got the answer."
+ },
+ {
+ "id": 12,
+ "text": "Can you name three things you can measure and say how you would measure them?"
+ },
+ {
+ "id": 13,
+ "text": "Tell me a maths fact you think is interesting."
+ },
+ {
+ "id": 14,
+ "text": "How would you work out how much change you get from a ten pound note?"
+ },
+ {
+ "id": 15,
+ "text": "Can you explain what place value means?"
+ },
+ {
+ "id": 16,
+ "text": "What do you find most challenging about maths? Why?"
+ },
+ {
+ "id": 17,
+ "text": "Tell me two numbers that add up to one hundred."
+ },
+ {
+ "id": 18,
+ "text": "How would you explain what multiplication is to a younger child?"
+ },
+ {
+ "id": 19,
+ "text": "Can you describe what a right angle looks like?"
+ },
+ {
+ "id": 20,
+ "text": "What is a prime number? Can you name two?"
+ },
+ {
+ "id": 21,
+ "text": "How would you explain the difference between area and perimeter?"
+ },
+ {
+ "id": 22,
+ "text": "Can you tell me a number sequence and explain the pattern?"
+ },
+ {
+ "id": 23,
+ "text": "What does percentage mean? Can you give an example?"
+ },
+ {
+ "id": 24,
+ "text": "Tell me how you would divide 20 sweets between 4 friends."
+ },
+ {
+ "id": 25,
+ "text": "Can you describe what a negative number is?"
+ },
+ {
+ "id": 26,
+ "text": "How do you use maths in your everyday life?"
+ },
+ {
+ "id": 27,
+ "text": "What is the difference between a square and a rectangle?"
+ },
+ {
+ "id": 28,
+ "text": "Can you explain what rounding a number means?"
+ },
+ {
+ "id": 29,
+ "text": "Tell me what a bar chart is and when you might use one."
+ },
+ {
+ "id": 30,
+ "text": "How would you explain what probability means?"
+ },
+ {
+ "id": 31,
+ "text": "What is your favourite maths topic and why?"
+ },
+ {
+ "id": 32,
+ "text": "Can you name a three dimensional shape and describe it?"
+ },
+ {
+ "id": 33,
+ "text": "Tell me how you would find the area of a rectangle."
+ },
+ {
+ "id": 34,
+ "text": "What does the equals sign mean in a number sentence?"
+ },
+ {
+ "id": 35,
+ "text": "How would you explain what a decimal number is?"
+ },
+ {
+ "id": 36,
+ "text": "Can you describe what symmetry means and give an example?"
+ },
+ {
+ "id": 37,
+ "text": "Tell me what a factor of a number is."
+ },
+ {
+ "id": 38,
+ "text": "How would you explain what coordinates are?"
+ },
+ {
+ "id": 39,
+ "text": "What is the most useful maths skill you have learned?"
+ },
+ {
+ "id": 40,
+ "text": "Can you explain what the mean of a set of numbers is?"
+ },
+ {
+ "id": 41,
+ "text": "Tell me about a time maths helped you solve a real problem."
+ },
+ {
+ "id": 42,
+ "text": "How would you explain what ratio means?"
+ },
+ {
+ "id": 43,
+ "text": "Can you describe what an acute angle and an obtuse angle are?"
+ },
+ {
+ "id": 44,
+ "text": "Tell me what you know about the number pi."
+ },
+ {
+ "id": 45,
+ "text": "How would you explain algebra to someone who had never heard of it?"
+ },
+ {
+ "id": 46,
+ "text": "Can you explain why knowing times tables is helpful?"
+ },
+ {
+ "id": 47,
+ "text": "What do you find easiest in maths? Tell me about it."
+ },
+ {
+ "id": 48,
+ "text": "How would you work out the perimeter of a square?"
+ },
+ {
+ "id": 49,
+ "text": "Tell me what you know about Roman numerals."
+ },
+ {
+ "id": 50,
+ "text": "Can you explain what an isosceles triangle is?"
+ },
+ {
+ "id": 51,
+ "text": "How would you find ten percent of a number?"
+ },
+ {
+ "id": 52,
+ "text": "Tell me what BIDMAS means and why it is important."
+ },
+ {
+ "id": 53,
+ "text": "Can you explain the difference between a multiple and a factor?"
+ },
+ {
+ "id": 54,
+ "text": "How would you describe what a pie chart shows?"
+ },
+ {
+ "id": 55,
+ "text": "Tell me about a maths game you enjoy playing."
+ },
+ {
+ "id": 56,
+ "text": "Can you explain what an improper fraction is?"
+ },
+ {
+ "id": 57,
+ "text": "How would you explain long division step by step?"
+ },
+ {
+ "id": 58,
+ "text": "Tell me about a shape that has rotational symmetry."
+ },
+ {
+ "id": 59,
+ "text": "Can you describe how to convert metres to centimetres?"
+ },
+ {
+ "id": 60,
+ "text": "How would you explain what a line graph shows?"
+ },
+ {
+ "id": 61,
+ "text": "Tell me two things that have a right angle in real life."
+ },
+ {
+ "id": 62,
+ "text": "Can you explain why estimation is a useful skill?"
+ },
+ {
+ "id": 63,
+ "text": "How would you describe what the square root of a number is?"
+ },
+ {
+ "id": 64,
+ "text": "Tell me about the Fibonacci sequence."
+ },
+ {
+ "id": 65,
+ "text": "Can you explain what it means to simplify a fraction?"
+ },
+ {
+ "id": 66,
+ "text": "How would you describe what inverse operations are?"
+ },
+ {
+ "id": 67,
+ "text": "Tell me how you would check a multiplication answer using division."
+ },
+ {
+ "id": 68,
+ "text": "Can you describe what standard form is used for?"
+ },
+ {
+ "id": 69,
+ "text": "How would you explain what tessellation means?"
+ },
+ {
+ "id": 70,
+ "text": "Tell me about a career that uses lots of maths."
+ },
+ {
+ "id": 71,
+ "text": "Can you explain what a number bond is?"
+ },
+ {
+ "id": 72,
+ "text": "How would you describe adding fractions with different denominators?"
+ },
+ {
+ "id": 73,
+ "text": "Tell me what you know about square numbers."
+ },
+ {
+ "id": 74,
+ "text": "Can you explain what the gradient of a line tells us?"
+ },
+ {
+ "id": 75,
+ "text": "How would you describe the difference between parallel and perpendicular lines?"
+ },
+ {
+ "id": 76,
+ "text": "Tell me how you would solve the equation 2x = 10."
+ },
+ {
+ "id": 77,
+ "text": "Can you describe what a frequency table is used for?"
+ },
+ {
+ "id": 78,
+ "text": "How would you explain what a translation means in geometry?"
+ },
+ {
+ "id": 79,
+ "text": "Tell me a real life situation where you might use percentages."
+ },
+ {
+ "id": 80,
+ "text": "Can you explain what the mode of a set of data is?"
+ },
+ {
+ "id": 81,
+ "text": "How would you describe what volume and capacity mean?"
+ },
+ {
+ "id": 82,
+ "text": "Tell me about a time you made a mistake in maths and how you fixed it."
+ },
+ {
+ "id": 83,
+ "text": "Can you explain why zero is an important number?"
+ },
+ {
+ "id": 84,
+ "text": "How would you describe the difference between odd and even numbers?"
+ },
+ {
+ "id": 85,
+ "text": "Tell me what the circumference of a circle is."
+ },
+ {
+ "id": 86,
+ "text": "Can you explain what a coordinate grid looks like?"
+ },
+ {
+ "id": 87,
+ "text": "How would you describe column subtraction step by step?"
+ },
+ {
+ "id": 88,
+ "text": "Tell me about something in nature that follows a mathematical pattern."
+ },
+ {
+ "id": 89,
+ "text": "Can you explain what an equivalent fraction is?"
+ },
+ {
+ "id": 90,
+ "text": "How would you describe what a net of a 3D shape is?"
+ },
+ {
+ "id": 91,
+ "text": "Tell me what you know about the number line."
+ },
+ {
+ "id": 92,
+ "text": "Can you explain what currency conversion means?"
+ },
+ {
+ "id": 93,
+ "text": "How would you describe what surface area means?"
+ },
+ {
+ "id": 94,
+ "text": "Tell me about the order of operations in maths."
+ },
+ {
+ "id": 95,
+ "text": "Can you explain what it means to reflect a shape?"
+ },
+ {
+ "id": 96,
+ "text": "How would you describe what a right angled triangle looks like?"
+ },
+ {
+ "id": 97,
+ "text": "Tell me one interesting fact about prime numbers."
+ },
+ {
+ "id": 98,
+ "text": "Can you explain how a timetable works?"
+ },
+ {
+ "id": 99,
+ "text": "How would you solve a word problem about buying items in a shop?"
+ },
+ {
+ "id": 100,
+ "text": "Tell me what you would like to learn more about in maths."
+ }
+]

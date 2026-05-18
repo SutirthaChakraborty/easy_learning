@@ -1,0 +1,1002 @@
+[
+    {
+        "id": 1,
+        "title": "Feeling Happy",
+        "content": "Nila jumped out of bed with a big smile. It was her favourite day. She felt happy and full of energy.",
+        "question": "How did Nila feel?",
+        "options": ["Tired", "Happy", "Angry"],
+        "answer": "Happy",
+        "emoji": "😊",
+        "bg": "bg1"
+    },
+    {
+        "id": 2,
+        "title": "Feeling Sad",
+        "content": "Tom's toy broke and would not work anymore. He sat in the corner quietly. A tear rolled down his cheek.",
+        "question": "Why was Tom sad?",
+        "options": ["He lost a game", "His toy broke", "He was hungry"],
+        "answer": "His toy broke",
+        "emoji": "😢",
+        "bg": "bg2"
+    },
+    {
+        "id": 3,
+        "title": "Feeling Scared",
+        "content": "Anya heard a loud noise in the dark. Her heart beat very fast. She hid under her blanket.",
+        "question": "Why did Anya hide?",
+        "options": ["She was cold", "She heard a loud noise", "She was tired"],
+        "answer": "She heard a loud noise",
+        "emoji": "😨",
+        "bg": "bg3"
+    },
+    {
+        "id": 4,
+        "title": "Feeling Excited",
+        "content": "Today is the day of the school trip! Ravi woke up early and got dressed fast. He could not stop smiling.",
+        "question": "Why was Ravi excited?",
+        "options": ["It was a holiday", "School trip day", "His birthday"],
+        "answer": "School trip day",
+        "emoji": "🎉",
+        "bg": "bg1"
+    },
+    {
+        "id": 5,
+        "title": "Feeling Proud",
+        "content": "Maya finished her drawing all by herself. Her teacher put it on the wall. Maya stood tall and felt very proud.",
+        "question": "Why did Maya feel proud?",
+        "options": ["She got a gift", "She won a race", "Her drawing was displayed"],
+        "answer": "Her drawing was displayed",
+        "emoji": "🏅",
+        "bg": "bg2"
+    },
+    {
+        "id": 6,
+        "title": "Feeling Angry",
+        "content": "Leo wanted the last biscuit but his brother took it. Leo's face turned red. He stamped his foot on the floor.",
+        "question": "Why was Leo angry?",
+        "options": ["He broke a toy", "His brother took the biscuit", "He fell down"],
+        "answer": "His brother took the biscuit",
+        "emoji": "😠",
+        "bg": "bg3"
+    },
+    {
+        "id": 7,
+        "title": "Feeling Calm",
+        "content": "Priya sat by the window and listened to the rain. She took slow deep breaths. She felt very peaceful and calm.",
+        "question": "What helped Priya feel calm?",
+        "options": ["Running fast", "Listening to rain", "Eating lunch"],
+        "answer": "Listening to rain",
+        "emoji": "🌧️",
+        "bg": "bg1"
+    },
+    {
+        "id": 8,
+        "title": "Feeling Lonely",
+        "content": "Zara moved to a new school. She did not know anyone yet. She sat alone and felt lonely.",
+        "question": "Why did Zara feel lonely?",
+        "options": ["She was ill", "She had no friends yet", "She was bored"],
+        "answer": "She had no friends yet",
+        "emoji": "🧍",
+        "bg": "bg2"
+    },
+    {
+        "id": 9,
+        "title": "Feeling Brave",
+        "content": "Sam was scared to climb the big slide. He took a deep breath. He climbed it anyway and felt very brave.",
+        "question": "What made Sam feel brave?",
+        "options": ["He climbed the slide", "He ran a race", "He swam far"],
+        "answer": "He climbed the slide",
+        "emoji": "🦁",
+        "bg": "bg3"
+    },
+    {
+        "id": 10,
+        "title": "Feeling Surprised",
+        "content": "Mia walked into a dark room. Then the lights came on. Everyone shouted Surprise! and Mia gasped.",
+        "question": "How did Mia feel when the lights came on?",
+        "options": ["Angry", "Surprised", "Bored"],
+        "answer": "Surprised",
+        "emoji": "🎊",
+        "bg": "bg1"
+    },
+    {
+        "id": 11,
+        "title": "Helping a Friend",
+        "content": "Ben saw his friend drop all his books. He helped pick them up. His friend said thank you and smiled.",
+        "question": "What did Ben do?",
+        "options": ["Laughed", "Helped pick up the books", "Walked away"],
+        "answer": "Helped pick up the books",
+        "emoji": "📚",
+        "bg": "bg2"
+    },
+    {
+        "id": 12,
+        "title": "Sharing is Caring",
+        "content": "Lily had two sandwiches at lunch. Her friend forgot her food. Lily gave one sandwich to her friend.",
+        "question": "What did Lily give her friend?",
+        "options": ["A drink", "One sandwich", "A biscuit"],
+        "answer": "One sandwich",
+        "emoji": "🥪",
+        "bg": "bg3"
+    },
+    {
+        "id": 13,
+        "title": "A Kind Word",
+        "content": "Jay was having a bad day. His classmate said: You are doing great! Jay smiled and felt much better.",
+        "question": "What made Jay feel better?",
+        "options": ["A gift", "A kind word", "A new toy"],
+        "answer": "A kind word",
+        "emoji": "💬",
+        "bg": "bg1"
+    },
+    {
+        "id": 14,
+        "title": "Holding the Door",
+        "content": "Ella saw an old man walking slowly. She held the door open for him. He nodded and said thank you.",
+        "question": "What did Ella do?",
+        "options": ["Ran away", "Held the door open", "Called for help"],
+        "answer": "Held the door open",
+        "emoji": "🚪",
+        "bg": "bg2"
+    },
+    {
+        "id": 15,
+        "title": "Helping at Home",
+        "content": "Mum looked very tired after work. Riya set the table for dinner without being asked. Mum gave her a big hug.",
+        "question": "What did Riya do to help?",
+        "options": ["Cooked dinner", "Set the table", "Washed the dishes"],
+        "answer": "Set the table",
+        "emoji": "🍽️",
+        "bg": "bg3"
+    },
+    {
+        "id": 16,
+        "title": "Cheering a Friend",
+        "content": "Kai's friend was about to run her first race. Kai cheered loudly from the side. His friend ran her best race ever.",
+        "question": "What did Kai do for his friend?",
+        "options": ["Gave her a gift", "Ran the race", "Cheered loudly"],
+        "answer": "Cheered loudly",
+        "emoji": "📣",
+        "bg": "bg1"
+    },
+    {
+        "id": 17,
+        "title": "Saying Sorry",
+        "content": "Dan bumped into a girl in the hall and her lunch fell. He said sorry right away and helped clean it up.",
+        "question": "What did Dan do after the bump?",
+        "options": ["Ran away", "Said sorry and helped", "Ignored her"],
+        "answer": "Said sorry and helped",
+        "emoji": "🙏",
+        "bg": "bg2"
+    },
+    {
+        "id": 18,
+        "title": "Welcoming Someone New",
+        "content": "A new boy joined the class. No one talked to him. Sana walked over and said hello. They became good friends.",
+        "question": "What did Sana do?",
+        "options": ["Ignored the new boy", "Said hello", "Told the teacher"],
+        "answer": "Said hello",
+        "emoji": "👋",
+        "bg": "bg3"
+    },
+    {
+        "id": 19,
+        "title": "Feeding the Birds",
+        "content": "Every morning, Dev put seeds on the windowsill. The birds flew down to eat them. Dev loved watching them.",
+        "question": "What did Dev put on the windowsill?",
+        "options": ["Bread", "Seeds", "Water"],
+        "answer": "Seeds",
+        "emoji": "🐦",
+        "bg": "bg1"
+    },
+    {
+        "id": 20,
+        "title": "Taking Turns",
+        "content": "Four friends wanted to play on the swing. They decided to take turns. Each child had a fair turn.",
+        "question": "How did the friends solve the problem?",
+        "options": ["They all swung together", "They took turns", "One child played all day"],
+        "answer": "They took turns",
+        "emoji": "🔄",
+        "bg": "bg2"
+    },
+    {
+        "id": 21,
+        "title": "Morning Routine",
+        "content": "Every morning, Jin washes his face and brushes his teeth. Then he eats breakfast. He is ready for school by eight o'clock.",
+        "question": "What does Jin do before breakfast?",
+        "options": ["Gets dressed", "Washes his face and brushes his teeth", "Packs his bag"],
+        "answer": "Washes his face and brushes his teeth",
+        "emoji": "🪥",
+        "bg": "bg3"
+    },
+    {
+        "id": 22,
+        "title": "Packing a Bag",
+        "content": "Before school, Meera packs her bag. She puts in her books, pencils, and water bottle. Then she checks she has everything.",
+        "question": "What does Meera put in her bag?",
+        "options": ["Food and toys", "Books, pencils, water bottle", "Only her lunch"],
+        "answer": "Books, pencils, water bottle",
+        "emoji": "🎒",
+        "bg": "bg1"
+    },
+    {
+        "id": 23,
+        "title": "Bedtime Routine",
+        "content": "At night, Chloe puts on her pyjamas and brushes her teeth. She reads one page of her book. Then she turns off the light.",
+        "question": "What does Chloe do before sleep?",
+        "options": ["Watches TV", "Puts on pyjamas and brushes teeth", "Eats a snack"],
+        "answer": "Puts on pyjamas and brushes teeth",
+        "emoji": "🌙",
+        "bg": "bg2"
+    },
+    {
+        "id": 24,
+        "title": "Washing Hands",
+        "content": "After playing outside, Amit always washes his hands. He uses soap and warm water. Then he dries his hands on a towel.",
+        "question": "When does Amit wash his hands?",
+        "options": ["Before going to bed", "After playing outside", "After lunch"],
+        "answer": "After playing outside",
+        "emoji": "🧼",
+        "bg": "bg3"
+    },
+    {
+        "id": 25,
+        "title": "Choosing Clothes",
+        "content": "It was cold outside. Priya picked a warm jumper and her thick coat. She put on her gloves too.",
+        "question": "Why did Priya pick a warm jumper?",
+        "options": ["It was hot", "It was cold outside", "She liked the colour"],
+        "answer": "It was cold outside",
+        "emoji": "🧥",
+        "bg": "bg1"
+    },
+    {
+        "id": 26,
+        "title": "Eating Lunch",
+        "content": "At noon, the school bell rang for lunch. Omar took out his lunchbox. He had a sandwich, an apple, and some water.",
+        "question": "What was in Omar's lunchbox?",
+        "options": ["Rice and juice", "Sandwich, apple, water", "Biscuits and milk"],
+        "answer": "Sandwich, apple, water",
+        "emoji": "🥪",
+        "bg": "bg2"
+    },
+    {
+        "id": 27,
+        "title": "Tying Shoelaces",
+        "content": "Nate could not tie his shoes at first. He practiced every day. After one week, he could do it all by himself.",
+        "question": "How did Nate learn to tie his shoes?",
+        "options": ["His mum did it", "He watched a video", "He practiced every day"],
+        "answer": "He practiced every day",
+        "emoji": "👟",
+        "bg": "bg3"
+    },
+    {
+        "id": 28,
+        "title": "Keeping Things Tidy",
+        "content": "Before bed, Sasha puts her toys in the box. She folds her clothes and puts them on the chair. Her room is always tidy.",
+        "question": "What does Sasha do with her toys?",
+        "options": ["Leaves them on the floor", "Puts them in the box", "Gives them away"],
+        "answer": "Puts them in the box",
+        "emoji": "🧸",
+        "bg": "bg1"
+    },
+    {
+        "id": 29,
+        "title": "Crossing the Road",
+        "content": "Finn always stopped at the kerb. He looked left, then right, then left again. Only when it was safe did he cross the road.",
+        "question": "What did Finn do at the kerb?",
+        "options": ["Ran straight across", "Looked left, right, left before crossing", "Waited for a car to stop"],
+        "answer": "Looked left, right, left before crossing",
+        "emoji": "🚦",
+        "bg": "bg2"
+    },
+    {
+        "id": 30,
+        "title": "Going to Sleep",
+        "content": "At eight o'clock, Aisha turned off her light. She closed her eyes and took slow breaths. She was asleep in a few minutes.",
+        "question": "How did Aisha fall asleep fast?",
+        "options": ["Read a book", "Took slow breaths with eyes closed", "Counted sheep"],
+        "answer": "Took slow breaths with eyes closed",
+        "emoji": "😴",
+        "bg": "bg3"
+    },
+    {
+        "id": 31,
+        "title": "A Sunny Day",
+        "content": "The sun was bright and warm. Lena ran outside to play. She felt the warm sun on her face.",
+        "question": "How did Lena feel the sun?",
+        "options": ["On her hands", "On her face", "On her feet"],
+        "answer": "On her face",
+        "emoji": "☀️",
+        "bg": "bg1"
+    },
+    {
+        "id": 32,
+        "title": "A Rainy Day",
+        "content": "Rain fell all morning. Puddles formed on the path. Jo put on her boots and splashed through them.",
+        "question": "What did Jo do in the rain?",
+        "options": ["Stayed inside", "Splashed in puddles", "Built a shelter"],
+        "answer": "Splashed in puddles",
+        "emoji": "🌧️",
+        "bg": "bg2"
+    },
+    {
+        "id": 33,
+        "title": "The Park",
+        "content": "The park had a swing, a slide, and a big green field. Children played and laughed. Dogs ran and chased balls.",
+        "question": "What was in the park?",
+        "options": ["A pool and a cafe", "Swing, slide, and green field", "Only trees"],
+        "answer": "Swing, slide, and green field",
+        "emoji": "🌳",
+        "bg": "bg3"
+    },
+    {
+        "id": 34,
+        "title": "Autumn Leaves",
+        "content": "In autumn, the leaves turn red, orange, and yellow. They fall from the trees. Children love to jump in the leaf piles.",
+        "question": "What colour do leaves turn in autumn?",
+        "options": ["Blue and green", "Red, orange, and yellow", "Pink and white"],
+        "answer": "Red, orange, and yellow",
+        "emoji": "🍂",
+        "bg": "bg1"
+    },
+    {
+        "id": 35,
+        "title": "Building a Snowman",
+        "content": "It snowed all night. In the morning, Eli and his mum went outside. They rolled big snowballs and built a snowman.",
+        "question": "What did Eli and his mum build?",
+        "options": ["An igloo", "A snowman", "A snow fort"],
+        "answer": "A snowman",
+        "emoji": "⛄",
+        "bg": "bg2"
+    },
+    {
+        "id": 36,
+        "title": "The Garden",
+        "content": "Gran's garden had roses, sunflowers, and strawberries. Gran watered it every morning. Everything grew tall and bright.",
+        "question": "What was in Gran's garden?",
+        "options": ["Only vegetables", "Roses, sunflowers, and strawberries", "Trees and bushes"],
+        "answer": "Roses, sunflowers, and strawberries",
+        "emoji": "🌹",
+        "bg": "bg3"
+    },
+    {
+        "id": 37,
+        "title": "The Beach",
+        "content": "The family went to the beach. The children dug in the sand and found shells. The waves were big and made a loud roar.",
+        "question": "What did the children find in the sand?",
+        "options": ["Coins", "Shells", "Crabs"],
+        "answer": "Shells",
+        "emoji": "🐚",
+        "bg": "bg1"
+    },
+    {
+        "id": 38,
+        "title": "Walking in the Rain",
+        "content": "Dad and Mia walked in the rain with their umbrella. They listened to the raindrops on the umbrella. It made a gentle tapping sound.",
+        "question": "What did the rain on the umbrella sound like?",
+        "options": ["A loud boom", "A gentle tapping", "A dripping sound"],
+        "answer": "A gentle tapping",
+        "emoji": "☂️",
+        "bg": "bg2"
+    },
+    {
+        "id": 39,
+        "title": "The Wind",
+        "content": "A strong wind blew through the trees. Leaves swirled in the air. Pia held onto her hat so it did not blow away.",
+        "question": "Why did Pia hold her hat?",
+        "options": ["It was raining", "The wind was strong", "She liked her hat"],
+        "answer": "The wind was strong",
+        "emoji": "🌬️",
+        "bg": "bg3"
+    },
+    {
+        "id": 40,
+        "title": "A Rainbow",
+        "content": "After the rain stopped, the sun came out. A beautiful rainbow appeared in the sky. It had many bright colours.",
+        "question": "When did the rainbow appear?",
+        "options": ["Before the rain", "During a storm", "After the rain stopped"],
+        "answer": "After the rain stopped",
+        "emoji": "🌈",
+        "bg": "bg1"
+    },
+    {
+        "id": 41,
+        "title": "Breakfast Time",
+        "content": "In the morning, Ria ate a bowl of porridge with honey. It was warm and sweet. She felt full of energy after eating.",
+        "question": "What did Ria eat for breakfast?",
+        "options": ["Toast and eggs", "Porridge with honey", "Cereal and milk"],
+        "answer": "Porridge with honey",
+        "emoji": "🍯",
+        "bg": "bg2"
+    },
+    {
+        "id": 42,
+        "title": "Making a Sandwich",
+        "content": "Jed took two slices of bread. He spread butter on both pieces. Then he added cheese and a slice of tomato.",
+        "question": "What did Jed add to his sandwich?",
+        "options": ["Jam and butter", "Cheese and tomato", "Lettuce and ham"],
+        "answer": "Cheese and tomato",
+        "emoji": "🥪",
+        "bg": "bg3"
+    },
+    {
+        "id": 43,
+        "title": "Fruit Salad",
+        "content": "Mum cut up bananas, grapes, and oranges. She put them in a bowl. She poured a little honey on top.",
+        "question": "What did Mum pour on the fruit?",
+        "options": ["Juice", "Honey", "Yogurt"],
+        "answer": "Honey",
+        "emoji": "🍎",
+        "bg": "bg1"
+    },
+    {
+        "id": 44,
+        "title": "Eating Together",
+        "content": "Every evening, the family ate dinner at the table together. They talked about their day. It was everyone's favourite time.",
+        "question": "When did the family eat dinner?",
+        "options": ["At noon", "At breakfast", "Every evening"],
+        "answer": "Every evening",
+        "emoji": "🍽️",
+        "bg": "bg2"
+    },
+    {
+        "id": 45,
+        "title": "Trying New Food",
+        "content": "Zoe had never tried peas before. She put one in her mouth slowly. It was sweet! She ate them all up.",
+        "question": "What did Zoe think of the peas?",
+        "options": ["Too salty", "Too bitter", "Sweet"],
+        "answer": "Sweet",
+        "emoji": "🫛",
+        "bg": "bg3"
+    },
+    {
+        "id": 46,
+        "title": "Drinking Water",
+        "content": "After running around, Dan was very thirsty. He drank a full glass of cold water. He felt much better straight away.",
+        "question": "Why did Dan drink water?",
+        "options": ["He was bored", "He was very thirsty", "It was lunchtime"],
+        "answer": "He was very thirsty",
+        "emoji": "💧",
+        "bg": "bg1"
+    },
+    {
+        "id": 47,
+        "title": "Baking a Cake",
+        "content": "Noor and her dad made a cake. They mixed flour, eggs, and butter. The cake baked in the oven for thirty minutes.",
+        "question": "What did they mix for the cake?",
+        "options": ["Sugar, milk, cream", "Flour, eggs, butter", "Rice, oil, salt"],
+        "answer": "Flour, eggs, butter",
+        "emoji": "🎂",
+        "bg": "bg2"
+    },
+    {
+        "id": 48,
+        "title": "The Ice Cream Shop",
+        "content": "On a hot day, Kai went to the ice cream shop. He chose strawberry flavour. He licked it fast before it melted.",
+        "question": "What flavour did Kai choose?",
+        "options": ["Chocolate", "Vanilla", "Strawberry"],
+        "answer": "Strawberry",
+        "emoji": "🍦",
+        "bg": "bg3"
+    },
+    {
+        "id": 49,
+        "title": "Growing Food",
+        "content": "Gran planted tomato seeds in a pot. She watered them every day. After a few weeks, small red tomatoes grew.",
+        "question": "What grew in Gran's pot?",
+        "options": ["Carrots", "Tomatoes", "Beans"],
+        "answer": "Tomatoes",
+        "emoji": "🍅",
+        "bg": "bg1"
+    },
+    {
+        "id": 50,
+        "title": "Cooking Together",
+        "content": "Mia helped her dad make soup. She stirred the pot while he cut the vegetables. It smelled wonderful.",
+        "question": "What did Mia do?",
+        "options": ["Cut the vegetables", "Stirred the pot", "Set the table"],
+        "answer": "Stirred the pot",
+        "emoji": "🍲",
+        "bg": "bg2"
+    },
+    {
+        "id": 51,
+        "title": "The Tiny Dragon",
+        "content": "A tiny dragon lived under a mushroom. He could only breathe a small puff of smoke. He used it to warm cold cups of tea.",
+        "question": "What could the tiny dragon do?",
+        "options": ["Fly very high", "Breathe a small puff of smoke", "Swim in rivers"],
+        "answer": "Breathe a small puff of smoke",
+        "emoji": "🐉",
+        "bg": "bg3"
+    },
+    {
+        "id": 52,
+        "title": "The Magic Pencil",
+        "content": "Leo found a magic pencil. Whatever he drew came to life. He drew a dog, and a dog jumped out of the page.",
+        "question": "What happened when Leo drew a dog?",
+        "options": ["The pencil broke", "A dog jumped out of the page", "Nothing happened"],
+        "answer": "A dog jumped out of the page",
+        "emoji": "✏️",
+        "bg": "bg1"
+    },
+    {
+        "id": 53,
+        "title": "The Friendly Cloud",
+        "content": "A small cloud floated low in the sky. It would follow children to school. It made shade so they did not get too hot.",
+        "question": "Why did the cloud follow children?",
+        "options": ["To make rain", "To make shade for them", "To block the sun from flowers"],
+        "answer": "To make shade for them",
+        "emoji": "☁️",
+        "bg": "bg2"
+    },
+    {
+        "id": 54,
+        "title": "The Talking Mirror",
+        "content": "In an old house lived a mirror that could talk. It told the truth always. When a girl asked: Am I kind? it said: Yes, very kind.",
+        "question": "What did the mirror always do?",
+        "options": ["Told jokes", "Told the truth", "Changed colour"],
+        "answer": "Told the truth",
+        "emoji": "🪞",
+        "bg": "bg3"
+    },
+    {
+        "id": 55,
+        "title": "The Giant's Shoes",
+        "content": "A giant left his shoes by the river. A family of mice moved in. They made it into a cosy home with tiny doors and windows.",
+        "question": "What did the mice do with the shoes?",
+        "options": ["Hid food inside", "Made them into a home", "Cleaned them"],
+        "answer": "Made them into a home",
+        "emoji": "👟",
+        "bg": "bg1"
+    },
+    {
+        "id": 56,
+        "title": "The Star That Fell",
+        "content": "One night, a star fell from the sky into a garden. It glowed softly in the grass. A girl picked it up and it turned into a firefly.",
+        "question": "What did the star turn into?",
+        "options": ["A flower", "A stone", "A firefly"],
+        "answer": "A firefly",
+        "emoji": "⭐",
+        "bg": "bg2"
+    },
+    {
+        "id": 57,
+        "title": "The Invisible Cape",
+        "content": "Finn found an invisible cape in his wardrobe. When he wore it, nobody could see him. He used it to surprise his little sister.",
+        "question": "What did Finn use the cape for?",
+        "options": ["To escape school", "To surprise his sister", "To steal biscuits"],
+        "answer": "To surprise his sister",
+        "emoji": "🦸",
+        "bg": "bg3"
+    },
+    {
+        "id": 58,
+        "title": "The Singing River",
+        "content": "Deep in the forest, a river sang soft songs as it flowed. Animals came to listen. They lay down on the bank and fell asleep.",
+        "question": "What happened to the animals who listened?",
+        "options": ["They danced", "They fell asleep", "They swam in the river"],
+        "answer": "They fell asleep",
+        "emoji": "🌊",
+        "bg": "bg1"
+    },
+    {
+        "id": 59,
+        "title": "The Door in the Tree",
+        "content": "There was a small red door at the base of an old oak tree. Behind it lived a tiny world with tiny streets, shops, and people.",
+        "question": "What was behind the small red door?",
+        "options": ["A nest", "A tiny world", "A hidden treasure"],
+        "answer": "A tiny world",
+        "emoji": "🚪",
+        "bg": "bg2"
+    },
+    {
+        "id": 60,
+        "title": "The Cloud Castle",
+        "content": "High above the clouds was a castle made of soft white cloud. The people who lived there walked on fluffy floors. They wore coats of fog.",
+        "question": "What was the castle made of?",
+        "options": ["Stone", "Cloud", "Glass"],
+        "answer": "Cloud",
+        "emoji": "🏰",
+        "bg": "bg3"
+    },
+    {
+        "id": 61,
+        "title": "The Lost Key",
+        "content": "Mia could not find her key. She thought carefully about where she last had it. She checked her coat pocket and found it.",
+        "question": "How did Mia find her key?",
+        "options": ["She called for help", "She thought carefully and checked her coat", "She gave up"],
+        "answer": "She thought carefully and checked her coat",
+        "emoji": "🔑",
+        "bg": "bg1"
+    },
+    {
+        "id": 62,
+        "title": "The Stuck Lid",
+        "content": "Tom could not open the jar. He ran it under warm water. Then it opened easily.",
+        "question": "How did Tom open the jar?",
+        "options": ["He broke it", "He ran it under warm water", "He asked for help"],
+        "answer": "He ran it under warm water",
+        "emoji": "🫙",
+        "bg": "bg2"
+    },
+    {
+        "id": 63,
+        "title": "The Wet Shoes",
+        "content": "Lila's shoes got soaked in a puddle. She stuffed them with newspaper. By morning, they were dry again.",
+        "question": "What did Lila use to dry her shoes?",
+        "options": ["A hairdryer", "Newspaper", "A towel"],
+        "answer": "Newspaper",
+        "emoji": "👟",
+        "bg": "bg3"
+    },
+    {
+        "id": 64,
+        "title": "The Short Ladder",
+        "content": "The ladder was too short to reach the shelf. Deb put a strong box on the floor first. Then the ladder reached perfectly.",
+        "question": "How did Deb reach the shelf?",
+        "options": ["She jumped", "She put a box under the ladder", "She asked someone tall"],
+        "answer": "She put a box under the ladder",
+        "emoji": "🪜",
+        "bg": "bg1"
+    },
+    {
+        "id": 65,
+        "title": "The Dark Room",
+        "content": "The torch battery died. Eli did not panic. He used the light on his watch to find the main switch.",
+        "question": "What did Eli use for light?",
+        "options": ["His phone", "His watch light", "A candle"],
+        "answer": "His watch light",
+        "emoji": "🔦",
+        "bg": "bg2"
+    },
+    {
+        "id": 66,
+        "title": "The Long Walk",
+        "content": "Jess and her dad had to walk a very long way. To make the time fun, they counted red cars. The walk felt much shorter.",
+        "question": "What did Jess and her dad do to pass the time?",
+        "options": ["Sang songs", "Counted red cars", "Told jokes"],
+        "answer": "Counted red cars",
+        "emoji": "🚗",
+        "bg": "bg3"
+    },
+    {
+        "id": 67,
+        "title": "The Broken Crayon",
+        "content": "Nico's favourite crayon snapped in two. He did not cry. He kept using both pieces to colour.",
+        "question": "What did Nico do with the broken crayon?",
+        "options": ["Threw it away", "Kept using both pieces", "Asked for a new one"],
+        "answer": "Kept using both pieces",
+        "emoji": "🖍️",
+        "bg": "bg1"
+    },
+    {
+        "id": 68,
+        "title": "The Missing Piece",
+        "content": "The puzzle had one missing piece. Suki looked under the table. She found it near the leg of the chair.",
+        "question": "Where was the missing piece?",
+        "options": ["Behind the sofa", "In the box", "Near the leg of the chair"],
+        "answer": "Near the leg of the chair",
+        "emoji": "🧩",
+        "bg": "bg2"
+    },
+    {
+        "id": 69,
+        "title": "The Argument",
+        "content": "Two friends wanted different games. They could not agree. They decided to play one game each and take turns.",
+        "question": "How did the friends solve the argument?",
+        "options": ["One friend gave up", "They took turns with each game", "They stopped playing"],
+        "answer": "They took turns with each game",
+        "emoji": "🤝",
+        "bg": "bg3"
+    },
+    {
+        "id": 70,
+        "title": "The Uphill Path",
+        "content": "The hill was very steep. Asha rested every few minutes. Step by step, she made it all the way to the top.",
+        "question": "How did Asha climb the steep hill?",
+        "options": ["She ran fast", "She gave up halfway", "She rested and went step by step"],
+        "answer": "She rested and went step by step",
+        "emoji": "⛰️",
+        "bg": "bg1"
+    },
+    {
+        "id": 71,
+        "title": "Trying Again",
+        "content": "Finn fell off his bike three times. He got back up each time. On the fourth try, he rode all the way down the street.",
+        "question": "How many times did Finn fall?",
+        "options": ["Once", "Twice", "Three times"],
+        "answer": "Three times",
+        "emoji": "🚲",
+        "bg": "bg2"
+    },
+    {
+        "id": 72,
+        "title": "A New Word",
+        "content": "Lila heard the word \"curious\" in a story. She did not know what it meant. She looked it up and learned it means wanting to know more.",
+        "question": "What does \"curious\" mean?",
+        "options": ["Very happy", "Wanting to know more", "Very tired"],
+        "answer": "Wanting to know more",
+        "emoji": "📖",
+        "bg": "bg3"
+    },
+    {
+        "id": 73,
+        "title": "Asking for Help",
+        "content": "The sums were very hard for Sam. He put up his hand and asked his teacher. The teacher explained it clearly and Sam understood.",
+        "question": "What did Sam do when he was stuck?",
+        "options": ["Guessed the answers", "Asked his teacher", "Left it blank"],
+        "answer": "Asked his teacher",
+        "emoji": "✋",
+        "bg": "bg1"
+    },
+    {
+        "id": 74,
+        "title": "Practising Every Day",
+        "content": "Mia wanted to learn to draw a cat. She drew one every day. After ten days, her cat looked great.",
+        "question": "What did Mia practise every day?",
+        "options": ["Writing her name", "Drawing a cat", "Colouring shapes"],
+        "answer": "Drawing a cat",
+        "emoji": "🎨",
+        "bg": "bg2"
+    },
+    {
+        "id": 75,
+        "title": "Making a Mistake",
+        "content": "Tom gave the wrong answer in class. He felt embarrassed. Then he listened carefully and got the next question right.",
+        "question": "What did Tom do after his mistake?",
+        "options": ["Left the class", "Listened and got the next one right", "Gave up"],
+        "answer": "Listened and got the next one right",
+        "emoji": "💡",
+        "bg": "bg3"
+    },
+    {
+        "id": 76,
+        "title": "Learning to Read",
+        "content": "At first, reading was hard for Nia. She sounded out letters one by one. Over time, she could read whole sentences with ease.",
+        "question": "How did Nia learn to read?",
+        "options": ["She guessed words", "She sounded out letters", "She memorised every word"],
+        "answer": "She sounded out letters",
+        "emoji": "📗",
+        "bg": "bg1"
+    },
+    {
+        "id": 77,
+        "title": "Feeling Stuck",
+        "content": "The painting was not going how Ben wanted. He put it aside and took a break. When he came back, he had a new idea.",
+        "question": "What helped Ben get a new idea?",
+        "options": ["Asking a friend", "Taking a break", "Starting over"],
+        "answer": "Taking a break",
+        "emoji": "🎨",
+        "bg": "bg2"
+    },
+    {
+        "id": 78,
+        "title": "Growing Braver",
+        "content": "Isla was shy and did not like speaking in front of the class. She practised at home every night. Soon she loved it.",
+        "question": "How did Isla become brave?",
+        "options": ["She forced herself", "She asked a friend to do it", "She practised at home every night"],
+        "answer": "She practised at home every night",
+        "emoji": "🎤",
+        "bg": "bg3"
+    },
+    {
+        "id": 79,
+        "title": "Reading Together",
+        "content": "Every night, Mum read one chapter with Liam. He began to remember the words. Soon he started reading the pages himself.",
+        "question": "What happened after reading every night?",
+        "options": ["He fell asleep faster", "He memorised the whole book", "He started reading pages himself"],
+        "answer": "He started reading pages himself",
+        "emoji": "📖",
+        "bg": "bg1"
+    },
+    {
+        "id": 80,
+        "title": "Believing in Yourself",
+        "content": "\"I cannot do it,\" said Aara. \"Not yet,\" said her dad. \"But you can learn.\" Aara tried her best. She did it in the end.",
+        "question": "What did Aara's dad mean by \"not yet\"?",
+        "options": ["She will never do it", "She can learn if she tries", "She needs more time to rest"],
+        "answer": "She can learn if she tries",
+        "emoji": "🌟",
+        "bg": "bg2"
+    },
+    {
+        "id": 81,
+        "title": "Making a New Friend",
+        "content": "On the first day, no one talked to Kai. He smiled at the boy next to him. That boy smiled back, and they became best friends.",
+        "question": "How did Kai make a new friend?",
+        "options": ["He gave the boy a toy", "He smiled at the boy next to him", "He asked a teacher"],
+        "answer": "He smiled at the boy next to him",
+        "emoji": "😊",
+        "bg": "bg3"
+    },
+    {
+        "id": 82,
+        "title": "A Team Effort",
+        "content": "The sandcastle kept falling down. All four friends worked together. They held each side, and the castle stood tall.",
+        "question": "How did the sandcastle stand up?",
+        "options": ["One friend fixed it", "They used wet sand", "All four worked together"],
+        "answer": "All four worked together",
+        "emoji": "🏰",
+        "bg": "bg1"
+    },
+    {
+        "id": 83,
+        "title": "The Shy Girl",
+        "content": "Rosa never spoke in group games. One day, a boy asked her to join. She nodded yes. She loved the game and made three friends.",
+        "question": "What happened when Rosa joined the game?",
+        "options": ["She left early", "She loved it and made friends", "She stayed quiet"],
+        "answer": "She loved it and made friends",
+        "emoji": "🤝",
+        "bg": "bg2"
+    },
+    {
+        "id": 84,
+        "title": "Keeping a Secret",
+        "content": "Jay's mum was planning a surprise party for Dad. Jay knew about it. He kept the secret all week and did not say a word.",
+        "question": "What did Jay keep?",
+        "options": ["A gift hidden", "A secret about the party", "A funny joke"],
+        "answer": "A secret about the party",
+        "emoji": "🤫",
+        "bg": "bg3"
+    },
+    {
+        "id": 85,
+        "title": "The Class Project",
+        "content": "Each child in the class was given a small job. Together, they made a huge mural. Everyone's work made the big picture complete.",
+        "question": "What did the class make together?",
+        "options": ["A garden", "A huge mural", "A story book"],
+        "answer": "A huge mural",
+        "emoji": "🎨",
+        "bg": "bg1"
+    },
+    {
+        "id": 86,
+        "title": "A Good Listener",
+        "content": "Maya's friend was upset. Maya sat beside her and listened carefully. She did not interrupt even once.",
+        "question": "What did Maya do for her upset friend?",
+        "options": ["Gave advice", "Made her laugh", "Listened carefully"],
+        "answer": "Listened carefully",
+        "emoji": "👂",
+        "bg": "bg2"
+    },
+    {
+        "id": 87,
+        "title": "Visiting Grandma",
+        "content": "Every Sunday, Min visited her grandma. They played cards and baked biscuits. Min always left with a full tummy and a big smile.",
+        "question": "What did Min and her grandma do?",
+        "options": ["Watched TV and slept", "Played cards and baked biscuits", "Read and cooked soup"],
+        "answer": "Played cards and baked biscuits",
+        "emoji": "🃏",
+        "bg": "bg3"
+    },
+    {
+        "id": 88,
+        "title": "Helping a Neighbour",
+        "content": "The old lady next door could not carry her shopping. Arjun helped her to the door. She thanked him and gave him an apple.",
+        "question": "What did Arjun receive for helping?",
+        "options": ["Some money", "A hug", "An apple"],
+        "answer": "An apple",
+        "emoji": "🍎",
+        "bg": "bg1"
+    },
+    {
+        "id": 89,
+        "title": "The Birthday Card",
+        "content": "Ella made a card for her friend's birthday. She drew flowers and wrote a kind message inside. Her friend kept it for a long time.",
+        "question": "What did Ella draw on the card?",
+        "options": ["Stars", "Flowers", "Animals"],
+        "answer": "Flowers",
+        "emoji": "🌸",
+        "bg": "bg2"
+    },
+    {
+        "id": 90,
+        "title": "Looking Out for Others",
+        "content": "On the bus, Jude saw an older man with no seat. Jude stood up and offered his seat. Everyone on the bus smiled.",
+        "question": "What did Jude do on the bus?",
+        "options": ["Asked for a window seat", "Offered his seat to the older man", "Stood by the door"],
+        "answer": "Offered his seat to the older man",
+        "emoji": "🚌",
+        "bg": "bg3"
+    },
+    {
+        "id": 91,
+        "title": "Taking Deep Breaths",
+        "content": "Ava felt her heart racing before her test. She closed her eyes and took three deep breaths. She felt much calmer.",
+        "question": "What helped Ava feel calmer?",
+        "options": ["Drinking water", "Three deep breaths", "Counting to ten"],
+        "answer": "Three deep breaths",
+        "emoji": "🧘",
+        "bg": "bg1"
+    },
+    {
+        "id": 92,
+        "title": "Getting Enough Sleep",
+        "content": "Liam always went to bed at eight o'clock. He slept for nine hours. In the morning, he was full of energy.",
+        "question": "Why was Liam full of energy?",
+        "options": ["He ate a big breakfast", "He slept for nine hours", "He had a nap"],
+        "answer": "He slept for nine hours",
+        "emoji": "😴",
+        "bg": "bg2"
+    },
+    {
+        "id": 93,
+        "title": "Playing Outside",
+        "content": "Sana played in the garden for one hour after school. She ran, jumped, and climbed. She felt great and her mind felt free.",
+        "question": "How did Sana feel after playing outside?",
+        "options": ["Tired and sore", "Great and free", "Hungry and bored"],
+        "answer": "Great and free",
+        "emoji": "🌤️",
+        "bg": "bg3"
+    },
+    {
+        "id": 94,
+        "title": "Talking About Feelings",
+        "content": "Dan felt very worried but said nothing all day. That evening he told his mum. She listened and he felt much lighter.",
+        "question": "What helped Dan feel lighter?",
+        "options": ["Eating dinner", "Playing a game", "Telling his mum how he felt"],
+        "answer": "Telling his mum how he felt",
+        "emoji": "💬",
+        "bg": "bg1"
+    },
+    {
+        "id": 95,
+        "title": "Eating Colourful Food",
+        "content": "Nia's mum said, \"Eat the rainbow!\" Nia ate red tomatoes, orange carrots, and green peas. She felt strong and healthy.",
+        "question": "What does \"eat the rainbow\" mean?",
+        "options": ["Eat ice cream", "Eat colourful fruits and vegetables", "Eat sweets"],
+        "answer": "Eat colourful fruits and vegetables",
+        "emoji": "🥗",
+        "bg": "bg2"
+    },
+    {
+        "id": 96,
+        "title": "Asking for a Hug",
+        "content": "After a hard day, Mia went to her dad. \"I need a hug,\" she said. Her dad hugged her tight. She instantly felt better.",
+        "question": "What did Mia ask for?",
+        "options": ["A snack", "A hug", "Help with homework"],
+        "answer": "A hug",
+        "emoji": "🤗",
+        "bg": "bg3"
+    },
+    {
+        "id": 97,
+        "title": "Spending Time Alone",
+        "content": "Eli liked spending time alone with his books. It helped him rest his mind. After quiet time, he felt ready to play with friends.",
+        "question": "What did Eli do in his quiet time?",
+        "options": ["Slept", "Read books alone", "Watched a video"],
+        "answer": "Read books alone",
+        "emoji": "📚",
+        "bg": "bg1"
+    },
+    {
+        "id": 98,
+        "title": "Saying What You Need",
+        "content": "Zoe was cold in class but said nothing. The next day she asked, \"May I close the window please?\" The teacher said yes.",
+        "question": "What did Zoe do the next day?",
+        "options": ["Put on a jumper", "Asked to close the window", "Left class"],
+        "answer": "Asked to close the window",
+        "emoji": "🪟",
+        "bg": "bg2"
+    },
+    {
+        "id": 99,
+        "title": "Being Kind to Yourself",
+        "content": "Tom made a mistake in the game. He said, \"That's okay. I will do better next time.\" He felt calm and carried on playing.",
+        "question": "What did Tom tell himself?",
+        "options": ["He gave up", "I'll do better next time", "I am the best"],
+        "answer": "I'll do better next time",
+        "emoji": "💛",
+        "bg": "bg3"
+    },
+    {
+        "id": 100,
+        "title": "Celebrating Small Wins",
+        "content": "Ana wrote three whole sentences all by herself. She clapped for herself. Her teacher gave her a star sticker.",
+        "question": "What did Ana celebrate?",
+        "options": ["Finishing a book", "Writing three sentences herself", "Winning a game"],
+        "answer": "Writing three sentences herself",
+        "emoji": "🌟",
+        "bg": "bg1"
+    }
+]

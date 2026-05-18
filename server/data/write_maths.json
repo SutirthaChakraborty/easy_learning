@@ -1,0 +1,802 @@
+[
+ {
+ "id": 1,
+ "character": "1",
+ "type": "number",
+ "hint": "The number one",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 2,
+ "character": "2",
+ "type": "number",
+ "hint": "The number two",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 3,
+ "character": "3",
+ "type": "number",
+ "hint": "The number three",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 4,
+ "character": "4",
+ "type": "number",
+ "hint": "The number four",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 5,
+ "character": "5",
+ "type": "number",
+ "hint": "The number five",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 6,
+ "character": "6",
+ "type": "number",
+ "hint": "The number six",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 7,
+ "character": "7",
+ "type": "number",
+ "hint": "The number seven",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 8,
+ "character": "8",
+ "type": "number",
+ "hint": "The number eight",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 9,
+ "character": "9",
+ "type": "number",
+ "hint": "The number nine",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 10,
+ "character": "10",
+ "type": "number",
+ "hint": "The number ten",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 11,
+ "character": "+",
+ "type": "symbol",
+ "hint": "The plus sign for adding",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 12,
+ "character": "-",
+ "type": "symbol",
+ "hint": "The minus sign for taking away",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 13,
+ "character": "=",
+ "type": "symbol",
+ "hint": "The equals sign",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 14,
+ "character": "x",
+ "type": "symbol",
+ "hint": "The multiply sign",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 15,
+ "character": "÷",
+ "type": "symbol",
+ "hint": "The divide sign",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 16,
+ "character": "add",
+ "type": "word",
+ "hint": "Put numbers together",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 17,
+ "character": "sum",
+ "type": "word",
+ "hint": "The total after adding",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 18,
+ "character": "half",
+ "type": "word",
+ "hint": "One part of two equal parts",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 19,
+ "character": "odd",
+ "type": "word",
+ "hint": "Cannot be split into two equal groups",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 20,
+ "character": "even",
+ "type": "word",
+ "hint": "Can be split into two equal groups",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 21,
+ "character": "zero",
+ "type": "word",
+ "hint": "The number that means nothing",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 22,
+ "character": "more",
+ "type": "word",
+ "hint": "A bigger number",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 23,
+ "character": "less",
+ "type": "word",
+ "hint": "A smaller number",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 24,
+ "character": "total",
+ "type": "word",
+ "hint": "All the amounts added together",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 25,
+ "character": "count",
+ "type": "word",
+ "hint": "Say numbers one by one",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 26,
+ "character": "times",
+ "type": "word",
+ "hint": "Multiply",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 27,
+ "character": "share",
+ "type": "word",
+ "hint": "Divide equally",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 28,
+ "character": "equal",
+ "type": "word",
+ "hint": "The same amount",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 29,
+ "character": "value",
+ "type": "word",
+ "hint": "How much a number or item is worth",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 30,
+ "character": "digit",
+ "type": "word",
+ "hint": "A single number from 0 to 9",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 31,
+ "character": "angle",
+ "type": "word",
+ "hint": "The turn between two lines",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 32,
+ "character": "shape",
+ "type": "word",
+ "hint": "A form like circle, square or triangle",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 33,
+ "character": "graph",
+ "type": "word",
+ "hint": "A diagram showing data",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 34,
+ "character": "table",
+ "type": "word",
+ "hint": "Rows and columns of data",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 35,
+ "character": "scale",
+ "type": "word",
+ "hint": "The step size on a chart",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 36,
+ "character": "round",
+ "type": "word",
+ "hint": "Find the nearest 10 or 100",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 37,
+ "character": "factor",
+ "type": "word",
+ "hint": "A number that divides evenly",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 38,
+ "character": "square",
+ "type": "word",
+ "hint": "A number multiplied by itself",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 39,
+ "character": "volume",
+ "type": "word",
+ "hint": "Space inside a 3D shape",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 40,
+ "character": "area",
+ "type": "word",
+ "hint": "Space inside a 2D shape",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 41,
+ "character": "fraction",
+ "type": "word",
+ "hint": "Part of a whole",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 42,
+ "character": "decimal",
+ "type": "word",
+ "hint": "A number with a point",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 43,
+ "character": "percent",
+ "type": "word",
+ "hint": "Out of one hundred",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 44,
+ "character": "average",
+ "type": "word",
+ "hint": "The typical value in a set",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 45,
+ "character": "median",
+ "type": "word",
+ "hint": "The middle value in order",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 46,
+ "character": "mode",
+ "type": "word",
+ "hint": "The most common value",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 47,
+ "character": "prime",
+ "type": "word",
+ "hint": "Only divisible by 1 and itself",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 48,
+ "character": "ratio",
+ "type": "word",
+ "hint": "A comparison of two quantities",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 49,
+ "character": "algebra",
+ "type": "word",
+ "hint": "Uses letters for unknown numbers",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 50,
+ "character": "equation",
+ "type": "word",
+ "hint": "A statement with an equals sign",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 51,
+ "character": "integer",
+ "type": "word",
+ "hint": "A whole number, positive or negative",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 52,
+ "character": "radius",
+ "type": "word",
+ "hint": "Half the diameter of a circle",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 53,
+ "character": "diameter",
+ "type": "word",
+ "hint": "The full width of a circle",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 54,
+ "character": "perimeter",
+ "type": "word",
+ "hint": "Distance around the edge of a shape",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 55,
+ "character": "symmetry",
+ "type": "word",
+ "hint": "Both sides look the same",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 56,
+ "character": "numerator",
+ "type": "word",
+ "hint": "The top number of a fraction",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 57,
+ "character": "denominator",
+ "type": "word",
+ "hint": "The bottom number of a fraction",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 58,
+ "character": "probability",
+ "type": "word",
+ "hint": "How likely something is",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 59,
+ "character": "coordinate",
+ "type": "word",
+ "hint": "A position on a grid",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 60,
+ "character": "hypotenuse",
+ "type": "word",
+ "hint": "The longest side of a right triangle",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 61,
+ "character": "20",
+ "type": "number",
+ "hint": "Two tens",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 62,
+ "character": "50",
+ "type": "number",
+ "hint": "Five tens",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 63,
+ "character": "100",
+ "type": "number",
+ "hint": "Ten tens",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 64,
+ "character": "1000",
+ "type": "number",
+ "hint": "Ten hundreds",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 65,
+ "character": "0.5",
+ "type": "number",
+ "hint": "One half as a decimal",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 66,
+ "character": "0.25",
+ "type": "number",
+ "hint": "One quarter as a decimal",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 67,
+ "character": "3.14",
+ "type": "number",
+ "hint": "Pi to two decimal places",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 68,
+ "character": "90°",
+ "type": "symbol",
+ "hint": "A right angle",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 69,
+ "character": "180°",
+ "type": "symbol",
+ "hint": "A straight line angle",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 70,
+ "character": "360°",
+ "type": "symbol",
+ "hint": "A full turn",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 71,
+ "character": "<",
+ "type": "symbol",
+ "hint": "Less than",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 72,
+ "character": ">",
+ "type": "symbol",
+ "hint": "Greater than",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 73,
+ "character": "%",
+ "type": "symbol",
+ "hint": "The percent sign",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 74,
+ "character": "√",
+ "type": "symbol",
+ "hint": "The square root sign",
+ "level": 4,
+ "emoji": "√"
+ },
+ {
+ "id": 75,
+ "character": "²",
+ "type": "symbol",
+ "hint": "Squared — multiply by itself",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 76,
+ "character": "multiply",
+ "type": "word",
+ "hint": "Times",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 77,
+ "character": "divide",
+ "type": "word",
+ "hint": "Split into equal parts",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 78,
+ "character": "subtract",
+ "type": "word",
+ "hint": "Take away",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 79,
+ "character": "calculate",
+ "type": "word",
+ "hint": "Work out a maths answer",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 80,
+ "character": "estimate",
+ "type": "word",
+ "hint": "Find a rough answer",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 81,
+ "character": "measure",
+ "type": "word",
+ "hint": "Find the size of something",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 82,
+ "character": "pattern",
+ "type": "word",
+ "hint": "A repeating sequence",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 83,
+ "character": "sequence",
+ "type": "word",
+ "hint": "Numbers following a rule",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 84,
+ "character": "multiple",
+ "type": "word",
+ "hint": "A number in a times table",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 85,
+ "character": "simplify",
+ "type": "word",
+ "hint": "Make a fraction smaller",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 86,
+ "character": "convert",
+ "type": "word",
+ "hint": "Change from one unit to another",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 87,
+ "character": "negative",
+ "type": "word",
+ "hint": "Less than zero",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 88,
+ "character": "positive",
+ "type": "word",
+ "hint": "Greater than zero",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 89,
+ "character": "horizontal",
+ "type": "word",
+ "hint": "Flat like the horizon",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 90,
+ "character": "vertical",
+ "type": "word",
+ "hint": "Straight up and down",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 91,
+ "character": "parallel",
+ "type": "word",
+ "hint": "Lines that never meet",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 92,
+ "character": "perpendicular",
+ "type": "word",
+ "hint": "Lines that meet at right angles",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 93,
+ "character": "tessellate",
+ "type": "word",
+ "hint": "Shapes fit with no gaps",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 94,
+ "character": "gradient",
+ "type": "word",
+ "hint": "The steepness of a line",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 95,
+ "character": "circumference",
+ "type": "word",
+ "hint": "Distance around a circle",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 96,
+ "character": "substitution",
+ "type": "word",
+ "hint": "Replace a letter with a number",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 97,
+ "character": "inequality",
+ "type": "word",
+ "hint": "Shows one thing is bigger or smaller",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 98,
+ "character": "translation",
+ "type": "word",
+ "hint": "Moving a shape without turning it",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 99,
+ "character": "reflection",
+ "type": "word",
+ "hint": "Flipping a shape in a mirror line",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 100,
+ "character": "rotation",
+ "type": "word",
+ "hint": "Turning a shape around a point",
+ "level": 4,
+ "emoji": " "
+ }
+]

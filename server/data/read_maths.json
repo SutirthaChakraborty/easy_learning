@@ -1,0 +1,1302 @@
+[
+ {
+ "id": 1,
+ "title": "Counting to Ten",
+ "content": "Numbers help us count. One apple, two apples, three apples. We count up to ten and then start again with eleven. Numbers are all around us.",
+ "question": "What do numbers help us do?",
+ "options": [
+ "Read",
+ "Count",
+ "Write"
+ ],
+ "answer": "Count",
+ "emoji": " "
+ },
+ {
+ "id": 2,
+ "title": "Adding Numbers",
+ "content": "Adding means putting numbers together. If you have three sweets and your friend gives you two more, you now have five sweets. We use a plus sign to show addition.",
+ "question": "What sign do we use for addition?",
+ "options": [
+ "Minus sign",
+ "Plus sign",
+ "Equals sign"
+ ],
+ "answer": "Plus sign",
+ "emoji": " "
+ },
+ {
+ "id": 3,
+ "title": "Taking Away",
+ "content": "Subtraction means taking away. If you have ten apples and eat three, you have seven left. We use a minus sign to show subtraction.",
+ "question": "What sign do we use for subtraction?",
+ "options": [
+ "Plus sign",
+ "Multiply sign",
+ "Minus sign"
+ ],
+ "answer": "Minus sign",
+ "emoji": " "
+ },
+ {
+ "id": 4,
+ "title": "Shapes Around Us",
+ "content": "Shapes are all around us. Windows are rectangles. Wheels are circles. Roof tops are triangles. Tiles on the floor can be squares. Can you spot shapes around you?",
+ "question": "What shape are most wheels?",
+ "options": [
+ "Square",
+ "Triangle",
+ "Circle"
+ ],
+ "answer": "Circle",
+ "emoji": " "
+ },
+ {
+ "id": 5,
+ "title": "Times Tables",
+ "content": "Multiplication is repeated adding. Two times three means adding two three times. Two plus two plus two equals six. Knowing times tables helps us solve problems quickly.",
+ "question": "What is two times three?",
+ "options": [
+ "Five",
+ "Six",
+ "Eight"
+ ],
+ "answer": "Six",
+ "emoji": " "
+ },
+ {
+ "id": 6,
+ "title": "Fractions",
+ "content": "Fractions are parts of a whole. If you cut a pizza into four slices and eat one, you ate one quarter. The bottom number tells us how many parts in total.",
+ "question": "If a pizza has four slices and you eat one, what fraction is that?",
+ "options": [
+ "Half",
+ "One quarter",
+ "One third"
+ ],
+ "answer": "One quarter",
+ "emoji": " "
+ },
+ {
+ "id": 7,
+ "title": "Measuring Length",
+ "content": "We use rulers to measure length. Length is measured in centimetres and metres. A door is about two metres tall. Your pencil is about fifteen centimetres long.",
+ "question": "What tool do we use to measure length?",
+ "options": [
+ "A scale",
+ "A clock",
+ "A ruler"
+ ],
+ "answer": "A ruler",
+ "emoji": " "
+ },
+ {
+ "id": 8,
+ "title": "Telling the Time",
+ "content": "A clock has two hands. The short hand shows the hour. The long hand shows the minutes. There are sixty minutes in an hour. There are twenty four hours in a day.",
+ "question": "What does the short hand on a clock show?",
+ "options": [
+ "Minutes",
+ "Seconds",
+ "The hour"
+ ],
+ "answer": "The hour",
+ "emoji": " "
+ },
+ {
+ "id": 9,
+ "title": "Money",
+ "content": "Money is used to buy things. Coins and notes have different values. We add up prices to find the total cost. If something costs five pounds and you have ten pounds, you get five pounds change.",
+ "question": "How much change from ten pounds for a five pound item?",
+ "options": [
+ "Three pounds",
+ "Five pounds",
+ "Two pounds"
+ ],
+ "answer": "Five pounds",
+ "emoji": " "
+ },
+ {
+ "id": 10,
+ "title": "Division",
+ "content": "Division means sharing equally. If eight sweets are shared between four friends, each gets two sweets. Division is the opposite of multiplication.",
+ "question": "If eight sweets are shared among four friends, how many does each get?",
+ "options": [
+ "Three",
+ "Two",
+ "Four"
+ ],
+ "answer": "Two",
+ "emoji": " "
+ },
+ {
+ "id": 11,
+ "title": "Odd and Even",
+ "content": "Even numbers can be split into two equal groups. Two, four, six, eight and ten are even. Odd numbers cannot be split equally. One, three, five, seven and nine are odd.",
+ "question": "Which is an even number?",
+ "options": [
+ "3",
+ "5",
+ "8"
+ ],
+ "answer": "8",
+ "emoji": " "
+ },
+ {
+ "id": 12,
+ "title": "Place Value",
+ "content": "Every digit in a number has a place value. In the number 345, the 3 is in the hundreds place. The 4 is in the tens place. The 5 is in the ones place.",
+ "question": "In 345, where is the 3?",
+ "options": [
+ "Ones",
+ "Tens",
+ "Hundreds"
+ ],
+ "answer": "Hundreds",
+ "emoji": " "
+ },
+ {
+ "id": 13,
+ "title": "Bar Charts",
+ "content": "Bar charts show information using bars. The taller the bar, the higher the number. We read along the bottom for the category. We read up the side for the value.",
+ "question": "What shows the value in a bar chart?",
+ "options": [
+ "The colour",
+ "The height of the bar",
+ "The label"
+ ],
+ "answer": "The height of the bar",
+ "emoji": " "
+ },
+ {
+ "id": 14,
+ "title": "Area",
+ "content": "Area is the amount of space inside a shape. To find the area of a rectangle, multiply the length by the width. If a room is 4 metres long and 3 metres wide, the area is 12 square metres.",
+ "question": "How do we find the area of a rectangle?",
+ "options": [
+ "Add length and width",
+ "Multiply length by width",
+ "Subtract width from length"
+ ],
+ "answer": "Multiply length by width",
+ "emoji": " "
+ },
+ {
+ "id": 15,
+ "title": "Angles",
+ "content": "An angle is the amount of turn between two lines. A right angle is 90 degrees, like the corner of a square. Angles less than 90 degrees are acute. Angles more than 90 degrees are obtuse.",
+ "question": "How many degrees is a right angle?",
+ "options": [
+ "45",
+ "180",
+ "90"
+ ],
+ "answer": "90",
+ "emoji": " "
+ },
+ {
+ "id": 16,
+ "title": "Negative Numbers",
+ "content": "Numbers below zero are called negative numbers. They are shown with a minus sign. The temperature minus five degrees is five degrees below zero. Negative numbers are used in weather, banking and maths.",
+ "question": "What sign shows a negative number?",
+ "options": [
+ "Plus",
+ "Multiply",
+ "Minus"
+ ],
+ "answer": "Minus",
+ "emoji": " "
+ },
+ {
+ "id": 17,
+ "title": "Percentages",
+ "content": "A percentage is a number out of one hundred. Fifty percent means half. One hundred percent means all of something. Ten percent of forty is four. Percentages are used in shops for discounts.",
+ "question": "What does fifty percent mean?",
+ "options": [
+ "All of something",
+ "A quarter",
+ "Half"
+ ],
+ "answer": "Half",
+ "emoji": " "
+ },
+ {
+ "id": 18,
+ "title": "Perimeter",
+ "content": "The perimeter is the total distance around the edge of a shape. To find it, add all the side lengths. A square with sides of four centimetres has a perimeter of sixteen centimetres.",
+ "question": "How do you find the perimeter?",
+ "options": [
+ "Multiply length and width",
+ "Subtract two sides",
+ "Add all the sides"
+ ],
+ "answer": "Add all the sides",
+ "emoji": " "
+ },
+ {
+ "id": 19,
+ "title": "Decimals",
+ "content": "Decimal numbers include a decimal point. It separates the whole part from the fraction part. The number 2.5 means two whole and five tenths. Decimals are used in money and measurements.",
+ "question": "What does the decimal point separate?",
+ "options": [
+ "Hundreds from tens",
+ "Whole numbers from parts",
+ "Tens from ones"
+ ],
+ "answer": "Whole numbers from parts",
+ "emoji": " "
+ },
+ {
+ "id": 20,
+ "title": "Prime Numbers",
+ "content": "A prime number has exactly two factors: one and itself. Two, three, five, seven and eleven are prime. The number one is not a prime number. Prime numbers are special in maths.",
+ "question": "How many factors does a prime number have?",
+ "options": [
+ "One",
+ "Three",
+ "Two"
+ ],
+ "answer": "Two",
+ "emoji": " "
+ },
+ {
+ "id": 21,
+ "title": "Symmetry",
+ "content": "A shape is symmetric if both halves look the same. A butterfly has symmetry. If you fold it along the middle, both sides match. The fold line is called the line of symmetry.",
+ "question": "What is the fold line in a symmetric shape called?",
+ "options": [
+ "The midpoint",
+ "The line of symmetry",
+ "The axis of rotation"
+ ],
+ "answer": "The line of symmetry",
+ "emoji": " "
+ },
+ {
+ "id": 22,
+ "title": "Squares and Cubes",
+ "content": "When we multiply a number by itself, we get a square number. Three squared is nine. When we multiply it by itself again, we get a cube number. Two cubed is eight.",
+ "question": "What is three squared?",
+ "options": [
+ "6",
+ "9",
+ "12"
+ ],
+ "answer": "9",
+ "emoji": " "
+ },
+ {
+ "id": 23,
+ "title": "The Coordinate Grid",
+ "content": "A coordinate grid has an x-axis and a y-axis. We write coordinates as pairs of numbers in brackets. The first number moves along. The second number moves up. For example, the point (3, 2) is at three along and two up.",
+ "question": "What does the first number in a coordinate tell us?",
+ "options": [
+ "How far up to go",
+ "How far along to go",
+ "The label of the point"
+ ],
+ "answer": "How far along to go",
+ "emoji": " "
+ },
+ {
+ "id": 24,
+ "title": "Multiplication and Division Link",
+ "content": "Multiplication and division are linked. If 5 times 4 equals 20, then 20 divided by 4 equals 5. These are called a fact family. Knowing this link makes maths easier.",
+ "question": "If 5 times 4 is 20, what is 20 divided by 4?",
+ "options": [
+ "4",
+ "5",
+ "6"
+ ],
+ "answer": "5",
+ "emoji": " "
+ },
+ {
+ "id": 25,
+ "title": "Weight",
+ "content": "We measure weight in grams and kilograms. A bag of sugar weighs about one kilogram. A paperclip weighs about one gram. We use scales to measure weight.",
+ "question": "What do we use to measure weight?",
+ "options": [
+ "A ruler",
+ "A thermometer",
+ "Scales"
+ ],
+ "answer": "Scales",
+ "emoji": " "
+ },
+ {
+ "id": 26,
+ "title": "Rounding Numbers",
+ "content": "Rounding makes numbers easier to use. To round to the nearest ten, look at the ones digit. If it is five or more, round up. If it is four or less, round down.",
+ "question": "What do you look at when rounding to the nearest ten?",
+ "options": [
+ "The tens digit",
+ "The hundreds digit",
+ "The ones digit"
+ ],
+ "answer": "The ones digit",
+ "emoji": " "
+ },
+ {
+ "id": 27,
+ "title": "Volume and Capacity",
+ "content": "Volume is the space inside a container. Capacity is how much a container can hold. We measure liquid in millilitres and litres. A bottle of water is usually one litre.",
+ "question": "How much liquid does a typical water bottle hold?",
+ "options": [
+ "One millilitre",
+ "One litre",
+ "One kilogram"
+ ],
+ "answer": "One litre",
+ "emoji": " "
+ },
+ {
+ "id": 28,
+ "title": "Pie Charts",
+ "content": "A pie chart is a circle divided into sections. Each section shows a fraction or percentage. The bigger the section, the larger the value. Pie charts are good for comparing parts.",
+ "question": "What shape is a pie chart?",
+ "options": [
+ "Square",
+ "Circle",
+ "Triangle"
+ ],
+ "answer": "Circle",
+ "emoji": " "
+ },
+ {
+ "id": 29,
+ "title": "Algebra",
+ "content": "Algebra uses letters to stand for unknown numbers. The letter n might stand for any number. If n plus three equals seven, then n equals four. Algebra helps us solve puzzles.",
+ "question": "In the equation n plus 3 equals 7, what is n?",
+ "options": [
+ "3",
+ "4",
+ "7"
+ ],
+ "answer": "4",
+ "emoji": " "
+ },
+ {
+ "id": 30,
+ "title": "3D Shapes",
+ "content": "Three dimensional shapes are solid objects. A box is a cuboid. A ball is a sphere. A can is a cylinder. A cone is like an ice cream cone. They all take up space.",
+ "question": "What 3D shape is a ball?",
+ "options": [
+ "Cube",
+ "Cylinder",
+ "Sphere"
+ ],
+ "answer": "Sphere",
+ "emoji": " "
+ },
+ {
+ "id": 31,
+ "title": "The Number Line",
+ "content": "A number line shows numbers in order. It goes from small on the left to large on the right. We can show negative numbers to the left of zero. Number lines help with addition and subtraction.",
+ "question": "Which side of the number line has larger numbers?",
+ "options": [
+ "The left side",
+ "The middle",
+ "The right side"
+ ],
+ "answer": "The right side",
+ "emoji": " "
+ },
+ {
+ "id": 32,
+ "title": "Ratio",
+ "content": "A ratio compares two amounts. If there are two red balls and four blue balls, the ratio is 2:4. We can simplify this to 1:2. Ratio is used in recipes, maps and scale drawings.",
+ "question": "If there are 2 red and 4 blue balls, what is the ratio?",
+ "options": [
+ "4:2",
+ "1:4",
+ "2:4"
+ ],
+ "answer": "2:4",
+ "emoji": " "
+ },
+ {
+ "id": 33,
+ "title": "Reading Scales",
+ "content": "Scales are used to measure things. Kitchen scales measure weight. Measuring jugs measure volume. We read the number closest to the liquid or object to find the measurement.",
+ "question": "What do kitchen scales measure?",
+ "options": [
+ "Length",
+ "Temperature",
+ "Weight"
+ ],
+ "answer": "Weight",
+ "emoji": " "
+ },
+ {
+ "id": 34,
+ "title": "Factors and Multiples",
+ "content": "Factors divide evenly into a number. The factors of 12 are 1, 2, 3, 4, 6 and 12. Multiples are in the times table. Multiples of 3 are 3, 6, 9, 12 and so on.",
+ "question": "Which is a factor of 12?",
+ "options": [
+ "5",
+ "7",
+ "4"
+ ],
+ "answer": "4",
+ "emoji": " "
+ },
+ {
+ "id": 35,
+ "title": "Timetables",
+ "content": "A timetable shows the times of events. It helps us plan our day. School timetables show which lessons happen when. Train timetables show departure and arrival times.",
+ "question": "What does a school timetable show?",
+ "options": [
+ "What to eat",
+ "Which lessons happen when",
+ "How far to travel"
+ ],
+ "answer": "Which lessons happen when",
+ "emoji": " "
+ },
+ {
+ "id": 36,
+ "title": "Simple Probability",
+ "content": "Probability tells us how likely something is. If a bag has three red balls and one blue, picking red is more likely. We say the probability of red is three out of four.",
+ "question": "What does probability tell us?",
+ "options": [
+ "What to multiply",
+ "How likely something is",
+ "How to add numbers"
+ ],
+ "answer": "How likely something is",
+ "emoji": " "
+ },
+ {
+ "id": 37,
+ "title": "Speed, Distance and Time",
+ "content": "Speed tells us how fast something moves. If a car travels 60 kilometres in one hour, its speed is 60 km/h. Distance equals speed multiplied by time.",
+ "question": "What is speed measured in?",
+ "options": [
+ "Kilograms per hour",
+ "Kilometres per hour",
+ "Metres squared"
+ ],
+ "answer": "Kilometres per hour",
+ "emoji": " "
+ },
+ {
+ "id": 38,
+ "title": "Angles in Triangles",
+ "content": "The three angles in a triangle add up to 180 degrees. A right angled triangle has one corner of 90 degrees. An equilateral triangle has all angles of 60 degrees.",
+ "question": "What do the angles in a triangle add up to?",
+ "options": [
+ "360",
+ "90",
+ "180"
+ ],
+ "answer": "180",
+ "emoji": " "
+ },
+ {
+ "id": 39,
+ "title": "Inverse Operations",
+ "content": "Inverse operations are opposite operations. The inverse of addition is subtraction. The inverse of multiplication is division. We use inverse operations to check our answers.",
+ "question": "What is the inverse of multiplication?",
+ "options": [
+ "Addition",
+ "Subtraction",
+ "Division"
+ ],
+ "answer": "Division",
+ "emoji": " "
+ },
+ {
+ "id": 40,
+ "title": "Long Multiplication",
+ "content": "Long multiplication is used for larger numbers. We start with the ones and work up. We must remember to carry numbers over. Practice makes long multiplication quicker.",
+ "question": "Where do we start in long multiplication?",
+ "options": [
+ "Hundreds",
+ "Ones",
+ "Tens"
+ ],
+ "answer": "Ones",
+ "emoji": " "
+ },
+ {
+ "id": 41,
+ "title": "Number Sequences",
+ "content": "A number sequence follows a pattern. Two, four, six, eight is a pattern going up by two. Find the rule and you can predict the next number in any sequence.",
+ "question": "What is the next number in 2, 4, 6, 8?",
+ "options": [
+ "9",
+ "11",
+ "10"
+ ],
+ "answer": "10",
+ "emoji": " "
+ },
+ {
+ "id": 42,
+ "title": "Roman Numerals",
+ "content": "The Romans used letters for numbers. I means one. V means five. X means ten. L means fifty. C means one hundred. Roman numerals are used on clocks and in books.",
+ "question": "What does the Roman numeral X mean?",
+ "options": [
+ "5",
+ "50",
+ "10"
+ ],
+ "answer": "10",
+ "emoji": " "
+ },
+ {
+ "id": 43,
+ "title": "BIDMAS",
+ "content": "BIDMAS tells us the order of operations. Brackets first, then Indices, then Division and Multiplication, then Addition and Subtraction. Always follow this order.",
+ "question": "In BIDMAS, what comes first?",
+ "options": [
+ "Addition",
+ "Brackets",
+ "Division"
+ ],
+ "answer": "Brackets",
+ "emoji": " "
+ },
+ {
+ "id": 44,
+ "title": "Negative Number Operations",
+ "content": "When we add a negative number, we go down the number line. Five plus minus two equals three. When we subtract a negative, we go up. Five minus minus two equals seven.",
+ "question": "What is five plus minus two?",
+ "options": [
+ "7",
+ "3",
+ "10"
+ ],
+ "answer": "3",
+ "emoji": " "
+ },
+ {
+ "id": 45,
+ "title": "Circumference",
+ "content": "The circumference is the distance around a circle. It is found by multiplying diameter by pi. Pi is approximately 3.14. A circle with diameter 10 has a circumference of about 31.4.",
+ "question": "What is used to calculate circumference?",
+ "options": [
+ "Length times width",
+ "Diameter times pi",
+ "Radius plus radius"
+ ],
+ "answer": "Diameter times pi",
+ "emoji": " "
+ },
+ {
+ "id": 46,
+ "title": "Mean Average",
+ "content": "The mean is the average of a set of numbers. Add all the numbers together, then divide by how many numbers there are. The mean of 2, 4 and 6 is 4.",
+ "question": "What is the mean of 2, 4 and 6?",
+ "options": [
+ "3",
+ "4",
+ "6"
+ ],
+ "answer": "4",
+ "emoji": " "
+ },
+ {
+ "id": 47,
+ "title": "Equivalent Fractions",
+ "content": "Equivalent fractions have the same value. One half equals two quarters. To make equivalent fractions, multiply or divide the top and bottom by the same number.",
+ "question": "What does one half equal?",
+ "options": [
+ "Two thirds",
+ "Two quarters",
+ "Three quarters"
+ ],
+ "answer": "Two quarters",
+ "emoji": " "
+ },
+ {
+ "id": 48,
+ "title": "Dividing Fractions",
+ "content": "To divide by a fraction, flip it and multiply. One half divided by one quarter means one half times four divided by one. The answer is two.",
+ "question": "To divide by a fraction, what do we do first?",
+ "options": [
+ "Add the fractions",
+ "Flip it and multiply",
+ "Subtract the fractions"
+ ],
+ "answer": "Flip it and multiply",
+ "emoji": " "
+ },
+ {
+ "id": 49,
+ "title": "Scale Drawings",
+ "content": "Scale drawings show real things in a smaller size. A map might use a scale of one centimetre to one kilometre. We use this scale to calculate real distances.",
+ "question": "What does a scale drawing show?",
+ "options": [
+ "An exact copy",
+ "A real thing in a smaller size",
+ "A bigger version"
+ ],
+ "answer": "A real thing in a smaller size",
+ "emoji": " "
+ },
+ {
+ "id": 50,
+ "title": "Data Collection",
+ "content": "We collect data to answer questions. We can use tally charts or tables. Then we display the data in graphs and charts. Data helps us understand the world.",
+ "question": "What can we use to collect data?",
+ "options": [
+ "Clocks",
+ "Tally charts or tables",
+ "Thermometers"
+ ],
+ "answer": "Tally charts or tables",
+ "emoji": " "
+ },
+ {
+ "id": 51,
+ "title": "Square Root",
+ "content": "The square root of a number is the number that multiplies by itself to give that number. The square root of 25 is 5 because 5 times 5 is 25.",
+ "question": "What is the square root of 25?",
+ "options": [
+ "4",
+ "5",
+ "6"
+ ],
+ "answer": "5",
+ "emoji": "√"
+ },
+ {
+ "id": 52,
+ "title": "Hundredths and Thousandths",
+ "content": "Decimals go beyond tenths. The second digit after the decimal point is hundredths. The third is thousandths. The number 0.345 has three tenths, four hundredths and five thousandths.",
+ "question": "What is the second digit after the decimal point?",
+ "options": [
+ "Tenths",
+ "Hundredths",
+ "Thousandths"
+ ],
+ "answer": "Hundredths",
+ "emoji": " "
+ },
+ {
+ "id": 53,
+ "title": "Pythagoras",
+ "content": "Pythagoras was a Greek mathematician. He discovered that in a right triangle, the longest side squared equals the sum of the other two sides squared.",
+ "question": "Which sides does Pythagoras's rule apply to?",
+ "options": [
+ "Equilateral triangles",
+ "Right angled triangles",
+ "Obtuse triangles"
+ ],
+ "answer": "Right angled triangles",
+ "emoji": " "
+ },
+ {
+ "id": 54,
+ "title": "Graphs and Functions",
+ "content": "A function is a rule that takes a number and gives a new number. The function double it takes 3 and gives 6. We can draw functions as graphs on a grid.",
+ "question": "What does the function double it do to 3?",
+ "options": [
+ "Gives 5",
+ "Gives 6",
+ "Gives 9"
+ ],
+ "answer": "Gives 6",
+ "emoji": " "
+ },
+ {
+ "id": 55,
+ "title": "Consecutive Numbers",
+ "content": "Consecutive numbers are numbers that follow each other. Five, six and seven are consecutive. Their sum is eighteen. Knowing about consecutive numbers helps with number puzzles.",
+ "question": "Are 5, 6 and 7 consecutive?",
+ "options": [
+ "No",
+ "Yes",
+ "Only sometimes"
+ ],
+ "answer": "Yes",
+ "emoji": " "
+ },
+ {
+ "id": 56,
+ "title": "Reflections",
+ "content": "When we reflect a shape, we flip it over a mirror line. Each point on the shape moves to the same distance on the other side. The reflected shape is the same size.",
+ "question": "What happens to a shape when it is reflected?",
+ "options": [
+ "It changes size",
+ "It is flipped over a mirror line",
+ "It rotates"
+ ],
+ "answer": "It is flipped over a mirror line",
+ "emoji": " "
+ },
+ {
+ "id": 57,
+ "title": "Translations",
+ "content": "A translation moves a shape without rotating or flipping it. Every point moves the same distance in the same direction. The shape stays exactly the same.",
+ "question": "Does a shape change in a translation?",
+ "options": [
+ "Yes, it flips",
+ "Yes, it grows",
+ "No, it stays the same"
+ ],
+ "answer": "No, it stays the same",
+ "emoji": " "
+ },
+ {
+ "id": 58,
+ "title": "Multiples and LCM",
+ "content": "The Lowest Common Multiple is the smallest number that two numbers both go into. The LCM of 4 and 6 is 12 because 12 is the smallest multiple of both.",
+ "question": "What is the LCM of 4 and 6?",
+ "options": [
+ "8",
+ "12",
+ "24"
+ ],
+ "answer": "12",
+ "emoji": " "
+ },
+ {
+ "id": 59,
+ "title": "Factors and HCF",
+ "content": "The Highest Common Factor is the largest number that divides into both numbers. The HCF of 12 and 18 is 6 because 6 is the largest number that goes into both.",
+ "question": "What is the HCF of 12 and 18?",
+ "options": [
+ "3",
+ "6",
+ "9"
+ ],
+ "answer": "6",
+ "emoji": " "
+ },
+ {
+ "id": 60,
+ "title": "Rotational Symmetry",
+ "content": "A shape has rotational symmetry if it looks the same after being turned. A square looks the same after a quarter turn. Its order of rotational symmetry is four.",
+ "question": "How many times does a square look the same when rotated?",
+ "options": [
+ "Two",
+ "Four",
+ "Eight"
+ ],
+ "answer": "Four",
+ "emoji": " "
+ },
+ {
+ "id": 61,
+ "title": "Solving Equations",
+ "content": "To solve an equation, we find the value of the unknown letter. In the equation 3x equals 12, we divide both sides by 3. So x equals 4.",
+ "question": "In 3x = 12, what is x?",
+ "options": [
+ "3",
+ "4",
+ "36"
+ ],
+ "answer": "4",
+ "emoji": " "
+ },
+ {
+ "id": 62,
+ "title": "Number Bonds",
+ "content": "Number bonds are pairs of numbers that add to make another number. The number bonds to ten include one and nine, two and eight, three and seven. They help with quick mental maths.",
+ "question": "Which pair is a number bond to ten?",
+ "options": [
+ "4 and 7",
+ "3 and 7",
+ "5 and 6"
+ ],
+ "answer": "3 and 7",
+ "emoji": " "
+ },
+ {
+ "id": 63,
+ "title": "Subtracting Fractions",
+ "content": "To subtract fractions with the same denominator, subtract the numerators. Five sixths minus two sixths equals three sixths, which simplifies to one half.",
+ "question": "What is five sixths minus two sixths?",
+ "options": [
+ "One third",
+ "Two thirds",
+ "One half"
+ ],
+ "answer": "One half",
+ "emoji": " "
+ },
+ {
+ "id": 64,
+ "title": "Mixed Numbers",
+ "content": "A mixed number has a whole number and a fraction. Two and three quarters is a mixed number. We can convert it to an improper fraction. Two and three quarters equals eleven quarters.",
+ "question": "Is 2 and 3/4 a mixed number?",
+ "options": [
+ "No",
+ "Only sometimes",
+ "Yes"
+ ],
+ "answer": "Yes",
+ "emoji": " "
+ },
+ {
+ "id": 65,
+ "title": "Column Addition",
+ "content": "Column addition lines up numbers by place value. We start adding from the ones column. If the answer is ten or more, we carry the ten to the next column.",
+ "question": "Where do we start in column addition?",
+ "options": [
+ "Thousands",
+ "Hundreds",
+ "Ones"
+ ],
+ "answer": "Ones",
+ "emoji": " "
+ },
+ {
+ "id": 66,
+ "title": "Column Subtraction",
+ "content": "Column subtraction also lines up numbers by place value. We subtract from the ones column first. If the top digit is smaller, we borrow from the next column.",
+ "question": "What do we do if the top digit is too small to subtract?",
+ "options": [
+ "Skip the column",
+ "Borrow from the next column",
+ "Add instead"
+ ],
+ "answer": "Borrow from the next column",
+ "emoji": " "
+ },
+ {
+ "id": 67,
+ "title": "Reading Tables",
+ "content": "A table organises information in rows and columns. The top row often has headings. We find the row and column that cross to get a value. Tables are used in timetables and data.",
+ "question": "What is in the top row of a table?",
+ "options": [
+ "The biggest numbers",
+ "Headings",
+ "Blank cells"
+ ],
+ "answer": "Headings",
+ "emoji": " "
+ },
+ {
+ "id": 68,
+ "title": "Number Puzzles",
+ "content": "Number puzzles challenge our thinking. Magic squares have numbers that add to the same total in every row, column and diagonal. Sudoku is a famous number puzzle.",
+ "question": "What is special about a magic square?",
+ "options": [
+ "All numbers are even",
+ "Numbers add to the same total in every row and column",
+ "Only prime numbers are used"
+ ],
+ "answer": "Numbers add to the same total in every row and column",
+ "emoji": " "
+ },
+ {
+ "id": 69,
+ "title": "Estimating",
+ "content": "Estimating means finding a rough answer. We round numbers first and then calculate. If something costs 4.95 and another costs 6.10, we estimate about 11 pounds total.",
+ "question": "What do we do first when estimating?",
+ "options": [
+ "Multiply",
+ "Round numbers",
+ "Divide"
+ ],
+ "answer": "Round numbers",
+ "emoji": " "
+ },
+ {
+ "id": 70,
+ "title": "Angles in Parallel Lines",
+ "content": "When a line crosses two parallel lines, it creates equal angles. Corresponding angles are equal. Alternate angles are also equal. These rules help us calculate unknown angles.",
+ "question": "What are alternate angles?",
+ "options": [
+ "Different angles",
+ "Angles that are equal",
+ "Right angles only"
+ ],
+ "answer": "Angles that are equal",
+ "emoji": " "
+ },
+ {
+ "id": 71,
+ "title": "Standard Form",
+ "content": "Standard form is used for very large or very small numbers. The speed of light is about 3 times ten to the power of 8 metres per second. This is easier than writing 300,000,000.",
+ "question": "Why do we use standard form?",
+ "options": [
+ "To make numbers harder",
+ "To write very large or small numbers easily",
+ "To make charts"
+ ],
+ "answer": "To write very large or small numbers easily",
+ "emoji": " "
+ },
+ {
+ "id": 72,
+ "title": "Long Division",
+ "content": "Long division breaks a large number into smaller steps. We divide, multiply, subtract and bring down the next digit. Repeat until all digits have been used.",
+ "question": "What do we do after we subtract in long division?",
+ "options": [
+ "Round the answer",
+ "Bring down the next digit",
+ "Stop calculating"
+ ],
+ "answer": "Bring down the next digit",
+ "emoji": " "
+ },
+ {
+ "id": 73,
+ "title": "Adding Fractions",
+ "content": "To add fractions, they must have the same denominator. One quarter plus two quarters equals three quarters. If the denominators are different, we must find a common one first.",
+ "question": "What must fractions have before adding them?",
+ "options": [
+ "The same numerator",
+ "The same denominator",
+ "The same size"
+ ],
+ "answer": "The same denominator",
+ "emoji": " "
+ },
+ {
+ "id": 74,
+ "title": "Rates",
+ "content": "A rate compares two different units. Speed is a rate of distance per time. A tap fills a bath at 15 litres per minute. Rates help us compare how fast things happen.",
+ "question": "What is speed a rate of?",
+ "options": [
+ "Weight per time",
+ "Distance per time",
+ "Volume per area"
+ ],
+ "answer": "Distance per time",
+ "emoji": " "
+ },
+ {
+ "id": 75,
+ "title": "Calculating with Pi",
+ "content": "Pi is used to find the area and circumference of circles. Area of a circle equals pi times radius squared. The circumference is pi times diameter. Pi is approximately 3.14.",
+ "question": "What is the formula for the area of a circle?",
+ "options": [
+ "Pi times diameter",
+ "Pi times radius squared",
+ "Diameter times diameter"
+ ],
+ "answer": "Pi times radius squared",
+ "emoji": " "
+ },
+ {
+ "id": 76,
+ "title": "Equivalent Ratios",
+ "content": "Equivalent ratios have the same relationship. The ratio 2:4 is equivalent to 1:2 because we divided both by 2. Equivalent ratios are like equivalent fractions.",
+ "question": "Is 2:4 equivalent to 1:2?",
+ "options": [
+ "No",
+ "Yes",
+ "Only when adding"
+ ],
+ "answer": "Yes",
+ "emoji": " "
+ },
+ {
+ "id": 77,
+ "title": "Using a Calculator",
+ "content": "A calculator helps us solve difficult sums. We press the keys in the right order. We must estimate first to check if our answer seems right. Always check your work.",
+ "question": "What should we do before using a calculator?",
+ "options": [
+ "Write the problem backwards",
+ "Estimate first",
+ "Skip the problem"
+ ],
+ "answer": "Estimate first",
+ "emoji": " "
+ },
+ {
+ "id": 78,
+ "title": "Tessellation",
+ "content": "Tessellation is when shapes fit together with no gaps or overlaps. Squares and triangles tessellate. Circles do not tessellate. Tessellation is used in art and tiling.",
+ "question": "Do squares tessellate?",
+ "options": [
+ "No",
+ "Yes",
+ "Only with triangles"
+ ],
+ "answer": "Yes",
+ "emoji": " "
+ },
+ {
+ "id": 79,
+ "title": "Time Problems",
+ "content": "Time problems use hours and minutes. If a film starts at 2:30 and lasts 90 minutes, it ends at 4:00. We convert 90 minutes to 1 hour and 30 minutes.",
+ "question": "If a film starts at 2:30 and lasts 90 minutes, when does it end?",
+ "options": [
+ "3:30",
+ "4:00",
+ "3:00"
+ ],
+ "answer": "4:00",
+ "emoji": " "
+ },
+ {
+ "id": 80,
+ "title": "Word Problems",
+ "content": "Word problems describe a situation in words. We must find the important numbers and decide which operation to use. Reading carefully is the key skill for word problems.",
+ "question": "What is the key skill for solving word problems?",
+ "options": [
+ "Speed",
+ "Reading carefully",
+ "Drawing pictures only"
+ ],
+ "answer": "Reading carefully",
+ "emoji": " "
+ },
+ {
+ "id": 81,
+ "title": "Simplifying Fractions",
+ "content": "To simplify a fraction, we divide both parts by the same number. Six eighths can be simplified. Both 6 and 8 can be divided by 2. So six eighths simplifies to three quarters.",
+ "question": "What is six eighths simplified?",
+ "options": [
+ "One half",
+ "Three quarters",
+ "Two thirds"
+ ],
+ "answer": "Three quarters",
+ "emoji": " "
+ },
+ {
+ "id": 82,
+ "title": "Percentage of an Amount",
+ "content": "To find ten percent of a number, divide by ten. Ten percent of sixty is six. To find twenty percent, find ten percent and double it. Twenty percent of sixty is twelve.",
+ "question": "What is twenty percent of sixty?",
+ "options": [
+ "6",
+ "12",
+ "20"
+ ],
+ "answer": "12",
+ "emoji": " "
+ },
+ {
+ "id": 83,
+ "title": "Nets of 3D Shapes",
+ "content": "A net is the flat shape that folds up to make a 3D shape. The net of a cube has six squares. When we fold it up, each square becomes a face of the cube.",
+ "question": "How many squares are in the net of a cube?",
+ "options": [
+ "4",
+ "8",
+ "6"
+ ],
+ "answer": "6",
+ "emoji": " "
+ },
+ {
+ "id": 84,
+ "title": "Line Graphs",
+ "content": "A line graph shows change over time. We plot points and join them with a line. The x-axis is usually time. The y-axis shows the measured value. Line graphs show trends clearly.",
+ "question": "What does the x-axis in a line graph usually show?",
+ "options": [
+ "Value",
+ "Time",
+ "Categories"
+ ],
+ "answer": "Time",
+ "emoji": " "
+ },
+ {
+ "id": 85,
+ "title": "Estimating with Fractions",
+ "content": "We can estimate with fractions by comparing to half. Three eighths is less than half. Five eighths is more than half. This helps when we add fractions without calculating exactly.",
+ "question": "Is three eighths more or less than one half?",
+ "options": [
+ "More",
+ "Equal",
+ "Less"
+ ],
+ "answer": "Less",
+ "emoji": " "
+ },
+ {
+ "id": 86,
+ "title": "Distance Word Problems",
+ "content": "A car travels at 60 km/h for 2 hours. To find the distance, multiply speed by time. Sixty times two equals one hundred and twenty kilometres. This is the distance formula.",
+ "question": "What is the formula for distance?",
+ "options": [
+ "Distance = speed minus time",
+ "Distance = speed plus time",
+ "Distance = speed times time"
+ ],
+ "answer": "Distance = speed times time",
+ "emoji": " "
+ },
+ {
+ "id": 87,
+ "title": "Changing Units",
+ "content": "We sometimes need to change units. To convert centimetres to metres, divide by 100. To convert kilometres to metres, multiply by 1000. Always check the conversion factor.",
+ "question": "How do we convert centimetres to metres?",
+ "options": [
+ "Multiply by 100",
+ "Divide by 100",
+ "Add 100"
+ ],
+ "answer": "Divide by 100",
+ "emoji": " "
+ },
+ {
+ "id": 88,
+ "title": "Perpendicular Lines",
+ "content": "Perpendicular lines meet at right angles. The corners of a square are perpendicular. We use a small square symbol to show a right angle. Perpendicular is different from parallel.",
+ "question": "At what angle do perpendicular lines meet?",
+ "options": [
+ "45 degrees",
+ "180 degrees",
+ "90 degrees"
+ ],
+ "answer": "90 degrees",
+ "emoji": " "
+ },
+ {
+ "id": 89,
+ "title": "Expanding Brackets",
+ "content": "In algebra, expanding brackets means multiplying the bracket by the term outside. Three lots of (x plus two) becomes three x plus six. This is called the distributive law.",
+ "question": "What is 3(x + 2) expanded?",
+ "options": [
+ "3x + 2",
+ "3x + 6",
+ "x + 6"
+ ],
+ "answer": "3x + 6",
+ "emoji": " "
+ },
+ {
+ "id": 90,
+ "title": "Solving Inequalities",
+ "content": "Inequalities show that one side is bigger or smaller. The symbol for less than is <. Greater than is >. If x is less than 5, then x could be 4, 3, 2, 1 or any smaller number.",
+ "question": "Which symbol means less than?",
+ "options": [
+ ">",
+ "=",
+ "<"
+ ],
+ "answer": "<",
+ "emoji": " "
+ },
+ {
+ "id": 91,
+ "title": "Fibonacci Numbers",
+ "content": "The Fibonacci sequence starts with 1 and 1. Each new number is the sum of the two before it. One, one, two, three, five, eight, thirteen. It appears in nature too.",
+ "question": "What are the first five Fibonacci numbers?",
+ "options": [
+ "1,2,3,4,5",
+ "1,1,2,3,5",
+ "2,4,6,8,10"
+ ],
+ "answer": "1,1,2,3,5",
+ "emoji": " "
+ },
+ {
+ "id": 92,
+ "title": "Surface Area",
+ "content": "Surface area is the total area of all faces of a 3D shape. A cube with sides of 3 cm has six faces, each 9 square centimetres. The total surface area is 54 square centimetres.",
+ "question": "How many faces does a cube have?",
+ "options": [
+ "4",
+ "8",
+ "6"
+ ],
+ "answer": "6",
+ "emoji": " "
+ },
+ {
+ "id": 93,
+ "title": "Substitution in Algebra",
+ "content": "Substitution means replacing letters with numbers. If a equals 3 and b equals 2, then a plus b equals 5. We replace the letters and calculate.",
+ "question": "If a = 3 and b = 2, what is a + b?",
+ "options": [
+ "4",
+ "6",
+ "5"
+ ],
+ "answer": "5",
+ "emoji": " "
+ },
+ {
+ "id": 94,
+ "title": "Proof by Example",
+ "content": "We can show a statement is false by finding one counter-example. All multiples of two are less than ten: this is false because twelve is a multiple of two but not less than ten.",
+ "question": "What is a counter-example used for?",
+ "options": [
+ "Proving a statement true",
+ "Proving a statement false",
+ "Adding numbers"
+ ],
+ "answer": "Proving a statement false",
+ "emoji": " "
+ },
+ {
+ "id": 95,
+ "title": "Gradient",
+ "content": "The gradient tells us how steep a line is. A line going steeply upward has a large positive gradient. A flat line has a gradient of zero. A downward line has a negative gradient.",
+ "question": "What gradient does a flat horizontal line have?",
+ "options": [
+ "One",
+ "Zero",
+ "Negative one"
+ ],
+ "answer": "Zero",
+ "emoji": " "
+ },
+ {
+ "id": 96,
+ "title": "Interest",
+ "content": "Interest is money added to savings or loans. Simple interest is a fixed percentage each year. If you save 100 pounds at 5 percent per year, you earn 5 pounds interest each year.",
+ "question": "If you save 100 at 5% interest, how much do you earn in one year?",
+ "options": [
+ "10 pounds",
+ "50 pounds",
+ "5 pounds"
+ ],
+ "answer": "5 pounds",
+ "emoji": " "
+ },
+ {
+ "id": 97,
+ "title": "Pie Chart Calculations",
+ "content": "In a pie chart, the whole circle is 360 degrees. If there are four equal sections, each section is 90 degrees. To find the angle for a category, divide its frequency by the total and multiply by 360.",
+ "question": "If there are four equal sections in a pie chart, how many degrees is each?",
+ "options": [
+ "45",
+ "180",
+ "90"
+ ],
+ "answer": "90",
+ "emoji": " "
+ },
+ {
+ "id": 98,
+ "title": "Frequency Tables",
+ "content": "A frequency table records how many times each value occurs. Tally marks are used to count. Then we write the total frequency. Frequency tables organise data clearly.",
+ "question": "What are tally marks used for?",
+ "options": [
+ "To draw shapes",
+ "To count values",
+ "To measure length"
+ ],
+ "answer": "To count values",
+ "emoji": " "
+ },
+ {
+ "id": 99,
+ "title": "Currency Conversion",
+ "content": "We use exchange rates to convert currency. If one pound equals 1.2 euros, then 50 pounds equals 60 euros. Multiply pounds by the exchange rate to get euros.",
+ "question": "How do you convert pounds to euros?",
+ "options": [
+ "Divide by the rate",
+ "Subtract the rate",
+ "Multiply by the exchange rate"
+ ],
+ "answer": "Multiply by the exchange rate",
+ "emoji": " "
+ },
+ {
+ "id": 100,
+ "title": "Trial and Improvement",
+ "content": "Trial and improvement is a method to solve equations. We try a value, check if it is too big or small, and adjust. We repeat until we get close enough to the answer.",
+ "question": "What do we do if our trial value is too big?",
+ "options": [
+ "Stop trying",
+ "Try a smaller value",
+ "Double it"
+ ],
+ "answer": "Try a smaller value",
+ "emoji": " "
+ }
+]

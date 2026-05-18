@@ -1,0 +1,1302 @@
+[
+  {
+    "id": 1,
+    "title": "Colours",
+    "content": "Colours make art beautiful. Red, blue and yellow are primary colours. When you mix two primary colours you get a secondary colour. Mixing red and blue gives purple.",
+    "question": "What are red, blue and yellow called?",
+    "options": [
+      "Secondary colours",
+      "Primary colours",
+      "Warm colours"
+    ],
+    "answer": "Primary colours",
+    "emoji": " "
+  },
+  {
+    "id": 2,
+    "title": "Painting",
+    "content": "Painting is a way to make art. We use brushes and paint. Different brushes make different marks. Thin brushes make fine lines. Wide brushes make big strokes.",
+    "question": "What do thin brushes make?",
+    "options": [
+      "Wide marks",
+      "Big blobs",
+      "Fine lines"
+    ],
+    "answer": "Fine lines",
+    "emoji": " "
+  },
+  {
+    "id": 3,
+    "title": "Drawing",
+    "content": "Drawing is using a pencil, pen or crayon to make pictures. We can draw from life or from our imagination. Sketching is a quick way to practise drawing.",
+    "question": "What is sketching?",
+    "options": [
+      "A slow detailed drawing",
+      "A quick way to practise drawing",
+      "A type of painting"
+    ],
+    "answer": "A quick way to practise drawing",
+    "emoji": " "
+  },
+  {
+    "id": 4,
+    "title": "Music Rhythm",
+    "content": "Rhythm is the beat in music. You can feel the rhythm when you tap your foot. Fast rhythm makes music feel exciting. Slow rhythm makes music feel calm.",
+    "question": "How does slow rhythm make music feel?",
+    "options": [
+      "Exciting",
+      "Scary",
+      "Calm"
+    ],
+    "answer": "Calm",
+    "emoji": " "
+  },
+  {
+    "id": 5,
+    "title": "Musical Instruments",
+    "content": "There are four families of instruments. String instruments like violin make sound by vibrating strings. Wind instruments like flute use air. Brass instruments like trumpet use buzzing lips. Percussion instruments like drums are hit.",
+    "question": "What family does a violin belong to?",
+    "options": [
+      "Brass",
+      "Percussion",
+      "String"
+    ],
+    "answer": "String",
+    "emoji": " "
+  },
+  {
+    "id": 6,
+    "title": "Drama",
+    "content": "Drama is acting out stories. Actors use their voice and body to show feelings. Drama helps us understand how other people feel. We perform in plays and shows.",
+    "question": "What do actors use to show feelings?",
+    "options": [
+      "Costumes only",
+      "Their voice and body",
+      "Masks only"
+    ],
+    "answer": "Their voice and body",
+    "emoji": " "
+  },
+  {
+    "id": 7,
+    "title": "Warm and Cool Colours",
+    "content": "Warm colours are red, orange and yellow. They remind us of fire and sunshine. Cool colours are blue, green and purple. They remind us of water and sky. Artists choose colours to create mood.",
+    "question": "What do warm colours remind us of?",
+    "options": [
+      "Water and sky",
+      "Fire and sunshine",
+      "Trees and grass"
+    ],
+    "answer": "Fire and sunshine",
+    "emoji": " "
+  },
+  {
+    "id": 8,
+    "title": "Sculpture",
+    "content": "Sculpture is three dimensional art. Sculptors work with clay, stone, wood or metal. The finished work can be touched as well as seen. Famous sculptures include the Statue of Liberty.",
+    "question": "How many dimensions does a sculpture have?",
+    "options": [
+      "One",
+      "Two",
+      "Three"
+    ],
+    "answer": "Three",
+    "emoji": " "
+  },
+  {
+    "id": 9,
+    "title": "The Colour Wheel",
+    "content": "The colour wheel shows how colours relate to each other. Primary colours are spread around it. Secondary colours sit between the primary colours. Complementary colours are opposite each other.",
+    "question": "Where do complementary colours sit on the colour wheel?",
+    "options": [
+      "Next to each other",
+      "All in a line",
+      "Opposite each other"
+    ],
+    "answer": "Opposite each other",
+    "emoji": " "
+  },
+  {
+    "id": 10,
+    "title": "Storytelling in Art",
+    "content": "Art can tell stories. Cave paintings showed hunting scenes. Medieval tapestries told tales of battles and heroes. Comic strips tell stories with pictures and words.",
+    "question": "What did cave paintings often show?",
+    "options": [
+      "Modern cities",
+      "Hunting scenes",
+      "Musical notes"
+    ],
+    "answer": "Hunting scenes",
+    "emoji": " "
+  },
+  {
+    "id": 11,
+    "title": "Abstract Art",
+    "content": "Abstract art does not show real things. It uses shapes, colours and lines to express ideas and feelings. Wassily Kandinsky was a famous abstract artist. People feel different emotions looking at abstract art.",
+    "question": "What does abstract art use to express feelings?",
+    "options": [
+      "Photographs",
+      "Shapes, colours and lines",
+      "Only black paint"
+    ],
+    "answer": "Shapes, colours and lines",
+    "emoji": " "
+  },
+  {
+    "id": 12,
+    "title": "Portraits",
+    "content": "A portrait is a picture of a person. Artists paint or draw the face to show character. The Mona Lisa is the most famous portrait. Leonardo da Vinci painted it.",
+    "question": "What is a portrait?",
+    "options": [
+      "A picture of a building",
+      "A picture of a landscape",
+      "A picture of a person"
+    ],
+    "answer": "A picture of a person",
+    "emoji": " "
+  },
+  {
+    "id": 13,
+    "title": "Impressionism",
+    "content": "Impressionism is an art style from France. Artists like Monet painted outdoors. They used short brushstrokes to capture light and movement. Impressionist paintings look soft and blurry up close.",
+    "question": "What did Impressionists like to capture?",
+    "options": [
+      "Perfect detail",
+      "Light and movement",
+      "Dark colours"
+    ],
+    "answer": "Light and movement",
+    "emoji": " "
+  },
+  {
+    "id": 14,
+    "title": "Texture in Art",
+    "content": "Texture is how something feels or appears to feel. Rough, smooth, bumpy and soft are types of texture. Artists create texture using different tools and materials. Impasto painting uses thick paint to create texture.",
+    "question": "What is impasto painting?",
+    "options": [
+      "Using water-colour paint",
+      "Using thin lines",
+      "Using thick paint to create texture"
+    ],
+    "answer": "Using thick paint to create texture",
+    "emoji": " "
+  },
+  {
+    "id": 15,
+    "title": "Pop Art",
+    "content": "Pop art uses images from everyday life. Andy Warhol was a famous pop artist. He made art from soup cans and celebrity faces. Pop art is colourful, bold and fun.",
+    "question": "Who was a famous pop artist?",
+    "options": [
+      "Leonardo da Vinci",
+      "Andy Warhol",
+      "Pablo Picasso"
+    ],
+    "answer": "Andy Warhol",
+    "emoji": " "
+  },
+  {
+    "id": 16,
+    "title": "Typography",
+    "content": "Typography is the art of arranging letters. Different fonts have different styles. Serif fonts have small tails on the letters. Sans-serif fonts do not. Good typography makes text easy to read.",
+    "question": "What are the small tails on serif fonts called?",
+    "options": [
+      "Curves",
+      "Tails (serifs)",
+      "Gaps"
+    ],
+    "answer": "Tails (serifs)",
+    "emoji": " "
+  },
+  {
+    "id": 17,
+    "title": "Animation",
+    "content": "Animation creates moving images. Each image is slightly different from the last. When shown quickly they appear to move. Traditional animation was drawn by hand. Now it is often done on computers.",
+    "question": "What makes animation appear to move?",
+    "options": [
+      "Magnets",
+      "Images shown quickly",
+      "Special cameras"
+    ],
+    "answer": "Images shown quickly",
+    "emoji": " "
+  },
+  {
+    "id": 18,
+    "title": "Collage",
+    "content": "A collage is made by cutting and sticking. Different materials like paper, fabric and photos are used. Henri Matisse made beautiful cut-out collages. Collage is a fun way to make art.",
+    "question": "What materials can be used in a collage?",
+    "options": [
+      "Only pencils",
+      "Only paint",
+      "Paper, fabric and photos"
+    ],
+    "answer": "Paper, fabric and photos",
+    "emoji": " "
+  },
+  {
+    "id": 19,
+    "title": "Street Art",
+    "content": "Street art appears in public spaces. Banksy is a famous anonymous street artist. Street art can be political, humorous or beautiful. Some is welcomed, some causes controversy.",
+    "question": "Who is a famous anonymous street artist?",
+    "options": [
+      "Van Gogh",
+      "Banksy",
+      "Monet"
+    ],
+    "answer": "Banksy",
+    "emoji": " "
+  },
+  {
+    "id": 20,
+    "title": "The Elements of Art",
+    "content": "The elements of art are the building blocks of all artwork. They include line, shape, colour, texture, form, space and tone. Artists combine these elements to create their work.",
+    "question": "Which of these is an element of art?",
+    "options": [
+      "Sound",
+      "Rhythm",
+      "Line"
+    ],
+    "answer": "Line",
+    "emoji": " "
+  },
+  {
+    "id": 21,
+    "title": "Photography",
+    "content": "Photography captures images using a camera. The lens focuses light onto a sensor or film. Good photographers think about composition, light and subject. Photography is used in art, journalism and science.",
+    "question": "What does the camera lens do?",
+    "options": [
+      "Stores images",
+      "Focuses light",
+      "Makes the photo smaller"
+    ],
+    "answer": "Focuses light",
+    "emoji": " "
+  },
+  {
+    "id": 22,
+    "title": "Music Notes",
+    "content": "Music is written using notes on a stave. A crotchet lasts one beat. A minim lasts two beats. A semibreve lasts four beats. Notes tell musicians how long to hold each sound.",
+    "question": "How long does a crotchet last?",
+    "options": [
+      "Two beats",
+      "Four beats",
+      "One beat"
+    ],
+    "answer": "One beat",
+    "emoji": " "
+  },
+  {
+    "id": 23,
+    "title": "Cave Paintings",
+    "content": "Cave paintings are the oldest known art. They were made over 40,000 years ago. Early humans painted animals, hands and hunting scenes. The Lascaux caves in France are famous for their paintings.",
+    "question": "How old are the oldest cave paintings?",
+    "options": [
+      "1,000 years",
+      "40,000 years",
+      "400 years"
+    ],
+    "answer": "40,000 years",
+    "emoji": " "
+  },
+  {
+    "id": 24,
+    "title": "Perspective",
+    "content": "Perspective creates the illusion of depth in a 2D drawing. Objects that are far away appear smaller. Lines appear to converge at a vanishing point. Artists use perspective to make scenes look real.",
+    "question": "Why do distant objects appear smaller?",
+    "options": [
+      "They are smaller",
+      "Because of perspective",
+      "Artists make them smaller"
+    ],
+    "answer": "Because of perspective",
+    "emoji": " "
+  },
+  {
+    "id": 25,
+    "title": "Ceramics",
+    "content": "Ceramics is the art of making objects from clay. Clay is shaped, dried and then fired in a kiln. The heat makes the clay hard and permanent. Pottery, tiles and sculptures are types of ceramics.",
+    "question": "What makes clay hard and permanent?",
+    "options": [
+      "Water",
+      "Being dried in the sun",
+      "Being fired in a kiln"
+    ],
+    "answer": "Being fired in a kiln",
+    "emoji": " "
+  },
+  {
+    "id": 26,
+    "title": "Ancient Egyptian Art",
+    "content": "Ancient Egyptians made beautiful art. They decorated temples and tombs. Figures were drawn in a special flat style. The pharaoh was always shown biggest to show importance.",
+    "question": "Why was the pharaoh always shown biggest?",
+    "options": [
+      "He was actually biggest",
+      "To show importance",
+      "To save space"
+    ],
+    "answer": "To show importance",
+    "emoji": " "
+  },
+  {
+    "id": 27,
+    "title": "Cubism",
+    "content": "Cubism was invented by Picasso and Braque. It shows objects from many angles at once. Cubist paintings look like they have been broken into pieces. It changed art forever.",
+    "question": "Who invented Cubism?",
+    "options": [
+      "Van Gogh and Monet",
+      "Picasso and Braque",
+      "Da Vinci and Rembrandt"
+    ],
+    "answer": "Picasso and Braque",
+    "emoji": " "
+  },
+  {
+    "id": 28,
+    "title": "Digital Art",
+    "content": "Digital art is created using computers, tablets and software. Artists use tools like Adobe Photoshop or Procreate. Digital art can be paintings, illustrations or animation. It is easy to undo mistakes.",
+    "question": "What is one advantage of digital art?",
+    "options": [
+      "It is more expensive",
+      "You can easily undo mistakes",
+      "It uses more materials"
+    ],
+    "answer": "You can easily undo mistakes",
+    "emoji": " "
+  },
+  {
+    "id": 29,
+    "title": "The Orchestra",
+    "content": "An orchestra is a large group of musicians. They are divided into sections. String, woodwind, brass and percussion. The conductor stands at the front and leads the musicians.",
+    "question": "Who leads an orchestra?",
+    "options": [
+      "The drummer",
+      "The conductor",
+      "The violin player"
+    ],
+    "answer": "The conductor",
+    "emoji": " "
+  },
+  {
+    "id": 30,
+    "title": "Printmaking",
+    "content": "Printmaking is creating images from a prepared surface. A design is cut into a block. Ink is applied and paper is pressed onto it. Multiple copies can be made from one block.",
+    "question": "What is applied to the block in printmaking?",
+    "options": [
+      "Water",
+      "Ink",
+      "Paint"
+    ],
+    "answer": "Ink",
+    "emoji": " "
+  },
+  {
+    "id": 31,
+    "title": "Mosaics",
+    "content": "Mosaics are made from small pieces of coloured glass, stone or tile. They were popular in ancient Rome and Greece. Famous mosaics decorate churches and palaces. Mosaic making requires great patience.",
+    "question": "What are mosaics made from?",
+    "options": [
+      "Paint and canvas",
+      "Small coloured pieces of glass or stone",
+      "Pencil and paper"
+    ],
+    "answer": "Small coloured pieces of glass or stone",
+    "emoji": " "
+  },
+  {
+    "id": 32,
+    "title": "Graffiti Art",
+    "content": "Graffiti art is found on walls and surfaces in public spaces. Some see it as vandalism. Others see it as powerful art. Keith Haring used graffiti to spread positive messages.",
+    "question": "What did Keith Haring use graffiti to do?",
+    "options": [
+      "Cause damage",
+      "Spread positive messages",
+      "Hide crime"
+    ],
+    "answer": "Spread positive messages",
+    "emoji": " "
+  },
+  {
+    "id": 33,
+    "title": "Architecture",
+    "content": "Architecture is the art and science of designing buildings. Architects think about beauty and function. They consider light, space and materials. Famous buildings include the Eiffel Tower and the Taj Mahal.",
+    "question": "What do architects think about?",
+    "options": [
+      "Only beauty",
+      "Only function",
+      "Beauty and function"
+    ],
+    "answer": "Beauty and function",
+    "emoji": " "
+  },
+  {
+    "id": 34,
+    "title": "Surrealism",
+    "content": "Surrealism creates dreamlike and strange images. Salvador Dali was a famous surrealist artist. His painting of melting clocks is famous. Surrealism was inspired by dreams and the unconscious mind.",
+    "question": "Who is a famous Surrealist artist?",
+    "options": [
+      "Banksy",
+      "Monet",
+      "Salvador Dali"
+    ],
+    "answer": "Salvador Dali",
+    "emoji": " "
+  },
+  {
+    "id": 35,
+    "title": "Weaving",
+    "content": "Weaving is a craft that creates fabric. Threads are passed over and under each other on a loom. Different colours create patterns. Weaving has been done for thousands of years.",
+    "question": "What is used to weave fabric?",
+    "options": [
+      "A kiln",
+      "A loom",
+      "A wheel"
+    ],
+    "answer": "A loom",
+    "emoji": " "
+  },
+  {
+    "id": 36,
+    "title": "The Renaissance",
+    "content": "The Renaissance was a great period of art in Europe. Artists studied human anatomy to draw bodies accurately. Leonardo da Vinci, Michelangelo and Raphael were famous Renaissance artists.",
+    "question": "What did Renaissance artists study to draw bodies accurately?",
+    "options": [
+      "Architecture",
+      "Human anatomy",
+      "Landscape painting"
+    ],
+    "answer": "Human anatomy",
+    "emoji": " "
+  },
+  {
+    "id": 37,
+    "title": "Graphic Design",
+    "content": "Graphic designers create visual communication. They design logos, posters, books and websites. They use colour, type and images together. Good graphic design is clear and attractive.",
+    "question": "What do graphic designers create?",
+    "options": [
+      "Only sculptures",
+      "Visual communication",
+      "Only films"
+    ],
+    "answer": "Visual communication",
+    "emoji": " "
+  },
+  {
+    "id": 38,
+    "title": "Music and Emotions",
+    "content": "Music can make us feel different emotions. Fast, loud music can make us feel energetic. Slow, quiet music can make us feel calm or sad. Composers choose notes carefully to create feelings.",
+    "question": "How does fast, loud music make us feel?",
+    "options": [
+      "Calm",
+      "Sad",
+      "Energetic"
+    ],
+    "answer": "Energetic",
+    "emoji": " "
+  },
+  {
+    "id": 39,
+    "title": "The Colour Purple",
+    "content": "Purple is a secondary colour. It is made by mixing red and blue. In history, purple dye was very expensive. It was worn by royalty and important people. Purple is often associated with royalty.",
+    "question": "Why was purple historically associated with royalty?",
+    "options": [
+      "They liked it",
+      "The dye was very expensive",
+      "It was easy to make"
+    ],
+    "answer": "The dye was very expensive",
+    "emoji": " "
+  },
+  {
+    "id": 40,
+    "title": "Stage Design",
+    "content": "Stage design creates the look of a theatre show. Sets, lighting and costumes work together. Stage designers read the script first. They discuss ideas with the director. The design helps the audience understand the story.",
+    "question": "What does the stage designer read first?",
+    "options": [
+      "The director's notes",
+      "The script",
+      "A review"
+    ],
+    "answer": "The script",
+    "emoji": " "
+  },
+  {
+    "id": 41,
+    "title": "Folk Art",
+    "content": "Folk art is made by ordinary people, not professional artists. It reflects the culture and traditions of a community. It includes crafts, textiles and decorative art. It is passed down through generations.",
+    "question": "Who makes folk art?",
+    "options": [
+      "Only professional artists",
+      "Art students",
+      "Ordinary people"
+    ],
+    "answer": "Ordinary people",
+    "emoji": " "
+  },
+  {
+    "id": 42,
+    "title": "Drawing Proportions",
+    "content": "Proportions describe the size of one part compared to another. In a typical face, the eyes are halfway down the head. The nose is halfway between eyes and chin. Knowing proportions helps artists draw realistic faces.",
+    "question": "Where are the eyes in proportion to the head?",
+    "options": [
+      "At the very top",
+      "At the chin",
+      "Halfway down the head"
+    ],
+    "answer": "Halfway down the head",
+    "emoji": " "
+  },
+  {
+    "id": 43,
+    "title": "Light in Art",
+    "content": "Artists study how light falls on objects. The lightest part is called the highlight. The darkest part is the shadow. Areas between are called midtones. This creates a sense of form.",
+    "question": "What is the lightest part of an object called?",
+    "options": [
+      "Shadow",
+      "Mid-tone",
+      "Highlight"
+    ],
+    "answer": "Highlight",
+    "emoji": " "
+  },
+  {
+    "id": 44,
+    "title": "Batik",
+    "content": "Batik is a fabric dyeing art from Indonesia. Wax is applied to cloth in patterns. When the cloth is dyed, wax prevents the colour from soaking in. The wax is removed to reveal the pattern.",
+    "question": "What does wax do in batik?",
+    "options": [
+      "Adds colour",
+      "Prevents colour soaking in",
+      "Makes fabric soft"
+    ],
+    "answer": "Prevents colour soaking in",
+    "emoji": " "
+  },
+  {
+    "id": 45,
+    "title": "Origami",
+    "content": "Origami is the Japanese art of paper folding. A single sheet of paper is folded into shapes. No cutting or glue is used. Traditional shapes include cranes, frogs and boats.",
+    "question": "What is origami?",
+    "options": [
+      "Japanese paper cutting",
+      "Japanese paper painting",
+      "Japanese paper folding"
+    ],
+    "answer": "Japanese paper folding",
+    "emoji": " "
+  },
+  {
+    "id": 46,
+    "title": "Music Technology",
+    "content": "Music technology uses electronics to create sound. Synthesisers create electronic sounds. Recording software captures and edits music. DJs mix music using technology. It has transformed modern music.",
+    "question": "What does recording software do?",
+    "options": [
+      "Creates live performances only",
+      "Captures and edits music",
+      "Only plays CDs"
+    ],
+    "answer": "Captures and edits music",
+    "emoji": " "
+  },
+  {
+    "id": 47,
+    "title": "Graphic Novels",
+    "content": "Graphic novels tell stories through pictures and words. They are like long comic books. Characters and backgrounds are drawn in detail. Many famous novels have been turned into graphic novels.",
+    "question": "How do graphic novels tell stories?",
+    "options": [
+      "Only with words",
+      "Only with pictures",
+      "Through pictures and words"
+    ],
+    "answer": "Through pictures and words",
+    "emoji": " "
+  },
+  {
+    "id": 48,
+    "title": "Colour Psychology",
+    "content": "Colour affects how we feel. Red can feel exciting or dangerous. Blue can feel calm or sad. Yellow feels cheerful and bright. Companies choose their logo colours carefully because of colour psychology.",
+    "question": "How might red make us feel?",
+    "options": [
+      "Calm",
+      "Excited or in danger",
+      "Sad"
+    ],
+    "answer": "Excited or in danger",
+    "emoji": " "
+  },
+  {
+    "id": 49,
+    "title": "Performing Arts",
+    "content": "Performing arts include theatre, dance and music. Performers entertain an audience. They rehearse many times before performing. Performing takes courage and lots of practice.",
+    "question": "What do performing arts include?",
+    "options": [
+      "Only painting and drawing",
+      "Theatre, dance and music",
+      "Only music"
+    ],
+    "answer": "Theatre, dance and music",
+    "emoji": " "
+  },
+  {
+    "id": 50,
+    "title": "Van Gogh",
+    "content": "Vincent van Gogh was a Dutch painter. He painted bold and colourful pictures. His most famous work is The Starry Night. Van Gogh used swirling brushstrokes to show movement.",
+    "question": "What painting is Van Gogh famous for?",
+    "options": [
+      "The Mona Lisa",
+      "Water Lilies",
+      "The Starry Night"
+    ],
+    "answer": "The Starry Night",
+    "emoji": " "
+  },
+  {
+    "id": 51,
+    "title": "Monet's Water Lilies",
+    "content": "Claude Monet painted a series of water lily paintings. He painted the pond in his garden at Giverny. The paintings show reflections of light on water. They are a perfect example of Impressionism.",
+    "question": "Where did Monet paint his water lilies?",
+    "options": [
+      "A lake in Paris",
+      "The sea in Normandy",
+      "The pond in his garden"
+    ],
+    "answer": "The pond in his garden",
+    "emoji": " "
+  },
+  {
+    "id": 52,
+    "title": "Calligraphy",
+    "content": "Calligraphy is the art of beautiful handwriting. Different scripts include Arabic, Chinese and Roman. A special pen with a broad nib is often used. Calligraphy is used in invitations, signage and religious texts.",
+    "question": "What is calligraphy?",
+    "options": [
+      "The art of drawing animals",
+      "The art of beautiful handwriting",
+      "The art of making pots"
+    ],
+    "answer": "The art of beautiful handwriting",
+    "emoji": " "
+  },
+  {
+    "id": 53,
+    "title": "Musical Scales",
+    "content": "A musical scale is a set of notes in order. The C major scale has notes C, D, E, F, G, A and B. Major scales sound bright and happy. Minor scales sound sadder and darker.",
+    "question": "How does a C major scale sound?",
+    "options": [
+      "Sad and dark",
+      "Bright and happy",
+      "Mysterious"
+    ],
+    "answer": "Bright and happy",
+    "emoji": " "
+  },
+  {
+    "id": 54,
+    "title": "Shadow Puppets",
+    "content": "Shadow puppets are figures held behind a lit screen. Their shadows are seen by the audience. This art form is thousands of years old. It is popular in Indonesia and China.",
+    "question": "Where is shadow puppetry popular?",
+    "options": [
+      "France and Spain",
+      "Indonesia and China",
+      "USA and UK"
+    ],
+    "answer": "Indonesia and China",
+    "emoji": " "
+  },
+  {
+    "id": 55,
+    "title": "Landscape Art",
+    "content": "Landscape paintings show outdoor scenes. Mountains, rivers, forests and seas are common subjects. Artists try to capture the beauty of nature. Turner was a famous British landscape painter.",
+    "question": "What are common subjects in landscape art?",
+    "options": [
+      "Portraits of kings",
+      "Mountains, rivers and forests",
+      "Only city scenes"
+    ],
+    "answer": "Mountains, rivers and forests",
+    "emoji": " "
+  },
+  {
+    "id": 56,
+    "title": "Dali's Clocks",
+    "content": "Salvador Dali painted The Persistence of Memory. It shows melting clocks in a desert landscape. It represents how time feels different in dreams. It is one of the most recognised paintings in the world.",
+    "question": "What does The Persistence of Memory show?",
+    "options": [
+      "A portrait",
+      "Melting clocks",
+      "A seascape"
+    ],
+    "answer": "Melting clocks",
+    "emoji": " "
+  },
+  {
+    "id": 57,
+    "title": "Body Percussion",
+    "content": "Body percussion means making music with your body. Clapping, stomping, clicking fingers and patting knees all create rhythms. It is used in music education worldwide. No instruments are needed.",
+    "question": "What does body percussion use?",
+    "options": [
+      "Musical instruments",
+      "Electronic sounds",
+      "Your body to make rhythms"
+    ],
+    "answer": "Your body to make rhythms",
+    "emoji": " "
+  },
+  {
+    "id": 58,
+    "title": "Fabric Arts",
+    "content": "Fabric arts include sewing, knitting and embroidery. Fabric can be cut and sewn into clothes. Knitting uses yarn to make fabric. Embroidery adds decorative stitches to fabric.",
+    "question": "What does knitting use to make fabric?",
+    "options": [
+      "Thread",
+      "Paint",
+      "Yarn"
+    ],
+    "answer": "Yarn",
+    "emoji": " "
+  },
+  {
+    "id": 59,
+    "title": "Colour Mixing Experiment",
+    "content": "When you mix paint, you get new colours. Mixing red and yellow gives orange. Mixing all three primary colours gives brown. Adding white to any colour makes a tint. Adding black makes a shade.",
+    "question": "What do you make when you add white to a colour?",
+    "options": [
+      "A shade",
+      "A tint",
+      "A hue"
+    ],
+    "answer": "A tint",
+    "emoji": " "
+  },
+  {
+    "id": 60,
+    "title": "Stage Lighting",
+    "content": "Stage lighting helps create the mood of a performance. Red light can suggest danger. Blue can suggest night or sadness. Spotlights focus on one actor. Good lighting can transform a scene.",
+    "question": "What can red stage lighting suggest?",
+    "options": [
+      "Happiness",
+      "Daytime",
+      "Danger"
+    ],
+    "answer": "Danger",
+    "emoji": " "
+  },
+  {
+    "id": 61,
+    "title": "Musical Theatre",
+    "content": "Musical theatre combines songs, acting and dance. Famous musicals include The Lion King and Grease. Performers must be able to sing, dance and act. Musicals have big sets and costumes.",
+    "question": "What must performers in musicals be able to do?",
+    "options": [
+      "Only sing",
+      "Only act",
+      "Sing, dance and act"
+    ],
+    "answer": "Sing, dance and act",
+    "emoji": " "
+  },
+  {
+    "id": 62,
+    "title": "Lino Printing",
+    "content": "Lino printing is a type of printmaking. A design is cut into a flat piece of linoleum. Ink is rolled over it. Paper is pressed on to transfer the design. Many prints can be made from one block.",
+    "question": "What is the surface used in lino printing?",
+    "options": [
+      "Wood",
+      "Linoleum",
+      "Metal"
+    ],
+    "answer": "Linoleum",
+    "emoji": " "
+  },
+  {
+    "id": 63,
+    "title": "Cultural Art",
+    "content": "Every culture has its own art traditions. Aboriginal Australians make dot paintings. Native Americans weave colourful rugs. Japanese artists make delicate woodblock prints. Art connects us to our heritage.",
+    "question": "What type of paintings do Aboriginal Australians make?",
+    "options": [
+      "Watercolour landscapes",
+      "Oil portraits",
+      "Dot paintings"
+    ],
+    "answer": "Dot paintings",
+    "emoji": " "
+  },
+  {
+    "id": 64,
+    "title": "Still Life",
+    "content": "A still life painting shows objects that do not move. Common objects include fruit, flowers, vases and books. The artist carefully arranges the objects. Still life helps artists practise observation skills.",
+    "question": "What objects are common in still life paintings?",
+    "options": [
+      "Moving animals",
+      "People running",
+      "Fruit, flowers and vases"
+    ],
+    "answer": "Fruit, flowers and vases",
+    "emoji": " "
+  },
+  {
+    "id": 65,
+    "title": "Pointillism",
+    "content": "Pointillism was invented by Georges Seurat. He painted using tiny dots of pure colour. When seen from far away, the dots blend together. A Sunday Afternoon on the Island of La Grande Jatte is his famous painting.",
+    "question": "Who invented Pointillism?",
+    "options": [
+      "Van Gogh",
+      "Monet",
+      "Georges Seurat"
+    ],
+    "answer": "Georges Seurat",
+    "emoji": " "
+  },
+  {
+    "id": 66,
+    "title": "Musical Dynamics",
+    "content": "Dynamics describe the loudness of music. Fortissimo means very loud. Forte means loud. Piano means soft. Pianissimo means very soft. Dynamics help make music expressive.",
+    "question": "What does fortissimo mean?",
+    "options": [
+      "Very soft",
+      "Medium loud",
+      "Very loud"
+    ],
+    "answer": "Very loud",
+    "emoji": " "
+  },
+  {
+    "id": 67,
+    "title": "Improvisation in Drama",
+    "content": "Improvisation means performing without a script. Actors must think quickly. They listen and respond to each other. Improvisation builds confidence and creativity. It is used in warm up exercises.",
+    "question": "What is improvisation in drama?",
+    "options": [
+      "Reading from a script",
+      "Performing without a script",
+      "Singing on stage"
+    ],
+    "answer": "Performing without a script",
+    "emoji": " "
+  },
+  {
+    "id": 68,
+    "title": "Art Therapy",
+    "content": "Art therapy uses art to support mental health. Drawing and painting can help express feelings. It is used in hospitals and schools. Art therapy helps people deal with stress and trauma.",
+    "question": "What does art therapy help people do?",
+    "options": [
+      "Win prizes",
+      "Sell artwork",
+      "Express feelings and deal with stress"
+    ],
+    "answer": "Express feelings and deal with stress",
+    "emoji": " "
+  },
+  {
+    "id": 69,
+    "title": "Wax Resist",
+    "content": "Wax resist is a creative art technique. Wax crayon is drawn onto paper. Then watercolour paint is brushed over it. The paint does not stick where the wax is. This creates interesting effects.",
+    "question": "What happens when paint is applied over wax crayon?",
+    "options": [
+      "It sticks to the wax",
+      "It removes the wax",
+      "It does not stick to the wax"
+    ],
+    "answer": "It does not stick to the wax",
+    "emoji": " "
+  },
+  {
+    "id": 70,
+    "title": "Symbolism in Art",
+    "content": "Artists often use symbols to add meaning. A dove represents peace. A skull can represent death. In religious art, a halo represents holiness. Understanding symbols helps us interpret art.",
+    "question": "What does a dove represent in art?",
+    "options": [
+      "War",
+      "Peace",
+      "Death"
+    ],
+    "answer": "Peace",
+    "emoji": " "
+  },
+  {
+    "id": 71,
+    "title": "Body Language in Drama",
+    "content": "Body language communicates without words. Standing tall shows confidence. Slouching shows sadness or tiredness. Crossed arms can show anger. Actors use body language to develop their characters.",
+    "question": "What does standing tall show?",
+    "options": [
+      "Sadness",
+      "Fear",
+      "Confidence"
+    ],
+    "answer": "Confidence",
+    "emoji": " "
+  },
+  {
+    "id": 72,
+    "title": "Percussion Family",
+    "content": "Percussion instruments are hit or shaken to make sound. Drums, cymbals and xylophones are percussion. Some have musical pitch, like a xylophone. Others just make rhythm, like a bass drum.",
+    "question": "Which of these is a percussion instrument?",
+    "options": [
+      "Violin",
+      "Flute",
+      "Xylophone"
+    ],
+    "answer": "Xylophone",
+    "emoji": " "
+  },
+  {
+    "id": 73,
+    "title": "Mondrian",
+    "content": "Piet Mondrian was a Dutch artist. He used only primary colours and black and white. He painted grids of rectangles. His work influenced graphic design and fashion. It is very bold and simple.",
+    "question": "What colours did Mondrian use?",
+    "options": [
+      "Lots of different colours",
+      "Only primary colours, black and white",
+      "Only pastel colours"
+    ],
+    "answer": "Only primary colours, black and white",
+    "emoji": " "
+  },
+  {
+    "id": 74,
+    "title": "Documentary Photography",
+    "content": "Documentary photography tells stories about real life. It records people, events and places. War photographers work in dangerous conditions. Their images can change history.",
+    "question": "What does documentary photography record?",
+    "options": [
+      "Only beautiful landscapes",
+      "People, events and places in real life",
+      "Only famous people"
+    ],
+    "answer": "People, events and places in real life",
+    "emoji": " "
+  },
+  {
+    "id": 75,
+    "title": "African Art",
+    "content": "African art has a rich history. Masks are central to many African cultures. They are used in ceremonies and dances. African art has influenced many modern artists including Picasso.",
+    "question": "Who was influenced by African art?",
+    "options": [
+      "Van Gogh",
+      "Picasso",
+      "Monet"
+    ],
+    "answer": "Picasso",
+    "emoji": " "
+  },
+  {
+    "id": 76,
+    "title": "Op Art",
+    "content": "Op Art stands for Optical Art. It creates illusions that trick the eye. Patterns of lines and shapes seem to move or vibrate. Bridget Riley is a famous Op Art artist.",
+    "question": "What does Op Art do?",
+    "options": [
+      "Creates sculptures",
+      "Creates illusions that trick the eye",
+      "Creates fashion designs"
+    ],
+    "answer": "Creates illusions that trick the eye",
+    "emoji": " "
+  },
+  {
+    "id": 77,
+    "title": "The Human Figure in Art",
+    "content": "Drawing the human figure is a key skill in art. Artists learn about proportions, movement and posture. Life drawing is when an artist draws a model. It takes many hours of practice.",
+    "question": "What is life drawing?",
+    "options": [
+      "Drawing from a photograph",
+      "Drawing a model in real life",
+      "Drawing animals"
+    ],
+    "answer": "Drawing a model in real life",
+    "emoji": " "
+  },
+  {
+    "id": 78,
+    "title": "Choral Music",
+    "content": "A choir is a group of singers. They sing in different parts. Soprano is the highest voice. Bass is the lowest. Singing in harmony creates a beautiful blended sound.",
+    "question": "Which is the highest vocal part in a choir?",
+    "options": [
+      "Bass",
+      "Alto",
+      "Soprano"
+    ],
+    "answer": "Soprano",
+    "emoji": " "
+  },
+  {
+    "id": 79,
+    "title": "Narrative Art",
+    "content": "Narrative art tells a story. Medieval illustrated manuscripts told religious stories. Today, graphic novels tell modern stories. Art has always been a way to share tales across generations.",
+    "question": "What did medieval illustrated manuscripts tell?",
+    "options": [
+      "Science stories",
+      "Religious stories",
+      "Weather forecasts"
+    ],
+    "answer": "Religious stories",
+    "emoji": " "
+  },
+  {
+    "id": 80,
+    "title": "Art Movements",
+    "content": "An art movement is a group of artists who share ideas. Impressionism, Surrealism and Pop Art are movements. Each has its own style and philosophy. Movements shape the history of art.",
+    "question": "What is an art movement?",
+    "options": [
+      "A dance style",
+      "A group of artists who share ideas",
+      "A type of brush"
+    ],
+    "answer": "A group of artists who share ideas",
+    "emoji": " "
+  },
+  {
+    "id": 81,
+    "title": "Michelangelo",
+    "content": "Michelangelo was an Italian Renaissance artist. He painted the Sistine Chapel ceiling in Rome. He was also a great sculptor. His statue of David is world famous.",
+    "question": "What famous ceiling did Michelangelo paint?",
+    "options": [
+      "The Louvre",
+      "Buckingham Palace",
+      "The Sistine Chapel"
+    ],
+    "answer": "The Sistine Chapel",
+    "emoji": " "
+  },
+  {
+    "id": 82,
+    "title": "Sound Layers in Music",
+    "content": "Music can have many layers of sound. A bass guitar plays low notes underneath. Drums keep the rhythm. A singer carries the melody on top. These layers together create a rich sound.",
+    "question": "What does the singer carry in music?",
+    "options": [
+      "The bass line",
+      "The melody",
+      "The rhythm"
+    ],
+    "answer": "The melody",
+    "emoji": " "
+  },
+  {
+    "id": 83,
+    "title": "Printmaking Techniques",
+    "content": "There are different types of printmaking. Relief printing cuts away areas of a block. Intaglio printing incises lines into metal. Screen printing pushes ink through a mesh. Each gives a unique effect.",
+    "question": "What does screen printing push ink through?",
+    "options": [
+      "A wood block",
+      "A mesh",
+      "A rubber stamp"
+    ],
+    "answer": "A mesh",
+    "emoji": " "
+  },
+  {
+    "id": 84,
+    "title": "The Artist's Toolkit",
+    "content": "Artists use many different tools. Pencils draw fine lines. Charcoal makes bold marks. Watercolour paints are transparent. Acrylic paints dry quickly and can be mixed with water.",
+    "question": "What is special about watercolour paints?",
+    "options": [
+      "They dry slowly",
+      "They are opaque",
+      "They are transparent"
+    ],
+    "answer": "They are transparent",
+    "emoji": " "
+  },
+  {
+    "id": 85,
+    "title": "Art in Advertising",
+    "content": "Advertisements use art to sell products. Designers choose colours, fonts and images carefully. The goal is to catch the eye and create desire. Art and commerce work together in advertising.",
+    "question": "What is the goal of advertising art?",
+    "options": [
+      "To entertain only",
+      "To catch the eye and create desire",
+      "To teach history"
+    ],
+    "answer": "To catch the eye and create desire",
+    "emoji": " "
+  },
+  {
+    "id": 86,
+    "title": "Contemporary Art",
+    "content": "Contemporary art is made in the present day. It uses new materials and ideas. Some installations fill entire rooms. Contemporary art challenges our thinking and can be controversial.",
+    "question": "What can contemporary art challenge?",
+    "options": [
+      "Only technology",
+      "Our thinking",
+      "Only maths"
+    ],
+    "answer": "Our thinking",
+    "emoji": " "
+  },
+  {
+    "id": 87,
+    "title": "Book Illustration",
+    "content": "Book illustrators create images for books. They help bring stories to life. Picture books combine images and words. Illustrators must understand the story deeply before they can draw.",
+    "question": "What must illustrators understand before drawing?",
+    "options": [
+      "The printing process",
+      "The story deeply",
+      "The paper size"
+    ],
+    "answer": "The story deeply",
+    "emoji": " "
+  },
+  {
+    "id": 88,
+    "title": "Japanese Art",
+    "content": "Japanese art includes woodblock printing, ceramics and gardens. Hokusai painted The Great Wave. Japanese artists value simplicity and nature. Zen philosophy has influenced Japanese art.",
+    "question": "What did Hokusai paint?",
+    "options": [
+      "The Mona Lisa",
+      "The Starry Night",
+      "The Great Wave"
+    ],
+    "answer": "The Great Wave",
+    "emoji": " "
+  },
+  {
+    "id": 89,
+    "title": "Music Around the World",
+    "content": "Every culture has its own music. Indian classical music uses a raga. African music uses complex rhythms. Blues music came from African American culture in the USA. Music connects people.",
+    "question": "Where did Blues music come from?",
+    "options": [
+      "India",
+      "African American culture in the USA",
+      "Ancient China"
+    ],
+    "answer": "African American culture in the USA",
+    "emoji": " "
+  },
+  {
+    "id": 90,
+    "title": "Fashion Design",
+    "content": "Fashion designers create clothes and accessories. They sketch designs, choose fabrics and create patterns. Fashion combines art and function. Famous fashion houses include Chanel and Gucci.",
+    "question": "What do fashion designers create?",
+    "options": [
+      "Buildings",
+      "Food products",
+      "Clothes and accessories"
+    ],
+    "answer": "Clothes and accessories",
+    "emoji": " "
+  },
+  {
+    "id": 91,
+    "title": "Aboriginal Art",
+    "content": "Aboriginal Australians use dot painting to record stories. The dots represent journeys, landscapes and animals. The symbols have sacred meaning. It is one of the oldest art traditions on Earth.",
+    "question": "What do dots represent in Aboriginal art?",
+    "options": [
+      "Only decoration",
+      "Journeys, landscapes and animals",
+      "Numbers"
+    ],
+    "answer": "Journeys, landscapes and animals",
+    "emoji": " "
+  },
+  {
+    "id": 92,
+    "title": "Stage Performance",
+    "content": "A stage performance requires many people. Actors learn their lines. Directors guide the acting. Set designers build the stage. Costumiers make the clothes. The lighting crew controls the lights.",
+    "question": "What do costumiers do?",
+    "options": [
+      "Control the lights",
+      "Direct the actors",
+      "Make the clothes"
+    ],
+    "answer": "Make the clothes",
+    "emoji": " "
+  },
+  {
+    "id": 93,
+    "title": "Colour in Nature",
+    "content": "Nature is full of colour. Flowers use colour to attract bees. Chameleons change colour for camouflage. The rainbow shows all seven colours of light. Artists take inspiration from nature's colours.",
+    "question": "Why do flowers have bright colours?",
+    "options": [
+      "To attract bees",
+      "To warn predators",
+      "For decoration only"
+    ],
+    "answer": "To attract bees",
+    "emoji": " "
+  },
+  {
+    "id": 94,
+    "title": "World Architecture",
+    "content": "Famous buildings represent their cultures. The Eiffel Tower is French. The Colosseum is Roman. The Taj Mahal is Indian. Each building tells a story about its time and culture.",
+    "question": "What country is the Taj Mahal from?",
+    "options": [
+      "China",
+      "Egypt",
+      "India"
+    ],
+    "answer": "India",
+    "emoji": " "
+  },
+  {
+    "id": 95,
+    "title": "Sound and Silence",
+    "content": "Music is not just sound. Silence is equally important. A pause can create drama and suspense. Rest notes in music show when to be silent. The space between sounds gives music its shape.",
+    "question": "What do rest notes in music show?",
+    "options": [
+      "When to play loudly",
+      "When to be silent",
+      "When to play fast"
+    ],
+    "answer": "When to be silent",
+    "emoji": " "
+  },
+  {
+    "id": 96,
+    "title": "Sketchbooks",
+    "content": "Artists keep sketchbooks for ideas and practice. They draw what they see around them. Sketches do not have to be perfect. A sketchbook is a private space to experiment and explore.",
+    "question": "What is an artist's sketchbook used for?",
+    "options": [
+      "Finished artwork only",
+      "Ideas, practice and experimentation",
+      "Showing to galleries"
+    ],
+    "answer": "Ideas, practice and experimentation",
+    "emoji": " "
+  },
+  {
+    "id": 97,
+    "title": "Batik Art",
+    "content": "Batik is a wax-resist dyeing technique. It comes from Indonesia. A tool called a tjanting applies hot wax. When dyed, the waxed areas resist colour. Batik creates beautiful patterned fabrics.",
+    "question": "Where does batik art come from?",
+    "options": [
+      "Japan",
+      "Indonesia",
+      "Brazil"
+    ],
+    "answer": "Indonesia",
+    "emoji": " "
+  },
+  {
+    "id": 98,
+    "title": "Symmetry in Art",
+    "content": "Symmetry means both sides of something look the same. Mandalas are perfectly symmetrical. Many buildings use symmetry. Artists sometimes break symmetry on purpose to create interest.",
+    "question": "What is a mandala?",
+    "options": [
+      "A type of music",
+      "A perfectly symmetrical pattern",
+      "A type of sculpture"
+    ],
+    "answer": "A perfectly symmetrical pattern",
+    "emoji": " "
+  },
+  {
+    "id": 99,
+    "title": "Art Critique",
+    "content": "Art critique is the analysis and judgement of art. We describe what we see, analyse the techniques used, and share our interpretation and evaluation. Art critique helps us understand and appreciate art more deeply.",
+    "question": "What does art critique help us do?",
+    "options": [
+      "Make money from art",
+      "Understand and appreciate art more deeply",
+      "Only find mistakes in art"
+    ],
+    "answer": "Understand and appreciate art more deeply",
+    "emoji": " "
+  },
+  {
+    "id": 100,
+    "title": "The Joy of Creating",
+    "content": "Creating art makes people happy. It allows us express ourselves. Everyone can be creative in their own way. Art does not need to be perfect. The joy is in the process of making.",
+    "question": "What is the most important part of making art?",
+    "options": [
+      "Making it perfect",
+      "The joy of the process",
+      "Winning prizes"
+    ],
+    "answer": "The joy of the process",
+    "emoji": " "
+  }
+]

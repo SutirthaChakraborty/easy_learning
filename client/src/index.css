@@ -1,0 +1,44 @@
+html {
+  width: 100vw;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Fredoka", sans-serif;
+  font-size: 18px;
+  background: #e3f2fd;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* Dyslexia-friendly base styles */
+* {
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  word-spacing: 0.1em;
+  box-sizing: border-box;
+}
+
+/* Hide scrollbar — WebKit */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Form elements don't inherit font by default in browsers */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
