@@ -3,7 +3,7 @@
 export const fetchMathsSpeakPrompts = createAsyncThunk(
   'speakMaths/fetchAll',
   async (_, { rejectWithValue }) => {
-    const res = await fetch('http://localhost:5000/api/speak/maths', { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/maths`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch maths speaking prompts')
     const json = await res.json()
     return json.data

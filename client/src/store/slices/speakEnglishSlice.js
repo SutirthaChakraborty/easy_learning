@@ -3,7 +3,7 @@
 export const fetchEnglishSpeakPrompts = createAsyncThunk(
   'speakEnglish/fetchAll',
   async (_, { rejectWithValue }) => {
-    const res = await fetch('http://localhost:5000/api/speak/english', { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/english`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch english speaking prompts')
     const json = await res.json()
     return json.data

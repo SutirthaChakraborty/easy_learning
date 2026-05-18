@@ -3,9 +3,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const fetchSpellWords = createAsyncThunk(
   'spellEnglish/fetchAll',
   async (level, { rejectWithValue }) => {
-    const url = level
-      ? `http://localhost:5000/api/spell/english?level=${level}`
-      : 'http://localhost:5000/api/spell/english'
+    const base = `${import.meta.env.VITE_API_BASE_URL}/spell/english`
+    const url = level ? `${base}?level=${level}` : base
     const res = await fetch(url, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch spelling words')
     const json = await res.json()
@@ -16,7 +15,7 @@ export const fetchSpellWords = createAsyncThunk(
 export const checkSpellAnswer = createAsyncThunk(
   'spellEnglish/checkAnswer',
   async ({ id, answer }, { rejectWithValue }) => {
-    const res = await fetch('http://localhost:5000/api/spell/english/check', {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/spell/english/check`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',

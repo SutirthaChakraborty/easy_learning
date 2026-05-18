@@ -3,7 +3,7 @@
 export const fetchCards = createAsyncThunk(
   'memoryMatch/fetchCards',
   async (count = 8, { rejectWithValue }) => {
-    const res = await fetch(`http://localhost:5000/api/game/memory-match/cards?count=${count}`, { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/game/memory-match/cards?count=${count}`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch memory match cards')
     const json = await res.json()
     return json.data.map(card => ({ ...card, matched: false }))

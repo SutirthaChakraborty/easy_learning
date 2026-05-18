@@ -3,7 +3,7 @@
 export const fetchPuzzleWords = createAsyncThunk(
   'wordPuzzle/fetchAll',
   async (_, { rejectWithValue }) => {
-    const res = await fetch('http://localhost:5000/api/game/word-puzzle/play?count=35', { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/game/word-puzzle/play?count=35`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch puzzle words')
     const json = await res.json()
     return json.data
@@ -13,7 +13,7 @@ export const fetchPuzzleWords = createAsyncThunk(
 export const checkPuzzleAnswer = createAsyncThunk(
   'wordPuzzle/checkAnswer',
   async ({ id, answer }, { rejectWithValue }) => {
-    const res = await fetch('http://localhost:5000/api/game/word-puzzle/check', {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/game/word-puzzle/check`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
