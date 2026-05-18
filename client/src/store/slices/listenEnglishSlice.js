@@ -3,7 +3,7 @@
 export const fetchEnglishQuestions = createAsyncThunk(
   'listenEnglish/fetchAll',
   async (_, { rejectWithValue }) => {
-    const res = await fetch('http://localhost:5000/api/listen/english', { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/listen/english`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch english listening questions')
     const json = await res.json()
     return json.data

@@ -1,0 +1,279 @@
+# Easy Learn — Hostinger VPS Deployment Guide
+
+**Server IP:** `31.97.224.109`  
+**Stack:** React 19 (Vite) + Express.js + MongoDB Atlas (MERN)  
+**Node version:** `22.18.0` (matches local dev machine)  
+**Strategy:** Nginx serves the built React SPA; PM2 keeps the Express API alive; MongoDB Atlas as the database.
+
+---
+
+## Before You Start — Remote Allowlists
+
+Do these two things **before touching the server**, or the app will fail to connect.
+
+### MongoDB Atlas — Whitelist the VPS IP
+1. Log in to [MongoDB Atlas](https://cloud.mongodb.com)
+2. Go to **Network Access → Add IP Address**
+3. Add `31.97.224.109` → Save
+
+### Firebase — Authorize the VPS IP
+1. Open [Firebase Console](https://console.firebase.google.com) → project **learningo-c9ac4**
+2. Go to **Authentication → Settings → Authorized Domains**
+3. Add `31.97.224.109` → Save
+
+---
+
+## 1. Connect to the Server
+
+```bash
+ssh root@31.97.224.109
+```
+
+---
+
+## 2. System Updates & Essential Tools
+
+```bash
+apt update && apt upgrade -y
+apt install -y git curl build-essential ufw nginx
+```
+
+---
+
+## 3. Install Node.js 22.18.0
+
+This matches your local dev machine exactly.
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+apt install -y nodejs
+
+node -v   # must print v22.x.x
+npm -v    # should print 10.x.x
+```
+
+---
+
+## 4. Install PM2
+
+```bash
+npm install -g pm2
+```
+
+---
+
+## 5. Clone the Repository
+
+```bash
+cd /var/www
+git clone https://github.com/SutirthaChakraborty/easy_learning.git
+cd easy_learning
+```
+
+> Replace the URL with your actual GitHub repo URL.
+
+---
+
+## 6. Set Up Server Environment Variables
+
+```bash
+cd /var/www/easy_learning/server
+nano .env
+```
+
+Copy the block below and fill in your values. Your local `server/.env` already has most of these — just update `CLIENT_URL` and use a strong `JWT_SECRET` for production.
+
+```env
+PORT=5000
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.wqthdik.mongodb.net/mydb?retryWrites=true&w=majority
+CLIENT_URL=http://31.97.224.109
+JWT_SECRET=<replace-with-a-long-random-string>
+JWT_EXPIRES_IN=7d
+```
+
+> **`CLIENT_URL`** must be exactly `http://31.97.224.109` — this is what Express uses for CORS.  
+> **`MONGODB_URI`** — copy the full URI from your local `server/.env`, it points to `cluster0.wqthdik.mongodb.net`.  
+> **`JWT_SECRET`** — generate a strong secret: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`
+
+---
+
+## 7. Set Up Client Environment Variables
+
+```bash
+cd /var/www/easy_learning/client
+nano .env
+```
+
+```env
+VITE_FIREBASE_API_KEY=<your-firebase-api-key>
+VITE_API_BASE_URL=http://31.97.224.109/api
+```
+
+> **`VITE_FIREBASE_API_KEY`** — copy from your local `client/.env`.  
+> **`VITE_API_BASE_URL`** — tells React where to send API requests; Nginx will proxy `/api` → Express on port 5000.  
+> All other Firebase values (`authDomain`, `projectId`, etc.) are already hardcoded in `client/src/firebase/auth.js` — no changes needed there.
+
+---
+
+## 8. Install Dependencies & Build the Client
+
+```bash
+# Server dependencies
+cd /var/www/easy_learning/server
+npm install
+
+# Client dependencies + production build
+cd /var/www/easy_learning/client
+npm install
+npm run build
+```
+
+The production-ready static files are now in `/var/www/easy_learning/client/dist/`.
+
+---
+
+## 9. Seed the Database (First Deploy Only)
+
+```bash
+cd /var/www/easy_learning/server
+npm run seed
+```
+
+Skip this on subsequent deploys.
+
+---
+
+## 10. Start the API with PM2
+
+```bash
+cd /var/www/easy_learning/server
+pm2 start server.js --name easy-learn-api
+pm2 save
+
+# Make PM2 auto-start on server reboot
+pm2 startup
+# Run the command that PM2 prints out
+```
+
+Check it is running:
+
+```bash
+pm2 status
+pm2 logs easy-learn-api --lines 30
+```
+
+---
+
+## 11. Configure Nginx
+
+```bash
+nano /etc/nginx/sites-available/easy-learn
+```
+
+Paste:
+
+```nginx
+server {
+    listen 80;
+    server_name 31.97.224.109;
+
+    # Serve the React build
+    root /var/www/easy_learning/client/dist;
+    index index.html;
+
+    # React Router — all unknown paths fall back to index.html
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    # Proxy /api/* to Express on port 5000
+    location /api/ {
+        proxy_pass         http://localhost:5000;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header   Connection 'upgrade';
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+```
+
+Enable and reload:
+
+```bash
+ln -s /etc/nginx/sites-available/easy-learn /etc/nginx/sites-enabled/
+nginx -t                  # must say "syntax is ok"
+systemctl reload nginx
+```
+
+---
+
+## 12. Open the Firewall
+
+```bash
+ufw allow OpenSSH
+ufw allow 'Nginx Full'    # opens ports 80 and 443
+ufw enable
+ufw status
+```
+
+---
+
+## 13. Verify Everything Works
+
+Open in your browser:
+
+```
+http://31.97.224.109
+```
+
+Test the API directly from your machine:
+
+```bash
+curl http://31.97.224.109/api/learn
+```
+
+---
+
+## Updating After a Code Push
+
+Run this every time you push new commits:
+
+```bash
+cd /var/www/easy_learning
+git pull origin main
+
+# If client code changed — rebuild
+cd client && npm install && npm run build
+
+# If server code changed — restart API
+cd ../server && npm install && pm2 restart easy-learn-api
+```
+
+---
+
+## Quick Reference
+
+| What | Location |
+|------|----------|
+| React build output | `/var/www/easy_learning/client/dist/` |
+| Express API | `localhost:5000` (PM2 process: `easy-learn-api`) |
+| Nginx config | `/etc/nginx/sites-available/easy-learn` |
+| Server env file | `/var/www/easy_learning/server/.env` |
+| Client env file | `/var/www/easy_learning/client/.env` |
+| PM2 logs | `pm2 logs easy-learn-api` |
+| Nginx error log | `/var/log/nginx/error.log` |
+
+---
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---------|-----|
+| Blank page / 404 | Check `client/dist/` exists; confirm `try_files` line in Nginx config |
+| API returns 502 Bad Gateway | PM2 is down → `pm2 restart easy-learn-api` |
+| CORS error in browser | `CLIENT_URL` in `server/.env` must exactly match the browser origin (`http://31.97.224.109`) |
+| Google sign-in fails | Add `31.97.224.109` to Firebase Console → Authentication → Authorized Domains |
+| MongoDB connection refused | Add `31.97.224.109` to MongoDB Atlas → Network Access → IP Allowlist |
+| `npm run build` fails | Confirm `client/.env` has `VITE_FIREBASE_API_KEY` set |

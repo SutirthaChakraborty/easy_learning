@@ -3,7 +3,7 @@
 export const fetchScienceReadQuestions = createAsyncThunk(
   'readScience/fetchAll',
   async (_, { rejectWithValue }) => {
-    const res = await fetch('http://localhost:5000/api/read/science', { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/read/science`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch science reading questions')
     const json = await res.json()
     return json.data

@@ -25,7 +25,15 @@ const learnRoutes         = require('./routes/learn')
 
 const app = express()
 
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }))
+const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
+  .split(',').map(o => o.trim())
+app.use(cors({
+  origin: (origin, cb) => {
+    if (!origin || allowedOrigins.includes(origin)) return cb(null, true)
+    cb(new Error('Not allowed by CORS'))
+  },
+  credentials: true,
+}))
 app.use(express.json())
 app.use(cookieParser())
 

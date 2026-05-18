@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const fetchLearnQuestions = createAsyncThunk(
   'learn/fetchAll',
   async (_, { rejectWithValue }) => {
-    const res = await fetch('http://localhost:5000/api/learn', { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/learn`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch learn questions')
     const json = await res.json()
     return json.data

@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase/auth";
 
-const API = "http://localhost:5000";
+const API = import.meta.env.VITE_API_BASE_URL.replace(/\/api\/?$/, '');
 const JWT_KEY = "jwt_token";
 
 const AuthContext = createContext(null);
