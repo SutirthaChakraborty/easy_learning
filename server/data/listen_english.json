@@ -1,0 +1,703 @@
+
+[
+    {
+    "id": 1,
+    "sentence": "Red, blue and yellow are primary colours.",
+    "level": 1,
+    "emoji": " ",
+    "xp": 10
+    },
+    {
+    "id": 2,
+    "sentence": "A paintbrush is used to paint pictures.",
+    "level": 1,
+    "emoji": " ",
+    "xp": 10
+    },
+    {
+    "id": 3,
+    "sentence": "A drum makes a loud boom sound.",
+    "level": 1,
+    "emoji": " ",
+    "xp": 10
+    },
+    {
+    "id": 4,
+    "sentence": "A story has a beginning, a middle and an end.",
+    "level": 1,
+    "emoji": " ",
+    "xp": 10
+    },
+    {
+    "id": 5,
+    "sentence": "A circle can be drawn with a compass.",
+    "level": 1,
+    "emoji": " ",
+    "xp": 10
+    },
+    {
+    "id": 6,
+    "sentence": "Green is made by mixing blue and yellow.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 7,
+    "sentence": "Orange is made by mixing red and yellow.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 8,
+    "sentence": "Purple is made by mixing red and blue.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 9,
+    "sentence": "A portrait is a picture of a person.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 10,
+    "sentence": "A landscape painting shows the outdoors.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 11,
+    "sentence": "Texture means how something feels or looks like it feels.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 12,
+    "sentence": "Music has rhythm and melody.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 13,
+    "sentence": "A violin is a string instrument.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 14,
+    "sentence": "A flute is a wind instrument.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 15,
+    "sentence": "Drama means acting out stories.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 16,
+    "sentence": "Warm colours include red, orange and yellow.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 17,
+    "sentence": "Cool colours include blue, green and purple.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 18,
+    "sentence": "Shading makes a drawing look three dimensional.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 19,
+    "sentence": "A collage is made by sticking different materials together.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 20,
+    "sentence": "Perspective makes far away objects look smaller.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 21,
+    "sentence": "A still life painting shows objects like fruit and flowers.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 22,
+    "sentence": "A sculptor uses clay or stone to make art.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 23,
+    "sentence": "A storyboard shows scenes of a story in order.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 24,
+    "sentence": "Abstract art uses shapes and colour, not real objects.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 25,
+    "sentence": "The tempo of music means how fast or slow it is.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 26,
+    "sentence": "A loud sound is called forte in music.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 27,
+    "sentence": "A quiet sound is called piano in music.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 28,
+    "sentence": "Improvisation means performing without a script.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 29,
+    "sentence": "A monologue is when one person speaks alone on stage.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 30,
+    "sentence": "Symmetry in art means both sides look the same.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 31,
+    "sentence": "Artists use light and dark to create contrast.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 32,
+    "sentence": "Typography is the art of arranging letters.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 33,
+    "sentence": "Pointillism uses tiny dots of colour to make a picture.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 34,
+    "sentence": "The horizon line in a landscape is where the sky meets the land.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 35,
+    "sentence": "A chord is when you play three or more notes together.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 36,
+    "sentence": "Renaissance art focused on realism and the human body.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 37,
+    "sentence": "Impressionism is a style that captures light and movement.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 38,
+    "sentence": "A theme in drama is the main idea of a story.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 39,
+    "sentence": "Stop motion animation moves objects frame by frame.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 40,
+    "sentence": "Complementary colours are opposite each other on the colour wheel.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 41,
+    "sentence": "Foreground, middle ground and background show depth in a picture.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 42,
+    "sentence": "A treble clef is used in written music for higher notes.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 43,
+    "sentence": "A bass clef is used for lower notes in written music.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 44,
+    "sentence": "Cubism breaks objects into geometric shapes.",
+    "level": 5,
+    "emoji": " ",
+    "xp": 30
+    },
+    {
+    "id": 45,
+    "sentence": "Surrealism creates dreamlike, impossible scenes.",
+    "level": 5,
+    "emoji": " ",
+    "xp": 30
+    },
+    {
+    "id": 46,
+    "sentence": "A motif is a repeated element in art or music.",
+    "level": 5,
+    "emoji": " ",
+    "xp": 30
+    },
+    {
+    "id": 47,
+    "sentence": "Chiaroscuro is the use of strong light and dark in art.",
+    "level": 5,
+    "emoji": " ",
+    "xp": 30
+    },
+    {
+    "id": 48,
+    "sentence": "Pop art uses images from popular culture like adverts.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 49,
+    "sentence": "A pentatonic scale has five notes.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 50,
+    "sentence": "Calligraphy is the art of beautiful handwriting.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 51,
+    "sentence": "Colour mixing is how artists make new colours.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 52,
+    "sentence": "A sketch is a rough drawing done quickly.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 53,
+    "sentence": "An artist uses lines, shapes and colour in their work.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 54,
+    "sentence": "A song has verses and a chorus.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 55,
+    "sentence": "A costume helps an actor become their character.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 56,
+    "sentence": "Printing is making copies of an image using ink.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 57,
+    "sentence": "Weaving is a craft that makes fabric.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 58,
+    "sentence": "Photography is the art of taking pictures.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 59,
+    "sentence": "A mosaic is made of small coloured tiles.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 60,
+    "sentence": "Clay can be shaped and then baked hard in a kiln.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 61,
+    "sentence": "Black and white are not colours on the colour wheel.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 62,
+    "sentence": "Tone in art means how light or dark a colour is.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 63,
+    "sentence": "Pattern in art is a repeated design.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 64,
+    "sentence": "Form in art refers to three dimensional shapes.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 65,
+    "sentence": "Space in art is the area around and within objects.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 66,
+    "sentence": "Rhythm in music is the pattern of long and short sounds.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 67,
+    "sentence": "Harmony is when notes sound good together.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 68,
+    "sentence": "A melody is the main tune of a piece of music.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 69,
+    "sentence": "An ensemble is a group of musicians playing together.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 70,
+    "sentence": "Expression in drama shows the character's feelings.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 71,
+    "sentence": "Mime is acting without using words.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 72,
+    "sentence": "A soliloquy is a speech where a character talks to themselves.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 73,
+    "sentence": "A Greek mask is used in ancient theatre.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 74,
+    "sentence": "Digital art is made using computers or tablets.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 75,
+    "sentence": "Street art is made in public spaces.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 76,
+    "sentence": "A cartoon tells a story with drawings.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 77,
+    "sentence": "Animation is a series of drawings that appear to move.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 78,
+    "sentence": "A gallery is a place to display art.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 79,
+    "sentence": "A museum keeps important art and objects safe.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 80,
+    "sentence": "Ceramics is the art of making objects from clay.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 81,
+    "sentence": "Graffiti is writing or drawing on public surfaces.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 82,
+    "sentence": "Watercolour is a type of paint that is mixed with water.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 83,
+    "sentence": "Pastel is a soft drawing material.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 84,
+    "sentence": "Charcoal is used to make dark, smudgy drawings.",
+    "level": 2,
+    "emoji": " ",
+    "xp": 15
+    },
+    {
+    "id": 85,
+    "sentence": "A musical note shows how long a sound lasts.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 86,
+    "sentence": "A crotchet lasts for one beat in music.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 87,
+    "sentence": "A minim lasts for two beats in music.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 88,
+    "sentence": "A semibreve lasts for four beats in music.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 89,
+    "sentence": "Notation is the written language of music.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 90,
+    "sentence": "A scale is a set of musical notes in order.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 91,
+    "sentence": "Major scales sound happy and bright.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 92,
+    "sentence": "Minor scales sound sad and dark.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 93,
+    "sentence": "A conductor leads an orchestra with a baton.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 94,
+    "sentence": "A composer writes original pieces of music.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 95,
+    "sentence": "Beethoven was a famous classical composer.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 96,
+    "sentence": "Da Vinci painted the Mona Lisa.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 97,
+    "sentence": "Van Gogh painted The Starry Night.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 98,
+    "sentence": "Picasso was a founder of Cubism.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    },
+    {
+    "id": 99,
+    "sentence": "Architecture is the art of designing buildings.",
+    "level": 3,
+    "emoji": " ",
+    "xp": 20
+    },
+    {
+    "id": 100,
+    "sentence": "Graphic design creates visual communication.",
+    "level": 4,
+    "emoji": " ",
+    "xp": 25
+    }
+]

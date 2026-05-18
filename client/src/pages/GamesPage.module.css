@@ -1,0 +1,209 @@
+.page {
+  min-height: calc(100vh - 80px);
+  background-image: url('../assets/bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 10px 40px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 80px);
+}
+
+.backBtn {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "Fredoka", sans-serif;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s;
+  margin-bottom: 6px;
+}
+.backBtn:hover { background: rgba(255, 255, 255, 0.25); }
+
+.header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.headerEmoji {
+  font-size: 50px;
+  animation: bounce 1.2s ease-in-out infinite;
+  display: block;
+  margin-bottom: 2px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0 0 4px;
+  background: linear-gradient(to right, #ff6b6b, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  max-width: 900px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+.card {
+  border-radius: 22px;
+  padding: 18px 20px 14px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 6px solid #dedc5c;
+  box-shadow:
+    rgba(0, 0, 0, 0.3) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px,
+    inset 0 2px 0 rgba(255,255,255,0.25);
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+.blue   { background: linear-gradient(145deg, #1565c0, #1e88e5); }
+.green  { background: linear-gradient(145deg, #2e7d32, #43a047); }
+.orange { background: linear-gradient(145deg, #e65100, #fb8c00); }
+
+.cardEmoji {
+  font-size: 42px;
+  animation: spin 6s linear infinite;
+}
+@keyframes spin {
+  0%   { transform: rotate(0deg) scale(1); }
+  25%  { transform: rotate(5deg) scale(1.05); }
+  75%  { transform: rotate(-5deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.difficulty {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.stars { font-size: 16px; letter-spacing: 2px; }
+
+.playNow {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.22);
+  color: white;
+  padding: 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: background 0.2s;
+}
+.card:hover .playNow { background: rgba(255,255,255,0.35); }
+
+.trophyRow {
+  display: flex;
+  gap: 14px;
+  font-size: 26px;
+  animation: trophyFloat 3s ease-in-out infinite;
+}
+@keyframes trophyFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ─── FLEX ROW (440px – 780px) ─── */
+@media (min-width: 440px) and (max-width: 780px) {
+  .grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    max-width: 100%;
+  }
+  .card {
+    flex: 1;
+    min-width: 0;
+    padding: 14px 10px 12px;
+    gap: 6px;
+  }
+  .content { padding: 10px 14px 14px; }
+  .header { margin-bottom: 8px; }
+  .headerEmoji { font-size: 40px; }
+  .title { font-size: 26px; }
+  .subtitle { font-size: 13px; }
+  .cardEmoji { font-size: 32px; color: #ffffffa2; }
+  .cardTitle { font-size: 15px; }
+  .cardDesc { font-size: 11px; }
+  .playNow { font-size: 12px; padding: 6px; }
+  .trophyRow { font-size: 20px; gap: 10px; }
+}
+
+/* ─── MOBILE (< 440px) ─── */
+@media (max-width: 440px) {
+  .grid { grid-template-columns: 1fr; gap: 14px; max-width: 340px; }
+  .content { padding: 16px 14px 30px; }
+  .title { font-size: 26px; }
+  .subtitle { font-size: 14px; }
+  .header { margin-bottom: 12px; }
+}

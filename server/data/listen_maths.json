@@ -1,0 +1,703 @@
+[
+ {
+ "id": 1,
+ "sentence": "One plus one equals two.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 2,
+ "sentence": "Two plus two equals four.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 3,
+ "sentence": "Five take away two is three.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 4,
+ "sentence": "Ten is bigger than five.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 5,
+ "sentence": "A circle is round.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 6,
+ "sentence": "A square has four equal sides.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 7,
+ "sentence": "Half of ten is five.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 8,
+ "sentence": "Three plus three equals six.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 9,
+ "sentence": "Zero means nothing.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 10,
+ "sentence": "A triangle has three sides.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 11,
+ "sentence": "Count to five: one two three four five.",
+ "level": 1,
+ "emoji": "🖐",
+ "xp": 10
+ },
+ {
+ "id": 12,
+ "sentence": "Four minus one equals three.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 13,
+ "sentence": "Two times three equals six.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 14,
+ "sentence": "Double four is eight.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 15,
+ "sentence": "Odd numbers cannot be divided equally by two.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 16,
+ "sentence": "Even numbers can be divided equally by two.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 17,
+ "sentence": "Ten times ten equals one hundred.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 18,
+ "sentence": "Half of twenty is ten.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 19,
+ "sentence": "A rectangle has four sides.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 20,
+ "sentence": "A pentagon has five sides.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 21,
+ "sentence": "Twenty minus eight equals twelve.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 22,
+ "sentence": "Five times five equals twenty five.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 23,
+ "sentence": "One hundred has three digits.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 24,
+ "sentence": "The number after nine is ten.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 25,
+ "sentence": "A quarter is one of four equal parts.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 26,
+ "sentence": "Thirty plus twenty equals fifty.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 27,
+ "sentence": "A cube has six flat faces.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 28,
+ "sentence": "Seven times eight equals fifty six.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 29,
+ "sentence": "Sixty divided by ten equals six.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 30,
+ "sentence": "The area of a rectangle is length times width.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 31,
+ "sentence": "A right angle is ninety degrees.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 32,
+ "sentence": "Fractions are parts of a whole.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 33,
+ "sentence": "Two thirds is bigger than one half.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 34,
+ "sentence": "Negative numbers are less than zero.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 35,
+ "sentence": "A decimal point separates whole numbers from parts.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 36,
+ "sentence": "Three squared equals nine.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 37,
+ "sentence": "The perimeter is the total length around a shape.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 38,
+ "sentence": "One kilometre is one thousand metres.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 39,
+ "sentence": "One litre is one thousand millilitres.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 40,
+ "sentence": "One kilogram is one thousand grams.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 41,
+ "sentence": "Probability tells us how likely something is.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 42,
+ "sentence": "The mean is the average of a set of numbers.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 43,
+ "sentence": "A prime number has only two factors.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 44,
+ "sentence": "Percentages are out of one hundred.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 45,
+ "sentence": "Angles in a triangle add up to one hundred and eighty degrees.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 46,
+ "sentence": "A quadrilateral has four angles.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 47,
+ "sentence": "Parallel lines never meet.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 48,
+ "sentence": "Volume measures the space inside a three dimensional shape.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 49,
+ "sentence": "Ratio compares two quantities.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 50,
+ "sentence": "Pi is approximately three point one four.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 51,
+ "sentence": "Six divided by two equals three.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 52,
+ "sentence": "Nine plus one equals ten.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 53,
+ "sentence": "Eight minus three equals five.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 54,
+ "sentence": "Seven is an odd number.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 55,
+ "sentence": "Four is an even number.",
+ "level": 1,
+ "emoji": " ",
+ "xp": 10
+ },
+ {
+ "id": 56,
+ "sentence": "Six times two equals twelve.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 57,
+ "sentence": "Fifteen divided by three equals five.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 58,
+ "sentence": "One hundred minus fifty equals fifty.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 59,
+ "sentence": "Twenty five plus seventy five equals one hundred.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 60,
+ "sentence": "A hexagon has six sides.",
+ "level": 2,
+ "emoji": "⬡",
+ "xp": 15
+ },
+ {
+ "id": 61,
+ "sentence": "An octagon has eight sides.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 62,
+ "sentence": "Twelve times twelve equals one hundred and forty four.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 63,
+ "sentence": "The square root of sixteen is four.",
+ "level": 4,
+ "emoji": "√",
+ "xp": 25
+ },
+ {
+ "id": 64,
+ "sentence": "An isosceles triangle has two equal sides.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 65,
+ "sentence": "Symmetry means a shape looks the same on both sides.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 66,
+ "sentence": "One quarter is the same as twenty five percent.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 67,
+ "sentence": "The digit in the hundreds place of three hundred is three.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 68,
+ "sentence": "Multiplication is repeated addition.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 69,
+ "sentence": "Division is sharing equally.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 70,
+ "sentence": "A straight line has an angle of one hundred and eighty degrees.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 71,
+ "sentence": "One half is the same as zero point five.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 72,
+ "sentence": "Algebra uses letters to stand for unknown numbers.",
+ "level": 5,
+ "emoji": " ",
+ "xp": 30
+ },
+ {
+ "id": 73,
+ "sentence": "A circle has three hundred and sixty degrees.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 74,
+ "sentence": "Prime numbers include two, three, five and seven.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+  "id": 75,
+  "sentence": "The sum of all angles in a quadrilateral is three hundred and sixty degrees.",
+  "level": 4,
+  "emoji": "",
+  "xp": 25
+ },
+ {
+ "id": 76,
+ "sentence": "A bar chart shows data using coloured bars.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 77,
+ "sentence": "A pie chart shows data as slices of a circle.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 78,
+ "sentence": "The mode is the most common number in a set.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 79,
+ "sentence": "The median is the middle number in an ordered set.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 80,
+ "sentence": "A sphere is a three dimensional circle.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 81,
+ "sentence": "A cylinder has two circular faces.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 82,
+ "sentence": "A pyramid has a square base and triangular faces.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 83,
+ "sentence": "Ninety nine plus one equals one hundred.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 84,
+ "sentence": "A number line helps us order numbers.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 85,
+ "sentence": "Rounding to the nearest ten: fourteen rounds to ten.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 86,
+ "sentence": "Three quarters is the same as seventy five percent.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 87,
+ "sentence": "A polygon is a flat shape with straight sides.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 88,
+ "sentence": "Coordinates tell us a position on a grid.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 89,
+ "sentence": "Subtraction is the opposite of addition.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 90,
+ "sentence": "Division is the opposite of multiplication.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 91,
+ "sentence": "Four times four is sixteen.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 92,
+ "sentence": "The smallest two digit number is ten.",
+ "level": 2,
+ "emoji": " ",
+ "xp": 15
+ },
+ {
+ "id": 93,
+ "sentence": "One thousand is ten times one hundred.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 94,
+ "sentence": "A right angled triangle has one ninety degree angle.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 95,
+ "sentence": "Factors are numbers that divide evenly into another number.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 96,
+ "sentence": "Multiples are numbers in the times table.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 97,
+ "sentence": "Nine times nine equals eighty one.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 98,
+ "sentence": "One hundred divided by four equals twenty five.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+ },
+ {
+ "id": 99,
+ "sentence": "A net is a flat shape that folds into a solid.",
+ "level": 4,
+ "emoji": " ",
+ "xp": 25
+ },
+ {
+ "id": 100,
+ "sentence": "Square numbers are made by multiplying a number by itself.",
+ "level": 3,
+ "emoji": " ",
+ "xp": 20
+
+}
+]
