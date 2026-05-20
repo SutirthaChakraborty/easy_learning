@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "होम",
+    "games": "खेल",
+    "lessons": "पाठ",
+    "login": "लॉगिन",
+    "logout": "लॉगआउट",
+    "spellingBee": "स्पेलिंग बी",
+    "memoryMatch": "मेमोरी मैच",
+    "wordPuzzle": "वर्ड पज़ल",
+    "english": "अंग्रेज़ी",
+    "mathematics": "गणित",
+    "science": "विज्ञान",
+    "greeting": "नमस्ते {{name}}"
+  },
+  "hero": {
+    "greeting": "नमस्ते {{name}}",
+    "startLearning": "सीखना शुरू करें",
+    "playGames": "खेल खेलें"
+  },
+  "cards": {
+    "english": "अंग्रेज़ी",
+    "mathematics": "गणित",
+    "science": "विज्ञान"
+  },
+  "login": {
+    "joinTitle": "Learningo से जुड़ें!",
+    "welcomeBack": "वापस स्वागत है!",
+    "createAccountSubtitle": "सीखना शुरू करने के लिए अपना खाता बनाएं",
+    "continueJourneySubtitle": "अपनी यात्रा जारी रखने के लिए साइन इन करें",
+    "continueGoogle": "Google से जारी रखें",
+    "or": "या",
+    "namePlaceholder": "आपका नाम",
+    "emailPlaceholder": "ईमेल पता",
+    "passwordPlaceholder": "पासवर्ड",
+    "createAccountBtn": "खाता बनाएं",
+    "signInBtn": "साइन इन",
+    "signUpBtn": "साइन अप",
+    "loading": "लोड हो रहा है...",
+    "alreadyAccount": "पहले से खाता है?",
+    "noAccount": "खाता नहीं है?",
+    "errorDefault": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
+    "googleCancelled": "Google साइन-इन रद्द कर दिया गया।"
+  },
+  "common": {
+    "loading": "लोड हो रहा है...",
+    "error": "कुछ गलत हो गया।"
+  }
+}

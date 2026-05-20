@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "Startseite",
+    "games": "Spiele",
+    "lessons": "Lektionen",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "spellingBee": "Rechtschreibung",
+    "memoryMatch": "Gedächtnisspiel",
+    "wordPuzzle": "Worträtsel",
+    "english": "Englisch",
+    "mathematics": "Mathematik",
+    "science": "Naturwissenschaft",
+    "greeting": "Hallo {{name}}"
+  },
+  "hero": {
+    "greeting": "Hallo {{name}}",
+    "startLearning": "Lernen beginnen",
+    "playGames": "Spiele spielen"
+  },
+  "cards": {
+    "english": "Englisch",
+    "mathematics": "Mathematik",
+    "science": "Naturwissenschaft"
+  },
+  "login": {
+    "joinTitle": "Tritt Learningo bei!",
+    "welcomeBack": "Willkommen zurück!",
+    "createAccountSubtitle": "Erstelle dein Konto, um mit dem Lernen zu beginnen",
+    "continueJourneySubtitle": "Melde dich an, um deine Reise fortzusetzen",
+    "continueGoogle": "Mit Google fortfahren",
+    "or": "oder",
+    "namePlaceholder": "Dein Name",
+    "emailPlaceholder": "E-Mail-Adresse",
+    "passwordPlaceholder": "Passwort",
+    "createAccountBtn": "Konto erstellen",
+    "signInBtn": "Anmelden",
+    "signUpBtn": "Registrieren",
+    "loading": "Laden...",
+    "alreadyAccount": "Bereits ein Konto?",
+    "noAccount": "Noch kein Konto?",
+    "errorDefault": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "googleCancelled": "Die Google-Anmeldung wurde abgebrochen."
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Etwas ist schiefgelaufen."
+  }
+}

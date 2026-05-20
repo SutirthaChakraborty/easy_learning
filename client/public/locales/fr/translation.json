@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "games": "Jeux",
+    "lessons": "Leçons",
+    "login": "Connexion",
+    "logout": "Déconnexion",
+    "spellingBee": "Orthographe",
+    "memoryMatch": "Jeu de mémoire",
+    "wordPuzzle": "Puzzle de mots",
+    "english": "Anglais",
+    "mathematics": "Mathématiques",
+    "science": "Sciences",
+    "greeting": "Bonjour {{name}}"
+  },
+  "hero": {
+    "greeting": "Bonjour {{name}}",
+    "startLearning": "Commencer à apprendre",
+    "playGames": "Jouer aux jeux"
+  },
+  "cards": {
+    "english": "Anglais",
+    "mathematics": "Mathématiques",
+    "science": "Sciences"
+  },
+  "login": {
+    "joinTitle": "Rejoignez Learningo !",
+    "welcomeBack": "Bon retour !",
+    "createAccountSubtitle": "Créez votre compte pour commencer à apprendre",
+    "continueJourneySubtitle": "Connectez-vous pour continuer votre voyage",
+    "continueGoogle": "Continuer avec Google",
+    "or": "ou",
+    "namePlaceholder": "Votre nom",
+    "emailPlaceholder": "Adresse e-mail",
+    "passwordPlaceholder": "Mot de passe",
+    "createAccountBtn": "Créer un compte",
+    "signInBtn": "Se connecter",
+    "signUpBtn": "S'inscrire",
+    "loading": "Chargement...",
+    "alreadyAccount": "Vous avez déjà un compte ?",
+    "noAccount": "Pas encore de compte ?",
+    "errorDefault": "Quelque chose s'est mal passé. Veuillez réessayer.",
+    "googleCancelled": "La connexion Google a été annulée."
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Quelque chose s'est mal passé."
+  }
+}

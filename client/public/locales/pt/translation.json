@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "Início",
+    "games": "Jogos",
+    "lessons": "Lições",
+    "login": "Entrar",
+    "logout": "Sair",
+    "spellingBee": "Soletração",
+    "memoryMatch": "Jogo da memória",
+    "wordPuzzle": "Quebra-cabeça de palavras",
+    "english": "Inglês",
+    "mathematics": "Matemática",
+    "science": "Ciências",
+    "greeting": "Olá {{name}}"
+  },
+  "hero": {
+    "greeting": "Olá {{name}}",
+    "startLearning": "Começar a aprender",
+    "playGames": "Jogar jogos"
+  },
+  "cards": {
+    "english": "Inglês",
+    "mathematics": "Matemática",
+    "science": "Ciências"
+  },
+  "login": {
+    "joinTitle": "Junte-se ao Learningo!",
+    "welcomeBack": "Bem-vindo de volta!",
+    "createAccountSubtitle": "Crie sua conta para começar a aprender",
+    "continueJourneySubtitle": "Entre para continuar sua jornada",
+    "continueGoogle": "Continuar com Google",
+    "or": "ou",
+    "namePlaceholder": "Seu nome",
+    "emailPlaceholder": "Endereço de e-mail",
+    "passwordPlaceholder": "Senha",
+    "createAccountBtn": "Criar conta",
+    "signInBtn": "Entrar",
+    "signUpBtn": "Cadastrar",
+    "loading": "Carregando...",
+    "alreadyAccount": "Já tem uma conta?",
+    "noAccount": "Não tem uma conta?",
+    "errorDefault": "Algo deu errado. Por favor, tente novamente.",
+    "googleCancelled": "O login com Google foi cancelado."
+  },
+  "common": {
+    "loading": "Carregando...",
+    "error": "Algo deu errado."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "الرئيسية",
+    "games": "الألعاب",
+    "lessons": "الدروس",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "spellingBee": "لعبة التهجئة",
+    "memoryMatch": "لعبة الذاكرة",
+    "wordPuzzle": "لغز الكلمات",
+    "english": "الإنجليزية",
+    "mathematics": "الرياضيات",
+    "science": "العلوم",
+    "greeting": "مرحباً {{name}}"
+  },
+  "hero": {
+    "greeting": "مرحباً {{name}}",
+    "startLearning": "ابدأ التعلم",
+    "playGames": "العب الألعاب"
+  },
+  "cards": {
+    "english": "الإنجليزية",
+    "mathematics": "الرياضيات",
+    "science": "العلوم"
+  },
+  "login": {
+    "joinTitle": "انضم إلى Learningo!",
+    "welcomeBack": "مرحباً بعودتك!",
+    "createAccountSubtitle": "أنشئ حسابك لبدء التعلم",
+    "continueJourneySubtitle": "سجّل دخولك لمتابعة رحلتك",
+    "continueGoogle": "المتابعة مع Google",
+    "or": "أو",
+    "namePlaceholder": "اسمك",
+    "emailPlaceholder": "البريد الإلكتروني",
+    "passwordPlaceholder": "كلمة المرور",
+    "createAccountBtn": "إنشاء حساب",
+    "signInBtn": "تسجيل الدخول",
+    "signUpBtn": "إنشاء حساب جديد",
+    "loading": "جارٍ التحميل...",
+    "alreadyAccount": "لديك حساب بالفعل؟",
+    "noAccount": "ليس لديك حساب؟",
+    "errorDefault": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "googleCancelled": "تم إلغاء تسجيل الدخول بـ Google."
+  },
+  "common": {
+    "loading": "جارٍ التحميل...",
+    "error": "حدث خطأ ما."
+  }
+}

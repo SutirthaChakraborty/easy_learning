@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Cards from "../Cards/Cards";
 import styles from "./Hero.module.css";
 import rem from "../../assets/remBG.png";
@@ -9,6 +10,8 @@ import { useAuth } from "../../context/AuthContext";
 const Hero = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { t } = useTranslation();
+
   const fullName = user?.name || user?.email?.split("@")[0];
   const firstName = fullName?.split(" ")[0];
 
@@ -26,16 +29,18 @@ const Hero = () => {
       <div className={styles.right}>
         {user && (
           <p className={styles.greeting}>
-            😊 <span className={styles.greetingText}>Hello {firstName}</span> 👋🏻
+            😊 <span className={styles.greetingText}>
+              {t("hero.greeting", { name: firstName })}
+            </span> 👋🏻
           </p>
         )}
         <div className={styles.buttons}>
           <button className={styles.learn} onClick={handleStartLearning}>
-            Start Learning <FaBookOpen className={styles.btnIcon} />
+            {t("hero.startLearning")} <FaBookOpen className={styles.btnIcon} />
           </button>
 
           <button className={styles.play} onClick={() => { playSlide(); navigate("/games"); }}>
-            Play Games <FaGamepad className={styles.btnIcon} />
+            {t("hero.playGames")} <FaGamepad className={styles.btnIcon} />
           </button>
         </div>
 
