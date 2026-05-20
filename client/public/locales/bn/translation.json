@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "হোম",
+    "games": "গেমস",
+    "lessons": "পাঠ",
+    "login": "লগইন",
+    "logout": "লগআউট",
+    "spellingBee": "স্পেলিং বি",
+    "memoryMatch": "মেমোরি ম্যাচ",
+    "wordPuzzle": "ওয়ার্ড পাজল",
+    "english": "ইংরেজি",
+    "mathematics": "গণিত",
+    "science": "বিজ্ঞান",
+    "greeting": "হ্যালো {{name}}"
+  },
+  "hero": {
+    "greeting": "হ্যালো {{name}}",
+    "startLearning": "শেখা শুরু করুন",
+    "playGames": "গেম খেলুন"
+  },
+  "cards": {
+    "english": "ইংরেজি",
+    "mathematics": "গণিত",
+    "science": "বিজ্ঞান"
+  },
+  "login": {
+    "joinTitle": "Learningo-তে যোগ দিন!",
+    "welcomeBack": "স্বাগতম!",
+    "createAccountSubtitle": "শেখা শুরু করতে আপনার অ্যাকাউন্ট তৈরি করুন",
+    "continueJourneySubtitle": "আপনার যাত্রা চালিয়ে যেতে সাইন ইন করুন",
+    "continueGoogle": "Google দিয়ে চালিয়ে যান",
+    "or": "অথবা",
+    "namePlaceholder": "আপনার নাম",
+    "emailPlaceholder": "ইমেইল ঠিকানা",
+    "passwordPlaceholder": "পাসওয়ার্ড",
+    "createAccountBtn": "অ্যাকাউন্ট তৈরি করুন",
+    "signInBtn": "সাইন ইন",
+    "signUpBtn": "সাইন আপ",
+    "loading": "লোড হচ্ছে...",
+    "alreadyAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
+    "noAccount": "অ্যাকাউন্ট নেই?",
+    "errorDefault": "কিছু একটা ভুল হয়েছে। আবার চেষ্টা করুন।",
+    "googleCancelled": "Google সাইন-ইন বাতিল করা হয়েছে।"
+  },
+  "common": {
+    "loading": "লোড হচ্ছে...",
+    "error": "কিছু একটা ভুল হয়েছে।"
+  }
+}

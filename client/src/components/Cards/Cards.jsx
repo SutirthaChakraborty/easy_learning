@@ -1,17 +1,20 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import * as FramerMotion from "framer-motion";
 import styles from "./Cards.module.css";
 import { playSlide } from "../../utils/sounds";
 import { FaBook, FaCalculator, FaMicroscope } from "react-icons/fa";
 
+// titleKey maps to a translation key; the rendered label is always localised
 const cardData = [
-  { title: "English",     image: "/boy.jpg",     color: "blue",   subject: "english", Icon: FaBook       },
-  { title: "Mathematics", image: "/girl.jpg",    color: "green",  subject: "maths",   Icon: FaCalculator },
-  { title: "Science",     image: "/science.jpg", color: "orange", subject: "science", Icon: FaMicroscope },
+  { titleKey: "cards.english",     image: "/boy.jpg",     color: "blue",   subject: "english", Icon: FaBook       },
+  { titleKey: "cards.mathematics", image: "/girl.jpg",    color: "green",  subject: "maths",   Icon: FaCalculator },
+  { titleKey: "cards.science",     image: "/science.jpg", color: "orange", subject: "science", Icon: FaMicroscope },
 ];
 
 const Cards = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <div className={styles.wrapper}>
@@ -29,7 +32,7 @@ const Cards = () => {
         >
           <div className={styles.overlay}>
             <card.Icon className={styles.cardEmoji} />
-            {card.title}
+            {t(card.titleKey)}
           </div>
         </FramerMotion.motion.div>
       ))}

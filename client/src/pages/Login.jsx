@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import * as FramerMotion from "framer-motion";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase/auth";
@@ -17,6 +18,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { loginManual, registerManual } = useAuth();
+  const { t } = useTranslation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,7 +32,7 @@ const Login = () => {
       }
       navigate("/");
     } catch (err) {
-      setError(err.message || "Something went wrong. Please try again.");
+      setError(err.message || t("login.errorDefault"));
     } finally {
       setLoading(false);
     }
@@ -44,9 +46,9 @@ const Login = () => {
       navigate("/");
     } catch (err) {
       const googleErrors = {
-        "auth/popup-closed-by-user": "Google sign-in was cancelled.",
+        "auth/popup-closed-by-user": t("login.googleCancelled"),
       };
-      setError(googleErrors[err.code] || "Something went wrong. Please try again.");
+      setError(googleErrors[err.code] || t("login.errorDefault"));
     } finally {
       setLoading(false);
     }
@@ -70,12 +72,10 @@ const Login = () => {
       <div className={styles.content}>
         <div className={styles.card}>
           <h1 className={styles.title}>
-            {isSignup ? "Join Learningo!" : "Welcome Back!"}
+            {isSignup ? t("login.joinTitle") : t("login.welcomeBack")}
           </h1>
           <p className={styles.subtitle}>
-            {isSignup
-              ? "Create your account to start learning"
-              : "Sign in to continue your journey"}
+            {isSignup ? t("login.createAccountSubtitle") : t("login.continueJourneySubtitle")}
           </p>
 
           <button
@@ -85,11 +85,11 @@ const Login = () => {
             type="button"
           >
             <FcGoogle className={styles.googleIcon} />
-            Continue with Google
+            {t("login.continueGoogle")}
           </button>
 
           <div className={styles.divider}>
-            <span>or</span>
+            <span>{t("login.or")}</span>
           </div>
 
           <form onSubmit={handleSubmit} className={styles.form}>
@@ -98,7 +98,7 @@ const Login = () => {
                 <FaUser className={styles.inputIcon} />
                 <input
                   type="text"
-                  placeholder="Your name"
+                  placeholder={t("login.namePlaceholder")}
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   className={styles.input}
@@ -111,7 +111,7 @@ const Login = () => {
               <FaEnvelope className={styles.inputIcon} />
               <input
                 type="email"
-                placeholder="Email address"
+                placeholder={t("login.emailPlaceholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={styles.input}
@@ -123,7 +123,7 @@ const Login = () => {
               <FaLock className={styles.inputIcon} />
               <input
                 type="password"
-                placeholder="Password"
+                placeholder={t("login.passwordPlaceholder")}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className={styles.input}
@@ -138,14 +138,18 @@ const Login = () => {
               className={styles.submitBtn}
               disabled={loading}
             >
-              {loading ? "Loading..." : isSignup ? "Create Account" : "Sign In"}
+              {loading
+                ? t("login.loading")
+                : isSignup
+                ? t("login.createAccountBtn")
+                : t("login.signInBtn")}
             </button>
           </form>
 
           <p className={styles.toggle}>
-            {isSignup ? "Already have an account? " : "Don't have an account? "}
+            {isSignup ? t("login.alreadyAccount") : t("login.noAccount")}{" "}
             <button className={styles.toggleBtn} onClick={switchMode} type="button">
-              {isSignup ? "Sign In" : "Sign Up"}
+              {isSignup ? t("login.signInBtn") : t("login.signUpBtn")}
             </button>
           </p>
         </div>

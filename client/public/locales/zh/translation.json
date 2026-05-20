@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "首页",
+    "games": "游戏",
+    "lessons": "课程",
+    "login": "登录",
+    "logout": "退出",
+    "spellingBee": "拼写比赛",
+    "memoryMatch": "记忆配对",
+    "wordPuzzle": "文字谜题",
+    "english": "英语",
+    "mathematics": "数学",
+    "science": "科学",
+    "greeting": "你好 {{name}}"
+  },
+  "hero": {
+    "greeting": "你好 {{name}}",
+    "startLearning": "开始学习",
+    "playGames": "玩游戏"
+  },
+  "cards": {
+    "english": "英语",
+    "mathematics": "数学",
+    "science": "科学"
+  },
+  "login": {
+    "joinTitle": "加入 Learningo！",
+    "welcomeBack": "欢迎回来！",
+    "createAccountSubtitle": "创建账户，开始学习",
+    "continueJourneySubtitle": "登录继续您的旅程",
+    "continueGoogle": "使用 Google 继续",
+    "or": "或",
+    "namePlaceholder": "您的姓名",
+    "emailPlaceholder": "电子邮件地址",
+    "passwordPlaceholder": "密码",
+    "createAccountBtn": "创建账户",
+    "signInBtn": "登录",
+    "signUpBtn": "注册",
+    "loading": "加载中...",
+    "alreadyAccount": "已有账户？",
+    "noAccount": "还没有账户？",
+    "errorDefault": "出了点问题，请重试。",
+    "googleCancelled": "Google 登录已取消。"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出了点问题。"
+  }
+}

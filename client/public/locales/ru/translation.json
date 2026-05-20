@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "Главная",
+    "games": "Игры",
+    "lessons": "Уроки",
+    "login": "Войти",
+    "logout": "Выйти",
+    "spellingBee": "Орфография",
+    "memoryMatch": "Игра на память",
+    "wordPuzzle": "Словесный пазл",
+    "english": "Английский",
+    "mathematics": "Математика",
+    "science": "Наука",
+    "greeting": "Привет {{name}}"
+  },
+  "hero": {
+    "greeting": "Привет {{name}}",
+    "startLearning": "Начать обучение",
+    "playGames": "Играть в игры"
+  },
+  "cards": {
+    "english": "Английский",
+    "mathematics": "Математика",
+    "science": "Наука"
+  },
+  "login": {
+    "joinTitle": "Присоединяйся к Learningo!",
+    "welcomeBack": "С возвращением!",
+    "createAccountSubtitle": "Создай аккаунт, чтобы начать учиться",
+    "continueJourneySubtitle": "Войди, чтобы продолжить своё путешествие",
+    "continueGoogle": "Продолжить с Google",
+    "or": "или",
+    "namePlaceholder": "Ваше имя",
+    "emailPlaceholder": "Адрес электронной почты",
+    "passwordPlaceholder": "Пароль",
+    "createAccountBtn": "Создать аккаунт",
+    "signInBtn": "Войти",
+    "signUpBtn": "Зарегистрироваться",
+    "loading": "Загрузка...",
+    "alreadyAccount": "Уже есть аккаунт?",
+    "noAccount": "Нет аккаунта?",
+    "errorDefault": "Что-то пошло не так. Попробуйте ещё раз.",
+    "googleCancelled": "Вход через Google был отменён."
+  },
+  "common": {
+    "loading": "Загрузка...",
+    "error": "Что-то пошло не так."
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "games": "Juegos",
+    "lessons": "Lecciones",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "spellingBee": "Ortografía",
+    "memoryMatch": "Juego de memoria",
+    "wordPuzzle": "Puzzle de palabras",
+    "english": "Inglés",
+    "mathematics": "Matemáticas",
+    "science": "Ciencias",
+    "greeting": "Hola {{name}}"
+  },
+  "hero": {
+    "greeting": "Hola {{name}}",
+    "startLearning": "Empezar a aprender",
+    "playGames": "Jugar juegos"
+  },
+  "cards": {
+    "english": "Inglés",
+    "mathematics": "Matemáticas",
+    "science": "Ciencias"
+  },
+  "login": {
+    "joinTitle": "¡Únete a Learningo!",
+    "welcomeBack": "¡Bienvenido de nuevo!",
+    "createAccountSubtitle": "Crea tu cuenta para empezar a aprender",
+    "continueJourneySubtitle": "Inicia sesión para continuar tu viaje",
+    "continueGoogle": "Continuar con Google",
+    "or": "o",
+    "namePlaceholder": "Tu nombre",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "createAccountBtn": "Crear cuenta",
+    "signInBtn": "Iniciar sesión",
+    "signUpBtn": "Registrarse",
+    "loading": "Cargando...",
+    "alreadyAccount": "¿Ya tienes una cuenta?",
+    "noAccount": "¿No tienes una cuenta?",
+    "errorDefault": "Algo salió mal. Por favor, inténtalo de nuevo.",
+    "googleCancelled": "El inicio de sesión con Google fue cancelado."
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Algo salió mal."
+  }
+}

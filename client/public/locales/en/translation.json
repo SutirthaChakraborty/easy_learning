@@ -1,0 +1,49 @@
+{
+  "navbar": {
+    "home": "Home",
+    "games": "Games",
+    "lessons": "Lessons",
+    "login": "Login",
+    "logout": "Logout",
+    "spellingBee": "Spelling Bee",
+    "memoryMatch": "Memory Match",
+    "wordPuzzle": "Word Puzzle",
+    "english": "English",
+    "mathematics": "Mathematics",
+    "science": "Science",
+    "greeting": "Hello {{name}}"
+  },
+  "hero": {
+    "greeting": "Hello {{name}}",
+    "startLearning": "Start Learning",
+    "playGames": "Play Games"
+  },
+  "cards": {
+    "english": "English",
+    "mathematics": "Mathematics",
+    "science": "Science"
+  },
+  "login": {
+    "joinTitle": "Join Learningo!",
+    "welcomeBack": "Welcome Back!",
+    "createAccountSubtitle": "Create your account to start learning",
+    "continueJourneySubtitle": "Sign in to continue your journey",
+    "continueGoogle": "Continue with Google",
+    "or": "or",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "Email address",
+    "passwordPlaceholder": "Password",
+    "createAccountBtn": "Create Account",
+    "signInBtn": "Sign In",
+    "signUpBtn": "Sign Up",
+    "loading": "Loading...",
+    "alreadyAccount": "Already have an account?",
+    "noAccount": "Don't have an account?",
+    "errorDefault": "Something went wrong. Please try again.",
+    "googleCancelled": "Google sign-in was cancelled."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong."
+  }
+}
