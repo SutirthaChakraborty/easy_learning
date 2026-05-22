@@ -3,6 +3,7 @@
     "home": "Início",
     "games": "Jogos",
     "lessons": "Lições",
+    "dashboard": "Painel",
     "login": "Entrar",
     "logout": "Sair",
     "spellingBee": "Soletração",
@@ -40,10 +41,81 @@
     "alreadyAccount": "Já tem uma conta?",
     "noAccount": "Não tem uma conta?",
     "errorDefault": "Algo deu errado. Por favor, tente novamente.",
-    "googleCancelled": "O login com Google foi cancelado."
+    "googleCancelled": "O login com Google foi cancelado.",
+    "popupBlocked": "O pop-up foi bloqueado. Permita pop-ups para este site.",
+    "networkError": "Erro de rede. Verifique sua conexão.",
+    "operationNotAllowed": "O login com Google não está habilitado."
   },
   "common": {
     "loading": "Carregando...",
     "error": "Algo deu errado."
+  },
+  "dashboard": {
+    "welcomeBack": "Bem-vindo de volta, {{name}}! 👋",
+    "motivational": "Continue assim — cada lição conta.",
+    "level": "Nível {{level}}",
+    "xpTotal": "{{xp}} XP no total",
+    "loading": "Carregando…",
+    "loadingDashboard": "Carregando seu painel…",
+    "loginPrompt": "Faça login para ver seu painel.",
+    "serverError": "Não foi possível conectar ao servidor.",
+    "serverErrorHint": "Certifique-se de que o backend está em execução e recarregue a página.",
+    "retry": "Tentar novamente",
+    "stats": {
+      "totalXP": "XP Total",
+      "sessions": "Sessões",
+      "lessonsCompleted": "lições concluídas",
+      "todayTime": "Tempo hoje",
+      "peakTime": "Pico: {{time}}",
+      "noSessions": "Nenhuma sessão ainda",
+      "streak": "Sequência atual",
+      "streakDays": "{{count}} dias",
+      "onFire": "Em chamas! 🔥",
+      "keepGoing": "Continue assim!",
+      "achievements": "Conquistas",
+      "badgesEarned": "emblemas ganhos"
+    },
+    "performance": {
+      "title": "Desempenho — Últimos 30 dias",
+      "empty": "Nenhuma atividade ainda — conclua uma lição para ver seu progresso!"
+    },
+    "heatmap": {
+      "titleCurrent": "Mapa de atividade — {{year}} (até agora)",
+      "titlePast": "Mapa de atividade — {{year}}",
+      "activeDays": "{{count}} dias ativos",
+      "mostActive": "Mais ativo {{time}}",
+      "today": "Hoje: {{time}}",
+      "less": "Menos",
+      "more": "Mais"
+    },
+    "achievements": {
+      "title": "Conquistas",
+      "empty": "Conclua lições para desbloquear conquistas!",
+      "earnedOn": "Obtido {{date}}",
+      "xpReward": "+{{xp}} XP ao desbloquear",
+      "categories": {
+        "learning": "Aprendizado",
+        "games": "Jogos",
+        "streak": "Sequência",
+        "xp": "Marcos de XP",
+        "special": "Especial"
+      },
+      "first_step":       { "name": "Primeiro Passo",    "description": "Conclua sua primeira lição" },
+      "bookworm":         { "name": "Devorador de Livros","description": "Conclua 5 lições de leitura" },
+      "sharp_ears":       { "name": "Ouvidos Atentos",   "description": "Conclua 5 lições de escuta" },
+      "penpal":           { "name": "Amigo por Carta",   "description": "Conclua 5 lições de escrita" },
+      "public_speaker":   { "name": "Orador",            "description": "Conclua 5 lições de fala" },
+      "all_rounder":      { "name": "Versátil",          "description": "Tente todas as 3 matérias" },
+      "gamer":            { "name": "Gamer",             "description": "Jogue qualquer jogo" },
+      "spelling_bee":     { "name": "Mestre da Ortografia","description": "Conclua o jogo de soletração" },
+      "memory_master":    { "name": "Mestre da Memória", "description": "Conclua o jogo da memória" },
+      "puzzle_whiz":      { "name": "Craque em Puzzles", "description": "Resolva um quebra-cabeça de palavras" },
+      "three_day_streak": { "name": "Em Chamas",         "description": "Ativo por 3 dias seguidos" },
+      "week_warrior":     { "name": "Guerreiro Semanal", "description": "Ativo por 7 dias seguidos" },
+      "century":          { "name": "Centenário",        "description": "Ganhe 100 XP" },
+      "champion":         { "name": "Campeão",           "description": "Ganhe 500 XP" },
+      "early_bird":       { "name": "Madrugador",        "description": "Estude antes das 8h" },
+      "night_owl":        { "name": "Coruja Noturna",    "description": "Estude depois das 21h" }
+    }
   }
 }

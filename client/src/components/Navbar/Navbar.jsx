@@ -75,7 +75,7 @@ const Navbar = () => {
         {user ? (
           <div className={styles.userArea}>
             <NavLink to="/dashboard" className={styles.dashboardLink} onClick={close}>
-              <FaTachometerAlt className={styles.loginIcon} /> Dashboard
+              <FaTachometerAlt className={styles.loginIcon} /> {t("navbar.dashboard")}
             </NavLink>
             <span className={styles.userName}>
               👋 {t("navbar.greeting", { name: firstName })}

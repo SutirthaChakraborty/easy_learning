@@ -1,0 +1,121 @@
+{
+  "navbar": {
+    "home": "Beranda",
+    "games": "Permainan",
+    "lessons": "Pelajaran",
+    "dashboard": "Dasbor",
+    "login": "Masuk",
+    "logout": "Keluar",
+    "spellingBee": "Ejaan",
+    "memoryMatch": "Permainan Memori",
+    "wordPuzzle": "Teka-teki Kata",
+    "english": "Bahasa Inggris",
+    "mathematics": "Matematika",
+    "science": "Sains",
+    "greeting": "Halo {{name}}"
+  },
+  "hero": {
+    "greeting": "Halo {{name}}",
+    "startLearning": "Mulai Belajar",
+    "playGames": "Main Permainan"
+  },
+  "cards": {
+    "english": "Bahasa Inggris",
+    "mathematics": "Matematika",
+    "science": "Sains"
+  },
+  "login": {
+    "joinTitle": "Bergabung dengan Learningo!",
+    "welcomeBack": "Selamat Datang Kembali!",
+    "createAccountSubtitle": "Buat akun untuk mulai belajar",
+    "continueJourneySubtitle": "Masuk untuk melanjutkan perjalananmu",
+    "continueGoogle": "Lanjutkan dengan Google",
+    "or": "atau",
+    "namePlaceholder": "Nama kamu",
+    "emailPlaceholder": "Alamat email",
+    "passwordPlaceholder": "Kata sandi",
+    "createAccountBtn": "Buat Akun",
+    "signInBtn": "Masuk",
+    "signUpBtn": "Daftar",
+    "loading": "Memuat...",
+    "alreadyAccount": "Sudah punya akun?",
+    "noAccount": "Belum punya akun?",
+    "errorDefault": "Terjadi kesalahan. Silakan coba lagi.",
+    "googleCancelled": "Masuk dengan Google dibatalkan.",
+    "popupBlocked": "Pop-up diblokir. Izinkan pop-up untuk situs ini.",
+    "networkError": "Kesalahan jaringan. Periksa koneksimu.",
+    "operationNotAllowed": "Masuk dengan Google tidak diaktifkan."
+  },
+  "common": {
+    "loading": "Memuat...",
+    "error": "Terjadi kesalahan."
+  },
+  "dashboard": {
+    "welcomeBack": "Selamat datang kembali, {{name}}! 👋",
+    "motivational": "Terus lakukan yang terbaik — setiap pelajaran berarti.",
+    "level": "Level {{level}}",
+    "xpTotal": "Total {{xp}} XP",
+    "loading": "Memuat…",
+    "loadingDashboard": "Memuat dasbor…",
+    "loginPrompt": "Masuk untuk melihat dasbor kamu.",
+    "serverError": "Tidak dapat terhubung ke server.",
+    "serverErrorHint": "Pastikan backend berjalan, lalu segarkan halaman.",
+    "retry": "Coba lagi",
+    "stats": {
+      "totalXP": "Total XP",
+      "sessions": "Sesi",
+      "lessonsCompleted": "pelajaran selesai",
+      "todayTime": "Waktu Hari Ini",
+      "peakTime": "Puncak: {{time}}",
+      "noSessions": "Belum ada sesi",
+      "streak": "Rangkaian Saat Ini",
+      "streakDays": "{{count}} hari",
+      "onFire": "Luar biasa! 🔥",
+      "keepGoing": "Terus!",
+      "achievements": "Pencapaian",
+      "badgesEarned": "lencana diperoleh"
+    },
+    "performance": {
+      "title": "Kinerja — 30 Hari Terakhir",
+      "empty": "Belum ada aktivitas — selesaikan pelajaran untuk melihat kemajuanmu!"
+    },
+    "heatmap": {
+      "titleCurrent": "Peta Aktivitas — {{year}} (Sejauh Ini)",
+      "titlePast": "Peta Aktivitas — {{year}}",
+      "activeDays": "{{count}} hari aktif",
+      "mostActive": "Paling aktif {{time}}",
+      "today": "Hari ini: {{time}}",
+      "less": "Sedikit",
+      "more": "Banyak"
+    },
+    "achievements": {
+      "title": "Pencapaian",
+      "empty": "Selesaikan pelajaran untuk membuka pencapaian!",
+      "earnedOn": "Diperoleh {{date}}",
+      "xpReward": "+{{xp}} XP saat dibuka",
+      "categories": {
+        "learning": "Belajar",
+        "games": "Permainan",
+        "streak": "Rangkaian",
+        "xp": "Pencapaian XP",
+        "special": "Spesial"
+      },
+      "first_step":       { "name": "Langkah Pertama",   "description": "Selesaikan pelajaran pertama" },
+      "bookworm":         { "name": "Kutu Buku",          "description": "Selesaikan 5 pelajaran membaca" },
+      "sharp_ears":       { "name": "Telinga Tajam",      "description": "Selesaikan 5 pelajaran mendengar" },
+      "penpal":           { "name": "Teman Pena",         "description": "Selesaikan 5 pelajaran menulis" },
+      "public_speaker":   { "name": "Pembicara",          "description": "Selesaikan 5 pelajaran berbicara" },
+      "all_rounder":      { "name": "Serba Bisa",         "description": "Coba semua 3 mata pelajaran" },
+      "gamer":            { "name": "Gamer",              "description": "Mainkan permainan apa saja" },
+      "spelling_bee":     { "name": "Ahli Ejaan",         "description": "Selesaikan permainan ejaan" },
+      "memory_master":    { "name": "Master Memori",      "description": "Selesaikan permainan memori" },
+      "puzzle_whiz":      { "name": "Ahli Teka-teki",     "description": "Selesaikan teka-teki kata" },
+      "three_day_streak": { "name": "Membara",            "description": "Aktif 3 hari berturut-turut" },
+      "week_warrior":     { "name": "Pejuang Mingguan",   "description": "Aktif 7 hari berturut-turut" },
+      "century":          { "name": "Seratus",            "description": "Dapatkan 100 XP" },
+      "champion":         { "name": "Juara",              "description": "Dapatkan 500 XP" },
+      "early_bird":       { "name": "Si Pagi",            "description": "Belajar sebelum pukul 8 pagi" },
+      "night_owl":        { "name": "Burung Hantu Malam", "description": "Belajar setelah pukul 9 malam" }
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "navbar": {
+    "home": "Ana Sayfa",
+    "games": "Oyunlar",
+    "lessons": "Dersler",
+    "dashboard": "Kontrol Paneli",
+    "login": "Giriş Yap",
+    "logout": "Çıkış Yap",
+    "spellingBee": "Yazım Yarışması",
+    "memoryMatch": "Hafıza Oyunu",
+    "wordPuzzle": "Kelime Bulmacası",
+    "english": "İngilizce",
+    "mathematics": "Matematik",
+    "science": "Fen Bilgisi",
+    "greeting": "Merhaba {{name}}"
+  },
+  "hero": {
+    "greeting": "Merhaba {{name}}",
+    "startLearning": "Öğrenmeye Başla",
+    "playGames": "Oyun Oyna"
+  },
+  "cards": {
+    "english": "İngilizce",
+    "mathematics": "Matematik",
+    "science": "Fen Bilgisi"
+  },
+  "login": {
+    "joinTitle": "Learningo'ya Katıl!",
+    "welcomeBack": "Tekrar Hoş Geldin!",
+    "createAccountSubtitle": "Öğrenmeye başlamak için hesap oluştur",
+    "continueJourneySubtitle": "Yolculuğuna devam etmek için giriş yap",
+    "continueGoogle": "Google ile Devam Et",
+    "or": "veya",
+    "namePlaceholder": "Adın",
+    "emailPlaceholder": "E-posta adresi",
+    "passwordPlaceholder": "Şifre",
+    "createAccountBtn": "Hesap Oluştur",
+    "signInBtn": "Giriş Yap",
+    "signUpBtn": "Kayıt Ol",
+    "loading": "Yükleniyor...",
+    "alreadyAccount": "Zaten bir hesabın var mı?",
+    "noAccount": "Hesabın yok mu?",
+    "errorDefault": "Bir şeyler ters gitti. Lütfen tekrar dene.",
+    "googleCancelled": "Google girişi iptal edildi.",
+    "popupBlocked": "Açılır pencere engellendi. Bu site için açılır pencerelere izin ver.",
+    "networkError": "Ağ hatası. Bağlantını kontrol et.",
+    "operationNotAllowed": "Google girişi etkin değil."
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Bir şeyler ters gitti."
+  },
+  "dashboard": {
+    "welcomeBack": "Tekrar hoş geldin, {{name}}! 👋",
+    "motivational": "Harika işler çıkarıyorsun — her ders önemli.",
+    "level": "Seviye {{level}}",
+    "xpTotal": "Toplam {{xp}} XP",
+    "loading": "Yükleniyor…",
+    "loadingDashboard": "Kontrol paneli yükleniyor…",
+    "loginPrompt": "Kontrol panelini görmek için giriş yap.",
+    "serverError": "Sunucuya bağlanılamadı.",
+    "serverErrorHint": "Arka ucun çalıştığından emin ol ve sayfayı yenile.",
+    "retry": "Tekrar Dene",
+    "stats": {
+      "totalXP": "Toplam XP",
+      "sessions": "Oturumlar",
+      "lessonsCompleted": "ders tamamlandı",
+      "todayTime": "Bugünkü Süre",
+      "peakTime": "Zirve: {{time}}",
+      "noSessions": "Henüz oturum yok",
+      "streak": "Mevcut Seri",
+      "streakDays": "{{count}} gün",
+      "onFire": "Alev alev! 🔥",
+      "keepGoing": "Devam et!",
+      "achievements": "Başarımlar",
+      "badgesEarned": "rozet kazanıldı"
+    },
+    "performance": {
+      "title": "Performans — Son 30 Gün",
+      "empty": "Henüz aktivite yok — ilerlemenizi görmek için bir ders tamamla!"
+    },
+    "heatmap": {
+      "titleCurrent": "Aktivite Haritası — {{year}} (Bugüne Kadar)",
+      "titlePast": "Aktivite Haritası — {{year}}",
+      "activeDays": "{{count}} aktif gün",
+      "mostActive": "En aktif {{time}}",
+      "today": "Bugün: {{time}}",
+      "less": "Az",
+      "more": "Çok"
+    },
+    "achievements": {
+      "title": "Başarımlar",
+      "empty": "Başarımları açmak için dersler tamamla!",
+      "earnedOn": "{{date}} tarihinde kazanıldı",
+      "xpReward": "Açılışta +{{xp}} XP",
+      "categories": {
+        "learning": "Öğrenme",
+        "games": "Oyunlar",
+        "streak": "Seri",
+        "xp": "XP Dönüm Noktaları",
+        "special": "Özel"
+      },
+      "first_step":       { "name": "İlk Adım",          "description": "İlk dersi tamamla" },
+      "bookworm":         { "name": "Kitap Kurdu",        "description": "5 okuma dersi tamamla" },
+      "sharp_ears":       { "name": "Keskin Kulaklar",    "description": "5 dinleme dersi tamamla" },
+      "penpal":           { "name": "Kalem Arkadaşı",     "description": "5 yazma dersi tamamla" },
+      "public_speaker":   { "name": "Konuşmacı",          "description": "5 konuşma dersi tamamla" },
+      "all_rounder":      { "name": "Her Şeyin Ustası",   "description": "3 konunun hepsini dene" },
+      "gamer":            { "name": "Oyuncu",             "description": "Herhangi bir oyun oyna" },
+      "spelling_bee":     { "name": "Yazım Ustası",       "description": "Yazım oyununu tamamla" },
+      "memory_master":    { "name": "Hafıza Ustası",      "description": "Hafıza oyununu tamamla" },
+      "puzzle_whiz":      { "name": "Bulmaca Dehası",     "description": "Kelime bulmacasını çöz" },
+      "three_day_streak": { "name": "Alevli",             "description": "3 gün üst üste aktif" },
+      "week_warrior":     { "name": "Hafta Savaşçısı",    "description": "7 gün üst üste aktif" },
+      "century":          { "name": "Yüz",                "description": "100 XP kazan" },
+      "champion":         { "name": "Şampiyon",           "description": "500 XP kazan" },
+      "early_bird":       { "name": "Erken Kuş",          "description": "Sabah 8'den önce çalış" },
+      "night_owl":        { "name": "Gece Baykuşu",       "description": "Gece 9'dan sonra çalış" }
+    }
+  }
+}

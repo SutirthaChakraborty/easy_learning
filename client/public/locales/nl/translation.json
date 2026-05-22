@@ -1,0 +1,121 @@
+{
+  "navbar": {
+    "home": "Thuis",
+    "games": "Spellen",
+    "lessons": "Lessen",
+    "dashboard": "Dashboard",
+    "login": "Inloggen",
+    "logout": "Uitloggen",
+    "spellingBee": "Spellingstest",
+    "memoryMatch": "Geheugenspel",
+    "wordPuzzle": "Woordpuzzel",
+    "english": "Engels",
+    "mathematics": "Wiskunde",
+    "science": "Wetenschap",
+    "greeting": "Hallo {{name}}"
+  },
+  "hero": {
+    "greeting": "Hallo {{name}}",
+    "startLearning": "Begin met leren",
+    "playGames": "Speel spelletjes"
+  },
+  "cards": {
+    "english": "Engels",
+    "mathematics": "Wiskunde",
+    "science": "Wetenschap"
+  },
+  "login": {
+    "joinTitle": "Doe mee met Learningo!",
+    "welcomeBack": "Welkom terug!",
+    "createAccountSubtitle": "Maak een account aan om te beginnen met leren",
+    "continueJourneySubtitle": "Log in om je reis voort te zetten",
+    "continueGoogle": "Doorgaan met Google",
+    "or": "of",
+    "namePlaceholder": "Jouw naam",
+    "emailPlaceholder": "E-mailadres",
+    "passwordPlaceholder": "Wachtwoord",
+    "createAccountBtn": "Account aanmaken",
+    "signInBtn": "Inloggen",
+    "signUpBtn": "Registreren",
+    "loading": "Laden...",
+    "alreadyAccount": "Heb je al een account?",
+    "noAccount": "Geen account?",
+    "errorDefault": "Er ging iets fout. Probeer het opnieuw.",
+    "googleCancelled": "Google-aanmelding geannuleerd.",
+    "popupBlocked": "Pop-up geblokkeerd. Sta pop-ups toe voor deze site.",
+    "networkError": "Netwerkfout. Controleer je verbinding.",
+    "operationNotAllowed": "Google-aanmelding is niet ingeschakeld."
+  },
+  "common": {
+    "loading": "Laden...",
+    "error": "Er ging iets fout."
+  },
+  "dashboard": {
+    "welcomeBack": "Welkom terug, {{name}}! 👋",
+    "motivational": "Blijf zo doorgaan — elke les telt.",
+    "level": "Level {{level}}",
+    "xpTotal": "{{xp}} XP totaal",
+    "loading": "Laden…",
+    "loadingDashboard": "Dashboard laden…",
+    "loginPrompt": "Log in om je dashboard te bekijken.",
+    "serverError": "Kan geen verbinding maken met de server.",
+    "serverErrorHint": "Zorg dat de backend actief is en ververs de pagina.",
+    "retry": "Opnieuw proberen",
+    "stats": {
+      "totalXP": "Totaal XP",
+      "sessions": "Sessies",
+      "lessonsCompleted": "lessen voltooid",
+      "todayTime": "Tijd vandaag",
+      "peakTime": "Piek: {{time}}",
+      "noSessions": "Nog geen sessies",
+      "streak": "Huidige reeks",
+      "streakDays": "{{count}} dagen",
+      "onFire": "Op dreef! 🔥",
+      "keepGoing": "Doorgaan!",
+      "achievements": "Prestaties",
+      "badgesEarned": "badges verdiend"
+    },
+    "performance": {
+      "title": "Prestaties — Laatste 30 dagen",
+      "empty": "Nog geen activiteit — voltooi een les om je voortgang te zien!"
+    },
+    "heatmap": {
+      "titleCurrent": "Activiteitenkaart — {{year}} (tot nu toe)",
+      "titlePast": "Activiteitenkaart — {{year}}",
+      "activeDays": "{{count}} actieve dagen",
+      "mostActive": "Meest actief {{time}}",
+      "today": "Vandaag: {{time}}",
+      "less": "Minder",
+      "more": "Meer"
+    },
+    "achievements": {
+      "title": "Prestaties",
+      "empty": "Voltooi lessen om prestaties te ontgrendelen!",
+      "earnedOn": "Verdiend {{date}}",
+      "xpReward": "+{{xp}} XP bij ontgrendelen",
+      "categories": {
+        "learning": "Leren",
+        "games": "Spellen",
+        "streak": "Reeks",
+        "xp": "XP Mijlpalen",
+        "special": "Speciaal"
+      },
+      "first_step":       { "name": "Eerste Stap",       "description": "Voltooi je eerste les" },
+      "bookworm":         { "name": "Boekenwurm",         "description": "Voltooi 5 leeslessen" },
+      "sharp_ears":       { "name": "Scherpe Oren",       "description": "Voltooi 5 luisterlessen" },
+      "penpal":           { "name": "Penvriendje",        "description": "Voltooi 5 schrijflessen" },
+      "public_speaker":   { "name": "Spreker",            "description": "Voltooi 5 spreeklessen" },
+      "all_rounder":      { "name": "Allrounder",         "description": "Probeer alle 3 vakken" },
+      "gamer":            { "name": "Gamer",              "description": "Speel een willekeurig spel" },
+      "spelling_bee":     { "name": "Spellingskampioen",  "description": "Voltooi het spellingsspel" },
+      "memory_master":    { "name": "Geheugenkampioen",   "description": "Voltooi het geheugenspel" },
+      "puzzle_whiz":      { "name": "Puzzelaar",          "description": "Los een woordpuzzel op" },
+      "three_day_streak": { "name": "Op Dreef",           "description": "3 dagen op rij actief" },
+      "week_warrior":     { "name": "Weekkrijger",        "description": "7 dagen op rij actief" },
+      "century":          { "name": "Eeuweling",          "description": "100 XP verdienen" },
+      "champion":         { "name": "Kampioen",           "description": "500 XP verdienen" },
+      "early_bird":       { "name": "Vroege Vogel",       "description": "Studeren voor 8:00 uur" },
+      "night_owl":        { "name": "Nachtegaal",         "description": "Studeren na 21:00 uur" }
+    }
+  }
+}

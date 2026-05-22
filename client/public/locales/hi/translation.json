@@ -3,6 +3,7 @@
     "home": "होम",
     "games": "खेल",
     "lessons": "पाठ",
+    "dashboard": "डैशबोर्ड",
     "login": "लॉगिन",
     "logout": "लॉगआउट",
     "spellingBee": "स्पेलिंग बी",
@@ -40,10 +41,81 @@
     "alreadyAccount": "पहले से खाता है?",
     "noAccount": "खाता नहीं है?",
     "errorDefault": "कुछ गलत हो गया। कृपया पुनः प्रयास करें।",
-    "googleCancelled": "Google साइन-इन रद्द कर दिया गया।"
+    "googleCancelled": "Google साइन-इन रद्द कर दिया गया।",
+    "popupBlocked": "पॉप-अप ब्लॉक हो गया। कृपया इस साइट के लिए पॉप-अप की अनुमति दें।",
+    "networkError": "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें।",
+    "operationNotAllowed": "Google साइन-इन सक्षम नहीं है। कृपया सहायता से संपर्क करें।"
   },
   "common": {
     "loading": "लोड हो रहा है...",
     "error": "कुछ गलत हो गया।"
+  },
+  "dashboard": {
+    "welcomeBack": "वापसी पर स्वागत है, {{name}}! 👋",
+    "motivational": "अच्छा काम करते रहो — हर पाठ मायने रखता है।",
+    "level": "स्तर {{level}}",
+    "xpTotal": "{{xp}} XP कुल",
+    "loading": "लोड हो रहा है…",
+    "loadingDashboard": "आपका डैशबोर्ड लोड हो रहा है…",
+    "loginPrompt": "अपना डैशबोर्ड देखने के लिए कृपया लॉगिन करें।",
+    "serverError": "सर्वर से कनेक्ट नहीं हो सका।",
+    "serverErrorHint": "सुनिश्चित करें कि बैकएंड चल रहा है, फिर पेज रिफ्रेश करें।",
+    "retry": "पुनः प्रयास करें",
+    "stats": {
+      "totalXP": "कुल XP",
+      "sessions": "सत्र",
+      "lessonsCompleted": "पाठ पूरे किए",
+      "todayTime": "आज का समय",
+      "peakTime": "चरम: {{time}}",
+      "noSessions": "अभी तक कोई सत्र नहीं",
+      "streak": "वर्तमान स्ट्रीक",
+      "streakDays": "{{count}} दिन",
+      "onFire": "जोरदार! 🔥",
+      "keepGoing": "चलते रहो!",
+      "achievements": "उपलब्धियां",
+      "badgesEarned": "बैज अर्जित"
+    },
+    "performance": {
+      "title": "प्रदर्शन — पिछले 30 दिन",
+      "empty": "अभी तक कोई गतिविधि नहीं — यहाँ प्रगति देखने के लिए एक पाठ पूरा करें!"
+    },
+    "heatmap": {
+      "titleCurrent": "गतिविधि हीटमैप — {{year}} (अब तक)",
+      "titlePast": "गतिविधि हीटमैप — {{year}}",
+      "activeDays": "{{count}} सक्रिय दिन",
+      "mostActive": "सबसे सक्रिय {{time}}",
+      "today": "आज: {{time}}",
+      "less": "कम",
+      "more": "अधिक"
+    },
+    "achievements": {
+      "title": "उपलब्धियां",
+      "empty": "उपलब्धियां अनलॉक करने के लिए पाठ पूरे करें!",
+      "earnedOn": "अर्जित {{date}}",
+      "xpReward": "+{{xp}} XP अनलॉक पर",
+      "categories": {
+        "learning": "पढ़ाई",
+        "games": "खेल",
+        "streak": "स्ट्रीक",
+        "xp": "XP मील के पत्थर",
+        "special": "विशेष"
+      },
+      "first_step":       { "name": "पहला कदम",        "description": "अपना पहला पाठ पूरा करें" },
+      "bookworm":         { "name": "किताबी कीड़ा",     "description": "5 पठन पाठ पूरे करें" },
+      "sharp_ears":       { "name": "तेज़ कान",          "description": "5 सुनने के पाठ पूरे करें" },
+      "penpal":           { "name": "कलम मित्र",         "description": "5 लेखन पाठ पूरे करें" },
+      "public_speaker":   { "name": "वक्ता",             "description": "5 बोलने के पाठ पूरे करें" },
+      "all_rounder":      { "name": "ऑल-राउंडर",        "description": "सभी 3 विषय आज़माएं" },
+      "gamer":            { "name": "गेमर",              "description": "कोई भी खेल खेलें" },
+      "spelling_bee":     { "name": "वर्तनी विशेषज्ञ",   "description": "वर्तनी खेल पूरा करें" },
+      "memory_master":    { "name": "स्मृति मास्टर",     "description": "मेमोरी मैच खेल पूरा करें" },
+      "puzzle_whiz":      { "name": "पहेली विशेषज्ञ",    "description": "एक वर्ड पज़ल हल करें" },
+      "three_day_streak": { "name": "आग पर",            "description": "3 दिन लगातार सक्रिय" },
+      "week_warrior":     { "name": "सप्ताह योद्धा",     "description": "7 दिन लगातार सक्रिय" },
+      "century":          { "name": "शतक",              "description": "100 XP अर्जित करें" },
+      "champion":         { "name": "चैंपियन",           "description": "500 XP अर्जित करें" },
+      "early_bird":       { "name": "सुबह का पक्षी",     "description": "सुबह 8 बजे से पहले पढ़ें" },
+      "night_owl":        { "name": "रात का उल्लू",      "description": "रात 9 बजे के बाद पढ़ें" }
+    }
   }
 }

@@ -1,0 +1,121 @@
+{
+  "navbar": {
+    "home": "Trang Chủ",
+    "games": "Trò Chơi",
+    "lessons": "Bài Học",
+    "dashboard": "Bảng Điều Khiển",
+    "login": "Đăng Nhập",
+    "logout": "Đăng Xuất",
+    "spellingBee": "Đánh Vần",
+    "memoryMatch": "Trò Chơi Ghi Nhớ",
+    "wordPuzzle": "Ô Chữ",
+    "english": "Tiếng Anh",
+    "mathematics": "Toán",
+    "science": "Khoa Học",
+    "greeting": "Xin chào {{name}}"
+  },
+  "hero": {
+    "greeting": "Xin chào {{name}}",
+    "startLearning": "Bắt Đầu Học",
+    "playGames": "Chơi Trò Chơi"
+  },
+  "cards": {
+    "english": "Tiếng Anh",
+    "mathematics": "Toán",
+    "science": "Khoa Học"
+  },
+  "login": {
+    "joinTitle": "Tham gia Learningo!",
+    "welcomeBack": "Chào Mừng Trở Lại!",
+    "createAccountSubtitle": "Tạo tài khoản để bắt đầu học",
+    "continueJourneySubtitle": "Đăng nhập để tiếp tục hành trình",
+    "continueGoogle": "Tiếp tục với Google",
+    "or": "hoặc",
+    "namePlaceholder": "Tên của bạn",
+    "emailPlaceholder": "Địa chỉ email",
+    "passwordPlaceholder": "Mật khẩu",
+    "createAccountBtn": "Tạo Tài Khoản",
+    "signInBtn": "Đăng Nhập",
+    "signUpBtn": "Đăng Ký",
+    "loading": "Đang tải...",
+    "alreadyAccount": "Đã có tài khoản?",
+    "noAccount": "Chưa có tài khoản?",
+    "errorDefault": "Đã xảy ra lỗi. Vui lòng thử lại.",
+    "googleCancelled": "Đăng nhập bằng Google đã bị hủy.",
+    "popupBlocked": "Pop-up bị chặn. Vui lòng cho phép pop-up cho trang này.",
+    "networkError": "Lỗi mạng. Kiểm tra kết nối của bạn.",
+    "operationNotAllowed": "Đăng nhập bằng Google chưa được bật."
+  },
+  "common": {
+    "loading": "Đang tải...",
+    "error": "Đã xảy ra lỗi."
+  },
+  "dashboard": {
+    "welcomeBack": "Chào mừng trở lại, {{name}}! 👋",
+    "motivational": "Tiếp tục phát huy — mỗi bài học đều quan trọng.",
+    "level": "Cấp {{level}}",
+    "xpTotal": "{{xp}} XP tổng cộng",
+    "loading": "Đang tải…",
+    "loadingDashboard": "Đang tải bảng điều khiển…",
+    "loginPrompt": "Vui lòng đăng nhập để xem bảng điều khiển.",
+    "serverError": "Không thể kết nối máy chủ.",
+    "serverErrorHint": "Đảm bảo backend đang chạy rồi làm mới trang.",
+    "retry": "Thử lại",
+    "stats": {
+      "totalXP": "Tổng XP",
+      "sessions": "Phiên học",
+      "lessonsCompleted": "bài học đã hoàn thành",
+      "todayTime": "Thời gian hôm nay",
+      "peakTime": "Đỉnh: {{time}}",
+      "noSessions": "Chưa có phiên học",
+      "streak": "Chuỗi hiện tại",
+      "streakDays": "{{count}} ngày",
+      "onFire": "Xuất sắc! 🔥",
+      "keepGoing": "Tiếp tục!",
+      "achievements": "Thành tích",
+      "badgesEarned": "huy hiệu đã nhận"
+    },
+    "performance": {
+      "title": "Hiệu suất — 30 Ngày Gần Đây",
+      "empty": "Chưa có hoạt động — hoàn thành một bài học để xem tiến độ của bạn!"
+    },
+    "heatmap": {
+      "titleCurrent": "Biểu Đồ Hoạt Động — {{year}} (Cho Đến Nay)",
+      "titlePast": "Biểu Đồ Hoạt Động — {{year}}",
+      "activeDays": "{{count}} ngày hoạt động",
+      "mostActive": "Hoạt động nhiều nhất {{time}}",
+      "today": "Hôm nay: {{time}}",
+      "less": "Ít",
+      "more": "Nhiều"
+    },
+    "achievements": {
+      "title": "Thành Tích",
+      "empty": "Hoàn thành bài học để mở khóa thành tích!",
+      "earnedOn": "Đạt được {{date}}",
+      "xpReward": "+{{xp}} XP khi mở khóa",
+      "categories": {
+        "learning": "Học Tập",
+        "games": "Trò Chơi",
+        "streak": "Chuỗi",
+        "xp": "Cột Mốc XP",
+        "special": "Đặc Biệt"
+      },
+      "first_step":       { "name": "Bước Đầu Tiên",     "description": "Hoàn thành bài học đầu tiên" },
+      "bookworm":         { "name": "Mọt Sách",           "description": "Hoàn thành 5 bài đọc" },
+      "sharp_ears":       { "name": "Tai Thính",          "description": "Hoàn thành 5 bài nghe" },
+      "penpal":           { "name": "Bạn Bút",            "description": "Hoàn thành 5 bài viết" },
+      "public_speaker":   { "name": "Diễn Giả",           "description": "Hoàn thành 5 bài nói" },
+      "all_rounder":      { "name": "Toàn Diện",          "description": "Thử cả 3 môn học" },
+      "gamer":            { "name": "Gamer",              "description": "Chơi bất kỳ trò chơi nào" },
+      "spelling_bee":     { "name": "Bậc Thầy Đánh Vần",  "description": "Hoàn thành trò chơi đánh vần" },
+      "memory_master":    { "name": "Bậc Thầy Ghi Nhớ",   "description": "Hoàn thành trò chơi ghi nhớ" },
+      "puzzle_whiz":      { "name": "Cao Thủ Ô Chữ",      "description": "Giải một ô chữ" },
+      "three_day_streak": { "name": "Bùng Cháy",          "description": "Hoạt động 3 ngày liên tiếp" },
+      "week_warrior":     { "name": "Chiến Binh Tuần",     "description": "Hoạt động 7 ngày liên tiếp" },
+      "century":          { "name": "Một Trăm",           "description": "Kiếm 100 XP" },
+      "champion":         { "name": "Nhà Vô Địch",        "description": "Kiếm 500 XP" },
+      "early_bird":       { "name": "Chim Sớm",           "description": "Học trước 8 giờ sáng" },
+      "night_owl":        { "name": "Cú Đêm",             "description": "Học sau 9 giờ tối" }
+    }
+  }
+}

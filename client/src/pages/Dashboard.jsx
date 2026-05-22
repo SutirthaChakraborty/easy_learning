@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { motion } from 'framer-motion'
+import { useTranslation } from 'react-i18next'
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts'
@@ -32,6 +33,7 @@ function localDateStr(date) {
 }
 
 function ActivityHeatmap({ activity, selectedYear }) {
+  const { t } = useTranslation()
   const thisYear = new Date().getFullYear()
 
   const cellData = useMemo(() => {
@@ -70,7 +72,6 @@ function ActivityHeatmap({ activity, selectedYear }) {
     return 'var(--heat-4)'
   }
 
-  // Split into weeks (columns of 7)
   const weeks = []
   for (let i = 0; i < cellData.length; i += 7) {
     weeks.push(cellData.slice(i, i + 7))
@@ -122,11 +123,11 @@ function ActivityHeatmap({ activity, selectedYear }) {
       )}
 
       <div className={styles.heatLegend}>
-        <span>Less</span>
+        <span>{t('dashboard.heatmap.less')}</span>
         {['var(--heat-0)', 'var(--heat-1)', 'var(--heat-2)', 'var(--heat-3)', 'var(--heat-4)'].map((c, i) => (
           <div key={i} className={styles.heatLegendCell} style={{ background: c }} />
         ))}
-        <span>More</span>
+        <span>{t('dashboard.heatmap.more')}</span>
       </div>
     </div>
   )
@@ -134,7 +135,12 @@ function ActivityHeatmap({ activity, selectedYear }) {
 
 // ── Achievement Badge ──────────────────────────────────────────────────────────
 function AchievementBadge({ ach }) {
+  const { t } = useTranslation()
   const [hover, setHover] = useState(false)
+
+  const name = t(`dashboard.achievements.${ach.id}.name`, { defaultValue: ach.name })
+  const description = t(`dashboard.achievements.${ach.id}.description`, { defaultValue: ach.description })
+
   return (
     <div
       className={`${styles.badge} ${ach.earned ? styles.badgeEarned : styles.badgeLocked}`}
@@ -142,15 +148,15 @@ function AchievementBadge({ ach }) {
       onMouseLeave={() => setHover(false)}
     >
       <span className={styles.badgeIcon}>{ach.earned ? ach.icon : '🔒'}</span>
-      <span className={styles.badgeName}>{ach.name}</span>
+      <span className={styles.badgeName}>{name}</span>
       {hover && (
         <div className={styles.badgeTooltip}>
-          <strong>{ach.name}</strong>
-          <p>{ach.description}</p>
+          <strong>{name}</strong>
+          <p>{description}</p>
           {ach.earned && ach.earnedAt && (
-            <small>Earned {fmtDate(ach.earnedAt)}</small>
+            <small>{t('dashboard.achievements.earnedOn', { date: fmtDate(ach.earnedAt) })}</small>
           )}
-          {!ach.earned && <small>+{ach.xp} XP on unlock</small>}
+          {!ach.earned && <small>{t('dashboard.achievements.xpReward', { xp: ach.xp })}</small>}
         </div>
       )}
     </div>
@@ -192,6 +198,7 @@ function ChartTooltip({ active, payload, label }) {
 export default function Dashboard() {
   const dispatch  = useDispatch()
   const { user }  = useAuth()
+  const { t }     = useTranslation()
   const { stats, activity, achievements, performance, status } = useSelector(s => s.dashboard)
 
   const thisYear = new Date().getFullYear()
@@ -199,7 +206,6 @@ export default function Dashboard() {
   const yearOptions = Array.from({ length: 5 }, (_, i) => thisYear - i)
 
   useEffect(() => {
-    // user===undefined means auth hasn't resolved yet; null means logged out
     if (!user) return
     dispatch(fetchDashboardStats())
     dispatch(fetchDashboardActivity({ year: selectedYear }))
@@ -226,12 +232,20 @@ export default function Dashboard() {
   const totalCount   = achievements.length
   const levelProgress = stats ? ((stats.totalXP % 100) / 100) * 100 : 0
 
+  const catIcons = {
+    learning: '📚',
+    games:    '🎮',
+    streak:   '🔥',
+    xp:       '⚡',
+    special:  '✨',
+  }
+
   // Auth still resolving
   if (user === undefined) {
     return (
       <div className={styles.loadingWrap}>
         <div className={styles.spinner} />
-        <p>Loading…</p>
+        <p>{t('dashboard.loading')}</p>
       </div>
     )
   }
@@ -240,7 +254,7 @@ export default function Dashboard() {
   if (user === null) {
     return (
       <div className={styles.loadingWrap}>
-        <p className={styles.errorMsg}>⚠️ Please log in to view your dashboard.</p>
+        <p className={styles.errorMsg}>⚠️ {t('dashboard.loginPrompt')}</p>
       </div>
     )
   }
@@ -249,7 +263,7 @@ export default function Dashboard() {
     return (
       <div className={styles.loadingWrap}>
         <div className={styles.spinner} />
-        <p>Loading your dashboard…</p>
+        <p>{t('dashboard.loadingDashboard')}</p>
       </div>
     )
   }
@@ -257,9 +271,9 @@ export default function Dashboard() {
   if (status === 'failed') {
     return (
       <div className={styles.loadingWrap}>
-        <p className={styles.errorMsg}>⚠️ Could not connect to the server.</p>
+        <p className={styles.errorMsg}>⚠️ {t('dashboard.serverError')}</p>
         <p style={{ color: '#6272a4', fontSize: '0.9rem', marginTop: 4 }}>
-          Make sure the backend is running, then refresh the page.
+          {t('dashboard.serverErrorHint')}
         </p>
         <button
           onClick={() => {
@@ -270,7 +284,7 @@ export default function Dashboard() {
           }}
           className={styles.retryBtn}
         >
-          Retry
+          {t('dashboard.retry')}
         </button>
       </div>
     )
@@ -293,17 +307,17 @@ export default function Dashboard() {
               : <span>{firstName[0]?.toUpperCase()}</span>}
           </div>
           <div>
-            <h1 className={styles.greeting}>Welcome back, {firstName}! 👋</h1>
-            <p className={styles.subGreeting}>Keep up the great work — every lesson counts.</p>
+            <h1 className={styles.greeting}>{t('dashboard.welcomeBack', { name: firstName })}</h1>
+            <p className={styles.subGreeting}>{t('dashboard.motivational')}</p>
           </div>
         </div>
 
         <div className={styles.levelBadge}>
-          <div className={styles.levelLabel}>Level {stats?.level ?? 1}</div>
+          <div className={styles.levelLabel}>{t('dashboard.level', { level: stats?.level ?? 1 })}</div>
           <div className={styles.levelBar}>
             <div className={styles.levelFill} style={{ width: `${levelProgress}%` }} />
           </div>
-          <div className={styles.levelXP}>{stats?.totalXP ?? 0} XP total</div>
+          <div className={styles.levelXP}>{t('dashboard.xpTotal', { xp: stats?.totalXP ?? 0 })}</div>
         </div>
       </div>
 
@@ -311,47 +325,49 @@ export default function Dashboard() {
       <div className={styles.statsRow}>
         <StatCard
           icon="⚡"
-          label="Total XP"
+          label={t('dashboard.stats.totalXP')}
           value={`${stats?.totalXP ?? 0} XP`}
           color="#6c63ff"
         />
         <StatCard
           icon="📖"
-          label="Sessions"
+          label={t('dashboard.stats.sessions')}
           value={stats?.totalSessions ?? 0}
-          sub="lessons completed"
+          sub={t('dashboard.stats.lessonsCompleted')}
           color="#43c0a0"
         />
         <StatCard
           icon="⏱️"
-          label="Today's Time"
+          label={t('dashboard.stats.todayTime')}
           value={fmtMinutes(stats?.todayMinutes ?? 0)}
-          sub={stats?.peakTimeLabel ? `Peak: ${stats.peakTimeLabel}` : 'No sessions yet'}
+          sub={stats?.peakTimeLabel
+            ? t('dashboard.stats.peakTime', { time: stats.peakTimeLabel })
+            : t('dashboard.stats.noSessions')}
           color="#f7971e"
         />
         <StatCard
           icon="🔥"
-          label="Current Streak"
-          value={`${stats?.streak ?? 0} days`}
-          sub={stats?.streak >= 3 ? 'On fire! 🔥' : 'Keep going!'}
+          label={t('dashboard.stats.streak')}
+          value={t('dashboard.stats.streakDays', { count: stats?.streak ?? 0 })}
+          sub={stats?.streak >= 3 ? t('dashboard.stats.onFire') : t('dashboard.stats.keepGoing')}
           color="#e74c3c"
         />
         <StatCard
           icon="🏅"
-          label="Achievements"
+          label={t('dashboard.stats.achievements')}
           value={`${earnedCount} / ${totalCount}`}
-          sub="badges earned"
+          sub={t('dashboard.stats.badgesEarned')}
           color="#3498db"
         />
       </div>
 
       {/* ── Performance Chart ── */}
       <div className={styles.section}>
-        <h2 className={styles.sectionTitle}>📈 Performance — Last 30 Days</h2>
+        <h2 className={styles.sectionTitle}>📈 {t('dashboard.performance.title')}</h2>
         {chartData.length === 0 ? (
           <div className={styles.emptyChart}>
             <span>🌱</span>
-            <p>No activity yet — complete a lesson to see your progress here!</p>
+            <p>{t('dashboard.performance.empty')}</p>
           </div>
         ) : (
           <div className={styles.chartWrap}>
@@ -386,23 +402,24 @@ export default function Dashboard() {
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>
-            🗓️ Activity Heatmap —{' '}
-            {selectedYear === thisYear ? `${thisYear} (So Far)` : selectedYear}
+            🗓️ {selectedYear === thisYear
+              ? t('dashboard.heatmap.titleCurrent', { year: selectedYear })
+              : t('dashboard.heatmap.titlePast', { year: selectedYear })}
           </h2>
           <div className={styles.heatControls}>
             <div className={styles.heatStats}>
               <span className={styles.heatStat}>
                 <span className={styles.heatDot} style={{ background: 'var(--heat-4)' }} />
-                {activity.length} active days
+                {t('dashboard.heatmap.activeDays', { count: activity.length })}
               </span>
               {selectedYear === thisYear && stats?.peakTimeLabel && (
                 <span className={styles.heatStat}>
-                  ⏰ Most active {stats.peakTimeLabel}
+                  ⏰ {t('dashboard.heatmap.mostActive', { time: stats.peakTimeLabel })}
                 </span>
               )}
               {selectedYear === thisYear && stats?.todayMinutes > 0 && (
                 <span className={styles.heatStat}>
-                  ✅ Today: {fmtMinutes(stats.todayMinutes)}
+                  ✅ {t('dashboard.heatmap.today', { time: fmtMinutes(stats.todayMinutes) })}
                 </span>
               )}
             </div>
@@ -423,18 +440,18 @@ export default function Dashboard() {
 
       {/* ── Achievements ── */}
       <div className={styles.section}>
-        <h2 className={styles.sectionTitle}>🏆 Achievements</h2>
+        <h2 className={styles.sectionTitle}>🏆 {t('dashboard.achievements.title')}</h2>
         {achievements.length === 0 ? (
           <div className={styles.emptyChart}>
             <span>🎯</span>
-            <p>Complete lessons to unlock achievements!</p>
+            <p>{t('dashboard.achievements.empty')}</p>
           </div>
         ) : (
           <>
             {['learning', 'games', 'streak', 'xp', 'special'].map(cat => {
               const catAchs = achievements.filter(a => a.category === cat)
               if (!catAchs.length) return null
-              const catLabel = { learning: '📚 Learning', games: '🎮 Games', streak: '🔥 Streak', xp: '⚡ XP Milestones', special: '✨ Special' }[cat]
+              const catLabel = `${catIcons[cat]} ${t(`dashboard.achievements.categories.${cat}`)}`
               return (
                 <div key={cat} className={styles.achieveCat}>
                   <h3 className={styles.catTitle}>{catLabel}</h3>
