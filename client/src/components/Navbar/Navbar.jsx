@@ -4,7 +4,7 @@ import styles from "./Navbar.module.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "/logo.png";
 import { playSlide } from "../../utils/sounds";
-import { FaBook, FaCalculator, FaMicroscope, FaPencilAlt, FaLayerGroup, FaPuzzlePiece, FaSignOutAlt } from "react-icons/fa";
+import { FaBook, FaCalculator, FaMicroscope, FaPencilAlt, FaLayerGroup, FaPuzzlePiece, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
 import { GiCardPlay } from "react-icons/gi";
 import { useAuth } from "../../context/AuthContext";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
@@ -74,6 +74,9 @@ const Navbar = () => {
 
         {user ? (
           <div className={styles.userArea}>
+            <NavLink to="/dashboard" className={styles.dashboardLink} onClick={close}>
+              <FaTachometerAlt className={styles.loginIcon} /> Dashboard
+            </NavLink>
             <span className={styles.userName}>
               👋 {t("navbar.greeting", { name: firstName })}
             </span>

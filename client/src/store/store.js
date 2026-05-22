@@ -15,6 +15,7 @@ import spellEnglishReducer from './slices/spellEnglishSlice'
 import memoryMatchReducer  from './slices/memoryMatchSlice'
 import wordPuzzleReducer   from './slices/wordPuzzleSlice'
 import learnReducer        from './slices/learnSlice'
+import dashboardReducer   from './slices/dashboardSlice'
 
 const store = configureStore({
   reducer: {
@@ -34,6 +35,7 @@ const store = configureStore({
     memoryMatch:   memoryMatchReducer,
     wordPuzzle:    wordPuzzleReducer,
     learn:         learnReducer,
+    dashboard:     dashboardReducer,
   },
 })
 

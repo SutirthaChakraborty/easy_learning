@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
@@ -18,6 +18,7 @@ import {
   nextWord,
   resetWord,
 } from "../../store/slices/spellEnglishSlice";
+import { logDashboardSession } from "../../store/slices/dashboardSlice";
 
 const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
@@ -25,13 +26,17 @@ const SpellingGame = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { words, status, currentIndex, score, result } = useSelector(
+  const { words, status, currentIndex, score, result, xpEarned } = useSelector(
     (state) => state.spellEnglish
   );
 
   const [letterBtns, setLetterBtns] = useState([]);
   const [typed, setTyped] = useState([]);
   const [showCelebration, setShowCelebration] = useState(false);
+
+  const wordStartRef = useRef(new Date().toISOString());
+  const prevXpRef = useRef(0);
+  const sessionLoggedRef = useRef(false);
 
   const current = words[currentIndex];
 
@@ -43,6 +48,8 @@ const SpellingGame = () => {
 
   useEffect(() => {
     if (current) buildLetterPool(current.word);
+    wordStartRef.current = new Date().toISOString();
+    sessionLoggedRef.current = false;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, current?.id]);
 
@@ -54,6 +61,19 @@ const SpellingGame = () => {
     } else if (result === "wrong") {
       playWrong();
     }
+    if (!result || sessionLoggedRef.current) return;
+    sessionLoggedRef.current = true;
+    const xpDelta = xpEarned - prevXpRef.current;
+    prevXpRef.current = xpEarned;
+    dispatch(logDashboardSession({
+      module: "spelling",
+      subject: "english",
+      durationMinutes: 1,
+      xpEarned: xpDelta,
+      score: result === "correct" ? 100 : 0,
+      startTime: wordStartRef.current,
+    }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
 
   const buildLetterPool = (word) => {

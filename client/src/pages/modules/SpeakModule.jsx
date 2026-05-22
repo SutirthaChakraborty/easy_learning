@@ -6,6 +6,7 @@ import * as FramerMotion from "framer-motion";
 import { fetchScienceSpeakPrompts } from "../../store/slices/speakScienceSlice";
 import { fetchMathsSpeakPrompts } from "../../store/slices/speakMathsSlice";
 import { fetchEnglishSpeakPrompts } from "../../store/slices/speakEnglishSlice";
+import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./SpeakModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
 import {
@@ -74,6 +75,28 @@ const SpeakModule = () => {
 
   const mediaRecorder = useRef(null);
   const chunks = useRef([]);
+  const promptStartRef = useRef(new Date().toISOString());
+  const prevRecCountRef = useRef(0);
+
+  // Reset prompt start time when prompt changes
+  useEffect(() => {
+    promptStartRef.current = new Date().toISOString();
+  }, [idx]);
+
+  // Log session each time a new recording is saved
+  useEffect(() => {
+    if (recordings.length <= prevRecCountRef.current) return;
+    prevRecCountRef.current = recordings.length;
+    dispatch(logDashboardSession({
+      module: "speak",
+      subject: subject || "general",
+      durationMinutes: 1,
+      xpEarned: 15,
+      score: 75,
+      startTime: promptStartRef.current,
+    }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [recordings.length]);
 
   const current = prompts[idx];
 

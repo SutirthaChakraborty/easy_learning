@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
@@ -9,6 +9,7 @@ import {
   resolveFlip,
   resetGame,
 } from "../../store/slices/memoryMatchSlice";
+import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./MemoryGame.module.css";
 
 import { playBtn, playSlide, playCorrect } from "../../utils/sounds";
@@ -23,6 +24,9 @@ const MemoryGame = () => {
   const dispatch  = useDispatch();
   const { cards, flipped, moves, won, locked, status, error } =
     useSelector((state) => state.memoryMatch);
+
+  const gameStartRef = useRef(new Date().toISOString());
+  const sessionLoggedRef = useRef(false);
 
   // Fetch a fresh deck on mount
   useEffect(() => {
@@ -45,9 +49,24 @@ const MemoryGame = () => {
     return () => clearTimeout(timer);
   }, [flipped, cards, dispatch]);
 
-  // Play win sound when game is won
+  // Play win sound and log session when game is won
   useEffect(() => {
-    if (won) playCorrect();
+    if (!won) return;
+    playCorrect();
+    if (sessionLoggedRef.current) return;
+    sessionLoggedRef.current = true;
+    const stars = moves <= 10 ? 3 : moves <= 16 ? 2 : 1;
+    const xp = stars === 3 ? 30 : stars === 2 ? 20 : 10;
+    const durationMs = Date.now() - new Date(gameStartRef.current).getTime();
+    dispatch(logDashboardSession({
+      module: "memory",
+      subject: "general",
+      durationMinutes: Math.max(1, Math.round(durationMs / 60000)),
+      xpEarned: xp,
+      score: Math.round((stars / 3) * 100),
+      startTime: gameStartRef.current,
+    }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [won]);
 
   const handleFlip = (idx) => {
@@ -58,6 +77,8 @@ const MemoryGame = () => {
     playBtn();
     dispatch(resetGame());
     dispatch(fetchCards(4));
+    gameStartRef.current = new Date().toISOString();
+    sessionLoggedRef.current = false;
   };
 
   const starsForMoves = () => {
