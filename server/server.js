@@ -72,10 +72,12 @@ app.use('/api/game/word-puzzle',  wordPuzzleRoutes)
 app.use('/api/learn',            learnRoutes)
 app.use('/api/dashboard',        dashboardRoutes)
 
+// Global error handler — catches any unhandled errors from route handlers
+app.use((err, req, res, _next) => {
+  console.error('Unhandled error:', err)
+  res.status(500).json({ success: false, message: 'Internal server error' })
+})
+
 app.listen(PORT, () => {
-  try {
-    console.log(`Server is running on port ${PORT}`)
-  } catch (error) {
-    console.error(`Error occurred while starting the server: ${error}`)
-  }
+  console.log(`Server is running on port ${PORT}`)
 })

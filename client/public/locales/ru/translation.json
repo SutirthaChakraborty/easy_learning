@@ -3,6 +3,7 @@
     "home": "Главная",
     "games": "Игры",
     "lessons": "Уроки",
+    "dashboard": "Панель",
     "login": "Войти",
     "logout": "Выйти",
     "spellingBee": "Орфография",
@@ -40,10 +41,81 @@
     "alreadyAccount": "Уже есть аккаунт?",
     "noAccount": "Нет аккаунта?",
     "errorDefault": "Что-то пошло не так. Попробуйте ещё раз.",
-    "googleCancelled": "Вход через Google был отменён."
+    "googleCancelled": "Вход через Google был отменён.",
+    "popupBlocked": "Всплывающее окно заблокировано. Разрешите всплывающие окна для этого сайта.",
+    "networkError": "Ошибка сети. Проверьте подключение.",
+    "operationNotAllowed": "Вход через Google не включён."
   },
   "common": {
     "loading": "Загрузка...",
     "error": "Что-то пошло не так."
+  },
+  "dashboard": {
+    "welcomeBack": "С возвращением, {{name}}! 👋",
+    "motivational": "Продолжай в том же духе — каждый урок имеет значение.",
+    "level": "Уровень {{level}}",
+    "xpTotal": "{{xp}} XP всего",
+    "loading": "Загрузка…",
+    "loadingDashboard": "Загрузка панели…",
+    "loginPrompt": "Войдите, чтобы просмотреть панель.",
+    "serverError": "Не удалось подключиться к серверу.",
+    "serverErrorHint": "Убедитесь, что бэкенд запущен, затем обновите страницу.",
+    "retry": "Повторить",
+    "stats": {
+      "totalXP": "Всего XP",
+      "sessions": "Сессии",
+      "lessonsCompleted": "уроков завершено",
+      "todayTime": "Сегодня",
+      "peakTime": "Пик: {{time}}",
+      "noSessions": "Нет сессий",
+      "streak": "Текущая серия",
+      "streakDays": "{{count}} дней",
+      "onFire": "В огне! 🔥",
+      "keepGoing": "Продолжай!",
+      "achievements": "Достижения",
+      "badgesEarned": "значков получено"
+    },
+    "performance": {
+      "title": "Успеваемость — последние 30 дней",
+      "empty": "Нет активности — завершите урок, чтобы увидеть прогресс!"
+    },
+    "heatmap": {
+      "titleCurrent": "Карта активности — {{year}} (до сегодня)",
+      "titlePast": "Карта активности — {{year}}",
+      "activeDays": "{{count}} активных дней",
+      "mostActive": "Наиболее активен {{time}}",
+      "today": "Сегодня: {{time}}",
+      "less": "Меньше",
+      "more": "Больше"
+    },
+    "achievements": {
+      "title": "Достижения",
+      "empty": "Завершайте уроки, чтобы открывать достижения!",
+      "earnedOn": "Получено {{date}}",
+      "xpReward": "+{{xp}} XP при открытии",
+      "categories": {
+        "learning": "Обучение",
+        "games": "Игры",
+        "streak": "Серия",
+        "xp": "Вехи XP",
+        "special": "Особые"
+      },
+      "first_step":       { "name": "Первый шаг",       "description": "Завершить первый урок" },
+      "bookworm":         { "name": "Книжный червь",     "description": "Завершить 5 уроков чтения" },
+      "sharp_ears":       { "name": "Острый слух",       "description": "Завершить 5 уроков аудирования" },
+      "penpal":           { "name": "Pen Pal",           "description": "Завершить 5 уроков письма" },
+      "public_speaker":   { "name": "Оратор",            "description": "Завершить 5 уроков говорения" },
+      "all_rounder":      { "name": "Всесторонний",      "description": "Попробовать все 3 предмета" },
+      "gamer":            { "name": "Геймер",            "description": "Сыграть в любую игру" },
+      "spelling_bee":     { "name": "Мастер орфографии", "description": "Завершить игру по орфографии" },
+      "memory_master":    { "name": "Мастер памяти",     "description": "Завершить игру на память" },
+      "puzzle_whiz":      { "name": "Знаток пазлов",     "description": "Решить словесный пазл" },
+      "three_day_streak": { "name": "В огне",            "description": "Активен 3 дня подряд" },
+      "week_warrior":     { "name": "Воин недели",       "description": "Активен 7 дней подряд" },
+      "century":          { "name": "Сотня",             "description": "Заработать 100 XP" },
+      "champion":         { "name": "Чемпион",           "description": "Заработать 500 XP" },
+      "early_bird":       { "name": "Ранняя птица",      "description": "Учиться до 8 утра" },
+      "night_owl":        { "name": "Ночная сова",       "description": "Учиться после 21:00" }
+    }
   }
 }

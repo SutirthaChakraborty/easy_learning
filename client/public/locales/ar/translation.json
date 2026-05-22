@@ -3,6 +3,7 @@
     "home": "الرئيسية",
     "games": "الألعاب",
     "lessons": "الدروس",
+    "dashboard": "لوحة التحكم",
     "login": "تسجيل الدخول",
     "logout": "تسجيل الخروج",
     "spellingBee": "لعبة التهجئة",
@@ -40,10 +41,81 @@
     "alreadyAccount": "لديك حساب بالفعل؟",
     "noAccount": "ليس لديك حساب؟",
     "errorDefault": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
-    "googleCancelled": "تم إلغاء تسجيل الدخول بـ Google."
+    "googleCancelled": "تم إلغاء تسجيل الدخول بـ Google.",
+    "popupBlocked": "تم حظر النافذة المنبثقة. يرجى السماح بالنوافذ المنبثقة لهذا الموقع.",
+    "networkError": "خطأ في الشبكة. يرجى التحقق من اتصالك.",
+    "operationNotAllowed": "تسجيل الدخول عبر Google غير مفعّل."
   },
   "common": {
     "loading": "جارٍ التحميل...",
     "error": "حدث خطأ ما."
+  },
+  "dashboard": {
+    "welcomeBack": "مرحباً بعودتك، {{name}}! 👋",
+    "motivational": "استمر في العمل الجيد — كل درس له قيمة.",
+    "level": "المستوى {{level}}",
+    "xpTotal": "{{xp}} XP إجمالاً",
+    "loading": "جارٍ التحميل…",
+    "loadingDashboard": "جارٍ تحميل لوحة التحكم…",
+    "loginPrompt": "يرجى تسجيل الدخول لعرض لوحة التحكم.",
+    "serverError": "تعذّر الاتصال بالخادم.",
+    "serverErrorHint": "تأكد من تشغيل الخادم الخلفي ثم أعد تحميل الصفحة.",
+    "retry": "إعادة المحاولة",
+    "stats": {
+      "totalXP": "إجمالي XP",
+      "sessions": "الجلسات",
+      "lessonsCompleted": "دروس مكتملة",
+      "todayTime": "وقت اليوم",
+      "peakTime": "الذروة: {{time}}",
+      "noSessions": "لا توجد جلسات بعد",
+      "streak": "السلسلة الحالية",
+      "streakDays": "{{count}} أيام",
+      "onFire": "في القمة! 🔥",
+      "keepGoing": "استمر!",
+      "achievements": "الإنجازات",
+      "badgesEarned": "شارات مكتسبة"
+    },
+    "performance": {
+      "title": "الأداء — آخر 30 يوماً",
+      "empty": "لا توجد نشاط بعد — أكمل درساً لترى تقدمك هنا!"
+    },
+    "heatmap": {
+      "titleCurrent": "خريطة النشاط — {{year}} (حتى الآن)",
+      "titlePast": "خريطة النشاط — {{year}}",
+      "activeDays": "{{count}} أيام نشطة",
+      "mostActive": "الأكثر نشاطاً {{time}}",
+      "today": "اليوم: {{time}}",
+      "less": "أقل",
+      "more": "أكثر"
+    },
+    "achievements": {
+      "title": "الإنجازات",
+      "empty": "أكمل الدروس لفتح الإنجازات!",
+      "earnedOn": "حُصل عليه {{date}}",
+      "xpReward": "+{{xp}} XP عند الفتح",
+      "categories": {
+        "learning": "التعلم",
+        "games": "الألعاب",
+        "streak": "السلسلة",
+        "xp": "معالم XP",
+        "special": "خاص"
+      },
+      "first_step":       { "name": "الخطوة الأولى",    "description": "أكمل درسك الأول" },
+      "bookworm":         { "name": "دودة الكتب",        "description": "أكمل 5 دروس قراءة" },
+      "sharp_ears":       { "name": "أذن حادة",          "description": "أكمل 5 دروس استماع" },
+      "penpal":           { "name": "صديق القلم",         "description": "أكمل 5 دروس كتابة" },
+      "public_speaker":   { "name": "خطيب",              "description": "أكمل 5 دروس تحدث" },
+      "all_rounder":      { "name": "متعدد المواهب",     "description": "جرّب جميع المواد الثلاث" },
+      "gamer":            { "name": "لاعب",               "description": "العب أي لعبة" },
+      "spelling_bee":     { "name": "بطل التهجئة",       "description": "أكمل لعبة التهجئة" },
+      "memory_master":    { "name": "سيد الذاكرة",       "description": "أكمل لعبة الذاكرة" },
+      "puzzle_whiz":      { "name": "خبير الألغاز",      "description": "حل لغز كلمات" },
+      "three_day_streak": { "name": "في القمة",          "description": "نشط 3 أيام متتالية" },
+      "week_warrior":     { "name": "محارب الأسبوع",     "description": "نشط 7 أيام متتالية" },
+      "century":          { "name": "المئة",             "description": "اكسب 100 XP" },
+      "champion":         { "name": "بطل",               "description": "اكسب 500 XP" },
+      "early_bird":       { "name": "الطائر الباكر",     "description": "ادرس قبل الساعة 8 صباحاً" },
+      "night_owl":        { "name": "بومة الليل",        "description": "ادرس بعد الساعة 9 مساءً" }
+    }
   }
 }

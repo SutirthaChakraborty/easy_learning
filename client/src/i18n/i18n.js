@@ -7,7 +7,10 @@ import Backend from 'i18next-http-backend';
 export const RTL_LANGUAGES = ['ar', 'he', 'ur'];
 
 // All supported language codes
-export const SUPPORTED_LANGUAGES = ['en', 'hi', 'bn', 'es', 'fr', 'de', 'ar', 'zh', 'ja', 'ru', 'pt'];
+export const SUPPORTED_LANGUAGES = [
+  'en', 'hi', 'bn', 'es', 'fr', 'de', 'ar', 'zh', 'ja', 'ru', 'pt',
+  'it', 'ko', 'tr', 'nl', 'ta', 'te', 'mr', 'ur', 'id', 'vi',
+];
 
 i18n
   .use(Backend)           // loads translations lazily via HTTP from /public/locales/

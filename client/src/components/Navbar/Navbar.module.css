@@ -173,6 +173,157 @@
   }
 }
 
+/* ─── TABLET (800px – 1100px) ─── */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .logo img {
+    width: 120px;
+    margin-left: 0;
+  }
+
+  .menu {
+    gap: 8px;
+  }
+
+  .btn1, .btn2, .btn3 {
+    padding: 8px 13px;
+    font-size: 13px;
+    border-radius: 16px;
+  }
+
+  .dropdownContent a {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+
+  .login, .logout {
+    padding: 8px 13px;
+    font-size: 13px;
+  }
+
+  .dashboardLink {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+
+  .userName {
+    font-size: 13px;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .userArea {
+    gap: 7px;
+  }
+}
+
+/* ─── NARROW TABLET (900px – 1100px): keep desktop layout but tighter ─── */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .btn1, .btn2, .btn3 {
+    padding: 9px 16px;
+    font-size: 14px;
+  }
+
+  .login, .logout, .dashboardLink {
+    padding: 9px 15px;
+    font-size: 14px;
+  }
+
+  .userName {
+    font-size: 14px;
+    max-width: 120px;
+  }
+}
+
+/* ─── WIDE MOBILE / SMALL TABLET (769px – 900px): collapse to hamburger ─── */
+@media (min-width: 769px) and (max-width: 900px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .menu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 12px 0 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 8px;
+  }
+
+  .menuOpen {
+    display: flex;
+  }
+
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .dropdown { width: 100%; }
+
+  .btn1, .btn2, .btn3 {
+    display: block;
+    text-align: center;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .dropdown:hover .dropdownContent { display: none; }
+
+  .dropdownContent {
+    position: static !important;
+    transform: none !important;
+    display: flex !important;
+    flex-direction: column;
+    margin-top: 6px;
+    padding: 6px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: none;
+    min-width: auto;
+  }
+
+  .dropdownContent a {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 15px;
+  }
+
+  .login {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  .userArea {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .dashboardLink {
+    width: 100%;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 12px;
+  }
+
+  .logout {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    font-size: 15px;
+  }
+}
+
 /* HAMBURGER */
 .hamburger {
   display: none;

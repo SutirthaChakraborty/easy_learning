@@ -3,6 +3,7 @@
     "home": "首页",
     "games": "游戏",
     "lessons": "课程",
+    "dashboard": "仪表板",
     "login": "登录",
     "logout": "退出",
     "spellingBee": "拼写比赛",
@@ -40,10 +41,81 @@
     "alreadyAccount": "已有账户？",
     "noAccount": "还没有账户？",
     "errorDefault": "出了点问题，请重试。",
-    "googleCancelled": "Google 登录已取消。"
+    "googleCancelled": "Google 登录已取消。",
+    "popupBlocked": "弹窗被拦截，请允许此网站的弹窗。",
+    "networkError": "网络错误，请检查您的连接。",
+    "operationNotAllowed": "Google 登录未启用，请联系支持。"
   },
   "common": {
     "loading": "加载中...",
     "error": "出了点问题。"
+  },
+  "dashboard": {
+    "welcomeBack": "欢迎回来，{{name}}！👋",
+    "motivational": "继续保持——每一课都很重要。",
+    "level": "等级 {{level}}",
+    "xpTotal": "共 {{xp}} XP",
+    "loading": "加载中…",
+    "loadingDashboard": "正在加载您的仪表板…",
+    "loginPrompt": "请登录以查看您的仪表板。",
+    "serverError": "无法连接到服务器。",
+    "serverErrorHint": "请确保后端正在运行，然后刷新页面。",
+    "retry": "重试",
+    "stats": {
+      "totalXP": "总 XP",
+      "sessions": "学习次数",
+      "lessonsCompleted": "课程已完成",
+      "todayTime": "今日时长",
+      "peakTime": "高峰：{{time}}",
+      "noSessions": "暂无学习记录",
+      "streak": "当前连续天数",
+      "streakDays": "{{count}} 天",
+      "onFire": "太棒了！🔥",
+      "keepGoing": "继续加油！",
+      "achievements": "成就",
+      "badgesEarned": "已获徽章"
+    },
+    "performance": {
+      "title": "学习表现 — 近 30 天",
+      "empty": "暂无活动记录——完成一节课后即可在此查看进度！"
+    },
+    "heatmap": {
+      "titleCurrent": "活动热图 — {{year}} 年（至今）",
+      "titlePast": "活动热图 — {{year}} 年",
+      "activeDays": "{{count}} 个活跃天",
+      "mostActive": "最活跃时段 {{time}}",
+      "today": "今天：{{time}}",
+      "less": "少",
+      "more": "多"
+    },
+    "achievements": {
+      "title": "成就",
+      "empty": "完成课程以解锁成就！",
+      "earnedOn": "获得于 {{date}}",
+      "xpReward": "解锁可获 +{{xp}} XP",
+      "categories": {
+        "learning": "学习",
+        "games": "游戏",
+        "streak": "连续",
+        "xp": "XP 里程碑",
+        "special": "特别"
+      },
+      "first_step":       { "name": "第一步",       "description": "完成您的第一节课" },
+      "bookworm":         { "name": "书虫",          "description": "完成 5 节阅读课" },
+      "sharp_ears":       { "name": "耳聪目明",      "description": "完成 5 节听力课" },
+      "penpal":           { "name": "笔友",          "description": "完成 5 节写作课" },
+      "public_speaker":   { "name": "演讲者",        "description": "完成 5 节口语课" },
+      "all_rounder":      { "name": "全能选手",      "description": "尝试全部 3 个科目" },
+      "gamer":            { "name": "玩家",          "description": "玩任意游戏" },
+      "spelling_bee":     { "name": "拼写高手",      "description": "完成拼写游戏" },
+      "memory_master":    { "name": "记忆大师",      "description": "完成记忆配对游戏" },
+      "puzzle_whiz":      { "name": "谜题达人",      "description": "解开一道文字谜题" },
+      "three_day_streak": { "name": "势如破竹",      "description": "连续 3 天活跃" },
+      "week_warrior":     { "name": "周战士",        "description": "连续 7 天活跃" },
+      "century":          { "name": "百分先生",      "description": "获得 100 XP" },
+      "champion":         { "name": "冠军",          "description": "获得 500 XP" },
+      "early_bird":       { "name": "早起的鸟儿",    "description": "早上 8 点前学习" },
+      "night_owl":        { "name": "夜猫子",        "description": "晚上 9 点后学习" }
+    }
   }
 }

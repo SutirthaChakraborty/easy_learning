@@ -3,6 +3,7 @@
     "home": "Startseite",
     "games": "Spiele",
     "lessons": "Lektionen",
+    "dashboard": "Dashboard",
     "login": "Anmelden",
     "logout": "Abmelden",
     "spellingBee": "Rechtschreibung",
@@ -40,10 +41,81 @@
     "alreadyAccount": "Bereits ein Konto?",
     "noAccount": "Noch kein Konto?",
     "errorDefault": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-    "googleCancelled": "Die Google-Anmeldung wurde abgebrochen."
+    "googleCancelled": "Die Google-Anmeldung wurde abgebrochen.",
+    "popupBlocked": "Das Pop-up wurde blockiert. Bitte erlaube Pop-ups für diese Seite.",
+    "networkError": "Netzwerkfehler. Bitte überprüfe deine Verbindung.",
+    "operationNotAllowed": "Google-Anmeldung ist nicht aktiviert."
   },
   "common": {
     "loading": "Laden...",
     "error": "Etwas ist schiefgelaufen."
+  },
+  "dashboard": {
+    "welcomeBack": "Willkommen zurück, {{name}}! 👋",
+    "motivational": "Weiter so — jede Lektion zählt.",
+    "level": "Level {{level}}",
+    "xpTotal": "{{xp}} XP gesamt",
+    "loading": "Laden…",
+    "loadingDashboard": "Dashboard wird geladen…",
+    "loginPrompt": "Bitte melde dich an, um dein Dashboard zu sehen.",
+    "serverError": "Verbindung zum Server fehlgeschlagen.",
+    "serverErrorHint": "Stelle sicher, dass das Backend läuft, und lade die Seite neu.",
+    "retry": "Erneut versuchen",
+    "stats": {
+      "totalXP": "Gesamt-XP",
+      "sessions": "Sitzungen",
+      "lessonsCompleted": "Lektionen abgeschlossen",
+      "todayTime": "Heutige Zeit",
+      "peakTime": "Spitze: {{time}}",
+      "noSessions": "Noch keine Sitzungen",
+      "streak": "Aktuelle Serie",
+      "streakDays": "{{count}} Tage",
+      "onFire": "Super! 🔥",
+      "keepGoing": "Weitermachen!",
+      "achievements": "Erfolge",
+      "badgesEarned": "Abzeichen verdient"
+    },
+    "performance": {
+      "title": "Leistung — Letzte 30 Tage",
+      "empty": "Noch keine Aktivität — schließe eine Lektion ab, um deinen Fortschritt zu sehen!"
+    },
+    "heatmap": {
+      "titleCurrent": "Aktivitätskarte — {{year}} (bisher)",
+      "titlePast": "Aktivitätskarte — {{year}}",
+      "activeDays": "{{count}} aktive Tage",
+      "mostActive": "Am aktivsten {{time}}",
+      "today": "Heute: {{time}}",
+      "less": "Weniger",
+      "more": "Mehr"
+    },
+    "achievements": {
+      "title": "Erfolge",
+      "empty": "Schließe Lektionen ab, um Erfolge freizuschalten!",
+      "earnedOn": "Verdient {{date}}",
+      "xpReward": "+{{xp}} XP beim Freischalten",
+      "categories": {
+        "learning": "Lernen",
+        "games": "Spiele",
+        "streak": "Serie",
+        "xp": "XP-Meilensteine",
+        "special": "Besonders"
+      },
+      "first_step":       { "name": "Erster Schritt",    "description": "Schließe deine erste Lektion ab" },
+      "bookworm":         { "name": "Bücherwurm",         "description": "Schließe 5 Leselektionen ab" },
+      "sharp_ears":       { "name": "Scharfe Ohren",      "description": "Schließe 5 Hörlektionen ab" },
+      "penpal":           { "name": "Brieffreund",         "description": "Schließe 5 Schreiblektionen ab" },
+      "public_speaker":   { "name": "Redner",              "description": "Schließe 5 Sprechlektionen ab" },
+      "all_rounder":      { "name": "Allrounder",          "description": "Alle 3 Fächer ausprobieren" },
+      "gamer":            { "name": "Gamer",               "description": "Spiele ein beliebiges Spiel" },
+      "spelling_bee":     { "name": "Rechtschreibprofi",   "description": "Schließe das Rechtschreibspiel ab" },
+      "memory_master":    { "name": "Gedächtnismeister",   "description": "Schließe das Gedächtnisspiel ab" },
+      "puzzle_whiz":      { "name": "Rätselprofi",         "description": "Löse ein Worträtsel" },
+      "three_day_streak": { "name": "Auf Feuer",           "description": "3 Tage in Folge aktiv" },
+      "week_warrior":     { "name": "Wochenkämpfer",       "description": "7 Tage in Folge aktiv" },
+      "century":          { "name": "Jahrhundert",         "description": "100 XP verdienen" },
+      "champion":         { "name": "Champion",            "description": "500 XP verdienen" },
+      "early_bird":       { "name": "Frühaufsteher",       "description": "Vor 8 Uhr lernen" },
+      "night_owl":        { "name": "Nachteule",           "description": "Nach 21 Uhr lernen" }
+    }
   }
 }

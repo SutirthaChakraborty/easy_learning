@@ -3,6 +3,7 @@
     "home": "হোম",
     "games": "গেমস",
     "lessons": "পাঠ",
+    "dashboard": "ড্যাশবোর্ড",
     "login": "লগইন",
     "logout": "লগআউট",
     "spellingBee": "স্পেলিং বি",
@@ -40,10 +41,81 @@
     "alreadyAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
     "noAccount": "অ্যাকাউন্ট নেই?",
     "errorDefault": "কিছু একটা ভুল হয়েছে। আবার চেষ্টা করুন।",
-    "googleCancelled": "Google সাইন-ইন বাতিল করা হয়েছে।"
+    "googleCancelled": "Google সাইন-ইন বাতিল করা হয়েছে।",
+    "popupBlocked": "পপ-আপ ব্লক হয়েছে। এই সাইটের জন্য পপ-আপ অনুমতি দিন।",
+    "networkError": "নেটওয়ার্ক ত্রুটি। আপনার সংযোগ পরীক্ষা করুন।",
+    "operationNotAllowed": "Google সাইন-ইন সক্রিয় নেই। সহায়তার সাথে যোগাযোগ করুন।"
   },
   "common": {
     "loading": "লোড হচ্ছে...",
     "error": "কিছু একটা ভুল হয়েছে।"
+  },
+  "dashboard": {
+    "welcomeBack": "আবার স্বাগতম, {{name}}! 👋",
+    "motivational": "চালিয়ে যাও — প্রতিটি পাঠ গুরুত্বপূর্ণ।",
+    "level": "স্তর {{level}}",
+    "xpTotal": "{{xp}} XP মোট",
+    "loading": "লোড হচ্ছে…",
+    "loadingDashboard": "আপনার ড্যাশবোর্ড লোড হচ্ছে…",
+    "loginPrompt": "আপনার ড্যাশবোর্ড দেখতে লগইন করুন।",
+    "serverError": "সার্ভারের সাথে সংযোগ করা যায়নি।",
+    "serverErrorHint": "নিশ্চিত করুন ব্যাকএন্ড চলছে, তারপর পেজ রিফ্রেশ করুন।",
+    "retry": "পুনরায় চেষ্টা করুন",
+    "stats": {
+      "totalXP": "মোট XP",
+      "sessions": "সেশন",
+      "lessonsCompleted": "পাঠ সম্পন্ন",
+      "todayTime": "আজকের সময়",
+      "peakTime": "সর্বোচ্চ: {{time}}",
+      "noSessions": "এখনও কোনো সেশন নেই",
+      "streak": "বর্তমান ধারা",
+      "streakDays": "{{count}} দিন",
+      "onFire": "দুর্দান্ত! 🔥",
+      "keepGoing": "চালিয়ে যাও!",
+      "achievements": "অর্জন",
+      "badgesEarned": "ব্যাজ অর্জিত"
+    },
+    "performance": {
+      "title": "পারফরম্যান্স — গত ৩০ দিন",
+      "empty": "এখনও কোনো কার্যক্রম নেই — এখানে অগ্রগতি দেখতে একটি পাঠ সম্পন্ন করুন!"
+    },
+    "heatmap": {
+      "titleCurrent": "কার্যক্রম হিটম্যাপ — {{year}} (এখন পর্যন্ত)",
+      "titlePast": "কার্যক্রম হিটম্যাপ — {{year}}",
+      "activeDays": "{{count}} সক্রিয় দিন",
+      "mostActive": "সবচেয়ে সক্রিয় {{time}}",
+      "today": "আজ: {{time}}",
+      "less": "কম",
+      "more": "বেশি"
+    },
+    "achievements": {
+      "title": "অর্জন",
+      "empty": "অর্জন আনলক করতে পাঠ সম্পন্ন করুন!",
+      "earnedOn": "অর্জিত {{date}}",
+      "xpReward": "+{{xp}} XP আনলকে",
+      "categories": {
+        "learning": "পড়াশোনা",
+        "games": "গেমস",
+        "streak": "ধারা",
+        "xp": "XP মাইলফলক",
+        "special": "বিশেষ"
+      },
+      "first_step":       { "name": "প্রথম পদক্ষেপ",  "description": "প্রথম পাঠ সম্পন্ন করুন" },
+      "bookworm":         { "name": "বইপোকা",         "description": "৫টি পাঠ পড়া সম্পন্ন করুন" },
+      "sharp_ears":       { "name": "তীক্ষ্ণ কান",    "description": "৫টি শোনার পাঠ সম্পন্ন করুন" },
+      "penpal":           { "name": "কলম বন্ধু",       "description": "৫টি লেখার পাঠ সম্পন্ন করুন" },
+      "public_speaker":   { "name": "বক্তা",           "description": "৫টি বলার পাঠ সম্পন্ন করুন" },
+      "all_rounder":      { "name": "সর্বজনীন",        "description": "সকল ৩টি বিষয় চেষ্টা করুন" },
+      "gamer":            { "name": "গেমার",           "description": "যেকোনো গেম খেলুন" },
+      "spelling_bee":     { "name": "বানান বিশেষজ্ঞ", "description": "বানান গেম সম্পন্ন করুন" },
+      "memory_master":    { "name": "স্মৃতি মাস্টার",  "description": "মেমোরি ম্যাচ গেম সম্পন্ন করুন" },
+      "puzzle_whiz":      { "name": "পাজল বিশেষজ্ঞ",  "description": "একটি ওয়ার্ড পাজল সমাধান করুন" },
+      "three_day_streak": { "name": "আগুনে",           "description": "পরপর ৩ দিন সক্রিয়" },
+      "week_warrior":     { "name": "সপ্তাহ যোদ্ধা",  "description": "পরপর ৭ দিন সক্রিয়" },
+      "century":          { "name": "শতক",             "description": "১০০ XP অর্জন করুন" },
+      "champion":         { "name": "চ্যাম্পিয়ন",      "description": "৫০০ XP অর্জন করুন" },
+      "early_bird":       { "name": "ভোরের পাখি",      "description": "সকাল ৮টার আগে পড়াশোনা করুন" },
+      "night_owl":        { "name": "রাতের পাখি",       "description": "রাত ৯টার পরে পড়াশোনা করুন" }
+    }
   }
 }

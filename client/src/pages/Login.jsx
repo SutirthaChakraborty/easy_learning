@@ -45,10 +45,21 @@ const Login = () => {
       await signInWithPopup(auth, googleProvider);
       navigate("/");
     } catch (err) {
-      const googleErrors = {
-        "auth/popup-closed-by-user": t("login.googleCancelled"),
-      };
-      setError(googleErrors[err.code] || t("login.errorDefault"));
+      const cancelled = [
+        "auth/popup-closed-by-user",
+        "auth/cancelled-popup-request",
+      ];
+      if (cancelled.includes(err.code)) {
+        setError(t("login.googleCancelled"));
+      } else if (err.code === "auth/popup-blocked") {
+        setError(t("login.popupBlocked"));
+      } else if (err.code === "auth/network-request-failed") {
+        setError(t("login.networkError"));
+      } else if (err.code === "auth/operation-not-allowed") {
+        setError(t("login.operationNotAllowed"));
+      } else {
+        setError(t("login.errorDefault"));
+      }
     } finally {
       setLoading(false);
     }

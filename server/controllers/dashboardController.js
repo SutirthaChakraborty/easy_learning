@@ -104,131 +104,154 @@ async function checkAndAwardAchievements(email) {
 // ── Controllers ────────────────────────────────────────────────────────────────
 
 const logSession = async (req, res) => {
-  const { email } = req.user
-  const { module: mod, subject, durationMinutes, xpEarned, score, startTime } = req.body
+  try {
+    const { email } = req.user
+    const { module: mod, subject, durationMinutes, xpEarned, score, startTime } = req.body
 
-  if (!mod) return res.status(400).json({ success: false, message: 'module is required' })
+    if (!mod) return res.status(400).json({ success: false, message: 'module is required' })
 
-  const now     = new Date()
-  const start   = startTime ? new Date(startTime) : new Date(now - (durationMinutes || 1) * 60000)
-  const dayKey  = midnight(now)
+    const now     = new Date()
+    const start   = startTime ? new Date(startTime) : new Date(now - (durationMinutes || 1) * 60000)
+    const dayKey  = midnight(now)
 
-  const sessionEntry = {
-    startTime: start,
-    endTime: now,
-    durationMinutes: durationMinutes || 0,
-    module: mod,
-    subject: subject || 'general',
-    xpEarned: xpEarned || 0,
-    score: score || 0,
-  }
+    const sessionEntry = {
+      startTime: start,
+      endTime: now,
+      durationMinutes: durationMinutes || 0,
+      module: mod,
+      subject: subject || 'general',
+      xpEarned: xpEarned || 0,
+      score: score || 0,
+    }
 
-  await StudentActivity.findOneAndUpdate(
-    { email, date: dayKey },
-    {
-      $push: { sessions: sessionEntry },
-      $inc: {
-        totalMinutes: durationMinutes || 0,
-        totalXP: xpEarned || 0,
-        totalSessions: 1,
+    await StudentActivity.findOneAndUpdate(
+      { email, date: dayKey },
+      {
+        $push: { sessions: sessionEntry },
+        $inc: {
+          totalMinutes: durationMinutes || 0,
+          totalXP: xpEarned || 0,
+          totalSessions: 1,
+        },
       },
-    },
-    { upsert: true, new: true }
-  )
+      { upsert: true, new: true }
+    )
 
-  const newAchievements = await checkAndAwardAchievements(email)
-  res.json({ success: true, newAchievements })
+    const newAchievements = await checkAndAwardAchievements(email)
+    res.json({ success: true, newAchievements })
+  } catch (err) {
+    console.error('logSession error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
 }
 
 const getStats = async (req, res) => {
-  const { email } = req.user
-  const [allActivity, achievements] = await Promise.all([
-    StudentActivity.find({ email }),
-    StudentAchievement.find({ email }),
-  ])
+  try {
+    const { email } = req.user
+    const [allActivity, achievements] = await Promise.all([
+      StudentActivity.find({ email }),
+      StudentAchievement.find({ email }),
+    ])
 
-  const totalXP       = allActivity.reduce((s, a) => s + a.totalXP, 0)
-  const totalMinutes  = allActivity.reduce((s, a) => s + a.totalMinutes, 0)
-  const totalSessions = allActivity.reduce((s, a) => s + a.totalSessions, 0)
-  const streak        = calcStreak(allActivity)
+    const totalXP       = allActivity.reduce((s, a) => s + a.totalXP, 0)
+    const totalMinutes  = allActivity.reduce((s, a) => s + a.totalMinutes, 0)
+    const totalSessions = allActivity.reduce((s, a) => s + a.totalSessions, 0)
+    const streak        = calcStreak(allActivity)
 
-  // Today's stats
-  const todayDoc = allActivity.find(a => midnight(a.date).getTime() === midnight().getTime())
-  const todayMinutes = todayDoc?.totalMinutes || 0
-  const todayXP      = todayDoc?.totalXP || 0
+    const todayDoc = allActivity.find(a => midnight(a.date).getTime() === midnight().getTime())
+    const todayMinutes = todayDoc?.totalMinutes || 0
+    const todayXP      = todayDoc?.totalXP || 0
 
-  // Most active hour range (peek 2-hour window)
-  const hourBuckets = new Array(24).fill(0)
-  allActivity.forEach(day => {
-    day.sessions.forEach(s => {
-      if (s.startTime) hourBuckets[new Date(s.startTime).getHours()]++
+    const hourBuckets = new Array(24).fill(0)
+    allActivity.forEach(day => {
+      day.sessions.forEach(s => {
+        if (s.startTime) hourBuckets[new Date(s.startTime).getHours()]++
+      })
     })
-  })
-  const maxHour = hourBuckets.indexOf(Math.max(...hourBuckets))
-  const peakLabel = `${maxHour % 12 || 12}${maxHour < 12 ? 'AM' : 'PM'} – ${(maxHour + 2) % 12 || 12}${(maxHour + 2) < 12 ? 'AM' : 'PM'}`
+    const maxHour = hourBuckets.indexOf(Math.max(...hourBuckets))
+    const peakLabel = `${maxHour % 12 || 12}${maxHour < 12 ? 'AM' : 'PM'} – ${(maxHour + 2) % 12 || 12}${(maxHour + 2) < 12 ? 'AM' : 'PM'}`
 
-  const level = Math.floor(totalXP / 100) + 1
+    const level = Math.floor(totalXP / 100) + 1
 
-  res.json({
-    success: true,
-    data: {
-      totalXP, totalMinutes, totalSessions, streak,
-      todayMinutes, todayXP,
-      peakTimeLabel: hourBuckets.every(b => b === 0) ? null : peakLabel,
-      level,
-      achievementCount: achievements.length,
-    },
-  })
+    res.json({
+      success: true,
+      data: {
+        totalXP, totalMinutes, totalSessions, streak,
+        todayMinutes, todayXP,
+        peakTimeLabel: hourBuckets.every(b => b === 0) ? null : peakLabel,
+        level,
+        achievementCount: achievements.length,
+      },
+    })
+  } catch (err) {
+    console.error('getStats error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
 }
 
 const getActivity = async (req, res) => {
-  const { email } = req.user
-  let dateFilter
+  try {
+    const { email } = req.user
+    let dateFilter
 
-  if (req.query.year) {
-    const y = parseInt(req.query.year)
-    dateFilter = { $gte: new Date(y, 0, 1), $lt: new Date(y + 1, 0, 1) }
-  } else {
-    const days = parseInt(req.query.days) || 365
-    const since = new Date()
-    since.setDate(since.getDate() - days)
-    dateFilter = { $gte: since }
+    if (req.query.year) {
+      const y = parseInt(req.query.year)
+      dateFilter = { $gte: new Date(y, 0, 1), $lt: new Date(y + 1, 0, 1) }
+    } else {
+      const days = parseInt(req.query.days) || 365
+      const since = new Date()
+      since.setDate(since.getDate() - days)
+      dateFilter = { $gte: since }
+    }
+
+    const activity = await StudentActivity.find({ email, date: dateFilter })
+      .select('date totalMinutes totalXP totalSessions')
+      .lean()
+
+    res.json({ success: true, data: activity })
+  } catch (err) {
+    console.error('getActivity error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
   }
-
-  const activity = await StudentActivity.find({ email, date: dateFilter })
-    .select('date totalMinutes totalXP totalSessions')
-    .lean()
-
-  res.json({ success: true, data: activity })
 }
 
 const getAchievements = async (req, res) => {
-  const { email } = req.user
-  const earned = await StudentAchievement.find({ email }).lean()
-  const earnedMap = {}
-  earned.forEach(a => { earnedMap[a.achievementId] = a.earnedAt })
+  try {
+    const { email } = req.user
+    const earned = await StudentAchievement.find({ email }).lean()
+    const earnedMap = {}
+    earned.forEach(a => { earnedMap[a.achievementId] = a.earnedAt })
 
-  const result = ACHIEVEMENTS.map(def => ({
-    ...def,
-    earned: !!earnedMap[def.id],
-    earnedAt: earnedMap[def.id] || null,
-  }))
+    const result = ACHIEVEMENTS.map(def => ({
+      ...def,
+      earned: !!earnedMap[def.id],
+      earnedAt: earnedMap[def.id] || null,
+    }))
 
-  res.json({ success: true, data: result })
+    res.json({ success: true, data: result })
+  } catch (err) {
+    console.error('getAchievements error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
 }
 
 const getPerformance = async (req, res) => {
-  const { email } = req.user
-  const days = parseInt(req.query.days) || 30
-  const since = new Date()
-  since.setDate(since.getDate() - days)
+  try {
+    const { email } = req.user
+    const days = parseInt(req.query.days) || 30
+    const since = new Date()
+    since.setDate(since.getDate() - days)
 
-  const activity = await StudentActivity.find({ email, date: { $gte: since } })
-    .select('date totalXP totalSessions totalMinutes')
-    .sort({ date: 1 })
-    .lean()
+    const activity = await StudentActivity.find({ email, date: { $gte: since } })
+      .select('date totalXP totalSessions totalMinutes')
+      .sort({ date: 1 })
+      .lean()
 
-  res.json({ success: true, data: activity })
+    res.json({ success: true, data: activity })
+  } catch (err) {
+    console.error('getPerformance error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
 }
 
 module.exports = { logSession, getStats, getActivity, getAchievements, getPerformance }
