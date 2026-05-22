@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence } from "framer-motion";
@@ -13,6 +13,7 @@ import {
   resetGame,
   hideCelebration,
 } from "../../store/slices/wordPuzzleSlice";
+import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./PuzzleGame.module.css";
 
 import { playBtn, playSlide, playCorrect, playWrong } from "../../utils/sounds";
@@ -41,10 +42,34 @@ const PuzzleGame = () => {
 
   const current = words[currentIndex];
 
+  const wordStartRef = useRef(new Date().toISOString());
+  const sessionLoggedRef = useRef(false);
+
   // Fetch words on mount
   useEffect(() => {
     dispatch(fetchPuzzleWords());
   }, [dispatch]);
+
+  // Reset session tracking on new word
+  useEffect(() => {
+    wordStartRef.current = new Date().toISOString();
+    sessionLoggedRef.current = false;
+  }, [currentIndex]);
+
+  // Log session when answer comes in
+  useEffect(() => {
+    if (!result || sessionLoggedRef.current) return;
+    sessionLoggedRef.current = true;
+    dispatch(logDashboardSession({
+      module: "puzzle",
+      subject: "english",
+      durationMinutes: 1,
+      xpEarned: result === "correct" ? 10 : 0,
+      score: result === "correct" ? 100 : 0,
+      startTime: wordStartRef.current,
+    }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result]);
 
   // Auto-check when all tiles placed
   useEffect(() => {

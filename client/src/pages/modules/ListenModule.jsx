@@ -6,6 +6,7 @@ import * as FramerMotion from "framer-motion";
 import { lessons } from "../../data/lessons";
 import { fetchScienceQuestions } from "../../store/slices/listenScienceSlice";
 import { fetchEnglishQuestions } from "../../store/slices/listenEnglishSlice";
+import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./ListenModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
 import {
@@ -77,8 +78,31 @@ const ListenModule = () => {
   const mediaRecorder = useRef(null);
   const chunks        = useRef([]);
   const recognitionRef = useRef(null);
+  const questionStartRef = useRef(new Date().toISOString());
+  const sessionLoggedRef = useRef(false);
 
   const current = data[idx];
+
+  // Reset refs when question changes
+  useEffect(() => {
+    questionStartRef.current = new Date().toISOString();
+    sessionLoggedRef.current = false;
+  }, [idx]);
+
+  // Log session when stars are awarded
+  useEffect(() => {
+    if (stars === null || sessionLoggedRef.current) return;
+    sessionLoggedRef.current = true;
+    dispatch(logDashboardSession({
+      module: "listen",
+      subject: subject || "general",
+      durationMinutes: 1,
+      xpEarned: current?.xp ? Math.round(current.xp * (stars / 3)) : stars * 5,
+      score: Math.round((stars / 3) * 100),
+      startTime: questionStartRef.current,
+    }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stars]);
 
   useEffect(() => {
     return () => {

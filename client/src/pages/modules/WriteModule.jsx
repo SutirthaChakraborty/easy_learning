@@ -7,6 +7,7 @@ import { lessons } from "../../data/lessons";
 import { fetchScienceWriteQuestions } from "../../store/slices/writeScienceSlice";
 import { fetchMathsWriteQuestions } from "../../store/slices/writeMathsSlice";
 import { fetchEnglishWriteQuestions } from "../../store/slices/writeEnglishSlice";
+import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./WriteModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
 import {
@@ -49,8 +50,32 @@ const WriteModule = () => {
 
   const canvasRef = useRef(null);
   const lastPos = useRef(null);
+  const questionStartRef = useRef(new Date().toISOString());
+  const sessionLoggedRef = useRef(false);
 
   const current = data[idx];
+
+  // Reset refs when question changes
+  useEffect(() => {
+    questionStartRef.current = new Date().toISOString();
+    sessionLoggedRef.current = false;
+  }, [idx]);
+
+  // Log session when stars are awarded via canvas check
+  useEffect(() => {
+    if (stars === null || sessionLoggedRef.current) return;
+    sessionLoggedRef.current = true;
+    const xp = stars === 3 ? 15 : stars === 2 ? 10 : stars === 1 ? 5 : 0;
+    dispatch(logDashboardSession({
+      module: "write",
+      subject: subject || "general",
+      durationMinutes: 1,
+      xpEarned: xp,
+      score: Math.round((stars / 3) * 100),
+      startTime: questionStartRef.current,
+    }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stars]);
 
   const initCanvas = useCallback(() => {
     const canvas = canvasRef.current;

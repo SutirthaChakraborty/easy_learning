@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { AnimatePresence } from "framer-motion";
@@ -7,6 +7,7 @@ import { lessons } from "../../data/lessons";
 import { fetchScienceReadQuestions } from "../../store/slices/readScienceSlice";
 import { fetchMathsReadQuestions } from "../../store/slices/readMathsSlice";
 import { fetchEnglishReadQuestions } from "../../store/slices/readEnglishSlice";
+import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./ReadModule.module.css";
 
 import correctSoundFile from "../../assets/sounds/correct.mp3";
@@ -49,6 +50,31 @@ const ReadModule = () => {
   const [showCelebration, setShowCelebration] = useState(false);
 
   const story = data[idx];
+
+  const questionStartRef = useRef(new Date().toISOString());
+  const sessionLoggedRef = useRef(false);
+
+  // Reset refs when question changes
+  useEffect(() => {
+    questionStartRef.current = new Date().toISOString();
+    sessionLoggedRef.current = false;
+  }, [idx]);
+
+  // Log session when answer is selected
+  useEffect(() => {
+    if (!selected || sessionLoggedRef.current || !story) return;
+    sessionLoggedRef.current = true;
+    const isCorrect = selected === story.answer;
+    dispatch(logDashboardSession({
+      module: "read",
+      subject: subject || "general",
+      durationMinutes: 1,
+      xpEarned: isCorrect ? 10 : 0,
+      score: isCorrect ? 100 : 0,
+      startTime: questionStartRef.current,
+    }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected]);
 
   const playSound = (src) => {
     const audio = new Audio(src);

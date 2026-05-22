@@ -22,6 +22,7 @@ const spellEnglishRoutes  = require('./routes/spellEnglish')
 const memoryMatchRoutes   = require('./routes/memoryMatch')
 const wordPuzzleRoutes    = require('./routes/wordPuzzle')
 const learnRoutes         = require('./routes/learn')
+const dashboardRoutes     = require('./routes/dashboard')
 
 const app = express()
 
@@ -69,6 +70,7 @@ app.use('/api/spell/english',    spellEnglishRoutes)
 app.use('/api/game/memory-match', memoryMatchRoutes)
 app.use('/api/game/word-puzzle',  wordPuzzleRoutes)
 app.use('/api/learn',            learnRoutes)
+app.use('/api/dashboard',        dashboardRoutes)
 
 app.listen(PORT, () => {
   try {

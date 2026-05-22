@@ -66,7 +66,9 @@ export const AuthProvider = ({ children }) => {
       const hasJWT = !!localStorage.getItem(JWT_KEY);
       if (hasJWT) return; // JWT user takes precedence; ignore Firebase state
 
-      await syncSessionCookie(firebaseUser);
+      try {
+        await syncSessionCookie(firebaseUser);
+      } catch (_) {}
       if (firebaseUser) {
         setUser({
           uid: firebaseUser.uid,
