@@ -6,7 +6,8 @@ const writeScienceSchema = new mongoose.Schema({
   type: { type: String, required: true, enum: ['letter', 'word', 'number', 'symbol', 'shape'] },
   hint: { type: String, required: true },
   level: { type: Number, required: true, min: 1, max: 5 },
-  emoji: { type: String, default: '' }
+  emoji: { type: String, default: '' },
+  translations: { type: mongoose.Schema.Types.Mixed, default: {} }
 })
 
 module.exports = mongoose.model('WriteScience', writeScienceSchema)

@@ -1,9 +1,9 @@
-﻿import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchScienceQuestions = createAsyncThunk(
   'listenScience/fetchAll',
-  async (_, { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/listen/science`, { credentials: 'include' })
+  async (lang = 'en', { rejectWithValue }) => {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/listen/science?lang=${lang}`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch science questions')
     const json = await res.json()
     return json.data
@@ -14,10 +14,16 @@ const listenScienceSlice = createSlice({
   name: 'listenScience',
   initialState: {
     questions: [],
-    status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+    status: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetScienceListenQuestions: (state) => {
+      state.questions = []
+      state.status = 'idle'
+      state.error = null
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchScienceQuestions.pending, (state) => {
@@ -35,4 +41,5 @@ const listenScienceSlice = createSlice({
   },
 })
 
+export const { resetScienceListenQuestions } = listenScienceSlice.actions
 export default listenScienceSlice.reducer

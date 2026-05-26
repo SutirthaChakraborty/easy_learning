@@ -1,9 +1,9 @@
-﻿import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchMathsSpeakPrompts = createAsyncThunk(
   'speakMaths/fetchAll',
-  async (_, { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/maths`, { credentials: 'include' })
+  async (lang = 'en', { rejectWithValue }) => {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/maths?lang=${lang}`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch maths speaking prompts')
     const json = await res.json()
     return json.data
@@ -17,7 +17,13 @@ const speakMathsSlice = createSlice({
     status: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetMathsSpeakPrompts: (state) => {
+      state.prompts = []
+      state.status = 'idle'
+      state.error = null
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMathsSpeakPrompts.pending, (state) => {
@@ -35,4 +41,5 @@ const speakMathsSlice = createSlice({
   },
 })
 
+export const { resetMathsSpeakPrompts } = speakMathsSlice.actions
 export default speakMathsSlice.reducer

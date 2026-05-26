@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
 import { lessons } from "../../data/lessons";
-import { fetchScienceReadQuestions } from "../../store/slices/readScienceSlice";
-import { fetchMathsReadQuestions } from "../../store/slices/readMathsSlice";
+import { fetchScienceReadQuestions, resetScienceReadQuestions } from "../../store/slices/readScienceSlice";
+import { fetchMathsReadQuestions, resetMathsReadQuestions } from "../../store/slices/readMathsSlice";
 import { fetchEnglishReadQuestions } from "../../store/slices/readEnglishSlice";
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./ReadModule.module.css";
@@ -23,6 +24,7 @@ const ReadModule = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { i18n } = useTranslation();
 
   const scienceQuestions = useSelector((state) => state.readScience.questions);
   const scienceStatus    = useSelector((state) => state.readScience.status);
@@ -39,10 +41,21 @@ const ReadModule = () => {
   const activeStatus = isScience ? scienceStatus    : isMaths ? mathsStatus    : isEnglish ? englishStatus    : "succeeded";
 
   useEffect(() => {
-    if (isScience && scienceStatus === "idle") dispatch(fetchScienceReadQuestions());
-    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsReadQuestions());
+    if (isScience && scienceStatus === "idle") dispatch(fetchScienceReadQuestions(i18n.language));
+    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsReadQuestions(i18n.language));
     if (isEnglish && englishStatus === "idle") dispatch(fetchEnglishReadQuestions());
-  }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]);
+  }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (isScience) {
+      dispatch(resetScienceReadQuestions());
+      dispatch(fetchScienceReadQuestions(i18n.language));
+    }
+    if (isMaths) {
+      dispatch(resetMathsReadQuestions());
+      dispatch(fetchMathsReadQuestions(i18n.language));
+    }
+  }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [idx, setIdx] = useState(0);
   const [selected, setSelected] = useState(null);

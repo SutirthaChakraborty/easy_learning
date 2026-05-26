@@ -1,6 +1,15 @@
 const WordPuzzle = require('../models/WordPuzzle')
 const seedData   = require('../data/word_puzzle.json')
 
+const applyTranslation = (item, lang) => {
+  const obj = item.toObject ? item.toObject() : { ...item }
+  if (lang !== 'en' && obj.translations?.[lang]) {
+    obj.hint = obj.translations[lang]
+  }
+  delete obj.translations
+  return obj
+}
+
 // Fisher-Yates shuffle on a string's characters, guaranteeing a different order
 const scramble = (word) => {
   const letters = word.split('')
@@ -26,13 +35,18 @@ const shuffle = (arr) => {
   return a
 }
 
-const formatWord = (item) => ({
-  id:       item.id,
-  hint:     item.hint,
-  emoji:    item.emoji,
-  letters:  scramble(item.word).split(''),
-  length:   item.word.length
-})
+const formatWord = (item, lang = 'en') => {
+  const obj = item.toObject ? item.toObject() : { ...item }
+  let hint = obj.hint
+  if (lang !== 'en' && obj.translations?.[lang]) hint = obj.translations[lang]
+  return {
+    id:      obj.id,
+    hint,
+    emoji:   obj.emoji,
+    letters: scramble(obj.word).split(''),
+    length:  obj.word.length,
+  }
+}
 
 // GET /api/game/word-puzzle  — full list (no words revealed, just metadata)
 const getAllWords = async (req, res) => {
@@ -44,14 +58,15 @@ const getAllWords = async (req, res) => {
   }
 }
 
-// GET /api/game/word-puzzle/play?count=5
+// GET /api/game/word-puzzle/play?count=5&lang=hi
 // Returns N random puzzles — scrambled letters only (word is NOT sent)
 const getPlaySet = async (req, res) => {
   try {
     const count = Math.min(Math.max(Number(req.query.count) || 5, 1), 35)
+    const lang  = req.query.lang || 'en'
     const all   = await WordPuzzle.find()
     const picked = shuffle(all).slice(0, count)
-    res.json({ success: true, count: picked.length, data: picked.map(formatWord) })
+    res.json({ success: true, count: picked.length, data: picked.map(item => formatWord(item, lang)) })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
@@ -60,9 +75,10 @@ const getPlaySet = async (req, res) => {
 // GET /api/game/word-puzzle/:id  — single puzzle (scrambled, no answer)
 const getWordById = async (req, res) => {
   try {
+    const lang = req.query.lang || 'en'
     const item = await WordPuzzle.findOne({ id: Number(req.params.id) })
     if (!item) return res.status(404).json({ success: false, message: 'Word not found' })
-    res.json({ success: true, data: formatWord(item) })
+    res.json({ success: true, data: formatWord(item, lang) })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }

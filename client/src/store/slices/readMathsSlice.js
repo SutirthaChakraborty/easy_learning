@@ -1,9 +1,9 @@
-﻿import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchMathsReadQuestions = createAsyncThunk(
   'readMaths/fetchAll',
-  async (_, { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/read/maths`, { credentials: 'include' })
+  async (lang = 'en', { rejectWithValue }) => {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/read/maths?lang=${lang}`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch maths reading questions')
     const json = await res.json()
     return json.data
@@ -14,10 +14,16 @@ const readMathsSlice = createSlice({
   name: 'readMaths',
   initialState: {
     questions: [],
-    status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+    status: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetMathsReadQuestions: (state) => {
+      state.questions = []
+      state.status = 'idle'
+      state.error = null
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchMathsReadQuestions.pending, (state) => {
@@ -35,4 +41,5 @@ const readMathsSlice = createSlice({
   },
 })
 
+export const { resetMathsReadQuestions } = readMathsSlice.actions
 export default readMathsSlice.reducer

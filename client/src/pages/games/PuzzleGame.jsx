@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
 import {
@@ -26,6 +27,7 @@ import { GiPartyPopper } from "react-icons/gi";
 const PuzzleGame = () => {
   const navigate  = useNavigate();
   const dispatch  = useDispatch();
+  const { i18n }  = useTranslation();
 
   const {
     words,
@@ -47,8 +49,14 @@ const PuzzleGame = () => {
 
   // Fetch words on mount
   useEffect(() => {
-    dispatch(fetchPuzzleWords());
-  }, [dispatch]);
+    dispatch(fetchPuzzleWords(i18n.language));
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Re-fetch when language changes
+  useEffect(() => {
+    dispatch(resetGame());
+    dispatch(fetchPuzzleWords(i18n.language));
+  }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Reset session tracking on new word
   useEffect(() => {

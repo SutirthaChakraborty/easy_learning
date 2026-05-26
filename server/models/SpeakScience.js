@@ -8,7 +8,8 @@ const speakScienceSchema = new mongoose.Schema({
     type: String,
     required: true,
     enum: ['nature', 'weather', 'space', 'earth', 'body', 'science']
-  }
+  },
+  translations: { type: mongoose.Schema.Types.Mixed, default: {} }
 })
 
 module.exports = mongoose.model('SpeakScience', speakScienceSchema)

@@ -1,12 +1,22 @@
 const SpellEnglish = require('../models/SpellEnglish')
 const seedData = require('../data/spell_english.json')
 
-// GET /api/spell/english  — all words (optional ?level=N filter)
+const applyTranslation = (doc, lang) => {
+  const obj = doc.toObject ? doc.toObject() : { ...doc }
+  if (lang !== 'en' && obj.translations?.[lang]) {
+    obj.hint = obj.translations[lang]
+  }
+  delete obj.translations
+  return obj
+}
+
+// GET /api/spell/english  — all words (optional ?level=N ?lang=XX filters)
 const getAllWords = async (req, res) => {
   try {
+    const lang   = req.query.lang || 'en'
     const filter = req.query.level ? { level: Number(req.query.level) } : {}
-    const words = await SpellEnglish.find(filter).sort({ id: 1 })
-    res.json({ success: true, count: words.length, data: words })
+    const words  = await SpellEnglish.find(filter).sort({ id: 1 })
+    res.json({ success: true, count: words.length, data: words.map(w => applyTranslation(w, lang)) })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
@@ -15,9 +25,10 @@ const getAllWords = async (req, res) => {
 // GET /api/spell/english/:id
 const getWordById = async (req, res) => {
   try {
+    const lang = req.query.lang || 'en'
     const word = await SpellEnglish.findOne({ id: Number(req.params.id) })
     if (!word) return res.status(404).json({ success: false, message: 'Word not found' })
-    res.json({ success: true, data: word })
+    res.json({ success: true, data: applyTranslation(word, lang) })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }

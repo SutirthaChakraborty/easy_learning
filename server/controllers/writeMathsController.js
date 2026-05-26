@@ -1,26 +1,41 @@
 const WriteMaths = require('../models/WriteMaths')
 const seedData = require('../data/write_maths.json')
 
+const applyTranslation = (doc, lang) => {
+  const obj = doc.toObject ? doc.toObject() : { ...doc }
+  if (lang !== 'en' && obj.translations?.[lang]) {
+    obj.hint = obj.translations[lang]
+  }
+  delete obj.translations
+  return obj
+}
+
+// GET /api/write/maths  — all questions (optional ?level=N ?lang=XX filters)
 const getAllQuestions = async (req, res) => {
   try {
+    const lang = req.query.lang || 'en'
     const filter = req.query.level ? { level: Number(req.query.level) } : {}
     const questions = await WriteMaths.find(filter).sort({ id: 1 })
-    res.json({ success: true, count: questions.length, data: questions })
+    const data = questions.map(q => applyTranslation(q, lang))
+    res.json({ success: true, count: data.length, data })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
 }
 
+// GET /api/write/maths/:id
 const getQuestionById = async (req, res) => {
   try {
+    const lang = req.query.lang || 'en'
     const question = await WriteMaths.findOne({ id: Number(req.params.id) })
     if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
-    res.json({ success: true, data: question })
+    res.json({ success: true, data: applyTranslation(question, lang) })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
 }
 
+// POST /api/write/maths/seed
 const seedQuestions = async (req, res) => {
   try {
     await WriteMaths.deleteMany({})
@@ -31,6 +46,7 @@ const seedQuestions = async (req, res) => {
   }
 }
 
+// DELETE /api/write/maths/all
 const deleteAllQuestions = async (req, res) => {
   try {
     const result = await WriteMaths.deleteMany({})

@@ -1,9 +1,9 @@
-﻿import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchScienceSpeakPrompts = createAsyncThunk(
   'speakScience/fetchAll',
-  async (_, { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/science`, { credentials: 'include' })
+  async (lang = 'en', { rejectWithValue }) => {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/science?lang=${lang}`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch science speaking prompts')
     const json = await res.json()
     return json.data
@@ -17,7 +17,13 @@ const speakScienceSlice = createSlice({
     status: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetScienceSpeakPrompts: (state) => {
+      state.prompts = []
+      state.status = 'idle'
+      state.error = null
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchScienceSpeakPrompts.pending, (state) => {
@@ -35,4 +41,5 @@ const speakScienceSlice = createSlice({
   },
 })
 
+export const { resetScienceSpeakPrompts } = speakScienceSlice.actions
 export default speakScienceSlice.reducer
