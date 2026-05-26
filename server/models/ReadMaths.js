@@ -7,7 +7,8 @@ const readMathsSchema = new mongoose.Schema({
   question: { type: String, required: true },
   options: { type: [String], required: true },
   answer: { type: String, required: true },
-  emoji: { type: String, default: '' }
+  emoji: { type: String, default: '' },
+  translations: { type: mongoose.Schema.Types.Mixed, default: {} }
 })
 
 module.exports = mongoose.model('ReadMaths', readMathsSchema)

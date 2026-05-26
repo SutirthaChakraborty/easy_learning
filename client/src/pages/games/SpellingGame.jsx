@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
 import styles from "./SpellingGame.module.css";
@@ -25,6 +26,7 @@ const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 const SpellingGame = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { i18n } = useTranslation();
 
   const { words, status, currentIndex, score, result, xpEarned } = useSelector(
     (state) => state.spellEnglish
@@ -42,9 +44,14 @@ const SpellingGame = () => {
 
   useEffect(() => {
     if (status === "idle") {
-      dispatch(fetchSpellWords());
+      dispatch(fetchSpellWords({ lang: i18n.language }));
     }
-  }, [dispatch, status]);
+  }, [dispatch, status]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Re-fetch when language changes
+  useEffect(() => {
+    dispatch(fetchSpellWords({ lang: i18n.language }));
+  }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (current) buildLetterPool(current.word);

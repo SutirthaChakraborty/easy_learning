@@ -1,14 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
 import { lessons } from "../../data/lessons";
-import { fetchScienceQuestions } from "../../store/slices/listenScienceSlice";
+import { fetchScienceQuestions, resetScienceListenQuestions } from "../../store/slices/listenScienceSlice";
+import { fetchMathsQuestions, resetMathsListenQuestions } from "../../store/slices/listenMathsSlice";
 import { fetchEnglishQuestions } from "../../store/slices/listenEnglishSlice";
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./ListenModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
+import { getSpeechLang } from "../../utils/speechLang";
 import {
   FaArrowLeft, FaStar, FaRegStar,
   FaVolumeUp, FaMicrophone, FaStop,
@@ -49,22 +52,40 @@ const ListenModule = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { i18n } = useTranslation();
 
   const scienceQuestions = useSelector((state) => state.listenScience.questions);
   const scienceStatus    = useSelector((state) => state.listenScience.status);
+  const mathsQuestions   = useSelector((state) => state.listenMaths.questions);
+  const mathsStatus      = useSelector((state) => state.listenMaths.status);
   const englishQuestions = useSelector((state) => state.listenEnglish.questions);
   const englishStatus    = useSelector((state) => state.listenEnglish.status);
 
   const isScience = subject === "science";
+  const isMaths   = subject === "maths";
   const isEnglish = subject === "english";
 
-  const data         = isScience ? scienceQuestions : isEnglish ? englishQuestions : (lessons[subject]?.listen || []);
-  const activeStatus = isScience ? scienceStatus    : isEnglish ? englishStatus    : "succeeded";
+  const data         = isScience ? scienceQuestions : isMaths ? mathsQuestions : isEnglish ? englishQuestions : (lessons[subject]?.listen || []);
+  const activeStatus = isScience ? scienceStatus    : isMaths ? mathsStatus    : isEnglish ? englishStatus    : "succeeded";
 
+  // Initial fetch
   useEffect(() => {
-    if (isScience && scienceStatus === "idle") dispatch(fetchScienceQuestions());
+    if (isScience && scienceStatus === "idle") dispatch(fetchScienceQuestions(i18n.language));
+    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsQuestions(i18n.language));
     if (isEnglish && englishStatus === "idle") dispatch(fetchEnglishQuestions());
-  }, [isScience, isEnglish, scienceStatus, englishStatus, dispatch]);
+  }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Re-fetch when language changes (science and maths only)
+  useEffect(() => {
+    if (isScience) {
+      dispatch(resetScienceListenQuestions());
+      dispatch(fetchScienceQuestions(i18n.language));
+    }
+    if (isMaths) {
+      dispatch(resetMathsListenQuestions());
+      dispatch(fetchMathsQuestions(i18n.language));
+    }
+  }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [idx, setIdx] = useState(0);
   const [isPlaying, setIsPlaying]         = useState(false);
@@ -83,13 +104,11 @@ const ListenModule = () => {
 
   const current = data[idx];
 
-  // Reset refs when question changes
   useEffect(() => {
     questionStartRef.current = new Date().toISOString();
     sessionLoggedRef.current = false;
   }, [idx]);
 
-  // Log session when stars are awarded
   useEffect(() => {
     if (stars === null || sessionLoggedRef.current) return;
     sessionLoggedRef.current = true;
@@ -125,7 +144,7 @@ const ListenModule = () => {
     const utterance = new SpeechSynthesisUtterance(current.sentence);
     utterance.rate  = 0.8;
     utterance.pitch = 1.1;
-    utterance.lang  = "en-US";
+    utterance.lang  = getSpeechLang(i18n.language);
     utterance.onstart = () => setIsPlaying(true);
     utterance.onend   = () => setIsPlaying(false);
     utterance.onerror = () => setIsPlaying(false);
@@ -154,7 +173,7 @@ const ListenModule = () => {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SR) {
         const rec = new SR();
-        rec.lang = "en-US";
+        rec.lang = getSpeechLang(i18n.language);
         rec.interimResults  = false;
         rec.maxAlternatives = 1;
         recognitionRef.current = rec;
@@ -212,7 +231,9 @@ const ListenModule = () => {
   }
 
   if (activeStatus === "failed") {
-    const retry = isEnglish ? fetchEnglishQuestions : fetchScienceQuestions;
+    const retry = isScience ? () => fetchScienceQuestions(i18n.language)
+                : isMaths   ? () => fetchMathsQuestions(i18n.language)
+                : fetchEnglishQuestions;
     return (
       <div className={styles.page}>
         <div className={styles.bgOverlay} />

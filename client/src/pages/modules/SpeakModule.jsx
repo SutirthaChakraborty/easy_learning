@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
-import { fetchScienceSpeakPrompts } from "../../store/slices/speakScienceSlice";
-import { fetchMathsSpeakPrompts } from "../../store/slices/speakMathsSlice";
+import { fetchScienceSpeakPrompts, resetScienceSpeakPrompts } from "../../store/slices/speakScienceSlice";
+import { fetchMathsSpeakPrompts, resetMathsSpeakPrompts } from "../../store/slices/speakMathsSlice";
 import { fetchEnglishSpeakPrompts } from "../../store/slices/speakEnglishSlice";
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./SpeakModule.module.css";
@@ -45,6 +46,7 @@ const SpeakModule = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { i18n } = useTranslation();
 
   const sciencePrompts = useSelector((state) => state.speakScience.prompts);
   const scienceStatus  = useSelector((state) => state.speakScience.status);
@@ -61,10 +63,21 @@ const SpeakModule = () => {
   const activeStatus = isScience ? scienceStatus  : isMaths ? mathsStatus  : isEnglish ? englishStatus  : "succeeded";
 
   useEffect(() => {
-    if (isScience && scienceStatus === "idle") dispatch(fetchScienceSpeakPrompts());
-    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsSpeakPrompts());
+    if (isScience && scienceStatus === "idle") dispatch(fetchScienceSpeakPrompts(i18n.language));
+    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsSpeakPrompts(i18n.language));
     if (isEnglish && englishStatus === "idle") dispatch(fetchEnglishSpeakPrompts());
-  }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]);
+  }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    if (isScience) {
+      dispatch(resetScienceSpeakPrompts());
+      dispatch(fetchScienceSpeakPrompts(i18n.language));
+    }
+    if (isMaths) {
+      dispatch(resetMathsSpeakPrompts());
+      dispatch(fetchMathsSpeakPrompts(i18n.language));
+    }
+  }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [idx, setIdx] = useState(0);
   const [selectedMood, setSelectedMood] = useState(null);

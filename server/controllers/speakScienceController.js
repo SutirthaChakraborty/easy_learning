@@ -1,12 +1,23 @@
 const SpeakScience = require('../models/SpeakScience')
 const seedData = require('../data/speak_science.json')
 
-// GET /api/speak/science  — all prompts (optional ?category=X filter)
+const applyTranslation = (doc, lang) => {
+  const obj = doc.toObject ? doc.toObject() : { ...doc }
+  if (lang !== 'en' && obj.translations?.[lang]) {
+    obj.text = obj.translations[lang]
+  }
+  delete obj.translations
+  return obj
+}
+
+// GET /api/speak/science  — all prompts (optional ?category=X ?lang=XX filters)
 const getAllPrompts = async (req, res) => {
   try {
+    const lang = req.query.lang || 'en'
     const filter = req.query.category ? { category: req.query.category } : {}
     const prompts = await SpeakScience.find(filter).sort({ id: 1 })
-    res.json({ success: true, count: prompts.length, data: prompts })
+    const data = prompts.map(p => applyTranslation(p, lang))
+    res.json({ success: true, count: data.length, data })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
@@ -15,9 +26,10 @@ const getAllPrompts = async (req, res) => {
 // GET /api/speak/science/:id
 const getPromptById = async (req, res) => {
   try {
+    const lang = req.query.lang || 'en'
     const prompt = await SpeakScience.findOne({ id: Number(req.params.id) })
     if (!prompt) return res.status(404).json({ success: false, message: 'Prompt not found' })
-    res.json({ success: true, data: prompt })
+    res.json({ success: true, data: applyTranslation(prompt, lang) })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }

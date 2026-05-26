@@ -1,12 +1,23 @@
 const ListenScience = require('../models/ListenScience')
 const seedData = require('../data/listen_science.json')
 
-// GET /api/listen/science  — all questions (optional ?level=N filter)
+const applyTranslation = (doc, lang) => {
+  const obj = doc.toObject ? doc.toObject() : { ...doc }
+  if (lang !== 'en' && obj.translations?.[lang]) {
+    obj.sentence = obj.translations[lang]
+  }
+  delete obj.translations
+  return obj
+}
+
+// GET /api/listen/science  — all questions (optional ?level=N ?lang=XX filters)
 const getAllQuestions = async (req, res) => {
   try {
+    const lang = req.query.lang || 'en'
     const filter = req.query.level ? { level: Number(req.query.level) } : {}
     const questions = await ListenScience.find(filter).sort({ id: 1 })
-    res.json({ success: true, count: questions.length, data: questions })
+    const data = questions.map(q => applyTranslation(q, lang))
+    res.json({ success: true, count: data.length, data })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
@@ -15,15 +26,16 @@ const getAllQuestions = async (req, res) => {
 // GET /api/listen/science/:id
 const getQuestionById = async (req, res) => {
   try {
+    const lang = req.query.lang || 'en'
     const question = await ListenScience.findOne({ id: Number(req.params.id) })
     if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
-    res.json({ success: true, data: question })
+    res.json({ success: true, data: applyTranslation(question, lang) })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
 }
 
-// POST /api/listen/science/seed  — insert all 100 questions (idempotent)
+// POST /api/listen/science/seed
 const seedQuestions = async (req, res) => {
   try {
     await ListenScience.deleteMany({})
@@ -34,7 +46,7 @@ const seedQuestions = async (req, res) => {
   }
 }
 
-// DELETE /api/listen/science/all  — clear the collection
+// DELETE /api/listen/science/all
 const deleteAllQuestions = async (req, res) => {
   try {
     const result = await ListenScience.deleteMany({})

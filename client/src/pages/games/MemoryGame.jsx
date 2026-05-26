@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
 import {
@@ -22,6 +23,7 @@ import { GiCardPlay } from "react-icons/gi";
 const MemoryGame = () => {
   const navigate  = useNavigate();
   const dispatch  = useDispatch();
+  const { i18n }  = useTranslation();
   const { cards, flipped, moves, won, locked, status, error } =
     useSelector((state) => state.memoryMatch);
 
@@ -30,9 +32,15 @@ const MemoryGame = () => {
 
   // Fetch a fresh deck on mount
   useEffect(() => {
-    dispatch(fetchCards(4));
+    dispatch(fetchCards({ count: 4, lang: i18n.language }));
     return () => { dispatch(resetGame()); };
-  }, [dispatch]);
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Re-fetch when language changes
+  useEffect(() => {
+    dispatch(resetGame());
+    dispatch(fetchCards({ count: 4, lang: i18n.language }));
+  }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // When two cards are face-up, wait then resolve
   useEffect(() => {
@@ -76,7 +84,7 @@ const MemoryGame = () => {
   const restart = () => {
     playBtn();
     dispatch(resetGame());
-    dispatch(fetchCards(4));
+    dispatch(fetchCards({ count: 4, lang: i18n.language }));
     gameStartRef.current = new Date().toISOString();
     sessionLoggedRef.current = false;
   };

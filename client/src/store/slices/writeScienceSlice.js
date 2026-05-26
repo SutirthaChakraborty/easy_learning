@@ -1,9 +1,9 @@
-﻿import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchScienceWriteQuestions = createAsyncThunk(
   'writeScience/fetchAll',
-  async (_, { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/write/science`, { credentials: 'include' })
+  async (lang = 'en', { rejectWithValue }) => {
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/write/science?lang=${lang}`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch science writing questions')
     const json = await res.json()
     return json.data
@@ -17,7 +17,13 @@ const writeScienceSlice = createSlice({
     status: 'idle',
     error: null,
   },
-  reducers: {},
+  reducers: {
+    resetScienceWriteQuestions: (state) => {
+      state.questions = []
+      state.status = 'idle'
+      state.error = null
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchScienceWriteQuestions.pending, (state) => {
@@ -35,4 +41,5 @@ const writeScienceSlice = createSlice({
   },
 })
 
+export const { resetScienceWriteQuestions } = writeScienceSlice.actions
 export default writeScienceSlice.reducer

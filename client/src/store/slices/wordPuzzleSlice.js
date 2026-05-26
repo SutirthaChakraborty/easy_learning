@@ -2,8 +2,11 @@
 
 export const fetchPuzzleWords = createAsyncThunk(
   'wordPuzzle/fetchAll',
-  async (_, { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/game/word-puzzle/play?count=35`, { credentials: 'include' })
+  async (lang = 'en', { rejectWithValue }) => {
+    const res = await fetch(
+      `${import.meta.env.VITE_API_BASE_URL}/game/word-puzzle/play?count=35&lang=${lang}`,
+      { credentials: 'include' }
+    )
     if (!res.ok) return rejectWithValue('Failed to fetch puzzle words')
     const json = await res.json()
     return json.data

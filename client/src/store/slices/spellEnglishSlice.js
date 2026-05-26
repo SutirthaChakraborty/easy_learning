@@ -2,10 +2,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchSpellWords = createAsyncThunk(
   'spellEnglish/fetchAll',
-  async (level, { rejectWithValue }) => {
-    const base = `${import.meta.env.VITE_API_BASE_URL}/spell/english`
-    const url = level ? `${base}?level=${level}` : base
-    const res = await fetch(url, { credentials: 'include' })
+  async ({ level, lang = 'en' } = {}, { rejectWithValue }) => {
+    const base   = `${import.meta.env.VITE_API_BASE_URL}/spell/english`
+    const params = new URLSearchParams({ lang })
+    if (level) params.set('level', level)
+    const res = await fetch(`${base}?${params}`, { credentials: 'include' })
     if (!res.ok) return rejectWithValue('Failed to fetch spelling words')
     const json = await res.json()
     return json.data
