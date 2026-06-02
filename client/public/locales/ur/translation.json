@@ -1,121 +1,290 @@
-{
-  "navbar": {
-    "home": "ہوم",
-    "games": "کھیل",
-    "lessons": "سبق",
-    "dashboard": "ڈیش بورڈ",
-    "login": "لاگ ان",
-    "logout": "لاگ آوٹ",
-    "spellingBee": "ہجے مقابلہ",
-    "memoryMatch": "یادداشت کا کھیل",
-    "wordPuzzle": "لفظی پہیلی",
-    "english": "انگریزی",
-    "mathematics": "ریاضی",
-    "science": "سائنس",
-    "greeting": "ہیلو {{name}}"
-  },
-  "hero": {
-    "greeting": "ہیلو {{name}}",
-    "startLearning": "سیکھنا شروع کریں",
-    "playGames": "کھیل کھیلیں"
-  },
-  "cards": {
-    "english": "انگریزی",
-    "mathematics": "ریاضی",
-    "science": "سائنس"
-  },
-  "login": {
-    "joinTitle": "Learningo میں شامل ہوں!",
-    "welcomeBack": "دوبارہ خوش آمدید!",
-    "createAccountSubtitle": "سیکھنا شروع کرنے کے لیے اکاؤنٹ بنائیں",
-    "continueJourneySubtitle": "اپنا سفر جاری رکھنے کے لیے سائن ان کریں",
-    "continueGoogle": "Google کے ساتھ جاری رکھیں",
-    "or": "یا",
-    "namePlaceholder": "آپ کا نام",
-    "emailPlaceholder": "ای میل پتہ",
-    "passwordPlaceholder": "پاس ورڈ",
-    "createAccountBtn": "اکاؤنٹ بنائیں",
-    "signInBtn": "سائن ان",
-    "signUpBtn": "سائن اپ",
-    "loading": "لوڈ ہو رہا ہے...",
-    "alreadyAccount": "پہلے سے اکاؤنٹ ہے؟",
-    "noAccount": "اکاؤنٹ نہیں ہے؟",
-    "errorDefault": "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔",
-    "googleCancelled": "Google سائن-ان منسوخ کر دیا گیا۔",
-    "popupBlocked": "پاپ اپ بلاک ہو گیا۔ اس سائٹ کے لیے پاپ اپ کی اجازت دیں۔",
-    "networkError": "نیٹ ورک خرابی۔ اپنا کنکشن چیک کریں۔",
-    "operationNotAllowed": "Google سائن-ان فعال نہیں ہے۔"
-  },
-  "common": {
-    "loading": "لوڈ ہو رہا ہے...",
-    "error": "کچھ غلط ہو گیا۔"
-  },
-  "dashboard": {
-    "welcomeBack": "دوبارہ خوش آمدید، {{name}}! 👋",
-    "motivational": "شاندار کام جاری رکھیں — ہر سبق اہم ہے۔",
-    "level": "سطح {{level}}",
-    "xpTotal": "کل {{xp}} XP",
-    "loading": "لوڈ ہو رہا ہے…",
-    "loadingDashboard": "ڈیش بورڈ لوڈ ہو رہا ہے…",
-    "loginPrompt": "اپنا ڈیش بورڈ دیکھنے کے لیے لاگ ان کریں۔",
-    "serverError": "سرور سے جڑنا ممکن نہیں ہوا۔",
-    "serverErrorHint": "یقینی بنائیں کہ بیک اینڈ چل رہا ہے، پھر صفحہ تازہ کریں۔",
-    "retry": "دوبارہ کوشش کریں",
-    "stats": {
-      "totalXP": "کل XP",
-      "sessions": "سیشن",
-      "lessonsCompleted": "اسباق مکمل ہوئے",
-      "todayTime": "آج کا وقت",
-      "peakTime": "عروج: {{time}}",
-      "noSessions": "ابھی تک کوئی سیشن نہیں",
-      "streak": "موجودہ سلسلہ",
-      "streakDays": "{{count}} دن",
-      "onFire": "بہترین! 🔥",
-      "keepGoing": "جاری رکھیں!",
-      "achievements": "کامیابیاں",
-      "badgesEarned": "بیج حاصل کیے"
-    },
-    "performance": {
-      "title": "کارکردگی — گزشتہ 30 دن",
-      "empty": "ابھی تک کوئی سرگرمی نہیں — اپنی پیشرفت دیکھنے کے لیے ایک سبق مکمل کریں!"
-    },
-    "heatmap": {
-      "titleCurrent": "سرگرمی نقشہ — {{year}} (ابھی تک)",
-      "titlePast": "سرگرمی نقشہ — {{year}}",
-      "activeDays": "{{count}} فعال دن",
-      "mostActive": "سب سے زیادہ فعال {{time}}",
-      "today": "آج: {{time}}",
-      "less": "کم",
-      "more": "زیادہ"
-    },
-    "achievements": {
-      "title": "کامیابیاں",
-      "empty": "کامیابیاں انلاک کرنے کے لیے اسباق مکمل کریں!",
-      "earnedOn": "{{date}} کو حاصل کی",
-      "xpReward": "انلاک پر +{{xp}} XP",
-      "categories": {
-        "learning": "سیکھنا",
-        "games": "کھیل",
-        "streak": "سلسلہ",
-        "xp": "XP سنگ میل",
-        "special": "خاص"
-      },
-      "first_step":       { "name": "پہلا قدم",          "description": "اپنا پہلا سبق مکمل کریں" },
-      "bookworm":         { "name": "کتاب کا کیڑا",       "description": "5 پڑھنے کے اسباق مکمل کریں" },
-      "sharp_ears":       { "name": "تیز کان",            "description": "5 سننے کے اسباق مکمل کریں" },
-      "penpal":           { "name": "قلمی دوست",          "description": "5 لکھنے کے اسباق مکمل کریں" },
-      "public_speaker":   { "name": "خطیب",               "description": "5 بولنے کے اسباق مکمل کریں" },
-      "all_rounder":      { "name": "ہمہ جہت",            "description": "تمام 3 مضامین آزمائیں" },
-      "gamer":            { "name": "گیمر",               "description": "کوئی بھی کھیل کھیلیں" },
-      "spelling_bee":     { "name": "ہجے کا ماہر",        "description": "ہجے کا کھیل مکمل کریں" },
-      "memory_master":    { "name": "یادداشت کا ماہر",    "description": "یادداشت کا کھیل مکمل کریں" },
-      "puzzle_whiz":      { "name": "پہیلی ماہر",         "description": "ایک لفظی پہیلی حل کریں" },
-      "three_day_streak": { "name": "آگ پر",              "description": "3 دن لگاتار فعال" },
-      "week_warrior":     { "name": "ہفتے کا جنگجو",      "description": "7 دن لگاتار فعال" },
-      "century":          { "name": "صد",                 "description": "100 XP کمائیں" },
-      "champion":         { "name": "چیمپیئن",             "description": "500 XP کمائیں" },
-      "early_bird":       { "name": "صبح کا پرندہ",       "description": "صبح 8 بجے سے پہلے پڑھیں" },
-      "night_owl":        { "name": "رات کا الو",         "description": "رات 9 بجے کے بعد پڑھیں" }
-    }
-  }
+﻿{
+    "navbar":  {
+                   "home":  "ہوم",
+                   "games":  "کھیل",
+                   "lessons":  "سبق",
+                   "dashboard":  "ڈیش بورڈ",
+                   "login":  "لاگ ان",
+                   "logout":  "لاگ آوٹ",
+                   "spellingBee":  "ہجے مقابلہ",
+                   "memoryMatch":  "یادداشت کا کھیل",
+                   "wordPuzzle":  "لفظی پہیلی",
+                   "english":  "انگریزی",
+                   "mathematics":  "ریاضی",
+                   "science":  "سائنس",
+                   "greeting":  "ہیلو {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "ہیلو {{name}}",
+                 "startLearning":  "سیکھنا شروع کریں",
+                 "playGames":  "کھیل کھیلیں"
+             },
+    "cards":  {
+                  "english":  "انگریزی",
+                  "mathematics":  "ریاضی",
+                  "science":  "سائنس"
+              },
+    "login":  {
+                  "joinTitle":  "Learningo میں شامل ہوں!",
+                  "welcomeBack":  "دوبارہ خوش آمدید!",
+                  "createAccountSubtitle":  "سیکھنا شروع کرنے کے لیے اکاؤنٹ بنائیں",
+                  "continueJourneySubtitle":  "اپنا سفر جاری رکھنے کے لیے سائن ان کریں",
+                  "continueGoogle":  "Google کے ساتھ جاری رکھیں",
+                  "or":  "یا",
+                  "namePlaceholder":  "آپ کا نام",
+                  "emailPlaceholder":  "ای میل پتہ",
+                  "passwordPlaceholder":  "پاس ورڈ",
+                  "createAccountBtn":  "اکاؤنٹ بنائیں",
+                  "signInBtn":  "سائن ان",
+                  "signUpBtn":  "سائن اپ",
+                  "loading":  "لوڈ ہو رہا ہے...",
+                  "alreadyAccount":  "پہلے سے اکاؤنٹ ہے؟",
+                  "noAccount":  "اکاؤنٹ نہیں ہے؟",
+                  "errorDefault":  "کچھ غلط ہو گیا۔ دوبارہ کوشش کریں۔",
+                  "googleCancelled":  "Google سائن-ان منسوخ کر دیا گیا۔",
+                  "popupBlocked":  "پاپ اپ بلاک ہو گیا۔ اس سائٹ کے لیے پاپ اپ کی اجازت دیں۔",
+                  "networkError":  "نیٹ ورک خرابی۔ اپنا کنکشن چیک کریں۔",
+                  "operationNotAllowed":  "Google سائن-ان فعال نہیں ہے۔"
+              },
+    "common":  {
+                   "loading":  "لوڈ ہو رہا ہے...",
+                   "error":  "کچھ غلط ہو گیا۔"
+               },
+    "dashboard":  {
+                      "welcomeBack":  "دوبارہ خوش آمدید، {{name}}! 👋",
+                      "motivational":  "شاندار کام جاری رکھیں — ہر سبق اہم ہے۔",
+                      "level":  "سطح {{level}}",
+                      "xpTotal":  "کل {{xp}} XP",
+                      "loading":  "لوڈ ہو رہا ہے…",
+                      "loadingDashboard":  "ڈیش بورڈ لوڈ ہو رہا ہے…",
+                      "loginPrompt":  "اپنا ڈیش بورڈ دیکھنے کے لیے لاگ ان کریں۔",
+                      "serverError":  "سرور سے جڑنا ممکن نہیں ہوا۔",
+                      "serverErrorHint":  "یقینی بنائیں کہ بیک اینڈ چل رہا ہے، پھر صفحہ تازہ کریں۔",
+                      "retry":  "دوبارہ کوشش کریں",
+                      "stats":  {
+                                    "totalXP":  "کل XP",
+                                    "sessions":  "سیشن",
+                                    "lessonsCompleted":  "اسباق مکمل ہوئے",
+                                    "todayTime":  "آج کا وقت",
+                                    "peakTime":  "عروج: {{time}}",
+                                    "noSessions":  "ابھی تک کوئی سیشن نہیں",
+                                    "streak":  "موجودہ سلسلہ",
+                                    "streakDays":  "{{count}} دن",
+                                    "onFire":  "بہترین! 🔥",
+                                    "keepGoing":  "جاری رکھیں!",
+                                    "achievements":  "کامیابیاں",
+                                    "badgesEarned":  "بیج حاصل کیے"
+                                },
+                      "performance":  {
+                                          "title":  "کارکردگی — گزشتہ 30 دن",
+                                          "empty":  "ابھی تک کوئی سرگرمی نہیں — اپنی پیشرفت دیکھنے کے لیے ایک سبق مکمل کریں!"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "سرگرمی نقشہ — {{year}} (ابھی تک)",
+                                      "titlePast":  "سرگرمی نقشہ — {{year}}",
+                                      "activeDays":  "{{count}} فعال دن",
+                                      "mostActive":  "سب سے زیادہ فعال {{time}}",
+                                      "today":  "آج: {{time}}",
+                                      "less":  "کم",
+                                      "more":  "زیادہ"
+                                  },
+                      "achievements":  {
+                                           "title":  "کامیابیاں",
+                                           "empty":  "کامیابیاں انلاک کرنے کے لیے اسباق مکمل کریں!",
+                                           "earnedOn":  "{{date}} کو حاصل کی",
+                                           "xpReward":  "انلاک پر +{{xp}} XP",
+                                           "categories":  {
+                                                              "learning":  "سیکھنا",
+                                                              "games":  "کھیل",
+                                                              "streak":  "سلسلہ",
+                                                              "xp":  "XP سنگ میل",
+                                                              "special":  "خاص"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "پہلا قدم",
+                                                              "description":  "اپنا پہلا سبق مکمل کریں"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "کتاب کا کیڑا",
+                                                            "description":  "5 پڑھنے کے اسباق مکمل کریں"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "تیز کان",
+                                                              "description":  "5 سننے کے اسباق مکمل کریں"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "قلمی دوست",
+                                                          "description":  "5 لکھنے کے اسباق مکمل کریں"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "خطیب",
+                                                                  "description":  "5 بولنے کے اسباق مکمل کریں"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "ہمہ جہت",
+                                                               "description":  "تمام 3 مضامین آزمائیں"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "گیمر",
+                                                         "description":  "کوئی بھی کھیل کھیلیں"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "ہجے کا ماہر",
+                                                                "description":  "ہجے کا کھیل مکمل کریں"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "یادداشت کا ماہر",
+                                                                 "description":  "یادداشت کا کھیل مکمل کریں"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "پہیلی ماہر",
+                                                               "description":  "ایک لفظی پہیلی حل کریں"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "آگ پر",
+                                                                    "description":  "3 دن لگاتار فعال"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "ہفتے کا جنگجو",
+                                                                "description":  "7 دن لگاتار فعال"
+                                                            },
+                                           "century":  {
+                                                           "name":  "صد",
+                                                           "description":  "100 XP کمائیں"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "چیمپیئن",
+                                                            "description":  "500 XP کمائیں"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "صبح کا پرندہ",
+                                                              "description":  "صبح 8 بجے سے پہلے پڑھیں"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "رات کا الو",
+                                                             "description":  "رات 9 بجے کے بعد پڑھیں"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "واپس",
+                        "play":  "کھیلیں",
+                        "defaultTagline":  "آئیں سیکھیں!",
+                        "english":  {
+                                        "label":  "انگریزی",
+                                        "tagline":  "الفاظ جادو ہیں!"
+                                    },
+                        "maths":  {
+                                      "label":  "ریاضی",
+                                      "tagline":  "اعداد مزیدار ہیں!"
+                                  },
+                        "science":  {
+                                        "label":  "سائنس",
+                                        "tagline":  "دنیا دریافت کریں!"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "سنیں",
+                                                       "desc":  "سنیں اور دہرائیں!",
+                                                       "level":  "سطح 1"
+                                                   },
+                                        "read":  {
+                                                     "label":  "پڑھیں",
+                                                     "desc":  "پڑھیں اور جواب دیں!",
+                                                     "level":  "سطح 2"
+                                                 },
+                                        "write":  {
+                                                      "label":  "لکھیں",
+                                                      "desc":  "ٹریس کریں اور لکھیں!",
+                                                      "level":  "سطح 3"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "بولیں",
+                                                      "desc":  "اپنے آپ کو ظاہر کریں!",
+                                                      "level":  "سطح 4"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "واپس",
+                      "title":  "گیم زون",
+                      "subtitle":  "ایک گیم چنیں اور کھیلنا شروع کریں!",
+                      "playNow":  "ابھی کھیلیں",
+                      "diffEasy":  "آسان",
+                      "diffMedium":  "درمیانہ",
+                      "diffHard":  "مشکل",
+                      "spelling":  {
+                                       "title":  "اسپیلنگ بی",
+                                       "desc":  "اشارے سے لفظ لکھیں!"
+                                   },
+                      "memory":  {
+                                     "title":  "میموری میچ",
+                                     "desc":  "تمام جوڑے تلاش کریں!"
+                                 },
+                      "puzzle":  {
+                                     "title":  "ورڈ پزل",
+                                     "desc":  "بکھرے حروف ترتیب دیں!"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "واپس",
+                    "next":  "اگلا →",
+                    "continue":  "جاری رکھیں →",
+                    "retry":  "دوبارہ کوشش کریں",
+                    "level":  "سطح {{level}}",
+                    "loadingQ":  "سوالات لوڈ ہو رہے ہیں…",
+                    "loadingP":  "اشارے لوڈ ہو رہے ہیں…",
+                    "serverErr":  "لوڈ نہیں ہو سکا۔ کیا سرور چل رہا ہے؟",
+                    "listen":  {
+                                   "listen":  "سنیں",
+                                   "playing":  "چل رہا ہے…",
+                                   "record":  "ریکارڈ",
+                                   "stop":  "رکیں",
+                                   "perfect":  "کمال! شاندار!",
+                                   "great":  "بہت اچھا! تقریباً!",
+                                   "good":  "اچھی کوشش! دوبارہ سنیں۔",
+                                   "tryAgain":  "دوبارہ کوشش کریں — آپ کر سکتے ہیں!",
+                                   "attempt":  "اچھی کوشش! کوشش جاری رکھیں!",
+                                   "micError":  "مائیکروفون دستیاب نہیں۔ دوبارہ کوشش کریں!",
+                                   "celebration":  "کمال!"
+                               },
+                    "read":  {
+                                 "correct":  "شاباش! +1 ستارہ",
+                                 "wrong":  "صحیح جواب: {{answer}}",
+                                 "celebration":  "درست!"
+                             },
+                    "write":  {
+                                  "whiteboard":  "آپ کا وائٹ بورڈ",
+                                  "pen":  "قلم",
+                                  "erase":  "مٹائیں",
+                                  "clear":  "صاف کریں",
+                                  "check":  "میری تحریر جانچیں",
+                                  "celebration":  "شاندار تحریر!",
+                                  "perfect":  "بہترین تحریر!",
+                                  "great":  "بہت اچھا!",
+                                  "keep":  "مشق جاری رکھیں!",
+                                  "tryAgain":  "دوبارہ کوشش کریں — آپ کر سکتے ہیں!"
+                              },
+                    "speak":  {
+                                  "title":  "بولیں!",
+                                  "howFeeling":  "آج آپ کیسا محسوس کر رہے ہیں؟",
+                                  "youFeel":  "آج آپ {{mood}} محسوس کر رہے ہیں!",
+                                  "yourRecordings":  "آپ کی ریکارڈنگز:",
+                                  "recording":  "ریکارڈ ہو رہا ہے…",
+                                  "startSpeaking":  "بولنا شروع کریں",
+                                  "doneSpeaking":  "بولنا ختم کریں",
+                                  "tip":  "اشارہ: کوئی غلط جواب نہیں! بس جو سوچتے ہیں وہ کہیں۔",
+                                  "moodHappy":  "خوش",
+                                  "moodSad":  "اداس",
+                                  "moodExcited":  "پرجوش",
+                                  "moodTired":  "تھکا ہوا",
+                                  "moodAmazing":  "شاندار",
+                                  "enc1":  "شیئر کرنے کا شکریہ!",
+                                  "enc2":  "آپ کی آواز اہم ہے!",
+                                  "enc3":  "شاندار! آپ بہت بہادر ہیں!",
+                                  "enc4":  "کیا شاندار جواب ہے!",
+                                  "enc5":  "یہ بہت اچھا تھا!",
+                                  "micError":  "مائیکروفون دستیاب نہیں — اجازتیں جانچیں!"
+                              }
+                }
 }

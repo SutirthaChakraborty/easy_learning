@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+// t() is used for all UI labels throughout this component
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
 import { lessons } from "../../data/lessons";
@@ -24,7 +25,7 @@ const ReadModule = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const scienceQuestions = useSelector((state) => state.readScience.questions);
   const scienceStatus    = useSelector((state) => state.readScience.status);
@@ -119,7 +120,7 @@ const ReadModule = () => {
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <p style={{ color: "#fff", fontSize: "1.4rem" }}>Loading questions…</p>
+          <p style={{ color: "#fff", fontSize: "1.4rem" }}>{t("modules.loadingQ")}</p>
         </div>
       </div>
     );
@@ -131,8 +132,8 @@ const ReadModule = () => {
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-          <p style={{ color: "#fff", fontSize: "1.2rem" }}>Could not load questions. Is the server running?</p>
-          <button className={styles.backBtn} onClick={() => dispatch(retry())}>Retry</button>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.serverErr")}</p>
+          <button className={styles.backBtn} onClick={() => dispatch(retry())}>{t("modules.retry")}</button>
         </div>
       </div>
     );
@@ -160,7 +161,7 @@ const ReadModule = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> Back
+            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.back")}
           </FramerMotion.motion.button>
           <div className={styles.scoreBox}>
             <FaStar color="#FFD700" style={{ marginRight: 5, verticalAlign: "middle" }} />
@@ -233,8 +234,8 @@ const ReadModule = () => {
                 >
                   <p className={isCorrect ? styles.correctText : styles.wrongText}>
                     {isCorrect
-                      ? <><GiPartyPopper style={{ marginRight: 6, verticalAlign: "middle" }} /> Brilliant! +1 Star</>
-                      : <><FaTimes style={{ marginRight: 6, verticalAlign: "middle" }} /> The answer was: {story.answer}</>
+                      ? <><GiPartyPopper style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.read.correct")}</>
+                      : <><FaTimes style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.read.wrong", { answer: story.answer })}</>
                     }
                   </p>
                   <FramerMotion.motion.button
@@ -243,7 +244,7 @@ const ReadModule = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Continue →
+                    {t("modules.continue")}
                   </FramerMotion.motion.button>
                 </FramerMotion.motion.div>
               )}
@@ -260,7 +261,7 @@ const ReadModule = () => {
               exit={{ opacity: 0, scale: 1.4, y: -40 }}
             >
               <GiPartyPopper style={{ marginRight: 8, verticalAlign: "middle" }} />
-              Correct!
+              {t("modules.read.celebration")}
               <FaStar color="#FFD700" style={{ marginLeft: 8, verticalAlign: "middle" }} />
             </FramerMotion.motion.div>
           )}

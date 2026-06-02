@@ -18,35 +18,33 @@ import {
 } from "react-icons/fa";
 import { GiPawPrint, GiWizardStaff, GiPartyPopper } from "react-icons/gi";
 
+// Static prompts are kept in English (speak module is intentionally free-form)
 const staticPrompts = [
-  { id: 1, text: "What is your favourite animal and why?",         Icon: GiPawPrint    },
-  { id: 2, text: "Describe your best day ever!",                   Icon: FaStar        },
-  { id: 3, text: "If you could fly anywhere, where would you go?", Icon: FaPlane       },
-  { id: 4, text: "What makes you feel happy?",                     Icon: FaSmile       },
-  { id: 5, text: "Tell a story about a magical adventure!",        Icon: GiWizardStaff },
+  { id: 1, Icon: GiPawPrint    },
+  { id: 2, Icon: FaStar        },
+  { id: 3, Icon: FaPlane       },
+  { id: 4, Icon: FaSmile       },
+  { id: 5, Icon: GiWizardStaff },
 ];
 
-const moods = [
-  { Icon: FaSmile,    color: "#f9ca24", label: "Happy"   },
-  { Icon: FaSadTear,  color: "#74b9ff", label: "Sad"     },
-  { Icon: FaSurprise, color: "#fd79a8", label: "Excited" },
-  { Icon: FaBed,      color: "#a29bfe", label: "Tired"   },
-  { Icon: FaGrinStars, color: "#fdcb6e", label: "Amazing" },
+const staticPromptTextKeys = [
+  "What is your favourite animal and why?",
+  "Describe your best day ever!",
+  "If you could fly anywhere, where would you go?",
+  "What makes you feel happy?",
+  "Tell a story about a magical adventure!",
 ];
 
-const encouragements = [
-  "Great job sharing! Keep it up!",
-  "Your voice matters — well done!",
-  "Brilliant! You are so brave!",
-  "What a fantastic answer!",
-  "That was wonderful — keep going!",
-];
+const moodKeys = ["moodHappy", "moodSad", "moodExcited", "moodTired", "moodAmazing"];
+const moodIcons = [FaSmile, FaSadTear, FaSurprise, FaBed, FaGrinStars];
+const moodColors = ["#f9ca24", "#74b9ff", "#fd79a8", "#a29bfe", "#fdcb6e"];
+const encKeys = ["enc1", "enc2", "enc3", "enc4", "enc5"];
 
 const SpeakModule = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const sciencePrompts = useSelector((state) => state.speakScience.prompts);
   const scienceStatus  = useSelector((state) => state.speakScience.status);
@@ -58,8 +56,15 @@ const SpeakModule = () => {
   const isScience = subject === "science";
   const isMaths   = subject === "maths";
   const isEnglish = subject === "english";
+  const isStatic  = !isScience && !isMaths && !isEnglish;
 
-  const prompts      = isScience ? sciencePrompts : isMaths ? mathsPrompts : isEnglish ? englishPrompts : staticPrompts;
+  // For static prompts add translated text on the fly
+  const translatedStaticPrompts = staticPrompts.map((p, i) => ({
+    ...p,
+    text: staticPromptTextKeys[i],
+  }));
+
+  const prompts      = isScience ? sciencePrompts : isMaths ? mathsPrompts : isEnglish ? englishPrompts : translatedStaticPrompts;
   const activeStatus = isScience ? scienceStatus  : isMaths ? mathsStatus  : isEnglish ? englishStatus  : "succeeded";
 
   useEffect(() => {
@@ -91,12 +96,10 @@ const SpeakModule = () => {
   const promptStartRef = useRef(new Date().toISOString());
   const prevRecCountRef = useRef(0);
 
-  // Reset prompt start time when prompt changes
   useEffect(() => {
     promptStartRef.current = new Date().toISOString();
   }, [idx]);
 
-  // Log session each time a new recording is saved
   useEffect(() => {
     if (recordings.length <= prevRecCountRef.current) return;
     prevRecCountRef.current = recordings.length;
@@ -126,12 +129,12 @@ const SpeakModule = () => {
         const url = URL.createObjectURL(blob);
         setRecordings((prev) => [
           ...prev,
-          { url, promptIdx: idx, label: `Recording ${prev.length + 1}` },
+          { url, promptIdx: idx, label: `${t("modules.speak.recording").replace("…", "")} ${prev.length + 1}` },
         ]);
-        stream.getTracks().forEach((t) => t.stop());
+        stream.getTracks().forEach((tr) => tr.stop());
 
-        const msg = encouragements[Math.floor(Math.random() * encouragements.length)];
-        setEncouragement(msg);
+        const randKey = encKeys[Math.floor(Math.random() * encKeys.length)];
+        setEncouragement(t(`modules.speak.${randKey}`));
         setShowEncouragement(true);
         setTimeout(() => setShowEncouragement(false), 3000);
       };
@@ -139,7 +142,7 @@ const SpeakModule = () => {
       recorder.start();
       setIsRecording(true);
     } catch {
-      setEncouragement("Microphone not available — check permissions!");
+      setEncouragement(t("modules.speak.micError"));
       setShowEncouragement(true);
       setTimeout(() => setShowEncouragement(false), 3000);
     }
@@ -160,7 +163,7 @@ const SpeakModule = () => {
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <p style={{ color: "#fff", fontSize: "1.4rem" }}>Loading prompts…</p>
+          <p style={{ color: "#fff", fontSize: "1.4rem" }}>{t("modules.loadingP")}</p>
         </div>
       </div>
     );
@@ -172,8 +175,8 @@ const SpeakModule = () => {
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-          <p style={{ color: "#fff", fontSize: "1.2rem" }}>Could not load prompts. Is the server running?</p>
-          <button className={styles.backBtn} onClick={() => dispatch(retry())}>Retry</button>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.serverErr")}</p>
+          <button className={styles.backBtn} onClick={() => dispatch(retry())}>{t("modules.retry")}</button>
         </div>
       </div>
     );
@@ -199,11 +202,12 @@ const SpeakModule = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> Back
+            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} />
+            {t("modules.back")}
           </FramerMotion.motion.button>
           <h2 className={styles.moduleTitle}>
             <FaMicrophone style={{ marginRight: 8, verticalAlign: "middle" }} />
-            Speak Up!
+            {t("modules.speak.title")}
           </h2>
         </div>
 
@@ -211,21 +215,26 @@ const SpeakModule = () => {
           {/* LEFT — avatar + mood */}
           <div className={styles.leftPanel}>
             <div className={styles.avatar}><FaChild /></div>
-            <p className={styles.avatarName}>How are you feeling today?</p>
+            <p className={styles.avatarName}>{t("modules.speak.howFeeling")}</p>
 
             <div className={styles.moodsGrid}>
-              {moods.map((m) => (
-                <FramerMotion.motion.button
-                  key={m.label}
-                  className={`${styles.moodBtn} ${selectedMood === m.label ? styles.moodActive : ""}`}
-                  onClick={() => { playBtn(); setSelectedMood(m.label); }}
-                  whileHover={{ scale: 1.12 }}
-                  whileTap={{ scale: 0.92 }}
-                >
-                  <span className={styles.moodEmoji}><m.Icon color={m.color} /></span>
-                  <span className={styles.moodLabel}>{m.label}</span>
-                </FramerMotion.motion.button>
-              ))}
+              {moodKeys.map((key, i) => {
+                const Icon  = moodIcons[i];
+                const color = moodColors[i];
+                const label = t(`modules.speak.${key}`);
+                return (
+                  <FramerMotion.motion.button
+                    key={key}
+                    className={`${styles.moodBtn} ${selectedMood === label ? styles.moodActive : ""}`}
+                    onClick={() => { playBtn(); setSelectedMood(label); }}
+                    whileHover={{ scale: 1.12 }}
+                    whileTap={{ scale: 0.92 }}
+                  >
+                    <span className={styles.moodEmoji}><Icon color={color} /></span>
+                    <span className={styles.moodLabel}>{label}</span>
+                  </FramerMotion.motion.button>
+                );
+              })}
             </div>
 
             {selectedMood && (
@@ -234,7 +243,7 @@ const SpeakModule = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                You feel <strong>{selectedMood}</strong> today!
+                {t("modules.speak.youFeel", { mood: selectedMood })}
               </FramerMotion.motion.div>
             )}
 
@@ -242,7 +251,7 @@ const SpeakModule = () => {
               <div className={styles.recordingsList}>
                 <p className={styles.recordingsTitle}>
                   <FaMusic style={{ marginRight: 6, verticalAlign: "middle", color: "#a29bfe" }} />
-                  Your recordings:
+                  {t("modules.speak.yourRecordings")}
                 </p>
                 {recordings.map((rec, i) => (
                   <div key={i} className={styles.recordingItem}>
@@ -304,7 +313,7 @@ const SpeakModule = () => {
                   whileTap={{ scale: 0.94 }}
                 >
                   <FaMicrophone style={{ marginRight: 8, verticalAlign: "middle" }} />
-                  Start Speaking
+                  {t("modules.speak.startSpeaking")}
                 </FramerMotion.motion.button>
               ) : (
                 <FramerMotion.motion.button
@@ -314,7 +323,7 @@ const SpeakModule = () => {
                   transition={{ repeat: Infinity, duration: 0.7 }}
                 >
                   <FaStop style={{ marginRight: 8, verticalAlign: "middle" }} />
-                  Done Speaking
+                  {t("modules.speak.doneSpeaking")}
                 </FramerMotion.motion.button>
               )}
 
@@ -325,14 +334,14 @@ const SpeakModule = () => {
                   transition={{ repeat: Infinity, duration: 0.8 }}
                 >
                   <FaCircle color="#ff4444" style={{ marginRight: 6, verticalAlign: "middle", fontSize: "0.7em" }} />
-                  Recording…
+                  {t("modules.speak.recording")}
                 </FramerMotion.motion.div>
               )}
             </div>
 
             <p className={styles.tip}>
               <FaComment style={{ marginRight: 6, verticalAlign: "middle", color: "#a29bfe" }} />
-              Tip: There are no wrong answers! Just say what you think.
+              {t("modules.speak.tip")}
             </p>
           </div>
         </div>

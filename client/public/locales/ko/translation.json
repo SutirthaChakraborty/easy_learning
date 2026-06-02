@@ -1,121 +1,290 @@
-{
-  "navbar": {
-    "home": "홈",
-    "games": "게임",
-    "lessons": "수업",
-    "dashboard": "대시보드",
-    "login": "로그인",
-    "logout": "로그아웃",
-    "spellingBee": "스펠링 게임",
-    "memoryMatch": "메모리 매치",
-    "wordPuzzle": "단어 퍼즐",
-    "english": "영어",
-    "mathematics": "수학",
-    "science": "과학",
-    "greeting": "안녕하세요 {{name}}"
-  },
-  "hero": {
-    "greeting": "안녕하세요 {{name}}",
-    "startLearning": "학습 시작",
-    "playGames": "게임 하기"
-  },
-  "cards": {
-    "english": "영어",
-    "mathematics": "수학",
-    "science": "과학"
-  },
-  "login": {
-    "joinTitle": "Learningo에 가입하세요!",
-    "welcomeBack": "다시 오셨군요!",
-    "createAccountSubtitle": "학습을 시작하려면 계정을 만드세요",
-    "continueJourneySubtitle": "여정을 계속하려면 로그인하세요",
-    "continueGoogle": "Google로 계속",
-    "or": "또는",
-    "namePlaceholder": "이름",
-    "emailPlaceholder": "이메일 주소",
-    "passwordPlaceholder": "비밀번호",
-    "createAccountBtn": "계정 만들기",
-    "signInBtn": "로그인",
-    "signUpBtn": "회원가입",
-    "loading": "로딩 중...",
-    "alreadyAccount": "이미 계정이 있으신가요?",
-    "noAccount": "계정이 없으신가요?",
-    "errorDefault": "문제가 발생했습니다. 다시 시도해 주세요.",
-    "googleCancelled": "Google 로그인이 취소되었습니다.",
-    "popupBlocked": "팝업이 차단되었습니다. 이 사이트의 팝업을 허용해 주세요.",
-    "networkError": "네트워크 오류입니다. 연결을 확인해 주세요.",
-    "operationNotAllowed": "Google 로그인이 활성화되지 않았습니다."
-  },
-  "common": {
-    "loading": "로딩 중...",
-    "error": "문제가 발생했습니다."
-  },
-  "dashboard": {
-    "welcomeBack": "다시 오셨군요, {{name}}! 👋",
-    "motivational": "계속 열심히 하세요 — 모든 수업이 중요합니다.",
-    "level": "레벨 {{level}}",
-    "xpTotal": "총 {{xp}} XP",
-    "loading": "로딩 중…",
-    "loadingDashboard": "대시보드 로딩 중…",
-    "loginPrompt": "대시보드를 보려면 로그인하세요.",
-    "serverError": "서버에 연결할 수 없습니다.",
-    "serverErrorHint": "백엔드가 실행 중인지 확인하고 페이지를 새로고침하세요.",
-    "retry": "다시 시도",
-    "stats": {
-      "totalXP": "총 XP",
-      "sessions": "세션",
-      "lessonsCompleted": "수업 완료",
-      "todayTime": "오늘 학습 시간",
-      "peakTime": "최고 활동: {{time}}",
-      "noSessions": "아직 세션 없음",
-      "streak": "현재 연속",
-      "streakDays": "{{count}} 일",
-      "onFire": "열정 넘쳐요! 🔥",
-      "keepGoing": "계속 하세요!",
-      "achievements": "업적",
-      "badgesEarned": "배지 획득"
-    },
-    "performance": {
-      "title": "성과 — 최근 30일",
-      "empty": "아직 활동이 없습니다 — 수업을 완료하면 여기서 진행 상황을 볼 수 있습니다!"
-    },
-    "heatmap": {
-      "titleCurrent": "활동 히트맵 — {{year}}년 (현재까지)",
-      "titlePast": "활동 히트맵 — {{year}}년",
-      "activeDays": "{{count}} 활동일",
-      "mostActive": "가장 활발한 시간 {{time}}",
-      "today": "오늘: {{time}}",
-      "less": "적음",
-      "more": "많음"
-    },
-    "achievements": {
-      "title": "업적",
-      "empty": "수업을 완료하여 업적을 잠금 해제하세요!",
-      "earnedOn": "{{date}} 획득",
-      "xpReward": "잠금 해제 시 +{{xp}} XP",
-      "categories": {
-        "learning": "학습",
-        "games": "게임",
-        "streak": "연속",
-        "xp": "XP 마일스톤",
-        "special": "특별"
-      },
-      "first_step":       { "name": "첫 걸음",        "description": "첫 번째 수업 완료" },
-      "bookworm":         { "name": "독서광",          "description": "읽기 수업 5회 완료" },
-      "sharp_ears":       { "name": "예리한 귀",       "description": "듣기 수업 5회 완료" },
-      "penpal":           { "name": "펜팔",            "description": "쓰기 수업 5회 완료" },
-      "public_speaker":   { "name": "연사",            "description": "말하기 수업 5회 완료" },
-      "all_rounder":      { "name": "올라운더",        "description": "3개 과목 모두 도전" },
-      "gamer":            { "name": "게이머",          "description": "게임 플레이" },
-      "spelling_bee":     { "name": "스펠링 달인",     "description": "스펠링 게임 완료" },
-      "memory_master":    { "name": "기억력 달인",     "description": "메모리 매치 게임 완료" },
-      "puzzle_whiz":      { "name": "퍼즐 천재",       "description": "단어 퍼즐 풀기" },
-      "three_day_streak": { "name": "불꽃 튀는",       "description": "3일 연속 활동" },
-      "week_warrior":     { "name": "주간 전사",       "description": "7일 연속 활동" },
-      "century":          { "name": "센추리",          "description": "100 XP 획득" },
-      "champion":         { "name": "챔피언",          "description": "500 XP 획득" },
-      "early_bird":       { "name": "일찍 일어나는 새","description": "오전 8시 이전에 공부" },
-      "night_owl":        { "name": "밤올빼미",        "description": "오후 9시 이후에 공부" }
-    }
-  }
+﻿{
+    "navbar":  {
+                   "home":  "홈",
+                   "games":  "게임",
+                   "lessons":  "수업",
+                   "dashboard":  "대시보드",
+                   "login":  "로그인",
+                   "logout":  "로그아웃",
+                   "spellingBee":  "스펠링 게임",
+                   "memoryMatch":  "메모리 매치",
+                   "wordPuzzle":  "단어 퍼즐",
+                   "english":  "영어",
+                   "mathematics":  "수학",
+                   "science":  "과학",
+                   "greeting":  "안녕하세요 {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "안녕하세요 {{name}}",
+                 "startLearning":  "학습 시작",
+                 "playGames":  "게임 하기"
+             },
+    "cards":  {
+                  "english":  "영어",
+                  "mathematics":  "수학",
+                  "science":  "과학"
+              },
+    "login":  {
+                  "joinTitle":  "Learningo에 가입하세요!",
+                  "welcomeBack":  "다시 오셨군요!",
+                  "createAccountSubtitle":  "학습을 시작하려면 계정을 만드세요",
+                  "continueJourneySubtitle":  "여정을 계속하려면 로그인하세요",
+                  "continueGoogle":  "Google로 계속",
+                  "or":  "또는",
+                  "namePlaceholder":  "이름",
+                  "emailPlaceholder":  "이메일 주소",
+                  "passwordPlaceholder":  "비밀번호",
+                  "createAccountBtn":  "계정 만들기",
+                  "signInBtn":  "로그인",
+                  "signUpBtn":  "회원가입",
+                  "loading":  "로딩 중...",
+                  "alreadyAccount":  "이미 계정이 있으신가요?",
+                  "noAccount":  "계정이 없으신가요?",
+                  "errorDefault":  "문제가 발생했습니다. 다시 시도해 주세요.",
+                  "googleCancelled":  "Google 로그인이 취소되었습니다.",
+                  "popupBlocked":  "팝업이 차단되었습니다. 이 사이트의 팝업을 허용해 주세요.",
+                  "networkError":  "네트워크 오류입니다. 연결을 확인해 주세요.",
+                  "operationNotAllowed":  "Google 로그인이 활성화되지 않았습니다."
+              },
+    "common":  {
+                   "loading":  "로딩 중...",
+                   "error":  "문제가 발생했습니다."
+               },
+    "dashboard":  {
+                      "welcomeBack":  "다시 오셨군요, {{name}}! 👋",
+                      "motivational":  "계속 열심히 하세요 — 모든 수업이 중요합니다.",
+                      "level":  "레벨 {{level}}",
+                      "xpTotal":  "총 {{xp}} XP",
+                      "loading":  "로딩 중…",
+                      "loadingDashboard":  "대시보드 로딩 중…",
+                      "loginPrompt":  "대시보드를 보려면 로그인하세요.",
+                      "serverError":  "서버에 연결할 수 없습니다.",
+                      "serverErrorHint":  "백엔드가 실행 중인지 확인하고 페이지를 새로고침하세요.",
+                      "retry":  "다시 시도",
+                      "stats":  {
+                                    "totalXP":  "총 XP",
+                                    "sessions":  "세션",
+                                    "lessonsCompleted":  "수업 완료",
+                                    "todayTime":  "오늘 학습 시간",
+                                    "peakTime":  "최고 활동: {{time}}",
+                                    "noSessions":  "아직 세션 없음",
+                                    "streak":  "현재 연속",
+                                    "streakDays":  "{{count}} 일",
+                                    "onFire":  "열정 넘쳐요! 🔥",
+                                    "keepGoing":  "계속 하세요!",
+                                    "achievements":  "업적",
+                                    "badgesEarned":  "배지 획득"
+                                },
+                      "performance":  {
+                                          "title":  "성과 — 최근 30일",
+                                          "empty":  "아직 활동이 없습니다 — 수업을 완료하면 여기서 진행 상황을 볼 수 있습니다!"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "활동 히트맵 — {{year}}년 (현재까지)",
+                                      "titlePast":  "활동 히트맵 — {{year}}년",
+                                      "activeDays":  "{{count}} 활동일",
+                                      "mostActive":  "가장 활발한 시간 {{time}}",
+                                      "today":  "오늘: {{time}}",
+                                      "less":  "적음",
+                                      "more":  "많음"
+                                  },
+                      "achievements":  {
+                                           "title":  "업적",
+                                           "empty":  "수업을 완료하여 업적을 잠금 해제하세요!",
+                                           "earnedOn":  "{{date}} 획득",
+                                           "xpReward":  "잠금 해제 시 +{{xp}} XP",
+                                           "categories":  {
+                                                              "learning":  "학습",
+                                                              "games":  "게임",
+                                                              "streak":  "연속",
+                                                              "xp":  "XP 마일스톤",
+                                                              "special":  "특별"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "첫 걸음",
+                                                              "description":  "첫 번째 수업 완료"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "독서광",
+                                                            "description":  "읽기 수업 5회 완료"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "예리한 귀",
+                                                              "description":  "듣기 수업 5회 완료"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "펜팔",
+                                                          "description":  "쓰기 수업 5회 완료"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "연사",
+                                                                  "description":  "말하기 수업 5회 완료"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "올라운더",
+                                                               "description":  "3개 과목 모두 도전"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "게이머",
+                                                         "description":  "게임 플레이"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "스펠링 달인",
+                                                                "description":  "스펠링 게임 완료"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "기억력 달인",
+                                                                 "description":  "메모리 매치 게임 완료"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "퍼즐 천재",
+                                                               "description":  "단어 퍼즐 풀기"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "불꽃 튀는",
+                                                                    "description":  "3일 연속 활동"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "주간 전사",
+                                                                "description":  "7일 연속 활동"
+                                                            },
+                                           "century":  {
+                                                           "name":  "센추리",
+                                                           "description":  "100 XP 획득"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "챔피언",
+                                                            "description":  "500 XP 획득"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "일찍 일어나는 새",
+                                                              "description":  "오전 8시 이전에 공부"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "밤올빼미",
+                                                             "description":  "오후 9시 이후에 공부"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "뒤로",
+                        "play":  "플레이",
+                        "defaultTagline":  "함께 배워요!",
+                        "english":  {
+                                        "label":  "영어",
+                                        "tagline":  "단어는 마법이에요!"
+                                    },
+                        "maths":  {
+                                      "label":  "수학",
+                                      "tagline":  "숫자는 재미있어요!"
+                                  },
+                        "science":  {
+                                        "label":  "과학",
+                                        "tagline":  "세상을 탐험해요!"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "듣기",
+                                                       "desc":  "듣고 따라하세요!",
+                                                       "level":  "레벨 1"
+                                                   },
+                                        "read":  {
+                                                     "label":  "읽기",
+                                                     "desc":  "읽고 답하세요!",
+                                                     "level":  "레벨 2"
+                                                 },
+                                        "write":  {
+                                                      "label":  "쓰기",
+                                                      "desc":  "따라 그리고 쓰세요!",
+                                                      "level":  "레벨 3"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "말하기",
+                                                      "desc":  "자신을 표현하세요!",
+                                                      "level":  "레벨 4"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "뒤로",
+                      "title":  "게임 존",
+                      "subtitle":  "게임을 선택하고 시작하세요!",
+                      "playNow":  "지금 플레이",
+                      "diffEasy":  "쉬움",
+                      "diffMedium":  "보통",
+                      "diffHard":  "어려움",
+                      "spelling":  {
+                                       "title":  "스펠링 게임",
+                                       "desc":  "단서로 단어를 맞추세요!"
+                                   },
+                      "memory":  {
+                                     "title":  "메모리 매치",
+                                     "desc":  "모든 쌍을 찾으세요!"
+                                 },
+                      "puzzle":  {
+                                     "title":  "단어 퍼즐",
+                                     "desc":  "흩어진 글자를 맞추세요!"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "뒤로",
+                    "next":  "다음 →",
+                    "continue":  "계속 →",
+                    "retry":  "다시 시도",
+                    "level":  "레벨 {{level}}",
+                    "loadingQ":  "질문 로딩 중…",
+                    "loadingP":  "프롬프트 로딩 중…",
+                    "serverErr":  "로드할 수 없습니다. 서버가 실행 중인가요?",
+                    "listen":  {
+                                   "listen":  "듣기",
+                                   "playing":  "재생 중…",
+                                   "record":  "녹음",
+                                   "stop":  "정지",
+                                   "perfect":  "완벽해요! 놀라워요!",
+                                   "great":  "잘했어요! 거의 다 왔어요!",
+                                   "good":  "좋은 시도예요! 다시 들으세요.",
+                                   "tryAgain":  "다시 도전하세요 — 할 수 있어요!",
+                                   "attempt":  "좋은 시도예요! 계속하세요!",
+                                   "micError":  "마이크를 사용할 수 없어요. 다시 시도하세요!",
+                                   "celebration":  "완벽해요!"
+                               },
+                    "read":  {
+                                 "correct":  "훌륭해요! +1 별",
+                                 "wrong":  "정답은: {{answer}}",
+                                 "celebration":  "정답!"
+                             },
+                    "write":  {
+                                  "whiteboard":  "나의 화이트보드",
+                                  "pen":  "펜",
+                                  "erase":  "지우기",
+                                  "clear":  "초기화",
+                                  "check":  "내 글씨 확인",
+                                  "celebration":  "훌륭한 글씨!",
+                                  "perfect":  "완벽한 글씨!",
+                                  "great":  "잘했어요!",
+                                  "keep":  "계속 연습하세요!",
+                                  "tryAgain":  "다시 도전하세요 — 할 수 있어요!"
+                              },
+                    "speak":  {
+                                  "title":  "말해봐요!",
+                                  "howFeeling":  "오늘 기분이 어때요?",
+                                  "youFeel":  "오늘 {{mood}} 기분이네요!",
+                                  "yourRecordings":  "나의 녹음:",
+                                  "recording":  "녹음 중…",
+                                  "startSpeaking":  "말하기 시작",
+                                  "doneSpeaking":  "말하기 완료",
+                                  "tip":  "팁: 틀린 답은 없어요! 생각하는 것을 말하세요.",
+                                  "moodHappy":  "행복",
+                                  "moodSad":  "슬픔",
+                                  "moodExcited":  "신남",
+                                  "moodTired":  "피곤",
+                                  "moodAmazing":  "놀라움",
+                                  "enc1":  "공유해줘서 잘했어요!",
+                                  "enc2":  "당신의 목소리는 중요해요!",
+                                  "enc3":  "훌륭해요! 정말 용감해요!",
+                                  "enc4":  "정말 훌륭한 답이에요!",
+                                  "enc5":  "정말 멋졌어요!",
+                                  "micError":  "마이크를 사용할 수 없어요 — 권한을 확인하세요!"
+                              }
+                }
 }
