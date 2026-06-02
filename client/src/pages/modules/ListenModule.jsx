@@ -48,11 +48,65 @@ const StarsDisplay = ({ count }) => (
   </div>
 );
 
+// ─── Robust TTS helper ──────────────────────────────────────────────────────
+// Picks the best matching voice for `langCode`, then speaks `text`.
+// Works around the Chrome bug where synthesis pauses after ~15 s.
+function speakText(text, langCode, { onStart, onEnd, onError } = {}) {
+  const synth = window.speechSynthesis;
+  synth.cancel();
+
+  const doSpeak = () => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate  = 0.85;
+    utterance.pitch = 1.1;
+    utterance.lang  = langCode;
+
+    // Pick a voice that matches the selected language
+    const voices = synth.getVoices();
+    const match =
+      voices.find(v => v.lang === langCode) ||
+      voices.find(v => v.lang.startsWith(langCode.split("-")[0]));
+    if (match) utterance.voice = match;
+
+    // Chrome bug: synthesis pauses after ~15 s. Keep it awake.
+    let resumeTimer = null;
+    const keepAlive = () => {
+      if (!synth.speaking) return;
+      synth.pause();
+      synth.resume();
+      resumeTimer = setTimeout(keepAlive, 10000);
+    };
+    resumeTimer = setTimeout(keepAlive, 10000);
+
+    const cleanup = () => clearTimeout(resumeTimer);
+
+    utterance.onstart = () => { onStart?.(); };
+    utterance.onend   = () => { cleanup(); onEnd?.(); };
+    utterance.onerror = (e) => { cleanup(); onError?.(e); };
+
+    // Set isPlaying immediately so the button reflects reality right away
+    onStart?.();
+    synth.speak(utterance);
+  };
+
+  // Voices are loaded asynchronously on some browsers — wait for them
+  const voices = synth.getVoices();
+  if (voices.length > 0) {
+    doSpeak();
+  } else {
+    synth.onvoiceschanged = () => {
+      synth.onvoiceschanged = null;
+      doSpeak();
+    };
+  }
+}
+// ───────────────────────────────────────────────────────────────────────────
+
 const ListenModule = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const scienceQuestions = useSelector((state) => state.listenScience.questions);
   const scienceStatus    = useSelector((state) => state.listenScience.status);
@@ -88,16 +142,16 @@ const ListenModule = () => {
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [idx, setIdx] = useState(0);
-  const [isPlaying, setIsPlaying]         = useState(false);
-  const [isRecording, setIsRecording]     = useState(false);
-  const [audioUrl, setAudioUrl]           = useState(null);
-  const [stars, setStars]                 = useState(null);
-  const [totalScore, setTotalScore]       = useState(0);
-  const [feedback, setFeedback]           = useState("");
+  const [isPlaying, setIsPlaying]             = useState(false);
+  const [isRecording, setIsRecording]         = useState(false);
+  const [audioUrl, setAudioUrl]               = useState(null);
+  const [stars, setStars]                     = useState(null);
+  const [totalScore, setTotalScore]           = useState(0);
+  const [feedback, setFeedback]               = useState("");
   const [showCelebration, setShowCelebration] = useState(false);
 
-  const mediaRecorder = useRef(null);
-  const chunks        = useRef([]);
+  const mediaRecorder  = useRef(null);
+  const chunks         = useRef([]);
   const recognitionRef = useRef(null);
   const questionStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
@@ -123,6 +177,7 @@ const ListenModule = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stars]);
 
+  // Cancel speech when component unmounts or question changes
   useEffect(() => {
     return () => {
       window.speechSynthesis.cancel();
@@ -136,21 +191,20 @@ const ListenModule = () => {
     setFeedback("");
     setShowCelebration(false);
     window.speechSynthesis.cancel();
+    setIsPlaying(false);
   };
 
+  // ── Speak ──────────────────────────────────────────────────────────────────
   const playSentence = () => {
     if (!current) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(current.sentence);
-    utterance.rate  = 0.8;
-    utterance.pitch = 1.1;
-    utterance.lang  = getSpeechLang(i18n.language);
-    utterance.onstart = () => setIsPlaying(true);
-    utterance.onend   = () => setIsPlaying(false);
-    utterance.onerror = () => setIsPlaying(false);
-    window.speechSynthesis.speak(utterance);
+    speakText(current.sentence, getSpeechLang(i18n.language), {
+      onStart: () => setIsPlaying(true),
+      onEnd:   () => setIsPlaying(false),
+      onError: () => setIsPlaying(false),
+    });
   };
 
+  // ── Record ─────────────────────────────────────────────────────────────────
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -184,25 +238,25 @@ const ListenModule = () => {
           setStars(earned);
           setTotalScore((prev) => prev + earned);
           if (earned === 3) {
-            setFeedback("Perfect! Amazing!");
+            setFeedback(t("modules.listen.perfect"));
             setShowCelebration(true);
             setTimeout(() => setShowCelebration(false), 2000);
           } else if (earned === 2) {
-            setFeedback("Great job! Almost there!");
+            setFeedback(t("modules.listen.great"));
           } else if (earned === 1) {
-            setFeedback("Good try! Listen again.");
+            setFeedback(t("modules.listen.good"));
           } else {
-            setFeedback("Try again — you can do it!");
+            setFeedback(t("modules.listen.tryAgain"));
           }
         };
         rec.onerror = () => {
           setStars(1);
-          setFeedback("Good attempt! Keep trying!");
+          setFeedback(t("modules.listen.attempt"));
         };
         rec.start();
       }
     } catch {
-      setFeedback("Microphone not available. Try again!");
+      setFeedback(t("modules.listen.micError"));
     }
   };
 
@@ -224,7 +278,7 @@ const ListenModule = () => {
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <p style={{ color: "#fff", fontSize: "1.4rem" }}>Loading questions…</p>
+          <p style={{ color: "#fff", fontSize: "1.4rem" }}>{t("modules.loadingQ")}</p>
         </div>
       </div>
     );
@@ -238,8 +292,8 @@ const ListenModule = () => {
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-          <p style={{ color: "#fff", fontSize: "1.2rem" }}>Could not load questions. Is the server running?</p>
-          <button className={styles.backBtn} onClick={() => dispatch(retry())}>Retry</button>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.serverErr")}</p>
+          <button className={styles.backBtn} onClick={() => dispatch(retry())}>{t("modules.retry")}</button>
         </div>
       </div>
     );
@@ -265,7 +319,8 @@ const ListenModule = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> Back
+            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} />
+            {t("modules.back")}
           </FramerMotion.motion.button>
           <div className={styles.scoreBox}>
             <FaStar color="#FFD700" style={{ marginRight: 5, verticalAlign: "middle" }} />
@@ -291,7 +346,7 @@ const ListenModule = () => {
             <div className={styles.cardOverlay} />
 
             <div className={styles.levelRow}>
-              <span className={styles.levelChip}>Level {current.level}</span>
+              <span className={styles.levelChip}>{t("modules.level", { level: current.level })}</span>
               <span className={styles.xpChip}>+{current.xp} XP</span>
             </div>
 
@@ -310,7 +365,7 @@ const ListenModule = () => {
                 whileTap={{ scale: 0.94 }}
               >
                 <FaVolumeUp style={{ marginRight: 6, verticalAlign: "middle" }} />
-                {isPlaying ? "Playing…" : "Listen"}
+                {isPlaying ? t("modules.listen.playing") : t("modules.listen.listen")}
               </FramerMotion.motion.button>
 
               {!isRecording ? (
@@ -322,7 +377,7 @@ const ListenModule = () => {
                   whileTap={{ scale: 0.94 }}
                 >
                   <FaMicrophone style={{ marginRight: 6, verticalAlign: "middle" }} />
-                  Record
+                  {t("modules.listen.record")}
                 </FramerMotion.motion.button>
               ) : (
                 <FramerMotion.motion.button
@@ -332,7 +387,7 @@ const ListenModule = () => {
                   transition={{ repeat: Infinity, duration: 0.8 }}
                 >
                   <FaStop style={{ marginRight: 6, verticalAlign: "middle" }} />
-                  Stop
+                  {t("modules.listen.stop")}
                 </FramerMotion.motion.button>
               )}
 
@@ -365,7 +420,7 @@ const ListenModule = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Next →
+                    {t("modules.next")}
                   </FramerMotion.motion.button>
                 </FramerMotion.motion.div>
               )}
@@ -382,7 +437,7 @@ const ListenModule = () => {
               exit={{ opacity: 0, scale: 1.5 }}
             >
               <GiPartyPopper style={{ marginRight: 8, verticalAlign: "middle", fontSize: "1.2em" }} />
-              Perfect!
+              {t("modules.listen.celebration")}
               <GiPartyPopper style={{ marginLeft: 8, verticalAlign: "middle", fontSize: "1.2em" }} />
             </FramerMotion.motion.div>
           )}

@@ -1,121 +1,290 @@
-{
-  "navbar": {
-    "home": "首页",
-    "games": "游戏",
-    "lessons": "课程",
-    "dashboard": "仪表板",
-    "login": "登录",
-    "logout": "退出",
-    "spellingBee": "拼写比赛",
-    "memoryMatch": "记忆配对",
-    "wordPuzzle": "文字谜题",
-    "english": "英语",
-    "mathematics": "数学",
-    "science": "科学",
-    "greeting": "你好 {{name}}"
-  },
-  "hero": {
-    "greeting": "你好 {{name}}",
-    "startLearning": "开始学习",
-    "playGames": "玩游戏"
-  },
-  "cards": {
-    "english": "英语",
-    "mathematics": "数学",
-    "science": "科学"
-  },
-  "login": {
-    "joinTitle": "加入 Learningo！",
-    "welcomeBack": "欢迎回来！",
-    "createAccountSubtitle": "创建账户，开始学习",
-    "continueJourneySubtitle": "登录继续您的旅程",
-    "continueGoogle": "使用 Google 继续",
-    "or": "或",
-    "namePlaceholder": "您的姓名",
-    "emailPlaceholder": "电子邮件地址",
-    "passwordPlaceholder": "密码",
-    "createAccountBtn": "创建账户",
-    "signInBtn": "登录",
-    "signUpBtn": "注册",
-    "loading": "加载中...",
-    "alreadyAccount": "已有账户？",
-    "noAccount": "还没有账户？",
-    "errorDefault": "出了点问题，请重试。",
-    "googleCancelled": "Google 登录已取消。",
-    "popupBlocked": "弹窗被拦截，请允许此网站的弹窗。",
-    "networkError": "网络错误，请检查您的连接。",
-    "operationNotAllowed": "Google 登录未启用，请联系支持。"
-  },
-  "common": {
-    "loading": "加载中...",
-    "error": "出了点问题。"
-  },
-  "dashboard": {
-    "welcomeBack": "欢迎回来，{{name}}！👋",
-    "motivational": "继续保持——每一课都很重要。",
-    "level": "等级 {{level}}",
-    "xpTotal": "共 {{xp}} XP",
-    "loading": "加载中…",
-    "loadingDashboard": "正在加载您的仪表板…",
-    "loginPrompt": "请登录以查看您的仪表板。",
-    "serverError": "无法连接到服务器。",
-    "serverErrorHint": "请确保后端正在运行，然后刷新页面。",
-    "retry": "重试",
-    "stats": {
-      "totalXP": "总 XP",
-      "sessions": "学习次数",
-      "lessonsCompleted": "课程已完成",
-      "todayTime": "今日时长",
-      "peakTime": "高峰：{{time}}",
-      "noSessions": "暂无学习记录",
-      "streak": "当前连续天数",
-      "streakDays": "{{count}} 天",
-      "onFire": "太棒了！🔥",
-      "keepGoing": "继续加油！",
-      "achievements": "成就",
-      "badgesEarned": "已获徽章"
-    },
-    "performance": {
-      "title": "学习表现 — 近 30 天",
-      "empty": "暂无活动记录——完成一节课后即可在此查看进度！"
-    },
-    "heatmap": {
-      "titleCurrent": "活动热图 — {{year}} 年（至今）",
-      "titlePast": "活动热图 — {{year}} 年",
-      "activeDays": "{{count}} 个活跃天",
-      "mostActive": "最活跃时段 {{time}}",
-      "today": "今天：{{time}}",
-      "less": "少",
-      "more": "多"
-    },
-    "achievements": {
-      "title": "成就",
-      "empty": "完成课程以解锁成就！",
-      "earnedOn": "获得于 {{date}}",
-      "xpReward": "解锁可获 +{{xp}} XP",
-      "categories": {
-        "learning": "学习",
-        "games": "游戏",
-        "streak": "连续",
-        "xp": "XP 里程碑",
-        "special": "特别"
-      },
-      "first_step":       { "name": "第一步",       "description": "完成您的第一节课" },
-      "bookworm":         { "name": "书虫",          "description": "完成 5 节阅读课" },
-      "sharp_ears":       { "name": "耳聪目明",      "description": "完成 5 节听力课" },
-      "penpal":           { "name": "笔友",          "description": "完成 5 节写作课" },
-      "public_speaker":   { "name": "演讲者",        "description": "完成 5 节口语课" },
-      "all_rounder":      { "name": "全能选手",      "description": "尝试全部 3 个科目" },
-      "gamer":            { "name": "玩家",          "description": "玩任意游戏" },
-      "spelling_bee":     { "name": "拼写高手",      "description": "完成拼写游戏" },
-      "memory_master":    { "name": "记忆大师",      "description": "完成记忆配对游戏" },
-      "puzzle_whiz":      { "name": "谜题达人",      "description": "解开一道文字谜题" },
-      "three_day_streak": { "name": "势如破竹",      "description": "连续 3 天活跃" },
-      "week_warrior":     { "name": "周战士",        "description": "连续 7 天活跃" },
-      "century":          { "name": "百分先生",      "description": "获得 100 XP" },
-      "champion":         { "name": "冠军",          "description": "获得 500 XP" },
-      "early_bird":       { "name": "早起的鸟儿",    "description": "早上 8 点前学习" },
-      "night_owl":        { "name": "夜猫子",        "description": "晚上 9 点后学习" }
-    }
-  }
+﻿{
+    "navbar":  {
+                   "home":  "首页",
+                   "games":  "游戏",
+                   "lessons":  "课程",
+                   "dashboard":  "仪表板",
+                   "login":  "登录",
+                   "logout":  "退出",
+                   "spellingBee":  "拼写比赛",
+                   "memoryMatch":  "记忆配对",
+                   "wordPuzzle":  "文字谜题",
+                   "english":  "英语",
+                   "mathematics":  "数学",
+                   "science":  "科学",
+                   "greeting":  "你好 {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "你好 {{name}}",
+                 "startLearning":  "开始学习",
+                 "playGames":  "玩游戏"
+             },
+    "cards":  {
+                  "english":  "英语",
+                  "mathematics":  "数学",
+                  "science":  "科学"
+              },
+    "login":  {
+                  "joinTitle":  "加入 Learningo！",
+                  "welcomeBack":  "欢迎回来！",
+                  "createAccountSubtitle":  "创建账户，开始学习",
+                  "continueJourneySubtitle":  "登录继续您的旅程",
+                  "continueGoogle":  "使用 Google 继续",
+                  "or":  "或",
+                  "namePlaceholder":  "您的姓名",
+                  "emailPlaceholder":  "电子邮件地址",
+                  "passwordPlaceholder":  "密码",
+                  "createAccountBtn":  "创建账户",
+                  "signInBtn":  "登录",
+                  "signUpBtn":  "注册",
+                  "loading":  "加载中...",
+                  "alreadyAccount":  "已有账户？",
+                  "noAccount":  "还没有账户？",
+                  "errorDefault":  "出了点问题，请重试。",
+                  "googleCancelled":  "Google 登录已取消。",
+                  "popupBlocked":  "弹窗被拦截，请允许此网站的弹窗。",
+                  "networkError":  "网络错误，请检查您的连接。",
+                  "operationNotAllowed":  "Google 登录未启用，请联系支持。"
+              },
+    "common":  {
+                   "loading":  "加载中...",
+                   "error":  "出了点问题。"
+               },
+    "dashboard":  {
+                      "welcomeBack":  "欢迎回来，{{name}}！👋",
+                      "motivational":  "继续保持——每一课都很重要。",
+                      "level":  "等级 {{level}}",
+                      "xpTotal":  "共 {{xp}} XP",
+                      "loading":  "加载中…",
+                      "loadingDashboard":  "正在加载您的仪表板…",
+                      "loginPrompt":  "请登录以查看您的仪表板。",
+                      "serverError":  "无法连接到服务器。",
+                      "serverErrorHint":  "请确保后端正在运行，然后刷新页面。",
+                      "retry":  "重试",
+                      "stats":  {
+                                    "totalXP":  "总 XP",
+                                    "sessions":  "学习次数",
+                                    "lessonsCompleted":  "课程已完成",
+                                    "todayTime":  "今日时长",
+                                    "peakTime":  "高峰：{{time}}",
+                                    "noSessions":  "暂无学习记录",
+                                    "streak":  "当前连续天数",
+                                    "streakDays":  "{{count}} 天",
+                                    "onFire":  "太棒了！🔥",
+                                    "keepGoing":  "继续加油！",
+                                    "achievements":  "成就",
+                                    "badgesEarned":  "已获徽章"
+                                },
+                      "performance":  {
+                                          "title":  "学习表现 — 近 30 天",
+                                          "empty":  "暂无活动记录——完成一节课后即可在此查看进度！"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "活动热图 — {{year}} 年（至今）",
+                                      "titlePast":  "活动热图 — {{year}} 年",
+                                      "activeDays":  "{{count}} 个活跃天",
+                                      "mostActive":  "最活跃时段 {{time}}",
+                                      "today":  "今天：{{time}}",
+                                      "less":  "少",
+                                      "more":  "多"
+                                  },
+                      "achievements":  {
+                                           "title":  "成就",
+                                           "empty":  "完成课程以解锁成就！",
+                                           "earnedOn":  "获得于 {{date}}",
+                                           "xpReward":  "解锁可获 +{{xp}} XP",
+                                           "categories":  {
+                                                              "learning":  "学习",
+                                                              "games":  "游戏",
+                                                              "streak":  "连续",
+                                                              "xp":  "XP 里程碑",
+                                                              "special":  "特别"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "第一步",
+                                                              "description":  "完成您的第一节课"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "书虫",
+                                                            "description":  "完成 5 节阅读课"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "耳聪目明",
+                                                              "description":  "完成 5 节听力课"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "笔友",
+                                                          "description":  "完成 5 节写作课"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "演讲者",
+                                                                  "description":  "完成 5 节口语课"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "全能选手",
+                                                               "description":  "尝试全部 3 个科目"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "玩家",
+                                                         "description":  "玩任意游戏"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "拼写高手",
+                                                                "description":  "完成拼写游戏"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "记忆大师",
+                                                                 "description":  "完成记忆配对游戏"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "谜题达人",
+                                                               "description":  "解开一道文字谜题"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "势如破竹",
+                                                                    "description":  "连续 3 天活跃"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "周战士",
+                                                                "description":  "连续 7 天活跃"
+                                                            },
+                                           "century":  {
+                                                           "name":  "百分先生",
+                                                           "description":  "获得 100 XP"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "冠军",
+                                                            "description":  "获得 500 XP"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "早起的鸟儿",
+                                                              "description":  "早上 8 点前学习"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "夜猫子",
+                                                             "description":  "晚上 9 点后学习"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "返回",
+                        "play":  "开始",
+                        "defaultTagline":  "一起学习！",
+                        "english":  {
+                                        "label":  "英语",
+                                        "tagline":  "文字是魔法！"
+                                    },
+                        "maths":  {
+                                      "label":  "数学",
+                                      "tagline":  "数字很有趣！"
+                                  },
+                        "science":  {
+                                        "label":  "科学",
+                                        "tagline":  "探索世界！"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "听力",
+                                                       "desc":  "听并重复！",
+                                                       "level":  "第1级"
+                                                   },
+                                        "read":  {
+                                                     "label":  "阅读",
+                                                     "desc":  "阅读并回答！",
+                                                     "level":  "第2级"
+                                                 },
+                                        "write":  {
+                                                      "label":  "写作",
+                                                      "desc":  "描摹并书写！",
+                                                      "level":  "第3级"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "口语",
+                                                      "desc":  "表达自己！",
+                                                      "level":  "第4级"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "返回",
+                      "title":  "游戏区",
+                      "subtitle":  "选择游戏开始玩！",
+                      "playNow":  "立即游玩",
+                      "diffEasy":  "简单",
+                      "diffMedium":  "中等",
+                      "diffHard":  "困难",
+                      "spelling":  {
+                                       "title":  "拼写游戏",
+                                       "desc":  "根据提示拼写单词！"
+                                   },
+                      "memory":  {
+                                     "title":  "记忆配对",
+                                     "desc":  "找到所有匹配的对！"
+                                 },
+                      "puzzle":  {
+                                     "title":  "单词拼图",
+                                     "desc":  "还原打乱的字母！"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "返回",
+                    "next":  "下一个 →",
+                    "continue":  "继续 →",
+                    "retry":  "重试",
+                    "level":  "第{{level}}级",
+                    "loadingQ":  "加载问题中…",
+                    "loadingP":  "加载提示中…",
+                    "serverErr":  "无法加载。服务器是否运行中？",
+                    "listen":  {
+                                   "listen":  "听",
+                                   "playing":  "播放中…",
+                                   "record":  "录音",
+                                   "stop":  "停止",
+                                   "perfect":  "完美！太棒了！",
+                                   "great":  "做得好！快成功了！",
+                                   "good":  "不错的尝试！再听一次。",
+                                   "tryAgain":  "再试一次——你可以的！",
+                                   "attempt":  "不错的尝试！继续加油！",
+                                   "micError":  "麦克风不可用。请再试一次！",
+                                   "celebration":  "完美！"
+                               },
+                    "read":  {
+                                 "correct":  "太棒了！+1星",
+                                 "wrong":  "正确答案是：{{answer}}",
+                                 "celebration":  "正确！"
+                             },
+                    "write":  {
+                                  "whiteboard":  "你的白板",
+                                  "pen":  "钢笔",
+                                  "erase":  "擦除",
+                                  "clear":  "清除",
+                                  "check":  "检查我的书写",
+                                  "celebration":  "书写真棒！",
+                                  "perfect":  "书写完美！",
+                                  "great":  "做得好！",
+                                  "keep":  "继续练习！",
+                                  "tryAgain":  "再试一次——你可以的！"
+                              },
+                    "speak":  {
+                                  "title":  "开口说！",
+                                  "howFeeling":  "你今天感觉怎么样？",
+                                  "youFeel":  "你今天感觉{{mood}}！",
+                                  "yourRecordings":  "你的录音：",
+                                  "recording":  "录音中…",
+                                  "startSpeaking":  "开始说话",
+                                  "doneSpeaking":  "说完了",
+                                  "tip":  "提示：没有错误答案！只需说出你的想法。",
+                                  "moodHappy":  "快乐",
+                                  "moodSad":  "悲伤",
+                                  "moodExcited":  "兴奋",
+                                  "moodTired":  "疲倦",
+                                  "moodAmazing":  "太棒了",
+                                  "enc1":  "分享得很好！继续！",
+                                  "enc2":  "你的声音很重要！",
+                                  "enc3":  "太棒了！你很勇敢！",
+                                  "enc4":  "多么精彩的回答！",
+                                  "enc5":  "那真是太好了！",
+                                  "micError":  "麦克风不可用——请检查权限！"
+                              }
+                }
 }

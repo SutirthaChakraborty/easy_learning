@@ -1,121 +1,290 @@
-{
-  "navbar": {
-    "home": "ホーム",
-    "games": "ゲーム",
-    "lessons": "レッスン",
-    "dashboard": "ダッシュボード",
-    "login": "ログイン",
-    "logout": "ログアウト",
-    "spellingBee": "スペリングビー",
-    "memoryMatch": "神経衰弱",
-    "wordPuzzle": "ワードパズル",
-    "english": "英語",
-    "mathematics": "数学",
-    "science": "理科",
-    "greeting": "こんにちは {{name}}"
-  },
-  "hero": {
-    "greeting": "こんにちは {{name}}",
-    "startLearning": "学習を始める",
-    "playGames": "ゲームで遊ぶ"
-  },
-  "cards": {
-    "english": "英語",
-    "mathematics": "数学",
-    "science": "理科"
-  },
-  "login": {
-    "joinTitle": "Learningo に参加！",
-    "welcomeBack": "おかえりなさい！",
-    "createAccountSubtitle": "学習を始めるためにアカウントを作成してください",
-    "continueJourneySubtitle": "旅を続けるにはサインインしてください",
-    "continueGoogle": "Google で続ける",
-    "or": "または",
-    "namePlaceholder": "お名前",
-    "emailPlaceholder": "メールアドレス",
-    "passwordPlaceholder": "パスワード",
-    "createAccountBtn": "アカウントを作成",
-    "signInBtn": "サインイン",
-    "signUpBtn": "サインアップ",
-    "loading": "読み込み中...",
-    "alreadyAccount": "すでにアカウントをお持ちですか？",
-    "noAccount": "アカウントをお持ちでないですか？",
-    "errorDefault": "エラーが発生しました。もう一度お試しください。",
-    "googleCancelled": "Google サインインがキャンセルされました。",
-    "popupBlocked": "ポップアップがブロックされました。このサイトのポップアップを許可してください。",
-    "networkError": "ネットワークエラー。接続を確認してください。",
-    "operationNotAllowed": "Google サインインが有効になっていません。"
-  },
-  "common": {
-    "loading": "読み込み中...",
-    "error": "エラーが発生しました。"
-  },
-  "dashboard": {
-    "welcomeBack": "おかえりなさい、{{name}}！👋",
-    "motivational": "続けていきましょう — 一つ一つのレッスンが大切です。",
-    "level": "レベル {{level}}",
-    "xpTotal": "合計 {{xp}} XP",
-    "loading": "読み込み中…",
-    "loadingDashboard": "ダッシュボードを読み込んでいます…",
-    "loginPrompt": "ダッシュボードを表示するにはログインしてください。",
-    "serverError": "サーバーに接続できませんでした。",
-    "serverErrorHint": "バックエンドが起動しているか確認し、ページを再読み込みしてください。",
-    "retry": "再試行",
-    "stats": {
-      "totalXP": "合計 XP",
-      "sessions": "セッション数",
-      "lessonsCompleted": "レッスン完了",
-      "todayTime": "今日の学習時間",
-      "peakTime": "ピーク: {{time}}",
-      "noSessions": "まだセッションがありません",
-      "streak": "現在の連続日数",
-      "streakDays": "{{count}} 日",
-      "onFire": "絶好調！🔥",
-      "keepGoing": "続けましょう！",
-      "achievements": "実績",
-      "badgesEarned": "バッジ獲得"
-    },
-    "performance": {
-      "title": "パフォーマンス — 直近 30 日",
-      "empty": "まだ活動がありません — レッスンを完了して進捗を確認しましょう！"
-    },
-    "heatmap": {
-      "titleCurrent": "アクティビティマップ — {{year}} 年（現在まで）",
-      "titlePast": "アクティビティマップ — {{year}} 年",
-      "activeDays": "{{count}} 日アクティブ",
-      "mostActive": "最もアクティブ {{time}}",
-      "today": "今日: {{time}}",
-      "less": "少",
-      "more": "多"
-    },
-    "achievements": {
-      "title": "実績",
-      "empty": "レッスンを完了して実績を解除しましょう！",
-      "earnedOn": "{{date}} に獲得",
-      "xpReward": "解除で +{{xp}} XP",
-      "categories": {
-        "learning": "学習",
-        "games": "ゲーム",
-        "streak": "連続",
-        "xp": "XP マイルストーン",
-        "special": "スペシャル"
-      },
-      "first_step":       { "name": "最初の一歩",      "description": "最初のレッスンを完了する" },
-      "bookworm":         { "name": "本の虫",           "description": "読書レッスンを 5 回完了する" },
-      "sharp_ears":       { "name": "鋭い耳",           "description": "リスニングレッスンを 5 回完了する" },
-      "penpal":           { "name": "文通友達",         "description": "ライティングレッスンを 5 回完了する" },
-      "public_speaker":   { "name": "スピーカー",       "description": "スピーキングレッスンを 5 回完了する" },
-      "all_rounder":      { "name": "オールラウンダー", "description": "すべての 3 科目を試す" },
-      "gamer":            { "name": "ゲーマー",         "description": "ゲームを一つプレイする" },
-      "spelling_bee":     { "name": "スペリング名人",   "description": "スペリングゲームを完了する" },
-      "memory_master":    { "name": "記憶の達人",       "description": "記憶ゲームを完了する" },
-      "puzzle_whiz":      { "name": "パズル名人",       "description": "ワードパズルを解く" },
-      "three_day_streak": { "name": "燃えている",       "description": "3 日連続でアクティブ" },
-      "week_warrior":     { "name": "週の戦士",         "description": "7 日連続でアクティブ" },
-      "century":          { "name": "センチュリー",     "description": "100 XP を獲得する" },
-      "champion":         { "name": "チャンピオン",     "description": "500 XP を獲得する" },
-      "early_bird":       { "name": "早起き鳥",         "description": "午前 8 時前に学習する" },
-      "night_owl":        { "name": "夜型",             "description": "午後 9 時以降に学習する" }
-    }
-  }
+﻿{
+    "navbar":  {
+                   "home":  "ホーム",
+                   "games":  "ゲーム",
+                   "lessons":  "レッスン",
+                   "dashboard":  "ダッシュボード",
+                   "login":  "ログイン",
+                   "logout":  "ログアウト",
+                   "spellingBee":  "スペリングビー",
+                   "memoryMatch":  "神経衰弱",
+                   "wordPuzzle":  "ワードパズル",
+                   "english":  "英語",
+                   "mathematics":  "数学",
+                   "science":  "理科",
+                   "greeting":  "こんにちは {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "こんにちは {{name}}",
+                 "startLearning":  "学習を始める",
+                 "playGames":  "ゲームで遊ぶ"
+             },
+    "cards":  {
+                  "english":  "英語",
+                  "mathematics":  "数学",
+                  "science":  "理科"
+              },
+    "login":  {
+                  "joinTitle":  "Learningo に参加！",
+                  "welcomeBack":  "おかえりなさい！",
+                  "createAccountSubtitle":  "学習を始めるためにアカウントを作成してください",
+                  "continueJourneySubtitle":  "旅を続けるにはサインインしてください",
+                  "continueGoogle":  "Google で続ける",
+                  "or":  "または",
+                  "namePlaceholder":  "お名前",
+                  "emailPlaceholder":  "メールアドレス",
+                  "passwordPlaceholder":  "パスワード",
+                  "createAccountBtn":  "アカウントを作成",
+                  "signInBtn":  "サインイン",
+                  "signUpBtn":  "サインアップ",
+                  "loading":  "読み込み中...",
+                  "alreadyAccount":  "すでにアカウントをお持ちですか？",
+                  "noAccount":  "アカウントをお持ちでないですか？",
+                  "errorDefault":  "エラーが発生しました。もう一度お試しください。",
+                  "googleCancelled":  "Google サインインがキャンセルされました。",
+                  "popupBlocked":  "ポップアップがブロックされました。このサイトのポップアップを許可してください。",
+                  "networkError":  "ネットワークエラー。接続を確認してください。",
+                  "operationNotAllowed":  "Google サインインが有効になっていません。"
+              },
+    "common":  {
+                   "loading":  "読み込み中...",
+                   "error":  "エラーが発生しました。"
+               },
+    "dashboard":  {
+                      "welcomeBack":  "おかえりなさい、{{name}}！👋",
+                      "motivational":  "続けていきましょう — 一つ一つのレッスンが大切です。",
+                      "level":  "レベル {{level}}",
+                      "xpTotal":  "合計 {{xp}} XP",
+                      "loading":  "読み込み中…",
+                      "loadingDashboard":  "ダッシュボードを読み込んでいます…",
+                      "loginPrompt":  "ダッシュボードを表示するにはログインしてください。",
+                      "serverError":  "サーバーに接続できませんでした。",
+                      "serverErrorHint":  "バックエンドが起動しているか確認し、ページを再読み込みしてください。",
+                      "retry":  "再試行",
+                      "stats":  {
+                                    "totalXP":  "合計 XP",
+                                    "sessions":  "セッション数",
+                                    "lessonsCompleted":  "レッスン完了",
+                                    "todayTime":  "今日の学習時間",
+                                    "peakTime":  "ピーク: {{time}}",
+                                    "noSessions":  "まだセッションがありません",
+                                    "streak":  "現在の連続日数",
+                                    "streakDays":  "{{count}} 日",
+                                    "onFire":  "絶好調！🔥",
+                                    "keepGoing":  "続けましょう！",
+                                    "achievements":  "実績",
+                                    "badgesEarned":  "バッジ獲得"
+                                },
+                      "performance":  {
+                                          "title":  "パフォーマンス — 直近 30 日",
+                                          "empty":  "まだ活動がありません — レッスンを完了して進捗を確認しましょう！"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "アクティビティマップ — {{year}} 年（現在まで）",
+                                      "titlePast":  "アクティビティマップ — {{year}} 年",
+                                      "activeDays":  "{{count}} 日アクティブ",
+                                      "mostActive":  "最もアクティブ {{time}}",
+                                      "today":  "今日: {{time}}",
+                                      "less":  "少",
+                                      "more":  "多"
+                                  },
+                      "achievements":  {
+                                           "title":  "実績",
+                                           "empty":  "レッスンを完了して実績を解除しましょう！",
+                                           "earnedOn":  "{{date}} に獲得",
+                                           "xpReward":  "解除で +{{xp}} XP",
+                                           "categories":  {
+                                                              "learning":  "学習",
+                                                              "games":  "ゲーム",
+                                                              "streak":  "連続",
+                                                              "xp":  "XP マイルストーン",
+                                                              "special":  "スペシャル"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "最初の一歩",
+                                                              "description":  "最初のレッスンを完了する"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "本の虫",
+                                                            "description":  "読書レッスンを 5 回完了する"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "鋭い耳",
+                                                              "description":  "リスニングレッスンを 5 回完了する"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "文通友達",
+                                                          "description":  "ライティングレッスンを 5 回完了する"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "スピーカー",
+                                                                  "description":  "スピーキングレッスンを 5 回完了する"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "オールラウンダー",
+                                                               "description":  "すべての 3 科目を試す"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "ゲーマー",
+                                                         "description":  "ゲームを一つプレイする"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "スペリング名人",
+                                                                "description":  "スペリングゲームを完了する"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "記憶の達人",
+                                                                 "description":  "記憶ゲームを完了する"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "パズル名人",
+                                                               "description":  "ワードパズルを解く"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "燃えている",
+                                                                    "description":  "3 日連続でアクティブ"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "週の戦士",
+                                                                "description":  "7 日連続でアクティブ"
+                                                            },
+                                           "century":  {
+                                                           "name":  "センチュリー",
+                                                           "description":  "100 XP を獲得する"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "チャンピオン",
+                                                            "description":  "500 XP を獲得する"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "早起き鳥",
+                                                              "description":  "午前 8 時前に学習する"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "夜型",
+                                                             "description":  "午後 9 時以降に学習する"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "戻る",
+                        "play":  "プレイ",
+                        "defaultTagline":  "一緒に学ぼう！",
+                        "english":  {
+                                        "label":  "英語",
+                                        "tagline":  "言葉は魔法！"
+                                    },
+                        "maths":  {
+                                      "label":  "数学",
+                                      "tagline":  "数字は楽しい！"
+                                  },
+                        "science":  {
+                                        "label":  "理科",
+                                        "tagline":  "世界を探検！"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "聴く",
+                                                       "desc":  "聴いて繰り返す！",
+                                                       "level":  "レベル1"
+                                                   },
+                                        "read":  {
+                                                     "label":  "読む",
+                                                     "desc":  "読んで答える！",
+                                                     "level":  "レベル2"
+                                                 },
+                                        "write":  {
+                                                      "label":  "書く",
+                                                      "desc":  "なぞって書く！",
+                                                      "level":  "レベル3"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "話す",
+                                                      "desc":  "自分を表現する！",
+                                                      "level":  "レベル4"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "戻る",
+                      "title":  "ゲームゾーン",
+                      "subtitle":  "ゲームを選んで遊ぼう！",
+                      "playNow":  "今すぐプレイ",
+                      "diffEasy":  "簡単",
+                      "diffMedium":  "普通",
+                      "diffHard":  "難しい",
+                      "spelling":  {
+                                       "title":  "スペリングゲーム",
+                                       "desc":  "ヒントから単語をスペル！"
+                                   },
+                      "memory":  {
+                                     "title":  "メモリーマッチ",
+                                     "desc":  "全てのペアを見つけよう！"
+                                 },
+                      "puzzle":  {
+                                     "title":  "ワードパズル",
+                                     "desc":  "バラバラの文字を並べよう！"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "戻る",
+                    "next":  "次へ →",
+                    "continue":  "続ける →",
+                    "retry":  "再試行",
+                    "level":  "レベル{{level}}",
+                    "loadingQ":  "問題を読み込み中…",
+                    "loadingP":  "プロンプトを読み込み中…",
+                    "serverErr":  "読み込めませんでした。サーバーは起動していますか？",
+                    "listen":  {
+                                   "listen":  "聴く",
+                                   "playing":  "再生中…",
+                                   "record":  "録音",
+                                   "stop":  "停止",
+                                   "perfect":  "完璧！すごい！",
+                                   "great":  "よくできました！もう少し！",
+                                   "good":  "いい試み！もう一度聴いて。",
+                                   "tryAgain":  "もう一度チャレンジ！できるよ！",
+                                   "attempt":  "いい試み！続けて！",
+                                   "micError":  "マイクが使えません。もう一度試して！",
+                                   "celebration":  "完璧！"
+                               },
+                    "read":  {
+                                 "correct":  "すばらしい！+1スター",
+                                 "wrong":  "答えは：{{answer}}",
+                                 "celebration":  "正解！"
+                             },
+                    "write":  {
+                                  "whiteboard":  "あなたのホワイトボード",
+                                  "pen":  "ペン",
+                                  "erase":  "消す",
+                                  "clear":  "クリア",
+                                  "check":  "書き方を確認",
+                                  "celebration":  "すごい書き方！",
+                                  "perfect":  "完璧な書き方！",
+                                  "great":  "よくできました！",
+                                  "keep":  "練習を続けよう！",
+                                  "tryAgain":  "もう一度チャレンジ！できるよ！"
+                              },
+                    "speak":  {
+                                  "title":  "話してみよう！",
+                                  "howFeeling":  "今日の気分は？",
+                                  "youFeel":  "今日は{{mood}}な気分ですね！",
+                                  "yourRecordings":  "あなたの録音：",
+                                  "recording":  "録音中…",
+                                  "startSpeaking":  "話し始める",
+                                  "doneSpeaking":  "話し終わり",
+                                  "tip":  "ヒント：間違いはありません！思ったことを言ってください。",
+                                  "moodHappy":  "楽しい",
+                                  "moodSad":  "悲しい",
+                                  "moodExcited":  "わくわく",
+                                  "moodTired":  "疲れた",
+                                  "moodAmazing":  "最高",
+                                  "enc1":  "シェアしてくれてありがとう！",
+                                  "enc2":  "あなたの声は大切！",
+                                  "enc3":  "すごい！とても勇気があるね！",
+                                  "enc4":  "なんて素晴らしい答え！",
+                                  "enc5":  "それは素晴らしかった！",
+                                  "micError":  "マイクが使えません — 権限を確認してください！"
+                              }
+                }
 }

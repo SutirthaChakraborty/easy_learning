@@ -1,121 +1,290 @@
-{
-  "navbar": {
-    "home": "Startseite",
-    "games": "Spiele",
-    "lessons": "Lektionen",
-    "dashboard": "Dashboard",
-    "login": "Anmelden",
-    "logout": "Abmelden",
-    "spellingBee": "Rechtschreibung",
-    "memoryMatch": "Gedächtnisspiel",
-    "wordPuzzle": "Worträtsel",
-    "english": "Englisch",
-    "mathematics": "Mathematik",
-    "science": "Naturwissenschaft",
-    "greeting": "Hallo {{name}}"
-  },
-  "hero": {
-    "greeting": "Hallo {{name}}",
-    "startLearning": "Lernen beginnen",
-    "playGames": "Spiele spielen"
-  },
-  "cards": {
-    "english": "Englisch",
-    "mathematics": "Mathematik",
-    "science": "Naturwissenschaft"
-  },
-  "login": {
-    "joinTitle": "Tritt Learningo bei!",
-    "welcomeBack": "Willkommen zurück!",
-    "createAccountSubtitle": "Erstelle dein Konto, um mit dem Lernen zu beginnen",
-    "continueJourneySubtitle": "Melde dich an, um deine Reise fortzusetzen",
-    "continueGoogle": "Mit Google fortfahren",
-    "or": "oder",
-    "namePlaceholder": "Dein Name",
-    "emailPlaceholder": "E-Mail-Adresse",
-    "passwordPlaceholder": "Passwort",
-    "createAccountBtn": "Konto erstellen",
-    "signInBtn": "Anmelden",
-    "signUpBtn": "Registrieren",
-    "loading": "Laden...",
-    "alreadyAccount": "Bereits ein Konto?",
-    "noAccount": "Noch kein Konto?",
-    "errorDefault": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
-    "googleCancelled": "Die Google-Anmeldung wurde abgebrochen.",
-    "popupBlocked": "Das Pop-up wurde blockiert. Bitte erlaube Pop-ups für diese Seite.",
-    "networkError": "Netzwerkfehler. Bitte überprüfe deine Verbindung.",
-    "operationNotAllowed": "Google-Anmeldung ist nicht aktiviert."
-  },
-  "common": {
-    "loading": "Laden...",
-    "error": "Etwas ist schiefgelaufen."
-  },
-  "dashboard": {
-    "welcomeBack": "Willkommen zurück, {{name}}! 👋",
-    "motivational": "Weiter so — jede Lektion zählt.",
-    "level": "Level {{level}}",
-    "xpTotal": "{{xp}} XP gesamt",
-    "loading": "Laden…",
-    "loadingDashboard": "Dashboard wird geladen…",
-    "loginPrompt": "Bitte melde dich an, um dein Dashboard zu sehen.",
-    "serverError": "Verbindung zum Server fehlgeschlagen.",
-    "serverErrorHint": "Stelle sicher, dass das Backend läuft, und lade die Seite neu.",
-    "retry": "Erneut versuchen",
-    "stats": {
-      "totalXP": "Gesamt-XP",
-      "sessions": "Sitzungen",
-      "lessonsCompleted": "Lektionen abgeschlossen",
-      "todayTime": "Heutige Zeit",
-      "peakTime": "Spitze: {{time}}",
-      "noSessions": "Noch keine Sitzungen",
-      "streak": "Aktuelle Serie",
-      "streakDays": "{{count}} Tage",
-      "onFire": "Super! 🔥",
-      "keepGoing": "Weitermachen!",
-      "achievements": "Erfolge",
-      "badgesEarned": "Abzeichen verdient"
-    },
-    "performance": {
-      "title": "Leistung — Letzte 30 Tage",
-      "empty": "Noch keine Aktivität — schließe eine Lektion ab, um deinen Fortschritt zu sehen!"
-    },
-    "heatmap": {
-      "titleCurrent": "Aktivitätskarte — {{year}} (bisher)",
-      "titlePast": "Aktivitätskarte — {{year}}",
-      "activeDays": "{{count}} aktive Tage",
-      "mostActive": "Am aktivsten {{time}}",
-      "today": "Heute: {{time}}",
-      "less": "Weniger",
-      "more": "Mehr"
-    },
-    "achievements": {
-      "title": "Erfolge",
-      "empty": "Schließe Lektionen ab, um Erfolge freizuschalten!",
-      "earnedOn": "Verdient {{date}}",
-      "xpReward": "+{{xp}} XP beim Freischalten",
-      "categories": {
-        "learning": "Lernen",
-        "games": "Spiele",
-        "streak": "Serie",
-        "xp": "XP-Meilensteine",
-        "special": "Besonders"
-      },
-      "first_step":       { "name": "Erster Schritt",    "description": "Schließe deine erste Lektion ab" },
-      "bookworm":         { "name": "Bücherwurm",         "description": "Schließe 5 Leselektionen ab" },
-      "sharp_ears":       { "name": "Scharfe Ohren",      "description": "Schließe 5 Hörlektionen ab" },
-      "penpal":           { "name": "Brieffreund",         "description": "Schließe 5 Schreiblektionen ab" },
-      "public_speaker":   { "name": "Redner",              "description": "Schließe 5 Sprechlektionen ab" },
-      "all_rounder":      { "name": "Allrounder",          "description": "Alle 3 Fächer ausprobieren" },
-      "gamer":            { "name": "Gamer",               "description": "Spiele ein beliebiges Spiel" },
-      "spelling_bee":     { "name": "Rechtschreibprofi",   "description": "Schließe das Rechtschreibspiel ab" },
-      "memory_master":    { "name": "Gedächtnismeister",   "description": "Schließe das Gedächtnisspiel ab" },
-      "puzzle_whiz":      { "name": "Rätselprofi",         "description": "Löse ein Worträtsel" },
-      "three_day_streak": { "name": "Auf Feuer",           "description": "3 Tage in Folge aktiv" },
-      "week_warrior":     { "name": "Wochenkämpfer",       "description": "7 Tage in Folge aktiv" },
-      "century":          { "name": "Jahrhundert",         "description": "100 XP verdienen" },
-      "champion":         { "name": "Champion",            "description": "500 XP verdienen" },
-      "early_bird":       { "name": "Frühaufsteher",       "description": "Vor 8 Uhr lernen" },
-      "night_owl":        { "name": "Nachteule",           "description": "Nach 21 Uhr lernen" }
-    }
-  }
+﻿{
+    "navbar":  {
+                   "home":  "Startseite",
+                   "games":  "Spiele",
+                   "lessons":  "Lektionen",
+                   "dashboard":  "Dashboard",
+                   "login":  "Anmelden",
+                   "logout":  "Abmelden",
+                   "spellingBee":  "Rechtschreibung",
+                   "memoryMatch":  "Gedächtnisspiel",
+                   "wordPuzzle":  "Worträtsel",
+                   "english":  "Englisch",
+                   "mathematics":  "Mathematik",
+                   "science":  "Naturwissenschaft",
+                   "greeting":  "Hallo {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "Hallo {{name}}",
+                 "startLearning":  "Lernen beginnen",
+                 "playGames":  "Spiele spielen"
+             },
+    "cards":  {
+                  "english":  "Englisch",
+                  "mathematics":  "Mathematik",
+                  "science":  "Naturwissenschaft"
+              },
+    "login":  {
+                  "joinTitle":  "Tritt Learningo bei!",
+                  "welcomeBack":  "Willkommen zurück!",
+                  "createAccountSubtitle":  "Erstelle dein Konto, um mit dem Lernen zu beginnen",
+                  "continueJourneySubtitle":  "Melde dich an, um deine Reise fortzusetzen",
+                  "continueGoogle":  "Mit Google fortfahren",
+                  "or":  "oder",
+                  "namePlaceholder":  "Dein Name",
+                  "emailPlaceholder":  "E-Mail-Adresse",
+                  "passwordPlaceholder":  "Passwort",
+                  "createAccountBtn":  "Konto erstellen",
+                  "signInBtn":  "Anmelden",
+                  "signUpBtn":  "Registrieren",
+                  "loading":  "Laden...",
+                  "alreadyAccount":  "Bereits ein Konto?",
+                  "noAccount":  "Noch kein Konto?",
+                  "errorDefault":  "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+                  "googleCancelled":  "Die Google-Anmeldung wurde abgebrochen.",
+                  "popupBlocked":  "Das Pop-up wurde blockiert. Bitte erlaube Pop-ups für diese Seite.",
+                  "networkError":  "Netzwerkfehler. Bitte überprüfe deine Verbindung.",
+                  "operationNotAllowed":  "Google-Anmeldung ist nicht aktiviert."
+              },
+    "common":  {
+                   "loading":  "Laden...",
+                   "error":  "Etwas ist schiefgelaufen."
+               },
+    "dashboard":  {
+                      "welcomeBack":  "Willkommen zurück, {{name}}! 👋",
+                      "motivational":  "Weiter so — jede Lektion zählt.",
+                      "level":  "Level {{level}}",
+                      "xpTotal":  "{{xp}} XP gesamt",
+                      "loading":  "Laden…",
+                      "loadingDashboard":  "Dashboard wird geladen…",
+                      "loginPrompt":  "Bitte melde dich an, um dein Dashboard zu sehen.",
+                      "serverError":  "Verbindung zum Server fehlgeschlagen.",
+                      "serverErrorHint":  "Stelle sicher, dass das Backend läuft, und lade die Seite neu.",
+                      "retry":  "Erneut versuchen",
+                      "stats":  {
+                                    "totalXP":  "Gesamt-XP",
+                                    "sessions":  "Sitzungen",
+                                    "lessonsCompleted":  "Lektionen abgeschlossen",
+                                    "todayTime":  "Heutige Zeit",
+                                    "peakTime":  "Spitze: {{time}}",
+                                    "noSessions":  "Noch keine Sitzungen",
+                                    "streak":  "Aktuelle Serie",
+                                    "streakDays":  "{{count}} Tage",
+                                    "onFire":  "Super! 🔥",
+                                    "keepGoing":  "Weitermachen!",
+                                    "achievements":  "Erfolge",
+                                    "badgesEarned":  "Abzeichen verdient"
+                                },
+                      "performance":  {
+                                          "title":  "Leistung — Letzte 30 Tage",
+                                          "empty":  "Noch keine Aktivität — schließe eine Lektion ab, um deinen Fortschritt zu sehen!"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "Aktivitätskarte — {{year}} (bisher)",
+                                      "titlePast":  "Aktivitätskarte — {{year}}",
+                                      "activeDays":  "{{count}} aktive Tage",
+                                      "mostActive":  "Am aktivsten {{time}}",
+                                      "today":  "Heute: {{time}}",
+                                      "less":  "Weniger",
+                                      "more":  "Mehr"
+                                  },
+                      "achievements":  {
+                                           "title":  "Erfolge",
+                                           "empty":  "Schließe Lektionen ab, um Erfolge freizuschalten!",
+                                           "earnedOn":  "Verdient {{date}}",
+                                           "xpReward":  "+{{xp}} XP beim Freischalten",
+                                           "categories":  {
+                                                              "learning":  "Lernen",
+                                                              "games":  "Spiele",
+                                                              "streak":  "Serie",
+                                                              "xp":  "XP-Meilensteine",
+                                                              "special":  "Besonders"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "Erster Schritt",
+                                                              "description":  "Schließe deine erste Lektion ab"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "Bücherwurm",
+                                                            "description":  "Schließe 5 Leselektionen ab"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "Scharfe Ohren",
+                                                              "description":  "Schließe 5 Hörlektionen ab"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "Brieffreund",
+                                                          "description":  "Schließe 5 Schreiblektionen ab"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "Redner",
+                                                                  "description":  "Schließe 5 Sprechlektionen ab"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "Allrounder",
+                                                               "description":  "Alle 3 Fächer ausprobieren"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "Gamer",
+                                                         "description":  "Spiele ein beliebiges Spiel"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "Rechtschreibprofi",
+                                                                "description":  "Schließe das Rechtschreibspiel ab"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "Gedächtnismeister",
+                                                                 "description":  "Schließe das Gedächtnisspiel ab"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "Rätselprofi",
+                                                               "description":  "Löse ein Worträtsel"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "Auf Feuer",
+                                                                    "description":  "3 Tage in Folge aktiv"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "Wochenkämpfer",
+                                                                "description":  "7 Tage in Folge aktiv"
+                                                            },
+                                           "century":  {
+                                                           "name":  "Jahrhundert",
+                                                           "description":  "100 XP verdienen"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "Champion",
+                                                            "description":  "500 XP verdienen"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "Frühaufsteher",
+                                                              "description":  "Vor 8 Uhr lernen"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "Nachteule",
+                                                             "description":  "Nach 21 Uhr lernen"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "Zurück",
+                        "play":  "Spielen",
+                        "defaultTagline":  "Lass uns lernen!",
+                        "english":  {
+                                        "label":  "Englisch",
+                                        "tagline":  "Wörter sind magisch!"
+                                    },
+                        "maths":  {
+                                      "label":  "Mathematik",
+                                      "tagline":  "Zahlen machen Spaß!"
+                                  },
+                        "science":  {
+                                        "label":  "Wissenschaft",
+                                        "tagline":  "Entdecke die Welt!"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "Zuhören",
+                                                       "desc":  "Hör zu und wiederhole!",
+                                                       "level":  "Stufe 1"
+                                                   },
+                                        "read":  {
+                                                     "label":  "Lesen",
+                                                     "desc":  "Lies und beantworte!",
+                                                     "level":  "Stufe 2"
+                                                 },
+                                        "write":  {
+                                                      "label":  "Schreiben",
+                                                      "desc":  "Nachzeichnen und schreiben!",
+                                                      "level":  "Stufe 3"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "Sprechen",
+                                                      "desc":  "Drück dich aus!",
+                                                      "level":  "Stufe 4"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "Zurück",
+                      "title":  "Spielzone",
+                      "subtitle":  "Wähle ein Spiel und fang an!",
+                      "playNow":  "Jetzt spielen",
+                      "diffEasy":  "Einfach",
+                      "diffMedium":  "Mittel",
+                      "diffHard":  "Schwer",
+                      "spelling":  {
+                                       "title":  "Buchstabieren",
+                                       "desc":  "Buchstabiere das Wort!"
+                                   },
+                      "memory":  {
+                                     "title":  "Gedächtnisspiel",
+                                     "desc":  "Finde alle passenden Paare!"
+                                 },
+                      "puzzle":  {
+                                     "title":  "Wortpuzzle",
+                                     "desc":  "Ordne die gemischten Buchstaben!"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "Zurück",
+                    "next":  "Weiter →",
+                    "continue":  "Fortfahren →",
+                    "retry":  "Wiederholen",
+                    "level":  "Stufe {{level}}",
+                    "loadingQ":  "Fragen werden geladen…",
+                    "loadingP":  "Hinweise werden geladen…",
+                    "serverErr":  "Konnte nicht geladen werden. Läuft der Server?",
+                    "listen":  {
+                                   "listen":  "Zuhören",
+                                   "playing":  "Läuft…",
+                                   "record":  "Aufnehmen",
+                                   "stop":  "Stoppen",
+                                   "perfect":  "Perfekt! Toll!",
+                                   "great":  "Gute Arbeit! Fast!",
+                                   "good":  "Guter Versuch! Nochmal hören.",
+                                   "tryAgain":  "Versuch es nochmal — du schaffst es!",
+                                   "attempt":  "Guter Versuch! Weitermachen!",
+                                   "micError":  "Mikrofon nicht verfügbar. Nochmal versuchen!",
+                                   "celebration":  "Perfekt!"
+                               },
+                    "read":  {
+                                 "correct":  "Brillant! +1 Stern",
+                                 "wrong":  "Die Antwort war: {{answer}}",
+                                 "celebration":  "Richtig!"
+                             },
+                    "write":  {
+                                  "whiteboard":  "Dein Whiteboard",
+                                  "pen":  "Stift",
+                                  "erase":  "Löschen",
+                                  "clear":  "Bereinigen",
+                                  "check":  "Mein Schreiben prüfen",
+                                  "celebration":  "Tolles Schreiben!",
+                                  "perfect":  "Perfektes Schreiben!",
+                                  "great":  "Gute Arbeit!",
+                                  "keep":  "Weiter üben!",
+                                  "tryAgain":  "Versuch es nochmal — du schaffst es!"
+                              },
+                    "speak":  {
+                                  "title":  "Sprich!",
+                                  "howFeeling":  "Wie fühlst du dich heute?",
+                                  "youFeel":  "Du fühlst dich heute {{mood}}!",
+                                  "yourRecordings":  "Deine Aufnahmen:",
+                                  "recording":  "Aufnahme…",
+                                  "startSpeaking":  "Anfangen zu sprechen",
+                                  "doneSpeaking":  "Aufhören zu sprechen",
+                                  "tip":  "Tipp: Es gibt keine falschen Antworten! Sag einfach was du denkst.",
+                                  "moodHappy":  "Glücklich",
+                                  "moodSad":  "Traurig",
+                                  "moodExcited":  "Aufgeregt",
+                                  "moodTired":  "Müde",
+                                  "moodAmazing":  "Toll",
+                                  "enc1":  "Toll geteilt!",
+                                  "enc2":  "Deine Stimme zählt!",
+                                  "enc3":  "Brillant! Du bist so mutig!",
+                                  "enc4":  "Was für eine tolle Antwort!",
+                                  "enc5":  "Das war wunderbar!",
+                                  "micError":  "Mikrofon nicht verfügbar — Berechtigungen prüfen!"
+                              }
+                }
 }

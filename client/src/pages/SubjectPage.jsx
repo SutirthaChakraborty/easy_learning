@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
 import styles from "./SubjectPage.module.css";
@@ -9,18 +10,18 @@ import {
   FaStar, FaRegStar, FaArrowLeft, FaPlay,
 } from "react-icons/fa";
 
-const moduleData = [
-  { type: "listen", Icon: FaHeadphones, label: "Listen",  desc: "Hear and repeat!",    color: "blue",   level: "Level 1", stars: 3, xp: "30 XP" },
-  { type: "read",   Icon: FaBookOpen,   label: "Read",    desc: "Read and answer!",    color: "green",  level: "Level 2", stars: 2, xp: "20 XP" },
-  { type: "write",  Icon: FaPencilAlt,  label: "Write",   desc: "Trace and write!",    color: "orange", level: "Level 3", stars: 1, xp: "15 XP" },
-  { type: "speak",  Icon: FaMicrophone, label: "Speak",   desc: "Express yourself!",   color: "purple", level: "Level 4", stars: 0, xp: "10 XP" },
-];
-
-const subjectMeta = {
-  english: { Icon: FaBook,       label: "English",     tagline: "Words are magic!"   },
-  maths:   { Icon: FaCalculator, label: "Mathematics", tagline: "Numbers are fun!"   },
-  science: { Icon: FaMicroscope, label: "Science",     tagline: "Explore the world!" },
+const moduleTypes = ["listen", "read", "write", "speak"];
+const moduleIcons = {
+  listen: FaHeadphones,
+  read:   FaBookOpen,
+  write:  FaPencilAlt,
+  speak:  FaMicrophone,
 };
+const moduleColors = { listen: "blue", read: "green", write: "orange", speak: "purple" };
+const moduleStars  = { listen: 3, read: 2, write: 1, speak: 0 };
+const moduleXP     = { listen: "30 XP", read: "20 XP", write: "15 XP", speak: "10 XP" };
+
+const subjectIcons = { english: FaBook, maths: FaCalculator, science: FaMicroscope };
 
 const StarRow = ({ count }) => (
   <>
@@ -35,8 +36,12 @@ const StarRow = ({ count }) => (
 const SubjectPage = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
-  const meta = subjectMeta[subject] || { Icon: FaBook, label: subject, tagline: "Let's learn!" };
-  const SubjectIcon = meta.Icon;
+  const { t } = useTranslation();
+
+  const subjectKey = ["english", "maths", "science"].includes(subject) ? subject : null;
+  const SubjectIcon = subjectKey ? subjectIcons[subjectKey] : FaBook;
+  const subjectLabel   = subjectKey ? t(`subjectPage.${subjectKey}.label`)  : subject;
+  const subjectTagline = subjectKey ? t(`subjectPage.${subjectKey}.tagline`) : t("subjectPage.defaultTagline");
 
   return (
     <FramerMotion.motion.div
@@ -55,47 +60,52 @@ const SubjectPage = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> Back
+          <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} />
+          {t("subjectPage.back")}
         </FramerMotion.motion.button>
 
         <div className={styles.header}>
           <div className={styles.subjectBadge}>
             <SubjectIcon />
           </div>
-          <h1 className={styles.title}>{meta.label}</h1>
-          <p className={styles.tagline}>{meta.tagline}</p>
+          <h1 className={styles.title}>{subjectLabel}</h1>
+          <p className={styles.tagline}>{subjectTagline}</p>
         </div>
 
         <div className={styles.grid}>
           <AnimatePresence>
-            {moduleData.map((mod, i) => (
-              <FramerMotion.motion.div
-                key={mod.type}
-                className={`${styles.card} ${styles[mod.color]}`}
-                initial={{ opacity: 0, y: 50 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.12, duration: 0.4 }}
-                whileHover={{ scale: 1.06, y: -8, transition: { duration: 0.2 } }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => { playSlide(); navigate(`/module/${mod.type}/${subject}`); }}
-              >
-                <div className={styles.cardTop}>
-                  <span className={styles.cardEmoji}><mod.Icon /></span>
-                  <span className={styles.levelBadge}>{mod.level}</span>
-                </div>
-                <h2 className={styles.cardTitle}>{mod.label}</h2>
-                <p className={styles.cardDesc}>{mod.desc}</p>
-                <div className={styles.cardFooter}>
-                  <div className={styles.stars}>
-                    <StarRow count={mod.stars} />
+            {moduleTypes.map((type, i) => {
+              const Icon = moduleIcons[type];
+              return (
+                <FramerMotion.motion.div
+                  key={type}
+                  className={`${styles.card} ${styles[moduleColors[type]]}`}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.12, duration: 0.4 }}
+                  whileHover={{ scale: 1.06, y: -8, transition: { duration: 0.2 } }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => { playSlide(); navigate(`/module/${type}/${subject}`); }}
+                >
+                  <div className={styles.cardTop}>
+                    <span className={styles.cardEmoji}><Icon /></span>
+                    <span className={styles.levelBadge}>{t(`subjectPage.modules.${type}.level`)}</span>
                   </div>
-                  <span className={styles.xpBadge}>{mod.xp}</span>
-                </div>
-                <div className={styles.playBtn}>
-                  <FaPlay style={{ marginRight: 6, verticalAlign: "middle", fontSize: 12 }} /> Play
-                </div>
-              </FramerMotion.motion.div>
-            ))}
+                  <h2 className={styles.cardTitle}>{t(`subjectPage.modules.${type}.label`)}</h2>
+                  <p className={styles.cardDesc}>{t(`subjectPage.modules.${type}.desc`)}</p>
+                  <div className={styles.cardFooter}>
+                    <div className={styles.stars}>
+                      <StarRow count={moduleStars[type]} />
+                    </div>
+                    <span className={styles.xpBadge}>{moduleXP[type]}</span>
+                  </div>
+                  <div className={styles.playBtn}>
+                    <FaPlay style={{ marginRight: 6, verticalAlign: "middle", fontSize: 12 }} />
+                    {t("subjectPage.play")}
+                  </div>
+                </FramerMotion.motion.div>
+              );
+            })}
           </AnimatePresence>
         </div>
       </div>

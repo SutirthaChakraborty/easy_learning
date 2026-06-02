@@ -21,7 +21,7 @@ const WriteModule = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const scienceQuestions = useSelector((state) => state.writeScience.questions);
   const scienceStatus    = useSelector((state) => state.writeScience.status);
@@ -184,10 +184,10 @@ const WriteModule = () => {
   };
 
   const starMsg = () => {
-    if (stars === 3) return "Perfect writing!";
-    if (stars >= 2)  return "Great job!";
-    if (stars === 1) return "Keep practising!";
-    return "Try again — you can do it!";
+    if (stars === 3) return t("modules.write.perfect");
+    if (stars >= 2)  return t("modules.write.great");
+    if (stars === 1) return t("modules.write.keep");
+    return t("modules.write.tryAgain");
   };
 
   if (activeStatus === "loading") {
@@ -195,7 +195,7 @@ const WriteModule = () => {
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <p style={{ color: "#fff", fontSize: "1.4rem" }}>Loading questions…</p>
+          <p style={{ color: "#fff", fontSize: "1.4rem" }}>{t("modules.loadingQ")}</p>
         </div>
       </div>
     );
@@ -207,8 +207,8 @@ const WriteModule = () => {
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-          <p style={{ color: "#fff", fontSize: "1.2rem" }}>Could not load questions. Is the server running?</p>
-          <button className={styles.backBtn} onClick={() => dispatch(retry())}>Retry</button>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.serverErr")}</p>
+          <button className={styles.backBtn} onClick={() => dispatch(retry())}>{t("modules.retry")}</button>
         </div>
       </div>
     );
@@ -234,7 +234,7 @@ const WriteModule = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> Back
+            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.back")}
           </FramerMotion.motion.button>
           <div className={styles.scoreBox}>
             <FaStar color="#FFD700" style={{ marginRight: 5, verticalAlign: "middle" }} />
@@ -257,7 +257,7 @@ const WriteModule = () => {
             transition={{ duration: 0.4 }}
           >
             <div className={styles.levelRow}>
-              <span className={styles.levelChip}>Level {current.level}</span>
+              <span className={styles.levelChip}>{t("modules.level", { level: current.level })}</span>
               <span className={styles.typeChip}>{current.type}</span>
             </div>
 
@@ -302,7 +302,7 @@ const WriteModule = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Next →
+                    {t("modules.next")}
                   </FramerMotion.motion.button>
                 </FramerMotion.motion.div>
               )}
@@ -313,23 +313,23 @@ const WriteModule = () => {
             <div className={styles.boardHeader}>
               <span className={styles.boardTitle}>
                 <FaPen style={{ marginRight: 6, verticalAlign: "middle", color: "#a29bfe" }} />
-                Your Whiteboard
+                {t("modules.write.whiteboard")}
               </span>
               <div className={styles.toolRow}>
                 <button
                   className={`${styles.toolBtn} ${tool === "pen" ? styles.toolActive : ""}`}
                   onClick={() => { playBtn(); setTool("pen"); }}
                 >
-                  <FaPen style={{ marginRight: 5, verticalAlign: "middle" }} /> Pen
+                  <FaPen style={{ marginRight: 5, verticalAlign: "middle" }} /> {t("modules.write.pen")}
                 </button>
                 <button
                   className={`${styles.toolBtn} ${tool === "eraser" ? styles.toolActive : ""}`}
                   onClick={() => { playBtn(); setTool("eraser"); }}
                 >
-                  <FaEraser style={{ marginRight: 5, verticalAlign: "middle" }} /> Erase
+                  <FaEraser style={{ marginRight: 5, verticalAlign: "middle" }} /> {t("modules.write.erase")}
                 </button>
                 <button className={styles.clearBtn} onClick={() => { playBtn(); clearCanvas(); }}>
-                  <FaTrash style={{ marginRight: 5, verticalAlign: "middle" }} /> Clear
+                  <FaTrash style={{ marginRight: 5, verticalAlign: "middle" }} /> {t("modules.write.clear")}
                 </button>
               </div>
             </div>
@@ -353,7 +353,7 @@ const WriteModule = () => {
               whileTap={{ scale: 0.96 }}
             >
               <FaCheckCircle style={{ marginRight: 8, verticalAlign: "middle" }} />
-              Check My Writing
+              {t("modules.write.check")}
             </FramerMotion.motion.button>
           </div>
         </div>
@@ -368,7 +368,7 @@ const WriteModule = () => {
             exit={{ opacity: 0, scale: 1.4 }}
           >
             <GiPartyPopper style={{ marginRight: 8, verticalAlign: "middle" }} />
-            Amazing Writing!
+            {t("modules.write.celebration")}
             <FaStar color="#FFD700" style={{ marginLeft: 8, verticalAlign: "middle" }} />
           </FramerMotion.motion.div>
         )}

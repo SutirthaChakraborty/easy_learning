@@ -1,121 +1,290 @@
-{
-  "navbar": {
-    "home": "Home",
-    "games": "Games",
-    "lessons": "Lessons",
-    "dashboard": "Dashboard",
-    "login": "Login",
-    "logout": "Logout",
-    "spellingBee": "Spelling Bee",
-    "memoryMatch": "Memory Match",
-    "wordPuzzle": "Word Puzzle",
-    "english": "English",
-    "mathematics": "Mathematics",
-    "science": "Science",
-    "greeting": "Hello {{name}}"
-  },
-  "hero": {
-    "greeting": "Hello {{name}}",
-    "startLearning": "Start Learning",
-    "playGames": "Play Games"
-  },
-  "cards": {
-    "english": "English",
-    "mathematics": "Mathematics",
-    "science": "Science"
-  },
-  "login": {
-    "joinTitle": "Join Learningo!",
-    "welcomeBack": "Welcome Back!",
-    "createAccountSubtitle": "Create your account to start learning",
-    "continueJourneySubtitle": "Sign in to continue your journey",
-    "continueGoogle": "Continue with Google",
-    "or": "or",
-    "namePlaceholder": "Your name",
-    "emailPlaceholder": "Email address",
-    "passwordPlaceholder": "Password",
-    "createAccountBtn": "Create Account",
-    "signInBtn": "Sign In",
-    "signUpBtn": "Sign Up",
-    "loading": "Loading...",
-    "alreadyAccount": "Already have an account?",
-    "noAccount": "Don't have an account?",
-    "errorDefault": "Something went wrong. Please try again.",
-    "googleCancelled": "Google sign-in was cancelled.",
-    "popupBlocked": "Pop-up was blocked. Please allow pop-ups for this site.",
-    "networkError": "Network error. Please check your connection.",
-    "operationNotAllowed": "Google sign-in is not enabled. Please contact support."
-  },
-  "common": {
-    "loading": "Loading...",
-    "error": "Something went wrong."
-  },
-  "dashboard": {
-    "welcomeBack": "Welcome back, {{name}}! 👋",
-    "motivational": "Keep up the great work — every lesson counts.",
-    "level": "Level {{level}}",
-    "xpTotal": "{{xp}} XP total",
-    "loading": "Loading…",
-    "loadingDashboard": "Loading your dashboard…",
-    "loginPrompt": "Please log in to view your dashboard.",
-    "serverError": "Could not connect to the server.",
-    "serverErrorHint": "Make sure the backend is running, then refresh the page.",
-    "retry": "Retry",
-    "stats": {
-      "totalXP": "Total XP",
-      "sessions": "Sessions",
-      "lessonsCompleted": "lessons completed",
-      "todayTime": "Today's Time",
-      "peakTime": "Peak: {{time}}",
-      "noSessions": "No sessions yet",
-      "streak": "Current Streak",
-      "streakDays": "{{count}} days",
-      "onFire": "On fire! 🔥",
-      "keepGoing": "Keep going!",
-      "achievements": "Achievements",
-      "badgesEarned": "badges earned"
-    },
-    "performance": {
-      "title": "Performance — Last 30 Days",
-      "empty": "No activity yet — complete a lesson to see your progress here!"
-    },
-    "heatmap": {
-      "titleCurrent": "Activity Heatmap — {{year}} (So Far)",
-      "titlePast": "Activity Heatmap — {{year}}",
-      "activeDays": "{{count}} active days",
-      "mostActive": "Most active {{time}}",
-      "today": "Today: {{time}}",
-      "less": "Less",
-      "more": "More"
-    },
-    "achievements": {
-      "title": "Achievements",
-      "empty": "Complete lessons to unlock achievements!",
-      "earnedOn": "Earned {{date}}",
-      "xpReward": "+{{xp}} XP on unlock",
-      "categories": {
-        "learning": "Learning",
-        "games": "Games",
-        "streak": "Streak",
-        "xp": "XP Milestones",
-        "special": "Special"
-      },
-      "first_step":       { "name": "First Step",      "description": "Complete your first lesson" },
-      "bookworm":         { "name": "Bookworm",         "description": "Complete 5 reading lessons" },
-      "sharp_ears":       { "name": "Sharp Ears",       "description": "Complete 5 listening lessons" },
-      "penpal":           { "name": "Penpal",           "description": "Complete 5 writing lessons" },
-      "public_speaker":   { "name": "Public Speaker",   "description": "Complete 5 speaking lessons" },
-      "all_rounder":      { "name": "All-Rounder",      "description": "Try all 3 subjects" },
-      "gamer":            { "name": "Gamer",            "description": "Play any game" },
-      "spelling_bee":     { "name": "Spelling Bee",     "description": "Complete the Spelling game" },
-      "memory_master":    { "name": "Memory Master",    "description": "Complete the Memory Match game" },
-      "puzzle_whiz":      { "name": "Puzzle Whiz",      "description": "Solve a Word Puzzle" },
-      "three_day_streak": { "name": "On Fire",          "description": "Active 3 days in a row" },
-      "week_warrior":     { "name": "Week Warrior",     "description": "Active 7 days in a row" },
-      "century":          { "name": "Century",          "description": "Earn 100 XP" },
-      "champion":         { "name": "Champion",         "description": "Earn 500 XP" },
-      "early_bird":       { "name": "Early Bird",       "description": "Study before 8 AM" },
-      "night_owl":        { "name": "Night Owl",        "description": "Study after 9 PM" }
-    }
-  }
+﻿{
+    "navbar":  {
+                   "home":  "Home",
+                   "games":  "Games",
+                   "lessons":  "Lessons",
+                   "dashboard":  "Dashboard",
+                   "login":  "Login",
+                   "logout":  "Logout",
+                   "spellingBee":  "Spelling Bee",
+                   "memoryMatch":  "Memory Match",
+                   "wordPuzzle":  "Word Puzzle",
+                   "english":  "English",
+                   "mathematics":  "Mathematics",
+                   "science":  "Science",
+                   "greeting":  "Hello {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "Hello {{name}}",
+                 "startLearning":  "Start Learning",
+                 "playGames":  "Play Games"
+             },
+    "cards":  {
+                  "english":  "English",
+                  "mathematics":  "Mathematics",
+                  "science":  "Science"
+              },
+    "login":  {
+                  "joinTitle":  "Join Learningo!",
+                  "welcomeBack":  "Welcome Back!",
+                  "createAccountSubtitle":  "Create your account to start learning",
+                  "continueJourneySubtitle":  "Sign in to continue your journey",
+                  "continueGoogle":  "Continue with Google",
+                  "or":  "or",
+                  "namePlaceholder":  "Your name",
+                  "emailPlaceholder":  "Email address",
+                  "passwordPlaceholder":  "Password",
+                  "createAccountBtn":  "Create Account",
+                  "signInBtn":  "Sign In",
+                  "signUpBtn":  "Sign Up",
+                  "loading":  "Loading...",
+                  "alreadyAccount":  "Already have an account?",
+                  "noAccount":  "Don\u0027t have an account?",
+                  "errorDefault":  "Something went wrong. Please try again.",
+                  "googleCancelled":  "Google sign-in was cancelled.",
+                  "popupBlocked":  "Pop-up was blocked. Please allow pop-ups for this site.",
+                  "networkError":  "Network error. Please check your connection.",
+                  "operationNotAllowed":  "Google sign-in is not enabled. Please contact support."
+              },
+    "common":  {
+                   "loading":  "Loading...",
+                   "error":  "Something went wrong."
+               },
+    "dashboard":  {
+                      "welcomeBack":  "Welcome back, {{name}}! 👋",
+                      "motivational":  "Keep up the great work — every lesson counts.",
+                      "level":  "Level {{level}}",
+                      "xpTotal":  "{{xp}} XP total",
+                      "loading":  "Loading…",
+                      "loadingDashboard":  "Loading your dashboard…",
+                      "loginPrompt":  "Please log in to view your dashboard.",
+                      "serverError":  "Could not connect to the server.",
+                      "serverErrorHint":  "Make sure the backend is running, then refresh the page.",
+                      "retry":  "Retry",
+                      "stats":  {
+                                    "totalXP":  "Total XP",
+                                    "sessions":  "Sessions",
+                                    "lessonsCompleted":  "lessons completed",
+                                    "todayTime":  "Today\u0027s Time",
+                                    "peakTime":  "Peak: {{time}}",
+                                    "noSessions":  "No sessions yet",
+                                    "streak":  "Current Streak",
+                                    "streakDays":  "{{count}} days",
+                                    "onFire":  "On fire! 🔥",
+                                    "keepGoing":  "Keep going!",
+                                    "achievements":  "Achievements",
+                                    "badgesEarned":  "badges earned"
+                                },
+                      "performance":  {
+                                          "title":  "Performance — Last 30 Days",
+                                          "empty":  "No activity yet — complete a lesson to see your progress here!"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "Activity Heatmap — {{year}} (So Far)",
+                                      "titlePast":  "Activity Heatmap — {{year}}",
+                                      "activeDays":  "{{count}} active days",
+                                      "mostActive":  "Most active {{time}}",
+                                      "today":  "Today: {{time}}",
+                                      "less":  "Less",
+                                      "more":  "More"
+                                  },
+                      "achievements":  {
+                                           "title":  "Achievements",
+                                           "empty":  "Complete lessons to unlock achievements!",
+                                           "earnedOn":  "Earned {{date}}",
+                                           "xpReward":  "+{{xp}} XP on unlock",
+                                           "categories":  {
+                                                              "learning":  "Learning",
+                                                              "games":  "Games",
+                                                              "streak":  "Streak",
+                                                              "xp":  "XP Milestones",
+                                                              "special":  "Special"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "First Step",
+                                                              "description":  "Complete your first lesson"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "Bookworm",
+                                                            "description":  "Complete 5 reading lessons"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "Sharp Ears",
+                                                              "description":  "Complete 5 listening lessons"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "Penpal",
+                                                          "description":  "Complete 5 writing lessons"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "Public Speaker",
+                                                                  "description":  "Complete 5 speaking lessons"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "All-Rounder",
+                                                               "description":  "Try all 3 subjects"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "Gamer",
+                                                         "description":  "Play any game"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "Spelling Bee",
+                                                                "description":  "Complete the Spelling game"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "Memory Master",
+                                                                 "description":  "Complete the Memory Match game"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "Puzzle Whiz",
+                                                               "description":  "Solve a Word Puzzle"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "On Fire",
+                                                                    "description":  "Active 3 days in a row"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "Week Warrior",
+                                                                "description":  "Active 7 days in a row"
+                                                            },
+                                           "century":  {
+                                                           "name":  "Century",
+                                                           "description":  "Earn 100 XP"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "Champion",
+                                                            "description":  "Earn 500 XP"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "Early Bird",
+                                                              "description":  "Study before 8 AM"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "Night Owl",
+                                                             "description":  "Study after 9 PM"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "Back",
+                        "play":  "Play",
+                        "defaultTagline":  "Let\u0027s learn!",
+                        "english":  {
+                                        "label":  "English",
+                                        "tagline":  "Words are magic!"
+                                    },
+                        "maths":  {
+                                      "label":  "Mathematics",
+                                      "tagline":  "Numbers are fun!"
+                                  },
+                        "science":  {
+                                        "label":  "Science",
+                                        "tagline":  "Explore the world!"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "Listen",
+                                                       "desc":  "Hear and repeat!",
+                                                       "level":  "Level 1"
+                                                   },
+                                        "read":  {
+                                                     "label":  "Read",
+                                                     "desc":  "Read and answer!",
+                                                     "level":  "Level 2"
+                                                 },
+                                        "write":  {
+                                                      "label":  "Write",
+                                                      "desc":  "Trace and write!",
+                                                      "level":  "Level 3"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "Speak",
+                                                      "desc":  "Express yourself!",
+                                                      "level":  "Level 4"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "Back",
+                      "title":  "Game Zone",
+                      "subtitle":  "Pick a game and start playing!",
+                      "playNow":  "Play Now",
+                      "diffEasy":  "Easy",
+                      "diffMedium":  "Medium",
+                      "diffHard":  "Hard",
+                      "spelling":  {
+                                       "title":  "Spelling Bee",
+                                       "desc":  "Spell the word from the clue!"
+                                   },
+                      "memory":  {
+                                     "title":  "Memory Match",
+                                     "desc":  "Find all the matching pairs!"
+                                 },
+                      "puzzle":  {
+                                     "title":  "Word Puzzle",
+                                     "desc":  "Unscramble the jumbled letters!"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "Back",
+                    "next":  "Next →",
+                    "continue":  "Continue →",
+                    "retry":  "Retry",
+                    "level":  "Level {{level}}",
+                    "loadingQ":  "Loading questions…",
+                    "loadingP":  "Loading prompts…",
+                    "serverErr":  "Could not load. Is the server running?",
+                    "listen":  {
+                                   "listen":  "Listen",
+                                   "playing":  "Playing…",
+                                   "record":  "Record",
+                                   "stop":  "Stop",
+                                   "perfect":  "Perfect! Amazing!",
+                                   "great":  "Great job! Almost there!",
+                                   "good":  "Good try! Listen again.",
+                                   "tryAgain":  "Try again — you can do it!",
+                                   "attempt":  "Good attempt! Keep trying!",
+                                   "micError":  "Microphone not available. Try again!",
+                                   "celebration":  "Perfect!"
+                               },
+                    "read":  {
+                                 "correct":  "Brilliant! +1 Star",
+                                 "wrong":  "The answer was: {{answer}}",
+                                 "celebration":  "Correct!"
+                             },
+                    "write":  {
+                                  "whiteboard":  "Your Whiteboard",
+                                  "pen":  "Pen",
+                                  "erase":  "Erase",
+                                  "clear":  "Clear",
+                                  "check":  "Check My Writing",
+                                  "celebration":  "Amazing Writing!",
+                                  "perfect":  "Perfect writing!",
+                                  "great":  "Great job!",
+                                  "keep":  "Keep practising!",
+                                  "tryAgain":  "Try again — you can do it!"
+                              },
+                    "speak":  {
+                                  "title":  "Speak Up!",
+                                  "howFeeling":  "How are you feeling today?",
+                                  "youFeel":  "You feel {{mood}} today!",
+                                  "yourRecordings":  "Your recordings:",
+                                  "recording":  "Recording…",
+                                  "startSpeaking":  "Start Speaking",
+                                  "doneSpeaking":  "Done Speaking",
+                                  "tip":  "Tip: There are no wrong answers! Just say what you think.",
+                                  "moodHappy":  "Happy",
+                                  "moodSad":  "Sad",
+                                  "moodExcited":  "Excited",
+                                  "moodTired":  "Tired",
+                                  "moodAmazing":  "Amazing",
+                                  "enc1":  "Great job sharing! Keep it up!",
+                                  "enc2":  "Your voice matters — well done!",
+                                  "enc3":  "Brilliant! You are so brave!",
+                                  "enc4":  "What a fantastic answer!",
+                                  "enc5":  "That was wonderful — keep going!",
+                                  "micError":  "Microphone not available — check permissions!"
+                              }
+                }
 }

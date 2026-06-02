@@ -1,121 +1,290 @@
-{
-  "navbar": {
-    "home": "Главная",
-    "games": "Игры",
-    "lessons": "Уроки",
-    "dashboard": "Панель",
-    "login": "Войти",
-    "logout": "Выйти",
-    "spellingBee": "Орфография",
-    "memoryMatch": "Игра на память",
-    "wordPuzzle": "Словесный пазл",
-    "english": "Английский",
-    "mathematics": "Математика",
-    "science": "Наука",
-    "greeting": "Привет {{name}}"
-  },
-  "hero": {
-    "greeting": "Привет {{name}}",
-    "startLearning": "Начать обучение",
-    "playGames": "Играть в игры"
-  },
-  "cards": {
-    "english": "Английский",
-    "mathematics": "Математика",
-    "science": "Наука"
-  },
-  "login": {
-    "joinTitle": "Присоединяйся к Learningo!",
-    "welcomeBack": "С возвращением!",
-    "createAccountSubtitle": "Создай аккаунт, чтобы начать учиться",
-    "continueJourneySubtitle": "Войди, чтобы продолжить своё путешествие",
-    "continueGoogle": "Продолжить с Google",
-    "or": "или",
-    "namePlaceholder": "Ваше имя",
-    "emailPlaceholder": "Адрес электронной почты",
-    "passwordPlaceholder": "Пароль",
-    "createAccountBtn": "Создать аккаунт",
-    "signInBtn": "Войти",
-    "signUpBtn": "Зарегистрироваться",
-    "loading": "Загрузка...",
-    "alreadyAccount": "Уже есть аккаунт?",
-    "noAccount": "Нет аккаунта?",
-    "errorDefault": "Что-то пошло не так. Попробуйте ещё раз.",
-    "googleCancelled": "Вход через Google был отменён.",
-    "popupBlocked": "Всплывающее окно заблокировано. Разрешите всплывающие окна для этого сайта.",
-    "networkError": "Ошибка сети. Проверьте подключение.",
-    "operationNotAllowed": "Вход через Google не включён."
-  },
-  "common": {
-    "loading": "Загрузка...",
-    "error": "Что-то пошло не так."
-  },
-  "dashboard": {
-    "welcomeBack": "С возвращением, {{name}}! 👋",
-    "motivational": "Продолжай в том же духе — каждый урок имеет значение.",
-    "level": "Уровень {{level}}",
-    "xpTotal": "{{xp}} XP всего",
-    "loading": "Загрузка…",
-    "loadingDashboard": "Загрузка панели…",
-    "loginPrompt": "Войдите, чтобы просмотреть панель.",
-    "serverError": "Не удалось подключиться к серверу.",
-    "serverErrorHint": "Убедитесь, что бэкенд запущен, затем обновите страницу.",
-    "retry": "Повторить",
-    "stats": {
-      "totalXP": "Всего XP",
-      "sessions": "Сессии",
-      "lessonsCompleted": "уроков завершено",
-      "todayTime": "Сегодня",
-      "peakTime": "Пик: {{time}}",
-      "noSessions": "Нет сессий",
-      "streak": "Текущая серия",
-      "streakDays": "{{count}} дней",
-      "onFire": "В огне! 🔥",
-      "keepGoing": "Продолжай!",
-      "achievements": "Достижения",
-      "badgesEarned": "значков получено"
-    },
-    "performance": {
-      "title": "Успеваемость — последние 30 дней",
-      "empty": "Нет активности — завершите урок, чтобы увидеть прогресс!"
-    },
-    "heatmap": {
-      "titleCurrent": "Карта активности — {{year}} (до сегодня)",
-      "titlePast": "Карта активности — {{year}}",
-      "activeDays": "{{count}} активных дней",
-      "mostActive": "Наиболее активен {{time}}",
-      "today": "Сегодня: {{time}}",
-      "less": "Меньше",
-      "more": "Больше"
-    },
-    "achievements": {
-      "title": "Достижения",
-      "empty": "Завершайте уроки, чтобы открывать достижения!",
-      "earnedOn": "Получено {{date}}",
-      "xpReward": "+{{xp}} XP при открытии",
-      "categories": {
-        "learning": "Обучение",
-        "games": "Игры",
-        "streak": "Серия",
-        "xp": "Вехи XP",
-        "special": "Особые"
-      },
-      "first_step":       { "name": "Первый шаг",       "description": "Завершить первый урок" },
-      "bookworm":         { "name": "Книжный червь",     "description": "Завершить 5 уроков чтения" },
-      "sharp_ears":       { "name": "Острый слух",       "description": "Завершить 5 уроков аудирования" },
-      "penpal":           { "name": "Pen Pal",           "description": "Завершить 5 уроков письма" },
-      "public_speaker":   { "name": "Оратор",            "description": "Завершить 5 уроков говорения" },
-      "all_rounder":      { "name": "Всесторонний",      "description": "Попробовать все 3 предмета" },
-      "gamer":            { "name": "Геймер",            "description": "Сыграть в любую игру" },
-      "spelling_bee":     { "name": "Мастер орфографии", "description": "Завершить игру по орфографии" },
-      "memory_master":    { "name": "Мастер памяти",     "description": "Завершить игру на память" },
-      "puzzle_whiz":      { "name": "Знаток пазлов",     "description": "Решить словесный пазл" },
-      "three_day_streak": { "name": "В огне",            "description": "Активен 3 дня подряд" },
-      "week_warrior":     { "name": "Воин недели",       "description": "Активен 7 дней подряд" },
-      "century":          { "name": "Сотня",             "description": "Заработать 100 XP" },
-      "champion":         { "name": "Чемпион",           "description": "Заработать 500 XP" },
-      "early_bird":       { "name": "Ранняя птица",      "description": "Учиться до 8 утра" },
-      "night_owl":        { "name": "Ночная сова",       "description": "Учиться после 21:00" }
-    }
-  }
+﻿{
+    "navbar":  {
+                   "home":  "Главная",
+                   "games":  "Игры",
+                   "lessons":  "Уроки",
+                   "dashboard":  "Панель",
+                   "login":  "Войти",
+                   "logout":  "Выйти",
+                   "spellingBee":  "Орфография",
+                   "memoryMatch":  "Игра на память",
+                   "wordPuzzle":  "Словесный пазл",
+                   "english":  "Английский",
+                   "mathematics":  "Математика",
+                   "science":  "Наука",
+                   "greeting":  "Привет {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "Привет {{name}}",
+                 "startLearning":  "Начать обучение",
+                 "playGames":  "Играть в игры"
+             },
+    "cards":  {
+                  "english":  "Английский",
+                  "mathematics":  "Математика",
+                  "science":  "Наука"
+              },
+    "login":  {
+                  "joinTitle":  "Присоединяйся к Learningo!",
+                  "welcomeBack":  "С возвращением!",
+                  "createAccountSubtitle":  "Создай аккаунт, чтобы начать учиться",
+                  "continueJourneySubtitle":  "Войди, чтобы продолжить своё путешествие",
+                  "continueGoogle":  "Продолжить с Google",
+                  "or":  "или",
+                  "namePlaceholder":  "Ваше имя",
+                  "emailPlaceholder":  "Адрес электронной почты",
+                  "passwordPlaceholder":  "Пароль",
+                  "createAccountBtn":  "Создать аккаунт",
+                  "signInBtn":  "Войти",
+                  "signUpBtn":  "Зарегистрироваться",
+                  "loading":  "Загрузка...",
+                  "alreadyAccount":  "Уже есть аккаунт?",
+                  "noAccount":  "Нет аккаунта?",
+                  "errorDefault":  "Что-то пошло не так. Попробуйте ещё раз.",
+                  "googleCancelled":  "Вход через Google был отменён.",
+                  "popupBlocked":  "Всплывающее окно заблокировано. Разрешите всплывающие окна для этого сайта.",
+                  "networkError":  "Ошибка сети. Проверьте подключение.",
+                  "operationNotAllowed":  "Вход через Google не включён."
+              },
+    "common":  {
+                   "loading":  "Загрузка...",
+                   "error":  "Что-то пошло не так."
+               },
+    "dashboard":  {
+                      "welcomeBack":  "С возвращением, {{name}}! 👋",
+                      "motivational":  "Продолжай в том же духе — каждый урок имеет значение.",
+                      "level":  "Уровень {{level}}",
+                      "xpTotal":  "{{xp}} XP всего",
+                      "loading":  "Загрузка…",
+                      "loadingDashboard":  "Загрузка панели…",
+                      "loginPrompt":  "Войдите, чтобы просмотреть панель.",
+                      "serverError":  "Не удалось подключиться к серверу.",
+                      "serverErrorHint":  "Убедитесь, что бэкенд запущен, затем обновите страницу.",
+                      "retry":  "Повторить",
+                      "stats":  {
+                                    "totalXP":  "Всего XP",
+                                    "sessions":  "Сессии",
+                                    "lessonsCompleted":  "уроков завершено",
+                                    "todayTime":  "Сегодня",
+                                    "peakTime":  "Пик: {{time}}",
+                                    "noSessions":  "Нет сессий",
+                                    "streak":  "Текущая серия",
+                                    "streakDays":  "{{count}} дней",
+                                    "onFire":  "В огне! 🔥",
+                                    "keepGoing":  "Продолжай!",
+                                    "achievements":  "Достижения",
+                                    "badgesEarned":  "значков получено"
+                                },
+                      "performance":  {
+                                          "title":  "Успеваемость — последние 30 дней",
+                                          "empty":  "Нет активности — завершите урок, чтобы увидеть прогресс!"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "Карта активности — {{year}} (до сегодня)",
+                                      "titlePast":  "Карта активности — {{year}}",
+                                      "activeDays":  "{{count}} активных дней",
+                                      "mostActive":  "Наиболее активен {{time}}",
+                                      "today":  "Сегодня: {{time}}",
+                                      "less":  "Меньше",
+                                      "more":  "Больше"
+                                  },
+                      "achievements":  {
+                                           "title":  "Достижения",
+                                           "empty":  "Завершайте уроки, чтобы открывать достижения!",
+                                           "earnedOn":  "Получено {{date}}",
+                                           "xpReward":  "+{{xp}} XP при открытии",
+                                           "categories":  {
+                                                              "learning":  "Обучение",
+                                                              "games":  "Игры",
+                                                              "streak":  "Серия",
+                                                              "xp":  "Вехи XP",
+                                                              "special":  "Особые"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "Первый шаг",
+                                                              "description":  "Завершить первый урок"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "Книжный червь",
+                                                            "description":  "Завершить 5 уроков чтения"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "Острый слух",
+                                                              "description":  "Завершить 5 уроков аудирования"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "Pen Pal",
+                                                          "description":  "Завершить 5 уроков письма"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "Оратор",
+                                                                  "description":  "Завершить 5 уроков говорения"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "Всесторонний",
+                                                               "description":  "Попробовать все 3 предмета"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "Геймер",
+                                                         "description":  "Сыграть в любую игру"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "Мастер орфографии",
+                                                                "description":  "Завершить игру по орфографии"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "Мастер памяти",
+                                                                 "description":  "Завершить игру на память"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "Знаток пазлов",
+                                                               "description":  "Решить словесный пазл"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "В огне",
+                                                                    "description":  "Активен 3 дня подряд"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "Воин недели",
+                                                                "description":  "Активен 7 дней подряд"
+                                                            },
+                                           "century":  {
+                                                           "name":  "Сотня",
+                                                           "description":  "Заработать 100 XP"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "Чемпион",
+                                                            "description":  "Заработать 500 XP"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "Ранняя птица",
+                                                              "description":  "Учиться до 8 утра"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "Ночная сова",
+                                                             "description":  "Учиться после 21:00"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "Назад",
+                        "play":  "Играть",
+                        "defaultTagline":  "Давайте учиться!",
+                        "english":  {
+                                        "label":  "Английский",
+                                        "tagline":  "Слова — это волшебство!"
+                                    },
+                        "maths":  {
+                                      "label":  "Математика",
+                                      "tagline":  "Числа — это весело!"
+                                  },
+                        "science":  {
+                                        "label":  "Наука",
+                                        "tagline":  "Исследуй мир!"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "Слушать",
+                                                       "desc":  "Слушай и повторяй!",
+                                                       "level":  "Уровень 1"
+                                                   },
+                                        "read":  {
+                                                     "label":  "Читать",
+                                                     "desc":  "Читай и отвечай!",
+                                                     "level":  "Уровень 2"
+                                                 },
+                                        "write":  {
+                                                      "label":  "Писать",
+                                                      "desc":  "Обводи и пиши!",
+                                                      "level":  "Уровень 3"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "Говорить",
+                                                      "desc":  "Выражай себя!",
+                                                      "level":  "Уровень 4"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "Назад",
+                      "title":  "Игровая зона",
+                      "subtitle":  "Выбери игру и начинай!",
+                      "playNow":  "Играть сейчас",
+                      "diffEasy":  "Лёгкий",
+                      "diffMedium":  "Средний",
+                      "diffHard":  "Сложный",
+                      "spelling":  {
+                                       "title":  "Правописание",
+                                       "desc":  "Напиши слово по подсказке!"
+                                   },
+                      "memory":  {
+                                     "title":  "Память",
+                                     "desc":  "Найди все пары!"
+                                 },
+                      "puzzle":  {
+                                     "title":  "Кроссворд",
+                                     "desc":  "Расставь буквы в нужном порядке!"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "Назад",
+                    "next":  "Далее →",
+                    "continue":  "Продолжить →",
+                    "retry":  "Повторить",
+                    "level":  "Уровень {{level}}",
+                    "loadingQ":  "Загрузка вопросов…",
+                    "loadingP":  "Загрузка подсказок…",
+                    "serverErr":  "Не удалось загрузить. Сервер работает?",
+                    "listen":  {
+                                   "listen":  "Слушать",
+                                   "playing":  "Воспроизведение…",
+                                   "record":  "Запись",
+                                   "stop":  "Стоп",
+                                   "perfect":  "Отлично! Невероятно!",
+                                   "great":  "Хорошая работа! Почти!",
+                                   "good":  "Неплохая попытка! Послушай ещё.",
+                                   "tryAgain":  "Попробуй снова — ты справишься!",
+                                   "attempt":  "Неплохая попытка! Продолжай!",
+                                   "micError":  "Микрофон недоступен. Попробуй снова!",
+                                   "celebration":  "Отлично!"
+                               },
+                    "read":  {
+                                 "correct":  "Отлично! +1 звезда",
+                                 "wrong":  "Правильный ответ: {{answer}}",
+                                 "celebration":  "Правильно!"
+                             },
+                    "write":  {
+                                  "whiteboard":  "Твоя доска",
+                                  "pen":  "Ручка",
+                                  "erase":  "Стереть",
+                                  "clear":  "Очистить",
+                                  "check":  "Проверить письмо",
+                                  "celebration":  "Отличное письмо!",
+                                  "perfect":  "Идеальное письмо!",
+                                  "great":  "Хорошая работа!",
+                                  "keep":  "Продолжай практиковаться!",
+                                  "tryAgain":  "Попробуй снова — ты справишься!"
+                              },
+                    "speak":  {
+                                  "title":  "Говори!",
+                                  "howFeeling":  "Как ты себя чувствуешь сегодня?",
+                                  "youFeel":  "Сегодня ты чувствуешь себя {{mood}}!",
+                                  "yourRecordings":  "Твои записи:",
+                                  "recording":  "Запись…",
+                                  "startSpeaking":  "Начать говорить",
+                                  "doneSpeaking":  "Закончить говорить",
+                                  "tip":  "Совет: Нет неправильных ответов! Просто скажи что думаешь.",
+                                  "moodHappy":  "Счастливый",
+                                  "moodSad":  "Грустный",
+                                  "moodExcited":  "Взволнованный",
+                                  "moodTired":  "Усталый",
+                                  "moodAmazing":  "Изумительный",
+                                  "enc1":  "Отличная работа!",
+                                  "enc2":  "Твой голос важен!",
+                                  "enc3":  "Отлично! Ты такой смелый!",
+                                  "enc4":  "Какой фантастический ответ!",
+                                  "enc5":  "Это было прекрасно!",
+                                  "micError":  "Микрофон недоступен — проверь разрешения!"
+                              }
+                }
 }

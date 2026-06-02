@@ -1,121 +1,290 @@
-{
-  "navbar": {
-    "home": "হোম",
-    "games": "গেমস",
-    "lessons": "পাঠ",
-    "dashboard": "ড্যাশবোর্ড",
-    "login": "লগইন",
-    "logout": "লগআউট",
-    "spellingBee": "স্পেলিং বি",
-    "memoryMatch": "মেমোরি ম্যাচ",
-    "wordPuzzle": "ওয়ার্ড পাজল",
-    "english": "ইংরেজি",
-    "mathematics": "গণিত",
-    "science": "বিজ্ঞান",
-    "greeting": "হ্যালো {{name}}"
-  },
-  "hero": {
-    "greeting": "হ্যালো {{name}}",
-    "startLearning": "শেখা শুরু করুন",
-    "playGames": "গেম খেলুন"
-  },
-  "cards": {
-    "english": "ইংরেজি",
-    "mathematics": "গণিত",
-    "science": "বিজ্ঞান"
-  },
-  "login": {
-    "joinTitle": "Learningo-তে যোগ দিন!",
-    "welcomeBack": "স্বাগতম!",
-    "createAccountSubtitle": "শেখা শুরু করতে আপনার অ্যাকাউন্ট তৈরি করুন",
-    "continueJourneySubtitle": "আপনার যাত্রা চালিয়ে যেতে সাইন ইন করুন",
-    "continueGoogle": "Google দিয়ে চালিয়ে যান",
-    "or": "অথবা",
-    "namePlaceholder": "আপনার নাম",
-    "emailPlaceholder": "ইমেইল ঠিকানা",
-    "passwordPlaceholder": "পাসওয়ার্ড",
-    "createAccountBtn": "অ্যাকাউন্ট তৈরি করুন",
-    "signInBtn": "সাইন ইন",
-    "signUpBtn": "সাইন আপ",
-    "loading": "লোড হচ্ছে...",
-    "alreadyAccount": "ইতিমধ্যে অ্যাকাউন্ট আছে?",
-    "noAccount": "অ্যাকাউন্ট নেই?",
-    "errorDefault": "কিছু একটা ভুল হয়েছে। আবার চেষ্টা করুন।",
-    "googleCancelled": "Google সাইন-ইন বাতিল করা হয়েছে।",
-    "popupBlocked": "পপ-আপ ব্লক হয়েছে। এই সাইটের জন্য পপ-আপ অনুমতি দিন।",
-    "networkError": "নেটওয়ার্ক ত্রুটি। আপনার সংযোগ পরীক্ষা করুন।",
-    "operationNotAllowed": "Google সাইন-ইন সক্রিয় নেই। সহায়তার সাথে যোগাযোগ করুন।"
-  },
-  "common": {
-    "loading": "লোড হচ্ছে...",
-    "error": "কিছু একটা ভুল হয়েছে।"
-  },
-  "dashboard": {
-    "welcomeBack": "আবার স্বাগতম, {{name}}! 👋",
-    "motivational": "চালিয়ে যাও — প্রতিটি পাঠ গুরুত্বপূর্ণ।",
-    "level": "স্তর {{level}}",
-    "xpTotal": "{{xp}} XP মোট",
-    "loading": "লোড হচ্ছে…",
-    "loadingDashboard": "আপনার ড্যাশবোর্ড লোড হচ্ছে…",
-    "loginPrompt": "আপনার ড্যাশবোর্ড দেখতে লগইন করুন।",
-    "serverError": "সার্ভারের সাথে সংযোগ করা যায়নি।",
-    "serverErrorHint": "নিশ্চিত করুন ব্যাকএন্ড চলছে, তারপর পেজ রিফ্রেশ করুন।",
-    "retry": "পুনরায় চেষ্টা করুন",
-    "stats": {
-      "totalXP": "মোট XP",
-      "sessions": "সেশন",
-      "lessonsCompleted": "পাঠ সম্পন্ন",
-      "todayTime": "আজকের সময়",
-      "peakTime": "সর্বোচ্চ: {{time}}",
-      "noSessions": "এখনও কোনো সেশন নেই",
-      "streak": "বর্তমান ধারা",
-      "streakDays": "{{count}} দিন",
-      "onFire": "দুর্দান্ত! 🔥",
-      "keepGoing": "চালিয়ে যাও!",
-      "achievements": "অর্জন",
-      "badgesEarned": "ব্যাজ অর্জিত"
-    },
-    "performance": {
-      "title": "পারফরম্যান্স — গত ৩০ দিন",
-      "empty": "এখনও কোনো কার্যক্রম নেই — এখানে অগ্রগতি দেখতে একটি পাঠ সম্পন্ন করুন!"
-    },
-    "heatmap": {
-      "titleCurrent": "কার্যক্রম হিটম্যাপ — {{year}} (এখন পর্যন্ত)",
-      "titlePast": "কার্যক্রম হিটম্যাপ — {{year}}",
-      "activeDays": "{{count}} সক্রিয় দিন",
-      "mostActive": "সবচেয়ে সক্রিয় {{time}}",
-      "today": "আজ: {{time}}",
-      "less": "কম",
-      "more": "বেশি"
-    },
-    "achievements": {
-      "title": "অর্জন",
-      "empty": "অর্জন আনলক করতে পাঠ সম্পন্ন করুন!",
-      "earnedOn": "অর্জিত {{date}}",
-      "xpReward": "+{{xp}} XP আনলকে",
-      "categories": {
-        "learning": "পড়াশোনা",
-        "games": "গেমস",
-        "streak": "ধারা",
-        "xp": "XP মাইলফলক",
-        "special": "বিশেষ"
-      },
-      "first_step":       { "name": "প্রথম পদক্ষেপ",  "description": "প্রথম পাঠ সম্পন্ন করুন" },
-      "bookworm":         { "name": "বইপোকা",         "description": "৫টি পাঠ পড়া সম্পন্ন করুন" },
-      "sharp_ears":       { "name": "তীক্ষ্ণ কান",    "description": "৫টি শোনার পাঠ সম্পন্ন করুন" },
-      "penpal":           { "name": "কলম বন্ধু",       "description": "৫টি লেখার পাঠ সম্পন্ন করুন" },
-      "public_speaker":   { "name": "বক্তা",           "description": "৫টি বলার পাঠ সম্পন্ন করুন" },
-      "all_rounder":      { "name": "সর্বজনীন",        "description": "সকল ৩টি বিষয় চেষ্টা করুন" },
-      "gamer":            { "name": "গেমার",           "description": "যেকোনো গেম খেলুন" },
-      "spelling_bee":     { "name": "বানান বিশেষজ্ঞ", "description": "বানান গেম সম্পন্ন করুন" },
-      "memory_master":    { "name": "স্মৃতি মাস্টার",  "description": "মেমোরি ম্যাচ গেম সম্পন্ন করুন" },
-      "puzzle_whiz":      { "name": "পাজল বিশেষজ্ঞ",  "description": "একটি ওয়ার্ড পাজল সমাধান করুন" },
-      "three_day_streak": { "name": "আগুনে",           "description": "পরপর ৩ দিন সক্রিয়" },
-      "week_warrior":     { "name": "সপ্তাহ যোদ্ধা",  "description": "পরপর ৭ দিন সক্রিয়" },
-      "century":          { "name": "শতক",             "description": "১০০ XP অর্জন করুন" },
-      "champion":         { "name": "চ্যাম্পিয়ন",      "description": "৫০০ XP অর্জন করুন" },
-      "early_bird":       { "name": "ভোরের পাখি",      "description": "সকাল ৮টার আগে পড়াশোনা করুন" },
-      "night_owl":        { "name": "রাতের পাখি",       "description": "রাত ৯টার পরে পড়াশোনা করুন" }
-    }
-  }
+﻿{
+    "navbar":  {
+                   "home":  "হোম",
+                   "games":  "গেমস",
+                   "lessons":  "পাঠ",
+                   "dashboard":  "ড্যাশবোর্ড",
+                   "login":  "লগইন",
+                   "logout":  "লগআউট",
+                   "spellingBee":  "স্পেলিং বি",
+                   "memoryMatch":  "মেমোরি ম্যাচ",
+                   "wordPuzzle":  "ওয়ার্ড পাজল",
+                   "english":  "ইংরেজি",
+                   "mathematics":  "গণিত",
+                   "science":  "বিজ্ঞান",
+                   "greeting":  "হ্যালো {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "হ্যালো {{name}}",
+                 "startLearning":  "শেখা শুরু করুন",
+                 "playGames":  "গেম খেলুন"
+             },
+    "cards":  {
+                  "english":  "ইংরেজি",
+                  "mathematics":  "গণিত",
+                  "science":  "বিজ্ঞান"
+              },
+    "login":  {
+                  "joinTitle":  "Learningo-তে যোগ দিন!",
+                  "welcomeBack":  "স্বাগতম!",
+                  "createAccountSubtitle":  "শেখা শুরু করতে আপনার অ্যাকাউন্ট তৈরি করুন",
+                  "continueJourneySubtitle":  "আপনার যাত্রা চালিয়ে যেতে সাইন ইন করুন",
+                  "continueGoogle":  "Google দিয়ে চালিয়ে যান",
+                  "or":  "অথবা",
+                  "namePlaceholder":  "আপনার নাম",
+                  "emailPlaceholder":  "ইমেইল ঠিকানা",
+                  "passwordPlaceholder":  "পাসওয়ার্ড",
+                  "createAccountBtn":  "অ্যাকাউন্ট তৈরি করুন",
+                  "signInBtn":  "সাইন ইন",
+                  "signUpBtn":  "সাইন আপ",
+                  "loading":  "লোড হচ্ছে...",
+                  "alreadyAccount":  "ইতিমধ্যে অ্যাকাউন্ট আছে?",
+                  "noAccount":  "অ্যাকাউন্ট নেই?",
+                  "errorDefault":  "কিছু একটা ভুল হয়েছে। আবার চেষ্টা করুন।",
+                  "googleCancelled":  "Google সাইন-ইন বাতিল করা হয়েছে।",
+                  "popupBlocked":  "পপ-আপ ব্লক হয়েছে। এই সাইটের জন্য পপ-আপ অনুমতি দিন।",
+                  "networkError":  "নেটওয়ার্ক ত্রুটি। আপনার সংযোগ পরীক্ষা করুন।",
+                  "operationNotAllowed":  "Google সাইন-ইন সক্রিয় নেই। সহায়তার সাথে যোগাযোগ করুন।"
+              },
+    "common":  {
+                   "loading":  "লোড হচ্ছে...",
+                   "error":  "কিছু একটা ভুল হয়েছে।"
+               },
+    "dashboard":  {
+                      "welcomeBack":  "আবার স্বাগতম, {{name}}! 👋",
+                      "motivational":  "চালিয়ে যাও — প্রতিটি পাঠ গুরুত্বপূর্ণ।",
+                      "level":  "স্তর {{level}}",
+                      "xpTotal":  "{{xp}} XP মোট",
+                      "loading":  "লোড হচ্ছে…",
+                      "loadingDashboard":  "আপনার ড্যাশবোর্ড লোড হচ্ছে…",
+                      "loginPrompt":  "আপনার ড্যাশবোর্ড দেখতে লগইন করুন।",
+                      "serverError":  "সার্ভারের সাথে সংযোগ করা যায়নি।",
+                      "serverErrorHint":  "নিশ্চিত করুন ব্যাকএন্ড চলছে, তারপর পেজ রিফ্রেশ করুন।",
+                      "retry":  "পুনরায় চেষ্টা করুন",
+                      "stats":  {
+                                    "totalXP":  "মোট XP",
+                                    "sessions":  "সেশন",
+                                    "lessonsCompleted":  "পাঠ সম্পন্ন",
+                                    "todayTime":  "আজকের সময়",
+                                    "peakTime":  "সর্বোচ্চ: {{time}}",
+                                    "noSessions":  "এখনও কোনো সেশন নেই",
+                                    "streak":  "বর্তমান ধারা",
+                                    "streakDays":  "{{count}} দিন",
+                                    "onFire":  "দুর্দান্ত! 🔥",
+                                    "keepGoing":  "চালিয়ে যাও!",
+                                    "achievements":  "অর্জন",
+                                    "badgesEarned":  "ব্যাজ অর্জিত"
+                                },
+                      "performance":  {
+                                          "title":  "পারফরম্যান্স — গত ৩০ দিন",
+                                          "empty":  "এখনও কোনো কার্যক্রম নেই — এখানে অগ্রগতি দেখতে একটি পাঠ সম্পন্ন করুন!"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "কার্যক্রম হিটম্যাপ — {{year}} (এখন পর্যন্ত)",
+                                      "titlePast":  "কার্যক্রম হিটম্যাপ — {{year}}",
+                                      "activeDays":  "{{count}} সক্রিয় দিন",
+                                      "mostActive":  "সবচেয়ে সক্রিয় {{time}}",
+                                      "today":  "আজ: {{time}}",
+                                      "less":  "কম",
+                                      "more":  "বেশি"
+                                  },
+                      "achievements":  {
+                                           "title":  "অর্জন",
+                                           "empty":  "অর্জন আনলক করতে পাঠ সম্পন্ন করুন!",
+                                           "earnedOn":  "অর্জিত {{date}}",
+                                           "xpReward":  "+{{xp}} XP আনলকে",
+                                           "categories":  {
+                                                              "learning":  "পড়াশোনা",
+                                                              "games":  "গেমস",
+                                                              "streak":  "ধারা",
+                                                              "xp":  "XP মাইলফলক",
+                                                              "special":  "বিশেষ"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "প্রথম পদক্ষেপ",
+                                                              "description":  "প্রথম পাঠ সম্পন্ন করুন"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "বইপোকা",
+                                                            "description":  "৫টি পাঠ পড়া সম্পন্ন করুন"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "তীক্ষ্ণ কান",
+                                                              "description":  "৫টি শোনার পাঠ সম্পন্ন করুন"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "কলম বন্ধু",
+                                                          "description":  "৫টি লেখার পাঠ সম্পন্ন করুন"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "বক্তা",
+                                                                  "description":  "৫টি বলার পাঠ সম্পন্ন করুন"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "সর্বজনীন",
+                                                               "description":  "সকল ৩টি বিষয় চেষ্টা করুন"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "গেমার",
+                                                         "description":  "যেকোনো গেম খেলুন"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "বানান বিশেষজ্ঞ",
+                                                                "description":  "বানান গেম সম্পন্ন করুন"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "স্মৃতি মাস্টার",
+                                                                 "description":  "মেমোরি ম্যাচ গেম সম্পন্ন করুন"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "পাজল বিশেষজ্ঞ",
+                                                               "description":  "একটি ওয়ার্ড পাজল সমাধান করুন"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "আগুনে",
+                                                                    "description":  "পরপর ৩ দিন সক্রিয়"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "সপ্তাহ যোদ্ধা",
+                                                                "description":  "পরপর ৭ দিন সক্রিয়"
+                                                            },
+                                           "century":  {
+                                                           "name":  "শতক",
+                                                           "description":  "১০০ XP অর্জন করুন"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "চ্যাম্পিয়ন",
+                                                            "description":  "৫০০ XP অর্জন করুন"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "ভোরের পাখি",
+                                                              "description":  "সকাল ৮টার আগে পড়াশোনা করুন"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "রাতের পাখি",
+                                                             "description":  "রাত ৯টার পরে পড়াশোনা করুন"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "ফিরে যান",
+                        "play":  "খেলুন",
+                        "defaultTagline":  "আসুন শিখি!",
+                        "english":  {
+                                        "label":  "ইংরেজি",
+                                        "tagline":  "শব্দ যাদু!"
+                                    },
+                        "maths":  {
+                                      "label":  "গণিত",
+                                      "tagline":  "সংখ্যা মজার!"
+                                  },
+                        "science":  {
+                                        "label":  "বিজ্ঞান",
+                                        "tagline":  "পৃথিবী আবিষ্কার করুন!"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "শুনুন",
+                                                       "desc":  "শুনুন এবং পুনরাবৃত্তি করুন!",
+                                                       "level":  "স্তর ১"
+                                                   },
+                                        "read":  {
+                                                     "label":  "পড়ুন",
+                                                     "desc":  "পড়ুন এবং উত্তর দিন!",
+                                                     "level":  "স্তর ২"
+                                                 },
+                                        "write":  {
+                                                      "label":  "লিখুন",
+                                                      "desc":  "ট্রেস করুন এবং লিখুন!",
+                                                      "level":  "স্তর ৩"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "বলুন",
+                                                      "desc":  "নিজেকে প্রকাশ করুন!",
+                                                      "level":  "স্তর ৪"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "ফিরে যান",
+                      "title":  "গেম জোন",
+                      "subtitle":  "একটি গেম বেছে খেলুন!",
+                      "playNow":  "এখন খেলুন",
+                      "diffEasy":  "সহজ",
+                      "diffMedium":  "মাঝারি",
+                      "diffHard":  "কঠিন",
+                      "spelling":  {
+                                       "title":  "স্পেলিং বি",
+                                       "desc":  "সূত্র থেকে শব্দ বানান করুন!"
+                                   },
+                      "memory":  {
+                                     "title":  "মেমোরি ম্যাচ",
+                                     "desc":  "সব মিলে যাওয়া জোড়া খুঁজুন!"
+                                 },
+                      "puzzle":  {
+                                     "title":  "ওয়ার্ড পাজল",
+                                     "desc":  "এলোমেলো অক্ষর সাজান!"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "ফিরে যান",
+                    "next":  "পরবর্তী →",
+                    "continue":  "চালিয়ে যান →",
+                    "retry":  "আবার চেষ্টা করুন",
+                    "level":  "স্তর {{level}}",
+                    "loadingQ":  "প্রশ্ন লোড হচ্ছে…",
+                    "loadingP":  "প্রম্পট লোড হচ্ছে…",
+                    "serverErr":  "লোড করা যায়নি। সার্ভার চলছে কি?",
+                    "listen":  {
+                                   "listen":  "শুনুন",
+                                   "playing":  "চলছে…",
+                                   "record":  "রেকর্ড",
+                                   "stop":  "থামুন",
+                                   "perfect":  "অসাধারণ!",
+                                   "great":  "চমৎকার! প্রায় সঠিক!",
+                                   "good":  "ভালো চেষ্টা! আবার শুনুন।",
+                                   "tryAgain":  "আবার চেষ্টা করুন — পারবেন!",
+                                   "attempt":  "ভালো চেষ্টা! চেষ্টা চালিয়ে যান!",
+                                   "micError":  "মাইক্রোফোন পাওয়া যাচ্ছে না। আবার চেষ্টা করুন!",
+                                   "celebration":  "অসাধারণ!"
+                               },
+                    "read":  {
+                                 "correct":  "দারুণ! +১ তারা",
+                                 "wrong":  "সঠিক উত্তর ছিল: {{answer}}",
+                                 "celebration":  "সঠিক!"
+                             },
+                    "write":  {
+                                  "whiteboard":  "আপনার হোয়াইটবোর্ড",
+                                  "pen":  "কলম",
+                                  "erase":  "মুছুন",
+                                  "clear":  "পরিষ্কার করুন",
+                                  "check":  "আমার লেখা পরীক্ষা করুন",
+                                  "celebration":  "অসাধারণ লেখা!",
+                                  "perfect":  "নিখুঁত লেখা!",
+                                  "great":  "দারুণ কাজ!",
+                                  "keep":  "অনুশীলন চালিয়ে যান!",
+                                  "tryAgain":  "আবার চেষ্টা করুন — পারবেন!"
+                              },
+                    "speak":  {
+                                  "title":  "বলুন!",
+                                  "howFeeling":  "আজ আপনি কেমন অনুভব করছেন?",
+                                  "youFeel":  "আজ আপনি {{mood}} অনুভব করছেন!",
+                                  "yourRecordings":  "আপনার রেকর্ডিং:",
+                                  "recording":  "রেকর্ড হচ্ছে…",
+                                  "startSpeaking":  "বলা শুরু করুন",
+                                  "doneSpeaking":  "বলা শেষ করুন",
+                                  "tip":  "টিপ: কোনো ভুল উত্তর নেই! শুধু মনে যা আসে বলুন।",
+                                  "moodHappy":  "খুশি",
+                                  "moodSad":  "দুঃখিত",
+                                  "moodExcited":  "উত্তেজিত",
+                                  "moodTired":  "ক্লান্ত",
+                                  "moodAmazing":  "অসাধারণ",
+                                  "enc1":  "শেয়ার করার জন্য ধন্যবাদ!",
+                                  "enc2":  "আপনার কণ্ঠ গুরুত্বপূর্ণ!",
+                                  "enc3":  "দারুণ! আপনি অনেক সাহসী!",
+                                  "enc4":  "কী চমৎকার উত্তর!",
+                                  "enc5":  "এটা অসাধারণ ছিল!",
+                                  "micError":  "মাইক্রোফোন পাওয়া যাচ্ছে না — অনুমতি পরীক্ষা করুন!"
+                              }
+                }
 }
