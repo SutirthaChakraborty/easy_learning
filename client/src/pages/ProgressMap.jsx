@@ -24,7 +24,7 @@ const LEVELS = SUBJECTS.flatMap((subj, si) =>
   MODULES.map((mod, mi) => ({
     id:            si * 4 + mi + 1,
     subject:       subj.key,
-    subjectLabel:  subj.label,
+    subjectLabel:  subj.label, 
     module:        mod.key,
     moduleLabel:   mod.key.charAt(0).toUpperCase() + mod.key.slice(1),
     icon:          mod.icon,
