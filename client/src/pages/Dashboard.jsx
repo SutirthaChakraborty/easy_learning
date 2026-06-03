@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
@@ -13,6 +13,7 @@ import {
   fetchDashboardPerformance,
 } from '../store/slices/dashboardSlice'
 import styles from './Dashboard.module.css'
+import ProgressMap from './ProgressMap'
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 function fmtMinutes(mins) {
@@ -203,6 +204,7 @@ export default function Dashboard() {
 
   const thisYear = new Date().getFullYear()
   const [selectedYear, setSelectedYear] = useState(thisYear)
+  const [showProgressMap, setShowProgressMap] = useState(false)
   const yearOptions = Array.from({ length: 5 }, (_, i) => thisYear - i)
 
   useEffect(() => {
@@ -312,12 +314,20 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className={styles.levelBadge}>
-          <div className={styles.levelLabel}>{t('dashboard.level', { level: stats?.level ?? 1 })}</div>
-          <div className={styles.levelBar}>
-            <div className={styles.levelFill} style={{ width: `${levelProgress}%` }} />
+        <div className={styles.headerRight}>
+          <button
+            className={styles.progressMapBtn}
+            onClick={() => setShowProgressMap(true)}
+          >
+            🗺️ {t('dashboard.progressMap.btnLabel')}
+          </button>
+          <div className={styles.levelBadge}>
+            <div className={styles.levelLabel}>{t('dashboard.level', { level: stats?.level ?? 1 })}</div>
+            <div className={styles.levelBar}>
+              <div className={styles.levelFill} style={{ width: `${levelProgress}%` }} />
+            </div>
+            <div className={styles.levelXP}>{t('dashboard.xpTotal', { xp: stats?.totalXP ?? 0 })}</div>
           </div>
-          <div className={styles.levelXP}>{t('dashboard.xpTotal', { xp: stats?.totalXP ?? 0 })}</div>
         </div>
       </div>
 
@@ -464,6 +474,17 @@ export default function Dashboard() {
           </>
         )}
       </div>
+
+      {/* ── Progress Map modal ── */}
+      <AnimatePresence>
+        {showProgressMap && (
+          <ProgressMap
+            achievements={achievements}
+            stats={stats}
+            onClose={() => setShowProgressMap(false)}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }

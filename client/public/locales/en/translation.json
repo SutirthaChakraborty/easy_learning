@@ -88,6 +88,15 @@
                                       "less":  "Less",
                                       "more":  "More"
                                   },
+                      "progressMap":  {
+                                          "title":  "Progress Map",
+                                          "btnLabel":  "Progress Map",
+                                          "subtitle":  "{{completed}} of {{total}} module slots mastered",
+                                          "completed":  "Mastered",
+                                          "inProgress":  "In Progress",
+                                          "locked":  "Not Started",
+                                          "close":  "Close"
+                                      },
                       "achievements":  {
                                            "title":  "Achievements",
                                            "empty":  "Complete lessons to unlock achievements!",
