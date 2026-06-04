@@ -246,7 +246,8 @@
                                    "tryAgain":  "再试一次——你可以的！",
                                    "attempt":  "不错的尝试！继续加油！",
                                    "micError":  "麦克风不可用。请再试一次！",
-                                   "celebration":  "完美！"
+                                   "celebration":  "完美！",
+                                   "voiceUnavailable":  "此语言的语音不可用 — 音频可能听起来不同。"
                                },
                     "read":  {
                                  "correct":  "太棒了！+1星",

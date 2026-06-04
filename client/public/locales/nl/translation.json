@@ -246,7 +246,8 @@
                                    "tryAgain":  "Probeer opnieuw — je kunt het!",
                                    "attempt":  "Goed geprobeerd! Ga door!",
                                    "micError":  "Microfoon niet beschikbaar. Probeer opnieuw!",
-                                   "celebration":  "Perfect!"
+                                   "celebration":  "Perfect!",
+                                   "voiceUnavailable":  "Stem niet beschikbaar voor deze taal — audio klinkt mogelijk anders."
                                },
                     "read":  {
                                  "correct":  "Geweldig! +1 Ster",

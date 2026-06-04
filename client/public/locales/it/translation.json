@@ -246,7 +246,8 @@
                                    "tryAgain":  "Riprova — ce la fai!",
                                    "attempt":  "Buon tentativo! Continua!",
                                    "micError":  "Microfono non disponibile. Riprova!",
-                                   "celebration":  "Perfetto!"
+                                   "celebration":  "Perfetto!",
+                                   "voiceUnavailable":  "Voce non disponibile per questa lingua — l\u0027audio potrebbe suonare diverso."
                                },
                     "read":  {
                                  "correct":  "Brillante! +1 Stella",
