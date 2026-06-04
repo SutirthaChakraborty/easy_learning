@@ -246,7 +246,8 @@
                                    "tryAgain":  "もう一度チャレンジ！できるよ！",
                                    "attempt":  "いい試み！続けて！",
                                    "micError":  "マイクが使えません。もう一度試して！",
-                                   "celebration":  "完璧！"
+                                   "celebration":  "完璧！",
+                                   "voiceUnavailable":  "この言語の音声は利用できません — 音声が異なる場合があります。"
                                },
                     "read":  {
                                  "correct":  "すばらしい！+1スター",

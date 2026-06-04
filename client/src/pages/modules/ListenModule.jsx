@@ -51,7 +51,8 @@ const StarsDisplay = ({ count }) => (
 // ─── Robust TTS helper ──────────────────────────────────────────────────────
 // Picks the best matching voice for `langCode`, then speaks `text`.
 // Works around the Chrome bug where synthesis pauses after ~15 s.
-function speakText(text, langCode, { onStart, onEnd, onError } = {}) {
+// Calls onNoVoice when no matching voice is installed in the browser.
+function speakText(text, langCode, { onStart, onEnd, onError, onNoVoice } = {}) {
   const synth = window.speechSynthesis;
   synth.cancel();
 
@@ -63,10 +64,19 @@ function speakText(text, langCode, { onStart, onEnd, onError } = {}) {
 
     // Pick a voice that matches the selected language
     const voices = synth.getVoices();
+    const baseLang = langCode.split("-")[0];
     const match =
       voices.find(v => v.lang === langCode) ||
-      voices.find(v => v.lang.startsWith(langCode.split("-")[0]));
-    if (match) utterance.voice = match;
+      voices.find(v => v.lang.startsWith(baseLang));
+
+    if (match) {
+      utterance.voice = match;
+    } else {
+      // No native voice — notify caller and fall back to any English voice
+      onNoVoice?.();
+      const fallback = voices.find(v => v.lang.startsWith("en"));
+      if (fallback) utterance.voice = fallback;
+    }
 
     // Chrome bug: synthesis pauses after ~15 s. Keep it awake.
     let resumeTimer = null;
@@ -78,13 +88,23 @@ function speakText(text, langCode, { onStart, onEnd, onError } = {}) {
     };
     resumeTimer = setTimeout(keepAlive, 10000);
 
-    const cleanup = () => clearTimeout(resumeTimer);
+    // Safety: if synthesis never fires onend/onerror, unblock the UI after 30 s
+    const safetyTimer = setTimeout(() => { cleanup(); onEnd?.(); }, 30000);
 
-    utterance.onstart = () => { onStart?.(); };
-    utterance.onend   = () => { cleanup(); onEnd?.(); };
-    utterance.onerror = (e) => { cleanup(); onError?.(e); };
+    const cleanup = () => {
+      clearTimeout(resumeTimer);
+      clearTimeout(safetyTimer);
+    };
 
-    // Set isPlaying immediately so the button reflects reality right away
+    utterance.onend = () => { cleanup(); onEnd?.(); };
+    utterance.onerror = (e) => {
+      cleanup();
+      // interrupted/canceled are user-initiated (play clicked again, nav away) — not errors
+      if (e.error === "interrupted" || e.error === "canceled") { onEnd?.(); return; }
+      onError?.(e);
+    };
+
+    // Show playing state immediately so the button feels responsive
     onStart?.();
     synth.speak(utterance);
   };
@@ -149,10 +169,12 @@ const ListenModule = () => {
   const [totalScore, setTotalScore]           = useState(0);
   const [feedback, setFeedback]               = useState("");
   const [showCelebration, setShowCelebration] = useState(false);
+  const [voiceWarning, setVoiceWarning]       = useState(false);
 
-  const mediaRecorder  = useRef(null);
-  const chunks         = useRef([]);
-  const recognitionRef = useRef(null);
+  const mediaRecorder    = useRef(null);
+  const chunks           = useRef([]);
+  const recognitionRef   = useRef(null);
+  const puterAudioRef    = useRef(null);
   const questionStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
@@ -177,31 +199,62 @@ const ListenModule = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stars]);
 
-  // Cancel speech when component unmounts or question changes
+  // Cancel speech when component unmounts
   useEffect(() => {
     return () => {
+      puterAudioRef.current?.pause();
       window.speechSynthesis.cancel();
       if (recognitionRef.current) recognitionRef.current.abort();
     };
   }, []);
 
   const resetCardState = () => {
+    puterAudioRef.current?.pause();
+    puterAudioRef.current = null;
     setStars(null);
     setAudioUrl(null);
     setFeedback("");
     setShowCelebration(false);
+    setVoiceWarning(false);
     window.speechSynthesis.cancel();
     setIsPlaying(false);
   };
 
   // ── Speak ──────────────────────────────────────────────────────────────────
-  const playSentence = () => {
-    if (!current) return;
-    speakText(current.sentence, getSpeechLang(i18n.language), {
-      onStart: () => setIsPlaying(true),
-      onEnd:   () => setIsPlaying(false),
-      onError: () => setIsPlaying(false),
+  const webSpeechFallback = () => {
+    const langCode = isEnglish ? "en-US" : getSpeechLang(i18n.language);
+    speakText(current.sentence, langCode, {
+      onStart:   () => setIsPlaying(true),
+      onEnd:     () => setIsPlaying(false),
+      onError:   () => setIsPlaying(false),
+      onNoVoice: () => setVoiceWarning(true),
     });
+  };
+
+  const playSentence = async () => {
+    if (!current) return;
+
+    // Stop any in-flight audio before starting new
+    puterAudioRef.current?.pause();
+    puterAudioRef.current = null;
+    window.speechSynthesis.cancel();
+
+    setVoiceWarning(false);
+    setIsPlaying(true);
+
+    try {
+      if (window.puter?.ai?.txt2speech) {
+        const audio = await window.puter.ai.txt2speech(current.sentence);
+        puterAudioRef.current = audio;
+        audio.onended = () => { setIsPlaying(false); puterAudioRef.current = null; };
+        audio.onerror = () => { puterAudioRef.current = null; webSpeechFallback(); };
+        audio.play();
+      } else {
+        webSpeechFallback();
+      }
+    } catch {
+      webSpeechFallback();
+    }
   };
 
   // ── Record ─────────────────────────────────────────────────────────────────
@@ -227,7 +280,7 @@ const ListenModule = () => {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SR) {
         const rec = new SR();
-        rec.lang = getSpeechLang(i18n.language);
+        rec.lang = isEnglish ? "en-US" : getSpeechLang(i18n.language);
         rec.interimResults  = false;
         rec.maxAlternatives = 1;
         recognitionRef.current = rec;
@@ -367,6 +420,12 @@ const ListenModule = () => {
                 <FaVolumeUp style={{ marginRight: 6, verticalAlign: "middle" }} />
                 {isPlaying ? t("modules.listen.playing") : t("modules.listen.listen")}
               </FramerMotion.motion.button>
+
+              {voiceWarning && (
+                <p className={styles.voiceWarning}>
+                  {t("modules.listen.voiceUnavailable")}
+                </p>
+              )}
 
               {!isRecording ? (
                 <FramerMotion.motion.button

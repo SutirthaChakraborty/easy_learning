@@ -187,6 +187,16 @@
 }
 .nextBtn:hover { filter: brightness(1.1); }
 
+/* VOICE WARNING */
+.voiceWarning {
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 220, 100, 0.9);
+  margin: -4px 0 4px;
+  font-style: italic;
+}
+
 /* CELEBRATION */
 .celebration {
   position: fixed;

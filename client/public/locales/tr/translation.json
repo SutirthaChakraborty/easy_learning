@@ -246,7 +246,8 @@
                                    "tryAgain":  "Tekrar dene — yapabilirsin!",
                                    "attempt":  "Güzel deneme! Devam et!",
                                    "micError":  "Mikrofon kullanılamıyor. Tekrar dene!",
-                                   "celebration":  "Mükemmel!"
+                                   "celebration":  "Mükemmel!",
+                                   "voiceUnavailable":  "Bu dil için ses mevcut değil — ses farklı duyulabilir."
                                },
                     "read":  {
                                  "correct":  "Harika! +1 Yıldız",

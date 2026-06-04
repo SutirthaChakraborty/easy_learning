@@ -246,7 +246,8 @@
                                    "tryAgain":  "Coba lagi — kamu bisa!",
                                    "attempt":  "Coba yang baik! Terus mencoba!",
                                    "micError":  "Mikrofon tidak tersedia. Coba lagi!",
-                                   "celebration":  "Sempurna!"
+                                   "celebration":  "Sempurna!",
+                                   "voiceUnavailable":  "Suara tidak tersedia untuk bahasa ini — audio mungkin terdengar berbeda."
                                },
                     "read":  {
                                  "correct":  "Brilian! +1 Bintang",

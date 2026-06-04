@@ -246,7 +246,8 @@
                                    "tryAgain":  "Thử lại — bạn có thể làm được!",
                                    "attempt":  "Thử tốt! Tiếp tục cố!",
                                    "micError":  "Không có micro. Hãy thử lại!",
-                                   "celebration":  "Hoàn hảo!"
+                                   "celebration":  "Hoàn hảo!",
+                                   "voiceUnavailable":  "Giọng nói không có sẵn cho ngôn ngữ này — âm thanh có thể khác đi."
                                },
                     "read":  {
                                  "correct":  "Xuất sắc! +1 Sao",
