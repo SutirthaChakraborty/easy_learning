@@ -56,69 +56,56 @@ function speakText(text, langCode, { onStart, onEnd, onError, onNoVoice } = {}) 
   const synth = window.speechSynthesis;
   synth.cancel();
 
-  const doSpeak = () => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate  = 0.85;
-    utterance.pitch = 1.1;
-    utterance.lang  = langCode;
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate  = 0.85;
+  utterance.pitch = 1.1;
+  utterance.lang  = langCode;
 
-    // Pick a voice that matches the selected language
-    const voices = synth.getVoices();
+  // Pick the best available voice synchronously — if voices aren't loaded yet
+  // the browser will use its default for the lang, which is fine.
+  const voices = synth.getVoices();
+  if (voices.length > 0) {
     const baseLang = langCode.split("-")[0];
     const match =
       voices.find(v => v.lang === langCode) ||
       voices.find(v => v.lang.startsWith(baseLang));
-
     if (match) {
       utterance.voice = match;
     } else {
-      // No native voice — notify caller and fall back to any English voice
       onNoVoice?.();
       const fallback = voices.find(v => v.lang.startsWith("en"));
       if (fallback) utterance.voice = fallback;
     }
+  }
 
-    // Chrome bug: synthesis pauses after ~15 s. Keep it awake.
-    let resumeTimer = null;
-    const keepAlive = () => {
-      if (!synth.speaking) return;
-      synth.pause();
-      synth.resume();
-      resumeTimer = setTimeout(keepAlive, 10000);
-    };
+  // Chrome bug: synthesis pauses after ~15 s. Keep it awake.
+  let resumeTimer = null;
+  const keepAlive = () => {
+    if (!synth.speaking) return;
+    synth.pause();
+    synth.resume();
     resumeTimer = setTimeout(keepAlive, 10000);
+  };
+  resumeTimer = setTimeout(keepAlive, 10000);
 
-    // Safety: if synthesis never fires onend/onerror, unblock the UI after 30 s
-    const safetyTimer = setTimeout(() => { cleanup(); onEnd?.(); }, 30000);
+  // Safety: unblock UI if synthesis never fires onend/onerror
+  const safetyTimer = setTimeout(() => { cleanup(); onEnd?.(); }, 30000);
 
-    const cleanup = () => {
-      clearTimeout(resumeTimer);
-      clearTimeout(safetyTimer);
-    };
-
-    utterance.onend = () => { cleanup(); onEnd?.(); };
-    utterance.onerror = (e) => {
-      cleanup();
-      // interrupted/canceled are user-initiated (play clicked again, nav away) — not errors
-      if (e.error === "interrupted" || e.error === "canceled") { onEnd?.(); return; }
-      onError?.(e);
-    };
-
-    // Show playing state immediately so the button feels responsive
-    onStart?.();
-    synth.speak(utterance);
+  const cleanup = () => {
+    clearTimeout(resumeTimer);
+    clearTimeout(safetyTimer);
   };
 
-  // Voices are loaded asynchronously on some browsers — wait for them
-  const voices = synth.getVoices();
-  if (voices.length > 0) {
-    doSpeak();
-  } else {
-    synth.onvoiceschanged = () => {
-      synth.onvoiceschanged = null;
-      doSpeak();
-    };
-  }
+  utterance.onend = () => { cleanup(); onEnd?.(); };
+  utterance.onerror = (e) => {
+    cleanup();
+    if (e.error === "interrupted" || e.error === "canceled") { onEnd?.(); return; }
+    onError?.(e);
+  };
+
+  // Speak synchronously within the user-gesture context so Chrome allows it.
+  onStart?.();
+  synth.speak(utterance);
 }
 // ───────────────────────────────────────────────────────────────────────────
 
@@ -170,6 +157,7 @@ const ListenModule = () => {
   const [feedback, setFeedback]               = useState("");
   const [showCelebration, setShowCelebration] = useState(false);
   const [voiceWarning, setVoiceWarning]       = useState(false);
+  const [micError, setMicError]               = useState(false);
 
   const mediaRecorder    = useRef(null);
   const chunks           = useRef([]);
@@ -222,6 +210,7 @@ const ListenModule = () => {
     setFeedback("");
     setShowCelebration(false);
     setVoiceWarning(false);
+    setMicError(false);
     window.speechSynthesis.cancel();
     setIsPlaying(false);
   };
@@ -245,18 +234,21 @@ const ListenModule = () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
-      const recorder = new MediaRecorder(stream);
+      const mimeType = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/ogg"]
+        .find((t) => MediaRecorder.isTypeSupported(t)) || "";
+      const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : {});
       mediaRecorder.current = recorder;
 
       recorder.ondataavailable = (e) => chunks.current.push(e.data);
       recorder.onstop = () => {
-        const blob = new Blob(chunks.current, { type: "audio/webm" });
+        const blob = new Blob(chunks.current, { type: recorder.mimeType || "audio/webm" });
         setAudioUrl(URL.createObjectURL(blob));
         stream.getTracks().forEach((t) => t.stop());
       };
 
       recorder.start();
       setIsRecording(true);
+      setMicError(false);
       setStars(null);
       setFeedback("");
 
@@ -313,7 +305,7 @@ const ListenModule = () => {
         };
       }
     } catch {
-      setFeedback(t("modules.listen.micError"));
+      setMicError(true);
     }
   };
 
@@ -428,6 +420,12 @@ const ListenModule = () => {
               {voiceWarning && (
                 <p className={styles.voiceWarning}>
                   {t("modules.listen.voiceUnavailable")}
+                </p>
+              )}
+
+              {micError && (
+                <p className={styles.voiceWarning}>
+                  {t("modules.listen.micError")}
                 </p>
               )}
 
