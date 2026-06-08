@@ -56,69 +56,56 @@ function speakText(text, langCode, { onStart, onEnd, onError, onNoVoice } = {}) 
   const synth = window.speechSynthesis;
   synth.cancel();
 
-  const doSpeak = () => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate  = 0.85;
-    utterance.pitch = 1.1;
-    utterance.lang  = langCode;
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.rate  = 0.85;
+  utterance.pitch = 1.1;
+  utterance.lang  = langCode;
 
-    // Pick a voice that matches the selected language
-    const voices = synth.getVoices();
+  // Pick the best available voice synchronously — if voices aren't loaded yet
+  // the browser will use its default for the lang, which is fine.
+  const voices = synth.getVoices();
+  if (voices.length > 0) {
     const baseLang = langCode.split("-")[0];
     const match =
       voices.find(v => v.lang === langCode) ||
       voices.find(v => v.lang.startsWith(baseLang));
-
     if (match) {
       utterance.voice = match;
     } else {
-      // No native voice — notify caller and fall back to any English voice
       onNoVoice?.();
       const fallback = voices.find(v => v.lang.startsWith("en"));
       if (fallback) utterance.voice = fallback;
     }
+  }
 
-    // Chrome bug: synthesis pauses after ~15 s. Keep it awake.
-    let resumeTimer = null;
-    const keepAlive = () => {
-      if (!synth.speaking) return;
-      synth.pause();
-      synth.resume();
-      resumeTimer = setTimeout(keepAlive, 10000);
-    };
+  // Chrome bug: synthesis pauses after ~15 s. Keep it awake.
+  let resumeTimer = null;
+  const keepAlive = () => {
+    if (!synth.speaking) return;
+    synth.pause();
+    synth.resume();
     resumeTimer = setTimeout(keepAlive, 10000);
+  };
+  resumeTimer = setTimeout(keepAlive, 10000);
 
-    // Safety: if synthesis never fires onend/onerror, unblock the UI after 30 s
-    const safetyTimer = setTimeout(() => { cleanup(); onEnd?.(); }, 30000);
+  // Safety: unblock UI if synthesis never fires onend/onerror
+  const safetyTimer = setTimeout(() => { cleanup(); onEnd?.(); }, 30000);
 
-    const cleanup = () => {
-      clearTimeout(resumeTimer);
-      clearTimeout(safetyTimer);
-    };
-
-    utterance.onend = () => { cleanup(); onEnd?.(); };
-    utterance.onerror = (e) => {
-      cleanup();
-      // interrupted/canceled are user-initiated (play clicked again, nav away) — not errors
-      if (e.error === "interrupted" || e.error === "canceled") { onEnd?.(); return; }
-      onError?.(e);
-    };
-
-    // Show playing state immediately so the button feels responsive
-    onStart?.();
-    synth.speak(utterance);
+  const cleanup = () => {
+    clearTimeout(resumeTimer);
+    clearTimeout(safetyTimer);
   };
 
-  // Voices are loaded asynchronously on some browsers — wait for them
-  const voices = synth.getVoices();
-  if (voices.length > 0) {
-    doSpeak();
-  } else {
-    synth.onvoiceschanged = () => {
-      synth.onvoiceschanged = null;
-      doSpeak();
-    };
-  }
+  utterance.onend = () => { cleanup(); onEnd?.(); };
+  utterance.onerror = (e) => {
+    cleanup();
+    if (e.error === "interrupted" || e.error === "canceled") { onEnd?.(); return; }
+    onError?.(e);
+  };
+
+  // Speak synchronously within the user-gesture context so Chrome allows it.
+  onStart?.();
+  synth.speak(utterance);
 }
 // ───────────────────────────────────────────────────────────────────────────
 
@@ -170,11 +157,11 @@ const ListenModule = () => {
   const [feedback, setFeedback]               = useState("");
   const [showCelebration, setShowCelebration] = useState(false);
   const [voiceWarning, setVoiceWarning]       = useState(false);
+  const [micError, setMicError]               = useState(false);
 
   const mediaRecorder    = useRef(null);
   const chunks           = useRef([]);
   const recognitionRef   = useRef(null);
-  const puterAudioRef    = useRef(null);
   const questionStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
@@ -196,21 +183,19 @@ const ListenModule = () => {
       score: Math.round((stars / 3) * 100),
       startTime: questionStartRef.current,
     }));
+    // sdfkjsdf
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stars]);
 
   // Cancel speech when component unmounts
   useEffect(() => {
     return () => {
-      puterAudioRef.current?.pause();
       window.speechSynthesis.cancel();
       if (recognitionRef.current) recognitionRef.current.abort();
     };
   }, []);
 
   const resetCardState = () => {
-    puterAudioRef.current?.pause();
-    puterAudioRef.current = null;
     if (mediaRecorder.current && mediaRecorder.current.state !== "inactive") {
       mediaRecorder.current.stop();
     }
@@ -225,12 +210,16 @@ const ListenModule = () => {
     setFeedback("");
     setShowCelebration(false);
     setVoiceWarning(false);
+    setMicError(false);
     window.speechSynthesis.cancel();
     setIsPlaying(false);
   };
 
   // ── Speak ──────────────────────────────────────────────────────────────────
-  const webSpeechFallback = () => {
+  const playSentence = () => {
+    if (!current) return;
+    window.speechSynthesis.cancel();
+    setVoiceWarning(false);
     const langCode = isEnglish ? "en-US" : getSpeechLang(i18n.language);
     speakText(current.sentence, langCode, {
       onStart:   () => setIsPlaying(true),
@@ -240,49 +229,26 @@ const ListenModule = () => {
     });
   };
 
-  const playSentence = async () => {
-    if (!current) return;
-
-    // Stop any in-flight audio before starting new
-    puterAudioRef.current?.pause();
-    puterAudioRef.current = null;
-    window.speechSynthesis.cancel();
-
-    setVoiceWarning(false);
-    setIsPlaying(true);
-
-    try {
-      if (window.puter?.ai?.txt2speech) {
-        const audio = await window.puter.ai.txt2speech(current.sentence);
-        puterAudioRef.current = audio;
-        audio.onended = () => { setIsPlaying(false); puterAudioRef.current = null; };
-        audio.onerror = () => { puterAudioRef.current = null; webSpeechFallback(); };
-        audio.play();
-      } else {
-        webSpeechFallback();
-      }
-    } catch {
-      webSpeechFallback();
-    }
-  };
-
   // ── Record ─────────────────────────────────────────────────────────────────
   const startRecording = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
-      const recorder = new MediaRecorder(stream);
+      const mimeType = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/ogg"]
+        .find((t) => MediaRecorder.isTypeSupported(t)) || "";
+      const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : {});
       mediaRecorder.current = recorder;
 
       recorder.ondataavailable = (e) => chunks.current.push(e.data);
       recorder.onstop = () => {
-        const blob = new Blob(chunks.current, { type: "audio/webm" });
+        const blob = new Blob(chunks.current, { type: recorder.mimeType || "audio/webm" });
         setAudioUrl(URL.createObjectURL(blob));
         stream.getTracks().forEach((t) => t.stop());
       };
 
       recorder.start();
       setIsRecording(true);
+      setMicError(false);
       setStars(null);
       setFeedback("");
 
@@ -294,7 +260,10 @@ const ListenModule = () => {
         rec.maxAlternatives = 1;
         recognitionRef.current = rec;
 
+        let gotResult = false;
+
         rec.onresult = (e) => {
+          gotResult = true;
           const transcript = e.results[0][0].transcript;
           const earned = scoreSentences(transcript, current.sentence);
           setStars(earned);
@@ -312,16 +281,31 @@ const ListenModule = () => {
           }
         };
         rec.onerror = () => {
+          gotResult = true;
           setStars(1);
           setFeedback(t("modules.listen.attempt"));
         };
         rec.onend = () => {
+          recognitionRef.current = null;
+          if (!gotResult) {
+            setStars(0);
+            setFeedback(t("modules.listen.tryAgain"));
+          }
           stopRecording();
         };
         rec.start();
+      } else {
+        // Browser has no Speech Recognition — stop and score when user clicks Stop
+        const origStop = mediaRecorder.current.onstop;
+        recorder.onstop = () => {
+          origStop?.();
+          setStars(1);
+          setTotalScore((prev) => prev + 1);
+          setFeedback(t("modules.listen.attempt"));
+        };
       }
     } catch {
-      setFeedback(t("modules.listen.micError"));
+      setMicError(true);
     }
   };
 
@@ -436,6 +420,12 @@ const ListenModule = () => {
               {voiceWarning && (
                 <p className={styles.voiceWarning}>
                   {t("modules.listen.voiceUnavailable")}
+                </p>
+              )}
+
+              {micError && (
+                <p className={styles.voiceWarning}>
+                  {t("modules.listen.micError")}
                 </p>
               )}
 
