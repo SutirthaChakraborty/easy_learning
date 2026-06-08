@@ -174,7 +174,6 @@ const ListenModule = () => {
   const mediaRecorder    = useRef(null);
   const chunks           = useRef([]);
   const recognitionRef   = useRef(null);
-  const puterAudioRef    = useRef(null);
   const questionStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
@@ -202,15 +201,12 @@ const ListenModule = () => {
   // Cancel speech when component unmounts
   useEffect(() => {
     return () => {
-      puterAudioRef.current?.pause();
       window.speechSynthesis.cancel();
       if (recognitionRef.current) recognitionRef.current.abort();
     };
   }, []);
 
   const resetCardState = () => {
-    puterAudioRef.current?.pause();
-    puterAudioRef.current = null;
     if (mediaRecorder.current && mediaRecorder.current.state !== "inactive") {
       mediaRecorder.current.stop();
     }
@@ -230,7 +226,10 @@ const ListenModule = () => {
   };
 
   // ── Speak ──────────────────────────────────────────────────────────────────
-  const webSpeechFallback = () => {
+  const playSentence = () => {
+    if (!current) return;
+    window.speechSynthesis.cancel();
+    setVoiceWarning(false);
     const langCode = isEnglish ? "en-US" : getSpeechLang(i18n.language);
     speakText(current.sentence, langCode, {
       onStart:   () => setIsPlaying(true),
@@ -238,32 +237,6 @@ const ListenModule = () => {
       onError:   () => setIsPlaying(false),
       onNoVoice: () => setVoiceWarning(true),
     });
-  };
-
-  const playSentence = async () => {
-    if (!current) return;
-
-    // Stop any in-flight audio before starting new
-    puterAudioRef.current?.pause();
-    puterAudioRef.current = null;
-    window.speechSynthesis.cancel();
-
-    setVoiceWarning(false);
-    setIsPlaying(true);
-
-    try {
-      if (window.puter?.ai?.txt2speech) {
-        const audio = await window.puter.ai.txt2speech(current.sentence);
-        puterAudioRef.current = audio;
-        audio.onended = () => { setIsPlaying(false); puterAudioRef.current = null; };
-        audio.onerror = () => { puterAudioRef.current = null; webSpeechFallback(); };
-        audio.play();
-      } else {
-        webSpeechFallback();
-      }
-    } catch {
-      webSpeechFallback();
-    }
   };
 
   // ── Record ─────────────────────────────────────────────────────────────────
@@ -294,7 +267,10 @@ const ListenModule = () => {
         rec.maxAlternatives = 1;
         recognitionRef.current = rec;
 
+        let gotResult = false;
+
         rec.onresult = (e) => {
+          gotResult = true;
           const transcript = e.results[0][0].transcript;
           const earned = scoreSentences(transcript, current.sentence);
           setStars(earned);
@@ -312,13 +288,28 @@ const ListenModule = () => {
           }
         };
         rec.onerror = () => {
+          gotResult = true;
           setStars(1);
           setFeedback(t("modules.listen.attempt"));
         };
         rec.onend = () => {
+          recognitionRef.current = null;
+          if (!gotResult) {
+            setStars(0);
+            setFeedback(t("modules.listen.tryAgain"));
+          }
           stopRecording();
         };
         rec.start();
+      } else {
+        // Browser has no Speech Recognition — stop and score when user clicks Stop
+        const origStop = mediaRecorder.current.onstop;
+        recorder.onstop = () => {
+          origStop?.();
+          setStars(1);
+          setTotalScore((prev) => prev + 1);
+          setFeedback(t("modules.listen.attempt"));
+        };
       }
     } catch {
       setFeedback(t("modules.listen.micError"));
