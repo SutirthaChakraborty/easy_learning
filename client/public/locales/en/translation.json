@@ -243,6 +243,7 @@
                     "level":  "Level {{level}}",
                     "loadingQ":  "Loading questions…",
                     "loadingP":  "Loading prompts…",
+                    "noData":  "No content available yet. Please check back later.",
                     "serverErr":  "Could not load. Is the server running?",
                     "listen":  {
                                    "listen":  "Listen",

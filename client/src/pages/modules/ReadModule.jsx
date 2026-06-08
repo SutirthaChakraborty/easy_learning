@@ -139,7 +139,25 @@ const ReadModule = () => {
     );
   }
 
-  if (!story) return null;
+  if (!story) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.bgOverlay} />
+        <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noData")}</p>
+          <FramerMotion.motion.button
+            className={styles.backBtn}
+            onClick={() => navigate(`/subject/${subject}`)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} />
+            {t("modules.back")}
+          </FramerMotion.motion.button>
+        </div>
+      </div>
+    );
+  }
 
   const isCorrect = selected === story.answer;
 

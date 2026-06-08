@@ -63,6 +63,9 @@ const WriteModule = () => {
 
   const canvasRef = useRef(null);
   const lastPos = useRef(null);
+  // Refs so non-passive touch handlers always read current values
+  const isDrawingRef = useRef(false);
+  const toolRef = useRef("pen");
   const questionStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
@@ -110,45 +113,65 @@ const WriteModule = () => {
     setShowCelebration(false);
   }, [idx]);
 
+  // Keep refs in sync with state so native touch handlers read latest values
+  useEffect(() => { toolRef.current = tool; }, [tool]);
+
   const getPos = (e, canvas) => {
     const rect = canvas.getBoundingClientRect();
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-    return { x: clientX - rect.left, y: clientY - rect.top };
+    const src = e.touches ? e.touches[0] : e;
+    return { x: src.clientX - rect.left, y: src.clientY - rect.top };
   };
 
   const startDraw = (e) => {
     e.preventDefault();
+    isDrawingRef.current = true;
     setIsDrawing(true);
     lastPos.current = getPos(e, canvasRef.current);
   };
 
-  const draw = (e) => {
-    e.preventDefault();
-    if (!isDrawing) return;
-    const canvas = canvasRef.current;
+  const applyStroke = (canvas, pos) => {
     const ctx = canvas.getContext("2d");
-    const pos = getPos(e, canvas);
     ctx.beginPath();
     ctx.moveTo(lastPos.current.x, lastPos.current.y);
     ctx.lineTo(pos.x, pos.y);
-    if (tool === "pen") {
-      ctx.strokeStyle = "#1a1a2e";
-      ctx.lineWidth = 5;
-    } else {
-      ctx.strokeStyle = "#f0f8ff";
-      ctx.lineWidth = 24;
-    }
+    ctx.strokeStyle = toolRef.current === "pen" ? "#1a1a2e" : "#f0f8ff";
+    ctx.lineWidth   = toolRef.current === "pen" ? 5 : 24;
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.stroke();
     lastPos.current = pos;
   };
 
+  const draw = (e) => {
+    e.preventDefault();
+    if (!isDrawingRef.current) return;
+    const canvas = canvasRef.current;
+    applyStroke(canvas, getPos(e, canvas));
+  };
+
   const stopDraw = () => {
+    isDrawingRef.current = false;
     setIsDrawing(false);
     lastPos.current = null;
   };
+
+  // Attach non-passive touch listeners so preventDefault stops page scroll while drawing
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const onStart = (e) => { e.preventDefault(); isDrawingRef.current = true; setIsDrawing(true); lastPos.current = getPos(e, canvas); };
+    const onMove  = (e) => { e.preventDefault(); if (!isDrawingRef.current) return; applyStroke(canvas, getPos(e, canvas)); };
+    const onEnd   = ()  => { isDrawingRef.current = false; setIsDrawing(false); lastPos.current = null; };
+    canvas.addEventListener("touchstart", onStart, { passive: false });
+    canvas.addEventListener("touchmove",  onMove,  { passive: false });
+    canvas.addEventListener("touchend",   onEnd,   { passive: false });
+    return () => {
+      canvas.removeEventListener("touchstart", onStart);
+      canvas.removeEventListener("touchmove",  onMove);
+      canvas.removeEventListener("touchend",   onEnd);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idx]);
 
   const clearCanvas = () => {
     initCanvas();
@@ -214,7 +237,16 @@ const WriteModule = () => {
     );
   }
 
-  if (!current) return null;
+  if (!current) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.bgOverlay} />
+        <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noData")}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <FramerMotion.motion.div
@@ -341,9 +373,6 @@ const WriteModule = () => {
               onMouseMove={draw}
               onMouseUp={stopDraw}
               onMouseLeave={stopDraw}
-              onTouchStart={startDraw}
-              onTouchMove={draw}
-              onTouchEnd={stopDraw}
             />
 
             <FramerMotion.motion.button

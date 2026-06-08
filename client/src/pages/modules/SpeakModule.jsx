@@ -96,6 +96,15 @@ const SpeakModule = () => {
   const promptStartRef = useRef(new Date().toISOString());
   const prevRecCountRef = useRef(0);
 
+  // Stop mic if the user navigates away mid-recording
+  useEffect(() => {
+    return () => {
+      if (mediaRecorder.current && mediaRecorder.current.state !== "inactive") {
+        mediaRecorder.current.stop();
+      }
+    };
+  }, []);
+
   useEffect(() => {
     promptStartRef.current = new Date().toISOString();
   }, [idx]);
@@ -127,12 +136,14 @@ const SpeakModule = () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
-      const recorder = new MediaRecorder(stream);
+      const mimeType = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/ogg"]
+        .find((t) => MediaRecorder.isTypeSupported(t)) || "";
+      const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : {});
       mediaRecorder.current = recorder;
 
       recorder.ondataavailable = (e) => chunks.current.push(e.data);
       recorder.onstop = () => {
-        const blob = new Blob(chunks.current, { type: "audio/webm" });
+        const blob = new Blob(chunks.current, { type: recorder.mimeType || "audio/webm" });
         const url = URL.createObjectURL(blob);
         setRecordings((prev) => [
           ...prev,
@@ -198,7 +209,16 @@ const SpeakModule = () => {
     );
   }
 
-  if (!current) return null;
+  if (!current) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.bgOverlay} />
+        <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noData")}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <FramerMotion.motion.div
