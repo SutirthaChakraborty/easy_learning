@@ -42,7 +42,13 @@ const SpellingGame = () => {
 
   const current = words[currentIndex];
 
-  // Single effect — handles both the initial fetch and language changes
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchSpellWords({ lang: i18n.language }));
+    }
+  }, [dispatch, status]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Re-fetch when language changes
   useEffect(() => {
     dispatch(fetchSpellWords({ lang: i18n.language }));
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -131,27 +137,13 @@ const SpellingGame = () => {
     );
   }
 
-  if (status === "failed" || (status === "succeeded" && !current)) {
+  if (status === "failed" || !current) {
     return (
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "60vh", gap: "1.2rem" }}>
-          <p style={{ color: "#fff", textAlign: "center", fontSize: "1.2rem" }}>
-            {status === "failed" ? "Failed to load words." : "No words available."}
-          </p>
-          <button
-            className={styles.backBtn}
-            onClick={() => dispatch(fetchSpellWords({ lang: i18n.language }))}
-          >
-            Retry
-          </button>
-          <button
-            className={styles.backBtn}
-            onClick={() => navigate("/games")}
-          >
-            ← Games
-          </button>
-        </div>
+        <p style={{ color: "#fff", textAlign: "center", marginTop: "40%" }}>
+          Failed to load words.
+        </p>
       </div>
     );
   }

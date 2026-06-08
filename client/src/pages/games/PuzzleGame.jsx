@@ -47,7 +47,12 @@ const PuzzleGame = () => {
   const wordStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
-  // Single effect — handles both the initial fetch and language changes
+  // Fetch words on mount
+  useEffect(() => {
+    dispatch(fetchPuzzleWords(i18n.language));
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Re-fetch when language changes
   useEffect(() => {
     dispatch(resetGame());
     dispatch(fetchPuzzleWords(i18n.language));
@@ -122,7 +127,7 @@ const PuzzleGame = () => {
           <p style={{ color: "#e74c3c", textAlign: "center", marginTop: 80, fontSize: "1.2rem" }}>
             {error || "Failed to load puzzles."}
           </p>
-          <button onClick={() => { dispatch(resetGame()); dispatch(fetchPuzzleWords(i18n.language)); }} style={{ display: "block", margin: "20px auto" }}>
+          <button onClick={() => dispatch(fetchPuzzleWords())} style={{ display: "block", margin: "20px auto" }}>
             Retry
           </button>
         </div>

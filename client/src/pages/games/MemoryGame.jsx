@@ -30,12 +30,13 @@ const MemoryGame = () => {
   const gameStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
-  // Clear game state when leaving the page
+  // Fetch a fresh deck on mount
   useEffect(() => {
+    dispatch(fetchCards({ count: 4, lang: i18n.language }));
     return () => { dispatch(resetGame()); };
-  }, [dispatch]);
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Single effect — handles both the initial fetch and language changes
+  // Re-fetch when language changes
   useEffect(() => {
     dispatch(resetGame());
     dispatch(fetchCards({ count: 4, lang: i18n.language }));
