@@ -211,6 +211,15 @@ const ListenModule = () => {
   const resetCardState = () => {
     puterAudioRef.current?.pause();
     puterAudioRef.current = null;
+    if (mediaRecorder.current && mediaRecorder.current.state !== "inactive") {
+      mediaRecorder.current.stop();
+    }
+    if (recognitionRef.current) {
+      recognitionRef.current.abort();
+      recognitionRef.current = null;
+    }
+    chunks.current = [];
+    setIsRecording(false);
     setStars(null);
     setAudioUrl(null);
     setFeedback("");
@@ -305,6 +314,9 @@ const ListenModule = () => {
         rec.onerror = () => {
           setStars(1);
           setFeedback(t("modules.listen.attempt"));
+        };
+        rec.onend = () => {
+          stopRecording();
         };
         rec.start();
       }
