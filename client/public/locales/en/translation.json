@@ -243,6 +243,7 @@
                     "level":  "Level {{level}}",
                     "loadingQ":  "Loading questions…",
                     "loadingP":  "Loading prompts…",
+                    "noData":  "No content available yet. Please check back later.",
                     "serverErr":  "Could not load. Is the server running?",
                     "listen":  {
                                    "listen":  "Listen",
@@ -294,7 +295,11 @@
                                   "enc3":  "Brilliant! You are so brave!",
                                   "enc4":  "What a fantastic answer!",
                                   "enc5":  "That was wonderful — keep going!",
-                                  "micError":  "Microphone not available — check permissions!"
+                                  "micError":  "Microphone not available — check permissions!",
+                                  "micPermission":  "Microphone access denied — click the lock icon in your browser address bar and allow microphone.",
+                                  "micNotFound":  "No microphone found — please plug one in and try again.",
+                                  "micBusy":  "Microphone is in use by another app — close it and try again.",
+                                  "micUnsupported":  "Your browser does not support recording — please use Chrome or Firefox."
                               }
                 }
 }

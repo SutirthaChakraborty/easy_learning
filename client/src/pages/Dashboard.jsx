@@ -213,7 +213,8 @@ export default function Dashboard() {
     dispatch(fetchDashboardActivity({ year: selectedYear }))
     dispatch(fetchDashboardAchievements())
     dispatch(fetchDashboardPerformance(30))
-  }, [dispatch, user])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, user, selectedYear])
 
   function handleYearChange(year) {
     setSelectedYear(year)
