@@ -117,6 +117,13 @@ const SpeakModule = () => {
   const current = prompts[idx];
 
   const startRecording = async () => {
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setEncouragement(t("modules.speak.micUnsupported"));
+      setShowEncouragement(true);
+      setTimeout(() => setShowEncouragement(false), 5000);
+      return;
+    }
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
@@ -141,10 +148,19 @@ const SpeakModule = () => {
 
       recorder.start();
       setIsRecording(true);
-    } catch {
-      setEncouragement(t("modules.speak.micError"));
+    } catch (err) {
+      console.error("Microphone error:", err.name, err.message);
+      let msgKey = "micError";
+      if (err.name === "NotAllowedError" || err.name === "PermissionDeniedError") {
+        msgKey = "micPermission";
+      } else if (err.name === "NotFoundError" || err.name === "DevicesNotFoundError") {
+        msgKey = "micNotFound";
+      } else if (err.name === "NotReadableError") {
+        msgKey = "micBusy";
+      }
+      setEncouragement(t(`modules.speak.${msgKey}`));
       setShowEncouragement(true);
-      setTimeout(() => setShowEncouragement(false), 3000);
+      setTimeout(() => setShowEncouragement(false), 5000);
     }
   };
 
