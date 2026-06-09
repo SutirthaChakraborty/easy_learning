@@ -32,7 +32,8 @@ const speakScienceSlice = createSlice({
       })
       .addCase(fetchScienceSpeakPrompts.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.prompts = action.payload
+        const arr = action.payload ? [...action.payload].sort(() => Math.random() - 0.5) : []
+        state.prompts = arr.slice(0, Math.min(10, arr.length))
       })
       .addCase(fetchScienceSpeakPrompts.rejected, (state, action) => {
         state.status = 'failed'

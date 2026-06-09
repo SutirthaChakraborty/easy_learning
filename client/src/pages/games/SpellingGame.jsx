@@ -7,6 +7,8 @@ import * as FramerMotion from "framer-motion";
 import styles from "./SpellingGame.module.css";
 
 import { playBtn, playSlide, playCorrect, playWrong } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaStar, FaPencilAlt,
   FaSync, FaTimes, FaBackspace,
@@ -19,7 +21,7 @@ import {
   nextWord,
   resetWord,
 } from "../../store/slices/spellEnglishSlice";
-import { logDashboardSession } from "../../store/slices/dashboardSlice";
+import { logDashboardSession, logDashboardAnswer } from "../../store/slices/dashboardSlice";
 
 const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
@@ -35,6 +37,8 @@ const SpellingGame = () => {
   const [letterBtns, setLetterBtns] = useState([]);
   const [typed, setTyped] = useState([]);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [mode, setMode] = useState("practice");
+  const [timeLeft, setTimeLeft] = useState(30);
 
   const wordStartRef = useRef(new Date().toISOString());
   const prevXpRef = useRef(0);
@@ -80,6 +84,17 @@ const SpellingGame = () => {
       score: result === "correct" ? 100 : 0,
       startTime: wordStartRef.current,
     }));
+    if (current) {
+      dispatch(logDashboardAnswer({
+        module: "spelling",
+        subject: "english",
+        question: current.hint || `Spell: ${current.word}`,
+        userAnswer: typed.map((b) => b.ch).join(""),
+        correctAnswer: current.word,
+        correct: result === "correct",
+        xpEarned: xpDelta,
+      }));
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
 
@@ -123,10 +138,34 @@ const SpellingGame = () => {
   };
 
   const handleNext = () => {
+    setTimeLeft(30);
     dispatch(nextWord());
   };
 
-  if (status === "loading") {
+  const handleModeChange = (m) => {
+    setMode(m);
+    setTimeLeft(30);
+  };
+
+  // Warrior mode countdown
+  useEffect(() => {
+    if (mode !== "warrior" || result) return;
+    const startTime = performance.now();
+    const interval = setInterval(() => {
+      const remaining = 30 - Math.floor((performance.now() - startTime) / 1000);
+      if (remaining <= 0) {
+        clearInterval(interval);
+        setTimeLeft(30);
+        dispatch(nextWord());
+      } else {
+        setTimeLeft(remaining);
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, currentIndex, result]);
+
+  if (status === "loading" || status === "idle") {
     return (
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
@@ -137,7 +176,7 @@ const SpellingGame = () => {
     );
   }
 
-  if (status === "failed" || !current) {
+  if (status === "failed" || (status === "succeeded" && !current)) {
     return (
       <div className={styles.page}>
         <div className={styles.bgOverlay} />
@@ -179,20 +218,8 @@ const SpellingGame = () => {
           Spelling Bee
         </h1>
 
-        <div className={styles.dots}>
-          {words.map((_, i) => (
-            <div
-              key={i}
-              className={`${styles.dot} ${
-                i === currentIndex
-                  ? styles.dotActive
-                  : i < currentIndex
-                  ? styles.dotDone
-                  : ""
-              }`}
-            />
-          ))}
-        </div>
+        <ModeToggle mode={mode} onChange={handleModeChange} />
+        <ProgressBar current={currentIndex + 1} total={words.length} />
 
         <AnimatePresence mode="wait">
           <FramerMotion.motion.div
@@ -207,6 +234,15 @@ const SpellingGame = () => {
               <div className={styles.wordEmoji}>{current.emoji}</div>
               <p className={styles.clueText}>{current.hint}</p>
             </div>
+
+            {mode === "warrior" && !result && (
+              <div style={{ margin: "6px 0 10px", display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ color: timeLeft <= 10 ? "#e74c3c" : "rgba(255,255,255,0.7)", fontSize: "0.9rem", fontWeight: 700, minWidth: 32 }}>⏱ {timeLeft}s</span>
+                <div style={{ flex: 1, height: 8, background: "rgba(255,255,255,0.15)", borderRadius: 99, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${(timeLeft / 30) * 100}%`, background: timeLeft <= 10 ? "#e74c3c" : "#6c63ff", borderRadius: 99, transition: "width 0.5s linear" }} />
+                </div>
+              </div>
+            )}
 
             <div className={styles.slots}>
               {Array.from({ length: current.word.length }).map((_, i) => {
@@ -277,15 +313,17 @@ const SpellingGame = () => {
                     </p>
                   )}
                   <div className={styles.feedbackBtns}>
-                    <FramerMotion.motion.button
-                      className={styles.retryBtn}
-                      onClick={() => { playBtn(); handleReset(); }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <FaSync style={{ marginRight: 6, verticalAlign: "middle" }} />
-                      Try Again
-                    </FramerMotion.motion.button>
+                    {mode !== "warrior" && (
+                      <FramerMotion.motion.button
+                        className={styles.retryBtn}
+                        onClick={() => { playBtn(); handleReset(); }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FaSync style={{ marginRight: 6, verticalAlign: "middle" }} />
+                        Try Again
+                      </FramerMotion.motion.button>
+                    )}
                     <FramerMotion.motion.button
                       className={styles.nextBtn}
                       onClick={() => { playBtn(); handleNext(); }}

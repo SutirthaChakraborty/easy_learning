@@ -11,6 +11,7 @@ import {
   fetchDashboardActivity,
   fetchDashboardAchievements,
   fetchDashboardPerformance,
+  fetchDashboardAnswers,
 } from '../store/slices/dashboardSlice'
 import styles from './Dashboard.module.css'
 import ProgressMap from './ProgressMap'
@@ -200,11 +201,12 @@ export default function Dashboard() {
   const dispatch  = useDispatch()
   const { user }  = useAuth()
   const { t }     = useTranslation()
-  const { stats, activity, achievements, performance, status } = useSelector(s => s.dashboard)
+  const { stats, activity, achievements, performance, answers, status } = useSelector(s => s.dashboard)
 
   const thisYear = new Date().getFullYear()
   const [selectedYear, setSelectedYear] = useState(thisYear)
   const [showProgressMap, setShowProgressMap] = useState(false)
+  const [showResults, setShowResults] = useState(false)
   const yearOptions = Array.from({ length: 5 }, (_, i) => thisYear - i)
 
   useEffect(() => {
@@ -315,6 +317,12 @@ export default function Dashboard() {
         </div>
 
         <div className={styles.headerRight}>
+          <button
+            className={styles.progressMapBtn}
+            onClick={() => { setShowResults(true); dispatch(fetchDashboardAnswers(50)); }}
+          >
+            📊 Results
+          </button>
           <button
             className={styles.progressMapBtn}
             onClick={() => setShowProgressMap(true)}
@@ -474,6 +482,59 @@ export default function Dashboard() {
           </>
         )}
       </div>
+
+      {/* ── Results modal ── */}
+      <AnimatePresence>
+        {showResults && (
+          <motion.div
+            style={{ position: 'fixed', inset: 0, zIndex: 200, background: 'rgba(10,10,26,0.85)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={(e) => e.target === e.currentTarget && setShowResults(false)}
+          >
+            <motion.div
+              style={{ background: 'linear-gradient(135deg,#1a1a3e,#16213e)', borderRadius: 20, width: '100%', maxWidth: 680, maxHeight: '80vh', display: 'flex', flexDirection: 'column', boxShadow: '0 20px 60px rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.08)' }}
+              initial={{ scale: 0.85, y: 40 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.85, y: 40 }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px 16px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                <h2 style={{ color: '#fff', fontSize: '1.3rem', fontWeight: 700, margin: 0 }}>📊 My Answers</h2>
+                <button onClick={() => setShowResults(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: 8, padding: '6px 14px', cursor: 'pointer', fontSize: '0.9rem' }}>✕ Close</button>
+              </div>
+              <div style={{ overflowY: 'auto', padding: '12px 16px', flex: 1 }}>
+                {answers.length === 0 ? (
+                  <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', marginTop: 40 }}>No answers recorded yet. Play some modules or games!</p>
+                ) : answers.map((a, i) => (
+                  <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: '12px 16px', marginBottom: 8, borderLeft: `4px solid ${a.correct ? '#43c0a0' : '#e74c3c'}` }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                      <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                        {a.module} · {a.subject}
+                      </span>
+                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>
+                        {new Date(a.timestamp).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                    <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: '0 0 6px', fontWeight: 500 }}>{a.question}</p>
+                    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '0.83rem', color: a.correct ? '#43c0a0' : '#e74c3c', fontWeight: 600 }}>
+                        {a.correct ? '✓' : '✗'} You: {a.userAnswer || '—'}
+                      </span>
+                      {!a.correct && (
+                        <span style={{ fontSize: '0.83rem', color: 'rgba(255,255,255,0.5)' }}>
+                          Answer: {a.correctAnswer}
+                        </span>
+                      )}
+                      {a.xpEarned > 0 && <span style={{ fontSize: '0.8rem', color: '#f7971e' }}>+{a.xpEarned} XP</span>}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── Progress Map modal ── */}
       <AnimatePresence>

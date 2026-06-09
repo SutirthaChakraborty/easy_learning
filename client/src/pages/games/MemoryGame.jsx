@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -14,6 +14,8 @@ import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./MemoryGame.module.css";
 
 import { playBtn, playSlide, playCorrect } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaStar, FaRegStar,
   FaBullseye, FaSync, FaTrophy,
@@ -26,6 +28,11 @@ const MemoryGame = () => {
   const { i18n }  = useTranslation();
   const { cards, flipped, moves, won, locked, status, error } =
     useSelector((state) => state.memoryMatch);
+
+  const [mode, setMode] = useState("practice");
+
+  const totalPairs = cards.length > 0 ? cards.length / 2 : 0;
+  const matchedPairs = cards.filter((c) => c.matched).length / 2;
 
   const gameStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
@@ -161,6 +168,9 @@ const MemoryGame = () => {
         <GiCardPlay className={styles.pageIcon} />
         <h1 className={styles.title}>Memory Match</h1>
         <p className={styles.subtitle}>Match the emoji to its word!</p>
+
+        <ModeToggle mode={mode} onChange={setMode} />
+        <ProgressBar current={matchedPairs} total={totalPairs} />
 
         <div className={styles.grid}>
           {(() => {

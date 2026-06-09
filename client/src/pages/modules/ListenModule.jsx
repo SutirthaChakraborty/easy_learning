@@ -11,6 +11,8 @@ import { fetchEnglishQuestions } from "../../store/slices/listenEnglishSlice";
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./ListenModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import { getSpeechLang } from "../../utils/speechLang";
 import {
   FaArrowLeft, FaStar, FaRegStar,
@@ -148,6 +150,7 @@ const ListenModule = () => {
     }
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const [mode, setMode] = useState("practice");
   const [idx, setIdx] = useState(0);
   const [isPlaying, setIsPlaying]             = useState(false);
   const [isRecording, setIsRecording]         = useState(false);
@@ -158,6 +161,7 @@ const ListenModule = () => {
   const [showCelebration, setShowCelebration] = useState(false);
   const [voiceWarning, setVoiceWarning]       = useState(false);
   const [micError, setMicError]               = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30);
 
   const mediaRecorder    = useRef(null);
   const chunks           = useRef([]);
@@ -319,8 +323,31 @@ const ListenModule = () => {
 
   const nextSentence = () => {
     resetCardState();
+    setTimeLeft(30);
     setIdx((prev) => (prev + 1) % data.length);
   };
+
+  const handleModeChange = (m) => {
+    setMode(m);
+    setTimeLeft(30);
+  };
+
+  // Warrior mode countdown — all setState calls happen inside async interval callback
+  useEffect(() => {
+    if (mode !== "warrior" || isRecording || stars !== null || !current) return;
+    const startTime = performance.now();
+    const interval = setInterval(() => {
+      const remaining = 30 - Math.floor((performance.now() - startTime) / 1000);
+      if (remaining <= 0) {
+        clearInterval(interval);
+        nextSentence();
+      } else {
+        setTimeLeft(remaining);
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, idx, isRecording, stars]);
 
   if (activeStatus === "loading") {
     return (
@@ -377,11 +404,8 @@ const ListenModule = () => {
           </div>
         </div>
 
-        <div className={styles.dots}>
-          {data.map((_, i) => (
-            <div key={i} className={`${styles.dot} ${i === idx ? styles.dotActive : ""}`} />
-          ))}
-        </div>
+        <ModeToggle mode={mode} onChange={handleModeChange} />
+        <ProgressBar current={idx + 1} total={data.length} />
 
         <AnimatePresence mode="wait">
           <FramerMotion.motion.div
@@ -399,6 +423,14 @@ const ListenModule = () => {
               <span className={styles.xpChip}>+{current.xp} XP</span>
             </div>
 
+            {mode === "warrior" && stars === null && (
+              <div style={{ margin: "8px 0 12px", display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ color: timeLeft <= 10 ? "#e74c3c" : "rgba(255,255,255,0.7)", fontSize: "0.9rem", fontWeight: 700, minWidth: 32 }}>⏱ {timeLeft}s</span>
+                <div style={{ flex: 1, height: 8, background: "rgba(255,255,255,0.15)", borderRadius: 99, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${(timeLeft / 30) * 100}%`, background: timeLeft <= 10 ? "#e74c3c" : "#6c63ff", borderRadius: 99, transition: "width 0.5s linear" }} />
+                </div>
+              </div>
+            )}
             <div className={styles.sentenceEmoji}>{current.emoji}</div>
 
             <div className={styles.sentenceBox}>

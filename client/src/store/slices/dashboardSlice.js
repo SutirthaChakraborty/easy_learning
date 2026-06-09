@@ -63,6 +63,39 @@ export const fetchDashboardPerformance = createAsyncThunk(
   }
 )
 
+export const logDashboardAnswer = createAsyncThunk(
+  'dashboard/logAnswer',
+  async (answerData, { rejectWithValue }) => {
+    try {
+      return await apiFetch(`${BASE}/dashboard/log-answer`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...authHeaders() },
+        body: JSON.stringify(answerData),
+      })
+    } catch (e) { return rejectWithValue(e.message) }
+  }
+)
+
+export const fetchDashboardAnswers = createAsyncThunk(
+  'dashboard/fetchAnswers',
+  async (limit = 50, { rejectWithValue }) => {
+    try {
+      const json = await apiFetch(`${BASE}/dashboard/answers?limit=${limit}`)
+      return json.data
+    } catch (e) { return rejectWithValue(e.message) }
+  }
+)
+
+export const fetchModuleStars = createAsyncThunk(
+  'dashboard/fetchModuleStars',
+  async (_, { rejectWithValue }) => {
+    try {
+      const json = await apiFetch(`${BASE}/dashboard/module-stars`)
+      return json.data
+    } catch (e) { return rejectWithValue(e.message) }
+  }
+)
+
 export const logDashboardSession = createAsyncThunk(
   'dashboard/logSession',
   async (sessionData, { rejectWithValue }) => {
@@ -83,6 +116,8 @@ const dashboardSlice = createSlice({
     activity: [],
     achievements: [],
     performance: [],
+    moduleStars: {},
+    answers: [],
     status: 'idle',
     error: null,
   },
@@ -101,6 +136,8 @@ const dashboardSlice = createSlice({
       .addCase(fetchDashboardActivity.fulfilled,   (state, { payload }) => { state.activity = payload })
       .addCase(fetchDashboardAchievements.fulfilled, (state, { payload }) => { state.achievements = payload })
       .addCase(fetchDashboardPerformance.fulfilled,  (state, { payload }) => { state.performance = payload })
+      .addCase(fetchModuleStars.fulfilled,           (state, { payload }) => { state.moduleStars = payload || {} })
+      .addCase(fetchDashboardAnswers.fulfilled,      (state, { payload }) => { state.answers = payload || [] })
   },
 })
 

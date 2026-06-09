@@ -11,6 +11,8 @@ import { fetchEnglishWriteQuestions } from "../../store/slices/writeEnglishSlice
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./WriteModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaStar, FaRegStar, FaLightbulb,
   FaPen, FaEraser, FaTrash, FaCheckCircle,
@@ -60,6 +62,8 @@ const WriteModule = () => {
   const [showCelebration, setShowCelebration] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [mode, setMode] = useState("practice");
+  const [timeLeft, setTimeLeft] = useState(60);
 
   const canvasRef = useRef(null);
   const lastPos = useRef(null);
@@ -180,8 +184,31 @@ const WriteModule = () => {
 
   const nextCharacter = () => {
     clearCanvas();
+    setTimeLeft(60);
     setIdx((prev) => (prev + 1) % data.length);
   };
+
+  const handleModeChange = (m) => {
+    setMode(m);
+    setTimeLeft(60);
+  };
+
+  // Warrior mode countdown — all setState in async interval callback
+  useEffect(() => {
+    if (mode !== "warrior" || stars !== null) return;
+    const startTime = performance.now();
+    const interval = setInterval(() => {
+      const remaining = 60 - Math.floor((performance.now() - startTime) / 1000);
+      if (remaining <= 0) {
+        clearInterval(interval);
+        nextCharacter();
+      } else {
+        setTimeLeft(remaining);
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, idx, stars]);
 
   const starMsg = () => {
     if (stars === 3) return t("modules.write.perfect");
@@ -242,11 +269,8 @@ const WriteModule = () => {
           </div>
         </div>
 
-        <div className={styles.dots}>
-          {data.map((_, i) => (
-            <div key={i} className={`${styles.dot} ${i === idx ? styles.dotActive : ""}`} />
-          ))}
-        </div>
+        <ModeToggle mode={mode} onChange={handleModeChange} />
+        <ProgressBar current={idx + 1} total={data.length} />
 
         <div className={styles.splitLayout}>
           <FramerMotion.motion.div
@@ -260,6 +284,15 @@ const WriteModule = () => {
               <span className={styles.levelChip}>{t("modules.level", { level: current.level })}</span>
               <span className={styles.typeChip}>{current.type}</span>
             </div>
+
+            {mode === "warrior" && stars === null && (
+              <div style={{ margin: "8px 0 10px", display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ color: timeLeft <= 15 ? "#e74c3c" : "rgba(255,255,255,0.7)", fontSize: "0.9rem", fontWeight: 700, minWidth: 32 }}>⏱ {timeLeft}s</span>
+                <div style={{ flex: 1, height: 8, background: "rgba(255,255,255,0.15)", borderRadius: 99, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${(timeLeft / 60) * 100}%`, background: timeLeft <= 15 ? "#e74c3c" : "#6c63ff", borderRadius: 99, transition: "width 0.5s linear" }} />
+                </div>
+              </div>
+            )}
 
             <div className={styles.charEmoji}>{current.emoji}</div>
             <div className={styles.charDisplay}>{current.character}</div>
@@ -296,11 +329,16 @@ const WriteModule = () => {
                     ))}
                   </div>
                   <p className={styles.starMsg}>{starMsg()}</p>
+                  {mode === "warrior" && stars < 3 && (
+                    <p style={{ color: "#ffd700", fontSize: "0.85rem", margin: "4px 0 6px", textAlign: "center" }}>⚔️ Keep trying for 3 stars!</p>
+                  )}
                   <FramerMotion.motion.button
                     className={styles.nextBtn}
                     onClick={() => { playBtn(); nextCharacter(); }}
+                    disabled={mode === "warrior" && stars < 3}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    style={mode === "warrior" && stars < 3 ? { opacity: 0.45, cursor: "not-allowed" } : {}}
                   >
                     {t("modules.next")}
                   </FramerMotion.motion.button>

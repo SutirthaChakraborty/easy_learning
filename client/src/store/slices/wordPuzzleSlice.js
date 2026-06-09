@@ -98,9 +98,11 @@ const wordPuzzleSlice = createSlice({
       })
       .addCase(fetchPuzzleWords.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.words = action.payload
+        const raw = action.payload ? [...action.payload].sort(() => Math.random() - 0.5) : []
+        const words = raw.slice(0, Math.min(10, raw.length))
+        state.words = words
         state.currentIndex = 0
-        state.tiles = action.payload.length ? buildTiles(action.payload[0].letters) : []
+        state.tiles = words.length ? buildTiles(words[0].letters) : []
         state.answer = []
         state.result = null
         state.revealedWord = null

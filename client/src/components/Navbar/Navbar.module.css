@@ -88,7 +88,7 @@
   border-radius: 8px;
 }
 
-.dropdown:hover .dropdownContent { display: block; }
+/* hover-dropdown removed */
 
 .login {
   background: linear-gradient(180deg, #1e5fbf, #0d3c91);

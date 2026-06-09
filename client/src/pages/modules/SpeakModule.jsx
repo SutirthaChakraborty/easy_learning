@@ -10,6 +10,8 @@ import { fetchEnglishSpeakPrompts } from "../../store/slices/speakEnglishSlice";
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./SpeakModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaMicrophone, FaStop, FaCircle,
   FaComment, FaMusic, FaChild,
@@ -84,6 +86,7 @@ const SpeakModule = () => {
     }
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const [mode, setMode] = useState("practice");
   const [idx, setIdx] = useState(0);
   const [selectedMood, setSelectedMood] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
@@ -127,7 +130,9 @@ const SpeakModule = () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
-      const recorder = new MediaRecorder(stream);
+      const mimeType = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/ogg"]
+        .find((t) => MediaRecorder.isTypeSupported(t)) || "";
+      const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : {});
       mediaRecorder.current = recorder;
 
       recorder.ondataavailable = (e) => chunks.current.push(e.data);
@@ -227,6 +232,8 @@ const SpeakModule = () => {
           </h2>
         </div>
 
+        <ModeToggle mode={mode} onChange={setMode} />
+
         <div className={styles.layout}>
           {/* LEFT — avatar + mood */}
           <div className={styles.leftPanel}>
@@ -281,6 +288,8 @@ const SpeakModule = () => {
 
           {/* RIGHT — prompt + recording */}
           <div className={styles.rightPanel}>
+            <ProgressBar current={idx + 1} total={prompts.length} />
+
             <div className={styles.promptNav}>
               <FramerMotion.motion.button
                 className={styles.navArrow}
@@ -290,7 +299,6 @@ const SpeakModule = () => {
               >
                 ‹
               </FramerMotion.motion.button>
-              <span className={styles.promptCount}>{idx + 1} / {prompts.length}</span>
               <FramerMotion.motion.button
                 className={styles.navArrow}
                 onClick={() => { playBtn(); nextPrompt(); }}
@@ -324,7 +332,7 @@ const SpeakModule = () => {
               {!isRecording ? (
                 <FramerMotion.motion.button
                   className={styles.recordBtn}
-                  onClick={() => { playBtn(); startRecording(); }}
+                  onClick={() => startRecording()}
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.94 }}
                 >
