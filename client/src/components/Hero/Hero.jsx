@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import Cards from "../Cards/Cards";
 import styles from "./Hero.module.css";
 import rem from "../../assets/remBG.png";
-import { FaBookOpen, FaGamepad } from "react-icons/fa";
+import { FaBookOpen, FaGamepad, FaSmile, FaHandPaper } from "react-icons/fa";
 import { playSlide } from "../../utils/sounds";
 import { useAuth } from "../../context/AuthContext";
 
@@ -29,9 +29,9 @@ const Hero = () => {
       <div className={styles.right}>
         {user && (
           <p className={styles.greeting}>
-            😊 <span className={styles.greetingText}>
+            <FaSmile /> <span className={styles.greetingText}>
               {t("hero.greeting", { name: firstName })}
-            </span> 👋🏻
+            </span> <FaHandPaper />
           </p>
         )}
         <div className={styles.buttons}>

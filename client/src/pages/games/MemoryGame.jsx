@@ -195,7 +195,7 @@ const MemoryGame = () => {
                     <div className={styles.cardBack}>?</div>
                     <div className={`${styles.cardFront} ${isFree ? styles.cardFree : card.matched ? styles.cardMatched : ""}`}>
                       {isFree ? (
-                        <span className={styles.cardEmoji}>{card.content}</span>
+                        <span className={styles.cardEmoji}><FaStar style={{ color: '#FFD700' }} /></span>
                       ) : card.type === "emoji" ? (
                         <span className={styles.cardEmoji}>{card.content}</span>
                       ) : (

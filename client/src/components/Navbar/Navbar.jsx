@@ -4,7 +4,7 @@ import styles from "./Navbar.module.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "/logo.png";
 import { playSlide } from "../../utils/sounds";
-import { FaLayerGroup, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
+import { FaLayerGroup, FaSignOutAlt, FaTachometerAlt, FaHandPaper } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
@@ -55,7 +55,7 @@ const Navbar = () => {
               <FaTachometerAlt className={styles.loginIcon} /> {t("navbar.dashboard")}
             </NavLink>
             <span className={styles.userName}>
-              👋 {t("navbar.greeting", { name: firstName })}
+              <FaHandPaper /> {t("navbar.greeting", { name: firstName })}
             </span>
             <button className={styles.logout} onClick={handleLogout}>
               <FaSignOutAlt className={styles.loginIcon} /> {t("navbar.logout")}

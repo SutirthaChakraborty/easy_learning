@@ -15,6 +15,12 @@ import {
 } from '../store/slices/dashboardSlice'
 import styles from './Dashboard.module.css'
 import ProgressMap from './ProgressMap'
+import {
+  FaLock, FaBook, FaGamepad, FaFire, FaBolt, FaMagic,
+  FaExclamationTriangle, FaChartBar, FaMap, FaBookOpen,
+  FaClock, FaMedal, FaChartLine, FaSeedling, FaCalendarAlt,
+  FaCheckCircle, FaTrophy, FaBullseye, FaTimes,
+} from 'react-icons/fa'
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 function fmtMinutes(mins) {
@@ -149,7 +155,7 @@ function AchievementBadge({ ach }) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <span className={styles.badgeIcon}>{ach.earned ? ach.icon : '🔒'}</span>
+      <span className={styles.badgeIcon}>{ach.earned ? ach.icon : <FaLock />}</span>
       <span className={styles.badgeName}>{name}</span>
       {hover && (
         <div className={styles.badgeTooltip}>
@@ -237,11 +243,11 @@ export default function Dashboard() {
   const levelProgress = stats ? ((stats.totalXP % 100) / 100) * 100 : 0
 
   const catIcons = {
-    learning: '📚',
-    games:    '🎮',
-    streak:   '🔥',
-    xp:       '⚡',
-    special:  '✨',
+    learning: FaBook,
+    games:    FaGamepad,
+    streak:   FaFire,
+    xp:       FaBolt,
+    special:  FaMagic,
   }
 
   // Auth still resolving
@@ -258,7 +264,7 @@ export default function Dashboard() {
   if (user === null) {
     return (
       <div className={styles.loadingWrap}>
-        <p className={styles.errorMsg}>⚠️ {t('dashboard.loginPrompt')}</p>
+        <p className={styles.errorMsg}><FaExclamationTriangle /> {t('dashboard.loginPrompt')}</p>
       </div>
     )
   }
@@ -275,7 +281,7 @@ export default function Dashboard() {
   if (status === 'failed') {
     return (
       <div className={styles.loadingWrap}>
-        <p className={styles.errorMsg}>⚠️ {t('dashboard.serverError')}</p>
+        <p className={styles.errorMsg}><FaExclamationTriangle /> {t('dashboard.serverError')}</p>
         <p style={{ color: '#6272a4', fontSize: '0.9rem', marginTop: 4 }}>
           {t('dashboard.serverErrorHint')}
         </p>
@@ -321,13 +327,13 @@ export default function Dashboard() {
             className={styles.progressMapBtn}
             onClick={() => { setShowResults(true); dispatch(fetchDashboardAnswers(50)); }}
           >
-            📊 Results
+            <FaChartBar /> Results
           </button>
           <button
             className={styles.progressMapBtn}
             onClick={() => setShowProgressMap(true)}
           >
-            🗺️ {t('dashboard.progressMap.btnLabel')}
+            <FaMap /> {t('dashboard.progressMap.btnLabel')}
           </button>
           <div className={styles.levelBadge}>
             <div className={styles.levelLabel}>{t('dashboard.level', { level: stats?.level ?? 1 })}</div>
@@ -342,20 +348,20 @@ export default function Dashboard() {
       {/* ── Stat Cards ── */}
       <div className={styles.statsRow}>
         <StatCard
-          icon="⚡"
+          icon={<FaBolt />}
           label={t('dashboard.stats.totalXP')}
           value={`${stats?.totalXP ?? 0} XP`}
           color="#6c63ff"
         />
         <StatCard
-          icon="📖"
+          icon={<FaBookOpen />}
           label={t('dashboard.stats.sessions')}
           value={stats?.totalSessions ?? 0}
           sub={t('dashboard.stats.lessonsCompleted')}
           color="#43c0a0"
         />
         <StatCard
-          icon="⏱️"
+          icon={<FaClock />}
           label={t('dashboard.stats.todayTime')}
           value={fmtMinutes(stats?.todayMinutes ?? 0)}
           sub={stats?.peakTimeLabel
@@ -364,14 +370,14 @@ export default function Dashboard() {
           color="#f7971e"
         />
         <StatCard
-          icon="🔥"
+          icon={<FaFire />}
           label={t('dashboard.stats.streak')}
           value={t('dashboard.stats.streakDays', { count: stats?.streak ?? 0 })}
           sub={stats?.streak >= 3 ? t('dashboard.stats.onFire') : t('dashboard.stats.keepGoing')}
           color="#e74c3c"
         />
         <StatCard
-          icon="🏅"
+          icon={<FaMedal />}
           label={t('dashboard.stats.achievements')}
           value={`${earnedCount} / ${totalCount}`}
           sub={t('dashboard.stats.badgesEarned')}
@@ -381,10 +387,10 @@ export default function Dashboard() {
 
       {/* ── Performance Chart ── */}
       <div className={styles.section}>
-        <h2 className={styles.sectionTitle}>📈 {t('dashboard.performance.title')}</h2>
+        <h2 className={styles.sectionTitle}><FaChartLine /> {t('dashboard.performance.title')}</h2>
         {chartData.length === 0 ? (
           <div className={styles.emptyChart}>
-            <span>🌱</span>
+            <span><FaSeedling /></span>
             <p>{t('dashboard.performance.empty')}</p>
           </div>
         ) : (
@@ -420,7 +426,7 @@ export default function Dashboard() {
       <div className={styles.section}>
         <div className={styles.sectionHeader}>
           <h2 className={styles.sectionTitle}>
-            🗓️ {selectedYear === thisYear
+            <FaCalendarAlt /> {selectedYear === thisYear
               ? t('dashboard.heatmap.titleCurrent', { year: selectedYear })
               : t('dashboard.heatmap.titlePast', { year: selectedYear })}
           </h2>
@@ -432,12 +438,12 @@ export default function Dashboard() {
               </span>
               {selectedYear === thisYear && stats?.peakTimeLabel && (
                 <span className={styles.heatStat}>
-                  ⏰ {t('dashboard.heatmap.mostActive', { time: stats.peakTimeLabel })}
+                  <FaClock /> {t('dashboard.heatmap.mostActive', { time: stats.peakTimeLabel })}
                 </span>
               )}
               {selectedYear === thisYear && stats?.todayMinutes > 0 && (
                 <span className={styles.heatStat}>
-                  ✅ {t('dashboard.heatmap.today', { time: fmtMinutes(stats.todayMinutes) })}
+                  <FaCheckCircle /> {t('dashboard.heatmap.today', { time: fmtMinutes(stats.todayMinutes) })}
                 </span>
               )}
             </div>
@@ -458,10 +464,10 @@ export default function Dashboard() {
 
       {/* ── Achievements ── */}
       <div className={styles.section}>
-        <h2 className={styles.sectionTitle}>🏆 {t('dashboard.achievements.title')}</h2>
+        <h2 className={styles.sectionTitle}><FaTrophy /> {t('dashboard.achievements.title')}</h2>
         {achievements.length === 0 ? (
           <div className={styles.emptyChart}>
-            <span>🎯</span>
+            <span><FaBullseye /></span>
             <p>{t('dashboard.achievements.empty')}</p>
           </div>
         ) : (
@@ -469,10 +475,10 @@ export default function Dashboard() {
             {['learning', 'games', 'streak', 'xp', 'special'].map(cat => {
               const catAchs = achievements.filter(a => a.category === cat)
               if (!catAchs.length) return null
-              const catLabel = `${catIcons[cat]} ${t(`dashboard.achievements.categories.${cat}`)}`
+              const CatIcon = catIcons[cat]
               return (
                 <div key={cat} className={styles.achieveCat}>
-                  <h3 className={styles.catTitle}>{catLabel}</h3>
+                  <h3 className={styles.catTitle}><CatIcon /> {t(`dashboard.achievements.categories.${cat}`)}</h3>
                   <div className={styles.badgeGrid}>
                     {catAchs.map(ach => <AchievementBadge key={ach.id} ach={ach} />)}
                   </div>
@@ -500,8 +506,8 @@ export default function Dashboard() {
               exit={{ scale: 0.85, y: 40 }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px 16px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                <h2 style={{ color: '#fff', fontSize: '1.3rem', fontWeight: 700, margin: 0 }}>📊 My Answers</h2>
-                <button onClick={() => setShowResults(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: 8, padding: '6px 14px', cursor: 'pointer', fontSize: '0.9rem' }}>✕ Close</button>
+                <h2 style={{ color: '#fff', fontSize: '1.3rem', fontWeight: 700, margin: 0 }}><FaChartBar /> My Answers</h2>
+                <button onClick={() => setShowResults(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: 8, padding: '6px 14px', cursor: 'pointer', fontSize: '0.9rem' }}><FaTimes /> Close</button>
               </div>
               <div style={{ overflowY: 'auto', padding: '12px 16px', flex: 1 }}>
                 {answers.length === 0 ? (

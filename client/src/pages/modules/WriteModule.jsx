@@ -17,7 +17,7 @@ import {
   FaArrowLeft, FaStar, FaRegStar, FaLightbulb,
   FaPen, FaEraser, FaTrash, FaCheckCircle,
 } from "react-icons/fa";
-import { GiPartyPopper } from "react-icons/gi";
+import { GiPartyPopper, GiCrossedSwords } from "react-icons/gi";
 
 const WriteModule = () => {
   const { subject } = useParams();
@@ -330,7 +330,7 @@ const WriteModule = () => {
                   </div>
                   <p className={styles.starMsg}>{starMsg()}</p>
                   {mode === "warrior" && stars < 3 && (
-                    <p style={{ color: "#ffd700", fontSize: "0.85rem", margin: "4px 0 6px", textAlign: "center" }}>⚔️ Keep trying for 3 stars!</p>
+                    <p style={{ color: "#ffd700", fontSize: "0.85rem", margin: "4px 0 6px", textAlign: "center" }}><GiCrossedSwords /> Keep trying for 3 stars!</p>
                   )}
                   <FramerMotion.motion.button
                     className={styles.nextBtn}
