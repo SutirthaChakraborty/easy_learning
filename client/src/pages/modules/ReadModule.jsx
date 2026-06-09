@@ -9,13 +9,15 @@ import { lessons } from "../../data/lessons";
 import { fetchScienceReadQuestions, resetScienceReadQuestions } from "../../store/slices/readScienceSlice";
 import { fetchMathsReadQuestions, resetMathsReadQuestions } from "../../store/slices/readMathsSlice";
 import { fetchEnglishReadQuestions } from "../../store/slices/readEnglishSlice";
-import { logDashboardSession } from "../../store/slices/dashboardSlice";
+import { logDashboardSession, logDashboardAnswer } from "../../store/slices/dashboardSlice";
 import styles from "./ReadModule.module.css";
 
 import correctSoundFile from "../../assets/sounds/correct.mp3";
 import wrongSoundFile from "../../assets/sounds/wrong.mp3";
 import nextSoundFile from "../../assets/sounds/btn.mp3";
 import { playSlide } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaStar, FaQuestion, FaTimes,
 } from "react-icons/fa";
@@ -58,10 +60,12 @@ const ReadModule = () => {
     }
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const [mode, setMode] = useState("practice");
   const [idx, setIdx] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(30);
 
   const story = data[idx];
 
@@ -72,7 +76,17 @@ const ReadModule = () => {
   useEffect(() => {
     questionStartRef.current = new Date().toISOString();
     sessionLoggedRef.current = false;
+    setTimeLeft(30);
   }, [idx]);
+
+  // Warrior mode countdown
+  useEffect(() => {
+    if (mode !== "warrior" || selected || !story) return;
+    if (timeLeft <= 0) { nextStory(); return; }
+    const t = setTimeout(() => setTimeLeft((p) => p - 1), 1000);
+    return () => clearTimeout(t);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, timeLeft, selected, story]);
 
   // Log session when answer is selected
   useEffect(() => {
@@ -99,7 +113,8 @@ const ReadModule = () => {
   const handleAnswer = (opt) => {
     if (selected) return;
     setSelected(opt);
-    if (opt === story.answer) {
+    const isRight = opt === story.answer;
+    if (isRight) {
       playSound(correctSoundFile);
       setScore((s) => s + 1);
       setShowCelebration(true);
@@ -107,6 +122,15 @@ const ReadModule = () => {
     } else {
       playSound(wrongSoundFile);
     }
+    dispatch(logDashboardAnswer({
+      module: "read",
+      subject: subject || "general",
+      question: story.question,
+      userAnswer: opt,
+      correctAnswer: story.answer,
+      correct: isRight,
+      xpEarned: isRight ? 10 : 0,
+    }));
   };
 
   const nextStory = () => {
@@ -139,25 +163,7 @@ const ReadModule = () => {
     );
   }
 
-  if (!story) {
-    return (
-      <div className={styles.page}>
-        <div className={styles.bgOverlay} />
-        <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noData")}</p>
-          <FramerMotion.motion.button
-            className={styles.backBtn}
-            onClick={() => navigate(`/subject/${subject}`)}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} />
-            {t("modules.back")}
-          </FramerMotion.motion.button>
-        </div>
-      </div>
-    );
-  }
+  if (!story) return null;
 
   const isCorrect = selected === story.answer;
 
@@ -187,14 +193,8 @@ const ReadModule = () => {
           </div>
         </div>
 
-        <div className={styles.dots}>
-          {data.map((_, i) => (
-            <div
-              key={i}
-              className={`${styles.dot} ${i === idx ? styles.dotActive : i < idx ? styles.dotDone : ""}`}
-            />
-          ))}
-        </div>
+        <ModeToggle mode={mode} onChange={setMode} />
+        <ProgressBar current={idx + 1} total={data.length} />
 
         <AnimatePresence mode="wait">
           <FramerMotion.motion.div
@@ -218,6 +218,15 @@ const ReadModule = () => {
               <FaQuestion style={{ marginRight: 8, verticalAlign: "middle", color: "#a29bfe" }} />
               {story.question}
             </h3>
+
+            {mode === "warrior" && !selected && (
+              <div style={{ margin: "8px 0 12px", display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ color: timeLeft <= 10 ? "#e74c3c" : "rgba(255,255,255,0.7)", fontSize: "0.9rem", fontWeight: 700, minWidth: 32 }}>⏱ {timeLeft}s</span>
+                <div style={{ flex: 1, height: 8, background: "rgba(255,255,255,0.15)", borderRadius: 99, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${(timeLeft / 30) * 100}%`, background: timeLeft <= 10 ? "#e74c3c" : "#6c63ff", borderRadius: 99, transition: "width 1s linear" }} />
+                </div>
+              </div>
+            )}
 
             <div className={styles.options}>
               {story.options.map((opt, i) => (

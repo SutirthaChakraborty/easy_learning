@@ -1,5 +1,6 @@
 const StudentActivity   = require('../models/StudentActivity')
 const StudentAchievement = require('../models/StudentAchievement')
+const StudentAnswer      = require('../models/StudentAnswer')
 
 // ── Achievement definitions ────────────────────────────────────────────────────
 const ACHIEVEMENTS = [
@@ -254,4 +255,70 @@ const getPerformance = async (req, res) => {
   }
 }
 
-module.exports = { logSession, getStats, getActivity, getAchievements, getPerformance }
+const logAnswer = async (req, res) => {
+  try {
+    const { email } = req.user
+    const { module: mod, subject, question, userAnswer, correctAnswer, correct, xpEarned } = req.body
+    await StudentAnswer.create({
+      email,
+      module: mod || 'unknown',
+      subject: subject || 'general',
+      question: question || '',
+      userAnswer: userAnswer || '',
+      correctAnswer: correctAnswer || '',
+      correct: !!correct,
+      xpEarned: xpEarned || 0,
+    })
+    res.json({ success: true })
+  } catch (err) {
+    console.error('logAnswer error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getAnswers = async (req, res) => {
+  try {
+    const { email } = req.user
+    const limit = Math.min(parseInt(req.query.limit) || 50, 200)
+    const answers = await StudentAnswer.find({ email })
+      .sort({ timestamp: -1 })
+      .limit(limit)
+      .lean()
+    res.json({ success: true, data: answers })
+  } catch (err) {
+    console.error('getAnswers error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getModuleStars = async (req, res) => {
+  try {
+    const { email } = req.user
+    const activity = await StudentActivity.find({ email }).select('sessions').lean()
+
+    const totals = {}
+    activity.forEach(day => {
+      day.sessions.forEach(s => {
+        const key = s.subject && s.subject !== 'general'
+          ? `${s.module}_${s.subject}`
+          : s.module
+        if (!totals[key]) totals[key] = { sum: 0, count: 0 }
+        totals[key].sum += (s.score || 0)
+        totals[key].count += 1
+      })
+    })
+
+    const stars = {}
+    Object.entries(totals).forEach(([key, { sum, count }]) => {
+      const avg = sum / count
+      stars[key] = avg >= 84 ? 3 : avg >= 66 ? 2 : avg >= 33 ? 1 : 0
+    })
+
+    res.json({ success: true, data: stars })
+  } catch (err) {
+    console.error('getModuleStars error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+module.exports = { logSession, getStats, getActivity, getAchievements, getPerformance, getModuleStars, logAnswer, getAnswers }

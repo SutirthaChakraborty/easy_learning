@@ -50,26 +50,21 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Check for a stored JWT first
     const token = localStorage.getItem(JWT_KEY);
-    if (token) {
-      if (!isTokenExpired(token)) {
-        const payload = decodeJWT(token);
-        setUser({
-          uid: payload.id,
-          email: payload.email,
-          name: payload.name,
-          photoURL: "",
-          authType: "jwt",
-        });
-      } else {
-        // Expired token left in storage — remove it so Firebase can resolve state
-        localStorage.removeItem(JWT_KEY);
-      }
+    if (token && !isTokenExpired(token)) {
+      const payload = decodeJWT(token);
+      setUser({
+        uid: payload.id,
+        email: payload.email,
+        name: payload.name,
+        photoURL: "",
+        authType: "jwt",
+      });
     }
 
     // Firebase listener (handles Google sign-in)
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       const hasJWT = !!localStorage.getItem(JWT_KEY);
-      if (hasJWT) return; // Valid JWT takes precedence; ignore Firebase state
+      if (hasJWT) return; // JWT user takes precedence; ignore Firebase state
 
       try {
         await syncSessionCookie(firebaseUser);

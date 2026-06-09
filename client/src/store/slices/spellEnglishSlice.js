@@ -61,7 +61,8 @@ const spellEnglishSlice = createSlice({
       })
       .addCase(fetchSpellWords.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.words = action.payload
+        const arr = action.payload ? [...action.payload].sort(() => Math.random() - 0.5) : []
+        state.words = arr.slice(0, Math.min(10, arr.length))
         state.currentIndex = 0
         state.score = 0
         state.xpEarned = 0

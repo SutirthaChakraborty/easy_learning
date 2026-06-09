@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -14,6 +14,8 @@ import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./MemoryGame.module.css";
 
 import { playBtn, playSlide, playCorrect } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaStar, FaRegStar,
   FaBullseye, FaSync, FaTrophy,
@@ -27,15 +29,21 @@ const MemoryGame = () => {
   const { cards, flipped, moves, won, locked, status, error } =
     useSelector((state) => state.memoryMatch);
 
+  const [mode, setMode] = useState("practice");
+
+  const totalPairs = cards.length > 0 ? cards.length / 2 : 0;
+  const matchedPairs = cards.filter((c) => c.matched).length / 2;
+
   const gameStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
-  // Clear game state when leaving the page
+  // Fetch a fresh deck on mount
   useEffect(() => {
+    dispatch(fetchCards({ count: 4, lang: i18n.language }));
     return () => { dispatch(resetGame()); };
-  }, [dispatch]);
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Single effect — handles both the initial fetch and language changes
+  // Re-fetch when language changes
   useEffect(() => {
     dispatch(resetGame());
     dispatch(fetchCards({ count: 4, lang: i18n.language }));
@@ -160,6 +168,9 @@ const MemoryGame = () => {
         <GiCardPlay className={styles.pageIcon} />
         <h1 className={styles.title}>Memory Match</h1>
         <p className={styles.subtitle}>Match the emoji to its word!</p>
+
+        <ModeToggle mode={mode} onChange={setMode} />
+        <ProgressBar current={matchedPairs} total={totalPairs} />
 
         <div className={styles.grid}>
           {(() => {

@@ -4,8 +4,7 @@ import styles from "./Navbar.module.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "/logo.png";
 import { playSlide } from "../../utils/sounds";
-import { FaBook, FaCalculator, FaMicroscope, FaPencilAlt, FaLayerGroup, FaPuzzlePiece, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
-import { GiCardPlay } from "react-icons/gi";
+import { FaLayerGroup, FaSignOutAlt, FaTachometerAlt } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
@@ -42,34 +41,12 @@ const Navbar = () => {
           <NavLink to="/games" className={styles.btn2} onClick={close}>
             {t("navbar.games")}
           </NavLink>
-          <div className={styles.dropdownContent}>
-            <NavLink to="/games/spelling" onClick={close}>
-              <FaPencilAlt className={styles.dropIcon} /> {t("navbar.spellingBee")}
-            </NavLink>
-            <NavLink to="/games/memory" onClick={close}>
-              <GiCardPlay className={styles.dropIcon} /> {t("navbar.memoryMatch")}
-            </NavLink>
-            <NavLink to="/games/puzzle" onClick={close}>
-              <FaPuzzlePiece className={styles.dropIcon} /> {t("navbar.wordPuzzle")}
-            </NavLink>
-          </div>
         </div>
 
         <div className={styles.dropdown}>
           <NavLink to="/subject/english" className={styles.btn3} onClick={close}>
             {t("navbar.lessons")}
           </NavLink>
-          <div className={styles.dropdownContent}>
-            <NavLink to="/subject/english" onClick={close}>
-              <FaBook className={styles.dropIcon} /> {t("navbar.english")}
-            </NavLink>
-            <NavLink to="/subject/maths" onClick={close}>
-              <FaCalculator className={styles.dropIcon} /> {t("navbar.mathematics")}
-            </NavLink>
-            <NavLink to="/subject/science" onClick={close}>
-              <FaMicroscope className={styles.dropIcon} /> {t("navbar.science")}
-            </NavLink>
-          </div>
         </div>
 
         {user ? (

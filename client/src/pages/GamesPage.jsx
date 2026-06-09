@@ -1,15 +1,19 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import * as FramerMotion from "framer-motion";
+import { fetchModuleStars } from "../store/slices/dashboardSlice";
 import styles from "./GamesPage.module.css";
 import { playSlide } from "../utils/sounds";
 import {
   FaGamepad, FaPencilAlt, FaPuzzlePiece,
-  FaStar, FaTrophy, FaMedal, FaAward, FaBullseye, FaArrowLeft,
+  FaStar, FaRegStar, FaTrophy, FaMedal, FaAward, FaBullseye, FaArrowLeft,
 } from "react-icons/fa";
 import { GiCardPlay, GiPartyPopper } from "react-icons/gi";
 import { MdSportsEsports } from "react-icons/md";
 
+const gameStarKeys = { spelling: "spelling_english", memory: "memory", puzzle: "puzzle_english" };
 const gameIds = ["spelling", "memory", "puzzle"];
 const gameIcons = { spelling: FaPencilAlt, memory: GiCardPlay, puzzle: FaPuzzlePiece };
 const gameColors = { spelling: "blue", memory: "green", puzzle: "orange" };
@@ -18,7 +22,13 @@ const gameRoutes = { spelling: "/games/spelling", memory: "/games/memory", puzzl
 
 const GamesPage = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
+  const moduleStarsData = useSelector((state) => state.dashboard.moduleStars);
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt_token")) dispatch(fetchModuleStars());
+  }, [dispatch]);
 
   return (
     <FramerMotion.motion.div
@@ -67,7 +77,12 @@ const GamesPage = () => {
                 <div className={styles.cardMeta}>
                   <span className={styles.difficulty}>{t(`gamesPage.${gameDiffKeys[id]}`)}</span>
                   <span className={styles.stars}>
-                    <FaStar color="#FFD700" /><FaStar color="#FFD700" /><FaStar color="#FFD700" />
+                    {[1, 2, 3].map((s) => {
+                      const count = moduleStarsData[gameStarKeys[id]] ?? 0;
+                      return s <= count
+                        ? <FaStar key={s} color="#FFD700" />
+                        : <FaRegStar key={s} color="rgba(255,255,255,0.4)" />;
+                    })}
                   </span>
                 </div>
                 <div className={styles.playNow}>

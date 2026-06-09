@@ -1,6 +1,9 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
+import { fetchModuleStars } from "../store/slices/dashboardSlice";
 import * as FramerMotion from "framer-motion";
 import styles from "./SubjectPage.module.css";
 import { playSlide } from "../utils/sounds";
@@ -18,7 +21,6 @@ const moduleIcons = {
   speak:  FaMicrophone,
 };
 const moduleColors = { listen: "blue", read: "green", write: "orange", speak: "purple" };
-const moduleStars  = { listen: 3, read: 2, write: 1, speak: 0 };
 const moduleXP     = { listen: "30 XP", read: "20 XP", write: "15 XP", speak: "10 XP" };
 
 const subjectIcons = { english: FaBook, maths: FaCalculator, science: FaMicroscope };
@@ -36,7 +38,13 @@ const StarRow = ({ count }) => (
 const SubjectPage = () => {
   const { subject } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
+  const moduleStarsData = useSelector((state) => state.dashboard.moduleStars);
+
+  useEffect(() => {
+    if (localStorage.getItem("jwt_token")) dispatch(fetchModuleStars());
+  }, [dispatch]);
 
   const subjectKey = ["english", "maths", "science"].includes(subject) ? subject : null;
   const SubjectIcon = subjectKey ? subjectIcons[subjectKey] : FaBook;
@@ -95,7 +103,7 @@ const SubjectPage = () => {
                   <p className={styles.cardDesc}>{t(`subjectPage.modules.${type}.desc`)}</p>
                   <div className={styles.cardFooter}>
                     <div className={styles.stars}>
-                      <StarRow count={moduleStars[type]} />
+                      <StarRow count={moduleStarsData[`${type}_${subject}`] ?? 0} />
                     </div>
                     <span className={styles.xpBadge}>{moduleXP[type]}</span>
                   </div>

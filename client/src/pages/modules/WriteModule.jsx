@@ -11,6 +11,8 @@ import { fetchEnglishWriteQuestions } from "../../store/slices/writeEnglishSlice
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./WriteModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaStar, FaRegStar, FaLightbulb,
   FaPen, FaEraser, FaTrash, FaCheckCircle,
@@ -60,12 +62,11 @@ const WriteModule = () => {
   const [showCelebration, setShowCelebration] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [mode, setMode] = useState("practice");
+  const [timeLeft, setTimeLeft] = useState(60);
 
   const canvasRef = useRef(null);
   const lastPos = useRef(null);
-  // Refs so non-passive touch handlers always read current values
-  const isDrawingRef = useRef(false);
-  const toolRef = useRef("pen");
   const questionStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
@@ -113,65 +114,45 @@ const WriteModule = () => {
     setShowCelebration(false);
   }, [idx]);
 
-  // Keep refs in sync with state so native touch handlers read latest values
-  useEffect(() => { toolRef.current = tool; }, [tool]);
-
   const getPos = (e, canvas) => {
     const rect = canvas.getBoundingClientRect();
-    const src = e.touches ? e.touches[0] : e;
-    return { x: src.clientX - rect.left, y: src.clientY - rect.top };
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return { x: clientX - rect.left, y: clientY - rect.top };
   };
 
   const startDraw = (e) => {
     e.preventDefault();
-    isDrawingRef.current = true;
     setIsDrawing(true);
     lastPos.current = getPos(e, canvasRef.current);
   };
 
-  const applyStroke = (canvas, pos) => {
+  const draw = (e) => {
+    e.preventDefault();
+    if (!isDrawing) return;
+    const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
+    const pos = getPos(e, canvas);
     ctx.beginPath();
     ctx.moveTo(lastPos.current.x, lastPos.current.y);
     ctx.lineTo(pos.x, pos.y);
-    ctx.strokeStyle = toolRef.current === "pen" ? "#1a1a2e" : "#f0f8ff";
-    ctx.lineWidth   = toolRef.current === "pen" ? 5 : 24;
+    if (tool === "pen") {
+      ctx.strokeStyle = "#1a1a2e";
+      ctx.lineWidth = 5;
+    } else {
+      ctx.strokeStyle = "#f0f8ff";
+      ctx.lineWidth = 24;
+    }
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
     ctx.stroke();
     lastPos.current = pos;
   };
 
-  const draw = (e) => {
-    e.preventDefault();
-    if (!isDrawingRef.current) return;
-    const canvas = canvasRef.current;
-    applyStroke(canvas, getPos(e, canvas));
-  };
-
   const stopDraw = () => {
-    isDrawingRef.current = false;
     setIsDrawing(false);
     lastPos.current = null;
   };
-
-  // Attach non-passive touch listeners so preventDefault stops page scroll while drawing
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const onStart = (e) => { e.preventDefault(); isDrawingRef.current = true; setIsDrawing(true); lastPos.current = getPos(e, canvas); };
-    const onMove  = (e) => { e.preventDefault(); if (!isDrawingRef.current) return; applyStroke(canvas, getPos(e, canvas)); };
-    const onEnd   = ()  => { isDrawingRef.current = false; setIsDrawing(false); lastPos.current = null; };
-    canvas.addEventListener("touchstart", onStart, { passive: false });
-    canvas.addEventListener("touchmove",  onMove,  { passive: false });
-    canvas.addEventListener("touchend",   onEnd,   { passive: false });
-    return () => {
-      canvas.removeEventListener("touchstart", onStart);
-      canvas.removeEventListener("touchmove",  onMove);
-      canvas.removeEventListener("touchend",   onEnd);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [idx]);
 
   const clearCanvas = () => {
     initCanvas();
@@ -203,8 +184,31 @@ const WriteModule = () => {
 
   const nextCharacter = () => {
     clearCanvas();
+    setTimeLeft(60);
     setIdx((prev) => (prev + 1) % data.length);
   };
+
+  const handleModeChange = (m) => {
+    setMode(m);
+    setTimeLeft(60);
+  };
+
+  // Warrior mode countdown — all setState in async interval callback
+  useEffect(() => {
+    if (mode !== "warrior" || stars !== null) return;
+    const startTime = performance.now();
+    const interval = setInterval(() => {
+      const remaining = 60 - Math.floor((performance.now() - startTime) / 1000);
+      if (remaining <= 0) {
+        clearInterval(interval);
+        nextCharacter();
+      } else {
+        setTimeLeft(remaining);
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, idx, stars]);
 
   const starMsg = () => {
     if (stars === 3) return t("modules.write.perfect");
@@ -237,16 +241,7 @@ const WriteModule = () => {
     );
   }
 
-  if (!current) {
-    return (
-      <div className={styles.page}>
-        <div className={styles.bgOverlay} />
-        <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noData")}</p>
-        </div>
-      </div>
-    );
-  }
+  if (!current) return null;
 
   return (
     <FramerMotion.motion.div
@@ -274,11 +269,8 @@ const WriteModule = () => {
           </div>
         </div>
 
-        <div className={styles.dots}>
-          {data.map((_, i) => (
-            <div key={i} className={`${styles.dot} ${i === idx ? styles.dotActive : ""}`} />
-          ))}
-        </div>
+        <ModeToggle mode={mode} onChange={handleModeChange} />
+        <ProgressBar current={idx + 1} total={data.length} />
 
         <div className={styles.splitLayout}>
           <FramerMotion.motion.div
@@ -292,6 +284,15 @@ const WriteModule = () => {
               <span className={styles.levelChip}>{t("modules.level", { level: current.level })}</span>
               <span className={styles.typeChip}>{current.type}</span>
             </div>
+
+            {mode === "warrior" && stars === null && (
+              <div style={{ margin: "8px 0 10px", display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ color: timeLeft <= 15 ? "#e74c3c" : "rgba(255,255,255,0.7)", fontSize: "0.9rem", fontWeight: 700, minWidth: 32 }}>⏱ {timeLeft}s</span>
+                <div style={{ flex: 1, height: 8, background: "rgba(255,255,255,0.15)", borderRadius: 99, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${(timeLeft / 60) * 100}%`, background: timeLeft <= 15 ? "#e74c3c" : "#6c63ff", borderRadius: 99, transition: "width 0.5s linear" }} />
+                </div>
+              </div>
+            )}
 
             <div className={styles.charEmoji}>{current.emoji}</div>
             <div className={styles.charDisplay}>{current.character}</div>
@@ -328,11 +329,16 @@ const WriteModule = () => {
                     ))}
                   </div>
                   <p className={styles.starMsg}>{starMsg()}</p>
+                  {mode === "warrior" && stars < 3 && (
+                    <p style={{ color: "#ffd700", fontSize: "0.85rem", margin: "4px 0 6px", textAlign: "center" }}>⚔️ Keep trying for 3 stars!</p>
+                  )}
                   <FramerMotion.motion.button
                     className={styles.nextBtn}
                     onClick={() => { playBtn(); nextCharacter(); }}
+                    disabled={mode === "warrior" && stars < 3}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    style={mode === "warrior" && stars < 3 ? { opacity: 0.45, cursor: "not-allowed" } : {}}
                   >
                     {t("modules.next")}
                   </FramerMotion.motion.button>
@@ -373,6 +379,9 @@ const WriteModule = () => {
               onMouseMove={draw}
               onMouseUp={stopDraw}
               onMouseLeave={stopDraw}
+              onTouchStart={startDraw}
+              onTouchMove={draw}
+              onTouchEnd={stopDraw}
             />
 
             <FramerMotion.motion.button

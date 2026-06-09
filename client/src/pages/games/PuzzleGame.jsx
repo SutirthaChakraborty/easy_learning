@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -14,10 +14,12 @@ import {
   resetGame,
   hideCelebration,
 } from "../../store/slices/wordPuzzleSlice";
-import { logDashboardSession } from "../../store/slices/dashboardSlice";
+import { logDashboardSession, logDashboardAnswer } from "../../store/slices/dashboardSlice";
 import styles from "./PuzzleGame.module.css";
 
 import { playBtn, playSlide, playCorrect, playWrong } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaStar, FaRegStar,
   FaBackspace, FaSync, FaTimes, FaPuzzlePiece,
@@ -44,10 +46,18 @@ const PuzzleGame = () => {
 
   const current = words[currentIndex];
 
+  const [mode, setMode] = useState("practice");
+  const [timeLeft, setTimeLeft] = useState(30);
+
   const wordStartRef = useRef(new Date().toISOString());
   const sessionLoggedRef = useRef(false);
 
-  // Single effect — handles both the initial fetch and language changes
+  // Fetch words on mount
+  useEffect(() => {
+    dispatch(fetchPuzzleWords(i18n.language));
+  }, [dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Re-fetch when language changes
   useEffect(() => {
     dispatch(resetGame());
     dispatch(fetchPuzzleWords(i18n.language));
@@ -63,14 +73,26 @@ const PuzzleGame = () => {
   useEffect(() => {
     if (!result || sessionLoggedRef.current) return;
     sessionLoggedRef.current = true;
+    const xp = result === "correct" ? 10 : 0;
     dispatch(logDashboardSession({
       module: "puzzle",
       subject: "english",
       durationMinutes: 1,
-      xpEarned: result === "correct" ? 10 : 0,
+      xpEarned: xp,
       score: result === "correct" ? 100 : 0,
       startTime: wordStartRef.current,
     }));
+    if (current) {
+      dispatch(logDashboardAnswer({
+        module: "puzzle",
+        subject: "english",
+        question: current.hint || `Unscramble: ${current.letters?.join(" ")}`,
+        userAnswer: answer.map((t) => t.ch).join(""),
+        correctAnswer: revealedWord || current.word || "",
+        correct: result === "correct",
+        xpEarned: xp,
+      }));
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
 
@@ -99,6 +121,34 @@ const PuzzleGame = () => {
     return () => clearTimeout(t);
   }, [showCelebration, dispatch]);
 
+  const handleNext = () => {
+    setTimeLeft(30);
+    dispatch(nextWord());
+  };
+
+  const handleModeChange = (m) => {
+    setMode(m);
+    setTimeLeft(30);
+  };
+
+  // Warrior mode countdown
+  useEffect(() => {
+    if (mode !== "warrior" || result) return;
+    const startTime = performance.now();
+    const interval = setInterval(() => {
+      const remaining = 30 - Math.floor((performance.now() - startTime) / 1000);
+      if (remaining <= 0) {
+        clearInterval(interval);
+        setTimeLeft(30);
+        dispatch(nextWord());
+      } else {
+        setTimeLeft(remaining);
+      }
+    }, 500);
+    return () => clearInterval(interval);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode, currentIndex, result]);
+
   const starsEarned = () => (result === "correct" ? 3 : result === "wrong" ? 0 : null);
 
   if (status === "loading" || status === "idle") {
@@ -122,7 +172,7 @@ const PuzzleGame = () => {
           <p style={{ color: "#e74c3c", textAlign: "center", marginTop: 80, fontSize: "1.2rem" }}>
             {error || "Failed to load puzzles."}
           </p>
-          <button onClick={() => { dispatch(resetGame()); dispatch(fetchPuzzleWords(i18n.language)); }} style={{ display: "block", margin: "20px auto" }}>
+          <button onClick={() => dispatch(fetchPuzzleWords())} style={{ display: "block", margin: "20px auto" }}>
             Retry
           </button>
         </div>
@@ -161,14 +211,8 @@ const PuzzleGame = () => {
           Word Puzzle
         </h1>
 
-        <div className={styles.dots}>
-          {words.map((_, i) => (
-            <div
-              key={i}
-              className={`${styles.dot} ${i === currentIndex ? styles.dotActive : i < currentIndex ? styles.dotDone : ""}`}
-            />
-          ))}
-        </div>
+        <ModeToggle mode={mode} onChange={handleModeChange} />
+        <ProgressBar current={currentIndex + 1} total={words.length} />
 
         <AnimatePresence mode="wait">
           <FramerMotion.motion.div
@@ -185,6 +229,15 @@ const PuzzleGame = () => {
             </div>
 
             <p className={styles.instruction}>Arrange the letters to spell the word!</p>
+
+            {mode === "warrior" && !result && (
+              <div style={{ margin: "6px 0 10px", display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ color: timeLeft <= 10 ? "#e74c3c" : "rgba(255,255,255,0.7)", fontSize: "0.9rem", fontWeight: 700, minWidth: 32 }}>⏱ {timeLeft}s</span>
+                <div style={{ flex: 1, height: 8, background: "rgba(255,255,255,0.15)", borderRadius: 99, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${(timeLeft / 30) * 100}%`, background: timeLeft <= 10 ? "#e74c3c" : "#6c63ff", borderRadius: 99, transition: "width 0.5s linear" }} />
+                </div>
+              </div>
+            )}
 
             <div className={styles.answerRow}>
               {Array.from({ length: current.length }).map((_, i) => {
@@ -276,18 +329,20 @@ const PuzzleGame = () => {
                   )}
 
                   <div className={styles.feedbackBtns}>
-                    <FramerMotion.motion.button
-                      className={styles.retryBtn}
-                      onClick={() => { playBtn(); dispatch(resetPuzzle()); }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <FaSync style={{ marginRight: 6, verticalAlign: "middle" }} />
-                      Try Again
-                    </FramerMotion.motion.button>
+                    {mode !== "warrior" && (
+                      <FramerMotion.motion.button
+                        className={styles.retryBtn}
+                        onClick={() => { playBtn(); dispatch(resetPuzzle()); }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <FaSync style={{ marginRight: 6, verticalAlign: "middle" }} />
+                        Try Again
+                      </FramerMotion.motion.button>
+                    )}
                     <FramerMotion.motion.button
                       className={styles.nextBtn}
-                      onClick={() => { playBtn(); dispatch(nextWord()); }}
+                      onClick={() => { playBtn(); handleNext(); }}
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >

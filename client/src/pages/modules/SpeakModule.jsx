@@ -10,6 +10,8 @@ import { fetchEnglishSpeakPrompts } from "../../store/slices/speakEnglishSlice";
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./SpeakModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaMicrophone, FaStop, FaCircle,
   FaComment, FaMusic, FaChild,
@@ -84,6 +86,7 @@ const SpeakModule = () => {
     }
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const [mode, setMode] = useState("practice");
   const [idx, setIdx] = useState(0);
   const [selectedMood, setSelectedMood] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
@@ -95,15 +98,6 @@ const SpeakModule = () => {
   const chunks = useRef([]);
   const promptStartRef = useRef(new Date().toISOString());
   const prevRecCountRef = useRef(0);
-
-  // Stop mic if the user navigates away mid-recording
-  useEffect(() => {
-    return () => {
-      if (mediaRecorder.current && mediaRecorder.current.state !== "inactive") {
-        mediaRecorder.current.stop();
-      }
-    };
-  }, []);
 
   useEffect(() => {
     promptStartRef.current = new Date().toISOString();
@@ -143,7 +137,7 @@ const SpeakModule = () => {
 
       recorder.ondataavailable = (e) => chunks.current.push(e.data);
       recorder.onstop = () => {
-        const blob = new Blob(chunks.current, { type: recorder.mimeType || "audio/webm" });
+        const blob = new Blob(chunks.current, { type: "audio/webm" });
         const url = URL.createObjectURL(blob);
         setRecordings((prev) => [
           ...prev,
@@ -209,16 +203,7 @@ const SpeakModule = () => {
     );
   }
 
-  if (!current) {
-    return (
-      <div className={styles.page}>
-        <div className={styles.bgOverlay} />
-        <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
-          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noData")}</p>
-        </div>
-      </div>
-    );
-  }
+  if (!current) return null;
 
   return (
     <FramerMotion.motion.div
@@ -246,6 +231,8 @@ const SpeakModule = () => {
             {t("modules.speak.title")}
           </h2>
         </div>
+
+        <ModeToggle mode={mode} onChange={setMode} />
 
         <div className={styles.layout}>
           {/* LEFT — avatar + mood */}
@@ -301,6 +288,8 @@ const SpeakModule = () => {
 
           {/* RIGHT — prompt + recording */}
           <div className={styles.rightPanel}>
+            <ProgressBar current={idx + 1} total={prompts.length} />
+
             <div className={styles.promptNav}>
               <FramerMotion.motion.button
                 className={styles.navArrow}
@@ -310,7 +299,6 @@ const SpeakModule = () => {
               >
                 ‹
               </FramerMotion.motion.button>
-              <span className={styles.promptCount}>{idx + 1} / {prompts.length}</span>
               <FramerMotion.motion.button
                 className={styles.navArrow}
                 onClick={() => { playBtn(); nextPrompt(); }}
@@ -344,7 +332,7 @@ const SpeakModule = () => {
               {!isRecording ? (
                 <FramerMotion.motion.button
                   className={styles.recordBtn}
-                  onClick={() => { playBtn(); startRecording(); }}
+                  onClick={() => startRecording()}
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.94 }}
                 >

@@ -1,0 +1,38 @@
+.wrapper {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.btn {
+  padding: 7px 18px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.active {
+  background: linear-gradient(135deg, #6c63ff, #43c0a0);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+}
+
+.activeWarrior {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.45);
+}

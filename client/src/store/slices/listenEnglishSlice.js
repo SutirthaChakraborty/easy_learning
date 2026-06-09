@@ -26,7 +26,8 @@ const listenEnglishSlice = createSlice({
       })
       .addCase(fetchEnglishQuestions.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        state.questions = action.payload
+        const arr = action.payload ? [...action.payload].sort(() => Math.random() - 0.5) : []
+        state.questions = arr.slice(0, Math.min(10, arr.length))
       })
       .addCase(fetchEnglishQuestions.rejected, (state, action) => {
         state.status = 'failed'
