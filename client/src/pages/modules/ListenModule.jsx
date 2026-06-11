@@ -14,6 +14,7 @@ import { playBtn, playSlide } from "../../utils/sounds";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import { getSpeechLang } from "../../utils/speechLang";
+import { getQuestionLang } from "../../utils/questionLang";
 import {
   FaArrowLeft, FaStar, FaRegStar,
   FaVolumeUp, FaMicrophone, FaStop,
@@ -133,20 +134,22 @@ const ListenModule = () => {
 
   // Initial fetch
   useEffect(() => {
-    if (isScience && scienceStatus === "idle") dispatch(fetchScienceQuestions(i18n.language));
-    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsQuestions(i18n.language));
+    const qLang = getQuestionLang(i18n.language);
+    if (isScience && scienceStatus === "idle") dispatch(fetchScienceQuestions(qLang));
+    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsQuestions(qLang));
     if (isEnglish && englishStatus === "idle") dispatch(fetchEnglishQuestions());
   }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Re-fetch when language changes (science and maths only)
   useEffect(() => {
+    const qLang = getQuestionLang(i18n.language);
     if (isScience) {
       dispatch(resetScienceListenQuestions());
-      dispatch(fetchScienceQuestions(i18n.language));
+      dispatch(fetchScienceQuestions(qLang));
     }
     if (isMaths) {
       dispatch(resetMathsListenQuestions());
-      dispatch(fetchMathsQuestions(i18n.language));
+      dispatch(fetchMathsQuestions(qLang));
     }
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -224,7 +227,8 @@ const ListenModule = () => {
     if (!current) return;
     window.speechSynthesis.cancel();
     setVoiceWarning(false);
-    const langCode = isEnglish ? "en-US" : getSpeechLang(i18n.language);
+    const useEnglish = isEnglish || getQuestionLang(i18n.language) === 'en';
+    const langCode = useEnglish ? "en-US" : getSpeechLang(i18n.language);
     speakText(current.sentence, langCode, {
       onStart:   () => setIsPlaying(true),
       onEnd:     () => setIsPlaying(false),
@@ -235,11 +239,15 @@ const ListenModule = () => {
 
   // ── Record ─────────────────────────────────────────────────────────────────
   const startRecording = async () => {
+    // Cancel any ongoing TTS so the record button is never blocked by isPlaying
+    window.speechSynthesis.cancel();
+    setIsPlaying(false);
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
       const mimeType = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/ogg"]
-        .find((t) => MediaRecorder.isTypeSupported(t)) || "";
+        .find((mime) => MediaRecorder.isTypeSupported(mime)) || "";
       const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : {});
       mediaRecorder.current = recorder;
 
@@ -247,7 +255,7 @@ const ListenModule = () => {
       recorder.onstop = () => {
         const blob = new Blob(chunks.current, { type: recorder.mimeType || "audio/webm" });
         setAudioUrl(URL.createObjectURL(blob));
-        stream.getTracks().forEach((t) => t.stop());
+        stream.getTracks().forEach((trk) => trk.stop());
       };
 
       recorder.start();
@@ -259,7 +267,8 @@ const ListenModule = () => {
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SR) {
         const rec = new SR();
-        rec.lang = isEnglish ? "en-US" : getSpeechLang(i18n.language);
+        const useEnglish = isEnglish || getQuestionLang(i18n.language) === 'en';
+        rec.lang = useEnglish ? "en-US" : getSpeechLang(i18n.language);
         rec.interimResults  = false;
         rec.maxAlternatives = 1;
         recognitionRef.current = rec;
@@ -465,7 +474,6 @@ const ListenModule = () => {
                 <FramerMotion.motion.button
                   className={`${styles.btn} ${styles.recordBtn}`}
                   onClick={() => { playBtn(); startRecording(); }}
-                  disabled={isPlaying}
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.94 }}
                 >

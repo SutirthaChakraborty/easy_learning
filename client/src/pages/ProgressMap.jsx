@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
 import styles from './ProgressMap.module.css'
+import { FaBookOpen, FaPencilAlt, FaMicrophone, FaMap, FaTimes, FaStar, FaRegStar } from 'react-icons/fa'
+import { MdHearing } from 'react-icons/md'
 
 // ── Static data ─────────────────────────────────────────────────────────────────
 
@@ -13,10 +15,10 @@ const SUBJECTS = [
 ]
 
 const MODULES = [
-  { key: 'listen', icon: '👂', achievementId: 'sharp_ears'     },
-  { key: 'read',   icon: '📖', achievementId: 'bookworm'       },
-  { key: 'write',  icon: '✏️', achievementId: 'penpal'         },
-  { key: 'speak',  icon: '🎤', achievementId: 'public_speaker' },
+  { key: 'listen', Icon: MdHearing,    achievementId: 'sharp_ears'     },
+  { key: 'read',   Icon: FaBookOpen,   achievementId: 'bookworm'       },
+  { key: 'write',  Icon: FaPencilAlt,  achievementId: 'penpal'         },
+  { key: 'speak',  Icon: FaMicrophone, achievementId: 'public_speaker' },
 ]
 
 // 12 ordered levels: english×4 → maths×4 → science×4
@@ -27,7 +29,7 @@ const LEVELS = SUBJECTS.flatMap((subj, si) =>
     subjectLabel:  subj.label, 
     module:        mod.key,
     moduleLabel:   mod.key.charAt(0).toUpperCase() + mod.key.slice(1),
-    icon:          mod.icon,
+    Icon:          mod.Icon,
     color:         subj.color,
     achievementId: mod.achievementId,
   }))
@@ -72,7 +74,9 @@ function Stars({ count }) {
   return (
     <div className={styles.stars}>
       {[0, 1, 2].map(i => (
-        <span key={i} className={i < count ? styles.starOn : styles.starOff}>★</span>
+        <span key={i} className={i < count ? styles.starOn : styles.starOff}>
+          {i < count ? <FaStar /> : <FaRegStar />}
+        </span>
       ))}
     </div>
   )
@@ -197,7 +201,7 @@ export default function ProgressMap({ achievements, stats, onClose }) {
         {/* ── Header ── */}
         <div className={styles.header}>
           <div>
-            <h2 className={styles.title}>🗺️ {t('dashboard.progressMap.title')}</h2>
+            <h2 className={styles.title}><FaMap /> {t('dashboard.progressMap.title')}</h2>
             <p className={styles.subtitle}>
               {t('dashboard.progressMap.subtitle', {
                 completed: masteredCount,
@@ -218,7 +222,7 @@ export default function ProgressMap({ achievements, stats, onClose }) {
             onClick={onClose}
             aria-label={t('dashboard.progressMap.close')}
           >
-            ✕
+            <FaTimes />
           </button>
         </div>
 
@@ -256,6 +260,7 @@ export default function ProgressMap({ achievements, stats, onClose }) {
               const status    = getLevelStatus(level)
               const stars     = getLevelStars(level)
               const isCurrent = level.id === currentLevelId
+              const NodeIcon  = level.Icon
 
               return (
                 <motion.div
@@ -274,7 +279,7 @@ export default function ProgressMap({ achievements, stats, onClose }) {
                     className={`${styles.nodeCircle} ${styles['node_' + status]} ${isCurrent ? styles.nodeCurrent : ''}`}
                     style={{ '--nc': level.color }}
                   >
-                    <span className={styles.nodeIcon}>{level.icon}</span>
+                    <span className={styles.nodeIcon}><NodeIcon /></span>
                     <span className={styles.nodeNum}>{level.id}</span>
                   </div>
 

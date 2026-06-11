@@ -1,4 +1,6 @@
 import styles from "./ModeToggle.module.css";
+import { FaGraduationCap } from "react-icons/fa";
+import { GiCrossedSwords } from "react-icons/gi";
 
 const ModeToggle = ({ mode, onChange }) => (
   <div className={styles.wrapper}>
@@ -6,13 +8,13 @@ const ModeToggle = ({ mode, onChange }) => (
       className={`${styles.btn} ${mode === "practice" ? styles.active : ""}`}
       onClick={() => onChange("practice")}
     >
-      🎓 Practice
+      <FaGraduationCap /> Practice
     </button>
     <button
       className={`${styles.btn} ${mode === "warrior" ? styles.activeWarrior : ""}`}
       onClick={() => onChange("warrior")}
     >
-      ⚔️ Warrior
+      <GiCrossedSwords /> Warrior
     </button>
   </div>
 );

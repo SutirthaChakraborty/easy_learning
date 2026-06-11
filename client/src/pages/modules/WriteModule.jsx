@@ -11,13 +11,14 @@ import { fetchEnglishWriteQuestions } from "../../store/slices/writeEnglishSlice
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./WriteModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
+import { getQuestionLang } from "../../utils/questionLang";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
   FaArrowLeft, FaStar, FaRegStar, FaLightbulb,
   FaPen, FaEraser, FaTrash, FaCheckCircle,
 } from "react-icons/fa";
-import { GiPartyPopper } from "react-icons/gi";
+import { GiPartyPopper, GiCrossedSwords } from "react-icons/gi";
 
 const WriteModule = () => {
   const { subject } = useParams();
@@ -40,19 +41,21 @@ const WriteModule = () => {
   const activeStatus = isScience ? scienceStatus    : isMaths ? mathsStatus    : isEnglish ? englishStatus    : "succeeded";
 
   useEffect(() => {
-    if (isScience && scienceStatus === "idle") dispatch(fetchScienceWriteQuestions(i18n.language));
-    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsWriteQuestions(i18n.language));
+    const qLang = getQuestionLang(i18n.language);
+    if (isScience && scienceStatus === "idle") dispatch(fetchScienceWriteQuestions(qLang));
+    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsWriteQuestions(qLang));
     if (isEnglish && englishStatus === "idle") dispatch(fetchEnglishWriteQuestions());
   }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    const qLang = getQuestionLang(i18n.language);
     if (isScience) {
       dispatch(resetScienceWriteQuestions());
-      dispatch(fetchScienceWriteQuestions(i18n.language));
+      dispatch(fetchScienceWriteQuestions(qLang));
     }
     if (isMaths) {
       dispatch(resetMathsWriteQuestions());
-      dispatch(fetchMathsWriteQuestions(i18n.language));
+      dispatch(fetchMathsWriteQuestions(qLang));
     }
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -330,7 +333,7 @@ const WriteModule = () => {
                   </div>
                   <p className={styles.starMsg}>{starMsg()}</p>
                   {mode === "warrior" && stars < 3 && (
-                    <p style={{ color: "#ffd700", fontSize: "0.85rem", margin: "4px 0 6px", textAlign: "center" }}>⚔️ Keep trying for 3 stars!</p>
+                    <p style={{ color: "#ffd700", fontSize: "0.85rem", margin: "4px 0 6px", textAlign: "center" }}><GiCrossedSwords /> Keep trying for 3 stars!</p>
                   )}
                   <FramerMotion.motion.button
                     className={styles.nextBtn}
