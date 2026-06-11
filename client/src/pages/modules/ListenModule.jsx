@@ -243,6 +243,10 @@ const ListenModule = () => {
     window.speechSynthesis.cancel();
     setIsPlaying(false);
 
+    if (!window.isSecureContext) {
+      setMicError(t("modules.speak.micInsecure"));
+      return;
+    }
     if (!navigator.mediaDevices?.getUserMedia) {
       setMicError(t("modules.speak.micUnsupported"));
       return;

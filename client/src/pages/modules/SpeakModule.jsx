@@ -124,6 +124,12 @@ const SpeakModule = () => {
   const current = prompts[idx];
 
   const startRecording = async () => {
+    if (!window.isSecureContext) {
+      setEncouragement(t("modules.speak.micInsecure"));
+      setShowEncouragement(true);
+      setTimeout(() => setShowEncouragement(false), 5000);
+      return;
+    }
     if (!navigator.mediaDevices?.getUserMedia) {
       setEncouragement(t("modules.speak.micUnsupported"));
       setShowEncouragement(true);
