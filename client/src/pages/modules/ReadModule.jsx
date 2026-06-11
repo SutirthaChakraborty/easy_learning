@@ -16,6 +16,7 @@ import correctSoundFile from "../../assets/sounds/correct.mp3";
 import wrongSoundFile from "../../assets/sounds/wrong.mp3";
 import nextSoundFile from "../../assets/sounds/btn.mp3";
 import { playSlide } from "../../utils/sounds";
+import { getQuestionLang } from "../../utils/questionLang";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
@@ -44,19 +45,21 @@ const ReadModule = () => {
   const activeStatus = isScience ? scienceStatus    : isMaths ? mathsStatus    : isEnglish ? englishStatus    : "succeeded";
 
   useEffect(() => {
-    if (isScience && scienceStatus === "idle") dispatch(fetchScienceReadQuestions(i18n.language));
-    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsReadQuestions(i18n.language));
+    const qLang = getQuestionLang(i18n.language);
+    if (isScience && scienceStatus === "idle") dispatch(fetchScienceReadQuestions(qLang));
+    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsReadQuestions(qLang));
     if (isEnglish && englishStatus === "idle") dispatch(fetchEnglishReadQuestions());
   }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    const qLang = getQuestionLang(i18n.language);
     if (isScience) {
       dispatch(resetScienceReadQuestions());
-      dispatch(fetchScienceReadQuestions(i18n.language));
+      dispatch(fetchScienceReadQuestions(qLang));
     }
     if (isMaths) {
       dispatch(resetMathsReadQuestions());
-      dispatch(fetchMathsReadQuestions(i18n.language));
+      dispatch(fetchMathsReadQuestions(qLang));
     }
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 

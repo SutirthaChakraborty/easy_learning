@@ -10,6 +10,7 @@ import { fetchEnglishSpeakPrompts } from "../../store/slices/speakEnglishSlice";
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./SpeakModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
+import { getQuestionLang } from "../../utils/questionLang";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import {
@@ -70,19 +71,21 @@ const SpeakModule = () => {
   const activeStatus = isScience ? scienceStatus  : isMaths ? mathsStatus  : isEnglish ? englishStatus  : "succeeded";
 
   useEffect(() => {
-    if (isScience && scienceStatus === "idle") dispatch(fetchScienceSpeakPrompts(i18n.language));
-    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsSpeakPrompts(i18n.language));
+    const qLang = getQuestionLang(i18n.language);
+    if (isScience && scienceStatus === "idle") dispatch(fetchScienceSpeakPrompts(qLang));
+    if (isMaths   && mathsStatus   === "idle") dispatch(fetchMathsSpeakPrompts(qLang));
     if (isEnglish && englishStatus === "idle") dispatch(fetchEnglishSpeakPrompts());
   }, [isScience, isMaths, isEnglish, scienceStatus, mathsStatus, englishStatus, dispatch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
+    const qLang = getQuestionLang(i18n.language);
     if (isScience) {
       dispatch(resetScienceSpeakPrompts());
-      dispatch(fetchScienceSpeakPrompts(i18n.language));
+      dispatch(fetchScienceSpeakPrompts(qLang));
     }
     if (isMaths) {
       dispatch(resetMathsSpeakPrompts());
-      dispatch(fetchMathsSpeakPrompts(i18n.language));
+      dispatch(fetchMathsSpeakPrompts(qLang));
     }
   }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -90,6 +93,7 @@ const SpeakModule = () => {
   const [idx, setIdx] = useState(0);
   const [selectedMood, setSelectedMood] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
+  const [isStarting, setIsStarting] = useState(false);
   const [recordings, setRecordings] = useState([]);
   const [encouragement, setEncouragement] = useState("");
   const [showEncouragement, setShowEncouragement] = useState(false);
@@ -127,11 +131,12 @@ const SpeakModule = () => {
       return;
     }
 
+    setIsStarting(true);
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
       const mimeType = ["audio/webm;codecs=opus", "audio/webm", "audio/ogg;codecs=opus", "audio/ogg"]
-        .find((t) => MediaRecorder.isTypeSupported(t)) || "";
+        .find((mime) => MediaRecorder.isTypeSupported(mime)) || "";
       const recorder = new MediaRecorder(stream, mimeType ? { mimeType } : {});
       mediaRecorder.current = recorder;
 
@@ -152,8 +157,10 @@ const SpeakModule = () => {
       };
 
       recorder.start();
+      setIsStarting(false);
       setIsRecording(true);
     } catch (err) {
+      setIsStarting(false);
       console.error("Microphone error:", err.name, err.message);
       let msgKey = "micError";
       if (err.name === "NotAllowedError" || err.name === "PermissionDeniedError") {
@@ -329,15 +336,26 @@ const SpeakModule = () => {
             </AnimatePresence>
 
             <div className={styles.micSection}>
-              {!isRecording ? (
+              {!isRecording && !isStarting ? (
                 <FramerMotion.motion.button
                   className={styles.recordBtn}
-                  onClick={() => startRecording()}
+                  onClick={() => { playBtn(); startRecording(); }}
                   whileHover={{ scale: 1.06 }}
                   whileTap={{ scale: 0.94 }}
                 >
                   <FaMicrophone style={{ marginRight: 8, verticalAlign: "middle" }} />
                   {t("modules.speak.startSpeaking")}
+                </FramerMotion.motion.button>
+              ) : isStarting ? (
+                <FramerMotion.motion.button
+                  className={styles.recordBtn}
+                  disabled
+                  animate={{ opacity: [1, 0.5, 1] }}
+                  transition={{ repeat: Infinity, duration: 0.6 }}
+                  style={{ cursor: "wait" }}
+                >
+                  <FaMicrophone style={{ marginRight: 8, verticalAlign: "middle" }} />
+                  {t("modules.speak.startSpeaking")}…
                 </FramerMotion.motion.button>
               ) : (
                 <FramerMotion.motion.button
