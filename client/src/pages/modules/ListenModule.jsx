@@ -163,7 +163,7 @@ const ListenModule = () => {
   const [feedback, setFeedback]               = useState("");
   const [showCelebration, setShowCelebration] = useState(false);
   const [voiceWarning, setVoiceWarning]       = useState(false);
-  const [micError, setMicError]               = useState(false);
+  const [micError, setMicError]               = useState(null);
   const [timeLeft, setTimeLeft] = useState(30);
 
   const mediaRecorder    = useRef(null);
@@ -217,7 +217,7 @@ const ListenModule = () => {
     setFeedback("");
     setShowCelebration(false);
     setVoiceWarning(false);
-    setMicError(false);
+    setMicError(null);
     window.speechSynthesis.cancel();
     setIsPlaying(false);
   };
@@ -243,6 +243,11 @@ const ListenModule = () => {
     window.speechSynthesis.cancel();
     setIsPlaying(false);
 
+    if (!navigator.mediaDevices?.getUserMedia) {
+      setMicError(t("modules.speak.micUnsupported"));
+      return;
+    }
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
@@ -260,7 +265,7 @@ const ListenModule = () => {
 
       recorder.start();
       setIsRecording(true);
-      setMicError(false);
+      setMicError(null);
       setStars(null);
       setFeedback("");
 
@@ -317,8 +322,12 @@ const ListenModule = () => {
           setFeedback(t("modules.listen.attempt"));
         };
       }
-    } catch {
-      setMicError(true);
+    } catch (err) {
+      let key = "micError";
+      if (err.name === "NotAllowedError" || err.name === "PermissionDeniedError") key = "micPermission";
+      else if (err.name === "NotFoundError" || err.name === "DevicesNotFoundError") key = "micNotFound";
+      else if (err.name === "NotReadableError") key = "micBusy";
+      setMicError(t(`modules.speak.${key}`));
     }
   };
 
@@ -466,7 +475,7 @@ const ListenModule = () => {
 
               {micError && (
                 <p className={styles.voiceWarning}>
-                  {t("modules.listen.micError")}
+                  {micError}
                 </p>
               )}
 
