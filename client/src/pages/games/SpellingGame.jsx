@@ -77,30 +77,34 @@ const SpellingGame = () => {
       playWrong();
     }
     if (result) {
-      setTimeTaken(parseFloat(((performance.now() - answerPerfStartRef.current) / 1000).toFixed(1)));
-    }
-    if (!result || sessionLoggedRef.current) return;
-    sessionLoggedRef.current = true;
-    const xpDelta = xpEarned - prevXpRef.current;
-    prevXpRef.current = xpEarned;
-    dispatch(logDashboardSession({
-      module: "spelling",
-      subject: "english",
-      durationMinutes: 1,
-      xpEarned: xpDelta,
-      score: result === "correct" ? 100 : 0,
-      startTime: wordStartRef.current,
-    }));
-    if (current) {
-      dispatch(logDashboardAnswer({
-        module: "spelling",
-        subject: "english",
-        question: current.hint || `Spell: ${current.word}`,
-        userAnswer: typed.map((b) => b.ch).join(""),
-        correctAnswer: current.word,
-        correct: result === "correct",
-        xpEarned: xpDelta,
-      }));
+      const elapsed = parseFloat(((performance.now() - answerPerfStartRef.current) / 1000).toFixed(1));
+      setTimeTaken(elapsed);
+      if (!sessionLoggedRef.current) {
+        sessionLoggedRef.current = true;
+        const xpDelta = xpEarned - prevXpRef.current;
+        prevXpRef.current = xpEarned;
+        dispatch(logDashboardSession({
+          module: "spelling",
+          subject: "english",
+          durationMinutes: 1,
+          xpEarned: xpDelta,
+          score: result === "correct" ? 100 : 0,
+          startTime: wordStartRef.current,
+        }));
+        if (current) {
+          dispatch(logDashboardAnswer({
+            module: "spelling",
+            subject: "english",
+            question: current.hint || `Spell: ${current.word}`,
+            userAnswer: typed.map((b) => b.ch).join(""),
+            correctAnswer: current.word,
+            correct: result === "correct",
+            xpEarned: xpDelta,
+            timeTaken: elapsed,
+            mode,
+          }));
+        }
+      }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);

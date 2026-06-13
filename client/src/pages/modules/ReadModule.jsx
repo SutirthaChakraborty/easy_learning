@@ -69,17 +69,21 @@ const ReadModule = () => {
   const [score, setScore] = useState(0);
   const [showCelebration, setShowCelebration] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
+  const [timeTaken, setTimeTaken] = useState(null);
 
   const story = data[idx];
 
   const questionStartRef = useRef(new Date().toISOString());
+  const answerPerfStartRef = useRef(performance.now());
   const sessionLoggedRef = useRef(false);
 
   // Reset refs when question changes
   useEffect(() => {
     questionStartRef.current = new Date().toISOString();
+    answerPerfStartRef.current = performance.now();
     sessionLoggedRef.current = false;
     setTimeLeft(30);
+    setTimeTaken(null);
   }, [idx]);
 
   // Warrior mode countdown
@@ -115,7 +119,9 @@ const ReadModule = () => {
 
   const handleAnswer = (opt) => {
     if (selected) return;
+    const elapsed = parseFloat(((performance.now() - answerPerfStartRef.current) / 1000).toFixed(1));
     setSelected(opt);
+    setTimeTaken(elapsed);
     const isRight = opt === story.answer;
     if (isRight) {
       playSound(correctSoundFile);
@@ -133,6 +139,8 @@ const ReadModule = () => {
       correctAnswer: story.answer,
       correct: isRight,
       xpEarned: isRight ? 10 : 0,
+      timeTaken: elapsed,
+      mode,
     }));
   };
 
@@ -268,6 +276,14 @@ const ReadModule = () => {
                       : <><FaTimes style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.read.wrong", { answer: story.answer })}</>
                     }
                   </p>
+                  {mode === "warrior" && timeTaken !== null && (
+                    <p style={{ margin: "6px 0 10px", fontSize: "0.85rem", color: "rgba(255,255,255,0.8)", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+                      ⏱ Answered in{" "}
+                      <strong style={{ color: timeTaken <= 10 ? "#2ecc71" : timeTaken <= 20 ? "#f39c12" : "#e74c3c" }}>
+                        {timeTaken}s
+                      </strong>
+                    </p>
+                  )}
                   <FramerMotion.motion.button
                     className={styles.nextBtn}
                     onClick={nextStory}

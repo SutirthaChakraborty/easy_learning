@@ -258,7 +258,7 @@ const getPerformance = async (req, res) => {
 const logAnswer = async (req, res) => {
   try {
     const { email } = req.user
-    const { module: mod, subject, question, userAnswer, correctAnswer, correct, xpEarned } = req.body
+    const { module: mod, subject, question, userAnswer, correctAnswer, correct, xpEarned, timeTaken, mode } = req.body
     await StudentAnswer.create({
       email,
       module: mod || 'unknown',
@@ -268,6 +268,8 @@ const logAnswer = async (req, res) => {
       correctAnswer: correctAnswer || '',
       correct: !!correct,
       xpEarned: xpEarned || 0,
+      timeTaken: (typeof timeTaken === 'number' && timeTaken > 0) ? timeTaken : null,
+      mode: mode || 'practice',
     })
     res.json({ success: true })
   } catch (err) {

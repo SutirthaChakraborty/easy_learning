@@ -9,6 +9,8 @@ const studentAnswerSchema = new mongoose.Schema({
   correctAnswer: { type: String, default: '' },
   correct:       { type: Boolean, required: true },
   xpEarned:     { type: Number, default: 0 },
+  timeTaken:    { type: Number, default: null },
+  mode:         { type: String, default: 'practice' },
   timestamp:    { type: Date, default: Date.now },
 })
 
