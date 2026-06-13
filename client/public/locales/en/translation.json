@@ -298,7 +298,8 @@
                                   "micPermission":  "Microphone access denied — click the lock icon in your browser address bar and allow microphone.",
                                   "micNotFound":  "No microphone found — please plug one in and try again.",
                                   "micBusy":  "Microphone is in use by another app — close it and try again.",
-                                  "micUnsupported":  "Your browser does not support recording — please use Chrome or Firefox."
+                                  "micUnsupported":  "Your browser does not support recording — please use Chrome or Firefox.",
+                                  "micInsecure":  "Microphone requires a secure connection (HTTPS). Please open the app via https:// or use localhost."
                               }
                 }
 }
