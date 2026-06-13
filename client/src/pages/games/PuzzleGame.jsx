@@ -99,6 +99,7 @@ const PuzzleGame = () => {
             correct: result === "correct",
             xpEarned: xp,
             timeTaken: elapsed,
+            mode,
           }));
         }
       }

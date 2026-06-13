@@ -101,6 +101,7 @@ const SpellingGame = () => {
             correct: result === "correct",
             xpEarned: xpDelta,
             timeTaken: elapsed,
+            mode,
           }));
         }
       }

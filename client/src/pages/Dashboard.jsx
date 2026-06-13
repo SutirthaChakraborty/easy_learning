@@ -514,10 +514,17 @@ export default function Dashboard() {
                   <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', marginTop: 40 }}>No answers recorded yet. Play some modules or games!</p>
                 ) : answers.map((a, i) => (
                   <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: '12px 16px', marginBottom: 8, borderLeft: `4px solid ${a.correct ? '#43c0a0' : '#e74c3c'}` }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
-                      <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-                        {a.module} · {a.subject}
-                      </span>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                          {a.module} · {a.subject}
+                        </span>
+                        {a.mode === 'warrior' && (
+                          <span style={{ fontSize: '0.7rem', fontWeight: 700, padding: '1px 7px', borderRadius: 99, background: 'rgba(231,76,60,0.2)', color: '#e74c3c', border: '1px solid rgba(231,76,60,0.35)', letterSpacing: '0.04em' }}>
+                            ⚔️ WARRIOR
+                          </span>
+                        )}
+                      </div>
                       <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>
                         {new Date(a.timestamp).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
                       </span>
@@ -532,13 +539,15 @@ export default function Dashboard() {
                           Answer: {a.correctAnswer}
                         </span>
                       )}
-                      {a.xpEarned > 0 && <span style={{ fontSize: '0.8rem', color: '#f7971e' }}>+{a.xpEarned} XP</span>}
+                      {a.xpEarned > 0 && (
+                        <span style={{ fontSize: '0.8rem', color: '#f7971e' }}>+{a.xpEarned} XP</span>
+                      )}
                       {a.timeTaken != null && (
                         <span style={{
-                          fontSize: '0.78rem', fontWeight: 700, padding: '2px 8px', borderRadius: 99,
+                          fontSize: '0.8rem', fontWeight: 700, padding: '2px 10px', borderRadius: 99,
                           background: a.timeTaken <= 10 ? 'rgba(46,204,113,0.15)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.15)' : 'rgba(231,76,60,0.15)',
                           color: a.timeTaken <= 10 ? '#2ecc71' : a.timeTaken <= 20 ? '#f39c12' : '#e74c3c',
-                          border: `1px solid ${a.timeTaken <= 10 ? 'rgba(46,204,113,0.3)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.3)' : 'rgba(231,76,60,0.3)'}`,
+                          border: `1px solid ${a.timeTaken <= 10 ? 'rgba(46,204,113,0.35)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.35)' : 'rgba(231,76,60,0.35)'}`,
                         }}>
                           ⏱ {a.timeTaken}s
                         </span>
