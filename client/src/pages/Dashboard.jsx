@@ -523,7 +523,7 @@ export default function Dashboard() {
                       </span>
                     </div>
                     <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: '0 0 6px', fontWeight: 500 }}>{a.question}</p>
-                    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
                       <span style={{ fontSize: '0.83rem', color: a.correct ? '#43c0a0' : '#e74c3c', fontWeight: 600 }}>
                         {a.correct ? '✓' : '✗'} You: {a.userAnswer || '—'}
                       </span>
@@ -533,6 +533,16 @@ export default function Dashboard() {
                         </span>
                       )}
                       {a.xpEarned > 0 && <span style={{ fontSize: '0.8rem', color: '#f7971e' }}>+{a.xpEarned} XP</span>}
+                      {a.timeTaken != null && (
+                        <span style={{
+                          fontSize: '0.78rem', fontWeight: 700, padding: '2px 8px', borderRadius: 99,
+                          background: a.timeTaken <= 10 ? 'rgba(46,204,113,0.15)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.15)' : 'rgba(231,76,60,0.15)',
+                          color: a.timeTaken <= 10 ? '#2ecc71' : a.timeTaken <= 20 ? '#f39c12' : '#e74c3c',
+                          border: `1px solid ${a.timeTaken <= 10 ? 'rgba(46,204,113,0.3)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.3)' : 'rgba(231,76,60,0.3)'}`,
+                        }}>
+                          ⏱ {a.timeTaken}s
+                        </span>
+                      )}
                     </div>
                   </div>
                 ))}

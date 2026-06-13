@@ -76,29 +76,32 @@ const PuzzleGame = () => {
   // Log session when answer comes in
   useEffect(() => {
     if (result) {
-      setTimeTaken(parseFloat(((performance.now() - answerPerfStartRef.current) / 1000).toFixed(1)));
-    }
-    if (!result || sessionLoggedRef.current) return;
-    sessionLoggedRef.current = true;
-    const xp = result === "correct" ? 10 : 0;
-    dispatch(logDashboardSession({
-      module: "puzzle",
-      subject: "english",
-      durationMinutes: 1,
-      xpEarned: xp,
-      score: result === "correct" ? 100 : 0,
-      startTime: wordStartRef.current,
-    }));
-    if (current) {
-      dispatch(logDashboardAnswer({
-        module: "puzzle",
-        subject: "english",
-        question: current.hint || `Unscramble: ${current.letters?.join(" ")}`,
-        userAnswer: answer.map((t) => t.ch).join(""),
-        correctAnswer: revealedWord || current.word || "",
-        correct: result === "correct",
-        xpEarned: xp,
-      }));
+      const elapsed = parseFloat(((performance.now() - answerPerfStartRef.current) / 1000).toFixed(1));
+      setTimeTaken(elapsed);
+      if (!sessionLoggedRef.current) {
+        sessionLoggedRef.current = true;
+        const xp = result === "correct" ? 10 : 0;
+        dispatch(logDashboardSession({
+          module: "puzzle",
+          subject: "english",
+          durationMinutes: 1,
+          xpEarned: xp,
+          score: result === "correct" ? 100 : 0,
+          startTime: wordStartRef.current,
+        }));
+        if (current) {
+          dispatch(logDashboardAnswer({
+            module: "puzzle",
+            subject: "english",
+            question: current.hint || `Unscramble: ${current.letters?.join(" ")}`,
+            userAnswer: answer.map((t) => t.ch).join(""),
+            correctAnswer: revealedWord || current.word || "",
+            correct: result === "correct",
+            xpEarned: xp,
+            timeTaken: elapsed,
+          }));
+        }
+      }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result]);
