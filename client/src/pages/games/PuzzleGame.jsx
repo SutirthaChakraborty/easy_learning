@@ -48,8 +48,10 @@ const PuzzleGame = () => {
 
   const [mode, setMode] = useState("practice");
   const [timeLeft, setTimeLeft] = useState(30);
+  const [timeTaken, setTimeTaken] = useState(null);
 
   const wordStartRef = useRef(new Date().toISOString());
+  const answerPerfStartRef = useRef(performance.now());
   const sessionLoggedRef = useRef(false);
 
   // Fetch words on mount
@@ -66,11 +68,16 @@ const PuzzleGame = () => {
   // Reset session tracking on new word
   useEffect(() => {
     wordStartRef.current = new Date().toISOString();
+    answerPerfStartRef.current = performance.now();
+    setTimeTaken(null);
     sessionLoggedRef.current = false;
   }, [currentIndex]);
 
   // Log session when answer comes in
   useEffect(() => {
+    if (result) {
+      setTimeTaken(parseFloat(((performance.now() - answerPerfStartRef.current) / 1000).toFixed(1)));
+    }
     if (!result || sessionLoggedRef.current) return;
     sessionLoggedRef.current = true;
     const xp = result === "correct" ? 10 : 0;
@@ -325,6 +332,14 @@ const PuzzleGame = () => {
                     <p className={styles.wrongMsg}>
                       <FaTimes style={{ marginRight: 6, verticalAlign: "middle" }} />
                       The word is: <strong>{revealedWord ? revealedWord.toUpperCase() : "…"}</strong>
+                    </p>
+                  )}
+                  {mode === "warrior" && timeTaken !== null && (
+                    <p style={{ margin: "6px 0 10px", fontSize: "0.85rem", color: "rgba(255,255,255,0.8)", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+                      ⏱ Answered in{" "}
+                      <strong style={{ color: timeTaken <= 10 ? "#2ecc71" : timeTaken <= 20 ? "#f39c12" : "#e74c3c" }}>
+                        {timeTaken}s
+                      </strong>
                     </p>
                   )}
 

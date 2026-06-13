@@ -39,8 +39,10 @@ const SpellingGame = () => {
   const [showCelebration, setShowCelebration] = useState(false);
   const [mode, setMode] = useState("practice");
   const [timeLeft, setTimeLeft] = useState(30);
+  const [timeTaken, setTimeTaken] = useState(null);
 
   const wordStartRef = useRef(new Date().toISOString());
+  const answerPerfStartRef = useRef(performance.now());
   const prevXpRef = useRef(0);
   const sessionLoggedRef = useRef(false);
 
@@ -60,6 +62,8 @@ const SpellingGame = () => {
   useEffect(() => {
     if (current) buildLetterPool(current.word);
     wordStartRef.current = new Date().toISOString();
+    answerPerfStartRef.current = performance.now();
+    setTimeTaken(null);
     sessionLoggedRef.current = false;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, current?.id]);
@@ -71,6 +75,9 @@ const SpellingGame = () => {
       setTimeout(() => setShowCelebration(false), 1800);
     } else if (result === "wrong") {
       playWrong();
+    }
+    if (result) {
+      setTimeTaken(parseFloat(((performance.now() - answerPerfStartRef.current) / 1000).toFixed(1)));
     }
     if (!result || sessionLoggedRef.current) return;
     sessionLoggedRef.current = true;
@@ -310,6 +317,14 @@ const SpellingGame = () => {
                     <p className={styles.wrongMsg}>
                       <FaTimes style={{ marginRight: 6, verticalAlign: "middle" }} />
                       The word was: <strong>{current.word.toUpperCase()}</strong>
+                    </p>
+                  )}
+                  {mode === "warrior" && timeTaken !== null && (
+                    <p style={{ margin: "6px 0 10px", fontSize: "0.85rem", color: "rgba(255,255,255,0.8)", display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+                      ⏱ Answered in{" "}
+                      <strong style={{ color: timeTaken <= 10 ? "#2ecc71" : timeTaken <= 20 ? "#f39c12" : "#e74c3c" }}>
+                        {timeTaken}s
+                      </strong>
                     </p>
                   )}
                   <div className={styles.feedbackBtns}>
