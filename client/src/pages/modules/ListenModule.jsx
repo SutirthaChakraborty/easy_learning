@@ -8,7 +8,9 @@ import { lessons } from "../../data/lessons";
 import { fetchScienceQuestions, resetScienceListenQuestions } from "../../store/slices/listenScienceSlice";
 import { fetchMathsQuestions, resetMathsListenQuestions } from "../../store/slices/listenMathsSlice";
 import { fetchEnglishQuestions } from "../../store/slices/listenEnglishSlice";
-import { logDashboardSession } from "../../store/slices/dashboardSlice";
+import { logDashboardSession, logRoundResult } from "../../store/slices/dashboardSlice";
+import { getWarriorBonus } from "../../utils/warriorBonus";
+import RoundComplete from "../../components/RoundComplete/RoundComplete";
 import styles from "./ListenModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
@@ -165,6 +167,13 @@ const ListenModule = () => {
   const [voiceWarning, setVoiceWarning]       = useState(false);
   const [micError, setMicError]               = useState(null);
   const [timeLeft, setTimeLeft] = useState(30);
+  const [roundDone, setRoundDone] = useState(false);
+  const [roundResult, setRoundResult] = useState({ stars: 0, bonusStars: 0 });
+
+  // Round accumulation via refs (not read during render — snapshotted into roundResult on finish)
+  const roundStarsRef = useRef(0);
+  const roundBonusRef = useRef(0);
+  const answerPerfStartRef = useRef(null);
 
   const mediaRecorder    = useRef(null);
   const chunks           = useRef([]);
@@ -176,6 +185,7 @@ const ListenModule = () => {
 
   useEffect(() => {
     questionStartRef.current = new Date().toISOString();
+    answerPerfStartRef.current = performance.now();
     sessionLoggedRef.current = false;
   }, [idx]);
 
@@ -290,6 +300,13 @@ const ListenModule = () => {
           const earned = scoreSentences(transcript, current.sentence);
           setStars(earned);
           setTotalScore((prev) => prev + earned);
+          if (earned >= 1) {
+            const elapsed = parseFloat(((performance.now() - (answerPerfStartRef.current ?? performance.now())) / 1000).toFixed(1));
+            roundStarsRef.current += 1;
+            if (mode === "warrior") {
+              roundBonusRef.current += getWarriorBonus(elapsed);
+            }
+          }
           if (earned === 3) {
             setFeedback(t("modules.listen.perfect"));
             setShowCelebration(true);
@@ -343,10 +360,41 @@ const ListenModule = () => {
     setIsRecording(false);
   };
 
+  const finishRound = () => {
+    const s = roundStarsRef.current;
+    const b = roundBonusRef.current;
+    dispatch(logRoundResult({
+      module: "listen",
+      subject: subject || "general",
+      mode,
+      stars: s,
+      bonusStars: b,
+      totalStars: s + b,
+      passed: mode === "warrior" ? s >= 6 : undefined,
+    }));
+    setRoundResult({ stars: s, bonusStars: b });
+    setRoundDone(true);
+  };
+
   const nextSentence = () => {
     resetCardState();
     setTimeLeft(30);
-    setIdx((prev) => (prev + 1) % data.length);
+    if (idx === data.length - 1) {
+      finishRound();
+    } else {
+      setIdx((prev) => prev + 1);
+    }
+  };
+
+  const handlePlayAgain = () => {
+    setRoundDone(false);
+    setRoundResult({ stars: 0, bonusStars: 0 });
+    roundStarsRef.current = 0;
+    roundBonusRef.current = 0;
+    setIdx(0);
+    setTotalScore(0);
+    setTimeLeft(30);
+    resetCardState();
   };
 
   const handleModeChange = (m) => {
@@ -356,7 +404,7 @@ const ListenModule = () => {
 
   // Warrior mode countdown — all setState calls happen inside async interval callback
   useEffect(() => {
-    if (mode !== "warrior" || isRecording || stars !== null || !current) return;
+    if (mode !== "warrior" || isRecording || stars !== null || !current || roundDone) return;
     const startTime = performance.now();
     const interval = setInterval(() => {
       const remaining = 30 - Math.floor((performance.now() - startTime) / 1000);
@@ -369,7 +417,7 @@ const ListenModule = () => {
     }, 500);
     return () => clearInterval(interval);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, idx, isRecording, stars]);
+  }, [mode, idx, isRecording, stars, roundDone]);
 
   if (activeStatus === "loading") {
     return (
@@ -534,7 +582,7 @@ const ListenModule = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {t("modules.next")}
+                    {idx === data.length - 1 ? "Finish Round" : t("modules.next")}
                   </FramerMotion.motion.button>
                 </FramerMotion.motion.div>
               )}
@@ -557,6 +605,20 @@ const ListenModule = () => {
           )}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {roundDone && (
+          <RoundComplete
+            module="listen"
+            subject={subject || "general"}
+            mode={mode}
+            stars={roundResult.stars}
+            bonusStars={roundResult.bonusStars}
+            onPlayAgain={handlePlayAgain}
+            onBack={() => { playSlide(); navigate(`/subject/${subject}`); }}
+          />
+        )}
+      </AnimatePresence>
     </FramerMotion.motion.div>
   );
 };

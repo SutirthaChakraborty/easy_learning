@@ -9,7 +9,7 @@ import { lessons } from "../../data/lessons";
 import { fetchScienceReadQuestions, resetScienceReadQuestions } from "../../store/slices/readScienceSlice";
 import { fetchMathsReadQuestions, resetMathsReadQuestions } from "../../store/slices/readMathsSlice";
 import { fetchEnglishReadQuestions } from "../../store/slices/readEnglishSlice";
-import { logDashboardSession, logDashboardAnswer } from "../../store/slices/dashboardSlice";
+import { logDashboardSession, logDashboardAnswer, logRoundResult } from "../../store/slices/dashboardSlice";
 import styles from "./ReadModule.module.css";
 
 import correctSoundFile from "../../assets/sounds/correct.mp3";
@@ -17,8 +17,10 @@ import wrongSoundFile from "../../assets/sounds/wrong.mp3";
 import nextSoundFile from "../../assets/sounds/btn.mp3";
 import { playSlide } from "../../utils/sounds";
 import { getQuestionLang } from "../../utils/questionLang";
+import { getWarriorBonus } from "../../utils/warriorBonus";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ModeToggle from "../../components/ModeToggle/ModeToggle";
+import RoundComplete from "../../components/RoundComplete/RoundComplete";
 import {
   FaArrowLeft, FaStar, FaQuestion, FaTimes,
 } from "react-icons/fa";
@@ -70,6 +72,12 @@ const ReadModule = () => {
   const [showCelebration, setShowCelebration] = useState(false);
   const [timeLeft, setTimeLeft] = useState(30);
   const [timeTaken, setTimeTaken] = useState(null);
+  const [roundDone, setRoundDone] = useState(false);
+  const [roundResult, setRoundResult] = useState({ stars: 0, bonusStars: 0 });
+
+  // Round accumulation via refs (snapshotted into roundResult on finish)
+  const roundStarsRef = useRef(0);
+  const roundBonusRef = useRef(0);
 
   const story = data[idx];
 
@@ -88,12 +96,12 @@ const ReadModule = () => {
 
   // Warrior mode countdown
   useEffect(() => {
-    if (mode !== "warrior" || selected || !story) return;
+    if (mode !== "warrior" || selected || !story || roundDone) return;
     if (timeLeft <= 0) { nextStory(); return; }
     const t = setTimeout(() => setTimeLeft((p) => p - 1), 1000);
     return () => clearTimeout(t);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, timeLeft, selected, story]);
+  }, [mode, timeLeft, selected, story, roundDone]);
 
   // Log session when answer is selected
   useEffect(() => {
@@ -128,6 +136,11 @@ const ReadModule = () => {
       setScore((s) => s + 1);
       setShowCelebration(true);
       setTimeout(() => setShowCelebration(false), 1800);
+      // Accumulate round score
+      roundStarsRef.current += 1;
+      if (mode === "warrior") {
+        roundBonusRef.current += getWarriorBonus(elapsed);
+      }
     } else {
       playSound(wrongSoundFile);
     }
@@ -144,10 +157,41 @@ const ReadModule = () => {
     }));
   };
 
+  const finishRound = () => {
+    const s = roundStarsRef.current;
+    const b = roundBonusRef.current;
+    dispatch(logRoundResult({
+      module: "read",
+      subject: subject || "general",
+      mode,
+      stars: s,
+      bonusStars: b,
+      totalStars: s + b,
+      passed: mode === "warrior" ? s >= 6 : undefined,
+    }));
+    setRoundResult({ stars: s, bonusStars: b });
+    setRoundDone(true);
+  };
+
   const nextStory = () => {
     playSound(nextSoundFile);
     setSelected(null);
-    setIdx((prev) => (prev + 1) % data.length);
+    if (idx === data.length - 1) {
+      finishRound();
+    } else {
+      setIdx((prev) => prev + 1);
+    }
+  };
+
+  const handlePlayAgain = () => {
+    setRoundDone(false);
+    setRoundResult({ stars: 0, bonusStars: 0 });
+    roundStarsRef.current = 0;
+    roundBonusRef.current = 0;
+    setIdx(0);
+    setSelected(null);
+    setScore(0);
+    setTimeLeft(30);
   };
 
   if (activeStatus === "loading") {
@@ -282,6 +326,9 @@ const ReadModule = () => {
                       <strong style={{ color: timeTaken <= 10 ? "#2ecc71" : timeTaken <= 20 ? "#f39c12" : "#e74c3c" }}>
                         {timeTaken}s
                       </strong>
+                      {isCorrect && getWarriorBonus(timeTaken) > 0 && (
+                        <span style={{ color: "#FFD700", marginLeft: 6 }}>+{getWarriorBonus(timeTaken)} bonus!</span>
+                      )}
                     </p>
                   )}
                   <FramerMotion.motion.button
@@ -290,7 +337,7 @@ const ReadModule = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    {t("modules.continue")}
+                    {idx === data.length - 1 ? "Finish Round" : t("modules.continue")}
                   </FramerMotion.motion.button>
                 </FramerMotion.motion.div>
               )}
@@ -313,6 +360,20 @@ const ReadModule = () => {
           )}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {roundDone && (
+          <RoundComplete
+            module="read"
+            subject={subject || "general"}
+            mode={mode}
+            stars={roundResult.stars}
+            bonusStars={roundResult.bonusStars}
+            onPlayAgain={handlePlayAgain}
+            onBack={() => { playSlide(); navigate(`/subject/${subject}`); }}
+          />
+        )}
+      </AnimatePresence>
     </FramerMotion.motion.div>
   );
 };

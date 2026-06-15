@@ -1,6 +1,7 @@
 const StudentActivity   = require('../models/StudentActivity')
 const StudentAchievement = require('../models/StudentAchievement')
 const StudentAnswer      = require('../models/StudentAnswer')
+const StudentRound       = require('../models/StudentRound')
 
 // ── Achievement definitions ────────────────────────────────────────────────────
 const ACHIEVEMENTS = [
@@ -323,4 +324,55 @@ const getModuleStars = async (req, res) => {
   }
 }
 
-module.exports = { logSession, getStats, getActivity, getAchievements, getPerformance, getModuleStars, logAnswer, getAnswers }
+const logRound = async (req, res) => {
+  try {
+    const { email } = req.user
+    const { module: mod, subject, mode, stars, bonusStars, totalStars, passed } = req.body
+
+    await StudentRound.create({
+      email,
+      module: mod || 'unknown',
+      subject: subject || 'general',
+      mode: mode || 'practice',
+      stars: stars || 0,
+      bonusStars: bonusStars || 0,
+      totalStars: totalStars || 0,
+      passed: passed ?? null,
+    })
+
+    // Award XP: 10 per correct answer + 2 per bonus star
+    const xpEarned = (stars || 0) * 10 + (bonusStars || 0) * 2
+    const dayKey = midnight()
+    await StudentActivity.findOneAndUpdate(
+      { email, date: dayKey },
+      {
+        $push: { sessions: { startTime: new Date(), endTime: new Date(), durationMinutes: 5, module: mod || 'unknown', subject: subject || 'general', xpEarned, score: Math.round(((stars || 0) / 10) * 100) } },
+        $inc: { totalMinutes: 5, totalXP: xpEarned, totalSessions: 1 },
+      },
+      { upsert: true, new: true }
+    )
+
+    const newAchievements = await checkAndAwardAchievements(email)
+    res.json({ success: true, newAchievements })
+  } catch (err) {
+    console.error('logRound error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getRounds = async (req, res) => {
+  try {
+    const { email } = req.user
+    const limit = Math.min(parseInt(req.query.limit) || 20, 100)
+    const rounds = await StudentRound.find({ email })
+      .sort({ completedAt: -1 })
+      .limit(limit)
+      .lean()
+    res.json({ success: true, data: rounds })
+  } catch (err) {
+    console.error('getRounds error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+module.exports = { logSession, getStats, getActivity, getAchievements, getPerformance, getModuleStars, logAnswer, getAnswers, logRound, getRounds }

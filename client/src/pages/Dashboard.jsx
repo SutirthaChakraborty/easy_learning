@@ -12,6 +12,7 @@ import {
   fetchDashboardAchievements,
   fetchDashboardPerformance,
   fetchDashboardAnswers,
+  fetchRounds,
 } from '../store/slices/dashboardSlice'
 import styles from './Dashboard.module.css'
 import ProgressMap from './ProgressMap'
@@ -19,8 +20,9 @@ import {
   FaLock, FaBook, FaGamepad, FaFire, FaBolt, FaMagic,
   FaExclamationTriangle, FaChartBar, FaMap, FaBookOpen,
   FaClock, FaMedal, FaChartLine, FaSeedling, FaCalendarAlt,
-  FaCheckCircle, FaTrophy, FaBullseye, FaTimes,
+  FaCheckCircle, FaTrophy, FaBullseye, FaTimes, FaStar, FaRegStar,
 } from 'react-icons/fa'
+import { GiCrossedSwords } from 'react-icons/gi'
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 function fmtMinutes(mins) {
@@ -207,12 +209,13 @@ export default function Dashboard() {
   const dispatch  = useDispatch()
   const { user }  = useAuth()
   const { t }     = useTranslation()
-  const { stats, activity, achievements, performance, answers, status } = useSelector(s => s.dashboard)
+  const { stats, activity, achievements, performance, answers, rounds, status } = useSelector(s => s.dashboard)
 
   const thisYear = new Date().getFullYear()
   const [selectedYear, setSelectedYear] = useState(thisYear)
   const [showProgressMap, setShowProgressMap] = useState(false)
   const [showResults, setShowResults] = useState(false)
+  const [activeTab, setActiveTab] = useState('practice')
   const yearOptions = Array.from({ length: 5 }, (_, i) => thisYear - i)
 
   useEffect(() => {
@@ -221,6 +224,7 @@ export default function Dashboard() {
     dispatch(fetchDashboardActivity({ year: selectedYear }))
     dispatch(fetchDashboardAchievements())
     dispatch(fetchDashboardPerformance(30))
+    dispatch(fetchRounds(30))
   }, [dispatch, user])
 
   function handleYearChange(year) {
@@ -288,7 +292,7 @@ export default function Dashboard() {
         <button
           onClick={() => {
             dispatch(fetchDashboardStats())
-            dispatch(fetchDashboardActivity(365))
+            dispatch(fetchDashboardActivity({ year: selectedYear }))
             dispatch(fetchDashboardAchievements())
             dispatch(fetchDashboardPerformance(30))
           }}
@@ -325,7 +329,7 @@ export default function Dashboard() {
         <div className={styles.headerRight}>
           <button
             className={styles.progressMapBtn}
-            onClick={() => { setShowResults(true); dispatch(fetchDashboardAnswers(50)); }}
+            onClick={() => { setActiveTab('practice'); setShowResults(true); dispatch(fetchDashboardAnswers(50)); }}
           >
             <FaChartBar /> Results
           </button>
@@ -489,6 +493,70 @@ export default function Dashboard() {
         )}
       </div>
 
+      {/* ── Round History ── */}
+      <div className={styles.section}>
+        <h2 className={styles.sectionTitle}><FaTrophy /> Round History</h2>
+        {rounds.length === 0 ? (
+          <div className={styles.emptyChart}>
+            <span><FaBullseye /></span>
+            <p>No rounds completed yet. Finish a module round to see your results here!</p>
+          </div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {rounds.map((r, i) => (
+              <motion.div
+                key={r._id || i}
+                style={{
+                  background: 'rgba(255,255,255,0.04)',
+                  borderRadius: 14,
+                  padding: '14px 18px',
+                  borderLeft: `4px solid ${r.mode === 'warrior' ? (r.passed ? '#FFD700' : '#e74c3c') : '#6c63ff'}`,
+                  display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap',
+                }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.04 }}
+              >
+                <div style={{ minWidth: 80 }}>
+                  <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    {r.module} · {r.subject}
+                  </span>
+                  <div style={{ marginTop: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    {r.mode === 'warrior'
+                      ? <GiCrossedSwords color={r.passed ? '#FFD700' : '#e74c3c'} />
+                      : <FaBook color="#6c63ff" />
+                    }
+                    <span style={{ color: r.mode === 'warrior' ? (r.passed ? '#FFD700' : '#e74c3c') : '#a29bfe', fontWeight: 700, fontSize: '0.85rem' }}>
+                      {r.mode === 'warrior' ? (r.passed ? 'PASSED' : 'FAILED') : 'Practice'}
+                    </span>
+                  </div>
+                </div>
+
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', gap: 2, marginBottom: 4 }}>
+                    {Array.from({ length: 10 }).map((_, si) => (
+                      si < r.stars
+                        ? <FaStar key={si} color="#FFD700" style={{ fontSize: '0.85rem' }} />
+                        : <FaRegStar key={si} color="rgba(255,255,255,0.2)" style={{ fontSize: '0.85rem' }} />
+                    ))}
+                    <span style={{ color: '#FFD700', fontWeight: 700, marginLeft: 6, fontSize: '0.9rem' }}>{r.stars}/10</span>
+                  </div>
+                  {r.bonusStars > 0 && (
+                    <span style={{ color: '#a29bfe', fontSize: '0.78rem', fontWeight: 600 }}>
+                      +{r.bonusStars} speed bonus · {r.totalStars} total stars
+                    </span>
+                  )}
+                </div>
+
+                <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem', whiteSpace: 'nowrap' }}>
+                  {new Date(r.completedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                </span>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </div>
+
       {/* ── Results modal ── */}
       <AnimatePresence>
         {showResults && (
@@ -505,56 +573,79 @@ export default function Dashboard() {
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.85, y: 40 }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 24px 16px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                <h2 style={{ color: '#fff', fontSize: '1.3rem', fontWeight: 700, margin: 0 }}><FaChartBar /> My Answers</h2>
-                <button onClick={() => setShowResults(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: 8, padding: '6px 14px', cursor: 'pointer', fontSize: '0.9rem' }}><FaTimes /> Close</button>
+              <div style={{ padding: '20px 24px 16px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                  <h2 style={{ color: '#fff', fontSize: '1.3rem', fontWeight: 700, margin: 0 }}><FaChartBar /> My Answers</h2>
+                  <button onClick={() => setShowResults(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: 8, padding: '6px 14px', cursor: 'pointer', fontSize: '0.9rem' }}><FaTimes /> Close</button>
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  <button
+                    onClick={() => setActiveTab('practice')}
+                    style={{
+                      flex: 1, padding: '8px 0', borderRadius: 10, border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '0.95rem', transition: 'all 0.2s',
+                      background: activeTab === 'practice' ? '#6c63ff' : 'rgba(255,255,255,0.07)',
+                      color: activeTab === 'practice' ? '#fff' : 'rgba(255,255,255,0.5)',
+                    }}
+                  >
+                    <FaBook style={{ marginRight: 6 }} /> Practice
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('warrior')}
+                    style={{
+                      flex: 1, padding: '8px 0', borderRadius: 10, border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '0.95rem', transition: 'all 0.2s',
+                      background: activeTab === 'warrior' ? '#e74c3c' : 'rgba(255,255,255,0.07)',
+                      color: activeTab === 'warrior' ? '#fff' : 'rgba(255,255,255,0.5)',
+                    }}
+                  >
+                    ⚔️ Warrior
+                  </button>
+                </div>
               </div>
               <div style={{ overflowY: 'auto', padding: '12px 16px', flex: 1 }}>
-                {answers.length === 0 ? (
-                  <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', marginTop: 40 }}>No answers recorded yet. Play some modules or games!</p>
-                ) : answers.map((a, i) => (
-                  <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: '12px 16px', marginBottom: 8, borderLeft: `4px solid ${a.correct ? '#43c0a0' : '#e74c3c'}` }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                {(() => {
+                  const filtered = answers.filter(a => activeTab === 'warrior' ? a.mode === 'warrior' : a.mode !== 'warrior')
+                  if (filtered.length === 0) return (
+                    <p style={{ color: 'rgba(255,255,255,0.5)', textAlign: 'center', marginTop: 40 }}>
+                      {activeTab === 'warrior' ? 'No warrior mode answers yet. Try warrior mode!' : 'No practice answers recorded yet. Play some modules!'}
+                    </p>
+                  )
+                  return filtered.map((a, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: '12px 16px', marginBottom: 8, borderLeft: `4px solid ${a.correct ? '#43c0a0' : '#e74c3c'}` }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
                         <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
                           {a.module} · {a.subject}
                         </span>
-                        {a.mode === 'warrior' && (
-                          <span style={{ fontSize: '0.7rem', fontWeight: 700, padding: '1px 7px', borderRadius: 99, background: 'rgba(231,76,60,0.2)', color: '#e74c3c', border: '1px solid rgba(231,76,60,0.35)', letterSpacing: '0.04em' }}>
-                            ⚔️ WARRIOR
+                        <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>
+                          {new Date(a.timestamp).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                        </span>
+                      </div>
+                      <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: '0 0 6px', fontWeight: 500 }}>{a.question}</p>
+                      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+                        <span style={{ fontSize: '0.83rem', color: a.correct ? '#43c0a0' : '#e74c3c', fontWeight: 600 }}>
+                          {a.correct ? '✓' : '✗'} You: {a.userAnswer || '—'}
+                        </span>
+                        {!a.correct && (
+                          <span style={{ fontSize: '0.83rem', color: 'rgba(255,255,255,0.5)' }}>
+                            Answer: {a.correctAnswer}
+                          </span>
+                        )}
+                        {a.xpEarned > 0 && (
+                          <span style={{ fontSize: '0.8rem', color: '#f7971e' }}>+{a.xpEarned} XP</span>
+                        )}
+                        {activeTab === 'warrior' && a.timeTaken != null && (
+                          <span style={{
+                            fontSize: '0.8rem', fontWeight: 700, padding: '2px 10px', borderRadius: 99,
+                            background: a.timeTaken <= 10 ? 'rgba(46,204,113,0.15)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.15)' : 'rgba(231,76,60,0.15)',
+                            color: a.timeTaken <= 10 ? '#2ecc71' : a.timeTaken <= 20 ? '#f39c12' : '#e74c3c',
+                            border: `1px solid ${a.timeTaken <= 10 ? 'rgba(46,204,113,0.35)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.35)' : 'rgba(231,76,60,0.35)'}`,
+                          }}>
+                            ⏱ {a.timeTaken}s
                           </span>
                         )}
                       </div>
-                      <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>
-                        {new Date(a.timestamp).toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
-                      </span>
                     </div>
-                    <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: '0 0 6px', fontWeight: 500 }}>{a.question}</p>
-                    <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.83rem', color: a.correct ? '#43c0a0' : '#e74c3c', fontWeight: 600 }}>
-                        {a.correct ? '✓' : '✗'} You: {a.userAnswer || '—'}
-                      </span>
-                      {!a.correct && (
-                        <span style={{ fontSize: '0.83rem', color: 'rgba(255,255,255,0.5)' }}>
-                          Answer: {a.correctAnswer}
-                        </span>
-                      )}
-                      {a.xpEarned > 0 && (
-                        <span style={{ fontSize: '0.8rem', color: '#f7971e' }}>+{a.xpEarned} XP</span>
-                      )}
-                      {a.timeTaken != null && (
-                        <span style={{
-                          fontSize: '0.8rem', fontWeight: 700, padding: '2px 10px', borderRadius: 99,
-                          background: a.timeTaken <= 10 ? 'rgba(46,204,113,0.15)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.15)' : 'rgba(231,76,60,0.15)',
-                          color: a.timeTaken <= 10 ? '#2ecc71' : a.timeTaken <= 20 ? '#f39c12' : '#e74c3c',
-                          border: `1px solid ${a.timeTaken <= 10 ? 'rgba(46,204,113,0.35)' : a.timeTaken <= 20 ? 'rgba(243,156,18,0.35)' : 'rgba(231,76,60,0.35)'}`,
-                        }}>
-                          ⏱ {a.timeTaken}s
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                ))}
+                  ))
+                })()}
               </div>
             </motion.div>
           </motion.div>

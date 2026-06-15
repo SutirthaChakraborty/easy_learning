@@ -8,12 +8,14 @@ import { lessons } from "../../data/lessons";
 import { fetchScienceWriteQuestions, resetScienceWriteQuestions } from "../../store/slices/writeScienceSlice";
 import { fetchMathsWriteQuestions, resetMathsWriteQuestions } from "../../store/slices/writeMathsSlice";
 import { fetchEnglishWriteQuestions } from "../../store/slices/writeEnglishSlice";
-import { logDashboardSession } from "../../store/slices/dashboardSlice";
+import { logDashboardSession, logRoundResult } from "../../store/slices/dashboardSlice";
 import styles from "./WriteModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
 import { getQuestionLang } from "../../utils/questionLang";
+import { getWarriorBonus } from "../../utils/warriorBonus";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ModeToggle from "../../components/ModeToggle/ModeToggle";
+import RoundComplete from "../../components/RoundComplete/RoundComplete";
 import {
   FaArrowLeft, FaStar, FaRegStar, FaLightbulb,
   FaPen, FaEraser, FaTrash, FaCheckCircle,
@@ -67,10 +69,18 @@ const WriteModule = () => {
   const [isDrawing, setIsDrawing] = useState(false);
   const [mode, setMode] = useState("practice");
   const [timeLeft, setTimeLeft] = useState(60);
+  const [roundDone, setRoundDone] = useState(false);
+  const [roundResult, setRoundResult] = useState({ stars: 0, bonusStars: 0 });
+
+  // Round accumulation via refs (snapshotted into roundResult on finish)
+  const roundStarsRef = useRef(0);
+  const roundBonusRef = useRef(0);
+  const questionAnsweredRef = useRef(false);
 
   const canvasRef = useRef(null);
   const lastPos = useRef(null);
   const questionStartRef = useRef(new Date().toISOString());
+  const questionPerfStartRef = useRef(performance.now());
   const sessionLoggedRef = useRef(false);
 
   const current = data[idx];
@@ -78,10 +88,12 @@ const WriteModule = () => {
   // Reset refs when question changes
   useEffect(() => {
     questionStartRef.current = new Date().toISOString();
+    questionPerfStartRef.current = performance.now();
     sessionLoggedRef.current = false;
+    questionAnsweredRef.current = false;
   }, [idx]);
 
-  // Log session when stars are awarded via canvas check
+  // Log session when stars are awarded
   useEffect(() => {
     if (stars === null || sessionLoggedRef.current) return;
     sessionLoggedRef.current = true;
@@ -183,12 +195,41 @@ const WriteModule = () => {
       setShowCelebration(true);
       setTimeout(() => setShowCelebration(false), 2000);
     }
+    // Award round star once per question (first time they get ≥ 1 stars)
+    if (earned >= 1 && !questionAnsweredRef.current) {
+      questionAnsweredRef.current = true;
+      roundStarsRef.current += 1;
+      if (mode === "warrior" && earned === 3) {
+        const elapsed = parseFloat(((performance.now() - questionPerfStartRef.current) / 1000).toFixed(1));
+        roundBonusRef.current += getWarriorBonus(elapsed);
+      }
+    }
+  };
+
+  const finishRound = () => {
+    const s = roundStarsRef.current;
+    const b = roundBonusRef.current;
+    dispatch(logRoundResult({
+      module: "write",
+      subject: subject || "general",
+      mode,
+      stars: s,
+      bonusStars: b,
+      totalStars: s + b,
+      passed: mode === "warrior" ? s >= 6 : undefined,
+    }));
+    setRoundResult({ stars: s, bonusStars: b });
+    setRoundDone(true);
   };
 
   const nextCharacter = () => {
     clearCanvas();
     setTimeLeft(60);
-    setIdx((prev) => (prev + 1) % data.length);
+    if (idx === data.length - 1) {
+      finishRound();
+    } else {
+      setIdx((prev) => prev + 1);
+    }
   };
 
   const handleModeChange = (m) => {
@@ -196,9 +237,9 @@ const WriteModule = () => {
     setTimeLeft(60);
   };
 
-  // Warrior mode countdown — all setState in async interval callback
+  // Warrior mode countdown
   useEffect(() => {
-    if (mode !== "warrior" || stars !== null) return;
+    if (mode !== "warrior" || stars !== null || roundDone) return;
     const startTime = performance.now();
     const interval = setInterval(() => {
       const remaining = 60 - Math.floor((performance.now() - startTime) / 1000);
@@ -211,13 +252,25 @@ const WriteModule = () => {
     }, 500);
     return () => clearInterval(interval);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, idx, stars]);
+  }, [mode, idx, stars, roundDone]);
 
   const starMsg = () => {
     if (stars === 3) return t("modules.write.perfect");
     if (stars >= 2)  return t("modules.write.great");
     if (stars === 1) return t("modules.write.keep");
     return t("modules.write.tryAgain");
+  };
+
+  const handlePlayAgain = () => {
+    setRoundDone(false);
+    setRoundResult({ stars: 0, bonusStars: 0 });
+    roundStarsRef.current = 0;
+    roundBonusRef.current = 0;
+    setIdx(0);
+    setStars(null);
+    setTotalScore(0);
+    setTimeLeft(60);
+    questionAnsweredRef.current = false;
   };
 
   if (activeStatus === "loading") {
@@ -343,7 +396,7 @@ const WriteModule = () => {
                     whileTap={{ scale: 0.95 }}
                     style={mode === "warrior" && stars < 3 ? { opacity: 0.45, cursor: "not-allowed" } : {}}
                   >
-                    {t("modules.next")}
+                    {idx === data.length - 1 ? "Finish Round" : t("modules.next")}
                   </FramerMotion.motion.button>
                 </FramerMotion.motion.div>
               )}
@@ -412,6 +465,20 @@ const WriteModule = () => {
             {t("modules.write.celebration")}
             <FaStar color="#FFD700" style={{ marginLeft: 8, verticalAlign: "middle" }} />
           </FramerMotion.motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {roundDone && (
+          <RoundComplete
+            module="write"
+            subject={subject || "general"}
+            mode={mode}
+            stars={roundResult.stars}
+            bonusStars={roundResult.bonusStars}
+            onPlayAgain={handlePlayAgain}
+            onBack={() => { playSlide(); navigate(`/subject/${subject}`); }}
+          />
         )}
       </AnimatePresence>
     </FramerMotion.motion.div>

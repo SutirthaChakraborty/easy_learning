@@ -10,6 +10,8 @@ const {
   getModuleStars,
   logAnswer,
   getAnswers,
+  logRound,
+  getRounds,
 } = require('../controllers/dashboardController')
 
 router.use(dashboardAuth)
@@ -22,5 +24,7 @@ router.get('/performance',   getPerformance)
 router.get('/module-stars',  getModuleStars)
 router.post('/log-answer',   logAnswer)
 router.get('/answers',       getAnswers)
+router.post('/log-round',    logRound)
+router.get('/rounds',        getRounds)
 
 module.exports = router
