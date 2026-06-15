@@ -12,6 +12,7 @@ import {
   fetchDashboardAchievements,
   fetchDashboardPerformance,
   fetchDashboardAnswers,
+  fetchRounds,
 } from '../store/slices/dashboardSlice'
 import styles from './Dashboard.module.css'
 import ProgressMap from './ProgressMap'
@@ -19,8 +20,9 @@ import {
   FaLock, FaBook, FaGamepad, FaFire, FaBolt, FaMagic,
   FaExclamationTriangle, FaChartBar, FaMap, FaBookOpen,
   FaClock, FaMedal, FaChartLine, FaSeedling, FaCalendarAlt,
-  FaCheckCircle, FaTrophy, FaBullseye, FaTimes,
+  FaCheckCircle, FaTrophy, FaBullseye, FaTimes, FaStar, FaRegStar,
 } from 'react-icons/fa'
+import { GiCrossedSwords } from 'react-icons/gi'
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
 function fmtMinutes(mins) {
@@ -207,7 +209,7 @@ export default function Dashboard() {
   const dispatch  = useDispatch()
   const { user }  = useAuth()
   const { t }     = useTranslation()
-  const { stats, activity, achievements, performance, answers, status } = useSelector(s => s.dashboard)
+  const { stats, activity, achievements, performance, answers, rounds, status } = useSelector(s => s.dashboard)
 
   const thisYear = new Date().getFullYear()
   const [selectedYear, setSelectedYear] = useState(thisYear)
@@ -222,6 +224,7 @@ export default function Dashboard() {
     dispatch(fetchDashboardActivity({ year: selectedYear }))
     dispatch(fetchDashboardAchievements())
     dispatch(fetchDashboardPerformance(30))
+    dispatch(fetchRounds(30))
   }, [dispatch, user])
 
   function handleYearChange(year) {
@@ -487,6 +490,70 @@ export default function Dashboard() {
               )
             })}
           </>
+        )}
+      </div>
+
+      {/* ── Round History ── */}
+      <div className={styles.section}>
+        <h2 className={styles.sectionTitle}><FaTrophy /> Round History</h2>
+        {rounds.length === 0 ? (
+          <div className={styles.emptyChart}>
+            <span><FaBullseye /></span>
+            <p>No rounds completed yet. Finish a module round to see your results here!</p>
+          </div>
+        ) : (
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {rounds.map((r, i) => (
+              <motion.div
+                key={r._id || i}
+                style={{
+                  background: 'rgba(255,255,255,0.04)',
+                  borderRadius: 14,
+                  padding: '14px 18px',
+                  borderLeft: `4px solid ${r.mode === 'warrior' ? (r.passed ? '#FFD700' : '#e74c3c') : '#6c63ff'}`,
+                  display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap',
+                }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.04 }}
+              >
+                <div style={{ minWidth: 80 }}>
+                  <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                    {r.module} · {r.subject}
+                  </span>
+                  <div style={{ marginTop: 4, display: 'flex', alignItems: 'center', gap: 6 }}>
+                    {r.mode === 'warrior'
+                      ? <GiCrossedSwords color={r.passed ? '#FFD700' : '#e74c3c'} />
+                      : <FaBook color="#6c63ff" />
+                    }
+                    <span style={{ color: r.mode === 'warrior' ? (r.passed ? '#FFD700' : '#e74c3c') : '#a29bfe', fontWeight: 700, fontSize: '0.85rem' }}>
+                      {r.mode === 'warrior' ? (r.passed ? 'PASSED' : 'FAILED') : 'Practice'}
+                    </span>
+                  </div>
+                </div>
+
+                <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', gap: 2, marginBottom: 4 }}>
+                    {Array.from({ length: 10 }).map((_, si) => (
+                      si < r.stars
+                        ? <FaStar key={si} color="#FFD700" style={{ fontSize: '0.85rem' }} />
+                        : <FaRegStar key={si} color="rgba(255,255,255,0.2)" style={{ fontSize: '0.85rem' }} />
+                    ))}
+                    <span style={{ color: '#FFD700', fontWeight: 700, marginLeft: 6, fontSize: '0.9rem' }}>{r.stars}/10</span>
+                  </div>
+                  {r.bonusStars > 0 && (
+                    <span style={{ color: '#a29bfe', fontSize: '0.78rem', fontWeight: 600 }}>
+                      +{r.bonusStars} speed bonus · {r.totalStars} total stars
+                    </span>
+                  )}
+                </div>
+
+                <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem', whiteSpace: 'nowrap' }}>
+                  {new Date(r.completedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
+                </span>
+              </motion.div>
+            ))}
+          </div>
         )}
       </div>
 

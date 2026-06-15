@@ -109,6 +109,29 @@ export const logDashboardSession = createAsyncThunk(
   }
 )
 
+export const logRoundResult = createAsyncThunk(
+  'dashboard/logRound',
+  async (roundData, { rejectWithValue }) => {
+    try {
+      return await apiFetch(`${BASE}/dashboard/log-round`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...authHeaders() },
+        body: JSON.stringify(roundData),
+      })
+    } catch (e) { return rejectWithValue(e.message) }
+  }
+)
+
+export const fetchRounds = createAsyncThunk(
+  'dashboard/fetchRounds',
+  async (limit = 20, { rejectWithValue }) => {
+    try {
+      const json = await apiFetch(`${BASE}/dashboard/rounds?limit=${limit}`)
+      return json.data
+    } catch (e) { return rejectWithValue(e.message) }
+  }
+)
+
 const dashboardSlice = createSlice({
   name: 'dashboard',
   initialState: {
@@ -118,6 +141,7 @@ const dashboardSlice = createSlice({
     performance: [],
     moduleStars: {},
     answers: [],
+    rounds: [],
     status: 'idle',
     error: null,
   },
@@ -138,6 +162,7 @@ const dashboardSlice = createSlice({
       .addCase(fetchDashboardPerformance.fulfilled,  (state, { payload }) => { state.performance = payload })
       .addCase(fetchModuleStars.fulfilled,           (state, { payload }) => { state.moduleStars = payload || {} })
       .addCase(fetchDashboardAnswers.fulfilled,      (state, { payload }) => { state.answers = payload || [] })
+      .addCase(fetchRounds.fulfilled,               (state, { payload }) => { state.rounds = payload || [] })
   },
 })
 

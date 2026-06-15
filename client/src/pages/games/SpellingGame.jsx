@@ -21,7 +21,9 @@ import {
   nextWord,
   resetWord,
 } from "../../store/slices/spellEnglishSlice";
-import { logDashboardSession, logDashboardAnswer } from "../../store/slices/dashboardSlice";
+import { logDashboardSession, logDashboardAnswer, logRoundResult } from "../../store/slices/dashboardSlice";
+import { getWarriorBonus } from "../../utils/warriorBonus";
+import RoundComplete from "../../components/RoundComplete/RoundComplete";
 
 const shuffle = (arr) => [...arr].sort(() => Math.random() - 0.5);
 
@@ -40,9 +42,15 @@ const SpellingGame = () => {
   const [mode, setMode] = useState("practice");
   const [timeLeft, setTimeLeft] = useState(30);
   const [timeTaken, setTimeTaken] = useState(null);
+  const [roundDone, setRoundDone] = useState(false);
+  const [roundResult, setRoundResult] = useState({ stars: 0, bonusStars: 0 });
+
+  // Round accumulation via refs (snapshotted into roundResult on finish)
+  const roundStarsRef = useRef(0);
+  const roundBonusRef = useRef(0);
 
   const wordStartRef = useRef(new Date().toISOString());
-  const answerPerfStartRef = useRef(performance.now());
+  const answerPerfStartRef = useRef(null);
   const prevXpRef = useRef(0);
   const sessionLoggedRef = useRef(false);
 
@@ -67,6 +75,19 @@ const SpellingGame = () => {
     sessionLoggedRef.current = false;
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, current?.id]);
+
+  // Accumulate round stars when a result comes in
+  useEffect(() => {
+    if (!result) return;
+    const elapsed = parseFloat(((performance.now() - (answerPerfStartRef.current ?? performance.now())) / 1000).toFixed(1));
+    if (result === "correct") {
+      roundStarsRef.current += 1;
+      if (mode === "warrior") {
+        roundBonusRef.current += getWarriorBonus(elapsed);
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result]);
 
   useEffect(() => {
     if (result === "correct") {
@@ -148,9 +169,38 @@ const SpellingGame = () => {
     if (current) buildLetterPool(current.word);
   };
 
+  const finishRound = () => {
+    const s = roundStarsRef.current;
+    const b = roundBonusRef.current;
+    dispatch(logRoundResult({
+      module: "spelling",
+      subject: "english",
+      mode,
+      stars: s,
+      bonusStars: b,
+      totalStars: s + b,
+      passed: mode === "warrior" ? s >= 6 : undefined,
+    }));
+    setRoundResult({ stars: s, bonusStars: b });
+    setRoundDone(true);
+  };
+
   const handleNext = () => {
+    if (currentIndex === words.length - 1) {
+      finishRound();
+    } else {
+      setTimeLeft(30);
+      dispatch(nextWord());
+    }
+  };
+
+  const handlePlayAgain = () => {
+    setRoundDone(false);
+    setRoundResult({ stars: 0, bonusStars: 0 });
+    roundStarsRef.current = 0;
+    roundBonusRef.current = 0;
+    dispatch({ type: "spellEnglish/resetGame" });
     setTimeLeft(30);
-    dispatch(nextWord());
   };
 
   const handleModeChange = (m) => {
@@ -160,21 +210,25 @@ const SpellingGame = () => {
 
   // Warrior mode countdown
   useEffect(() => {
-    if (mode !== "warrior" || result) return;
+    if (mode !== "warrior" || result || roundDone) return;
     const startTime = performance.now();
     const interval = setInterval(() => {
       const remaining = 30 - Math.floor((performance.now() - startTime) / 1000);
       if (remaining <= 0) {
         clearInterval(interval);
-        setTimeLeft(30);
-        dispatch(nextWord());
+        if (currentIndex === words.length - 1) {
+          finishRound();
+        } else {
+          setTimeLeft(30);
+          dispatch(nextWord());
+        }
       } else {
         setTimeLeft(remaining);
       }
     }, 500);
     return () => clearInterval(interval);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, currentIndex, result]);
+  }, [mode, currentIndex, result, roundDone]);
 
   if (status === "loading" || status === "idle") {
     return (
@@ -349,7 +403,7 @@ const SpellingGame = () => {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      Next →
+                      {currentIndex === words.length - 1 ? "Finish Round" : "Next →"}
                     </FramerMotion.motion.button>
                   </div>
                 </FramerMotion.motion.div>
@@ -371,6 +425,20 @@ const SpellingGame = () => {
             Perfect Spelling!
             <FaStar color="#FFD700" style={{ marginLeft: 8, verticalAlign: "middle" }} />
           </FramerMotion.motion.div>
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {roundDone && (
+          <RoundComplete
+            module="spelling"
+            subject="english"
+            mode={mode}
+            stars={roundResult.stars}
+            bonusStars={roundResult.bonusStars}
+            onPlayAgain={handlePlayAgain}
+            onBack={() => { playSlide(); navigate("/games"); }}
+          />
         )}
       </AnimatePresence>
     </FramerMotion.motion.div>

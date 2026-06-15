@@ -7,7 +7,8 @@ import * as FramerMotion from "framer-motion";
 import { fetchScienceSpeakPrompts, resetScienceSpeakPrompts } from "../../store/slices/speakScienceSlice";
 import { fetchMathsSpeakPrompts, resetMathsSpeakPrompts } from "../../store/slices/speakMathsSlice";
 import { fetchEnglishSpeakPrompts } from "../../store/slices/speakEnglishSlice";
-import { logDashboardSession } from "../../store/slices/dashboardSlice";
+import { logDashboardSession, logRoundResult } from "../../store/slices/dashboardSlice";
+import RoundComplete from "../../components/RoundComplete/RoundComplete";
 import styles from "./SpeakModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
 import { getQuestionLang } from "../../utils/questionLang";
@@ -97,6 +98,11 @@ const SpeakModule = () => {
   const [recordings, setRecordings] = useState([]);
   const [encouragement, setEncouragement] = useState("");
   const [showEncouragement, setShowEncouragement] = useState(false);
+  const [roundDone, setRoundDone] = useState(false);
+  const [roundResult, setRoundResult] = useState({ stars: 0, bonusStars: 0 });
+
+  // Track which prompt indices were recorded
+  const recordedPromptsRef = useRef(new Set());
 
   const mediaRecorder = useRef(null);
   const chunks = useRef([]);
@@ -154,6 +160,7 @@ const SpeakModule = () => {
           ...prev,
           { url, promptIdx: idx, label: `${t("modules.speak.recording").replace("…", "")} ${prev.length + 1}` },
         ]);
+        recordedPromptsRef.current.add(idx);
         stream.getTracks().forEach((tr) => tr.stop());
 
         const randKey = encKeys[Math.floor(Math.random() * encKeys.length)];
@@ -189,8 +196,26 @@ const SpeakModule = () => {
     setIsRecording(false);
   };
 
-  const nextPrompt = () => setIdx((prev) => (prev + 1) % prompts.length);
-  const prevPrompt = () => setIdx((prev) => (prev - 1 + prompts.length) % prompts.length);
+  const finishRound = () => {
+    const s = recordedPromptsRef.current.size;
+    dispatch(logRoundResult({
+      module: "speak",
+      subject: subject || "general",
+      mode,
+      stars: s,
+      bonusStars: 0,
+      totalStars: s,
+      passed: mode === "warrior" ? s >= 6 : undefined,
+    }));
+    setRoundResult({ stars: s, bonusStars: 0 });
+    setRoundDone(true);
+  };
+
+  const nextPrompt = () => {
+    if (idx === prompts.length - 1) { finishRound(); return; }
+    setIdx((prev) => prev + 1);
+  };
+  const prevPrompt = () => setIdx((prev) => Math.max(0, prev - 1));
 
   if (activeStatus === "loading") {
     return (
@@ -317,8 +342,9 @@ const SpeakModule = () => {
                 onClick={() => { playBtn(); nextPrompt(); }}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
+                style={idx === prompts.length - 1 ? { background: "linear-gradient(135deg,#6c63ff,#8e85ff)", color: "#fff", padding: "8px 18px", borderRadius: 10, fontSize: "0.9rem" } : {}}
               >
-                ›
+                {idx === prompts.length - 1 ? "Finish Round" : "›"}
               </FramerMotion.motion.button>
             </div>
 
@@ -408,6 +434,27 @@ const SpeakModule = () => {
           )}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {roundDone && (
+          <RoundComplete
+            module="speak"
+            subject={subject || "general"}
+            mode={mode}
+            stars={roundResult.stars}
+            bonusStars={roundResult.bonusStars}
+            onPlayAgain={() => {
+              setRoundDone(false);
+              setRoundResult({ stars: 0, bonusStars: 0 });
+              recordedPromptsRef.current = new Set();
+              setIdx(0);
+              setRecordings([]);
+              setSelectedMood(null);
+            }}
+            onBack={() => { playSlide(); navigate(`/subject/${subject}`); }}
+          />
+        )}
+      </AnimatePresence>
     </FramerMotion.motion.div>
   );
 };
