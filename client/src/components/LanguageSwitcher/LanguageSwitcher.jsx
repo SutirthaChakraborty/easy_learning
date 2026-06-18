@@ -7,12 +7,6 @@ import styles from "./LanguageSwitcher.module.css";
 // Add a new entry here to expose a new language across the entire app.
 export const LANGUAGES = [
   { code: "en", name: "English",    flag: "🇺🇸", native: "English"    },
-  { code: "hi", name: "Hindi",      flag: "🇮🇳", native: "हिंदी"       },
-  { code: "bn", name: "Bengali",    flag: "🇧🇩", native: "বাংলা"       },
-  { code: "mr", name: "Marathi",    flag: "🇮🇳", native: "मराठी"       },
-  { code: "ta", name: "Tamil",      flag: "🇮🇳", native: "தமிழ்"       },
-  { code: "te", name: "Telugu",     flag: "🇮🇳", native: "తెలుగు"      },
-  { code: "ur", name: "Urdu",       flag: "🇵🇰", native: "اردو"        },
   { code: "es", name: "Spanish",    flag: "🇪🇸", native: "Español"    },
   { code: "pt", name: "Portuguese", flag: "🇧🇷", native: "Português"  },
   { code: "fr", name: "French",     flag: "🇫🇷", native: "Français"   },
@@ -21,7 +15,6 @@ export const LANGUAGES = [
   { code: "nl", name: "Dutch",      flag: "🇳🇱", native: "Nederlands" },
   { code: "ru", name: "Russian",    flag: "🇷🇺", native: "Русский"    },
   { code: "tr", name: "Turkish",    flag: "🇹🇷", native: "Türkçe"     },
-  { code: "ar", name: "Arabic",     flag: "🇸🇦", native: "العربية"    },
   { code: "zh", name: "Chinese",    flag: "🇨🇳", native: "中文"        },
   { code: "ja", name: "Japanese",   flag: "🇯🇵", native: "日本語"      },
   { code: "ko", name: "Korean",     flag: "🇰🇷", native: "한국어"       },

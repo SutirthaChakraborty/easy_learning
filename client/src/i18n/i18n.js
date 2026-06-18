@@ -4,12 +4,12 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 
 // Languages that require RTL (right-to-left) text direction
-export const RTL_LANGUAGES = ['ar', 'he', 'ur'];
+export const RTL_LANGUAGES = ['he'];
 
 // All supported language codes
 export const SUPPORTED_LANGUAGES = [
-  'en', 'hi', 'bn', 'es', 'fr', 'de', 'ar', 'zh', 'ja', 'ru', 'pt',
-  'it', 'ko', 'tr', 'nl', 'ta', 'te', 'mr', 'ur', 'id', 'vi',
+  'en', 'es', 'fr', 'de', 'zh', 'ja', 'ru', 'pt',
+  'it', 'ko', 'tr', 'nl', 'id', 'vi',
 ];
 
 i18n

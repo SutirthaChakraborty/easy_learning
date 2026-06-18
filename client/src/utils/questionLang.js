@@ -1,4 +1,4 @@
-const QUESTION_EN_FALLBACK = new Set(['hi', 'ur', 'ar', 'te', 'bn', 'ta', 'mr']);
+const QUESTION_EN_FALLBACK = new Set([]);
 
 /**
  * Returns 'en' for languages that should show English question content,
