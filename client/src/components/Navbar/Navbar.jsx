@@ -37,18 +37,6 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div className={styles.dropdown}>
-          <NavLink to="/games" className={styles.btn2} onClick={close}>
-            {t("navbar.games")}
-          </NavLink>
-        </div>
-
-        <div className={styles.dropdown}>
-          <NavLink to="/subject/english" className={styles.btn3} onClick={close}>
-            {t("navbar.lessons")}
-          </NavLink>
-        </div>
-
         {user ? (
           <div className={styles.userArea}>
             <NavLink to="/dashboard" className={styles.dashboardLink} onClick={close}>
