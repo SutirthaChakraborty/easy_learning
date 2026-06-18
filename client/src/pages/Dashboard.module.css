@@ -11,7 +11,7 @@
 .dashboard {
   min-height: 100vh;
   background:
-    linear-gradient(160deg, rgba(13,17,23,0.82) 0%, rgba(22,27,38,0.82) 60%, rgba(26,31,46,0.82) 100%),
+    /* linear-gradient(160deg, rgba(13,17,23,0.82) 0%, rgba(22,27,38,0.82) 60%, rgba(26,31,46,0.82) 100%), */
     url('/dashboardbg.png') center / cover no-repeat fixed;
   padding: 32px 24px 60px;
   color: #e6edf3;
