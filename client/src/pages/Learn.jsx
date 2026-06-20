@@ -11,7 +11,7 @@ import styles from "./Learn.module.css";
 import { FaStar, FaQuestion } from "react-icons/fa";
 import { GiPartyPopper } from "react-icons/gi";
 
-import { fetchLearnQuestions } from "../store/slices/learnSlice";
+import { fetchLearnQuestions, resetLearnQuestions } from "../store/slices/learnSlice";
 import { logRoundResult } from "../store/slices/dashboardSlice";
 import { getQuestionLang } from "../utils/questionLang";
 import LanguageSwitcher from "../components/LanguageSwitcher/LanguageSwitcher";
@@ -34,8 +34,6 @@ const Learn = () => {
   const { questions, status, error } = useSelector((state) => state.learn);
   const { i18n } = useTranslation();
 
-  const lang = getQuestionLang(i18n.language).split("-")[0].toLowerCase();
-
   const [roundQuestions, setRoundQuestions] = useState([]);
   const [roundIndex, setRoundIndex] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -54,9 +52,12 @@ const Learn = () => {
     nextSound.current = new Audio(nextSoundFile);
   }, []);
 
+  // Fetch on mount and re-fetch whenever language changes
   useEffect(() => {
-    if (status === "idle") dispatch(fetchLearnQuestions());
-  }, [status, dispatch]);
+    const qLang = getQuestionLang(i18n.language);
+    dispatch(resetLearnQuestions());
+    dispatch(fetchLearnQuestions(qLang));
+  }, [i18n.language]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Pick a fresh round whenever questions are first loaded
   useEffect(() => {
@@ -73,19 +74,6 @@ const Learn = () => {
     roundStarsRef.current = 0;
   };
 
-  // Returns translated fields for a question based on current language
-  const getTranslated = (q) => {
-    if (!q) return null;
-    const tr = q.translations?.[lang] || q.translations?.en || {};
-    return {
-      title:    tr.title    || q.title,
-      content:  tr.content  || q.content,
-      question: tr.question || q.question,
-      options:  tr.options  || q.options,
-      answer:   tr.answer   || q.answer,
-    };
-  };
-
   const playSound = (soundRef) => {
     if (soundRef?.current) {
       soundRef.current.currentTime = 0;
@@ -96,8 +84,7 @@ const Learn = () => {
   const handleAnswer = (option) => {
     if (selected) return;
     setSelected(option);
-    const translated = getTranslated(roundQuestions[roundIndex]);
-    if (option === translated?.answer) {
+    if (option === roundQuestions[roundIndex]?.answer) {
       playSound(correctSound);
       setScore((prev) => prev + 1);
       roundStarsRef.current += 1;
@@ -165,7 +152,6 @@ const Learn = () => {
   if (!roundQuestions.length) return null;
 
   const story = roundQuestions[roundIndex];
-  const translated = getTranslated(story);
   const isLastQuestion = roundIndex + 1 >= ROUND_SIZE;
 
   return (
@@ -192,25 +178,25 @@ const Learn = () => {
           transition={{ duration: 0.4 }}
         >
           <div className={styles.titleBox}>
-            <h1 className={styles.title}>{translated.title}</h1>
+            <h1 className={styles.title}>{story.title}</h1>
             <span className={styles.storyIcon}>{story.emoji}</span>
           </div>
 
-          <div className={styles.storyBox}>{translated.content}</div>
+          <div className={styles.storyBox}>{story.content}</div>
 
           <h3 className={styles.question}>
             <FaQuestion style={{ marginRight: 8, verticalAlign: "middle", color: "#a29bfe" }} />
-            {translated.question}
+            {story.question}
           </h3>
 
           <div className={styles.options}>
-            {translated.options.map((opt, i) => (
+            {story.options.map((opt, i) => (
               <motion.button
                 key={i}
                 className={`${styles.option}
-                  ${selected === opt && opt === translated.answer ? styles.correct : ""}
-                  ${selected === opt && opt !== translated.answer ? styles.wrong : ""}
-                  ${selected && opt === translated.answer && selected !== opt ? styles.showCorrect : ""}`}
+                  ${selected === opt && opt === story.answer ? styles.correct : ""}
+                  ${selected === opt && opt !== story.answer ? styles.wrong : ""}
+                  ${selected && opt === story.answer && selected !== opt ? styles.showCorrect : ""}`}
                 onClick={() => handleAnswer(opt)}
                 disabled={!!selected}
                 initial={{ opacity: 0, x: -20 }}
@@ -233,14 +219,14 @@ const Learn = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
               >
-                {selected === translated.answer ? (
+                {selected === story.answer ? (
                   <p className={styles.correctText}>
                     <GiPartyPopper style={{ marginRight: 6, verticalAlign: "middle" }} />
                     Brilliant! +1 Star
                   </p>
                 ) : (
                   <p className={styles.wrongText}>
-                    The answer was: {translated.answer}
+                    The answer was: {story.answer}
                   </p>
                 )}
 

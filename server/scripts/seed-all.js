@@ -14,6 +14,7 @@ const mongoose = require('mongoose')
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
 // Models
+const Learn         = require('../models/Learn')
 const ReadScience   = require('../models/ReadScience')
 const ReadMaths     = require('../models/ReadMaths')
 const ListenScience = require('../models/ListenScience')
@@ -27,6 +28,7 @@ const MemoryMatch   = require('../models/MemoryMatch')
 const WordPuzzle    = require('../models/WordPuzzle')
 
 const SEEDS = [
+  { model: Learn,         file: 'learn.json',          name: 'Learn'         },
   { model: ReadScience,   file: 'read_science.json',   name: 'ReadScience'   },
   { model: ReadMaths,     file: 'read_maths.json',     name: 'ReadMaths'     },
   { model: ListenScience, file: 'listen_science.json', name: 'ListenScience' },
