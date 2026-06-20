@@ -4,25 +4,49 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 20px;
+  padding: 90px 20px 20px;
   background-image: url('../assets/bg1.jpg');
   background-size: cover;
   background-position: center;
   position: relative;
 }
 
+/* TOP BAR — language switcher (left) + score (right) */
+.topBar {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+}
+
 /* SCORE */
 .score {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   background: rgb(23, 23, 23);
   padding: 10px 18px;
   border-radius: 30px;
   font-weight: bold;
   color: #ffffff;
-  z-index: 10;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* PROGRESS INDICATOR */
+.progress {
+  position: absolute;
+  top: 62px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.8);
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(0,0,0,0.45);
+  padding: 4px 16px;
+  border-radius: 20px;
+  z-index: 10;
+  white-space: nowrap;
 }
 
 /* CARD */
@@ -120,6 +144,7 @@
 
 .correct { background: #2ecc71; color: white; transform: scale(1.05); }
 .wrong { background: #e74c3c; color: white; animation: shake 0.3s; }
+.showCorrect { background: rgba(46,204,113,0.35) !important; border: 2px solid #2ecc71; }
 
 @keyframes shake {
   0% { transform: translateX(0); }
