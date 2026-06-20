@@ -64,6 +64,7 @@ const WriteModule = () => {
   const [idx, setIdx] = useState(0);
   const [tool, setTool] = useState("pen");
   const [stars, setStars] = useState(null);
+  const [similarityPct, setSimilarityPct] = useState(null);
   const [showCelebration, setShowCelebration] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
   const [isDrawing, setIsDrawing] = useState(false);
@@ -126,6 +127,7 @@ const WriteModule = () => {
 
   useEffect(() => {
     setStars(null);
+    setSimilarityPct(null);
     setShowCelebration(false);
   }, [idx]);
 
@@ -174,30 +176,142 @@ const WriteModule = () => {
   const clearCanvas = () => {
     initCanvas();
     setStars(null);
+    setSimilarityPct(null);
   };
 
   const checkDrawing = () => {
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    const imgData = imageData.data;
-    let darkPixels = 0;
-    for (let i = 0; i < imgData.length; i += 4) {
-      if (imgData[i] < 180 && imgData[i + 1] < 180 && imgData[i + 2] < 220) darkPixels++;
+    const W = canvas.width, H = canvas.height;
+
+    // Render reference character onto an offscreen canvas
+    const refCanvas = document.createElement("canvas");
+    refCanvas.width = W;
+    refCanvas.height = H;
+    const refCtx = refCanvas.getContext("2d");
+    refCtx.fillStyle = "#f0f8ff";
+    refCtx.fillRect(0, 0, W, H);
+    const fontSize = Math.min(W, H) * 0.55;
+    refCtx.font = `bold ${fontSize}px Arial, sans-serif`;
+    refCtx.fillStyle = "#1a1a2e";
+    refCtx.textAlign = "center";
+    refCtx.textBaseline = "middle";
+    refCtx.fillText(current.character, W / 2, H / 2);
+
+    // Downscale both to 64×64 for efficient comparison
+    const GRID = 64;
+    const small = document.createElement("canvas");
+    small.width = GRID;
+    small.height = GRID;
+    const sc = small.getContext("2d");
+
+    sc.drawImage(canvas, 0, 0, GRID, GRID);
+    const uData = sc.getImageData(0, 0, GRID, GRID).data;
+    sc.clearRect(0, 0, GRID, GRID);
+    sc.drawImage(refCanvas, 0, 0, GRID, GRID);
+    const rData = sc.getImageData(0, 0, GRID, GRID).data;
+
+    // Binarize: mark pixels significantly darker than the #f0f8ff background as ink
+    const BG = [240, 248, 255];
+    const THRESH = 30;
+    const uMask = new Array(GRID * GRID);
+    const rMask = new Array(GRID * GRID);
+    for (let i = 0; i < GRID * GRID; i++) {
+      const p = i * 4;
+      uMask[i] = (Math.abs(uData[p] - BG[0]) + Math.abs(uData[p + 1] - BG[1]) + Math.abs(uData[p + 2] - BG[2])) > THRESH;
+      rMask[i] = (Math.abs(rData[p] - BG[0]) + Math.abs(rData[p + 1] - BG[1]) + Math.abs(rData[p + 2] - BG[2])) > THRESH;
     }
-    const coverage = darkPixels / (canvas.width * canvas.height);
+
+    // Find bounding box of ink pixels in each mask
+    const getBBox = (mask) => {
+      let minX = GRID, maxX = -1, minY = GRID, maxY = -1;
+      for (let y = 0; y < GRID; y++) {
+        for (let x = 0; x < GRID; x++) {
+          if (mask[y * GRID + x]) {
+            if (x < minX) minX = x;
+            if (x > maxX) maxX = x;
+            if (y < minY) minY = y;
+            if (y > maxY) maxY = y;
+          }
+        }
+      }
+      return maxX >= 0 ? { x: minX, y: minY, w: maxX - minX + 1, h: maxY - minY + 1 } : null;
+    };
+
+    const uBBox = getBBox(uMask);
+    const rBBox = getBBox(rMask);
+
+    if (!uBBox || !rBBox) {
+      setSimilarityPct(0);
+      setStars(0);
+      return;
+    }
+
+    // Normalize both drawings to a 32×32 grid by their bounding boxes
+    // so position and scale differences don't hurt the comparison
+    const NORM = 32;
+    const normToBBox = (mask, bbox) => {
+      const out = new Array(NORM * NORM).fill(false);
+      for (let ty = 0; ty < NORM; ty++) {
+        for (let tx = 0; tx < NORM; tx++) {
+          const sx = Math.round(bbox.x + (tx / (NORM - 1)) * (bbox.w - 1));
+          const sy = Math.round(bbox.y + (ty / (NORM - 1)) * (bbox.h - 1));
+          if (sx >= 0 && sx < GRID && sy >= 0 && sy < GRID && mask[sy * GRID + sx]) {
+            out[ty * NORM + tx] = true;
+          }
+        }
+      }
+      return out;
+    };
+
+    const uNorm = normToBBox(uMask, uBBox);
+    const rNorm = normToBBox(rMask, rBBox);
+
+    // Morphological dilation: expand each ink pixel by 1px for 3 rounds
+    // so near-misses in shape still register as matches
+    const dilate = (mask) => {
+      const out = mask.slice();
+      for (let y = 0; y < NORM; y++) {
+        for (let x = 0; x < NORM; x++) {
+          if (mask[y * NORM + x]) {
+            for (let dy = -1; dy <= 1; dy++) {
+              for (let dx = -1; dx <= 1; dx++) {
+                const nx = x + dx, ny = y + dy;
+                if (nx >= 0 && nx < NORM && ny >= 0 && ny < NORM) out[ny * NORM + nx] = true;
+              }
+            }
+          }
+        }
+      }
+      return out;
+    };
+
+    let dUser = uNorm, dRef = rNorm;
+    for (let i = 0; i < 3; i++) { dUser = dilate(dUser); dRef = dilate(dRef); }
+
+    // Dice coefficient: 2×|A∩B| / (|A|+|B|)
+    let intersection = 0, uCount = 0, rCount = 0;
+    for (let i = 0; i < NORM * NORM; i++) {
+      if (dUser[i]) uCount++;
+      if (dRef[i]) rCount++;
+      if (dUser[i] && dRef[i]) intersection++;
+    }
+
+    const pct = (uCount + rCount) === 0 ? 0 : Math.round((2 * intersection / (uCount + rCount)) * 100);
+    setSimilarityPct(pct);
+
     let earned;
-    if (coverage > 0.04) earned = 3;
-    else if (coverage > 0.015) earned = 2;
-    else if (coverage > 0.004) earned = 1;
+    if (pct >= 80) earned = 3;
+    else if (pct >= 50) earned = 2;
+    else if (pct >= 30) earned = 1;
     else earned = 0;
+
     setStars(earned);
     if (earned >= 2) {
       setTotalScore((s) => s + earned);
       setShowCelebration(true);
       setTimeout(() => setShowCelebration(false), 2000);
     }
-    // Award round star once per question (first time they get ≥ 1 stars)
+    // Award round star once per question (first time they get ≥ 1 star)
     if (earned >= 1 && !questionAnsweredRef.current) {
       questionAnsweredRef.current = true;
       roundStarsRef.current += 1;
@@ -386,17 +500,17 @@ const WriteModule = () => {
                       </FramerMotion.motion.span>
                     ))}
                   </div>
-                  <p className={styles.starMsg}>{starMsg()}</p>
-                  {mode === "warrior" && stars < 3 && (
-                    <p style={{ color: "#ffd700", fontSize: "0.85rem", margin: "4px 0 6px", textAlign: "center" }}><GiCrossedSwords /> Keep trying for 3 stars!</p>
+                  {similarityPct !== null && (
+                    <p style={{ color: "#a0e8ff", fontSize: "0.88rem", margin: "6px 0 2px", textAlign: "center", fontWeight: 600 }}>
+                      your figure is {similarityPct}% similar with the main
+                    </p>
                   )}
+                  <p className={styles.starMsg}>{starMsg()}</p>
                   <FramerMotion.motion.button
                     className={styles.nextBtn}
                     onClick={() => { playBtn(); nextCharacter(); }}
-                    disabled={mode === "warrior" && stars < 3}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    style={mode === "warrior" && stars < 3 ? { opacity: 0.45, cursor: "not-allowed" } : {}}
                   >
                     {idx === data.length - 1 ? "Finish Round" : t("modules.next")}
                   </FramerMotion.motion.button>

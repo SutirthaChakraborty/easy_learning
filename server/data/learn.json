@@ -8,102 +8,102 @@
         "answer": "Happy",
         "translations": {
             "en": {
-                "title": "Feeling Happy",
-                "content": "Nila jumped out of bed with a big smile. It was her favourite day. She felt happy and full of energy.",
-                "question": "How did Nila feel?",
-                "options": ["Tired", "Happy", "Angry"],
-                "answer": "Happy"
+            "title": "Feeling Happy",
+            "content": "Nila jumped out of bed with a big smile. It was her favourite day. She felt happy and full of energy.",
+            "question": "How did Nila feel?",
+            "options": ["Tired", "Happy", "Angry"],
+            "answer": "Happy"
             },
             "es": {
-                "title": "Sentirse feliz",
-                "content": "Nila saltó de la cama con una gran sonrisa. Era su día favorito. Se sentía feliz y llena de energía.",
-                "question": "¿Cómo se sentía Nila?",
-                "options": ["Cansada", "Feliz", "Enojada"],
-                "answer": "Feliz"
-                "translations": {
-                    "en": {"title":"The Shy Girl","content":"Rosa never spoke in group games. One day, a boy asked her to join. She nodded yes. She loved the game and made three friends.","question":"What happened when Rosa joined the game?","options":["She left early","She loved it and made friends","She stayed quiet"],"answer":"She loved it and made friends"},
-                    "es": {"title":"La chica tímida","content":"Rosa nunca hablaba en los juegos de grupo. Un día, un niño le pidió que se uniera. Ella asintió. Le encantó el juego y hizo tres amigos.","question":"¿Qué pasó cuando Rosa se unió al juego?","options":["Se fue temprano","Le encantó y hizo amigos","Se quedó callada"],"answer":"Le encantó y hizo amigos"},
-                    "fr": {"title":"La fille timide","content":"Rosa ne parlait jamais dans les jeux de groupe. Un jour, un garçon lui a demandé de se joindre. Elle a hoché la tête. Elle a adoré le jeu et s'est fait trois amis.","question":"Que s'est-il passé lorsque Rosa a rejoint le jeu ?","options":["Elle est partie tôt","Elle a adoré et s'est fait des amis","Elle est restée silencieuse"],"answer":"Elle a adoré et s'est fait des amis"},
-                    "de": {"title":"Das schüchterne Mädchen","content":"Rosa sprach nie bei Gruppenspielen. Eines Tages bat ein Junge sie mitzumachen. Sie nickte. Sie liebte das Spiel und fand drei Freunde.","question":"Was geschah, als Rosa dem Spiel beitrat?","options":["Sie ging früh weg","Sie liebte es und fand Freunde","Sie blieb still"],"answer":"Sie liebte es und fand Freunde"},
-                    "zh": {"title":"害羞的女孩","content":"罗莎在集体游戏中从不说话。一天，一个男孩邀请她加入。她点头同意。她喜欢这个游戏并交了三个朋友。","question":"当罗莎加入游戏时发生了什么？","options":["她早早离开了","她喜欢并交到了朋友","她保持沉默"],"answer":"她喜欢并交到了朋友"},
-                    "ja": {"title":"恥ずかしがり屋の少女","content":"ローサはグループゲームで決して話しませんでした。ある日、男の子が参加するように頼みました。彼女はうなずきました。彼女はそのゲームが大好きになり、3 人の友達ができました。","question":"ローサがゲームに参加したとき、何が起こりましたか？","options":["彼女は早く去った","彼女はそれを気に入り友達ができた","彼女は黙っていた"],"answer":"彼女はそれを気に入り友達ができた"},
-                    "ru": {"title":"Застенчивая девочка","content":"Роза никогда не говорила в групповых играх. Однажды мальчик попросил её присоединиться. Она кивнула. Ей понравилась игра, и она завела трёх друзей.","question":"Что произошло, когда Роза присоединилась к игре?","options":["Она ушла раньше","Ей понравилось и она завела друзей","Она молчала"],"answer":"Ей понравилось и она завела друзей"},
-                    "pt": {"title":"A menina tímida","content":"Rosa nunca falava nos jogos de grupo. Um dia, um menino pediu que ela se juntasse. Ela assentiu. Ela adorou o jogo e fez três amigos.","question":"O que aconteceu quando Rosa se juntou ao jogo?","options":["Ela saiu cedo","Ela adorou e fez amigos","Ela ficou em silêncio"],"answer":"Ela adorou e fez amigos"},
-                    "it": {"title":"La ragazza timida","content":"Rosa non parlava mai nei giochi di gruppo. Un giorno, un ragazzo le chiese di unirsi. Lei annuì. Le piacque il gioco e fece tre amici.","question":"Cosa è successo quando Rosa si è unita al gioco?","options":["Se n'è andata presto","Le è piaciuto e ha fatto amicizie","È rimasta in silenzio"],"answer":"Le è piaciuto e ha fatto amicizie"},
-                    "ko": {"title":"수줍은 소녀","content":"로사는 그룹 게임에서 절대 말하지 않았어요. 어느 날, 한 소년이 그녀에게 함께 하자고 했어요. 그녀는 고개를 끄덕였어요. 그녀는 그 게임을 좋아하게 되었고 세 명의 친구를 사귀었어요.","question":"로사가 게임에 참여했을 때 무슨 일이 일어났나요?","options":["그녀는 일찍 떠났다","그녀는 좋아했고 친구를 사귀었다","그녀는 조용히 있었다"],"answer":"그녀는 좋아했고 친구를 사귀었다"},
-                    "tr": {"title":"Utangaç kız","content":"Rosa grup oyunlarında asla konuşmazdı. Bir gün bir çocuk ona katılmasını istedi. O başıyla onayladı. Oyunu çok sevdi ve üç arkadaş edindi.","question":"Rosa oyuna katıldığında ne oldu?","options":["Erken ayrıldı","Oyunu sevdi ve arkadaş edindi","Sessiz kaldı"],"answer":"Oyunu sevdi ve arkadaş edindi"},
-                    "nl": {"title":"Het verlegen meisje","content":"Rosa sprak nooit tijdens groepsspelletjes. Op een dag vroeg een jongen haar om mee te doen. Ze knikte ja. Ze vond het spel leuk en kreeg drie vrienden.","question":"Wat gebeurde er toen Rosa meedeed met het spel?","options":["Ze ging vroeg weg","Ze vond het leuk en kreeg vrienden","Ze bleef stil"],"answer":"Ze vond het leuk en kreeg vrienden"},
-                    "id": {"title":"Gadis Pemalu","content":"Rosa tidak pernah bicara dalam permainan kelompok. Suatu hari, seorang anak menanyakan apakah dia mau bergabung. Dia mengangguk. Dia menyukai permainannya dan mendapatkan tiga teman.","question":"Apa yang terjadi ketika Rosa bergabung dengan permainan?","options":["Dia pergi lebih awal","Dia menyukainya dan berteman","Dia tetap diam"],"answer":"Dia menyukainya dan berteman"},
-                    "vi": {"title":"Cô bé nhút nhát","content":"Rosa chưa bao giờ nói trong trò chơi nhóm. Một ngày, một cậu bé mời cô tham gia. Cô gật đầu đồng ý. Cô thích trò chơi và đã kết bạn được ba người.","question":"Chuyện gì xảy ra khi Rosa tham gia trò chơi?","options":["Cô rời đi sớm","Cô thích và kết bạn","Cô giữ im lặng"],"answer":"Cô thích và kết bạn"}
-                },
-                "title": "感到快乐",
-                "content": "妮拉带着大大的微笑跳下床。那是她最喜欢的一天。她感到很高兴，充满了精力。",
-                "question": "妮拉感觉如何？",
-                "options": ["疲倦", "高兴", "生气"],
-                "answer": "高兴"
+            "title": "Sentirse feliz",
+            "content": "Nila saltó de la cama con una gran sonrisa. Era su día favorito. Se sentía feliz y llena de energía.",
+            "question": "¿Cómo se sentía Nila?",
+            "options": ["Cansada", "Feliz", "Enojada"],
+            "answer": "Feliz"
+            },
+            "fr": {
+            "title": "Se sentir heureux",
+            "content": "Nila a sauté du lit avec un grand sourire. C'était son jour préféré. Elle se sentait heureuse et pleine d'énergie.",
+            "question": "Comment Nila se sentait-elle ?",
+            "options": ["Fatiguée", "Heureuse", "En colère"],
+            "answer": "Heureuse"
+            },
+            "de": {
+            "title": "Sich glücklich fühlen",
+            "content": "Nila sprang mit einem großen Lächeln aus dem Bett. Es war ihr Lieblingstag. Sie fühlte sich glücklich und voller Energie.",
+            "question": "Wie fühlte sich Nila?",
+            "options": ["Müde", "Glücklich", "Wütend"],
+            "answer": "Glücklich"
+            },
+            "zh": {
+            "title": "感到快乐",
+            "content": "妮拉带着灿烂的笑容跳下床。这是她最喜欢的一天。她感到快乐且充满活力。",
+            "question": "妮拉感觉如何？",
+            "options": ["疲倦", "快乐", "生气"],
+            "answer": "快乐"
             },
             "ja": {
-                "title": "うれしい気持ち",
-                "content": "ニラは大きな笑顔でベッドから飛び出しました。それは彼女の大好きな日でした。彼女は幸せで元気いっぱいでした。",
-                "question": "ニラはどんな気持ちでしたか？",
-                "options": ["疲れている", "幸せ", "怒っている"],
-                "answer": "幸せ"
+            "title": "うれしい気持ち",
+            "content": "ニラは大きな笑顔でベッドから飛び出しました。それは彼女の大好きな日でした。彼女は幸せで元気いっぱいでした。",
+            "question": "ニラはどんな気持ちでしたか？",
+            "options": ["疲れている", "幸せ", "怒っている"],
+            "answer": "幸せ"
             },
             "ru": {
-                "title": "Чувство радости",
-                "content": "Нила выпрыгнула из кровати с широкой улыбкой. Это был её любимый день. Она чувствовала себя счастливой и полной энергии.",
-                "question": "Как Нила себя чувствовала?",
-                "options": ["Уставшей", "Счастливой", "Злой"],
-                "answer": "Счастливой"
+            "title": "Чувство радости",
+            "content": "Нила выпрыгнула из кровати с широкой улыбкой. Это был её любимый день. Она чувствовала себя счастливой и полной энергии.",
+            "question": "Как Нила себя чувствовала?",
+            "options": ["Уставшей", "Счастливой", "Злой"],
+            "answer": "Счастливой"
             },
             "pt": {
-                "title": "Sentindo-se feliz",
-                "content": "Nila pulou da cama com um grande sorriso. Era o seu dia favorito. Ela estava feliz e cheia de energia.",
-                "question": "Como Nila se sentia?",
-                "options": ["Cansada", "Feliz", "Zangada"],
-                "answer": "Feliz"
+            "title": "Sentindo-se feliz",
+            "content": "Nila pulou da cama com um grande sorriso. Era o seu dia favorito. Ela estava feliz e cheia de energia.",
+            "question": "Como Nila se sentia?",
+            "options": ["Cansada", "Feliz", "Zangada"],
+            "answer": "Feliz"
             },
             "it": {
-                "title": "Sentirsi felice",
-                "content": "Nila saltò giù dal letto con un grande sorriso. Era il suo giorno preferito. Si sentiva felice e piena di energia.",
-                "question": "Come si sentiva Nila?",
-                "options": ["Stanca", "Felice", "Arrabbiata"],
-                "answer": "Felice"
+            "title": "Sentirsi felice",
+            "content": "Nila saltò giù dal letto con un grande sorriso. Era il suo giorno preferito. Si sentiva felice e piena di energia.",
+            "question": "Come si sentiva Nila?",
+            "options": ["Stanca", "Felice", "Arrabbiata"],
+            "answer": "Felice"
             },
             "ko": {
-                "title": "행복한 기분",
-                "content": "닐라는 환한 미소를 지으며 침대에서 벌떡 일어났어요. 그날은 그녀가 가장 좋아하는 날이었어요. 그녀는 행복하고 에너지가 넘쳤어요.",
-                "question": "닐라는 어떤 기분이었나요?",
-                "options": ["피곤한", "행복한", "화난"],
-                "answer": "행복한"
+            "title": "행복한 기분",
+            "content": "닐라는 환한 미소를 지으며 침대에서 벌떡 일어났어요. 그날은 그녀가 가장 좋아하는 날이었어요. 그녀는 행복하고 에너지가 넘쳤어요.",
+            "question": "닐라는 어떤 기분이었나요?",
+            "options": ["피곤한", "행복한", "화난"],
+            "answer": "행복한"
             },
             "tr": {
-                "title": "Mutlu hissetmek",
-                "content": "Nila, kocaman bir gülümsemeyle yataktan fırladı. Bugün onun en sevdiği gündü. Mutlu ve enerjik hissediyordu.",
-                "question": "Nila nasıl hissetti?",
-                "options": ["Yorgun", "Mutlu", "Kızgın"],
-                "answer": "Mutlu"
+            "title": "Mutlu hissetmek",
+            "content": "Nila, kocaman bir gülümsemeyle yataktan fırladı. Bugün onun en sevdiği gündü. Mutlu ve enerjik hissediyordu.",
+            "question": "Nila nasıl hissetti?",
+            "options": ["Yorgun", "Mutlu", "Kızgın"],
+            "answer": "Mutlu"
             },
             "nl": {
-                "title": "Zich blij voelen",
-                "content": "Nila sprong uit bed met een grote glimlach. Het was haar favoriete dag. Ze voelde zich blij en vol energie.",
-                "question": "Hoe voelde Nila zich?",
-                "options": ["Moe", "Blij", "Boos"],
-                "answer": "Blij"
+            "title": "Zich blij voelen",
+            "content": "Nila sprong uit bed met een grote glimlach. Het was haar favoriete dag. Ze voelde zich blij en vol energie.",
+            "question": "Hoe voelde Nila zich?",
+            "options": ["Moe", "Blij", "Boos"],
+            "answer": "Blij"
             },
             "id": {
-                "title": "Merasa bahagia",
-                "content": "Nila melompat dari tempat tidur dengan senyum lebar. Itu adalah hari favoritnya. Dia merasa bahagia dan penuh energi.",
-                "question": "Bagaimana perasaan Nila?",
-                "options": ["Lelah", "Bahagia", "Marah"],
-                "answer": "Bahagia"
+            "title": "Merasa bahagia",
+            "content": "Nila melompat dari tempat tidur dengan senyum lebar. Itu adalah hari favoritnya. Dia merasa bahagia dan penuh energi.",
+            "question": "Bagaimana perasaan Nila?",
+            "options": ["Lelah", "Bahagia", "Marah"],
+            "answer": "Bahagia"
             },
             "vi": {
-                "title": "Cảm thấy hạnh phúc",
-                "content": "Nila nhảy khỏi giường với một nụ cười to. Đó là ngày cô ấy yêu thích. Cô cảm thấy vui và tràn đầy năng lượng.",
-                "question": "Nila cảm thấy thế nào?",
-                "options": ["Mệt mỏi", "Hạnh phúc", "Tức giận"],
-                "answer": "Hạnh phúc"
+            "title": "Cảm thấy hạnh phúc",
+            "content": "Nila nhảy khỏi giường với một nụ cười to. Đó là ngày cô ấy yêu thích. Cô cảm thấy vui và tràn đầy năng lượng.",
+            "question": "Nila cảm thấy thế nào?",
+            "options": ["Mệt mỏi", "Hạnh phúc", "Tức giận"],
+            "answer": "Hạnh phúc"
             }
         },
         "emoji": "😊",
