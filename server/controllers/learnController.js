@@ -3,8 +3,13 @@ const seedData = require('../data/learn.json')
 
 const applyTranslation = (doc, lang) => {
   const obj = doc.toObject ? doc.toObject() : { ...doc }
-  if (lang !== 'en' && obj.translations?.[lang]) {
-    const t = obj.translations[lang]
+  // Fall back to seed JSON translations when the DB document has none stored
+  const hasDbTranslations = obj.translations && Object.keys(obj.translations).length > 0
+  const translations = hasDbTranslations
+    ? obj.translations
+    : (seedData.find(q => q.id === obj.id)?.translations ?? {})
+  if (lang !== 'en' && translations[lang]) {
+    const t = translations[lang]
     obj.title    = t.title    || obj.title
     obj.content  = t.content  || obj.content
     obj.question = t.question || obj.question
