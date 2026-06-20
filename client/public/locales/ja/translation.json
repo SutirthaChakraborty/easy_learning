@@ -254,6 +254,10 @@
                                  "wrong":  "答えは：{{answer}}",
                                  "celebration":  "正解！"
                              },
+                    "learn":  {
+                                  "question":  "問題 {{current}} / {{total}}",
+                                  "finishRound":  "ラウンド終了 →"
+                              },
                     "write":  {
                                   "whiteboard":  "あなたのホワイトボード",
                                   "pen":  "ペン",

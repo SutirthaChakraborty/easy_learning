@@ -254,6 +254,10 @@
                                  "wrong":  "La risposta era: {{answer}}",
                                  "celebration":  "Corretto!"
                              },
+                    "learn":  {
+                                  "question":  "Domanda {{current}} / {{total}}",
+                                  "finishRound":  "Termina il round →"
+                              },
                     "write":  {
                                   "whiteboard":  "La Tua Lavagna",
                                   "pen":  "Penna",

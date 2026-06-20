@@ -254,6 +254,10 @@
                                  "wrong":  "Cevap şuydu: {{answer}}",
                                  "celebration":  "Doğru!"
                              },
+                    "learn":  {
+                                  "question":  "Soru {{current}} / {{total}}",
+                                  "finishRound":  "Turu Bitir →"
+                              },
                     "write":  {
                                   "whiteboard":  "Beyaz Tahtanız",
                                   "pen":  "Kalem",

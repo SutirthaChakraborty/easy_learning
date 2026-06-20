@@ -254,6 +254,10 @@
                                  "wrong":  "Het antwoord was: {{answer}}",
                                  "celebration":  "Correct!"
                              },
+                    "learn":  {
+                                  "question":  "Vraag {{current}} / {{total}}",
+                                  "finishRound":  "Ronde afronden →"
+                              },
                     "write":  {
                                   "whiteboard":  "Jouw Whiteboard",
                                   "pen":  "Pen",

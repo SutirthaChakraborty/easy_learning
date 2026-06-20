@@ -254,6 +254,10 @@
                                  "wrong":  "Правильный ответ: {{answer}}",
                                  "celebration":  "Правильно!"
                              },
+                    "learn":  {
+                                  "question":  "Вопрос {{current}} / {{total}}",
+                                  "finishRound":  "Завершить раунд →"
+                              },
                     "write":  {
                                   "whiteboard":  "Твоя доска",
                                   "pen":  "Ручка",

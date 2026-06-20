@@ -254,6 +254,10 @@
                                  "wrong":  "La respuesta era: {{answer}}",
                                  "celebration":  "¡Correcto!"
                              },
+                    "learn":  {
+                                  "question":  "Pregunta {{current}} / {{total}}",
+                                  "finishRound":  "Terminar ronda →"
+                              },
                     "write":  {
                                   "whiteboard":  "Tu Pizarra",
                                   "pen":  "Bolígrafo",

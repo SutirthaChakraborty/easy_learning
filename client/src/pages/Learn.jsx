@@ -32,7 +32,7 @@ const Learn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { questions, status, error } = useSelector((state) => state.learn);
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [roundQuestions, setRoundQuestions] = useState([]);
   const [roundIndex, setRoundIndex] = useState(0);
@@ -120,7 +120,7 @@ const Learn = () => {
   if (status === "loading") {
     return (
       <div className={styles.page}>
-        <p style={{ color: "#fff", textAlign: "center", marginTop: 80 }}>Loading...</p>
+        <p style={{ color: "#fff", textAlign: "center", marginTop: 80 }}>{t('modules.loadingQ')}</p>
       </div>
     );
   }
@@ -128,7 +128,7 @@ const Learn = () => {
   if (status === "failed") {
     return (
       <div className={styles.page}>
-        <p style={{ color: "#fff", textAlign: "center", marginTop: 80 }}>Error: {error}</p>
+        <p style={{ color: "#fff", textAlign: "center", marginTop: 80 }}>{t('modules.serverErr')}</p>
       </div>
     );
   }
@@ -165,7 +165,7 @@ const Learn = () => {
       </div>
 
       <div className={styles.progress}>
-        Question {roundIndex + 1} / {ROUND_SIZE}
+        {t('modules.learn.question', { current: roundIndex + 1, total: ROUND_SIZE })}
       </div>
 
       <AnimatePresence mode="wait">
@@ -222,11 +222,11 @@ const Learn = () => {
                 {selected === story.answer ? (
                   <p className={styles.correctText}>
                     <GiPartyPopper style={{ marginRight: 6, verticalAlign: "middle" }} />
-                    Brilliant! +1 Star
+                    {t('modules.read.correct')}
                   </p>
                 ) : (
                   <p className={styles.wrongText}>
-                    The answer was: {story.answer}
+                    {t('modules.read.wrong', { answer: story.answer })}
                   </p>
                 )}
 
@@ -236,7 +236,7 @@ const Learn = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {isLastQuestion ? "Finish Round →" : "Continue →"}
+                  {isLastQuestion ? t('modules.learn.finishRound') : t('modules.continue')}
                 </motion.button>
               </motion.div>
             )}
