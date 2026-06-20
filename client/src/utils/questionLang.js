@@ -6,5 +6,5 @@ const QUESTION_EN_FALLBACK = new Set([]);
  */
 export const getQuestionLang = (lang) => {
   const base = lang ? lang.split('-')[0].toLowerCase() : 'en';
-  return QUESTION_EN_FALLBACK.has(base) ? 'en' : lang;
+  return QUESTION_EN_FALLBACK.has(base) ? 'en' : base;
 };

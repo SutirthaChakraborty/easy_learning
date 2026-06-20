@@ -254,6 +254,10 @@
                                  "wrong":  "正确答案是：{{answer}}",
                                  "celebration":  "正确！"
                              },
+                    "learn":  {
+                                  "question":  "第 {{current}} / {{total}} 题",
+                                  "finishRound":  "完成本轮 →"
+                              },
                     "write":  {
                                   "whiteboard":  "你的白板",
                                   "pen":  "钢笔",

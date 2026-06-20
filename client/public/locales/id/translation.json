@@ -254,6 +254,10 @@
                                  "wrong":  "Jawabannya adalah: {{answer}}",
                                  "celebration":  "Benar!"
                              },
+                    "learn":  {
+                                  "question":  "Pertanyaan {{current}} / {{total}}",
+                                  "finishRound":  "Selesaikan Ronde →"
+                              },
                     "write":  {
                                   "whiteboard":  "Papan Tulismu",
                                   "pen":  "Pena",

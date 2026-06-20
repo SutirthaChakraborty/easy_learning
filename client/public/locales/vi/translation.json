@@ -254,6 +254,10 @@
                                  "wrong":  "Đáp án là: {{answer}}",
                                  "celebration":  "Đúng rồi!"
                              },
+                    "learn":  {
+                                  "question":  "Câu hỏi {{current}} / {{total}}",
+                                  "finishRound":  "Kết thúc vòng →"
+                              },
                     "write":  {
                                   "whiteboard":  "Bảng trắng của bạn",
                                   "pen":  "Bút",

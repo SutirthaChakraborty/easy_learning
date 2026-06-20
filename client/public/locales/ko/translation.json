@@ -254,6 +254,10 @@
                                  "wrong":  "정답은: {{answer}}",
                                  "celebration":  "정답!"
                              },
+                    "learn":  {
+                                  "question":  "질문 {{current}} / {{total}}",
+                                  "finishRound":  "라운드 완료 →"
+                              },
                     "write":  {
                                   "whiteboard":  "나의 화이트보드",
                                   "pen":  "펜",

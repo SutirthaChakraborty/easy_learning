@@ -254,6 +254,10 @@
                                  "wrong":  "Die Antwort war: {{answer}}",
                                  "celebration":  "Richtig!"
                              },
+                    "learn":  {
+                                  "question":  "Frage {{current}} / {{total}}",
+                                  "finishRound":  "Runde beenden →"
+                              },
                     "write":  {
                                   "whiteboard":  "Dein Whiteboard",
                                   "pen":  "Stift",

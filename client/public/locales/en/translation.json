@@ -263,6 +263,10 @@
                                  "wrong":  "The answer was: {{answer}}",
                                  "celebration":  "Correct!"
                              },
+                    "learn":  {
+                                  "question":  "Question {{current}} / {{total}}",
+                                  "finishRound":  "Finish Round →"
+                              },
                     "write":  {
                                   "whiteboard":  "Your Whiteboard",
                                   "pen":  "Pen",
