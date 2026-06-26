@@ -1,6 +1,6 @@
 # Easy Learn — Hostinger VPS Deployment Guide
 
-**Server IP:** `31.97.224.109`  
+**Domain:** `quizify.cloud`  
 **Stack:** React 19 (Vite) + Express.js + MongoDB Atlas (MERN)  
 **Node version:** `22.18.0` (matches local dev machine)  
 **Strategy:** Nginx serves the built React SPA; PM2 keeps the Express API alive; MongoDB Atlas as the database.
@@ -14,19 +14,19 @@ Do these two things **before touching the server**, or the app will fail to conn
 ### MongoDB Atlas — Whitelist the VPS IP
 1. Log in to [MongoDB Atlas](https://cloud.mongodb.com)
 2. Go to **Network Access → Add IP Address**
-3. Add `31.97.224.109` → Save
+3. Add `quizify.cloud` → Save
 
-### Firebase — Authorize the VPS IP
+### Firebase — Authorize the Domain
 1. Open [Firebase Console](https://console.firebase.google.com) → project **learningo-c9ac4**
 2. Go to **Authentication → Settings → Authorized Domains**
-3. Add `31.97.224.109` → Save
+3. Add `quizify.cloud` → Save
 
 ---
 
 ## 1. Connect to the Server
 
 ```bash
-ssh root@31.97.224.109
+ssh root@quizify.cloud
 ```
 
 ---
@@ -86,12 +86,12 @@ Copy the block below and fill in your values. Your local `server/.env` already h
 ```env
 PORT=5000
 MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.wqthdik.mongodb.net/mydb?retryWrites=true&w=majority
-CLIENT_URL=http://31.97.224.109
+CLIENT_URL=https://quizify.cloud
 JWT_SECRET=<replace-with-a-long-random-string>
 JWT_EXPIRES_IN=7d
 ```
 
-> **`CLIENT_URL`** must be exactly `http://31.97.224.109` — this is what Express uses for CORS.  
+> **`CLIENT_URL`** must be exactly `https://quizify.cloud` — this is what Express uses for CORS.  
 > **`MONGODB_URI`** — copy the full URI from your local `server/.env`, it points to `cluster0.wqthdik.mongodb.net`.  
 > **`JWT_SECRET`** — generate a strong secret: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`
 
@@ -106,7 +106,7 @@ nano .env
 
 ```env
 VITE_FIREBASE_API_KEY=<your-firebase-api-key>
-VITE_API_BASE_URL=http://31.97.224.109/api
+VITE_API_BASE_URL=https://quizify.cloud/api
 ```
 
 > **`VITE_FIREBASE_API_KEY`** — copy from your local `client/.env`.  
@@ -175,7 +175,7 @@ Paste:
 ```nginx
 server {
     listen 80;
-    server_name 31.97.224.109;
+    server_name quizify.cloud;
 
     # Serve the React build
     root /var/www/easy_learning/client/dist;
@@ -225,13 +225,13 @@ ufw status
 Open in your browser:
 
 ```
-http://31.97.224.109
+https://quizify.cloud
 ```
 
 Test the API directly from your machine:
 
 ```bash
-curl http://31.97.224.109/api/learn
+curl https://quizify.cloud/api/learn
 ```
 
 ---
@@ -273,7 +273,7 @@ cd ../server && npm install && pm2 restart easy-learn-api
 |---------|-----|
 | Blank page / 404 | Check `client/dist/` exists; confirm `try_files` line in Nginx config |
 | API returns 502 Bad Gateway | PM2 is down → `pm2 restart easy-learn-api` |
-| CORS error in browser | `CLIENT_URL` in `server/.env` must exactly match the browser origin (`http://31.97.224.109`) |
-| Google sign-in fails | Add `31.97.224.109` to Firebase Console → Authentication → Authorized Domains |
-| MongoDB connection refused | Add `31.97.224.109` to MongoDB Atlas → Network Access → IP Allowlist |
+| CORS error in browser | `CLIENT_URL` in `server/.env` must exactly match the browser origin (`https://quizify.cloud`) |
+| Google sign-in fails | Add `quizify.cloud` to Firebase Console → Authentication → Authorized Domains |
+| MongoDB connection refused | Add `quizify.cloud` to MongoDB Atlas → Network Access → IP Allowlist |
 | `npm run build` fails | Confirm `client/.env` has `VITE_FIREBASE_API_KEY` set |
