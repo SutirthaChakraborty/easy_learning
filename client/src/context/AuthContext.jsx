@@ -7,9 +7,11 @@ const JWT_KEY = "jwt_token";
 
 const AuthContext = createContext(null);
 
+const FIREBASE_JWT_KEY = "firebase_jwt";
+
 async function syncSessionCookie(user) {
   if (user) {
-    await fetch(`${API}/api/auth/session`, {
+    const res = await fetch(`${API}/api/auth/session`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -20,7 +22,12 @@ async function syncSessionCookie(user) {
         photoURL: user.photoURL || "",
       }),
     });
+    const data = await res.json().catch(() => ({}));
+    if (data.token) {
+      localStorage.setItem(FIREBASE_JWT_KEY, data.token);
+    }
   } else {
+    localStorage.removeItem(FIREBASE_JWT_KEY);
     await fetch(`${API}/api/auth/session`, {
       method: "DELETE",
       credentials: "include",
@@ -125,6 +132,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     localStorage.removeItem(JWT_KEY);
+    localStorage.removeItem(FIREBASE_JWT_KEY);
     await signOut(auth);
     await syncSessionCookie(null);
     setUser(null);

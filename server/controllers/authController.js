@@ -22,7 +22,13 @@ const setSession = (req, res) => {
     maxAge: COOKIE_MAX_AGE,
   })
 
-  res.json({ success: true, message: 'Session set' })
+  const token = jwt.sign(
+    { id: uid, email, name: name || '' },
+    process.env.JWT_SECRET,
+    { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+  )
+
+  res.json({ success: true, message: 'Session set', token })
 }
 
 const getSession = (req, res) => {

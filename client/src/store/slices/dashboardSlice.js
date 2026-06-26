@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 const BASE = import.meta.env.VITE_API_BASE_URL
 
 function authHeaders() {
-  const token = localStorage.getItem('jwt_token')
+  const token = localStorage.getItem('jwt_token') || localStorage.getItem('firebase_jwt')
   return token ? { Authorization: `Bearer ${token}` } : {}
 }
 
