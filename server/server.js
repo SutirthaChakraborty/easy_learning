@@ -27,7 +27,7 @@ const dashboardRoutes     = require('./routes/dashboard')
 const app = express()
 
 const allowedOrigins = (process.env.CLIENT_URL || 'http://localhost:5173')
-  .split(',').map(o => o.trim())
+  .split(',').map(o => o.trim().replace(/\/$/, ''))
 app.use(cors({
   origin: (origin, cb) => {
     if (!origin || allowedOrigins.includes(origin)) return cb(null, true)

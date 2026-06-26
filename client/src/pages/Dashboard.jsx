@@ -210,7 +210,7 @@ export default function Dashboard() {
   const dispatch  = useDispatch()
   const { user }  = useAuth()
   const { t }     = useTranslation()
-  const { stats, activity, achievements, performance, answers, rounds, status } = useSelector(s => s.dashboard)
+  const { stats, activity, achievements, performance, answers, rounds, status, error } = useSelector(s => s.dashboard)
 
   const thisYear = new Date().getFullYear()
   const [selectedYear, setSelectedYear] = useState(thisYear)
@@ -287,9 +287,7 @@ export default function Dashboard() {
     return (
       <div className={styles.loadingWrap}>
         <p className={styles.errorMsg}><FaExclamationTriangle /> {t('dashboard.serverError')}</p>
-        <p style={{ color: '#6272a4', fontSize: '0.9rem', marginTop: 4 }}>
-          {t('dashboard.serverErrorHint')}
-        </p>
+        <p style={{ color: '#6272a4', fontSize: '0.9rem', marginTop: 4 }}>{error || t('dashboard.serverErrorHint')}</p>
         <button
           onClick={() => {
             dispatch(fetchDashboardStats())
