@@ -70,7 +70,9 @@ export const AuthProvider = ({ children }) => {
 
     // Firebase listener (handles Google sign-in)
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
-      const hasJWT = !!localStorage.getItem(JWT_KEY);
+      const storedJWT = localStorage.getItem(JWT_KEY);
+      const hasJWT = !!storedJWT && !isTokenExpired(storedJWT);
+      if (!hasJWT) localStorage.removeItem(JWT_KEY); // clear expired token so re-auth works
       if (hasJWT) return; // JWT user takes precedence; ignore Firebase state
 
       try {
