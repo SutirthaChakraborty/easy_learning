@@ -27,12 +27,12 @@ const Navbar = () => {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
-        <Link to="/" onClick={close}><img src={logo} alt="logo" /></Link>
+        <Link to="/home" onClick={close}><img src={logo} alt="logo" /></Link>
       </div>
 
       <div className={`${styles.menu} ${mobileOpen ? styles.menuOpen : ""}`}>
         <div className={styles.dropdown}>
-          <NavLink to="/" className={styles.btn1} onClick={close}>
+          <NavLink to="/home" className={styles.btn1} onClick={close}>
             {t("navbar.home")}
           </NavLink>
         </div>

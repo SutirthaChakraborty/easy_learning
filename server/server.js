@@ -6,6 +6,10 @@ const cookieParser = require('cookie-parser')
 require('dotenv').config()
 
 const authRoutes          = require('./routes/auth')
+const adminAuthRoutes     = require('./routes/adminAuth')
+const superadminAuthRoutes = require('./routes/superadminAuth')
+const adminRoutes         = require('./routes/admin')
+const superadminRoutes    = require('./routes/superadmin')
 const listenScienceRoutes = require('./routes/listenScience')
 const listenMathsRoutes = require('./routes/listenMaths')
 const listenEnglishRoutes = require('./routes/listenEnglish')
@@ -23,6 +27,10 @@ const memoryMatchRoutes   = require('./routes/memoryMatch')
 const wordPuzzleRoutes    = require('./routes/wordPuzzle')
 const learnRoutes         = require('./routes/learn')
 const dashboardRoutes     = require('./routes/dashboard')
+
+// Initialise separate DB connections before routes load models
+require('./db/adminDb')
+require('./db/superAdminDb')
 
 const app = express()
 
@@ -49,6 +57,10 @@ mongoose.connect(process.env.MONGODB_URI)
   })
 
 app.use('/api/auth', authRoutes)
+app.use('/api/admin/auth', adminAuthRoutes)
+app.use('/api/superadmin/auth', superadminAuthRoutes)
+app.use('/api/admin', adminRoutes)
+app.use('/api/superadmin', superadminRoutes)
 
 app.get('/', (req, res) => {
   res.send('hello bachho')

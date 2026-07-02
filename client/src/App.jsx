@@ -8,7 +8,9 @@ import {
 import { AnimatePresence } from "framer-motion";
 
 import { AuthProvider } from "./context/AuthContext";
+import { AdminAuthProvider } from "./context/AdminAuthContext";
 import Navbar from "./components/Navbar/Navbar";
+import RoleSelect from "./pages/RoleSelect";
 import Home from "./pages/Home";
 import Learn from "./pages/Learn";
 import SubjectPage from "./pages/SubjectPage";
@@ -21,7 +23,11 @@ import SpellingGame from "./pages/games/SpellingGame";
 import MemoryGame from "./pages/games/MemoryGame";
 import PuzzleGame from "./pages/games/PuzzleGame";
 import Login from "./pages/Login";
+import AdminLogin from "./pages/AdminLogin";
+import SuperAdminLogin from "./pages/SuperAdminLogin";
 import Dashboard from "./pages/Dashboard";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import SuperAdminDashboard from "./pages/superadmin/SuperAdminDashboard";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -29,7 +35,8 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<RoleSelect />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/learn" element={<Learn />} />
         <Route path="/subject/:subject" element={<SubjectPage />} />
         <Route path="/module/listen/:subject" element={<ListenModule />} />
@@ -41,21 +48,38 @@ function AnimatedRoutes() {
         <Route path="/games/memory" element={<MemoryGame />} />
         <Route path="/games/puzzle" element={<PuzzleGame />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
+        <Route path="/superadmin-login" element={<SuperAdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/superadmin-dashboard" element={<SuperAdminDashboard />} />
       </Routes>
     </AnimatePresence>
+  );
+}
+
+function AppLayout() {
+  const location = useLocation();
+  const hideNavbar = ["/", "/login", "/admin-login", "/superadmin-login", "/admin-dashboard", "/superadmin-dashboard"].includes(location.pathname);
+
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
+      <div style={{ paddingTop: hideNavbar ? "0" : "80px", flex: 1, display: "flex", flexDirection: "column" }}>
+        <AnimatedRoutes />
+      </div>
+    </>
   );
 }
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <Navbar />
-        <div style={{ paddingTop: "80px", flex: 1, display: "flex", flexDirection: "column" }}>
-          <AnimatedRoutes />
-        </div>
-      </Router>
+      <AdminAuthProvider>
+        <Router>
+          <AppLayout />
+        </Router>
+      </AdminAuthProvider>
     </AuthProvider>
   );
 }

@@ -30,7 +30,7 @@ const Login = () => {
       } else {
         await loginManual(email, password);
       }
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       setError(err.message || t("login.errorDefault"));
     } finally {
@@ -43,7 +43,7 @@ const Login = () => {
     setLoading(true);
     try {
       await signInWithPopup(auth, googleProvider);
-      navigate("/");
+      navigate("/home");
     } catch (err) {
       const cancelled = [
         "auth/popup-closed-by-user",
