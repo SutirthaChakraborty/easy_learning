@@ -1,0 +1,57 @@
+.card {
+  border-color: #a259f7;
+}
+
+.googleBtn {
+  border: 2px solid #a259f7 !important;
+}
+
+.form {
+  width: 100%;
+}
+
+.iconWrap {
+  font-size: 3.5rem;
+  color: #a259f7;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  background: linear-gradient(to right, #a259f7, #6c5ce7) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
+.comingSoon {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 8px 0 28px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+.backBtn {
+  width: 100%;
+  background: linear-gradient(180deg, #a259f7, #6a1e99);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 13px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: transform 0.2s, filter 0.2s;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.backBtn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}

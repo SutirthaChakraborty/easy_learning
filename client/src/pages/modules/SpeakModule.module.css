@@ -1,0 +1,251 @@
+.page {
+  min-height: calc(100vh - 80px);
+  background-image: url('../../assets/bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bgOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 24px 40px;
+}
+
+/* TOP BAR */
+.topBar {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.backBtn {
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.45);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: "Fredoka", sans-serif;
+  transition: background 0.2s;
+}
+.backBtn:hover { background: rgba(255,255,255,0.28); }
+
+.moduleTitle {
+  font-size: 26px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff6b6b, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+/* LAYOUT */
+.layout {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  align-items: flex-start;
+}
+
+/* LEFT PANEL */
+.leftPanel {
+  flex: 0 0 280px;
+  background: rgba(15, 15, 30, 0.92);
+  border: 5px solid #dedc5c;
+  border-radius: 28px;
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.avatar { font-size: 72px; animation: bounce 1.8s ease-in-out infinite; }
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-12px) scale(1.05); }
+}
+
+.avatarName { font-size: 16px; color: rgba(255,255,255,0.85); text-align: center; margin: 0; font-weight: 600; }
+
+.moodsGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; }
+
+.moodBtn {
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-family: "Fredoka", sans-serif;
+}
+.moodBtn:hover { background: rgba(255,255,255,0.18); }
+.moodActive { background: rgba(108,92,231,0.4) !important; border-color: #6c5ce7; }
+
+.moodEmoji { font-size: 24px; }
+.moodLabel { font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 600; }
+
+.moodConfirm {
+  background: rgba(46,204,113,0.2);
+  border: 1px solid #2ecc71;
+  border-radius: 12px;
+  padding: 8px 14px;
+  font-size: 15px;
+  color: #2ecc71;
+  text-align: center;
+  width: 100%;
+}
+
+/* RECORDINGS */
+.recordingsList { width: 100%; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 14px; }
+.recordingsTitle { font-size: 15px; color: rgba(255,255,255,0.8); margin: 0 0 10px; font-weight: bold; }
+.recordingItem { display: flex; flex-direction: column; gap: 4px; margin-bottom: 10px; }
+.recLabel { font-size: 13px; color: rgba(255,255,255,0.6); }
+.audioPlayer { width: 100%; height: 36px; border-radius: 12px; }
+
+/* RIGHT PANEL */
+.rightPanel {
+  flex: 1;
+  background: rgba(15, 15, 30, 0.92);
+  border: 5px solid #dedc5c;
+  border-radius: 28px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.promptNav { display: flex; align-items: center; justify-content: center; gap: 20px; }
+.navArrow {
+  background: rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.3);
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Fredoka", sans-serif;
+}
+.navArrow:hover { background: rgba(255,255,255,0.25); }
+.promptCount { font-size: 16px; color: rgba(255,255,255,0.7); font-weight: bold; }
+
+.promptCard {
+  background: rgba(207, 207, 207, 0.12);
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  border: 2px solid rgba(255,255,255,0.1);
+}
+
+.promptEmoji { font-size: 60px; animation: float 3s ease-in-out infinite; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.promptText { font-size: 22px; font-weight: bold; color: white; margin: 0; line-height: 1.5; }
+
+.micSection { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+
+.recordBtn {
+  padding: 18px 50px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(#e53935, #b71c1c);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 8px #7f0000;
+  transition: 0.2s;
+}
+.recordBtn:hover { filter: brightness(1.1); }
+
+.stopBtn {
+  padding: 18px 50px;
+  border-radius: 40px;
+  border: none;
+  background: linear-gradient(#ff9800, #e65100);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 8px #bf360c;
+}
+
+.recordingIndicator { font-size: 18px; font-weight: bold; color: #ff7675; }
+.tip { font-size: 16px; color: rgba(255,255,255,0.65); text-align: center; margin: 0; font-style: italic; }
+
+/* ENCOURAGEMENT TOAST */
+.encouragement {
+  position: fixed;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.85);
+  color: #dedc5c;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 16px 36px;
+  border-radius: 30px;
+  border: 3px solid #dedc5c;
+  z-index: 200;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ─── TABLET ─── */
+@media (max-width: 900px) {
+  .leftPanel { flex: 0 0 240px; }
+}
+
+@media (max-width: 768px) {
+  .layout { flex-direction: column; }
+  .leftPanel { flex: none; width: 100%; }
+  .promptText { font-size: 18px; }
+  .moduleTitle { font-size: 20px; }
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 480px) {
+  .content { padding: 14px 12px 30px; }
+  .promptText { font-size: 16px; }
+  .promptCard { padding: 20px 16px; }
+  .recordBtn, .stopBtn { padding: 14px 32px; font-size: 17px; }
+  .encouragement { font-size: 16px; padding: 12px 20px; white-space: normal; text-align: center; width: 90%; }
+}

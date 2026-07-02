@@ -1,0 +1,256 @@
+.page {
+  min-height: calc(100vh - 80px);
+  background-image: url('../../assets/bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bgOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.52);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px 40px;
+}
+
+/* TOP BAR */
+.topBar {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.backBtn {
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.45);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: "Fredoka", sans-serif;
+  transition: background 0.2s;
+}
+.backBtn:hover { background: rgba(255,255,255,0.28); }
+
+.scoreBox {
+  background: #171717;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* DOTS */
+.dots { display: flex; gap: 10px; margin-bottom: 16px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.3); transition: all 0.3s; }
+.dotActive { background: #dedc5c; transform: scale(1.4); }
+
+/* SPLIT LAYOUT */
+.splitLayout {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+  flex: 1;
+  align-items: stretch;
+}
+
+/* LEFT PANEL */
+.charPanel {
+  flex: 0 0 300px;
+  background: rgba(15, 15, 30, 0.92);
+  border: 5px solid #dedc5c;
+  border-radius: 28px;
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.levelRow { display: flex; gap: 10px; justify-content: center; }
+.levelChip { background: #6c5ce7; color: white; font-size: 13px; font-weight: bold; padding: 4px 12px; border-radius: 20px; }
+.typeChip {
+  background: rgba(222,220,92,0.25);
+  color: #dedc5c;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #dedc5c;
+  text-transform: capitalize;
+}
+
+.charEmoji { font-size: 50px; animation: float 3s ease-in-out infinite; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.charDisplay {
+  font-size: 88px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 4px 12px rgba(108,92,231,0.6), 0 0 30px rgba(255,107,107,0.3);
+  line-height: 1;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hintBox { background: rgba(207, 207, 207, 0.15); border-radius: 12px; padding: 12px 16px; width: 100%; text-align: center; }
+.hint { font-size: 17px; color: rgba(255,255,255,0.9); margin: 0; font-weight: 600; }
+
+.starsContainer { display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.1); }
+.starsRow { display: flex; gap: 6px; }
+.starFilled, .starEmpty { font-size: 32px; display: inline-block; }
+.starEmpty { opacity: 0.35; }
+.starMsg { font-size: 16px; color: rgba(255,255,255,0.9); margin: 0; font-weight: bold; text-align: center; }
+
+.nextBtn {
+  padding: 11px 28px;
+  border-radius: 22px;
+  border: none;
+  background: #6c5ce7;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 5px #4527a0;
+  transition: 0.2s;
+  width: 100%;
+}
+.nextBtn:hover { filter: brightness(1.1); }
+
+/* RIGHT PANEL */
+.boardPanel {
+  flex: 1;
+  background: rgba(15, 15, 30, 0.88);
+  border: 5px solid #dedc5c;
+  border-radius: 28px;
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  min-height: 500px;
+}
+
+.boardHeader { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.boardTitle { font-size: 18px; font-weight: bold; color: white; }
+
+.toolRow { display: flex; gap: 10px; flex-wrap: wrap; }
+
+.toolBtn {
+  padding: 8px 16px;
+  border-radius: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 14px;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+.toolBtn:hover { background: rgba(255,255,255,0.2); }
+.toolActive { background: #6c5ce7 !important; border-color: #6c5ce7; }
+
+.clearBtn {
+  padding: 8px 16px;
+  border-radius: 16px;
+  border: 2px solid rgba(231,76,60,0.5);
+  background: rgba(231,76,60,0.2);
+  color: #ff7675;
+  font-size: 14px;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+.clearBtn:hover { background: rgba(231,76,60,0.4); }
+
+.canvas {
+  flex: 1;
+  border-radius: 18px;
+  border: 3px solid rgba(255,255,255,0.2);
+  cursor: crosshair;
+  touch-action: none;
+  background: #f0f8ff;
+  width: 100%;
+  display: block;
+}
+
+.checkBtn {
+  padding: 14px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(#4caf50, #2e7d32);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px #1b5e20;
+  transition: 0.2s;
+  width: 100%;
+}
+.checkBtn:hover { filter: brightness(1.1); }
+
+/* CELEBRATION */
+.celebration {
+  position: fixed;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  background: rgba(0,0,0,0.8);
+  color: #dedc5c;
+  padding: 18px 40px;
+  border-radius: 30px;
+  border: 3px solid #dedc5c;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* ─── TABLET ─── */
+@media (max-width: 900px) {
+  .charPanel { flex: 0 0 260px; }
+}
+
+@media (max-width: 768px) {
+  .splitLayout { flex-direction: column; }
+  .charPanel { flex: none; width: 100%; }
+  .charDisplay { font-size: 64px; min-height: 80px; }
+  .boardPanel { min-height: 400px; }
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 480px) {
+  .content { padding: 14px 12px 30px; }
+  .scoreBox { font-size: 15px; padding: 6px 14px; }
+  .charDisplay { font-size: 52px; min-height: 70px; }
+  .boardHeader { gap: 8px; }
+  .toolBtn, .clearBtn { padding: 7px 12px; font-size: 13px; }
+  .celebration { font-size: 20px; padding: 14px 24px; width: 90%; }
+}

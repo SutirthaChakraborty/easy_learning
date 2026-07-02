@@ -1,0 +1,216 @@
+.page {
+  min-height: calc(100vh - 80px);
+  background-image: url('../../assets/bg1.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.bgOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 20px 20px;
+}
+
+.topBar {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.backBtn {
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.45);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: "Fredoka", sans-serif;
+  transition: background 0.2s;
+}
+.backBtn:hover { background: rgba(255,255,255,0.28); }
+
+.movesBox {
+  background: #171717;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 8px 20px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.pageIcon {
+  font-size: 42px;
+  color: #a29bfe;
+  margin: 4px 0 2px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff6b6b, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 2px;
+}
+
+.subtitle { font-size: 13px; color: rgba(255,255,255,0.75); margin: 0 0 10px; }
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 390px;
+  width: 100%;
+}
+
+/* CARD */
+.cardWrapper { aspect-ratio: 1; cursor: pointer; position: relative; }
+.cardWrapper.matched { cursor: default; }
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.35s;
+  border-radius: 14px;
+  min-height: 70px;
+}
+.cardFlipped { transform: rotateY(180deg); }
+
+.cardBack, .cardFront {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.cardBack {
+  background: linear-gradient(145deg, #1565c0, #1e88e5);
+  border: 3px solid #dedc5c;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(255,255,255,0.7);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 2px 0 rgba(255,255,255,0.2);
+}
+
+.cardFront {
+  background: linear-gradient(145deg, #4527a0, #6c5ce7);
+  border: 3px solid #dedc5c;
+  transform: rotateY(180deg);
+  gap: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 2px 0 rgba(255,255,255,0.2);
+}
+.cardMatched { background: linear-gradient(145deg, #1b5e20, #2e7d32) !important; border-color: #2ecc71 !important; }
+.cardFree { background: linear-gradient(145deg, #b8860b, #ffd700) !important; border-color: #ff8c00 !important; cursor: default; }
+
+.cardEmoji { font-size: 26px; line-height: 1; }
+.cardLabel { font-size: 11px; font-weight: bold; color: rgba(255,255,255,0.9); }
+
+/* WIN OVERLAY */
+.winOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.winCard {
+  background: rgba(15,15,30,0.97);
+  border: 5px solid #dedc5c;
+  border-radius: 32px;
+  padding: 44px 52px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  max-width: 380px;
+  width: 90%;
+}
+
+.winEmoji { font-size: 72px; animation: spin 2s ease-in-out infinite; }
+@keyframes spin {
+  0%, 100% { transform: rotate(-8deg) scale(1); }
+  50% { transform: rotate(8deg) scale(1.1); }
+}
+
+.winTitle {
+  font-size: 40px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff6b6b, #a29bfe);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.winMoves { font-size: 18px; color: rgba(255,255,255,0.8); margin: 0; }
+.winStars { font-size: 36px; letter-spacing: 4px; }
+
+.restartBtn {
+  padding: 14px 40px;
+  border-radius: 26px;
+  border: none;
+  background: linear-gradient(#4caf50, #2e7d32);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px #1b5e20;
+  transition: 0.2s;
+}
+.restartBtn:hover { filter: brightness(1.1); }
+
+/* ─── SMALL TABLET ─── */
+@media (max-width: 640px) {
+  .grid { gap: 8px; max-width: 320px; }
+  .cardInner { min-height: 60px; }
+  .pageIcon { font-size: 34px; }
+  .title { font-size: 22px; }
+  .subtitle { font-size: 12px; margin-bottom: 8px; }
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 420px) {
+  .content { padding: 12px 12px 16px; }
+  .grid { gap: 7px; max-width: 270px; }
+  .cardInner { min-height: 52px; }
+  .cardEmoji { font-size: 20px; }
+  .cardLabel { font-size: 9px; }
+  .cardBack { font-size: 18px; }
+  .pageIcon { font-size: 28px; }
+  .movesBox { font-size: 14px; padding: 5px 12px; }
+  .winCard { padding: 30px 24px; }
+  .winTitle { font-size: 32px; }
+  .winEmoji { font-size: 56px; }
+}

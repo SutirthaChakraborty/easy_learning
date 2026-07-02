@@ -1,0 +1,295 @@
+﻿{
+    "navbar":  {
+                   "home":  "Home",
+                   "games":  "Giochi",
+                   "lessons":  "Lezioni",
+                   "dashboard":  "Pannello",
+                   "login":  "Accedi",
+                   "logout":  "Esci",
+                   "spellingBee":  "Ortografia",
+                   "memoryMatch":  "Gioco di memoria",
+                   "wordPuzzle":  "Cruciverba",
+                   "english":  "Inglese",
+                   "mathematics":  "Matematica",
+                   "science":  "Scienze",
+                   "greeting":  "Ciao {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "Ciao {{name}}",
+                 "startLearning":  "Inizia ad imparare",
+                 "playGames":  "Gioca"
+             },
+    "cards":  {
+                  "english":  "Inglese",
+                  "mathematics":  "Matematica",
+                  "science":  "Scienze"
+              },
+    "login":  {
+                  "joinTitle":  "Unisciti a Learningo!",
+                  "welcomeBack":  "Bentornato!",
+                  "createAccountSubtitle":  "Crea il tuo account per iniziare ad imparare",
+                  "continueJourneySubtitle":  "Accedi per continuare il tuo percorso",
+                  "continueGoogle":  "Continua con Google",
+                  "or":  "o",
+                  "namePlaceholder":  "Il tuo nome",
+                  "emailPlaceholder":  "Indirizzo email",
+                  "passwordPlaceholder":  "Password",
+                  "createAccountBtn":  "Crea account",
+                  "signInBtn":  "Accedi",
+                  "signUpBtn":  "Registrati",
+                  "loading":  "Caricamento...",
+                  "alreadyAccount":  "Hai già un account?",
+                  "noAccount":  "Non hai un account?",
+                  "errorDefault":  "Qualcosa è andato storto. Riprova.",
+                  "googleCancelled":  "Accesso con Google annullato.",
+                  "popupBlocked":  "Il pop-up è stato bloccato. Consenti i pop-up per questo sito.",
+                  "networkError":  "Errore di rete. Controlla la tua connessione.",
+                  "operationNotAllowed":  "L\u0027accesso con Google non è abilitato."
+              },
+    "common":  {
+                   "loading":  "Caricamento...",
+                   "error":  "Qualcosa è andato storto."
+               },
+    "dashboard":  {
+                      "welcomeBack":  "Bentornato, {{name}}! 👋",
+                      "motivational":  "Continua così — ogni lezione conta.",
+                      "level":  "Livello {{level}}",
+                      "xpTotal":  "{{xp}} XP totali",
+                      "loading":  "Caricamento…",
+                      "loadingDashboard":  "Caricamento del pannello…",
+                      "loginPrompt":  "Accedi per visualizzare il tuo pannello.",
+                      "serverError":  "Impossibile connettersi al server.",
+                      "serverErrorHint":  "Assicurati che il backend sia avviato e ricarica la pagina.",
+                      "retry":  "Riprova",
+                      "stats":  {
+                                    "totalXP":  "XP Totali",
+                                    "sessions":  "Sessioni",
+                                    "lessonsCompleted":  "lezioni completate",
+                                    "todayTime":  "Tempo oggi",
+                                    "peakTime":  "Picco: {{time}}",
+                                    "noSessions":  "Nessuna sessione ancora",
+                                    "streak":  "Serie attuale",
+                                    "streakDays":  "{{count}} giorni",
+                                    "onFire":  "In fiamme! 🔥",
+                                    "keepGoing":  "Continua!",
+                                    "achievements":  "Obiettivi",
+                                    "badgesEarned":  "badge guadagnati"
+                                },
+                      "performance":  {
+                                          "title":  "Rendimento — Ultimi 30 giorni",
+                                          "empty":  "Nessuna attività ancora — completa una lezione per vedere i tuoi progressi!"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "Mappa attività — {{year}} (finora)",
+                                      "titlePast":  "Mappa attività — {{year}}",
+                                      "activeDays":  "{{count}} giorni attivi",
+                                      "mostActive":  "Più attivo {{time}}",
+                                      "today":  "Oggi: {{time}}",
+                                      "less":  "Meno",
+                                      "more":  "Più"
+                                  },
+                      "achievements":  {
+                                           "title":  "Obiettivi",
+                                           "empty":  "Completa le lezioni per sbloccare gli obiettivi!",
+                                           "earnedOn":  "Ottenuto {{date}}",
+                                           "xpReward":  "+{{xp}} XP allo sblocco",
+                                           "categories":  {
+                                                              "learning":  "Apprendimento",
+                                                              "games":  "Giochi",
+                                                              "streak":  "Serie",
+                                                              "xp":  "Traguardi XP",
+                                                              "special":  "Speciale"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "Primo Passo",
+                                                              "description":  "Completa la tua prima lezione"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "Topo di Biblioteca",
+                                                            "description":  "Completa 5 lezioni di lettura"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "Orecchie Fini",
+                                                              "description":  "Completa 5 lezioni di ascolto"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "Amico di Penna",
+                                                          "description":  "Completa 5 lezioni di scrittura"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "Oratore",
+                                                                  "description":  "Completa 5 lezioni di parlato"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "Tuttofare",
+                                                               "description":  "Prova tutte e 3 le materie"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "Gamer",
+                                                         "description":  "Gioca a qualsiasi gioco"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "Mago dell\u0027Ortografia",
+                                                                "description":  "Completa il gioco di ortografia"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "Maestro della Memoria",
+                                                                 "description":  "Completa il gioco di memoria"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "Asso dei Puzzle",
+                                                               "description":  "Risolvi un cruciverba"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "In Fiamme",
+                                                                    "description":  "Attivo per 3 giorni di fila"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "Guerriero della Settimana",
+                                                                "description":  "Attivo per 7 giorni di fila"
+                                                            },
+                                           "century":  {
+                                                           "name":  "Centenario",
+                                                           "description":  "Guadagna 100 XP"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "Campione",
+                                                            "description":  "Guadagna 500 XP"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "Mattiniero",
+                                                              "description":  "Studia prima delle 8:00"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "Nottambulo",
+                                                             "description":  "Studia dopo le 21:00"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "Indietro",
+                        "play":  "Gioca",
+                        "defaultTagline":  "Impariamo!",
+                        "english":  {
+                                        "label":  "Inglese",
+                                        "tagline":  "Le parole sono magiche!"
+                                    },
+                        "maths":  {
+                                      "label":  "Matematica",
+                                      "tagline":  "I numeri sono divertenti!"
+                                  },
+                        "science":  {
+                                        "label":  "Scienze",
+                                        "tagline":  "Esplora il mondo!"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "Ascoltare",
+                                                       "desc":  "Ascolta e ripeti!",
+                                                       "level":  "Livello 1"
+                                                   },
+                                        "read":  {
+                                                     "label":  "Leggere",
+                                                     "desc":  "Leggi e rispondi!",
+                                                     "level":  "Livello 2"
+                                                 },
+                                        "write":  {
+                                                      "label":  "Scrivere",
+                                                      "desc":  "Traccia e scrivi!",
+                                                      "level":  "Livello 3"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "Parlare",
+                                                      "desc":  "Esprimi te stesso!",
+                                                      "level":  "Livello 4"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "Indietro",
+                      "title":  "Zona Giochi",
+                      "subtitle":  "Scegli un gioco e inizia a giocare!",
+                      "playNow":  "Gioca ora",
+                      "diffEasy":  "Facile",
+                      "diffMedium":  "Medio",
+                      "diffHard":  "Difficile",
+                      "spelling":  {
+                                       "title":  "Compitazione",
+                                       "desc":  "Compita la parola dall\u0027indizio!"
+                                   },
+                      "memory":  {
+                                     "title":  "Gioco della Memoria",
+                                     "desc":  "Trova tutte le coppie!"
+                                 },
+                      "puzzle":  {
+                                     "title":  "Puzzle di Parole",
+                                     "desc":  "Riordina le lettere mescolate!"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "Indietro",
+                    "next":  "Avanti →",
+                    "continue":  "Continua →",
+                    "retry":  "Riprova",
+                    "level":  "Livello {{level}}",
+                    "loadingQ":  "Caricamento domande…",
+                    "loadingP":  "Caricamento suggerimenti…",
+                    "serverErr":  "Impossibile caricare. Il server è in esecuzione?",
+                    "listen":  {
+                                   "listen":  "Ascoltare",
+                                   "playing":  "In riproduzione…",
+                                   "record":  "Registra",
+                                   "stop":  "Ferma",
+                                   "perfect":  "Perfetto! Incredibile!",
+                                   "great":  "Ottimo lavoro! Quasi!",
+                                   "good":  "Buon tentativo! Ascolta ancora.",
+                                   "tryAgain":  "Riprova — ce la fai!",
+                                   "attempt":  "Buon tentativo! Continua!",
+                                   "micError":  "Microfono non disponibile. Riprova!",
+                                   "celebration":  "Perfetto!",
+                                   "voiceUnavailable":  "Voce non disponibile per questa lingua — l\u0027audio potrebbe suonare diverso."
+                               },
+                    "read":  {
+                                 "correct":  "Brillante! +1 Stella",
+                                 "wrong":  "La risposta era: {{answer}}",
+                                 "celebration":  "Corretto!"
+                             },
+                    "learn":  {
+                                  "question":  "Domanda {{current}} / {{total}}",
+                                  "finishRound":  "Termina il round →"
+                              },
+                    "write":  {
+                                  "whiteboard":  "La Tua Lavagna",
+                                  "pen":  "Penna",
+                                  "erase":  "Cancella",
+                                  "clear":  "Pulisci",
+                                  "check":  "Controlla la mia scrittura",
+                                  "celebration":  "Scrittura incredibile!",
+                                  "perfect":  "Scrittura perfetta!",
+                                  "great":  "Ottimo lavoro!",
+                                  "keep":  "Continua a praticare!",
+                                  "tryAgain":  "Riprova — ce la fai!"
+                              },
+                    "speak":  {
+                                  "title":  "Parla!",
+                                  "howFeeling":  "Come ti senti oggi?",
+                                  "youFeel":  "Oggi ti senti {{mood}}!",
+                                  "yourRecordings":  "Le tue registrazioni:",
+                                  "recording":  "Registrazione…",
+                                  "startSpeaking":  "Inizia a parlare",
+                                  "doneSpeaking":  "Finisci di parlare",
+                                  "tip":  "Suggerimento: Non ci sono risposte sbagliate! Di\u0027 quello che pensi.",
+                                  "moodHappy":  "Felice",
+                                  "moodSad":  "Triste",
+                                  "moodExcited":  "Eccitato",
+                                  "moodTired":  "Stanco",
+                                  "moodAmazing":  "Incredibile",
+                                  "enc1":  "Ottima condivisione!",
+                                  "enc2":  "La tua voce conta!",
+                                  "enc3":  "Brillante! Sei così coraggioso!",
+                                  "enc4":  "Che risposta fantastica!",
+                                  "enc5":  "Era meraviglioso!",
+                                  "micError":  "Microfono non disponibile — controlla i permessi!"
+                              }
+                }
+}

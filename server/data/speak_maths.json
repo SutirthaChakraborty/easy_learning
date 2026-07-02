@@ -1,0 +1,1902 @@
+[
+  {
+    "id": 1,
+    "text": "Can you count from one to ten out loud?",
+    "translations": {
+      "es": "¿Puedes contar del uno al diez en voz alta?",
+      "pt": "Você consegue contar de um a dez em voz alta?",
+      "fr": "Pouvez-vous compter de un à dix à voix haute ?",
+      "it": "Sai contare da uno a dieci ad alta voce?",
+      "de": "Kannst du laut von eins bis zehn zählen?",
+      "nl": "Kun jij hardop van één tot tien tellen?",
+      "ru": "Можете ли вы посчитать вслух от одного до десяти?",
+      "tr": "Birden ona kadar yüksek sesle sayabilir misiniz?",
+      "zh": "Can you count from one to ten out loud?",
+      "ja": "1から10まで声に出して数えられますか？",
+      "ko": "하나부터 열까지 큰 소리로 셀 수 있나요?",
+      "id": "Bisakah Anda menghitung dari satu sampai sepuluh dengan suara keras?",
+      "vi": "Bạn có thể đếm to từ một đến mười không?"
+    }
+  },
+  {
+    "id": 2,
+    "text": "What is two plus three? Tell me how you worked it out.",
+    "translations": {
+      "es": "¿Cuánto es dos más tres? Cuéntame cómo lo resolviste.",
+      "pt": "Quanto é dois mais três? Diga-me como você resolveu isso.",
+      "fr": "Combien font deux plus trois ? Dis-moi comment tu as réussi.",
+      "it": "Quanto fa due più tre? Dimmi come hai risolto il problema.",
+      "de": "Was ist zwei plus drei? Erzähl mir, wie du es geschafft hast.",
+      "nl": "Hoeveel is twee plus drie? Vertel me hoe je het hebt opgelost.",
+      "ru": "Сколько будет два плюс три? Расскажи мне, как у тебя это получилось.",
+      "tr": "İki artı üç kaç eder? Bana bunu nasıl hallettiğini söyle.",
+      "zh": "What is two plus three? Tell me how you worked it out.",
+      "ja": "2プラス3って何ですか？ どうやって解決したのか教えてください。",
+      "ko": "2 더하기 3은 무엇입니까? 어떻게 해결했는지 말해 보세요.",
+      "id": "Apa dua tambah tiga? Katakan padaku bagaimana kamu menyelesaikannya.",
+      "vi": "hai cộng ba là bao nhiêu? Hãy cho tôi biết bạn đã giải quyết nó như thế nào."
+    }
+  },
+  {
+    "id": 3,
+    "text": "Can you name three shapes and describe them?",
+    "translations": {
+      "es": "¿Puedes nombrar tres formas y describirlas?",
+      "pt": "Você consegue nomear três formas e descrevê-las?",
+      "fr": "Pouvez-vous nommer trois formes et les décrire ?",
+      "it": "Puoi nominare tre forme e descriverle?",
+      "de": "Können Sie drei Formen benennen und beschreiben?",
+      "nl": "Kun jij drie vormen noemen en beschrijven?",
+      "ru": "Можете ли вы назвать три фигуры и описать их?",
+      "tr": "Üç şekli isimlendirip tanımlayabilir misiniz?",
+      "zh": "Can you name three shapes and describe them?",
+      "ja": "3 つの形の名前を挙げて説明できますか?",
+      "ko": "세 가지 모양의 이름을 지정하고 설명할 수 있나요?",
+      "id": "Dapatkah kamu menyebutkan tiga bentuk dan mendeskripsikannya?",
+      "vi": "Bạn có thể kể tên ba hình dạng và mô tả chúng?"
+    }
+  },
+  {
+    "id": 4,
+    "text": "How do you use maths when you go shopping?",
+    "translations": {
+      "es": "¿Cómo usas las matemáticas cuando vas de compras?",
+      "pt": "Como você usa a matemática quando vai às compras?",
+      "fr": "Comment utilisez-vous les mathématiques lorsque vous faites du shopping ?",
+      "it": "Come usi la matematica quando vai a fare shopping?",
+      "de": "Wie nutzen Sie Mathematik beim Einkaufen?",
+      "nl": "Hoe gebruik jij wiskunde als je gaat winkelen?",
+      "ru": "Как вы используете математику, когда идете за покупками?",
+      "tr": "Alışverişe gittiğinizde matematiği nasıl kullanıyorsunuz?",
+      "zh": "How do you use maths when you go shopping?",
+      "ja": "買い物に行くときに数学をどのように使いますか?",
+      "ko": "쇼핑할 때 수학을 어떻게 활용하시나요?",
+      "id": "Bagaimana Anda menggunakan matematika saat pergi berbelanja?",
+      "vi": "Bạn sử dụng toán học như thế nào khi đi mua sắm?"
+    }
+  },
+  {
+    "id": 5,
+    "text": "What is your favourite number and why?",
+    "translations": {
+      "es": "¿Cuál es tu número favorito y por qué?",
+      "pt": "Qual é o seu número favorito e por quê?",
+      "fr": "Quel est votre numéro préféré et pourquoi ?",
+      "it": "Qual è il tuo numero preferito e perché?",
+      "de": "Was ist deine Lieblingszahl und warum?",
+      "nl": "Wat is je favoriete nummer en waarom?",
+      "ru": "Какое ваше любимое число и почему?",
+      "tr": "En sevdiğiniz sayı nedir ve neden?",
+      "zh": "What is your favourite number and why?",
+      "ja": "あなたの好きな数字は何ですか?その理由は何ですか?",
+      "ko": "가장 좋아하는 숫자는 무엇이며 그 이유는 무엇입니까?",
+      "id": "Apa nomor favoritmu dan alasannya?",
+      "vi": "Con số yêu thích của bạn là gì và tại sao?"
+    }
+  },
+  {
+    "id": 6,
+    "text": "Can you explain what an even number is?",
+    "translations": {
+      "es": "¿Puedes explicar qué es un número par?",
+      "pt": "Você pode explicar o que é um número par?",
+      "fr": "Pouvez-vous expliquer ce qu'est un nombre pair ?",
+      "it": "Puoi spiegare cos'è un numero pari?",
+      "de": "Können Sie erklären, was eine gerade Zahl ist?",
+      "nl": "Kun je uitleggen wat een even getal is?",
+      "ru": "Можете ли вы объяснить, что такое четное число?",
+      "tr": "Çift sayının ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain what an even number is?",
+      "ja": "偶数とは何か説明できますか？",
+      "ko": "짝수가 무엇인지 설명할 수 있나요?",
+      "id": "Bisakah anda menjelaskan apa yang dimaksud dengan bilangan genap?",
+      "vi": "Bạn có thể giải thích số chẵn là gì không?"
+    }
+  },
+  {
+    "id": 7,
+    "text": "Tell me the five times table up to fifty.",
+    "translations": {
+      "es": "Dime la tabla del cinco hasta cincuenta.",
+      "pt": "Diga-me a tabuada de cinco até cinquenta.",
+      "fr": "Dis-moi la table de cinq multiplications jusqu'à cinquante.",
+      "it": "Dimmi la tabellina del cinque fino al cinquanta.",
+      "de": "Sagen Sie mir die Fünfertabelle bis 50.",
+      "nl": "Vertel me de tafel van vijf tot vijftig.",
+      "ru": "Расскажи мне таблицу умножения на пять до пятидесяти.",
+      "tr": "Bana elliye kadar beşler çarpım tablosunu söyle.",
+      "zh": "Tell me the five times table up to fifty.",
+      "ja": "50までの5倍の表を教えてください。",
+      "ko": "5배까지 50까지의 표를 알려주세요.",
+      "id": "Katakan padaku tabel perkalian lima hingga lima puluh.",
+      "vi": "Hãy cho tôi biết bảng nhân năm đến năm mươi."
+    }
+  },
+  {
+    "id": 8,
+    "text": "What is the difference between addition and subtraction?",
+    "translations": {
+      "es": "¿Cuál es la diferencia entre suma y resta?",
+      "pt": "Qual é a diferença entre adição e subtração?",
+      "fr": "Quelle est la différence entre l’addition et la soustraction ?",
+      "it": "Qual è la differenza tra addizione e sottrazione?",
+      "de": "Was ist der Unterschied zwischen Addition und Subtraktion?",
+      "nl": "Wat is het verschil tussen optellen en aftrekken?",
+      "ru": "В чем разница между сложением и вычитанием?",
+      "tr": "Toplama ve çıkarma arasındaki fark nedir?",
+      "zh": "What is the difference between addition and subtraction?",
+      "ja": "足し算と引き算の違いは何ですか?",
+      "ko": "덧셈과 뺄셈의 차이점은 무엇인가요?",
+      "id": "Apa perbedaan penjumlahan dan pengurangan?",
+      "vi": "Sự khác biệt giữa phép cộng và phép trừ là gì?"
+    }
+  },
+  {
+    "id": 9,
+    "text": "How would you explain what a fraction is to a friend?",
+    "translations": {
+      "es": "¿Cómo le explicarías a un amigo qué es una fracción?",
+      "pt": "Como você explicaria o que é uma fração para um amigo?",
+      "fr": "Comment expliqueriez-vous ce qu’est une fraction à un ami ?",
+      "it": "Come spiegheresti cos'è una frazione a un amico?",
+      "de": "Wie würden Sie einem Freund erklären, was ein Bruch ist?",
+      "nl": "Hoe zou je aan een vriend uitleggen wat een breuk is?",
+      "ru": "Как бы вы объяснили другу, что такое дробь?",
+      "tr": "Bir arkadaşınıza kesirin ne olduğunu nasıl açıklarsınız?",
+      "zh": "How would you explain what a fraction is to a friend?",
+      "ja": "分数とは何かを友達にどう説明しますか?",
+      "ko": "친구에게 분수가 무엇인지 어떻게 설명하겠습니까?",
+      "id": "Bagaimana Anda menjelaskan apa itu pecahan kepada teman?",
+      "vi": "Làm thế nào bạn có thể giải thích phân số là gì cho một người bạn?"
+    }
+  },
+  {
+    "id": 10,
+    "text": "Can you describe what a clock face looks like and how to read it?",
+    "translations": {
+      "es": "¿Puedes describir cómo se ve la esfera de un reloj y cómo leerla?",
+      "pt": "Você pode descrever a aparência de um mostrador de relógio e como lê-lo?",
+      "fr": "Pouvez-vous décrire à quoi ressemble un cadran d’horloge et comment le lire ?",
+      "it": "Puoi descrivere che aspetto ha il quadrante di un orologio e come leggerlo?",
+      "de": "Können Sie beschreiben, wie ein Zifferblatt aussieht und wie man es liest?",
+      "nl": "Kun je beschrijven hoe een wijzerplaat eruit ziet en hoe je deze kunt lezen?",
+      "ru": "Можете ли вы описать, как выглядит циферблат и как его читать?",
+      "tr": "Bir saat yüzünün neye benzediğini ve nasıl okunacağını açıklayabilir misiniz?",
+      "zh": "Can you describe what a clock face looks like and how to read it?",
+      "ja": "時計の文字盤がどのようなもので、その読み方を説明できますか?",
+      "ko": "시계 문자판의 모양과 읽는 방법을 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan seperti apa tampilan jam dan cara membacanya?",
+      "vi": "Bạn có thể mô tả mặt đồng hồ trông như thế nào và cách đọc nó không?"
+    }
+  },
+  {
+    "id": 11,
+    "text": "What is half of twenty? Tell me how you got the answer.",
+    "translations": {
+      "es": "¿Cuánto es la mitad de veinte? Cuéntame cómo obtuviste la respuesta.",
+      "pt": "Quanto é metade de vinte? Diga-me como você conseguiu a resposta.",
+      "fr": "Quelle est la moitié de vingt ? Dis-moi comment tu as obtenu la réponse.",
+      "it": "Quanto fa la metà di venti? Dimmi come hai ottenuto la risposta.",
+      "de": "Was ist die Hälfte von zwanzig? Sagen Sie mir, wie Sie auf die Antwort gekommen sind.",
+      "nl": "Wat is de helft van twintig? Vertel me hoe je aan het antwoord kwam.",
+      "ru": "Сколько будет половина двадцати? Расскажи мне, как ты получил ответ.",
+      "tr": "Yirminin yarısı nedir? Cevabı nasıl aldığını söyle bana.",
+      "zh": "What is half of twenty? Tell me how you got the answer.",
+      "ja": "20の半分って何ですか？ どうやって答えを得たのか教えてください。",
+      "ko": "20의 절반은 무엇입니까? 어떻게 답을 얻었는지 말해 보세요.",
+      "id": "Berapa setengah dari dua puluh? Katakan padaku bagaimana kamu mendapatkan jawabannya.",
+      "vi": "Một nửa của hai mươi là gì? Hãy cho tôi biết làm thế nào bạn có được câu trả lời."
+    }
+  },
+  {
+    "id": 12,
+    "text": "Can you name three things you can measure and say how you would measure them?",
+    "translations": {
+      "es": "¿Puedes nombrar tres cosas que puedas medir y decir cómo las medirías?",
+      "pt": "Você pode citar três coisas que pode medir e dizer como as mediria?",
+      "fr": "Pouvez-vous nommer trois choses que vous pouvez mesurer et dire comment vous les mesureriez ?",
+      "it": "Puoi nominare tre cose che puoi misurare e dire come le misureresti?",
+      "de": "Können Sie drei Dinge nennen, die Sie messen können, und sagen, wie Sie sie messen würden?",
+      "nl": "Kun je drie dingen noemen die je kunt meten en zeggen hoe je ze zou meten?",
+      "ru": "Можете ли вы назвать три вещи, которые можно измерить, и сказать, как бы вы их измерили?",
+      "tr": "Ölçebileceğiniz üç şeyi adlandırabilir ve bunları nasıl ölçeceğinizi söyleyebilir misiniz?",
+      "zh": "Can you name three things you can measure and say how you would measure them?",
+      "ja": "測定できるものを 3 つ挙げて、どのように測定するかを教えてください。",
+      "ko": "측정할 수 있는 세 가지 항목을 말하고 이를 어떻게 측정할 것인지 말씀해 주시겠습니까?",
+      "id": "Bisakah Anda menyebutkan tiga hal yang dapat Anda ukur dan katakan bagaimana Anda akan mengukurnya?",
+      "vi": "Bạn có thể kể tên ba thứ bạn có thể đo lường và cho biết bạn sẽ đo lường chúng như thế nào không?"
+    }
+  },
+  {
+    "id": 13,
+    "text": "Tell me a maths fact you think is interesting.",
+    "translations": {
+      "es": "Cuéntame un dato matemático que creas que es interesante.",
+      "pt": "Conte-me um fato matemático que você acha interessante.",
+      "fr": "Racontez-moi un fait mathématique qui vous semble intéressant.",
+      "it": "Raccontami un fatto di matematica che ritieni interessante.",
+      "de": "Erzählen Sie mir eine mathematische Tatsache, die Sie für interessant halten.",
+      "nl": "Vertel me een wiskundig feit waarvan je denkt dat het interessant is.",
+      "ru": "Назовите мне математический факт, который вам кажется интересным.",
+      "tr": "Bana ilginç olduğunu düşündüğün bir matematik gerçeğini söyle.",
+      "zh": "Tell me a maths fact you think is interesting.",
+      "ja": "面白いと思う数学の事実を教えてください。",
+      "ko": "당신이 흥미롭다고 생각하는 수학 사실을 말해주세요.",
+      "id": "Ceritakan fakta matematika yang menurut Anda menarik.",
+      "vi": "Hãy kể cho tôi một sự thật toán học mà bạn cho là thú vị."
+    }
+  },
+  {
+    "id": 14,
+    "text": "How would you work out how much change you get from a ten pound note?",
+    "translations": {
+      "es": "¿Cómo calcularías cuánto cambio obtienes por un billete de diez libras?",
+      "pt": "Como você calcularia quanto troco você recebe com uma nota de dez libras?",
+      "fr": "Comment détermineriez-vous combien de monnaie vous obtenez avec un billet de dix livres ?",
+      "it": "Come calcolaresti l'importo del resto che ottieni da una banconota da dieci sterline?",
+      "de": "Wie würden Sie herausfinden, wie viel Wechselgeld Sie aus einer Zehn-Pfund-Note herausholen?",
+      "nl": "Hoe berekent u hoeveel wisselgeld u krijgt uit een biljet van tien pond?",
+      "ru": "Как бы вы подсчитали, сколько сдачи вы получите с десятифунтовой банкноты?",
+      "tr": "On sterlinlik bir banknottan ne kadar para üstü alacağınızı nasıl hesaplarsınız?",
+      "zh": "How would you work out how much change you get from a ten pound note?",
+      "ja": "10ポンド紙幣から得られるお釣りはどうやって計算しますか?",
+      "ko": "10파운드 지폐에서 얼마만큼의 잔돈이 나오는지 어떻게 계산할 수 있나요?",
+      "id": "Bagaimana Anda mengetahui berapa banyak uang kembalian yang Anda peroleh dari uang kertas sepuluh pound?",
+      "vi": "Làm thế nào bạn có thể tính được số tiền lẻ bạn nhận được từ tờ 10 bảng?"
+    }
+  },
+  {
+    "id": 15,
+    "text": "Can you explain what place value means?",
+    "translations": {
+      "es": "¿Puedes explicar qué significa valor posicional?",
+      "pt": "Você pode explicar o que significa valor posicional?",
+      "fr": "Pouvez-vous expliquer ce que signifie la valeur de position ?",
+      "it": "Puoi spiegare cosa significa valore posizionale?",
+      "de": "Können Sie erklären, was Stellenwert bedeutet?",
+      "nl": "Kunt u uitleggen wat plaatswaarde betekent?",
+      "ru": "Можете ли вы объяснить, что означает значение места?",
+      "tr": "Basamak değerinin ne anlama geldiğini açıklayabilir misiniz?",
+      "zh": "Can you explain what place value means?",
+      "ja": "位の価値が何を意味するのか説明できますか?",
+      "ko": "자릿값이 무엇을 의미하는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa yang dimaksud dengan nilai tempat?",
+      "vi": "Bạn có thể giải thích giá trị vị trí có nghĩa là gì?"
+    }
+  },
+  {
+    "id": 16,
+    "text": "What do you find most challenging about maths? Why?",
+    "translations": {
+      "es": "¿Qué es lo que te resulta más desafiante de las matemáticas? ¿Por qué?",
+      "pt": "O que você acha mais desafiador em matemática? Por que?",
+      "fr": "Qu’est-ce qui vous paraît le plus difficile en mathématiques ? Pourquoi?",
+      "it": "Cosa trovi più impegnativo nella matematica? Perché?",
+      "de": "Was ist für Sie an Mathematik die größte Herausforderung? Warum?",
+      "nl": "Wat vind jij het meest uitdagende aan wiskunde? Waarom?",
+      "ru": "Что вам кажется самым сложным в математике? Почему?",
+      "tr": "Matematikte en çok zorlandığınız şey nedir? Neden?",
+      "zh": "What do you find most challenging about maths? Why?",
+      "ja": "数学で最も難しいと思うことは何ですか? なぜ？",
+      "ko": "수학에서 가장 어려운 점은 무엇입니까? 왜?",
+      "id": "Apa yang menurut Anda paling menantang dalam matematika? Mengapa?",
+      "vi": "Điều gì khiến bạn thấy khó khăn nhất khi học toán? Tại sao?"
+    }
+  },
+  {
+    "id": 17,
+    "text": "Tell me two numbers that add up to one hundred.",
+    "translations": {
+      "es": "Dime dos números que sumen cien.",
+      "pt": "Diga-me dois números que somam cem.",
+      "fr": "Dites-moi deux nombres qui totalisent cent.",
+      "it": "Dimmi due numeri la cui somma dà cento.",
+      "de": "Nennen Sie mir zwei Zahlen, die in der Summe einhundert ergeben.",
+      "nl": "Vertel me twee getallen die opgeteld honderd zijn.",
+      "ru": "Назовите мне два числа, сумма которых равна ста.",
+      "tr": "Bana toplamı yüz olan iki sayı söyleyin.",
+      "zh": "Tell me two numbers that add up to one hundred.",
+      "ja": "足すと100になる数字を2つ教えてください。",
+      "ko": "합이 100이 되는 숫자 두 개를 말해보세요.",
+      "id": "Sebutkan dua angka yang jumlahnya berjumlah seratus.",
+      "vi": "Hãy cho tôi biết hai số có tổng bằng một trăm."
+    }
+  },
+  {
+    "id": 18,
+    "text": "How would you explain what multiplication is to a younger child?",
+    "translations": {
+      "es": "¿Cómo le explicarías qué es la multiplicación a un niño más pequeño?",
+      "pt": "Como você explicaria o que é multiplicação para uma criança mais nova?",
+      "fr": "Comment expliqueriez-vous ce qu’est la multiplication à un enfant plus jeune ?",
+      "it": "Come spiegheresti cos'è la moltiplicazione a un bambino più piccolo?",
+      "de": "Wie würden Sie einem jüngeren Kind erklären, was Multiplikation ist?",
+      "nl": "Hoe zou je aan een jonger kind uitleggen wat vermenigvuldigen is?",
+      "ru": "Как бы вы объяснили младшему ребенку, что такое умножение?",
+      "tr": "Daha küçük bir çocuğa çarpma işleminin ne olduğunu nasıl açıklarsınız?",
+      "zh": "How would you explain what multiplication is to a younger child?",
+      "ja": "掛け算とは何かを年少の子供にどのように説明しますか?",
+      "ko": "어린 아이에게 곱셈이 무엇인지 어떻게 설명하겠습니까?",
+      "id": "Bagaimana Anda menjelaskan apa itu perkalian kepada anak kecil?",
+      "vi": "Làm thế nào bạn có thể giải thích phép nhân là gì cho trẻ nhỏ?"
+    }
+  },
+  {
+    "id": 19,
+    "text": "Can you describe what a right angle looks like?",
+    "translations": {
+      "es": "¿Puedes describir cómo se ve un ángulo recto?",
+      "pt": "Você pode descrever a aparência de um ângulo reto?",
+      "fr": "Pouvez-vous décrire à quoi ressemble un angle droit ?",
+      "it": "Puoi descrivere come appare un angolo retto?",
+      "de": "Können Sie beschreiben, wie ein rechter Winkel aussieht?",
+      "nl": "Kun je beschrijven hoe een rechte hoek eruit ziet?",
+      "ru": "Можете ли вы описать, как выглядит прямой угол?",
+      "tr": "Dik açının neye benzediğini açıklayabilir misiniz?",
+      "zh": "Can you describe what a right angle looks like?",
+      "ja": "直角がどのようなものかを説明できますか?",
+      "ko": "직각이 어떻게 생겼는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan seperti apa sudut siku-siku?",
+      "vi": "Bạn có thể mô tả góc vuông trông như thế nào không?"
+    }
+  },
+  {
+    "id": 20,
+    "text": "What is a prime number? Can you name two?",
+    "translations": {
+      "es": "¿Qué es un número primo? ¿Puedes nombrar dos?",
+      "pt": "O que é um número primo? Você pode citar dois?",
+      "fr": "Qu'est-ce qu'un nombre premier ? Pouvez-vous en nommer deux ?",
+      "it": "Cos'è un numero primo? Puoi nominarne due?",
+      "de": "Was ist eine Primzahl? Können Sie zwei nennen?",
+      "nl": "Wat is een priemgetal? Kun je er twee noemen?",
+      "ru": "Что такое простое число? Можете ли вы назвать два?",
+      "tr": "Asal sayı nedir? İki tane söyleyebilir misin?",
+      "zh": "What is a prime number? Can you name two?",
+      "ja": "素数とは何ですか? 2つ挙げていただけますか？",
+      "ko": "소수란 무엇입니까? 두 가지 이름을 말할 수 있나요?",
+      "id": "Apa itu bilangan prima? Bisakah Anda menyebutkan dua?",
+      "vi": "Số nguyên tố là gì? Bạn có thể kể tên hai người không?"
+    }
+  },
+  {
+    "id": 21,
+    "text": "How would you explain the difference between area and perimeter?",
+    "translations": {
+      "es": "¿Cómo explicarías la diferencia entre área y perímetro?",
+      "pt": "Como você explicaria a diferença entre área e perímetro?",
+      "fr": "Comment expliqueriez-vous la différence entre surface et périmètre ?",
+      "it": "Come spiegheresti la differenza tra area e perimetro?",
+      "de": "Wie würden Sie den Unterschied zwischen Fläche und Umfang erklären?",
+      "nl": "Hoe zou je het verschil tussen oppervlakte en omtrek verklaren?",
+      "ru": "Как бы вы объяснили разницу между площадью и периметром?",
+      "tr": "Alan ve çevre arasındaki farkı nasıl açıklarsınız?",
+      "zh": "How would you explain the difference between area and perimeter?",
+      "ja": "面積と周長の違いをどう説明しますか?",
+      "ko": "면적과 둘레의 차이를 어떻게 설명하겠습니까?",
+      "id": "Bagaimana cara menjelaskan perbedaan luas dan keliling?",
+      "vi": "Làm thế nào bạn sẽ giải thích sự khác biệt giữa diện tích và chu vi?"
+    }
+  },
+  {
+    "id": 22,
+    "text": "Can you tell me a number sequence and explain the pattern?",
+    "translations": {
+      "es": "¿Puedes decirme una secuencia numérica y explicar el patrón?",
+      "pt": "Você pode me dizer uma sequência numérica e explicar o padrão?",
+      "fr": "Pouvez-vous me donner une séquence de nombres et expliquer la régularité ?",
+      "it": "Potete dirmi una sequenza numerica e spiegare lo schema?",
+      "de": "Können Sie mir eine Zahlenfolge nennen und das Muster erklären?",
+      "nl": "Kunt u mij een nummerreeks vertellen en het patroon uitleggen?",
+      "ru": "Можете ли вы назвать мне последовательность чисел и объяснить закономерность?",
+      "tr": "Bana bir sayı dizisi anlatabilir ve örüntüyü açıklayabilir misiniz?",
+      "zh": "Can you tell me a number sequence and explain the pattern?",
+      "ja": "数字の並びとそのパターンを説明してもらえますか？",
+      "ko": "숫자 순서와 패턴을 설명해 주실 수 있나요?",
+      "id": "Bisakah Anda memberi tahu saya barisan bilangan dan menjelaskan polanya?",
+      "vi": "Bạn có thể cho tôi biết một dãy số và giải thích mô hình không?"
+    }
+  },
+  {
+    "id": 23,
+    "text": "What does percentage mean? Can you give an example?",
+    "translations": {
+      "es": "¿Qué significa porcentaje? ¿Puedes dar un ejemplo?",
+      "pt": "O que significa porcentagem? Você pode dar um exemplo?",
+      "fr": "Que signifie le pourcentage ? Pouvez-vous donner un exemple ?",
+      "it": "Cosa significa percentuale? Puoi fare un esempio?",
+      "de": "Was bedeutet Prozentsatz? Können Sie ein Beispiel nennen?",
+      "nl": "Wat betekent percentage? Kun je een voorbeeld geven?",
+      "ru": "Что означает процент? Можете ли вы привести пример?",
+      "tr": "Yüzde ne anlama geliyor? Bir örnek verebilir misiniz?",
+      "zh": "What does percentage mean? Can you give an example?",
+      "ja": "パーセンテージとはどういう意味ですか? 例を挙げていただけますか?",
+      "ko": "백분율은 무엇을 의미합니까? 예를 들어주실 수 있나요?",
+      "id": "Apa yang dimaksud dengan persentase? Bisakah Anda memberi contoh?",
+      "vi": "Tỷ lệ phần trăm có nghĩa là gì? Bạn có thể đưa ra một ví dụ?"
+    }
+  },
+  {
+    "id": 24,
+    "text": "Tell me how you would divide 20 sweets between 4 friends.",
+    "translations": {
+      "es": "Dime cómo dividirías 20 dulces entre 4 amigas.",
+      "pt": "Diga-me como você dividiria 20 doces entre 4 amigos.",
+      "fr": "Dites-moi comment vous partageriez 20 bonbons entre 4 amis.",
+      "it": "Raccontami come divideresti 20 caramelle tra 4 amici.",
+      "de": "Sag mir, wie du 20 Süßigkeiten auf vier Freunde verteilen würdest.",
+      "nl": "Vertel me hoe je 20 snoepjes zou verdelen onder 4 vrienden.",
+      "ru": "Расскажи, как бы ты разделил 20 конфет между четырьмя друзьями.",
+      "tr": "Bana 20 tatlıyı 4 arkadaşa nasıl bölüştüreceğini söyle.",
+      "zh": "Tell me how you would divide 20 sweets between 4 friends.",
+      "ja": "20 個のお菓子を 4 人の友達に分ける方法を教えてください。",
+      "ko": "4명의 친구에게 사탕 20개를 어떻게 나누어야 하는지 말해보세요.",
+      "id": "Katakan padaku bagaimana kamu membagi 20 permen kepada 4 orang teman.",
+      "vi": "Hãy cho tôi biết bạn sẽ chia 20 cái kẹo cho 4 người bạn như thế nào."
+    }
+  },
+  {
+    "id": 25,
+    "text": "Can you describe what a negative number is?",
+    "translations": {
+      "es": "¿Puedes describir qué es un número negativo?",
+      "pt": "Você pode descrever o que é um número negativo?",
+      "fr": "Pouvez-vous décrire ce qu’est un nombre négatif ?",
+      "it": "Puoi descrivere cos'è un numero negativo?",
+      "de": "Können Sie beschreiben, was eine negative Zahl ist?",
+      "nl": "Kun je beschrijven wat een negatief getal is?",
+      "ru": "Можете ли вы описать, что такое отрицательное число?",
+      "tr": "Negatif bir sayının ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you describe what a negative number is?",
+      "ja": "負の数とは何か説明できますか?",
+      "ko": "음수가 무엇인지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa itu bilangan negatif?",
+      "vi": "Bạn có thể mô tả số âm là gì không?"
+    }
+  },
+  {
+    "id": 26,
+    "text": "How do you use maths in your everyday life?",
+    "translations": {
+      "es": "¿Cómo utilizas las matemáticas en tu vida diaria?",
+      "pt": "Como você usa a matemática no seu dia a dia?",
+      "fr": "Comment utilisez-vous les mathématiques dans votre vie de tous les jours ?",
+      "it": "Come usi la matematica nella vita di tutti i giorni?",
+      "de": "Wie nutzen Sie Mathematik in Ihrem Alltag?",
+      "nl": "Hoe gebruik je wiskunde in je dagelijks leven?",
+      "ru": "Как вы используете математику в повседневной жизни?",
+      "tr": "Matematiği günlük yaşamınızda nasıl kullanıyorsunuz?",
+      "zh": "How do you use maths in your everyday life?",
+      "ja": "日常生活で数学をどのように活用しますか?",
+      "ko": "일상생활에서 수학을 어떻게 활용하시나요?",
+      "id": "Bagaimana Anda menggunakan matematika dalam kehidupan sehari-hari?",
+      "vi": "Bạn sử dụng toán học như thế nào trong cuộc sống hàng ngày?"
+    }
+  },
+  {
+    "id": 27,
+    "text": "What is the difference between a square and a rectangle?",
+    "translations": {
+      "es": "¿Cuál es la diferencia entre un cuadrado y un rectángulo?",
+      "pt": "Qual é a diferença entre um quadrado e um retângulo?",
+      "fr": "Quelle est la différence entre un carré et un rectangle ?",
+      "it": "Qual è la differenza tra un quadrato e un rettangolo?",
+      "de": "Was ist der Unterschied zwischen einem Quadrat und einem Rechteck?",
+      "nl": "Wat is het verschil tussen een vierkant en een rechthoek?",
+      "ru": "В чем разница между квадратом и прямоугольником?",
+      "tr": "Kare ile dikdörtgen arasındaki fark nedir?",
+      "zh": "What is the difference between a square and a rectangle?",
+      "ja": "正方形と長方形の違いは何ですか?",
+      "ko": "정사각형과 직사각형의 차이점은 무엇인가요?",
+      "id": "Apa perbedaan antara persegi dan persegi panjang?",
+      "vi": "Sự khác biệt giữa hình vuông và hình chữ nhật là gì?"
+    }
+  },
+  {
+    "id": 28,
+    "text": "Can you explain what rounding a number means?",
+    "translations": {
+      "es": "¿Puedes explicar qué significa redondear un número?",
+      "pt": "Você pode explicar o que significa arredondar um número?",
+      "fr": "Pouvez-vous expliquer ce que signifie arrondir un nombre ?",
+      "it": "Sapreste spiegare cosa significa arrotondare un numero?",
+      "de": "Können Sie erklären, was das Runden einer Zahl bedeutet?",
+      "nl": "Kunt u uitleggen wat het afronden van een getal betekent?",
+      "ru": "Можете ли вы объяснить, что означает округление числа?",
+      "tr": "Bir sayıyı yuvarlamanın ne anlama geldiğini açıklayabilir misiniz?",
+      "zh": "Can you explain what rounding a number means?",
+      "ja": "数値の四捨五入の意味を説明できますか?",
+      "ko": "숫자 반올림이 무엇을 의미하는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa yang dimaksud dengan pembulatan suatu bilangan?",
+      "vi": "Bạn có thể giải thích ý nghĩa của việc làm tròn số không?"
+    }
+  },
+  {
+    "id": 29,
+    "text": "Tell me what a bar chart is and when you might use one.",
+    "translations": {
+      "es": "Dígame qué es un gráfico de barras y cuándo podría utilizar uno.",
+      "pt": "Diga-me o que é um gráfico de barras e quando você pode usá-lo.",
+      "fr": "Dites-moi ce qu'est un graphique à barres et quand vous pouvez en utiliser un.",
+      "it": "Dimmi cos'è un grafico a barre e quando potresti usarne uno.",
+      "de": "Sagen Sie mir, was ein Balkendiagramm ist und wann Sie eines verwenden könnten.",
+      "nl": "Vertel me wat een staafdiagram is en wanneer je er een zou kunnen gebruiken.",
+      "ru": "Расскажите мне, что такое гистограмма и когда ее можно использовать.",
+      "tr": "Bana çubuk grafiğin ne olduğunu ve ne zaman kullanabileceğinizi söyleyin.",
+      "zh": "Tell me what a bar chart is and when you might use one.",
+      "ja": "棒グラフとは何か、またそれをいつ使用するか教えてください。",
+      "ko": "막대 차트가 무엇인지, 언제 사용할 수 있는지 알려주세요.",
+      "id": "Beri tahu saya apa itu diagram batang dan kapan Anda bisa menggunakannya.",
+      "vi": "Hãy cho tôi biết biểu đồ thanh là gì và khi nào bạn có thể sử dụng biểu đồ thanh."
+    }
+  },
+  {
+    "id": 30,
+    "text": "How would you explain what probability means?",
+    "translations": {
+      "es": "¿Cómo explicarías qué significa probabilidad?",
+      "pt": "Como você explicaria o que significa probabilidade?",
+      "fr": "Comment expliqueriez-vous ce que signifie la probabilité ?",
+      "it": "Come spiegheresti cosa significa probabilità?",
+      "de": "Wie würden Sie erklären, was Wahrscheinlichkeit bedeutet?",
+      "nl": "Hoe zou je uitleggen wat waarschijnlijkheid betekent?",
+      "ru": "Как бы вы объяснили, что такое вероятность?",
+      "tr": "Olasılığın ne anlama geldiğini nasıl açıklarsınız?",
+      "zh": "How would you explain what probability means?",
+      "ja": "確率の意味をどう説明しますか?",
+      "ko": "확률의 의미를 어떻게 설명할 수 있나요?",
+      "id": "Bagaimana Anda menjelaskan arti probabilitas?",
+      "vi": "Làm thế nào bạn sẽ giải thích xác suất có nghĩa là gì?"
+    }
+  },
+  {
+    "id": 31,
+    "text": "What is your favourite maths topic and why?",
+    "translations": {
+      "es": "¿Cuál es tu tema de matemáticas favorito y por qué?",
+      "pt": "Qual é o seu tópico favorito de matemática e por quê?",
+      "fr": "Quel est votre sujet de mathématiques préféré et pourquoi ?",
+      "it": "Qual è il tuo argomento di matematica preferito e perché?",
+      "de": "Was ist Ihr Lieblingsthema in Mathematik und warum?",
+      "nl": "Wat is je favoriete wiskundeonderwerp en waarom?",
+      "ru": "Какая ваша любимая тема по математике и почему?",
+      "tr": "En sevdiğiniz matematik konusu nedir ve neden?",
+      "zh": "What is your favourite maths topic and why?",
+      "ja": "あなたの好きな数学のトピックは何ですか?またその理由は何ですか?",
+      "ko": "가장 좋아하는 수학 주제와 그 이유는 무엇입니까?",
+      "id": "Apa topik matematika favoritmu dan mengapa?",
+      "vi": "Chủ đề toán học yêu thích của bạn là gì và tại sao?"
+    }
+  },
+  {
+    "id": 32,
+    "text": "Can you name a three dimensional shape and describe it?",
+    "translations": {
+      "es": "¿Puedes nombrar una forma tridimensional y describirla?",
+      "pt": "Você consegue nomear uma forma tridimensional e descrevê-la?",
+      "fr": "Pouvez-vous nommer une forme tridimensionnelle et la décrire ?",
+      "it": "Puoi nominare una forma tridimensionale e descriverla?",
+      "de": "Können Sie eine dreidimensionale Form benennen und beschreiben?",
+      "nl": "Kun je een driedimensionale vorm benoemen en beschrijven?",
+      "ru": "Можете ли вы назвать трехмерную форму и описать ее?",
+      "tr": "Üç boyutlu bir şekli isimlendirip tanımlayabilir misiniz?",
+      "zh": "Can you name a three dimensional shape and describe it?",
+      "ja": "三次元の形状に名前を付けて説明できますか?",
+      "ko": "3차원 모양의 이름을 지정하고 설명할 수 있나요?",
+      "id": "Bisakah Anda menyebutkan bentuk tiga dimensi dan mendeskripsikannya?",
+      "vi": "Bạn có thể gọi tên một hình dạng ba chiều và mô tả nó không?"
+    }
+  },
+  {
+    "id": 33,
+    "text": "Tell me how you would find the area of a rectangle.",
+    "translations": {
+      "es": "Dime cómo encontrarías el área de un rectángulo.",
+      "pt": "Diga-me como você encontraria a área de um retângulo.",
+      "fr": "Dis-moi comment tu trouverais l’aire d’un rectangle.",
+      "it": "Dimmi come troveresti l'area di un rettangolo.",
+      "de": "Sagen Sie mir, wie Sie die Fläche eines Rechtecks ​​ermitteln würden.",
+      "nl": "Vertel me hoe je de oppervlakte van een rechthoek zou vinden.",
+      "ru": "Скажите, как найти площадь прямоугольника?",
+      "tr": "Dikdörtgenin alanını nasıl bulacağınızı bana söyleyin.",
+      "zh": "Tell me how you would find the area of a rectangle.",
+      "ja": "長方形の面積を求める方法を教えてください。",
+      "ko": "직사각형의 넓이를 구하는 방법을 알려주세요.",
+      "id": "Katakan padaku bagaimana cara mencari luas persegi panjang.",
+      "vi": "Hãy cho tôi biết cách bạn tìm diện tích hình chữ nhật."
+    }
+  },
+  {
+    "id": 34,
+    "text": "What does the equals sign mean in a number sentence?",
+    "translations": {
+      "es": "¿Qué significa el signo igual en una oración numérica?",
+      "pt": "O que significa o sinal de igual em uma sentença numérica?",
+      "fr": "Que signifie le signe égal dans une phrase numérique ?",
+      "it": "Cosa significa il segno uguale in una frase numerica?",
+      "de": "Was bedeutet das Gleichheitszeichen in einem Zahlensatz?",
+      "nl": "Wat betekent het gelijkteken in een getalzin?",
+      "ru": "Что означает знак равенства в числовом предложении?",
+      "tr": "Bir sayı cümlesinde eşittir işareti ne anlama gelir?",
+      "zh": "What does the equals sign mean in a number sentence?",
+      "ja": "数値文における等号は何を意味しますか?",
+      "ko": "숫자 문장에서 등호는 무엇을 의미하나요?",
+      "id": "Apa arti tanda sama dengan pada kalimat bilangan?",
+      "vi": "Dấu bằng có ý nghĩa gì trong câu số?"
+    }
+  },
+  {
+    "id": 35,
+    "text": "How would you explain what a decimal number is?",
+    "translations": {
+      "es": "¿Cómo explicarías qué es un número decimal?",
+      "pt": "Como você explicaria o que é um número decimal?",
+      "fr": "Comment expliqueriez-vous ce qu’est un nombre décimal ?",
+      "it": "Come spiegheresti cos'è un numero decimale?",
+      "de": "Wie würden Sie erklären, was eine Dezimalzahl ist?",
+      "nl": "Hoe zou je uitleggen wat een decimaal getal is?",
+      "ru": "Как бы вы объяснили, что такое десятичное число?",
+      "tr": "Ondalık sayının ne olduğunu nasıl açıklarsınız?",
+      "zh": "How would you explain what a decimal number is?",
+      "ja": "10進数とは何なのかどう説明しますか?",
+      "ko": "십진수가 무엇인지 어떻게 설명하겠습니까?",
+      "id": "Bagaimana Anda menjelaskan apa itu bilangan desimal?",
+      "vi": "Bạn giải thích số thập phân là gì?"
+    }
+  },
+  {
+    "id": 36,
+    "text": "Can you describe what symmetry means and give an example?",
+    "translations": {
+      "es": "¿Puedes describir qué significa simetría y dar un ejemplo?",
+      "pt": "Você pode descrever o que significa simetria e dar um exemplo?",
+      "fr": "Pouvez-vous décrire ce que signifie la symétrie et donner un exemple ?",
+      "it": "Puoi descrivere cosa significa simmetria e fare un esempio?",
+      "de": "Können Sie beschreiben, was Symmetrie bedeutet, und ein Beispiel nennen?",
+      "nl": "Kun je beschrijven wat symmetrie betekent en een voorbeeld geven?",
+      "ru": "Можете ли вы описать, что означает симметрия, и привести пример?",
+      "tr": "Simetrinin ne anlama geldiğini açıklayıp bir örnek verebilir misiniz?",
+      "zh": "Can you describe what symmetry means and give an example?",
+      "ja": "対称性が何を意味するのか、例を挙げて説明してもらえますか?",
+      "ko": "대칭이 무엇을 의미하는지 설명하고 예를 들어주실 수 있나요?",
+      "id": "Dapatkah Anda menjelaskan apa yang dimaksud dengan simetri dan memberikan contohnya?",
+      "vi": "Bạn có thể mô tả ý nghĩa của tính đối xứng và cho ví dụ không?"
+    }
+  },
+  {
+    "id": 37,
+    "text": "Tell me what a factor of a number is.",
+    "translations": {
+      "es": "Dime qué es un factor de un número.",
+      "pt": "Diga-me o que é um fator de um número.",
+      "fr": "Dites-moi ce qu'est un facteur d'un nombre.",
+      "it": "Dimmi cos'è un fattore di un numero.",
+      "de": "Sag mir, was ein Faktor einer Zahl ist.",
+      "nl": "Vertel me wat een factor van een getal is.",
+      "ru": "Скажите, что такое делитель числа?",
+      "tr": "Bana bir sayının çarpanının ne olduğunu söyle.",
+      "zh": "Tell me what a factor of a number is.",
+      "ja": "数の因数とは何か教えてください。",
+      "ko": "숫자의 인수가 무엇인지 말해 보세요.",
+      "id": "Katakan padaku apa yang dimaksud dengan faktor suatu bilangan.",
+      "vi": "Hãy cho tôi biết hệ số của một số là gì."
+    }
+  },
+  {
+    "id": 38,
+    "text": "How would you explain what coordinates are?",
+    "translations": {
+      "es": "¿Cómo explicarías qué son las coordenadas?",
+      "pt": "Como você explicaria o que são coordenadas?",
+      "fr": "Comment expliqueriez-vous ce que sont les coordonnées ?",
+      "it": "Come spiegheresti cosa sono le coordinate?",
+      "de": "Wie würden Sie erklären, was Koordinaten sind?",
+      "nl": "Hoe zou je uitleggen wat coördinaten zijn?",
+      "ru": "Как бы вы объяснили, что такое координаты?",
+      "tr": "Koordinatların ne olduğunu nasıl açıklarsınız?",
+      "zh": "How would you explain what coordinates are?",
+      "ja": "座標とは何ですか？",
+      "ko": "좌표가 무엇인지 어떻게 설명할 수 있나요?",
+      "id": "Bagaimana Anda menjelaskan apa itu koordinat?",
+      "vi": "Bạn giải thích tọa độ là gì?"
+    }
+  },
+  {
+    "id": 39,
+    "text": "What is the most useful maths skill you have learned?",
+    "translations": {
+      "es": "¿Cuál es la habilidad matemática más útil que has aprendido?",
+      "pt": "Qual é a habilidade matemática mais útil que você aprendeu?",
+      "fr": "Quelle est la compétence mathématique la plus utile que vous ayez acquise ?",
+      "it": "Qual è l'abilità matematica più utile che hai imparato?",
+      "de": "Was ist die nützlichste Mathematikfähigkeit, die Sie gelernt haben?",
+      "nl": "Wat is de nuttigste wiskundevaardigheid die je hebt geleerd?",
+      "ru": "Какой самый полезный математический навык вы приобрели?",
+      "tr": "Öğrendiğiniz en yararlı matematik becerisi nedir?",
+      "zh": "What is the most useful maths skill you have learned?",
+      "ja": "あなたが学んだ中で最も役に立つ数学のスキルは何ですか?",
+      "ko": "당신이 배운 가장 유용한 수학 기술은 무엇입니까?",
+      "id": "Keterampilan matematika apa yang paling berguna yang pernah Anda pelajari?",
+      "vi": "Kỹ năng toán học hữu ích nhất mà bạn đã học được là gì?"
+    }
+  },
+  {
+    "id": 40,
+    "text": "Can you explain what the mean of a set of numbers is?",
+    "translations": {
+      "es": "¿Puedes explicar cuál es la media de un conjunto de números?",
+      "pt": "Você pode explicar qual é a média de um conjunto de números?",
+      "fr": "Pouvez-vous expliquer ce qu'est la moyenne d'un ensemble de nombres ?",
+      "it": "Sapreste spiegare qual è la media di un insieme di numeri?",
+      "de": "Können Sie erklären, was der Mittelwert einer Reihe von Zahlen ist?",
+      "nl": "Kun je uitleggen wat het gemiddelde van een reeks getallen is?",
+      "ru": "Можете ли вы объяснить, что такое среднее значение набора чисел?",
+      "tr": "Bir sayı kümesinin ortalamasının ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain what the mean of a set of numbers is?",
+      "ja": "一連の数値の平均が何であるかを説明できますか?",
+      "ko": "숫자 집합의 평균이 무엇인지 설명할 수 있나요?",
+      "id": "Dapatkah anda menjelaskan apa yang dimaksud dengan himpunan bilangan?",
+      "vi": "Bạn có thể giải thích ý nghĩa của một tập hợp số là gì không?"
+    }
+  },
+  {
+    "id": 41,
+    "text": "Tell me about a time maths helped you solve a real problem.",
+    "translations": {
+      "es": "Cuéntame de alguna vez que las matemáticas te ayudaron a resolver un problema real.",
+      "pt": "Conte-me sobre uma ocasião em que a matemática o ajudou a resolver um problema real.",
+      "fr": "Parlez-moi d’une fois où les mathématiques vous ont aidé à résoudre un vrai problème.",
+      "it": "Raccontami di un'occasione in cui la matematica ti ha aiutato a risolvere un problema reale.",
+      "de": "Erzählen Sie mir von einer Zeit, in der Ihnen Mathematik dabei geholfen hat, ein echtes Problem zu lösen.",
+      "nl": "Vertel eens over een keer dat wiskunde je heeft geholpen een echt probleem op te lossen.",
+      "ru": "Расскажите мне о случае, когда математика помогла вам решить реальную задачу.",
+      "tr": "Bana matematiğin gerçek bir problemi çözmenize yardımcı olduğu bir zamanı anlatın.",
+      "zh": "Tell me about a time maths helped you solve a real problem.",
+      "ja": "数学が実際の問題の解決に役立ったときのことを教えてください。",
+      "ko": "수학이 실제 문제를 해결하는 데 도움이 되었던 경험에 대해 이야기해 주세요.",
+      "id": "Ceritakan pada saya saat matematika membantu Anda memecahkan masalah nyata.",
+      "vi": "Hãy kể cho tôi nghe về lần toán học đã giúp bạn giải được một bài toán thực tế."
+    }
+  },
+  {
+    "id": 42,
+    "text": "How would you explain what ratio means?",
+    "translations": {
+      "es": "¿Cómo explicarías qué significa proporción?",
+      "pt": "Como você explicaria o que significa proporção?",
+      "fr": "Comment expliqueriez-vous ce que signifie le ratio ?",
+      "it": "Come spiegheresti cosa significa rapporto?",
+      "de": "Wie würden Sie erklären, was Verhältnis bedeutet?",
+      "nl": "Hoe zou je uitleggen wat ratio betekent?",
+      "ru": "Как бы вы объяснили, что означает соотношение?",
+      "tr": "Oranın ne anlama geldiğini nasıl açıklarsınız?",
+      "zh": "How would you explain what ratio means?",
+      "ja": "比率の意味をどう説明しますか?",
+      "ko": "비율이 무엇을 의미하는지 어떻게 설명할 수 있나요?",
+      "id": "Bagaimana Anda menjelaskan arti rasio?",
+      "vi": "Làm thế nào bạn có thể giải thích tỷ lệ có nghĩa là gì?"
+    }
+  },
+  {
+    "id": 43,
+    "text": "Can you describe what an acute angle and an obtuse angle are?",
+    "translations": {
+      "es": "¿Puedes describir qué son un ángulo agudo y un ángulo obtuso?",
+      "pt": "Você pode descrever o que são um ângulo agudo e um ângulo obtuso?",
+      "fr": "Pouvez-vous décrire ce qu’est un angle aigu et un angle obtus ?",
+      "it": "Sapresti descrivere cosa sono un angolo acuto e un angolo ottuso?",
+      "de": "Können Sie beschreiben, was ein spitzer Winkel und ein stumpfer Winkel sind?",
+      "nl": "Kun je beschrijven wat een scherpe hoek en een stompe hoek zijn?",
+      "ru": "Можете ли вы описать, что такое острый угол и тупой угол?",
+      "tr": "Dar açı ve geniş açının ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you describe what an acute angle and an obtuse angle are?",
+      "ja": "鋭角と鈍角とは何なのか説明できますか?",
+      "ko": "예각과 둔각이 무엇인지 설명할 수 있나요?",
+      "id": "Dapatkah kamu menjelaskan apa yang dimaksud dengan sudut lancip dan sudut tumpul?",
+      "vi": "Hãy cho biết góc nhọn và góc tù là gì?"
+    }
+  },
+  {
+    "id": 44,
+    "text": "Tell me what you know about the number pi.",
+    "translations": {
+      "es": "Dime lo que sabes sobre el número pi.",
+      "pt": "Diga-me o que você sabe sobre o número pi.",
+      "fr": "Dis-moi ce que tu sais sur le nombre pi.",
+      "it": "Dimmi cosa sai del numero pi greco.",
+      "de": "Sagen Sie mir, was Sie über die Zahl Pi wissen.",
+      "nl": "Vertel me wat je weet over het getal pi.",
+      "ru": "Расскажи мне, что ты знаешь о числе пи.",
+      "tr": "Bana pi sayısı hakkında ne bildiğini söyle.",
+      "zh": "Tell me what you know about the number pi.",
+      "ja": "円周率について知っていることを教えてください。",
+      "ko": "파이라는 숫자에 대해 무엇을 알고 있는지 말해 보세요.",
+      "id": "Ceritakan apa yang kamu ketahui tentang bilangan pi.",
+      "vi": "Hãy cho tôi biết bạn biết gì về số pi."
+    }
+  },
+  {
+    "id": 45,
+    "text": "How would you explain algebra to someone who had never heard of it?",
+    "translations": {
+      "es": "¿Cómo le explicarías el álgebra a alguien que nunca ha oído hablar de ella?",
+      "pt": "Como você explicaria álgebra para alguém que nunca ouviu falar dela?",
+      "fr": "Comment expliqueriez-vous l’algèbre à quelqu’un qui n’en a jamais entendu parler ?",
+      "it": "Come spiegheresti l'algebra a qualcuno che non ne ha mai sentito parlare?",
+      "de": "Wie würde man Algebra jemandem erklären, der noch nie davon gehört hat?",
+      "nl": "Hoe zou je algebra uitleggen aan iemand die er nog nooit van heeft gehoord?",
+      "ru": "Как бы вы объяснили алгебру тому, кто никогда о ней не слышал?",
+      "tr": "Cebiri hiç duymamış birine cebiri nasıl açıklarsınız?",
+      "zh": "How would you explain algebra to someone who had never heard of it?",
+      "ja": "代数学について聞いたことがない人にどのように説明しますか?",
+      "ko": "대수학을 들어본 적도 없는 사람에게 대수학을 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan aljabar kepada seseorang yang belum pernah mendengarnya?",
+      "vi": "Bạn sẽ giải thích đại số như thế nào cho một người chưa bao giờ nghe nói đến nó?"
+    }
+  },
+  {
+    "id": 46,
+    "text": "Can you explain why knowing times tables is helpful?",
+    "translations": {
+      "es": "¿Puedes explicar por qué es útil conocer las tablas de multiplicar?",
+      "pt": "Você pode explicar por que conhecer a tabuada é útil?",
+      "fr": "Pouvez-vous expliquer pourquoi il est utile de connaître les tables de multiplication ?",
+      "it": "Puoi spiegare perché è utile conoscere le tabelline?",
+      "de": "Können Sie erklären, warum es hilfreich ist, Stundenpläne zu kennen?",
+      "nl": "Kun je uitleggen waarom het nuttig is om de maaltafels te kennen?",
+      "ru": "Можете ли вы объяснить, почему полезно знать таблицу умножения?",
+      "tr": "Çarpım tablosunu bilmenin neden yararlı olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain why knowing times tables is helpful?",
+      "ja": "九九を知ることがなぜ役立つのか説明できますか?",
+      "ko": "구구단을 아는 것이 왜 도움이 되는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan mengapa mengetahui tabel perkalian itu bermanfaat?",
+      "vi": "Bạn có thể giải thích tại sao việc biết bảng cửu chương lại hữu ích không?"
+    }
+  },
+  {
+    "id": 47,
+    "text": "What do you find easiest in maths? Tell me about it.",
+    "translations": {
+      "es": "¿Qué te resulta más fácil en matemáticas? Cuéntamelo.",
+      "pt": "O que você acha mais fácil em matemática? Conte-me sobre isso.",
+      "fr": "Qu’est-ce qui vous semble le plus facile en mathématiques ? Parlez-moi de ça.",
+      "it": "Cosa trovi più facile in matematica? Raccontamelo.",
+      "de": "Was fällt dir in Mathe am einfachsten? Erzähl mir davon.",
+      "nl": "Wat vind jij het makkelijkste bij wiskunde? Vertel me erover.",
+      "ru": "Что вам легче всего в математике? Расскажи мне об этом.",
+      "tr": "Matematikte en kolay bulduğunuz şey nedir? Bana bundan bahset.",
+      "zh": "What do you find easiest in maths? Tell me about it.",
+      "ja": "数学で一番簡単だと思うのは何ですか? それについて教えてください。",
+      "ko": "수학에서 무엇이 가장 쉽다고 생각하시나요? 그것에 대해 말해주세요.",
+      "id": "Apa yang menurutmu paling mudah dalam matematika? Ceritakan padaku tentang hal itu.",
+      "vi": "Bạn thấy điều gì dễ nhất trong môn toán? Hãy kể cho tôi nghe về nó."
+    }
+  },
+  {
+    "id": 48,
+    "text": "How would you work out the perimeter of a square?",
+    "translations": {
+      "es": "¿Cómo calcularías el perímetro de un cuadrado?",
+      "pt": "Como você calcularia o perímetro de um quadrado?",
+      "fr": "Comment calculeriez-vous le périmètre d’un carré ?",
+      "it": "Come calcoleresti il ​​perimetro di un quadrato?",
+      "de": "Wie würden Sie den Umfang eines Quadrats berechnen?",
+      "nl": "Hoe bereken je de omtrek van een vierkant?",
+      "ru": "Как бы вы вычислили периметр квадрата?",
+      "tr": "Bir karenin çevresini nasıl hesaplarsınız?",
+      "zh": "How would you work out the perimeter of a square?",
+      "ja": "正方形の周囲長はどうやって求めますか?",
+      "ko": "정사각형의 둘레는 어떻게 계산하겠습니까?",
+      "id": "Bagaimana cara menghitung keliling persegi?",
+      "vi": "Bạn sẽ tính chu vi của một hình vuông như thế nào?"
+    }
+  },
+  {
+    "id": 49,
+    "text": "Tell me what you know about Roman numerals.",
+    "translations": {
+      "es": "Cuéntame lo que sabes sobre los números romanos.",
+      "pt": "Diga-me o que você sabe sobre algarismos romanos.",
+      "fr": "Dites-moi ce que vous savez sur les chiffres romains.",
+      "it": "Dimmi cosa sai sui numeri romani.",
+      "de": "Sagen Sie mir, was Sie über römische Ziffern wissen.",
+      "nl": "Vertel me wat je weet over Romeinse cijfers.",
+      "ru": "Расскажи мне, что ты знаешь о римских цифрах.",
+      "tr": "Romen rakamları hakkında bildiklerini söyle bana.",
+      "zh": "Tell me what you know about Roman numerals.",
+      "ja": "ローマ数字について知っていることを教えてください。",
+      "ko": "로마 숫자에 대해 아는 것을 말해 보세요.",
+      "id": "Ceritakan apa yang Anda ketahui tentang angka Romawi.",
+      "vi": "Hãy cho tôi biết bạn biết gì về chữ số La Mã."
+    }
+  },
+  {
+    "id": 50,
+    "text": "Can you explain what an isosceles triangle is?",
+    "translations": {
+      "es": "¿Puedes explicar qué es un triángulo isósceles?",
+      "pt": "Você pode explicar o que é um triângulo isósceles?",
+      "fr": "Pouvez-vous expliquer ce qu'est un triangle isocèle ?",
+      "it": "Sapreste spiegare cos'è un triangolo isoscele?",
+      "de": "Können Sie erklären, was ein gleichschenkliges Dreieck ist?",
+      "nl": "Kun je uitleggen wat een gelijkbenige driehoek is?",
+      "ru": "Можете ли вы объяснить, что такое равнобедренный треугольник?",
+      "tr": "İkizkenar üçgenin ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain what an isosceles triangle is?",
+      "ja": "二等辺三角形とは何か説明できますか？",
+      "ko": "이등변삼각형이 무엇인지 설명할 수 있나요?",
+      "id": "Bisakah anda menjelaskan apa yang dimaksud dengan segitiga sama kaki?",
+      "vi": "Bạn có thể giải thích tam giác cân là gì không?"
+    }
+  },
+  {
+    "id": 51,
+    "text": "How would you find ten percent of a number?",
+    "translations": {
+      "es": "¿Cómo encontrarías el diez por ciento de un número?",
+      "pt": "Como você encontraria dez por cento de um número?",
+      "fr": "Comment trouveriez-vous dix pour cent d’un nombre ?",
+      "it": "Come potresti trovare il dieci per cento di un numero?",
+      "de": "Wie findet man zehn Prozent einer Zahl?",
+      "nl": "Hoe vind je tien procent van een getal?",
+      "ru": "Как найти десять процентов числа?",
+      "tr": "Bir sayının yüzde onunu nasıl bulursunuz?",
+      "zh": "How would you find ten percent of a number?",
+      "ja": "数値の 10 パーセントをどのように見つけますか?",
+      "ko": "숫자의 10%를 어떻게 찾을 수 있나요?",
+      "id": "Bagaimana cara menemukan sepuluh persen suatu angka?",
+      "vi": "Làm thế nào bạn có thể tìm thấy mười phần trăm của một số?"
+    }
+  },
+  {
+    "id": 52,
+    "text": "Tell me what BIDMAS means and why it is important.",
+    "translations": {
+      "es": "Cuéntame qué significa BIDMAS y por qué es importante.",
+      "pt": "Diga-me o que significa BIDMAS e por que é importante.",
+      "fr": "Dites-moi ce que signifie BIDMAS et pourquoi c'est important.",
+      "it": "Dimmi cosa significa BIDMAS e perché è importante.",
+      "de": "Sagen Sie mir, was BIDMAS bedeutet und warum es wichtig ist.",
+      "nl": "Vertel me wat BIDMAS betekent en waarom het belangrijk is.",
+      "ru": "Расскажите мне, что такое БИДМАС и почему это важно.",
+      "tr": "Bana BİDMAS'ın ne anlama geldiğini ve neden önemli olduğunu anlatın.",
+      "zh": "Tell me what BIDMAS means and why it is important.",
+      "ja": "BIDMAS の意味とそれが重要な理由を教えてください。",
+      "ko": "BIDMAS의 의미와 그것이 왜 중요한지 알려주세요.",
+      "id": "Ceritakan pada saya apa arti BIDMAS dan mengapa itu penting.",
+      "vi": "Hãy cho tôi biết BIDMAS nghĩa là gì và tại sao nó quan trọng."
+    }
+  },
+  {
+    "id": 53,
+    "text": "Can you explain the difference between a multiple and a factor?",
+    "translations": {
+      "es": "¿Puedes explicar la diferencia entre un múltiplo y un factor?",
+      "pt": "Você pode explicar a diferença entre um múltiplo e um fator?",
+      "fr": "Pouvez-vous expliquer la différence entre un multiple et un facteur ?",
+      "it": "Sapreste spiegare la differenza tra multiplo e fattore?",
+      "de": "Können Sie den Unterschied zwischen einem Vielfachen und einem Faktor erklären?",
+      "nl": "Kun je het verschil uitleggen tussen een veelvoud en een factor?",
+      "ru": "Можете ли вы объяснить разницу между кратным и множителем?",
+      "tr": "Bir çarpan ile bir faktör arasındaki farkı açıklayabilir misiniz?",
+      "zh": "Can you explain the difference between a multiple and a factor?",
+      "ja": "倍数と因数の違いを説明できますか?",
+      "ko": "배수와 요인의 차이점을 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan perbedaan antara kelipatan dan faktor?",
+      "vi": "Bạn có thể giải thích sự khác biệt giữa bội số và một thừa số không?"
+    }
+  },
+  {
+    "id": 54,
+    "text": "How would you describe what a pie chart shows?",
+    "translations": {
+      "es": "¿Cómo describirías lo que muestra un gráfico circular?",
+      "pt": "Como você descreveria o que um gráfico de pizza mostra?",
+      "fr": "Comment décririez-vous ce que montre un diagramme circulaire ?",
+      "it": "Come descriveresti ciò che mostra un grafico a torta?",
+      "de": "Wie würden Sie beschreiben, was ein Kreisdiagramm zeigt?",
+      "nl": "Hoe zou je beschrijven wat een cirkeldiagram laat zien?",
+      "ru": "Как бы вы описали то, что показывает круговая диаграмма?",
+      "tr": "Pasta grafiğinin neyi gösterdiğini nasıl tanımlarsınız?",
+      "zh": "How would you describe what a pie chart shows?",
+      "ja": "円グラフが何を示しているかをどのように説明しますか?",
+      "ko": "원형 차트가 보여주는 내용을 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan apa yang ditunjukkan diagram lingkaran?",
+      "vi": "Bạn sẽ mô tả những gì biểu đồ hình tròn thể hiện như thế nào?"
+    }
+  },
+  {
+    "id": 55,
+    "text": "Tell me about a maths game you enjoy playing.",
+    "translations": {
+      "es": "Cuéntame sobre un juego de matemáticas que te guste jugar.",
+      "pt": "Conte-me sobre um jogo de matemática que você gosta de jogar.",
+      "fr": "Parlez-moi d’un jeu de mathématiques auquel vous aimez jouer.",
+      "it": "Parlami di un gioco di matematica a cui ti piace giocare.",
+      "de": "Erzählen Sie mir von einem Mathespiel, das Sie gerne spielen.",
+      "nl": "Vertel me over een wiskundespel dat je graag speelt.",
+      "ru": "Расскажите мне о математической игре, в которую вам нравится играть.",
+      "tr": "Bana oynamaktan keyif aldığınız bir matematik oyunundan bahsedin.",
+      "zh": "Tell me about a maths game you enjoy playing.",
+      "ja": "あなたが楽しんでプレイしている数学ゲームについて教えてください。",
+      "ko": "당신이 즐기는 수학 게임에 대해 말해주세요.",
+      "id": "Ceritakan tentang permainan matematika yang Anda sukai.",
+      "vi": "Hãy kể cho tôi nghe về một trò chơi toán học mà bạn thích chơi."
+    }
+  },
+  {
+    "id": 56,
+    "text": "Can you explain what an improper fraction is?",
+    "translations": {
+      "es": "¿Puedes explicar qué es una fracción impropia?",
+      "pt": "Você pode explicar o que é uma fração imprópria?",
+      "fr": "Pouvez-vous expliquer ce qu'est une fraction impropre ?",
+      "it": "Sapreste spiegare cos'è una frazione impropria?",
+      "de": "Können Sie erklären, was ein unechter Bruch ist?",
+      "nl": "Kun je uitleggen wat een onechte breuk is?",
+      "ru": "Можете ли вы объяснить, что такое неправильная дробь?",
+      "tr": "Uygun olmayan kesrin ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain what an improper fraction is?",
+      "ja": "仮分数とは何か説明できますか？",
+      "ko": "가분수가 무엇인지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa yang dimaksud dengan pecahan biasa?",
+      "vi": "Bạn có thể giải thích phân số không chính xác là gì không?"
+    }
+  },
+  {
+    "id": 57,
+    "text": "How would you explain long division step by step?",
+    "translations": {
+      "es": "¿Cómo explicarías la división larga paso a paso?",
+      "pt": "Como você explicaria a divisão longa passo a passo?",
+      "fr": "Comment expliqueriez-vous la division longue étape par étape ?",
+      "it": "Come spiegheresti la divisione lunga passo dopo passo?",
+      "de": "Wie würden Sie die Langdivision Schritt für Schritt erklären?",
+      "nl": "Hoe zou je staartdeling stap voor stap uitleggen?",
+      "ru": "Как бы вы объяснили деление столбика шаг за шагом?",
+      "tr": "Uzun bölme işlemini adım adım nasıl açıklarsınız?",
+      "zh": "How would you explain long division step by step?",
+      "ja": "長い除算を段階的に説明するにはどうすればよいでしょうか?",
+      "ko": "긴 나눗셈을 단계별로 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan pembagian panjang langkah demi langkah?",
+      "vi": "Làm thế nào bạn sẽ giải thích phân chia dài từng bước?"
+    }
+  },
+  {
+    "id": 58,
+    "text": "Tell me about a shape that has rotational symmetry.",
+    "translations": {
+      "es": "Háblame de una figura que tenga simetría rotacional.",
+      "pt": "Conte-me sobre uma forma que tenha simetria rotacional.",
+      "fr": "Parlez-moi d’une forme qui a une symétrie de rotation.",
+      "it": "Parlami di una forma che abbia simmetria rotazionale.",
+      "de": "Erzählen Sie mir von einer Form, die rotationssymmetrisch ist.",
+      "nl": "Vertel me over een vorm met rotatiesymmetrie.",
+      "ru": "Расскажите мне о фигуре, обладающей вращательной симметрией.",
+      "tr": "Bana dönme simetrisine sahip bir şekil hakkında bilgi verin.",
+      "zh": "Tell me about a shape that has rotational symmetry.",
+      "ja": "回転対称な図形について教えてください。",
+      "ko": "회전대칭을 갖는 도형에 대해 말해 보세요.",
+      "id": "Ceritakan tentang bangun datar yang mempunyai simetri putar.",
+      "vi": "Hãy cho tôi biết về một hình có đối xứng quay."
+    }
+  },
+  {
+    "id": 59,
+    "text": "Can you describe how to convert metres to centimetres?",
+    "translations": {
+      "es": "¿Puedes describir cómo convertir metros a centímetros?",
+      "pt": "Você pode descrever como converter metros em centímetros?",
+      "fr": "Pouvez-vous décrire comment convertir des mètres en centimètres ?",
+      "it": "Puoi descrivere come convertire i metri in centimetri?",
+      "de": "Können Sie beschreiben, wie man Meter in Zentimeter umrechnet?",
+      "nl": "Kun je beschrijven hoe je meters naar centimeters omzet?",
+      "ru": "Можете ли вы описать, как перевести метры в сантиметры?",
+      "tr": "Metreyi santimetreye nasıl çevireceğinizi açıklayabilir misiniz?",
+      "zh": "Can you describe how to convert metres to centimetres?",
+      "ja": "メートルをセンチメートルに変換する方法を説明できますか?",
+      "ko": "미터를 센티미터로 변환하는 방법을 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan cara mengubah meter ke sentimeter?",
+      "vi": "Bạn có thể mô tả cách chuyển đổi mét sang centimét không?"
+    }
+  },
+  {
+    "id": 60,
+    "text": "How would you explain what a line graph shows?",
+    "translations": {
+      "es": "¿Cómo explicarías lo que muestra un gráfico lineal?",
+      "pt": "Como você explicaria o que um gráfico de linha mostra?",
+      "fr": "Comment expliqueriez-vous ce que montre un graphique linéaire ?",
+      "it": "Come spiegheresti cosa mostra un grafico a linee?",
+      "de": "Wie würden Sie erklären, was ein Liniendiagramm zeigt?",
+      "nl": "Hoe zou je uitleggen wat een lijngrafiek laat zien?",
+      "ru": "Как бы вы объяснили, что показывает линейный график?",
+      "tr": "Çizgi grafiğinin neyi gösterdiğini nasıl açıklarsınız?",
+      "zh": "How would you explain what a line graph shows?",
+      "ja": "折れ線グラフが何を示しているかをどのように説明しますか?",
+      "ko": "선 그래프가 나타내는 내용을 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan apa yang ditunjukkan grafik garis?",
+      "vi": "Bạn giải thích thế nào về biểu đồ đường?"
+    }
+  },
+  {
+    "id": 61,
+    "text": "Tell me two things that have a right angle in real life.",
+    "translations": {
+      "es": "Dime dos cosas que tengan un ángulo recto en la vida real.",
+      "pt": "Diga-me duas coisas que têm um ângulo reto na vida real.",
+      "fr": "Dites-moi deux choses qui ont un angle droit dans la vraie vie.",
+      "it": "Dimmi due cose che hanno un angolo retto nella vita reale.",
+      "de": "Erzähl mir zwei Dinge, die im wirklichen Leben einen rechten Winkel haben.",
+      "nl": "Vertel me twee dingen die in het echte leven een rechte hoek hebben.",
+      "ru": "Назовите мне две вещи, которые имеют прямой угол в реальной жизни.",
+      "tr": "Bana gerçek hayatta dik açısı olan iki şey söyle.",
+      "zh": "Tell me two things that have a right angle in real life.",
+      "ja": "現実の直角をなすものを 2 つ教えてください。",
+      "ko": "실생활에서 직각을 이루는 두 가지를 말해보세요.",
+      "id": "Ceritakan dua hal yang memiliki sudut siku-siku dalam kehidupan nyata.",
+      "vi": "Hãy kể cho tôi nghe hai điều có góc vuông trong đời thực."
+    }
+  },
+  {
+    "id": 62,
+    "text": "Can you explain why estimation is a useful skill?",
+    "translations": {
+      "es": "¿Puedes explicar por qué la estimación es una habilidad útil?",
+      "pt": "Você pode explicar por que a estimativa é uma habilidade útil?",
+      "fr": "Pouvez-vous expliquer pourquoi l’estimation est une compétence utile ?",
+      "it": "Potete spiegare perché la stima è un'abilità utile?",
+      "de": "Können Sie erklären, warum Schätzen eine nützliche Fähigkeit ist?",
+      "nl": "Kun je uitleggen waarom schatten een nuttige vaardigheid is?",
+      "ru": "Можете ли вы объяснить, почему оценка — полезный навык?",
+      "tr": "Tahmin etmenin neden yararlı bir beceri olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain why estimation is a useful skill?",
+      "ja": "なぜ見積もりが有用なスキルなのか説明できますか?",
+      "ko": "추정이 유용한 기술인 이유를 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan mengapa estimasi merupakan keterampilan yang berguna?",
+      "vi": "Bạn có thể giải thích tại sao ước lượng là một kỹ năng hữu ích không?"
+    }
+  },
+  {
+    "id": 63,
+    "text": "How would you describe what the square root of a number is?",
+    "translations": {
+      "es": "¿Cómo describirías cuál es la raíz cuadrada de un número?",
+      "pt": "Como você descreveria o que é a raiz quadrada de um número?",
+      "fr": "Comment décririez-vous ce qu’est la racine carrée d’un nombre ?",
+      "it": "Come descriveresti cos'è la radice quadrata di un numero?",
+      "de": "Wie würden Sie beschreiben, was die Quadratwurzel einer Zahl ist?",
+      "nl": "Hoe zou je beschrijven wat de vierkantswortel van een getal is?",
+      "ru": "Как бы вы описали, что такое квадратный корень из числа?",
+      "tr": "Bir sayının karekökünün ne olduğunu nasıl tanımlarsınız?",
+      "zh": "How would you describe what the square root of a number is?",
+      "ja": "数値の平方根とは何ですか?",
+      "ko": "숫자의 제곱근이 무엇인지 어떻게 설명하겠습니까?",
+      "id": "Bagaimana Anda menjelaskan akar kuadrat suatu bilangan?",
+      "vi": "Làm thế nào bạn có thể mô tả căn bậc hai của một số là gì?"
+    }
+  },
+  {
+    "id": 64,
+    "text": "Tell me about the Fibonacci sequence.",
+    "translations": {
+      "es": "Háblame de la secuencia de Fibonacci.",
+      "pt": "Conte-me sobre a sequência de Fibonacci.",
+      "fr": "Parlez-moi de la séquence de Fibonacci.",
+      "it": "Parlami della sequenza di Fibonacci.",
+      "de": "Erzähl mir etwas über die Fibonacci-Folge.",
+      "nl": "Vertel me eens over de Fibonacci-reeks.",
+      "ru": "Расскажите мне о последовательности Фибоначчи.",
+      "tr": "Bana Fibonacci dizisinden bahset.",
+      "zh": "Tell me about the Fibonacci sequence.",
+      "ja": "フィボナッチ数列について教えてください。",
+      "ko": "피보나치 수열에 대해 알려주세요.",
+      "id": "Ceritakan tentang deret Fibonacci.",
+      "vi": "Hãy cho tôi biết về dãy Fibonacci."
+    }
+  },
+  {
+    "id": 65,
+    "text": "Can you explain what it means to simplify a fraction?",
+    "translations": {
+      "es": "¿Puedes explicar qué significa simplificar una fracción?",
+      "pt": "Você pode explicar o que significa simplificar uma fração?",
+      "fr": "Pouvez-vous expliquer ce que signifie simplifier une fraction ?",
+      "it": "Sapreste spiegare cosa significa semplificare una frazione?",
+      "de": "Können Sie erklären, was es bedeutet, einen Bruch zu vereinfachen?",
+      "nl": "Kun je uitleggen wat het betekent om een ​​breuk te vereenvoudigen?",
+      "ru": "Можете ли вы объяснить, что значит упростить дробь?",
+      "tr": "Bir kesri sadeleştirmenin ne anlama geldiğini açıklayabilir misiniz?",
+      "zh": "Can you explain what it means to simplify a fraction?",
+      "ja": "分数を簡略化するとはどういう意味かを説明できますか?",
+      "ko": "분수를 단순화한다는 것이 무엇을 의미하는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa yang dimaksud dengan menyederhanakan pecahan?",
+      "vi": "Bạn có thể giải thích ý nghĩa của việc đơn giản hóa một phân số?"
+    }
+  },
+  {
+    "id": 66,
+    "text": "How would you describe what inverse operations are?",
+    "translations": {
+      "es": "¿Cómo describirías qué son las operaciones inversas?",
+      "pt": "Como você descreveria o que são operações inversas?",
+      "fr": "Comment décririez-vous ce que sont les opérations inverses ?",
+      "it": "Come descriveresti le operazioni inverse?",
+      "de": "Wie würden Sie beschreiben, was Umkehroperationen sind?",
+      "nl": "Hoe zou je omschrijven wat inverse bewerkingen zijn?",
+      "ru": "Как бы вы описали, что такое обратные операции?",
+      "tr": "Ters işlemlerin ne olduğunu nasıl tanımlarsınız?",
+      "zh": "How would you describe what inverse operations are?",
+      "ja": "逆演算とは何ですか?",
+      "ko": "역연산이 무엇인지 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan operasi invers?",
+      "vi": "Làm thế nào bạn có thể mô tả các hoạt động nghịch đảo là gì?"
+    }
+  },
+  {
+    "id": 67,
+    "text": "Tell me how you would check a multiplication answer using division.",
+    "translations": {
+      "es": "Dime cómo verificarías una respuesta de multiplicación usando división.",
+      "pt": "Diga-me como você verificaria uma resposta de multiplicação usando divisão.",
+      "fr": "Dites-moi comment vous vérifieriez une réponse de multiplication en utilisant la division.",
+      "it": "Dimmi come controlleresti la risposta di una moltiplicazione usando la divisione.",
+      "de": "Sagen Sie mir, wie Sie eine Multiplikationslösung durch Division überprüfen würden.",
+      "nl": "Vertel me hoe je een vermenigvuldigingsantwoord zou controleren met deling.",
+      "ru": "Расскажите, как бы вы проверили ответ на умножение с помощью деления.",
+      "tr": "Bölmeyi kullanarak çarpma cevabını nasıl kontrol edeceğinizi söyleyin.",
+      "zh": "Tell me how you would check a multiplication answer using division.",
+      "ja": "割り算を使って掛け算の答えを調べる方法を教えてください。",
+      "ko": "나눗셈을 사용하여 곱셈 답을 확인하는 방법을 알려주세요.",
+      "id": "Katakan padaku bagaimana cara memeriksa jawaban perkalian menggunakan pembagian.",
+      "vi": "Hãy cho tôi biết cách bạn kiểm tra câu trả lời nhân bằng phép chia."
+    }
+  },
+  {
+    "id": 68,
+    "text": "Can you describe what standard form is used for?",
+    "translations": {
+      "es": "¿Puedes describir para qué se utiliza el formulario estándar?",
+      "pt": "Você pode descrever para que serve o formulário padrão?",
+      "fr": "Pouvez-vous décrire à quoi sert le formulaire standard ?",
+      "it": "Puoi descrivere a cosa serve il modulo standard?",
+      "de": "Können Sie beschreiben, wofür das Standardformular verwendet wird?",
+      "nl": "Kunt u beschrijven waarvoor het standaardformulier wordt gebruikt?",
+      "ru": "Можете ли вы описать, для чего используется стандартная форма?",
+      "tr": "Standart formun ne için kullanıldığını açıklayabilir misiniz?",
+      "zh": "Can you describe what standard form is used for?",
+      "ja": "標準フォームが何に使用されているか説明していただけますか?",
+      "ko": "어떤 표준 형식이 사용되는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan untuk apa formulir standar digunakan?",
+      "vi": "Bạn có thể mô tả mẫu chuẩn được sử dụng để làm gì không?"
+    }
+  },
+  {
+    "id": 69,
+    "text": "How would you explain what tessellation means?",
+    "translations": {
+      "es": "¿Cómo explicarías qué significa teselación?",
+      "pt": "Como você explicaria o que significa mosaico?",
+      "fr": "Comment expliqueriez-vous ce que signifie la pavage ?",
+      "it": "Come spiegheresti cosa significa tassellatura?",
+      "de": "Wie würden Sie erklären, was Tessellation bedeutet?",
+      "nl": "Hoe zou je uitleggen wat mozaïekpatroon betekent?",
+      "ru": "Как бы вы объяснили, что такое тесселяция?",
+      "tr": "Mozaiklemenin ne anlama geldiğini nasıl açıklarsınız?",
+      "zh": "How would you explain what tessellation means?",
+      "ja": "テッセレーションの意味をどう説明しますか?",
+      "ko": "테셀레이션이 무엇을 의미하는지 어떻게 설명할 수 있나요?",
+      "id": "Bagaimana Anda menjelaskan apa arti tesselasi?",
+      "vi": "Làm thế nào bạn có thể giải thích tessellation nghĩa là gì?"
+    }
+  },
+  {
+    "id": 70,
+    "text": "Tell me about a career that uses lots of maths.",
+    "translations": {
+      "es": "Háblame de una carrera que utilice muchas matemáticas.",
+      "pt": "Conte-me sobre uma carreira que usa muita matemática.",
+      "fr": "Parlez-moi d'une carrière qui utilise beaucoup de mathématiques.",
+      "it": "Raccontami di una carriera che utilizza molta matematica.",
+      "de": "Erzählen Sie mir von einem Beruf, der viel Mathematik erfordert.",
+      "nl": "Vertel me over een carrière waarin veel wiskunde wordt gebruikt.",
+      "ru": "Расскажите мне о карьере, в которой много математики.",
+      "tr": "Bana çok fazla matematik kullanan bir kariyerden bahset.",
+      "zh": "Tell me about a career that uses lots of maths.",
+      "ja": "数学を多用するキャリアについて教えてください。",
+      "ko": "수학을 많이 사용하는 직업에 대해 말해 보세요.",
+      "id": "Ceritakan tentang karier yang banyak menggunakan matematika.",
+      "vi": "Hãy kể cho tôi nghe về một nghề nghiệp sử dụng nhiều toán học."
+    }
+  },
+  {
+    "id": 71,
+    "text": "Can you explain what a number bond is?",
+    "translations": {
+      "es": "¿Puedes explicar qué es un enlace numérico?",
+      "pt": "Você pode explicar o que é uma ligação numérica?",
+      "fr": "Pouvez-vous expliquer ce qu'est une liaison numérique ?",
+      "it": "Potete spiegare cos'è un Number Bond?",
+      "de": "Können Sie erklären, was eine Zahlenbindung ist?",
+      "nl": "Kunt u uitleggen wat een nummerbinding is?",
+      "ru": "Можете ли вы объяснить, что такое числовая связь?",
+      "tr": "Sayı bağının ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain what a number bond is?",
+      "ja": "数結合とは何か説明できますか?",
+      "ko": "숫자본드가 무엇인지 설명해 주실 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa yang dimaksud dengan ikatan bilangan?",
+      "vi": "Bạn có thể giải thích trái phiếu số là gì không?"
+    }
+  },
+  {
+    "id": 72,
+    "text": "How would you describe adding fractions with different denominators?",
+    "translations": {
+      "es": "¿Cómo describirías la suma de fracciones con diferentes denominadores?",
+      "pt": "Como você descreveria a adição de frações com denominadores diferentes?",
+      "fr": "Comment décririez-vous l’addition de fractions avec différents dénominateurs ?",
+      "it": "Come descriveresti l'addizione di frazioni con denominatori diversi?",
+      "de": "Wie würden Sie das Addieren von Brüchen mit unterschiedlichen Nennern beschreiben?",
+      "nl": "Hoe zou je het optellen van breuken met verschillende noemers beschrijven?",
+      "ru": "Как бы вы описали сложение дробей с разными знаменателями?",
+      "tr": "Farklı paydalara sahip kesirleri toplamayı nasıl açıklarsınız?",
+      "zh": "How would you describe adding fractions with different denominators?",
+      "ja": "分母の異なる分数の足し算をどのように説明しますか?",
+      "ko": "분모가 다른 분수의 덧셈을 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana cara menjelaskan penjumlahan pecahan yang penyebutnya berbeda?",
+      "vi": "Bạn mô tả việc cộng các phân số có mẫu số khác nhau như thế nào?"
+    }
+  },
+  {
+    "id": 73,
+    "text": "Tell me what you know about square numbers.",
+    "translations": {
+      "es": "Dime lo que sabes sobre los números cuadrados.",
+      "pt": "Diga-me o que você sabe sobre números quadrados.",
+      "fr": "Dis-moi ce que tu sais sur les nombres carrés.",
+      "it": "Dimmi cosa sai sui numeri quadrati.",
+      "de": "Sagen Sie mir, was Sie über Quadratzahlen wissen.",
+      "nl": "Vertel me wat je weet over vierkante getallen.",
+      "ru": "Расскажите мне, что вы знаете о квадратных числах.",
+      "tr": "Bana kare sayılar hakkında ne bildiğini söyle.",
+      "zh": "Tell me what you know about square numbers.",
+      "ja": "平方数について知っていることを教えてください。",
+      "ko": "제곱수에 대해 아는 것을 말해 보세요.",
+      "id": "Ceritakan apa yang kamu ketahui tentang bilangan kuadrat.",
+      "vi": "Hãy cho tôi biết bạn biết gì về số bình phương."
+    }
+  },
+  {
+    "id": 74,
+    "text": "Can you explain what the gradient of a line tells us?",
+    "translations": {
+      "es": "¿Puedes explicar qué nos dice la pendiente de una línea?",
+      "pt": "Você pode explicar o que o gradiente de uma linha nos diz?",
+      "fr": "Pouvez-vous expliquer ce que nous dit le gradient d’une ligne ?",
+      "it": "Puoi spiegarci cosa ci dice il gradiente di una linea?",
+      "de": "Können Sie erklären, was uns die Steigung einer Linie sagt?",
+      "nl": "Kun je uitleggen wat de gradiënt van een lijn ons vertelt?",
+      "ru": "Можете ли вы объяснить, о чем говорит нам градиент линии?",
+      "tr": "Bir çizginin eğiminin bize ne söylediğini açıklayabilir misiniz?",
+      "zh": "Can you explain what the gradient of a line tells us?",
+      "ja": "線の勾配が何を物語っているのか説明していただけますか?",
+      "ko": "선의 기울기가 우리에게 무엇을 말해주는지 설명해 주실 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa yang ditunjukkan oleh gradien suatu garis?",
+      "vi": "Bạn có thể giải thích độ dốc của một đường cho chúng ta biết điều gì không?"
+    }
+  },
+  {
+    "id": 75,
+    "text": "How would you describe the difference between parallel and perpendicular lines?",
+    "translations": {
+      "es": "¿Cómo describirías la diferencia entre líneas paralelas y perpendiculares?",
+      "pt": "Como você descreveria a diferença entre linhas paralelas e perpendiculares?",
+      "fr": "Comment décririez-vous la différence entre les lignes parallèles et perpendiculaires ?",
+      "it": "Come descriveresti la differenza tra linee parallele e perpendicolari?",
+      "de": "Wie würden Sie den Unterschied zwischen parallelen und senkrechten Linien beschreiben?",
+      "nl": "Hoe zou je het verschil tussen evenwijdige en loodrechte lijnen omschrijven?",
+      "ru": "Как бы вы описали разницу между параллельными и перпендикулярными линиями?",
+      "tr": "Paralel ve dik çizgiler arasındaki farkı nasıl tanımlarsınız?",
+      "zh": "How would you describe the difference between parallel and perpendicular lines?",
+      "ja": "平行線と垂直線の違いについて説明しますか?",
+      "ko": "평행선과 수직선의 차이점을 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana cara menjelaskan perbedaan garis sejajar dan garis tegak lurus?",
+      "vi": "Làm thế nào bạn có thể mô tả sự khác biệt giữa các đường song song và vuông góc?"
+    }
+  },
+  {
+    "id": 76,
+    "text": "Tell me how you would solve the equation 2x = 10.",
+    "translations": {
+      "es": "Dime cómo resolverías la ecuación 2x ​​= 10.",
+      "pt": "Diga-me como você resolveria a equação 2x = 10.",
+      "fr": "Dites-moi comment vous résoudriez l'équation 2x = 10.",
+      "it": "Dimmi come risolveresti l'equazione 2x = 10.",
+      "de": "Sagen Sie mir, wie Sie die Gleichung 2x = 10 lösen würden.",
+      "nl": "Vertel me hoe je de vergelijking 2x = 10 zou oplossen.",
+      "ru": "Расскажите, как бы вы решили уравнение 2x=10.",
+      "tr": "2x = 10 denklemini nasıl çözeceğinizi söyleyin.",
+      "zh": "Tell me how you would solve the equation 2x = 10.",
+      "ja": "方程式 2x = 10 を解く方法を教えてください。",
+      "ko": "방정식 2x = 10을 어떻게 풀 것인지 말해주세요.",
+      "id": "Katakan padaku bagaimana kamu menyelesaikan persamaan 2x = 10.",
+      "vi": "Hãy cho tôi biết bạn sẽ giải phương trình 2x = 10 như thế nào."
+    }
+  },
+  {
+    "id": 77,
+    "text": "Can you describe what a frequency table is used for?",
+    "translations": {
+      "es": "¿Puedes describir para qué se utiliza una tabla de frecuencia?",
+      "pt": "Você pode descrever para que serve uma tabela de frequência?",
+      "fr": "Pouvez-vous décrire à quoi sert un tableau de fréquences ?",
+      "it": "Puoi descrivere a cosa serve una tabella di frequenza?",
+      "de": "Können Sie beschreiben, wofür eine Häufigkeitstabelle verwendet wird?",
+      "nl": "Kunt u beschrijven waarvoor een frequentietabel wordt gebruikt?",
+      "ru": "Можете ли вы описать, для чего используется таблица частот?",
+      "tr": "Frekans tablosunun ne için kullanıldığını açıklayabilir misiniz?",
+      "zh": "Can you describe what a frequency table is used for?",
+      "ja": "度数表が何に使用されるかを説明できますか?",
+      "ko": "빈도표가 어떤 용도로 사용되는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan kegunaan tabel frekuensi?",
+      "vi": "Bạn có thể mô tả bảng tần số được sử dụng để làm gì không?"
+    }
+  },
+  {
+    "id": 78,
+    "text": "How would you explain what a translation means in geometry?",
+    "translations": {
+      "es": "¿Cómo explicarías lo que significa una traducción en geometría?",
+      "pt": "Como você explicaria o que uma tradução significa em geometria?",
+      "fr": "Comment expliqueriez-vous ce que signifie une traduction en géométrie ?",
+      "it": "Come spiegheresti cosa significa traduzione in geometria?",
+      "de": "Wie würden Sie erklären, was eine Übersetzung in der Geometrie bedeutet?",
+      "nl": "Hoe zou je uitleggen wat een vertaling in de meetkunde betekent?",
+      "ru": "Как бы вы объяснили, что означает перевод в геометрии?",
+      "tr": "Geometride çevirinin ne anlama geldiğini nasıl açıklarsınız?",
+      "zh": "How would you explain what a translation means in geometry?",
+      "ja": "幾何学における翻訳の意味をどのように説明しますか?",
+      "ko": "기하학에서 번역이 무엇을 의미하는지 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan arti terjemahan dalam geometri?",
+      "vi": "Làm thế nào bạn có thể giải thích ý nghĩa của một bản dịch trong hình học?"
+    }
+  },
+  {
+    "id": 79,
+    "text": "Tell me a real life situation where you might use percentages.",
+    "translations": {
+      "es": "Cuéntame una situación de la vida real en la que podrías usar porcentajes.",
+      "pt": "Conte-me uma situação da vida real em que você possa usar porcentagens.",
+      "fr": "Racontez-moi une situation réelle dans laquelle vous pourriez utiliser des pourcentages.",
+      "it": "Raccontami una situazione di vita reale in cui potresti utilizzare le percentuali.",
+      "de": "Erzählen Sie mir eine reale Situation, in der Sie Prozentsätze verwenden könnten.",
+      "nl": "Vertel me een situatie uit het echte leven waarin je percentages zou kunnen gebruiken.",
+      "ru": "Расскажите мне реальную ситуацию, в которой вы могли бы использовать проценты.",
+      "tr": "Bana yüzdeleri kullanabileceğiniz gerçek bir durum anlatın.",
+      "zh": "Tell me a real life situation where you might use percentages.",
+      "ja": "パーセンテージを使用する実際の状況を教えてください。",
+      "ko": "백분율을 사용할 수 있는 실제 상황을 알려주세요.",
+      "id": "Ceritakan pada saya situasi kehidupan nyata di mana Anda mungkin menggunakan persentase.",
+      "vi": "Hãy kể cho tôi một tình huống thực tế mà bạn có thể sử dụng tỷ lệ phần trăm."
+    }
+  },
+  {
+    "id": 80,
+    "text": "Can you explain what the mode of a set of data is?",
+    "translations": {
+      "es": "¿Puedes explicar cuál es la moda de un conjunto de datos?",
+      "pt": "Você pode explicar qual é a moda de um conjunto de dados?",
+      "fr": "Pouvez-vous expliquer quel est le mode d'un ensemble de données ?",
+      "it": "Potete spiegare qual è la modalità di un insieme di dati?",
+      "de": "Können Sie erklären, was der Modus eines Datensatzes ist?",
+      "nl": "Kunt u uitleggen wat de modus van een set gegevens is?",
+      "ru": "Можете ли вы объяснить, что такое режим набора данных?",
+      "tr": "Bir veri kümesinin modunun ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain what the mode of a set of data is?",
+      "ja": "データセットのモードが何であるかを説明できますか?",
+      "ko": "데이터 세트의 모드가 무엇인지 설명할 수 있습니까?",
+      "id": "Bisakah Anda menjelaskan apa itu modus sekumpulan data?",
+      "vi": "Bạn có thể giải thích chế độ của một tập hợp dữ liệu là gì không?"
+    }
+  },
+  {
+    "id": 81,
+    "text": "How would you describe what volume and capacity mean?",
+    "translations": {
+      "es": "¿Cómo describirías lo que significan volumen y capacidad?",
+      "pt": "Como você descreveria o que volume e capacidade significam?",
+      "fr": "Comment décririez-vous ce que signifient volume et capacité ?",
+      "it": "Come descriveresti il ​​significato di volume e capacità?",
+      "de": "Wie würden Sie beschreiben, was Volumen und Kapazität bedeuten?",
+      "nl": "Hoe zou u omschrijven wat volume en capaciteit betekenen?",
+      "ru": "Как бы вы описали, что означают объем и емкость?",
+      "tr": "Hacim ve kapasitenin ne anlama geldiğini nasıl tanımlarsınız?",
+      "zh": "How would you describe what volume and capacity mean?",
+      "ja": "体積と容量の意味をどのように説明しますか?",
+      "ko": "볼륨과 용량의 의미를 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan arti volume dan kapasitas?",
+      "vi": "Làm thế nào bạn có thể mô tả khối lượng và công suất có nghĩa là gì?"
+    }
+  },
+  {
+    "id": 82,
+    "text": "Tell me about a time you made a mistake in maths and how you fixed it.",
+    "translations": {
+      "es": "Cuéntame sobre alguna vez en la que cometiste un error en matemáticas y cómo lo solucionaste.",
+      "pt": "Conte-me sobre uma ocasião em que você cometeu um erro em matemática e como o corrigiu.",
+      "fr": "Parlez-moi d’une fois où vous avez fait une erreur en mathématiques et comment vous l’avez corrigée.",
+      "it": "Raccontami di un'occasione in cui hai commesso un errore in matematica e di come l'hai risolto.",
+      "de": "Erzählen Sie mir von einem Mal, als Sie einen Fehler in Mathe gemacht haben, und wie Sie ihn behoben haben.",
+      "nl": "Vertel eens over een keer dat je een fout maakte bij wiskunde en hoe je die hebt opgelost.",
+      "ru": "Расскажите мне о случае, когда вы допустили ошибку в математике и как вы ее исправили.",
+      "tr": "Bana matematikte hata yaptığınız bir zamanı ve bunu nasıl düzelttiğinizi anlatın.",
+      "zh": "Tell me about a time you made a mistake in maths and how you fixed it.",
+      "ja": "数学で間違いを犯したときのことと、それをどのように修正したかについて教えてください。",
+      "ko": "수학에서 실수를 했을 때와 그것을 어떻게 고쳤는지 말해주세요.",
+      "id": "Ceritakan pada saya saat Anda membuat kesalahan dalam matematika dan bagaimana Anda memperbaikinya.",
+      "vi": "Hãy kể cho tôi nghe về một lần bạn mắc lỗi toán và cách bạn khắc phục nó."
+    }
+  },
+  {
+    "id": 83,
+    "text": "Can you explain why zero is an important number?",
+    "translations": {
+      "es": "¿Puedes explicar por qué el cero es un número importante?",
+      "pt": "Você pode explicar por que zero é um número importante?",
+      "fr": "Pouvez-vous expliquer pourquoi zéro est un nombre important ?",
+      "it": "Puoi spiegare perché lo zero è un numero importante?",
+      "de": "Können Sie erklären, warum Null eine wichtige Zahl ist?",
+      "nl": "Kun je uitleggen waarom nul een belangrijk getal is?",
+      "ru": "Можете ли вы объяснить, почему ноль — важное число?",
+      "tr": "Sıfırın neden önemli bir sayı olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain why zero is an important number?",
+      "ja": "なぜゼロが重要な数字なのか説明できますか?",
+      "ko": "0이 왜 중요한 숫자인지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan mengapa nol merupakan bilangan penting?",
+      "vi": "Bạn có thể giải thích tại sao số 0 là một con số quan trọng không?"
+    }
+  },
+  {
+    "id": 84,
+    "text": "How would you describe the difference between odd and even numbers?",
+    "translations": {
+      "es": "¿Cómo describirías la diferencia entre números pares e impares?",
+      "pt": "Como você descreveria a diferença entre números ímpares e pares?",
+      "fr": "Comment décririez-vous la différence entre les nombres impairs et pairs ?",
+      "it": "Come descriveresti la differenza tra numeri pari e dispari?",
+      "de": "Wie würden Sie den Unterschied zwischen ungeraden und geraden Zahlen beschreiben?",
+      "nl": "Hoe zou je het verschil tussen oneven en even getallen omschrijven?",
+      "ru": "Как бы вы описали разницу между нечетными и четными числами?",
+      "tr": "Tek ve çift sayılar arasındaki farkı nasıl tanımlarsınız?",
+      "zh": "How would you describe the difference between odd and even numbers?",
+      "ja": "奇数と偶数の違いをどのように説明しますか?",
+      "ko": "홀수와 짝수의 차이를 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana cara menjelaskan perbedaan bilangan ganjil dan genap?",
+      "vi": "Bạn sẽ mô tả sự khác biệt giữa số lẻ và số chẵn như thế nào?"
+    }
+  },
+  {
+    "id": 85,
+    "text": "Tell me what the circumference of a circle is.",
+    "translations": {
+      "es": "Dime cuál es la circunferencia de un círculo.",
+      "pt": "Diga-me qual é a circunferência de um círculo.",
+      "fr": "Dis-moi quelle est la circonférence d'un cercle.",
+      "it": "Dimmi qual è la circonferenza di un cerchio.",
+      "de": "Sag mir, wie groß der Umfang eines Kreises ist.",
+      "nl": "Vertel me wat de omtrek van een cirkel is.",
+      "ru": "Скажите мне, какова длина окружности.",
+      "tr": "Bana bir dairenin çevresinin ne olduğunu söyle.",
+      "zh": "Tell me what the circumference of a circle is.",
+      "ja": "円の周長を教えてください。",
+      "ko": "원의 둘레가 무엇인지 말해 보세요.",
+      "id": "Katakan padaku apa itu keliling lingkaran.",
+      "vi": "Hãy cho tôi biết chu vi của hình tròn là gì."
+    }
+  },
+  {
+    "id": 86,
+    "text": "Can you explain what a coordinate grid looks like?",
+    "translations": {
+      "es": "¿Puedes explicar cómo es una cuadrícula de coordenadas?",
+      "pt": "Você pode explicar como é uma grade de coordenadas?",
+      "fr": "Pouvez-vous expliquer à quoi ressemble une grille de coordonnées ?",
+      "it": "Puoi spiegare come appare una griglia di coordinate?",
+      "de": "Können Sie erklären, wie ein Koordinatengitter aussieht?",
+      "nl": "Kun je uitleggen hoe een coördinatenraster eruit ziet?",
+      "ru": "Можете ли вы объяснить, как выглядит координатная сетка?",
+      "tr": "Koordinat ızgarasının neye benzediğini açıklayabilir misiniz?",
+      "zh": "Can you explain what a coordinate grid looks like?",
+      "ja": "座標グリッドがどのようなものかを説明できますか?",
+      "ko": "좌표 격자가 어떻게 생겼는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan seperti apa bentuk kotak koordinat?",
+      "vi": "Bạn có thể giải thích lưới tọa độ trông như thế nào không?"
+    }
+  },
+  {
+    "id": 87,
+    "text": "How would you describe column subtraction step by step?",
+    "translations": {
+      "es": "¿Cómo describirías la resta de columnas paso a paso?",
+      "pt": "Como você descreveria a subtração de colunas passo a passo?",
+      "fr": "Comment décririez-vous la soustraction de colonnes étape par étape ?",
+      "it": "Come descriveresti la sottrazione di colonna passo dopo passo?",
+      "de": "Wie würden Sie die Spaltensubtraktion Schritt für Schritt beschreiben?",
+      "nl": "Hoe zou je kolomaftrekking stap voor stap beschrijven?",
+      "ru": "Как бы вы описали вычитание столбцов шаг за шагом?",
+      "tr": "Sütun çıkarma işlemini adım adım nasıl açıklarsınız?",
+      "zh": "How would you describe column subtraction step by step?",
+      "ja": "列の減算を段階的に説明するとどうなるでしょうか?",
+      "ko": "열 빼기를 단계별로 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan pengurangan kolom langkah demi langkah?",
+      "vi": "Bạn mô tả từng bước phép trừ cột như thế nào?"
+    }
+  },
+  {
+    "id": 88,
+    "text": "Tell me about something in nature that follows a mathematical pattern.",
+    "translations": {
+      "es": "Cuéntame sobre algo en la naturaleza que sigue un patrón matemático.",
+      "pt": "Conte-me sobre algo na natureza que segue um padrão matemático.",
+      "fr": "Parlez-moi de quelque chose dans la nature qui suit un modèle mathématique.",
+      "it": "Parlami di qualcosa in natura che segue uno schema matematico.",
+      "de": "Erzählen Sie mir von etwas in der Natur, das einem mathematischen Muster folgt.",
+      "nl": "Vertel me over iets in de natuur dat een wiskundig patroon volgt.",
+      "ru": "Расскажите мне о чем-нибудь в природе, которое подчиняется математической закономерности.",
+      "tr": "Bana doğada matematiksel bir modeli takip eden bir şeyden bahsedin.",
+      "zh": "Tell me about something in nature that follows a mathematical pattern.",
+      "ja": "数学的パターンに従う自然界のものについて教えてください。",
+      "ko": "수학적 패턴을 따르는 자연의 어떤 것에 대해 말해 보세요.",
+      "id": "Ceritakan tentang sesuatu di alam yang mengikuti pola matematika.",
+      "vi": "Hãy kể cho tôi nghe về điều gì đó trong tự nhiên tuân theo một mô hình toán học."
+    }
+  },
+  {
+    "id": 89,
+    "text": "Can you explain what an equivalent fraction is?",
+    "translations": {
+      "es": "¿Puedes explicar qué es una fracción equivalente?",
+      "pt": "Você pode explicar o que é uma fração equivalente?",
+      "fr": "Pouvez-vous expliquer ce qu'est une fraction équivalente ?",
+      "it": "Sapreste spiegare cos'è una frazione equivalente?",
+      "de": "Können Sie erklären, was ein äquivalenter Bruch ist?",
+      "nl": "Kun je uitleggen wat een gelijkwaardige breuk is?",
+      "ru": "Можете ли вы объяснить, что такое эквивалентная дробь?",
+      "tr": "Eşdeğer kesrin ne olduğunu açıklayabilir misiniz?",
+      "zh": "Can you explain what an equivalent fraction is?",
+      "ja": "等価分数とは何か説明できますか？",
+      "ko": "등가 분수가 무엇인지 설명할 수 있나요?",
+      "id": "Bisakah anda menjelaskan apa yang dimaksud dengan pecahan senilai?",
+      "vi": "Bạn có thể giải thích phân số tương đương là gì không?"
+    }
+  },
+  {
+    "id": 90,
+    "text": "How would you describe what a net of a 3D shape is?",
+    "translations": {
+      "es": "¿Cómo describirías qué es una red de forma 3D?",
+      "pt": "Como você descreveria o que é uma rede com formato 3D?",
+      "fr": "Comment décririez-vous ce qu’est un réseau d’une forme 3D ?",
+      "it": "Come descriveresti cos'è la rete di una forma 3D?",
+      "de": "Wie würden Sie beschreiben, was ein Netz einer 3D-Form ist?",
+      "nl": "Hoe zou je beschrijven wat een net van een 3D-vorm is?",
+      "ru": "Как бы вы описали, что такое сеть трехмерных фигур?",
+      "tr": "3 boyutlu bir şeklin ağının ne olduğunu nasıl tanımlarsınız?",
+      "zh": "How would you describe what a net of a 3D shape is?",
+      "ja": "3D 形状のネットとはどのようなものかを説明しますか?",
+      "ko": "3D 모양의 그물이 무엇인지 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana Anda menjelaskan apa itu jaring berbentuk 3D?",
+      "vi": "Bạn mô tả lưới có hình dạng 3D là gì?"
+    }
+  },
+  {
+    "id": 91,
+    "text": "Tell me what you know about the number line.",
+    "translations": {
+      "es": "Dime lo que sabes sobre la recta numérica.",
+      "pt": "Diga-me o que você sabe sobre a reta numérica.",
+      "fr": "Dites-moi ce que vous savez sur la droite numérique.",
+      "it": "Dimmi cosa sai della linea numerica.",
+      "de": "Sagen Sie mir, was Sie über den Zahlenstrahl wissen.",
+      "nl": "Vertel me wat je weet over de getallenlijn.",
+      "ru": "Расскажите мне, что вы знаете о числовой прямой.",
+      "tr": "Bana sayı doğrusu hakkında ne bildiğini söyle.",
+      "zh": "Tell me what you know about the number line.",
+      "ja": "数直線について知っていることを教えてください。",
+      "ko": "수직선에 대해 무엇을 알고 있는지 말해 보세요.",
+      "id": "Ceritakan apa yang kamu ketahui tentang garis bilangan.",
+      "vi": "Hãy cho tôi biết bạn biết gì về trục số."
+    }
+  },
+  {
+    "id": 92,
+    "text": "Can you explain what currency conversion means?",
+    "translations": {
+      "es": "¿Puedes explicar qué significa la conversión de moneda?",
+      "pt": "Você pode explicar o que significa conversão de moeda?",
+      "fr": "Pouvez-vous expliquer ce que signifie la conversion de devises ?",
+      "it": "Potete spiegare cosa significa conversione di valuta?",
+      "de": "Können Sie erklären, was Währungsumrechnung bedeutet?",
+      "nl": "Kunt u uitleggen wat valutaconversie betekent?",
+      "ru": "Можете ли вы объяснить, что означает конвертация валюты?",
+      "tr": "Para birimi dönüştürmenin ne anlama geldiğini açıklayabilir misiniz?",
+      "zh": "Can you explain what currency conversion means?",
+      "ja": "通貨換算の意味を説明できますか?",
+      "ko": "통화 변환이 무엇을 의미하는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa yang dimaksud dengan konversi mata uang?",
+      "vi": "Bạn có thể giải thích ý nghĩa của việc chuyển đổi tiền tệ không?"
+    }
+  },
+  {
+    "id": 93,
+    "text": "How would you describe what surface area means?",
+    "translations": {
+      "es": "¿Cómo describirías lo que significa área de superficie?",
+      "pt": "Como você descreveria o que significa área de superfície?",
+      "fr": "Comment décririez-vous ce que signifie la superficie ?",
+      "it": "Come descriveresti il ​​significato di superficie?",
+      "de": "Wie würden Sie beschreiben, was Fläche bedeutet?",
+      "nl": "Hoe zou je omschrijven wat oppervlakte betekent?",
+      "ru": "Как бы вы описали, что означает площадь поверхности?",
+      "tr": "Yüzey alanının ne anlama geldiğini nasıl tanımlarsınız?",
+      "zh": "How would you describe what surface area means?",
+      "ja": "表面積の意味をどのように説明しますか?",
+      "ko": "표면적의 의미를 어떻게 설명하시겠습니까?",
+      "id": "Bagaimana cara menjelaskan arti luas permukaan?",
+      "vi": "Bạn sẽ mô tả diện tích bề mặt có nghĩa là gì?"
+    }
+  },
+  {
+    "id": 94,
+    "text": "Tell me about the order of operations in maths.",
+    "translations": {
+      "es": "Cuéntame sobre el orden de las operaciones en matemáticas.",
+      "pt": "Conte-me sobre a ordem das operações em matemática.",
+      "fr": "Parlez-moi de l’ordre des opérations en mathématiques.",
+      "it": "Parlami dell'ordine delle operazioni in matematica.",
+      "de": "Erzähl mir etwas über die Reihenfolge der Operationen in der Mathematik.",
+      "nl": "Vertel me iets over de volgorde van bewerkingen in de wiskunde.",
+      "ru": "Расскажите мне о порядке действий в математике.",
+      "tr": "Bana matematikteki işlem sırasını anlat.",
+      "zh": "Tell me about the order of operations in maths.",
+      "ja": "数学の演算の順序について教えてください。",
+      "ko": "수학의 연산 순서에 대해 말해 보세요.",
+      "id": "Ceritakan tentang urutan operasi dalam matematika.",
+      "vi": "Hãy cho tôi biết về thứ tự thực hiện các phép tính trong toán học."
+    }
+  },
+  {
+    "id": 95,
+    "text": "Can you explain what it means to reflect a shape?",
+    "translations": {
+      "es": "¿Puedes explicar qué significa reflejar una forma?",
+      "pt": "Você pode explicar o que significa refletir uma forma?",
+      "fr": "Pouvez-vous expliquer ce que signifie refléter une forme ?",
+      "it": "Puoi spiegare cosa significa riflettere una forma?",
+      "de": "Können Sie erklären, was es bedeutet, eine Form widerzuspiegeln?",
+      "nl": "Kun je uitleggen wat het betekent om een ​​vorm te weerspiegelen?",
+      "ru": "Можете ли вы объяснить, что значит отражать форму?",
+      "tr": "Bir şekli yansıtmanın ne anlama geldiğini açıklayabilir misiniz?",
+      "zh": "Can you explain what it means to reflect a shape?",
+      "ja": "形状を反映するとはどういう意味かを説明できますか?",
+      "ko": "모양을 반영한다는 것이 무엇을 의미하는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan apa yang dimaksud dengan memantulkan suatu bentuk?",
+      "vi": "Bạn có thể giải thích ý nghĩa của việc phản chiếu một hình dạng không?"
+    }
+  },
+  {
+    "id": 96,
+    "text": "How would you describe what a right angled triangle looks like?",
+    "translations": {
+      "es": "¿Cómo describirías cómo se ve un triángulo rectángulo?",
+      "pt": "Como você descreveria a aparência de um triângulo retângulo?",
+      "fr": "Comment décririez-vous à quoi ressemble un triangle rectangle ?",
+      "it": "Come descriveresti l'aspetto di un triangolo rettangolo?",
+      "de": "Wie würden Sie beschreiben, wie ein rechtwinkliges Dreieck aussieht?",
+      "nl": "Hoe zou je beschrijven hoe een rechthoekige driehoek eruit ziet?",
+      "ru": "Как бы вы описали, как выглядит прямоугольный треугольник?",
+      "tr": "Dik açılı bir üçgenin neye benzediğini nasıl tanımlarsınız?",
+      "zh": "How would you describe what a right angled triangle looks like?",
+      "ja": "直角三角形がどのように見えるかをどのように説明しますか?",
+      "ko": "직각삼각형이 어떻게 생겼는지 어떻게 설명하겠습니까?",
+      "id": "Bagaimana cara menjelaskan bentuk segitiga siku-siku?",
+      "vi": "Bạn sẽ mô tả hình tam giác vuông trông như thế nào?"
+    }
+  },
+  {
+    "id": 97,
+    "text": "Tell me one interesting fact about prime numbers.",
+    "translations": {
+      "es": "Cuéntame un dato interesante sobre los números primos.",
+      "pt": "Conte-me um fato interessante sobre os números primos.",
+      "fr": "Racontez-moi un fait intéressant sur les nombres premiers.",
+      "it": "Raccontami un fatto interessante sui numeri primi.",
+      "de": "Erzählen Sie mir eine interessante Tatsache über Primzahlen.",
+      "nl": "Vertel me een interessant feit over priemgetallen.",
+      "ru": "Расскажите мне один интересный факт о простых числах.",
+      "tr": "Bana asal sayılarla ilgili ilginç bir gerçeği söyle.",
+      "zh": "Tell me one interesting fact about prime numbers.",
+      "ja": "素数に関する興味深い事実を 1 つ教えてください。",
+      "ko": "소수에 관한 흥미로운 사실 ​​한 가지를 말해보세요.",
+      "id": "Ceritakan satu fakta menarik tentang bilangan prima.",
+      "vi": "Hãy kể cho tôi một sự thật thú vị về số nguyên tố."
+    }
+  },
+  {
+    "id": 98,
+    "text": "Can you explain how a timetable works?",
+    "translations": {
+      "es": "¿Puedes explicar cómo funciona un horario?",
+      "pt": "Você pode explicar como funciona um cronograma?",
+      "fr": "Pouvez-vous expliquer comment fonctionne un horaire ?",
+      "it": "Potete spiegare come funziona un orario?",
+      "de": "Können Sie erklären, wie ein Stundenplan funktioniert?",
+      "nl": "Kunt u uitleggen hoe een dienstregeling werkt?",
+      "ru": "Можете ли вы объяснить, как работает расписание?",
+      "tr": "Zaman çizelgesinin nasıl çalıştığını açıklayabilir misiniz?",
+      "zh": "Can you explain how a timetable works?",
+      "ja": "時刻表の仕組みを説明してもらえますか？",
+      "ko": "시간표가 어떻게 작동하는지 설명할 수 있나요?",
+      "id": "Bisakah Anda menjelaskan cara kerja jadwal?",
+      "vi": "Bạn có thể giải thích cách hoạt động của thời gian biểu không?"
+    }
+  },
+  {
+    "id": 99,
+    "text": "How would you solve a word problem about buying items in a shop?",
+    "translations": {
+      "es": "¿Cómo resolverías un problema planteado sobre comprar artículos en una tienda?",
+      "pt": "Como você resolveria um problema verbal sobre a compra de itens em uma loja?",
+      "fr": "Comment résoudriez-vous un problème de mots concernant l’achat d’articles dans un magasin ?",
+      "it": "Come risolveresti un problema verbale sull'acquisto di articoli in un negozio?",
+      "de": "Wie würden Sie eine Wortaufgabe zum Kauf von Artikeln in einem Geschäft lösen?",
+      "nl": "Hoe zou je een woordprobleem over het kopen van artikelen in een winkel oplossen?",
+      "ru": "Как бы вы решили словесную задачу о покупке товаров в магазине?",
+      "tr": "Bir mağazadan ürün satın almayla ilgili bir sözlü problemi nasıl çözersiniz?",
+      "zh": "How would you solve a word problem about buying items in a shop?",
+      "ja": "お店で商品を買うことに関する文章の問題をどうやって解決しますか?",
+      "ko": "상점에서 물건을 구매할 때 발생하는 단어 문제를 어떻게 해결하시겠습니까?",
+      "id": "Bagaimana caramu menyelesaikan soal cerita tentang membeli barang di toko?",
+      "vi": "Bạn sẽ giải một bài toán đố về việc mua đồ trong cửa hàng như thế nào?"
+    }
+  },
+  {
+    "id": 100,
+    "text": "Tell me what you would like to learn more about in maths.",
+    "translations": {
+      "es": "Dime sobre qué te gustaría aprender más en matemáticas.",
+      "pt": "Diga-me o que você gostaria de aprender mais em matemática.",
+      "fr": "Dites-moi ce que vous aimeriez apprendre davantage en mathématiques.",
+      "it": "Dimmi cosa ti piacerebbe imparare di più in matematica.",
+      "de": "Sagen Sie mir, worüber Sie gerne mehr in Mathematik lernen würden.",
+      "nl": "Vertel me waar je meer over zou willen leren op het gebied van wiskunde.",
+      "ru": "Расскажите мне, что вы хотели бы узнать больше по математике.",
+      "tr": "Matematikte ne hakkında daha fazla bilgi edinmek istediğinizi söyleyin.",
+      "zh": "Tell me what you would like to learn more about in maths.",
+      "ja": "数学でもっと学びたいことを教えてください。",
+      "ko": "수학을 통해 더 배우고 싶은 것이 무엇인지 말해 보세요.",
+      "id": "Beri tahu saya apa yang ingin Anda pelajari lebih lanjut dalam matematika.",
+      "vi": "Hãy cho tôi biết bạn muốn tìm hiểu thêm về môn toán nào."
+    }
+  }
+]

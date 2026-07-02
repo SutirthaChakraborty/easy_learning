@@ -1,0 +1,126 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at top, #0d1b3e 0%, #050d1f 100%);
+  padding: 2rem 1.5rem;
+  gap: 3rem;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.logo {
+  width: 300px;
+  height: 72px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 16px rgba(79, 142, 247, 0.5));
+}
+
+.title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.card {
+  flex: 1 1 240px;
+  max-width: 290px;
+  border-radius: 20px;
+  padding: 2.25rem 1.75rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  transition: box-shadow 0.25s ease;
+}
+
+.card:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+.iconWrap {
+  font-size: 3.2rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 8px currentColor);
+}
+
+.roleTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  text-align: center;
+}
+
+.roleDesc {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: center;
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+.copyright {
+  color: aliceblue;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  margin-top: auto;
+  padding-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(173, 216, 230, 0.9), 0 0 20px rgba(100, 180, 255, 0.6), 0 0 40px rgba(79, 142, 247, 0.4);
+}
+.signInBtn {
+  margin-top: 0.5rem;
+  padding: 0.55rem 1.75rem;
+  border-radius: 50px;
+  border: 2px solid;
+  background: transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.signInBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 640px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 100%;
+    width: 100%;
+  }
+}

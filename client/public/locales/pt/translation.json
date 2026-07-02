@@ -1,0 +1,295 @@
+﻿{
+    "navbar":  {
+                   "home":  "Início",
+                   "games":  "Jogos",
+                   "lessons":  "Lições",
+                   "dashboard":  "Painel",
+                   "login":  "Entrar",
+                   "logout":  "Sair",
+                   "spellingBee":  "Soletração",
+                   "memoryMatch":  "Jogo da memória",
+                   "wordPuzzle":  "Quebra-cabeça de palavras",
+                   "english":  "Inglês",
+                   "mathematics":  "Matemática",
+                   "science":  "Ciências",
+                   "greeting":  "Olá {{name}}"
+               },
+    "hero":  {
+                 "greeting":  "Olá {{name}}",
+                 "startLearning":  "Começar a aprender",
+                 "playGames":  "Jogar jogos"
+             },
+    "cards":  {
+                  "english":  "Inglês",
+                  "mathematics":  "Matemática",
+                  "science":  "Ciências"
+              },
+    "login":  {
+                  "joinTitle":  "Junte-se ao Learningo!",
+                  "welcomeBack":  "Bem-vindo de volta!",
+                  "createAccountSubtitle":  "Crie sua conta para começar a aprender",
+                  "continueJourneySubtitle":  "Entre para continuar sua jornada",
+                  "continueGoogle":  "Continuar com Google",
+                  "or":  "ou",
+                  "namePlaceholder":  "Seu nome",
+                  "emailPlaceholder":  "Endereço de e-mail",
+                  "passwordPlaceholder":  "Senha",
+                  "createAccountBtn":  "Criar conta",
+                  "signInBtn":  "Entrar",
+                  "signUpBtn":  "Cadastrar",
+                  "loading":  "Carregando...",
+                  "alreadyAccount":  "Já tem uma conta?",
+                  "noAccount":  "Não tem uma conta?",
+                  "errorDefault":  "Algo deu errado. Por favor, tente novamente.",
+                  "googleCancelled":  "O login com Google foi cancelado.",
+                  "popupBlocked":  "O pop-up foi bloqueado. Permita pop-ups para este site.",
+                  "networkError":  "Erro de rede. Verifique sua conexão.",
+                  "operationNotAllowed":  "O login com Google não está habilitado."
+              },
+    "common":  {
+                   "loading":  "Carregando...",
+                   "error":  "Algo deu errado."
+               },
+    "dashboard":  {
+                      "welcomeBack":  "Bem-vindo de volta, {{name}}! 👋",
+                      "motivational":  "Continue assim — cada lição conta.",
+                      "level":  "Nível {{level}}",
+                      "xpTotal":  "{{xp}} XP no total",
+                      "loading":  "Carregando…",
+                      "loadingDashboard":  "Carregando seu painel…",
+                      "loginPrompt":  "Faça login para ver seu painel.",
+                      "serverError":  "Não foi possível conectar ao servidor.",
+                      "serverErrorHint":  "Certifique-se de que o backend está em execução e recarregue a página.",
+                      "retry":  "Tentar novamente",
+                      "stats":  {
+                                    "totalXP":  "XP Total",
+                                    "sessions":  "Sessões",
+                                    "lessonsCompleted":  "lições concluídas",
+                                    "todayTime":  "Tempo hoje",
+                                    "peakTime":  "Pico: {{time}}",
+                                    "noSessions":  "Nenhuma sessão ainda",
+                                    "streak":  "Sequência atual",
+                                    "streakDays":  "{{count}} dias",
+                                    "onFire":  "Em chamas! 🔥",
+                                    "keepGoing":  "Continue assim!",
+                                    "achievements":  "Conquistas",
+                                    "badgesEarned":  "emblemas ganhos"
+                                },
+                      "performance":  {
+                                          "title":  "Desempenho — Últimos 30 dias",
+                                          "empty":  "Nenhuma atividade ainda — conclua uma lição para ver seu progresso!"
+                                      },
+                      "heatmap":  {
+                                      "titleCurrent":  "Mapa de atividade — {{year}} (até agora)",
+                                      "titlePast":  "Mapa de atividade — {{year}}",
+                                      "activeDays":  "{{count}} dias ativos",
+                                      "mostActive":  "Mais ativo {{time}}",
+                                      "today":  "Hoje: {{time}}",
+                                      "less":  "Menos",
+                                      "more":  "Mais"
+                                  },
+                      "achievements":  {
+                                           "title":  "Conquistas",
+                                           "empty":  "Conclua lições para desbloquear conquistas!",
+                                           "earnedOn":  "Obtido {{date}}",
+                                           "xpReward":  "+{{xp}} XP ao desbloquear",
+                                           "categories":  {
+                                                              "learning":  "Aprendizado",
+                                                              "games":  "Jogos",
+                                                              "streak":  "Sequência",
+                                                              "xp":  "Marcos de XP",
+                                                              "special":  "Especial"
+                                                          },
+                                           "first_step":  {
+                                                              "name":  "Primeiro Passo",
+                                                              "description":  "Conclua sua primeira lição"
+                                                          },
+                                           "bookworm":  {
+                                                            "name":  "Devorador de Livros",
+                                                            "description":  "Conclua 5 lições de leitura"
+                                                        },
+                                           "sharp_ears":  {
+                                                              "name":  "Ouvidos Atentos",
+                                                              "description":  "Conclua 5 lições de escuta"
+                                                          },
+                                           "penpal":  {
+                                                          "name":  "Amigo por Carta",
+                                                          "description":  "Conclua 5 lições de escrita"
+                                                      },
+                                           "public_speaker":  {
+                                                                  "name":  "Orador",
+                                                                  "description":  "Conclua 5 lições de fala"
+                                                              },
+                                           "all_rounder":  {
+                                                               "name":  "Versátil",
+                                                               "description":  "Tente todas as 3 matérias"
+                                                           },
+                                           "gamer":  {
+                                                         "name":  "Gamer",
+                                                         "description":  "Jogue qualquer jogo"
+                                                     },
+                                           "spelling_bee":  {
+                                                                "name":  "Mestre da Ortografia",
+                                                                "description":  "Conclua o jogo de soletração"
+                                                            },
+                                           "memory_master":  {
+                                                                 "name":  "Mestre da Memória",
+                                                                 "description":  "Conclua o jogo da memória"
+                                                             },
+                                           "puzzle_whiz":  {
+                                                               "name":  "Craque em Puzzles",
+                                                               "description":  "Resolva um quebra-cabeça de palavras"
+                                                           },
+                                           "three_day_streak":  {
+                                                                    "name":  "Em Chamas",
+                                                                    "description":  "Ativo por 3 dias seguidos"
+                                                                },
+                                           "week_warrior":  {
+                                                                "name":  "Guerreiro Semanal",
+                                                                "description":  "Ativo por 7 dias seguidos"
+                                                            },
+                                           "century":  {
+                                                           "name":  "Centenário",
+                                                           "description":  "Ganhe 100 XP"
+                                                       },
+                                           "champion":  {
+                                                            "name":  "Campeão",
+                                                            "description":  "Ganhe 500 XP"
+                                                        },
+                                           "early_bird":  {
+                                                              "name":  "Madrugador",
+                                                              "description":  "Estude antes das 8h"
+                                                          },
+                                           "night_owl":  {
+                                                             "name":  "Coruja Noturna",
+                                                             "description":  "Estude depois das 21h"
+                                                         }
+                                       }
+                  },
+    "subjectPage":  {
+                        "back":  "Voltar",
+                        "play":  "Jogar",
+                        "defaultTagline":  "Vamos aprender!",
+                        "english":  {
+                                        "label":  "Inglês",
+                                        "tagline":  "As palavras são mágicas!"
+                                    },
+                        "maths":  {
+                                      "label":  "Matemática",
+                                      "tagline":  "Os números são divertidos!"
+                                  },
+                        "science":  {
+                                        "label":  "Ciências",
+                                        "tagline":  "Explore o mundo!"
+                                    },
+                        "modules":  {
+                                        "listen":  {
+                                                       "label":  "Ouvir",
+                                                       "desc":  "Ouça e repita!",
+                                                       "level":  "Nível 1"
+                                                   },
+                                        "read":  {
+                                                     "label":  "Ler",
+                                                     "desc":  "Leia e responda!",
+                                                     "level":  "Nível 2"
+                                                 },
+                                        "write":  {
+                                                      "label":  "Escrever",
+                                                      "desc":  "Trace e escreva!",
+                                                      "level":  "Nível 3"
+                                                  },
+                                        "speak":  {
+                                                      "label":  "Falar",
+                                                      "desc":  "Expresse-se!",
+                                                      "level":  "Nível 4"
+                                                  }
+                                    }
+                    },
+    "gamesPage":  {
+                      "back":  "Voltar",
+                      "title":  "Zona de Jogos",
+                      "subtitle":  "Escolha um jogo e comece a jogar!",
+                      "playNow":  "Jogar agora",
+                      "diffEasy":  "Fácil",
+                      "diffMedium":  "Médio",
+                      "diffHard":  "Difícil",
+                      "spelling":  {
+                                       "title":  "Soletração",
+                                       "desc":  "Soletre a palavra pela dica!"
+                                   },
+                      "memory":  {
+                                     "title":  "Jogo da Memória",
+                                     "desc":  "Encontre todos os pares!"
+                                 },
+                      "puzzle":  {
+                                     "title":  "Palavras Embaralhadas",
+                                     "desc":  "Organize as letras embaralhadas!"
+                                 }
+                  },
+    "modules":  {
+                    "back":  "Voltar",
+                    "next":  "Próximo →",
+                    "continue":  "Continuar →",
+                    "retry":  "Tentar novamente",
+                    "level":  "Nível {{level}}",
+                    "loadingQ":  "Carregando perguntas…",
+                    "loadingP":  "Carregando dicas…",
+                    "serverErr":  "Não foi possível carregar. O servidor está em execução?",
+                    "listen":  {
+                                   "listen":  "Ouvir",
+                                   "playing":  "Tocando…",
+                                   "record":  "Gravar",
+                                   "stop":  "Parar",
+                                   "perfect":  "Perfeito! Incrível!",
+                                   "great":  "Bom trabalho! Quase lá!",
+                                   "good":  "Boa tentativa! Ouça novamente.",
+                                   "tryAgain":  "Tente novamente — você consegue!",
+                                   "attempt":  "Boa tentativa! Continue tentando!",
+                                   "micError":  "Microfone não disponível. Tente novamente!",
+                                   "celebration":  "Perfeito!",
+                                   "voiceUnavailable":  "Voz não disponível para este idioma — o áudio pode soar diferente."
+                               },
+                    "read":  {
+                                 "correct":  "Brilhante! +1 Estrela",
+                                 "wrong":  "A resposta era: {{answer}}",
+                                 "celebration":  "Correto!"
+                             },
+                    "learn":  {
+                                  "question":  "Questão {{current}} / {{total}}",
+                                  "finishRound":  "Terminar Rodada →"
+                              },
+                    "write":  {
+                                  "whiteboard":  "Seu Quadro Branco",
+                                  "pen":  "Caneta",
+                                  "erase":  "Apagar",
+                                  "clear":  "Limpar",
+                                  "check":  "Verificar minha escrita",
+                                  "celebration":  "Escrita incrível!",
+                                  "perfect":  "Escrita perfeita!",
+                                  "great":  "Bom trabalho!",
+                                  "keep":  "Continue praticando!",
+                                  "tryAgain":  "Tente novamente — você consegue!"
+                              },
+                    "speak":  {
+                                  "title":  "Fale!",
+                                  "howFeeling":  "Como você está se sentindo hoje?",
+                                  "youFeel":  "Você se sente {{mood}} hoje!",
+                                  "yourRecordings":  "Suas gravações:",
+                                  "recording":  "Gravando…",
+                                  "startSpeaking":  "Começar a falar",
+                                  "doneSpeaking":  "Terminar de falar",
+                                  "tip":  "Dica: Não há respostas erradas! Diga o que você pensa.",
+                                  "moodHappy":  "Feliz",
+                                  "moodSad":  "Triste",
+                                  "moodExcited":  "Animado",
+                                  "moodTired":  "Cansado",
+                                  "moodAmazing":  "Incrível",
+                                  "enc1":  "Ótimo trabalho!",
+                                  "enc2":  "Sua voz importa!",
+                                  "enc3":  "Brilhante! Você é tão corajoso!",
+                                  "enc4":  "Que resposta fantástica!",
+                                  "enc5":  "Isso foi maravilhoso!",
+                                  "micError":  "Microfone não disponível — verifique as permissões!"
+                              }
+                }
+}

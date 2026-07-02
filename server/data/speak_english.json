@@ -1,0 +1,402 @@
+[
+ {
+ "id": 1,
+ "text": "What is your favourite colour and why do you like it?"
+ },
+ {
+ "id": 2,
+ "text": "Can you describe a painting or drawing you have made?"
+ },
+ {
+ "id": 3,
+ "text": "What type of music do you enjoy listening to?"
+ },
+ {
+ "id": 4,
+ "text": "If you could be in any film or play, which would you choose and why?"
+ },
+ {
+ "id": 5,
+ "text": "How would you describe what art means to you?"
+ },
+ {
+ "id": 6,
+ "text": "Tell me about a famous artist or musician you know about."
+ },
+ {
+ "id": 7,
+ "text": "What colours would you use to paint a sunny day and why?"
+ },
+ {
+ "id": 8,
+ "text": "Can you describe the sounds you can hear right now as if they were music?"
+ },
+ {
+ "id": 9,
+ "text": "How would you perform a character who is frightened? Show me."
+ },
+ {
+ "id": 10,
+ "text": "Tell me about your favourite song and what it makes you feel."
+ },
+ {
+ "id": 11,
+ "text": "If you could design your bedroom wall, what art would you put on it?"
+ },
+ {
+ "id": 12,
+ "text": "How would you describe the difference between warm and cool colours?"
+ },
+ {
+ "id": 13,
+ "text": "Can you tell me the story of a painting you have seen?"
+ },
+ {
+ "id": 14,
+ "text": "What instrument would you most like to learn and why?"
+ },
+ {
+ "id": 15,
+ "text": "How would you mime eating a delicious bowl of soup?"
+ },
+ {
+ "id": 16,
+ "text": "Tell me about a craft you have made or would like to make."
+ },
+ {
+ "id": 17,
+ "text": "How would you describe what a musical beat is?"
+ },
+ {
+ "id": 18,
+ "text": "Can you explain what a portrait is and describe one you know?"
+ },
+ {
+ "id": 19,
+ "text": "What would you paint if you could paint anything in the world?"
+ },
+ {
+ "id": 20,
+ "text": "How would you perform a character who is very excited?"
+ },
+ {
+ "id": 21,
+ "text": "Tell me what you know about any famous artwork."
+ },
+ {
+ "id": 22,
+ "text": "How would you describe what abstract art is?"
+ },
+ {
+ "id": 23,
+ "text": "Can you explain why artists use shading?"
+ },
+ {
+ "id": 24,
+ "text": "Tell me about the colours you can see around you right now."
+ },
+ {
+ "id": 25,
+ "text": "How would you describe the mood of a piece of music you know?"
+ },
+ {
+ "id": 26,
+ "text": "Can you explain what a collage is and how it is made?"
+ },
+ {
+ "id": 27,
+ "text": "Tell me about a time when art or music made you feel something strongly."
+ },
+ {
+ "id": 28,
+ "text": "How would you describe what a still life painting shows?"
+ },
+ {
+ "id": 29,
+ "text": "What would your dream gallery look like? Describe it."
+ },
+ {
+ "id": 30,
+ "text": "Can you explain what symmetry means in art?"
+ },
+ {
+ "id": 31,
+ "text": "Tell me about a film or play you have seen that you enjoyed."
+ },
+ {
+ "id": 32,
+ "text": "How would you explain what rhythm means in music?"
+ },
+ {
+ "id": 33,
+ "text": "Can you describe what Van Gogh's The Starry Night looks like?"
+ },
+ {
+ "id": 34,
+ "text": "Tell me how you would make a collage about your favourite place."
+ },
+ {
+ "id": 35,
+ "text": "How would you perform a character who is very tired?"
+ },
+ {
+ "id": 36,
+ "text": "Can you explain the difference between painting and drawing?"
+ },
+ {
+ "id": 37,
+ "text": "Tell me about a favourite book illustration and why you like it."
+ },
+ {
+ "id": 38,
+ "text": "How would you describe what texture means in art?"
+ },
+ {
+ "id": 39,
+ "text": "Can you explain what a landscape painting is?"
+ },
+ {
+ "id": 40,
+ "text": "Tell me about a piece of music that makes you want to dance."
+ },
+ {
+ "id": 41,
+ "text": "How would you describe the feeling of creating something new?"
+ },
+ {
+ "id": 42,
+ "text": "Can you explain what improvisation in drama means?"
+ },
+ {
+ "id": 43,
+ "text": "Tell me what you think Impressionism is."
+ },
+ {
+ "id": 44,
+ "text": "How would you mime a rainstorm using only your body?"
+ },
+ {
+ "id": 45,
+ "text": "Can you describe your favourite art tool or material?"
+ },
+ {
+ "id": 46,
+ "text": "Tell me about a building you think is beautiful and why."
+ },
+ {
+ "id": 47,
+ "text": "How would you explain what a sound effect is in drama?"
+ },
+ {
+ "id": 48,
+ "text": "Can you describe what you imagine when you hear classical music?"
+ },
+ {
+ "id": 49,
+ "text": "Tell me about a tradition in art from a different culture you know about."
+ },
+ {
+ "id": 50,
+ "text": "How would you explain what graphic design is?"
+ },
+ {
+ "id": 51,
+ "text": "Can you perform a freeze frame showing the moment a goal is scored?"
+ },
+ {
+ "id": 52,
+ "text": "Tell me about a colour that makes you feel calm and why."
+ },
+ {
+ "id": 53,
+ "text": "How would you describe what a mosaic is?"
+ },
+ {
+ "id": 54,
+ "text": "Can you explain what tempo means in music?"
+ },
+ {
+ "id": 55,
+ "text": "Tell me what you know about the Mona Lisa."
+ },
+ {
+ "id": 56,
+ "text": "How would you describe the process of making a piece of clay pottery?"
+ },
+ {
+ "id": 57,
+ "text": "Can you explain what typography is?"
+ },
+ {
+ "id": 58,
+ "text": "Tell me about something you created that you are proud of."
+ },
+ {
+ "id": 59,
+ "text": "How would you mime building a sandcastle on a windy beach?"
+ },
+ {
+ "id": 60,
+ "text": "Can you explain what complementary colours are?"
+ },
+ {
+ "id": 61,
+ "text": "Tell me about a musical instrument you have tried to play."
+ },
+ {
+ "id": 62,
+ "text": "How would you describe what a conductor does?"
+ },
+ {
+ "id": 63,
+ "text": "Can you explain what pointillism is?"
+ },
+ {
+ "id": 64,
+ "text": "Tell me about the difference between a comedy and a tragedy in drama."
+ },
+ {
+ "id": 65,
+ "text": "How would you describe what animation is?"
+ },
+ {
+ "id": 66,
+ "text": "Can you explain how primary colours make secondary colours?"
+ },
+ {
+ "id": 67,
+ "text": "Tell me what you know about street art."
+ },
+ {
+ "id": 68,
+ "text": "How would you describe the feeling of listening to live music?"
+ },
+ {
+ "id": 69,
+ "text": "Can you mime someone who has just received a wonderful surprise?"
+ },
+ {
+ "id": 70,
+ "text": "Tell me about an art form from another country you find interesting."
+ },
+ {
+ "id": 71,
+ "text": "How would you describe what a storyboard is?"
+ },
+ {
+ "id": 72,
+ "text": "Can you explain why you think art is important?"
+ },
+ {
+ "id": 73,
+ "text": "Tell me about a drama game or exercise you enjoy."
+ },
+ {
+ "id": 74,
+ "text": "How would you describe what a musical harmony is?"
+ },
+ {
+ "id": 75,
+ "text": "Can you explain what the Renaissance was?"
+ },
+ {
+ "id": 76,
+ "text": "Tell me what a body of work means for an artist."
+ },
+ {
+ "id": 77,
+ "text": "How would you describe what surrealism means?"
+ },
+ {
+ "id": 78,
+ "text": "Can you explain what a loom is used for?"
+ },
+ {
+ "id": 79,
+ "text": "Tell me about a colour combination you find beautiful."
+ },
+ {
+ "id": 80,
+ "text": "How would you describe what an art critique involves?"
+ },
+ {
+ "id": 81,
+ "text": "Can you explain what digital art is?"
+ },
+ {
+ "id": 82,
+ "text": "Tell me how you would design a poster for your favourite film."
+ },
+ {
+ "id": 83,
+ "text": "How would you describe what body language shows in drama?"
+ },
+ {
+ "id": 84,
+ "text": "Can you explain what chiaroscuro means in art?"
+ },
+ {
+ "id": 85,
+ "text": "Tell me about a famous building and what makes it special."
+ },
+ {
+ "id": 86,
+ "text": "How would you describe the process of printmaking?"
+ },
+ {
+ "id": 87,
+ "text": "Can you explain what makes a good stage performance?"
+ },
+ {
+ "id": 88,
+ "text": "Tell me about a piece of art you have seen in real life."
+ },
+ {
+ "id": 89,
+ "text": "How would you describe the difference between major and minor scales?"
+ },
+ {
+ "id": 90,
+ "text": "Can you explain what origami is?"
+ },
+ {
+ "id": 91,
+ "text": "Tell me what you know about Aboriginal dot painting."
+ },
+ {
+ "id": 92,
+ "text": "How would you describe what colour psychology means?"
+ },
+ {
+ "id": 93,
+ "text": "Can you explain what an ensemble is in music?"
+ },
+ {
+ "id": 94,
+ "text": "Tell me about what you would include in an art sketchbook."
+ },
+ {
+ "id": 95,
+ "text": "How would you describe what a motif is in art or music?"
+ },
+ {
+ "id": 96,
+ "text": "Can you explain what expressionism in art is?"
+ },
+ {
+ "id": 97,
+ "text": "Tell me about an art therapy activity you would enjoy."
+ },
+ {
+ "id": 98,
+ "text": "How would you describe what makes art meaningful?"
+ },
+ {
+ "id": 99,
+ "text": "Can you explain what a musical rest is?"
+ },
+ {
+ "id": 100,
+ "text": "If you could be any artist or musician, who would you choose and why?"
+ }
+]

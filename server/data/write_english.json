@@ -1,0 +1,802 @@
+[
+ {
+ "id": 1,
+ "character": "A",
+ "type": "letter",
+ "hint": "Say: Ay",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 2,
+ "character": "art",
+ "type": "word",
+ "hint": "Creative work like painting",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 3,
+ "character": "B",
+ "type": "letter",
+ "hint": "Say: Bee",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 4,
+ "character": "blue",
+ "type": "word",
+ "hint": "The colour of the sky",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 5,
+ "character": "C",
+ "type": "letter",
+ "hint": "Say: See",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 6,
+ "character": "colour",
+ "type": "word",
+ "hint": "Red, blue and yellow are these",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 7,
+ "character": "D",
+ "type": "letter",
+ "hint": "Say: Dee",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 8,
+ "character": "draw",
+ "type": "word",
+ "hint": "Make pictures with a pencil",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 9,
+ "character": "E",
+ "type": "letter",
+ "hint": "Say: Ee",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 10,
+ "character": "eye",
+ "type": "word",
+ "hint": "We use this to see",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 11,
+ "character": "F",
+ "type": "letter",
+ "hint": "Say: Ef",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 12,
+ "character": "face",
+ "type": "word",
+ "hint": "A portrait shows this",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 13,
+ "character": "G",
+ "type": "letter",
+ "hint": "Say: Jee",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 14,
+ "character": "green",
+ "type": "word",
+ "hint": "Mix blue and yellow to make this",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 15,
+ "character": "H",
+ "type": "letter",
+ "hint": "Say: Aitch",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 16,
+ "character": "red",
+ "type": "word",
+ "hint": "A warm primary colour",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 17,
+ "character": "paint",
+ "type": "word",
+ "hint": "Used with a brush to make art",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 18,
+ "character": "brush",
+ "type": "word",
+ "hint": "Used to apply paint",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 19,
+ "character": "shape",
+ "type": "word",
+ "hint": "A circle or square",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 20,
+ "character": "line",
+ "type": "word",
+ "hint": "Drawn with a pencil",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 21,
+ "character": "light",
+ "type": "word",
+ "hint": "The bright part of a drawing",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 22,
+ "character": "dark",
+ "type": "word",
+ "hint": "The shadowed part of a drawing",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 23,
+ "character": "song",
+ "type": "word",
+ "hint": "Music with words sung",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 24,
+ "character": "beat",
+ "type": "word",
+ "hint": "The rhythm in music",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 25,
+ "character": "play",
+ "type": "word",
+ "hint": "A drama performed on stage",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 26,
+ "character": "stage",
+ "type": "word",
+ "hint": "Where actors perform",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 27,
+ "character": "scene",
+ "type": "word",
+ "hint": "Part of a play or story",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 28,
+ "character": "mask",
+ "type": "word",
+ "hint": "Worn in drama to hide the face",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 29,
+ "character": "clay",
+ "type": "word",
+ "hint": "Soft material for sculpting",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 30,
+ "character": "model",
+ "type": "word",
+ "hint": "A small 3D object made by hand",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 31,
+ "character": "print",
+ "type": "word",
+ "hint": "Copying a pattern using ink",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 32,
+ "character": "sketch",
+ "type": "word",
+ "hint": "A quick rough drawing",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 33,
+ "character": "texture",
+ "type": "word",
+ "hint": "How the surface of an artwork feels",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 34,
+ "character": "tone",
+ "type": "word",
+ "hint": "How light or dark a colour is",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 35,
+ "character": "portrait",
+ "type": "word",
+ "hint": "A drawing or painting of a person",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 36,
+ "character": "landscape",
+ "type": "word",
+ "hint": "A painting of outdoor scenery",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 37,
+ "character": "abstract",
+ "type": "word",
+ "hint": "Art that does not show real things",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 38,
+ "character": "collage",
+ "type": "word",
+ "hint": "Art made by sticking things",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 39,
+ "character": "mosaic",
+ "type": "word",
+ "hint": "Art made from small coloured tiles",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 40,
+ "character": "sculpture",
+ "type": "word",
+ "hint": "Three dimensional art",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 41,
+ "character": "shading",
+ "type": "word",
+ "hint": "Using dark and light to show form",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 42,
+ "character": "perspective",
+ "type": "word",
+ "hint": "Making distant things look smaller",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 43,
+ "character": "symmetry",
+ "type": "word",
+ "hint": "Both sides look the same",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 44,
+ "character": "contrast",
+ "type": "word",
+ "hint": "Strong difference between light and dark",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 45,
+ "character": "primary",
+ "type": "word",
+ "hint": "The main three colours",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 46,
+ "character": "secondary",
+ "type": "word",
+ "hint": "Colours made by mixing primary ones",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 47,
+ "character": "melody",
+ "type": "word",
+ "hint": "The main tune of a song",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 48,
+ "character": "rhythm",
+ "type": "word",
+ "hint": "The beat pattern in music",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 49,
+ "character": "tempo",
+ "type": "word",
+ "hint": "How fast or slow music is",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 50,
+ "character": "harmony",
+ "type": "word",
+ "hint": "Notes that sound good together",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 51,
+ "character": "dynamics",
+ "type": "word",
+ "hint": "Loudness and softness in music",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 52,
+ "character": "notation",
+ "type": "word",
+ "hint": "Written language of music",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 53,
+ "character": "ensemble",
+ "type": "word",
+ "hint": "A group of musicians",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 54,
+ "character": "composer",
+ "type": "word",
+ "hint": "Someone who writes music",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 55,
+ "character": "monologue",
+ "type": "word",
+ "hint": "One person speaking alone on stage",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 56,
+ "character": "improvisation",
+ "type": "word",
+ "hint": "Performing without a script",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 57,
+ "character": "character",
+ "type": "word",
+ "hint": "A person in a play or story",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 58,
+ "character": "performance",
+ "type": "word",
+ "hint": "Acting or playing in front of others",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 59,
+ "character": "audience",
+ "type": "word",
+ "hint": "People watching a performance",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 60,
+ "character": "director",
+ "type": "word",
+ "hint": "Guides actors in a play",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 61,
+ "character": "typography",
+ "type": "word",
+ "hint": "The art of arranging letters",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 62,
+ "character": "illustration",
+ "type": "word",
+ "hint": "A drawing in a book",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 63,
+ "character": "pointillism",
+ "type": "word",
+ "hint": "Painting with small dots",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 64,
+ "character": "cubism",
+ "type": "word",
+ "hint": "Art showing many angles at once",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 65,
+ "character": "surrealism",
+ "type": "word",
+ "hint": "Dreamlike and strange art",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 66,
+ "character": "impressionism",
+ "type": "word",
+ "hint": "Art capturing light and movement",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 67,
+ "character": "architecture",
+ "type": "word",
+ "hint": "The art of designing buildings",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 68,
+ "character": "photography",
+ "type": "word",
+ "hint": "Capturing images with a camera",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 69,
+ "character": "animation",
+ "type": "word",
+ "hint": "Moving pictures made from drawings",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 70,
+ "character": "graphic",
+ "type": "word",
+ "hint": "A visual image or design",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 71,
+ "character": "yellow",
+ "type": "word",
+ "hint": "A warm primary colour",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 72,
+ "character": "orange",
+ "type": "word",
+ "hint": "Mix red and yellow to make this",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 73,
+ "character": "purple",
+ "type": "word",
+ "hint": "Mix red and blue to make this",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 74,
+ "character": "white",
+ "type": "word",
+ "hint": "The colour of clouds and snow",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 75,
+ "character": "black",
+ "type": "word",
+ "hint": "The darkest colour",
+ "level": 1,
+ "emoji": " "
+ },
+ {
+ "id": 76,
+ "character": "craft",
+ "type": "word",
+ "hint": "Making things by hand",
+ "level": 2,
+ "emoji": " "
+ },
+ {
+ "id": 77,
+ "character": "weave",
+ "type": "word",
+ "hint": "Cross threads to make fabric",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 78,
+ "character": "knit",
+ "type": "word",
+ "hint": "Make fabric from yarn with needles",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 79,
+ "character": "stitch",
+ "type": "word",
+ "hint": "One loop in sewing",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 80,
+ "character": "origami",
+ "type": "word",
+ "hint": "Japanese art of paper folding",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 81,
+ "character": "calligraphy",
+ "type": "word",
+ "hint": "Art of beautiful handwriting",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 82,
+ "character": "batik",
+ "type": "word",
+ "hint": "Fabric art using wax and dye",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 83,
+ "character": "kiln",
+ "type": "word",
+ "hint": "An oven for firing clay",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 84,
+ "character": "glaze",
+ "type": "word",
+ "hint": "A shiny coating for ceramics",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 85,
+ "character": "canvas",
+ "type": "word",
+ "hint": "A surface for painting",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 86,
+ "character": "easel",
+ "type": "word",
+ "hint": "A stand that holds a canvas",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 87,
+ "character": "palette",
+ "type": "word",
+ "hint": "A board to mix colours on",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 88,
+ "character": "pigment",
+ "type": "word",
+ "hint": "The coloured material in paint",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 89,
+ "character": "exhibition",
+ "type": "word",
+ "hint": "A public display of art",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 90,
+ "character": "critique",
+ "type": "word",
+ "hint": "A careful analysis of art",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 91,
+ "character": "symbol",
+ "type": "word",
+ "hint": "A sign that stands for something",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 92,
+ "character": "motif",
+ "type": "word",
+ "hint": "A repeated element in art",
+ "level": 4,
+ "emoji": " "
+ },
+ {
+ "id": 93,
+ "character": "foreground",
+ "type": "word",
+ "hint": "The front part of a picture",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 94,
+ "character": "background",
+ "type": "word",
+ "hint": "The back part of a picture",
+ "level": 3,
+ "emoji": " "
+ },
+ {
+ "id": 95,
+ "character": "installation",
+ "type": "word",
+ "hint": "A large artwork filling a room",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 96,
+ "character": "chiaroscuro",
+ "type": "word",
+ "hint": "Strong light and dark contrast in art",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 97,
+ "character": "complementary",
+ "type": "word",
+ "hint": "Colours opposite on the colour wheel",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 98,
+ "character": "impasto",
+ "type": "word",
+ "hint": "Thick paint technique in art",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 99,
+ "character": "renaissance",
+ "type": "word",
+ "hint": "A great period of art in Europe",
+ "level": 5,
+ "emoji": " "
+ },
+ {
+ "id": 100,
+ "character": "expressionism",
+ "type": "word",
+ "hint": "Art that expresses inner feelings",
+ "level": 5,
+ "emoji": " "
+ }
+]

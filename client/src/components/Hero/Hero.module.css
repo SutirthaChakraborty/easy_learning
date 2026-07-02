@@ -1,0 +1,149 @@
+.hero {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 60px;
+  background-image: url('../../assets/bg1.jpg');
+  background-size: cover;
+  background-position: inherit;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* LEFT — character image */
+.left {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,0.5));
+}
+
+/* RIGHT — buttons + cards */
+.right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.greeting {
+  font-family: "Fredoka", sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin: 0 0 18px;
+  text-align: center;
+  color: white;
+}
+
+.greetingText {
+  background: linear-gradient(to right, #f49b0c, #27be2f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 8px rgba(162, 155, 254, 0.4));
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.learn {
+  background: linear-gradient(#4caf50, #2e7d32);
+  padding: 18px 35px;
+  border-radius: 35px;
+  border: none;
+  color: white;
+  font-size: 20px;
+  font-family: "Fredoka", sans-serif;
+  box-shadow: 0 8px #1b5e20;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.learn, .play {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+}
+
+.btnIcon {
+  font-size: 1.1em;
+  flex-shrink: 0;
+}
+
+.learn:hover  { transform: scale(1.05); }
+.learn:active { transform: scale(0.95); box-shadow: 0 4px #1b5e20; }
+
+.play {
+  background: linear-gradient(#ff9800, #ef6c00);
+  padding: 16px 28px;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-family: "Fredoka", sans-serif;
+  box-shadow: 0 6px #e65100;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.play:hover { transform: scale(1.05); }
+
+/* ─── LARGE DESKTOP ─── */
+@media (max-width: 1200px) {
+  .image { max-width: 320px; }
+}
+
+/* ─── TABLET ─── */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 30px 30px 40px;
+    gap: 24px;
+    text-align: center;
+  }
+  .image { max-width: 240px; }
+}
+
+/* ─── MOBILE ─── */
+@media (max-width: 480px) {
+  .hero {
+    padding: 20px 16px 30px;
+    gap: 16px;
+  }
+  .image { max-width: 180px; }
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 280px;
+  }
+  .learn {
+    padding: 14px 24px;
+    font-size: 18px;
+    text-align: center;
+  }
+  .play {
+    padding: 14px 24px;
+    font-size: 16px;
+    text-align: center;
+  }
+}
