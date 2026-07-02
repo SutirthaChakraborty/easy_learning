@@ -49,6 +49,7 @@ export const AdminAuthProvider = ({ children }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ uid, email, name, photoURL }),
     });
+    if (!res.ok && res.status === 404) throw new Error("Admin auth route not found. The server may not be running the latest code.");
     const data = await res.json();
     if (!data.success) throw new Error(data.message);
     localStorage.setItem(ADMIN_JWT_KEY, data.token);
@@ -63,6 +64,7 @@ export const AdminAuthProvider = ({ children }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
+    if (!res.ok && res.status === 404) throw new Error("Super admin auth route not found. The server may not be running the latest code.");
     const data = await res.json();
     if (!data.success) throw new Error(data.message);
     localStorage.setItem(SUPERADMIN_JWT_KEY, data.token);
