@@ -4,7 +4,7 @@ import {
   FaCrown, FaBuilding, FaUsers, FaCheckCircle, FaTimesCircle,
   FaClock, FaChartBar, FaCog, FaSignOutAlt, FaTachometerAlt,
   FaGlobe, FaThumbsUp, FaThumbsDown, FaSearch, FaChalkboardTeacher,
-  FaUserGraduate, FaChartLine, FaEnvelopeOpenText,
+  FaUserGraduate, FaChartLine, FaEnvelopeOpenText, FaComments,
 } from "react-icons/fa";
 import { MdClose, MdInsights } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
@@ -16,6 +16,7 @@ const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").r
 const NAV = [
   { key: "overview", label: "Overview", icon: <FaTachometerAlt /> },
   { key: "organizations", label: "Organizations", icon: <FaBuilding /> },
+  { key: "chat", label: "Admin Chat", icon: <FaComments /> },
   { key: "contact", label: "Contact Messages", icon: <FaEnvelopeOpenText /> },
   { key: "reports", label: "Reports", icon: <FaChartBar /> },
   { key: "settings", label: "Settings", icon: <FaCog /> },
@@ -300,6 +301,54 @@ function OrgDetailModal({ org, get, onClose }) {
   );
 }
 
+// ── Admin chat: conversation list + thread ────────────────────────────────────
+function ChatSection({ conversations, activeConvo, messages, draft, onOpen, onDraftChange, onSend, sending }) {
+  return (
+    <div className={styles.chatLayout}>
+      <div className={styles.convoList}>
+        {conversations.length === 0 ? (
+          <p className={styles.empty}>No conversations yet.</p>
+        ) : (
+          conversations.map((c) => (
+            <button
+              key={c.adminUid}
+              className={`${styles.convoRow} ${activeConvo?.adminUid === c.adminUid ? styles.convoActive : ""}`}
+              onClick={() => onOpen(c)}
+            >
+              <strong>{c.orgName || "Unknown org"}</strong>
+              {c.unreadCount > 0 && <span className={styles.navDot} />}
+              <p className={styles.convoPreview}>{c.lastMessage}</p>
+              <span className={styles.convoMeta}>{c.orgStatus} · {new Date(c.lastAt).toLocaleDateString()}</span>
+            </button>
+          ))
+        )}
+      </div>
+      <div className={styles.convoThread}>
+        {!activeConvo ? (
+          <p className={styles.empty}>Select a conversation.</p>
+        ) : (
+          <>
+            <div className={styles.chatMessages}>
+              {messages.map((m) => (
+                <div key={m._id} className={`${styles.chatBubble} ${m.senderRole === "superadmin" ? styles.chatBubbleMine : styles.chatBubbleTheirs}`}>
+                  <p>{m.message}</p>
+                  <span className={styles.chatTime}>{new Date(m.createdAt).toLocaleString()}</span>
+                </div>
+              ))}
+            </div>
+            <div className={styles.chatInputRow}>
+              <textarea rows={2} value={draft} onChange={(e) => onDraftChange(e.target.value)} placeholder="Reply to org admin…" />
+              <button className={styles.approveBtn} onClick={onSend} disabled={sending || !draft.trim()}>
+                {sending ? "Sending…" : "Send"}
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 const SuperAdminDashboard = () => {
   const { superAdminUser, superAdminLogout, getSuperAdminToken } = useAdminAuth();
@@ -321,6 +370,12 @@ const SuperAdminDashboard = () => {
   const [replyDrafts, setReplyDrafts] = useState({});
   const [actionLoading, setActionLoading] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [conversations, setConversations] = useState([]);
+  const [activeConvo, setActiveConvo] = useState(null);
+  const [convoMessages, setConvoMessages] = useState([]);
+  const [convoDraft, setConvoDraft] = useState("");
+  const [convoSending, setConvoSending] = useState(false);
+  const [chatUnreadTotal, setChatUnreadTotal] = useState(0);
 
   useEffect(() => {
     if (!superAdminUser && superAdminUser !== undefined) navigate("/superadmin-login");
@@ -348,16 +403,53 @@ const SuperAdminDashboard = () => {
     if (d.success) setMessages(d.messages);
   }, [get]);
 
+  const loadConversations = useCallback(async () => {
+    const d = await get("/chat");
+    if (d.success) setConversations(d.conversations);
+  }, [get]);
+
+  const pollChatUnread = useCallback(async () => {
+    const d = await get("/chat/unread-count");
+    if (d.success) setChatUnreadTotal(d.count);
+  }, [get]);
+
   useEffect(() => {
     loadStats().finally(() => setLoading(false));
   }, [loadStats]);
+
+  useEffect(() => {
+    pollChatUnread();
+    const iv = setInterval(pollChatUnread, 25000);
+    return () => clearInterval(iv);
+  }, [pollChatUnread]);
 
   const handleSection = useCallback(async (sec) => {
     setSection(sec);
     if (sec === "organizations") loadOrgs(filterStatus);
     else if (sec === "settings") loadSettings();
     else if (sec === "contact") loadMessages(messageFilter);
-  }, [filterStatus, messageFilter, loadOrgs, loadSettings, loadMessages]);
+    else if (sec === "chat") loadConversations();
+  }, [filterStatus, messageFilter, loadOrgs, loadSettings, loadMessages, loadConversations]);
+
+  const openConversation = async (convo) => {
+    setActiveConvo(convo);
+    const d = await get(`/chat/${convo.orgId}`);
+    if (d.success) setConvoMessages(d.messages);
+    loadConversations();
+  };
+
+  const handleSendConvo = async () => {
+    if (!convoDraft.trim() || !activeConvo) return;
+    setConvoSending(true);
+    const d = await post(`/chat/${activeConvo.orgId}`, { message: convoDraft.trim() });
+    setConvoSending(false);
+    if (d.success) {
+      setConvoDraft("");
+      const t = await get(`/chat/${activeConvo.orgId}`);
+      if (t.success) setConvoMessages(t.messages);
+      loadConversations();
+    }
+  };
 
   const handleFilterChange = (status) => {
     setFilterStatus(status);
@@ -432,6 +524,8 @@ const SuperAdminDashboard = () => {
               onClick={() => handleSection(n.key)}
             >
               {n.icon} <span>{n.label}</span>
+              {n.key === "organizations" && stats.pendingOrgs > 0 && <span className={styles.navDot} />}
+              {n.key === "chat" && chatUnreadTotal > 0 && <span className={styles.navDot} />}
             </button>
           ))}
         </nav>
@@ -540,8 +634,8 @@ const SuperAdminDashboard = () => {
                         <StatusBadge status={org.subscriptionPlan} />
                       </div>
 
-                      {org.status === "pending" && (
-                        <div className={styles.orgActions}>
+                      <div className={styles.orgActions}>
+                        {org.status !== "approved" && (
                           <button
                             className={styles.approveBtn}
                             onClick={() => handleApprove(org._id)}
@@ -549,14 +643,16 @@ const SuperAdminDashboard = () => {
                           >
                             <FaThumbsUp /> {actionLoading === org._id + "_approve" ? "…" : "Approve"}
                           </button>
+                        )}
+                        {org.status !== "rejected" && (
                           <button
                             className={styles.rejectOrgBtn}
                             onClick={() => setRejectTarget(org._id)}
                           >
                             <FaThumbsDown /> Reject
                           </button>
-                        </div>
-                      )}
+                        )}
+                      </div>
 
                       {org.status === "approved" && (
                         <>
@@ -579,11 +675,40 @@ const SuperAdminDashboard = () => {
                       {org.status === "rejected" && org.rejectionReason && (
                         <p className={styles.rejectedReason}>Reason: {org.rejectionReason}</p>
                       )}
+
+                      {org.rejectionHistory?.length > 0 && (
+                        <details className={styles.rejectionHistory}>
+                          <summary>Rejection history ({org.rejectionHistory.length})</summary>
+                          {org.rejectionHistory.map((h, i) => (
+                            <p key={i} className={styles.rejectedReason}>{new Date(h.rejectedAt).toLocaleString()}: {h.reason}</p>
+                          ))}
+                        </details>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
             )}
+          </>
+        )}
+
+        {/* ── Admin Chat ── */}
+        {section === "chat" && (
+          <>
+            <div className={styles.pageHeader}>
+              <h1>Admin Chat</h1>
+              <p>Message org admins directly about their registration or organization.</p>
+            </div>
+            <ChatSection
+              conversations={conversations}
+              activeConvo={activeConvo}
+              messages={convoMessages}
+              draft={convoDraft}
+              onOpen={openConversation}
+              onDraftChange={setConvoDraft}
+              onSend={handleSendConvo}
+              sending={convoSending}
+            />
           </>
         )}
 

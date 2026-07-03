@@ -927,6 +927,152 @@
 .saveSettingBtn:hover:not(:disabled) { filter: brightness(1.1); }
 .saveSettingBtn:disabled { opacity: 0.5; cursor: not-allowed; }
 
+/* ── Notification dot ────────────────────────────────────── */
+.navDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.7);
+  flex-shrink: 0;
+}
+
+/* ── Rejection history ────────────────────────────────────── */
+.rejectionHistory {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 260px;
+}
+.rejectionHistory summary {
+  cursor: pointer;
+  color: #e74c3c;
+}
+.rejectionHistory p { margin: 4px 0 0; text-align: left; }
+
+/* ── Admin chat ───────────────────────────────────────────── */
+.chatLayout {
+  display: flex;
+  gap: 20px;
+  height: 65vh;
+}
+
+.convoList {
+  width: 300px;
+  flex-shrink: 0;
+  background: #1a1828;
+  border: 1px solid rgba(247, 168, 37, 0.25);
+  border-radius: 14px;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.convoRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Fredoka", sans-serif;
+}
+
+.convoRow:hover { background: rgba(247, 168, 37, 0.1); }
+.convoActive { background: rgba(247, 168, 37, 0.18) !important; }
+
+.convoPreview {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.convoMeta {
+  flex-basis: 100%;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.convoThread {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1a1828;
+  border: 1px solid rgba(247, 168, 37, 0.25);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chatBubble {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chatBubble p { margin: 0; word-break: break-word; }
+
+.chatBubbleMine {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #f7a825, #e8871e);
+  color: #1a1828;
+  border-bottom-right-radius: 2px;
+}
+
+.chatBubbleTheirs {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-bottom-left-radius: 2px;
+}
+
+.chatTime {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.chatInputRow {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid rgba(247, 168, 37, 0.2);
+}
+
+.chatInputRow textarea {
+  flex: 1;
+  resize: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(247, 168, 37, 0.3);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #fff;
+  font-family: inherit;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
   .sidebar { width: 60px; }

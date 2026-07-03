@@ -54,7 +54,13 @@ const createBatchValidator = [
   body('description').optional({ checkFalsy: true }).trim().isLength({ max: 300 }).withMessage('Description is too long'),
 ]
 
+const sendChatMessageValidator = [
+  body('message').trim().notEmpty().withMessage('Message is required')
+    .isLength({ max: 2000 }).withMessage('Message is too long'),
+]
+
 module.exports = {
   registerOrgValidator, updateIdentityValidator,
   createTutorValidator, createStudentValidator, createParentValidator, createBatchValidator,
+  sendChatMessageValidator,
 }
