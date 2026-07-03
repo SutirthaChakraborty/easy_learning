@@ -1,858 +1,252 @@
-<div align="center">
+# Learningo — User Manual
 
-<img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Version-0.1.0-blue?style=for-the-badge" />
-<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Platform-Web-orange?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=for-the-badge&logo=node.js" />
-<img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" />
+A guide for the people who *use* Learningo day to day: students, parents, organization
+admins, and the platform super admin. For how the app is built, see
+[design-guide.md](./design-guide.md) — this document is about what you can click and what
+happens when you do.
 
-<br /><br />
+## Contents
 
-```
-███████╗ █████╗ ███████╗██╗   ██╗    ██╗     ███████╗ █████╗ ██████╗ ███╗   ██╗
-██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝    ██║     ██╔════╝██╔══██╗██╔══██╗████╗  ██║
-█████╗  ███████║███████╗ ╚████╔╝     ██║     █████╗  ███████║██████╔╝██╔██╗ ██║
-██╔══╝  ██╔══██║╚════██║  ╚██╔╝      ██║     ██╔══╝  ██╔══██║██╔══██╗██║╚██╗██║
-███████╗██║  ██║███████║   ██║       ███████╗███████╗██║  ██║██║  ██║██║ ╚████║
-╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝       ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
-```
-
-# Easy Learn — Gamified Learning for Every Mind
-
-### *An inclusive, interactive learning platform built for children with dyslexia and learning disabilities*
-
-<br/>
-
-> **"Every child deserves a learning experience that fits their mind — not the other way around."**
-
-<br/>
+1. [Getting started](#1-getting-started)
+2. [For Students](#2-for-students)
+3. [For Admins (Schools / Coaching Centres / Parents)](#3-for-admins-schools--coaching-centres--parents)
+4. [For the Super Admin](#4-for-the-super-admin)
+5. [Language support](#5-language-support)
+6. [Contact & support](#6-contact--support)
+7. [Troubleshooting](#7-troubleshooting)
 
 ---
 
-</div>
+## 1. Getting started
 
-## Table of Contents
+When you open the site, you land on a **role selection screen** with three cards:
 
-- [About the Project](#about-the-project)
-- [Key Features](#key-features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [One-Command Setup](#one-command-setup)
-  - [Manual Setup](#manual-setup)
-  - [Running the App](#running-the-app)
-  - [Seeding the Database](#seeding-the-database)
-- [Environment Variables](#environment-variables)
-- [API Reference](#api-reference)
-  - [Authentication](#authentication-endpoints)
-  - [Learning Content](#learning-content-endpoints)
-  - [Mini-Games](#mini-game-endpoints)
-- [Database Models](#database-models)
-- [Authentication System](#authentication-system)
-- [Accessibility](#accessibility)
-- [Design System](#design-system)
-- [Branch Strategy & Contributing](#branch-strategy--contributing)
-- [Roadmap](#roadmap)
-- [The Team](#the-team)
-- [About the Company](#about-the-company)
-- [License](#license)
-
----
-
-## About the Project
-
-**Easy Learn** is an accessible, gamified web learning platform designed for **children aged 5–14 with dyslexia and other learning disabilities**. It combines multi-sensory learning techniques with game mechanics to make education engaging and effective for every type of learner.
-
-The platform covers **three core subjects** — English, Mathematics, and Science — each with four learning modes: Listen, Read, Write, and Speak. Mini-games reinforce skills, while an XP and badge system keeps children motivated.
-
-**Built by Futuresight Analytics Limited** (Ireland).
-
----
-
-## Key Features
-
-| Feature | Description | Status |
+| Card | Who it's for | Where it sends you |
 |---|---|---|
-| Multi-Sensory Modules | Listen, Read, Write, Speak — four modes per subject | In Progress |
-| Dyslexia Mode | OpenDyslexic font, wider letter spacing, color overlays | In Progress |
-| Gamification Engine | XP points, levels, badges, streaks, leaderboards | In Progress |
-| Mini-Games | Spelling Bee, Memory Match, Word Puzzle | In Progress |
-| Dual Authentication | Google OAuth (Firebase) + Email/Password (JWT) | Done |
-| Text-to-Speech | Web Speech API integration for all content | Planned |
-| Progress Dashboard | Real-time reports for parents and teachers | Planned |
-| AI Personalization | Adaptive difficulty, emotion detection, gesture input | Future |
-| Multi-Language Support | Additional languages beyond English | Future |
+| **Student** | Kids using the lessons and games | Student sign-in page |
+| **Admin / Parents** | Anyone running or supervising a school, coaching centre, or home-school group | Admin sign-in page |
+| **Super Admin** | The single platform operator who approves organizations | Super Admin sign-in page |
+
+Pick the card that matches your role and click **Sign In**.
 
 ---
 
-## Tech Stack
+## 2. For Students
 
-### Frontend
+### 2.1 Signing in
 
-| Technology | Version | Purpose |
+On the Student sign-in page you can either:
+
+- **Continue with Google** — one click, no password to remember, or
+- **Sign in with email and password** — use the toggle at the bottom of the card to switch
+  between "Sign In" and "Sign Up" if you don't have an account yet.
+
+Once signed in you're taken to the **Home** page.
+
+### 2.2 Navigating the app
+
+The top navigation bar (visible on every page except sign-in/dashboard-style full-screen
+pages) gives you:
+
+- **Home** — back to the main screen
+- **Dashboard** — your personal progress page (see §2.5)
+- **Contact Us** — reach the Learningo team with a question or issue
+- A **language switcher** — change the app's language at any time (see §5)
+- **Logout**
+
+### 2.3 Learning modules
+
+From Home, pick a **subject** — **English**, **Maths**, or **Science**. Each subject has
+four skill modules:
+
+| Module | Skill | XP per round |
 |---|---|---|
-| React | 19 | UI framework |
-| Vite | 8 | Build tool & dev server |
-| React Router | 7 | Client-side routing |
-| Redux Toolkit | 2 | Global state management |
-| Firebase Auth | 12 | Google OAuth integration |
-| Framer Motion | 12 | Animations and transitions |
-| React Icons | 5 | SVG icon library |
-| Fredoka (fontsource) | 5 | Primary UI font |
-| CSS Modules | — | Component-scoped styles |
+| **Listen** | Listening comprehension | 30 XP |
+| **Read** | Reading comprehension | 20 XP |
+| **Write** | Writing practice | 15 XP |
+| **Speak** | Speaking practice | 10 XP |
 
-### Backend
+Every module is played in **rounds of exactly 10 questions**. You earn **1 star per correct
+answer**. There's also a **Warrior Mode**: if you get at least 6 of 10 correct, answering
+quickly earns bonus stars — answer within 10 seconds for +5 bonus stars, within 15 seconds
+for +4, within 20 seconds for +3. When you finish the 10th question, a **Round Complete**
+screen shows your result and saves it to your dashboard automatically.
 
-| Technology | Version | Purpose |
-|---|---|---|
-| Node.js | >= 18 | Server runtime |
-| Express | 4 | REST API framework |
-| MongoDB (Atlas) | 7 | NoSQL database |
-| Mongoose | 8 | MongoDB ODM |
-| JSON Web Token | 9 | Token-based authentication |
-| bcryptjs | 3 | Password hashing |
-| cors | 2 | Cross-origin request handling |
-| dotenv | 16 | Environment variable management |
-| nodemon | 3 | Dev auto-restart |
+### 2.4 Games
 
-### Planned AI/ML (Phase 3–4)
+From the **Games** page you can play three standalone games (English only, not tied to a
+specific subject module):
 
-| Technology | Purpose |
+- **Spelling Game** (Easy)
+- **Memory Match** (Medium)
+- **Word Puzzle** (Hard)
+
+Each game shows up to 3 stars based on your best performance, just like the subject
+modules.
+
+### 2.5 Your Dashboard
+
+The Dashboard is your personal progress hub. It shows:
+
+- **Stats cards** — Total XP, Sessions completed, Today's activity time, current Streak
+  (days in a row), and total Achievements earned.
+- **Activity heatmap** — a calendar-style grid (like a contribution graph) showing which
+  days you were active and how much you did, colored from light to dark by activity level.
+  You can switch between years if you've been using the app for a while.
+- **Progress chart** — a trend line of your activity over time.
+- **Achievements** — a grid of badges you've earned (and locked ones you haven't yet), each
+  showing the date earned or the XP reward for unlocking it.
+
+Nothing needs to be logged manually — playing a module or game round automatically updates
+your dashboard.
+
+---
+
+## 3. For Admins (Schools / Coaching Centres / Parents)
+
+The **Admin** role is for anyone who wants to register and run a group of students under an
+organization — a school, a coaching centre, or even a single parent/family group.
+
+### 3.1 Signing in
+
+Admin sign-in is **Google-only** — click **Continue with Google** on the Admin login page.
+There's a **Back to Role Selection** link if you picked the wrong card.
+
+### 3.2 Registering your organization
+
+The first time you sign in, your dashboard's **Overview** section shows a **Set Up Your
+Organization** prompt. Go to the **Organization** section and click **Register Now** to
+fill in:
+
+- Organization Name
+- Type (school, coaching centre, etc.)
+- Address
+- Phone
+- **Your Designation** — how you're declaring yourself (Principal, Father, Mother, etc.;
+  choose "Other" to specify your own)
+- An optional Organization Logo
+
+Submitting sends your organization to the **Super Admin for approval**. Your Organization
+section will show a status: **Pending**, **Approved**, or **Rejected**.
+
+- If **rejected**, you'll see the reason and can click **Resubmit Registration** to correct
+  and resend — as many times as needed. A full history of past rejections is kept and shown
+  to you.
+- Once **Approved**, you'll see "Approved — you can now manage your team," and the rest of
+  the dashboard unlocks.
+
+### 3.3 Running your organization
+
+Once approved, the sidebar gives you:
+
+| Section | What you do there |
 |---|---|
-| ml5.js | Face detection, pose estimation, sound classification |
-| TensorFlow.js | Custom model inference in-browser |
-| Teachable Machine | Train custom gesture/sound models |
-| Web Speech API | Text-to-speech, speech recognition |
-| MediaPipe Hands | Real-time hand tracking |
+| **Overview** | Summary counts of your Tutors, Batches, Students, Parents |
+| **Organization** | View/edit your org's registration details and status |
+| **Tutors** | Add teachers (Name, Email, Phone, Subject) |
+| **Batches** | Create class groups (Name, Subject, Description) and assign tutors/students to them |
+| **Students** | Add students (Name, Email, Age, Grade/Class) |
+| **Parents** | Add parent/guardian records and link them to students (with consent tracking) |
+| **Reports** | Search a Tutor or Student by name, then open their performance view for detailed learning stats |
+| **Messages** | A direct chat with the Super Admin (see §3.4) |
+
+Each list (Tutors, Batches, Students, Parents) uses the same pattern: an **Add** button
+opens a form, and existing records show in a searchable table.
+
+### 3.4 Messaging the Super Admin
+
+The **Messages** section is a private, threaded chat between you and the Super Admin — use
+it for approval questions, platform issues, or anything that doesn't fit the public Contact
+Us form. Unread messages show a badge that updates automatically every ~25 seconds.
 
 ---
 
-## Project Structure
+## 4. For the Super Admin
 
-```
-easy_learning/                          ← Monorepo root
-│
-├── client/                             ← React + Vite frontend (port 3000)
-│   ├── index.html
-│   ├── vite.config.js
-│   ├── package.json
-│   ├── .env                            ← Firebase API key (copy from .env.example)
-│   └── src/
-│       ├── main.jsx                    ← App entry point, Redux Provider
-│       ├── App.jsx                     ← Router + all page routes
-│       ├── index.css                   ← Global styles, design tokens
-│       ├── components/                 ← Reusable UI components
-│       │   ├── Navbar/
-│       │   ├── Hero/
-│       │   ├── Card/
-│       │   ├── Button/
-│       │   ├── Modal/
-│       │   ├── Loader/
-│       │   ├── Footer/
-│       │   ├── AudioPlayer/
-│       │   ├── ProgressBar/
-│       │   └── ToggleSwitch/
-│       ├── pages/                      ← Route-level pages
-│       │   ├── Home.jsx
-│       │   ├── Learn.jsx
-│       │   ├── SubjectPage.jsx
-│       │   ├── GamesPage.jsx
-│       │   ├── modules/                ← Learning module players
-│       │   │   ├── ListenModule.jsx
-│       │   │   ├── ReadModule.jsx
-│       │   │   ├── WriteModule.jsx
-│       │   │   └── SpeakModule.jsx
-│       │   └── games/                  ← Mini-game pages
-│       │       ├── SpellingGame.jsx
-│       │       ├── MemoryGame.jsx
-│       │       └── PuzzleGame.jsx
-│       ├── store/                      ← Redux store + slices
-│       │   └── store.js                ← 16 slices (one per module/subject combo)
-│       ├── context/
-│       │   ├── AuthContext.jsx         ← Auth state (JWT + Firebase)
-│       │   ├── ProgressContext.jsx     ← XP, badges, streak state
-│       │   └── ThemeContext.jsx        ← Dyslexia mode, contrast toggle
-│       ├── firebase/
-│       │   └── auth.js                 ← Firebase init + Google sign-in
-│       ├── data/
-│       │   └── lessons.js              ← Hardcoded fallback lesson data
-│       ├── utils/                      ← Pure utility functions
-│       └── assets/                     ← Images, sounds, backgrounds
-│
-├── server/                             ← Node.js + Express API (port 5000)
-│   ├── server.js                       ← Express app entry point, route mounting
-│   ├── package.json
-│   ├── .env                            ← Secrets (copy from .env.example)
-│   ├── routes/                         ← Route definitions (16+ files)
-│   │   ├── auth.js
-│   │   ├── readEnglish.js
-│   │   ├── readMaths.js
-│   │   ├── readScience.js
-│   │   ├── listenEnglish.js
-│   │   ├── listenMaths.js
-│   │   ├── listenScience.js
-│   │   ├── writeEnglish.js
-│   │   ├── writeMaths.js
-│   │   ├── writeScience.js
-│   │   ├── speakEnglish.js
-│   │   ├── speakMaths.js
-│   │   ├── speakScience.js
-│   │   ├── spellEnglish.js
-│   │   ├── memoryMatch.js
-│   │   ├── wordPuzzle.js
-│   │   └── learn.js
-│   ├── controllers/                    ← Request handlers (mirror of routes/)
-│   ├── models/                         ← Mongoose schemas (17 models)
-│   ├── middleware/                     ← Auth middleware
-│   ├── config/                         ← App configuration (db connection)
-│   └── data/                           ← Seed data + seed script
-│       ├── seed.js                     ← Populates all 17 collections
-│       ├── read_english.json
-│       ├── read_maths.json
-│       ├── read_science.json
-│       ├── listen_english.json
-│       ├── listen_maths.json
-│       ├── listen_science.json
-│       ├── write_english.json
-│       ├── write_maths.json
-│       ├── write_science.json
-│       ├── speak_english.json
-│       ├── speak_maths.json
-│       ├── speak_science.json
-│       ├── spell_english.json
-│       ├── memory_match.json
-│       ├── word_puzzle.json
-│       └── learn.json
-│
-├── docs/
-│   └── design-guide.md                 ← Typography, colors, accessibility standards
-├── updates/                            ← Daily & weekly team progress reports
-│   ├── daily/                          ← YYYY-MM-DD.md
-│   └── weekly/                         ← week-NN-YYYY.md
-├── setup.sh                            ← Auto-install (Linux/macOS)
-├── setup.bat                           ← Auto-install (Windows CMD)
-├── setup.ps1                           ← Auto-install (Windows PowerShell)
-├── PROJECT_PLAN.md                     ← 16-week development roadmap
-└── README.md
-```
+There is exactly **one** Super Admin account for the whole platform (set up by whoever
+deploys/operates Learningo). It signs in with an **email and password** on the Super Admin
+login page — there's no self-registration or Google sign-in for this role.
 
----
+The Super Admin dashboard sidebar has:
 
-## Getting Started
-
-### Prerequisites
-
-- **Node.js >= 18** — [nodejs.org](https://nodejs.org)
-- **npm >= 9** (bundled with Node.js)
-- **Git** — [git-scm.com](https://git-scm.com)
-- A MongoDB Atlas account (or local MongoDB instance)
-- A Firebase project (for Google OAuth)
-
-### One-Command Setup
-
-The setup scripts install all dependencies and copy `.env.example` → `.env` for both client and server.
-
-| OS | Command |
+| Section | What you do there |
 |---|---|
-| Linux / macOS | `bash setup.sh` |
-| Windows CMD | `setup.bat` |
-| Windows PowerShell | `powershell -ExecutionPolicy Bypass -File setup.ps1` |
+| **Overview** | Platform-wide summary; flags pending organizations awaiting review |
+| **Organizations** | Approve or reject registered organizations; filter by All / Pending / Approved / Rejected |
+| **Admin Chat** | Threaded chat with every organization's admin (mirrors each admin's Messages section) |
+| **Contact Messages** | Public messages submitted via the Contact Us form by anyone (students, admins, teachers, parents, other) |
+| **Reports** | Open an approved organization to view its Tutors' and Students' performance data |
+| **Settings** | Global key/value platform settings (add, view, and describe platform-wide configuration values) |
 
-### Manual Setup
+### 4.1 Reviewing organizations
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/SutirthaChakraborty/easy_learning.git
-cd easy_learning
+Each organization card shows its name, type, admin email, address, and registration date.
+From here you can:
 
-# 2. Install root dependencies (concurrently)
-npm install
+- **Approve** — unlocks the org's dashboard for its admin, and lets you set a
+  **subscription plan** for it.
+- **Reject** — prompts you for a reason, which the admin sees and can act on.
 
-# 3. Install client dependencies
-cd client && npm install && cd ..
+Approving and rejecting are **fully reversible** — you can approve, later reject, then
+approve again if circumstances change. Every rejection (past and present) stays visible in
+that org's **rejection history**, so nothing is lost even after re-approval.
 
-# 4. Install server dependencies
-cd server && npm install && cd ..
+Once an org is approved, click **View Admin / Teachers / Students** to drill into its
+people and their performance data.
 
-# 5. Copy and fill in environment files
-cp server/.env.example server/.env
-cp client/.env.example client/.env
-# Edit both .env files with your real credentials
-```
+### 4.2 Handling contact messages
 
-### Running the App
-
-```bash
-# Start BOTH frontend and backend together (recommended)
-npm run dev
-
-# Start frontend only  →  http://localhost:3000
-npm run client
-
-# Start backend only   →  http://localhost:5000
-npm run server
-```
-
-### Seeding the Database
-
-Populate all 17 MongoDB collections with lesson and game data:
-
-```bash
-cd server && npm run seed
-```
-
-This runs `server/data/seed.js` and inserts all JSON fixture data.
+The **Contact Messages** section lists everything submitted through the public Contact Us
+form (see §6) — separate from the private Admin Chat, since anyone can submit one without
+being logged in as an org admin.
 
 ---
 
-## Environment Variables
+## 5. Language support
 
-### Server — `server/.env`
+Learningo currently supports **21 languages**:
 
-```env
-PORT=5000
-MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<dbname>
-CLIENT_URL=http://localhost:5173
-JWT_SECRET=your_strong_random_secret_here
-JWT_EXPIRES_IN=7d
-```
+English, Hindi, Bengali, Marathi, Tamil, Telugu, Urdu, Spanish, Portuguese, French,
+Italian, German, Dutch, Russian, Turkish, Arabic, Chinese, Japanese, Korean, Indonesian,
+and Vietnamese.
 
-| Variable | Required | Description |
-|---|---|---|
-| `PORT` | No | Express server port (default: 5000) |
-| `MONGODB_URI` | Yes | MongoDB Atlas connection string |
-| `CLIENT_URL` | Yes | Frontend origin for CORS |
-| `JWT_SECRET` | Yes | Secret for signing JWT tokens — change before production |
-| `JWT_EXPIRES_IN` | No | Token TTL (default: `7d`) |
-
-### Client — `client/.env`
-
-```env
-VITE_FIREBASE_API_KEY=your_firebase_api_key
-```
-
-The remaining Firebase config values (authDomain, projectId, etc.) are set inside `client/src/firebase/auth.js`.
+Use the **language switcher** in the navigation bar to change the app's language at any
+time — your choice is remembered on that device for next time. Arabic and Urdu
+automatically switch the whole page to right-to-left layout.
 
 ---
 
-## API Reference
+## 6. Contact & support
 
-Base URL: `http://localhost:5000`
+Anyone — student, admin, teacher, parent, or a visitor who hasn't signed in — can reach the
+Learningo team via **Contact Us** in the navigation bar. Fill in your name, email, a
+subject, and your message (with an optional attachment); it goes straight to the Super
+Admin's **Contact Messages** list. No account is required.
 
-All responses follow the shape:
-
-```json
-{
-  "success": true,
-  "count": 5,
-  "data": [ ... ]
-}
-```
-
-Error responses:
-
-```json
-{
-  "success": false,
-  "message": "Description of what went wrong"
-}
-```
+If you're already an org **Admin**, prefer the **Messages** section on your dashboard for
+anything related to your organization's approval or account — it's a direct, private
+conversation with the Super Admin rather than a one-off form.
 
 ---
 
-### Authentication Endpoints
-
-#### `POST /api/auth/register`
-
-Register a new user with email and password.
-
-**Request body:**
-```json
-{
-  "name": "Jane Smith",
-  "email": "jane@example.com",
-  "password": "securePassword123"
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "token": "<jwt>",
-  "user": { "id": "...", "name": "Jane Smith", "email": "jane@example.com" }
-}
-```
-
----
-
-#### `POST /api/auth/login`
-
-Login with email and password, returns a JWT.
-
-**Request body:**
-```json
-{
-  "email": "jane@example.com",
-  "password": "securePassword123"
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "token": "<jwt>",
-  "user": { "id": "...", "name": "Jane Smith", "email": "jane@example.com" }
-}
-```
-
----
-
-#### `POST /api/auth/session`
-
-Sync a Firebase Google OAuth user to the server session (sets an httpOnly cookie).
-
-**Request body:**
-```json
-{
-  "uid": "firebase_uid",
-  "email": "jane@example.com",
-  "displayName": "Jane Smith"
-}
-```
-
----
-
-#### `GET /api/auth/session`
-
-Returns the currently authenticated session user.
-
----
-
-#### `DELETE /api/auth/session`
-
-Clears the session cookie (logout for Firebase users).
-
----
-
-### Learning Content Endpoints
-
-All content endpoints share the same four operations. Replace `{module}` with one of `read`, `listen`, `write`, `speak` and `{subject}` with one of `english`, `maths`, `science`.
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/{module}/{subject}` | Get all questions for this module/subject |
-| `GET` | `/api/{module}/{subject}/:id` | Get a single question by ID |
-| `POST` | `/api/{module}/{subject}/seed` | Seed this collection from JSON data |
-| `DELETE` | `/api/{module}/{subject}/all` | Delete all content in this collection |
-
-**Available combinations (12 total):**
-
-| Module | English | Maths | Science |
-|---|---|---|---|
-| `read` | `/api/read/english` | `/api/read/maths` | `/api/read/science` |
-| `listen` | `/api/listen/english` | `/api/listen/maths` | `/api/listen/science` |
-| `write` | `/api/write/english` | `/api/write/maths` | `/api/write/science` |
-| `speak` | `/api/speak/english` | `/api/speak/maths` | `/api/speak/science` |
-
-**Example — `GET /api/read/english`:**
-
-```json
-{
-  "success": true,
-  "count": 5,
-  "data": [
-    {
-      "id": 1,
-      "title": "Colours",
-      "content": "Colours make art beautiful...",
-      "question": "What are red, blue and yellow called?",
-      "options": ["Secondary colours", "Primary colours", "Warm colours"],
-      "answer": "Primary colours",
-      "emoji": "🎨"
-    }
-  ]
-}
-```
-
-**Example — `GET /api/listen/english`:**
-
-```json
-{
-  "success": true,
-  "count": 5,
-  "data": [
-    {
-      "id": 1,
-      "sentence": "The cat sat on the mat.",
-      "level": "beginner",
-      "emoji": "🐱",
-      "xp": 10
-    }
-  ]
-}
-```
-
----
-
-### Mini-Game Endpoints
-
-#### Spelling Bee — `/api/spell/english`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/spell/english` | Get all spelling words |
-| `GET` | `/api/spell/english/:id` | Get a single word |
-
-**Response shape:**
-```json
-{
-  "id": 1,
-  "word": "beautiful",
-  "hint": "Something pleasing to the eye",
-  "difficulty": "medium",
-  "emoji": "🌸"
-}
-```
-
-#### Memory Match — `/api/game/memory-match`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/game/memory-match` | Get card pair sets |
-
-**Response shape:**
-```json
-{
-  "id": 1,
-  "difficulty": "easy",
-  "pairs": [
-    { "word": "cat", "image": "cat.png", "emoji": "🐱" }
-  ]
-}
-```
-
-#### Word Puzzle — `/api/game/word-puzzle`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/game/word-puzzle` | Get puzzle challenges |
-
-**Response shape:**
-```json
-{
-  "id": 1,
-  "letters": ["d", "o", "g"],
-  "answer": "dog",
-  "difficulty": "easy",
-  "emoji": "🐶"
-}
-```
-
----
-
-## Database Models
-
-MongoDB is used with Mongoose. There are **17 collections** total.
-
-### User
-
-```
-users
-├── name         String  required
-├── email        String  required, unique
-├── passwordHash String  required (bcryptjs)
-├── createdAt    Date    auto
-└── updatedAt    Date    auto
-```
-
-### Learning Content (pattern — applies to all 12 module/subject combos)
-
-**Read (ReadEnglish, ReadMaths, ReadScience):**
-```
-id        Number
-title     String
-content   String
-question  String
-options   [String]
-answer    String
-emoji     String
-```
-
-**Listen (ListenEnglish, ListenMaths, ListenScience):**
-```
-id        Number
-sentence  String
-level     String   (beginner | intermediate | advanced)
-emoji     String
-xp        Number
-```
-
-**Write (WriteEnglish, WriteMaths, WriteScience):**
-```
-id        Number
-character String
-type      String   (letter | word | number | symbol)
-hint      String
-level     String
-emoji     String
-```
-
-**Speak (SpeakEnglish, SpeakMaths, SpeakScience):**
-```
-id            Number
-word          String
-pronunciation String
-level         String
-emoji         String
-```
-
-### Game Models
-
-**SpellEnglish:**
-```
-id         Number
-word       String
-hint       String
-difficulty String
-emoji      String
-```
-
-**MemoryMatch:**
-```
-id         Number
-difficulty String
-pairs      [{ word, image, emoji }]
-```
-
-**WordPuzzle:**
-```
-id         Number
-letters    [String]
-answer     String
-difficulty String
-emoji      String
-```
-
----
-
-## Authentication System
-
-Easy Learn uses a **dual authentication strategy** to support both social login and traditional email/password accounts.
-
-### Strategy 1 — Google OAuth via Firebase
-
-1. User clicks "Sign in with Google"
-2. Firebase redirects to Google's OAuth consent screen
-3. On success, Firebase returns a user object client-side
-4. Frontend sends the user's UID and profile to `POST /api/auth/session`
-5. Server sets an httpOnly session cookie
-6. `AuthContext` marks the user as authenticated
-
-### Strategy 2 — Email/Password via JWT
-
-1. User registers at `POST /api/auth/register` — password is hashed with bcryptjs before storage
-2. On login at `POST /api/auth/login`, server compares the provided password against the hash
-3. On success, server returns a signed JWT (expires in 7 days by default)
-4. Frontend stores the JWT in `localStorage` under the key `jwt_token`
-5. Subsequent requests include the token in the Authorization header
-6. `AuthContext` validates the token on every app load
-
-### Auth Context API
-
-Located at `client/src/context/AuthContext.jsx`. Provides:
-
-| Value / Method | Type | Description |
-|---|---|---|
-| `user` | Object | Current authenticated user, or `null` |
-| `registerManual(name, email, password)` | Function | Create a new account |
-| `loginManual(email, password)` | Function | Sign in with credentials |
-| `logout()` | Function | Clear auth state and redirect to home |
-| `getToken()` | Function | Retrieve JWT from localStorage |
-
-### Protected Routes
-
-All lesson and game pages require authentication. Components use the `useAuth()` hook and redirect unauthenticated users to `/login`.
-
----
-
-## Accessibility
-
-Easy Learn targets **WCAG 2.1 Level AA** compliance.
-
-| Feature | Implementation |
-|---|---|
-| Dyslexia Font | OpenDyslexic via `ThemeContext` toggle |
-| Letter Spacing | 0.05em globally; increased in dyslexia mode |
-| Line Height | 1.6 base; 1.8+ in dyslexia mode |
-| Color Contrast | Minimum 4.5:1 for normal text, 3:1 for large text |
-| High Contrast Mode | Toggle via Accessibility Toolbar |
-| Keyboard Navigation | All interactive elements reachable via Tab |
-| Focus Indicators | Visible on all focusable elements |
-| Text-to-Speech | Web Speech API (planned full integration) |
-| Alt Text | All images have descriptive alt attributes |
-| Form Labels | All inputs have associated `<label>` elements |
-
----
-
-## Design System
-
-### Color Palette
-
-| Token | Hex | Usage |
-|---|---|---|
-| Primary | `#6c63ff` | Buttons, links, key accents |
-| Secondary | `#ff6584` | Highlights, badge colors |
-| Accent | `#43e97b` | Success states, XP bar fill |
-| Warning | `#f7971e` | Streak indicators, alerts |
-| Dark | `#1a1a2e` | Main background |
-| Mid | `#16213e` | Section and card backgrounds |
-
-### Typography
-
-| Role | Font | Size |
-|---|---|---|
-| Primary (default) | Fredoka | 18px base |
-| Dyslexia mode | OpenDyslexic | 18px base |
-| Line height | — | 1.6 (body), 1.8 (dyslexia mode) |
-
-Full design guidelines are in [docs/design-guide.md](./docs/design-guide.md).
-
----
-
-## Branch Strategy & Contributing
-
-We use a **feature-branch workflow**. No one pushes directly to `main`.
-
-```
-main
-├── features-sutirtha      ← Architecture, project management
-├── features-parichay      ← Frontend features
-└── features-raunak        ← Business/strategic features
-```
-
-### Branch Rules
-
-| Rule | Detail |
-|---|---|
-| Branch from `main` | Always create branches off `main` |
-| Pull Requests | All merges require at least one reviewer approval |
-| Commit convention | Use prefixes below |
-| No force push to `main` | Protected branch |
-
-### Commit Message Convention
-
-```
-feat:      New feature
-fix:       Bug fix
-docs:      Documentation changes
-style:     Formatting, missing semicolons, etc.
-refactor:  Code restructuring without behavior change
-test:      Adding or updating tests
-chore:     Maintenance tasks (deps, config)
-```
-
-### Contributing Steps
-
-1. Checkout your assigned feature branch
-2. Make focused, well-scoped changes
-3. Commit with the convention above
-4. Open a PR against `main` with a clear description
-5. Request review from at least one teammate
-6. Add a daily standup entry in `updates/daily/YYYY-MM-DD.md`
-
-### Update Reports
-
-Progress reports live in `updates/`:
-
-- **Daily standup** — `updates/daily/YYYY-MM-DD.md`
-  - What did I do? / What will I do? / Any blockers?
-- **Weekly sprint summary** — `updates/weekly/week-NN-YYYY.md`
-  - Goals, Achievements, Upcoming work, Team notes
-
----
-
-## Roadmap
-
-Based on the 16-week plan in [PROJECT_PLAN.md](./PROJECT_PLAN.md):
-
-| Phase | Focus | Status |
-|---|---|---|
-| Phase 1 — Foundation | Scaffolding, design system, auth, gamification engine | Partially done |
-| Phase 2 — Core Learning | All 12 learning modules, 3 mini-games, TTS, dashboards | In progress |
-| Phase 3 — AI Features | ml5.js, gesture recognition, emotion detection, sound models | Planned |
-| Phase 4 — Launch | Accessibility audit, performance, cross-browser testing, deploy | Planned |
-
----
-
-## The Team
-
-<div align="center">
-
-| Role | Name | Branch | Responsibilities |
-|---|---|---|---|
-| Project Owner | **Sutirtha Chakraborty** | `features-sutirtha` | Product vision, architecture, project management |
-| Developer | **Parichay Dutta Biswas** | `features-parichay` | Frontend development, feature implementation |
-| Company Owner | **Raunak** | `features-raunak` | Strategic direction, business requirements |
-
-</div>
-
----
-
-## About the Company
-
-<div align="center">
-
-```
-╔══════════════════════════════════════════════════════╗
-║           FUTURESIGHT ANALYTICS LIMITED              ║
-║                                                      ║
-║       Data & AI Consultancy and Recruitment          ║
-║            Registered in Ireland                     ║
-╚══════════════════════════════════════════════════════╝
-```
-
-</div>
-
-**Futuresight Analytics Limited** is a Data & AI consultancy and recruitment firm registered in Ireland. We partner with organizations to unlock the power of data-driven decision-making and AI innovation.
-
-| Service | Description |
-|---|---|
-| Consultancy | Data strategy, AI implementation, digital transformation |
-| Recruitment | Connecting top data & AI talent with leading organizations |
-
-| Channel | Details |
-|---|---|
-| Email | [talent@futuresightanalytics.eu](mailto:talent@futuresightanalytics.eu) |
-| Phone | [+353 899 77 66 44](tel:+353899776644) |
-
----
-
-## License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Acknowledgements
-
-- [OpenDyslexic](https://opendyslexic.org/) — Dyslexia-friendly typeface
-- [WCAG 2.1](https://www.w3.org/TR/WCAG21/) — Web Content Accessibility Guidelines
-- [MongoDB Atlas](https://www.mongodb.com/atlas) — Cloud database hosting
-- [Firebase](https://firebase.google.com/) — Google OAuth integration
-- All educators, parents, and children who inspired this work
-
----
-
-<div align="center">
-
-Made with care by the **Easy Learn** team at **Futuresight Analytics Limited**
-
-*Registered in Ireland*
-
-[![Futuresight Analytics](https://img.shields.io/badge/Futuresight%20Analytics-Data%20%26%20AI-blue?style=for-the-badge)](mailto:talent@futuresightanalytics.eu)
-
-</div>
+## 7. Troubleshooting
+
+**"Continue with Google" isn't working / nothing happens**
+Your browser is likely blocking the sign-in popup. Allow popups for this site and try
+again. If the popup closes immediately, it may have been closed accidentally — just retry.
+
+**I registered my organization but don't see anything unlocked yet**
+New organizations start as **Pending** until the Super Admin reviews them. Check the
+Organization section for the current status; you'll be notified of the outcome there.
+
+**My organization was rejected — what now?**
+Open the Organization section, review the stated reason, fix the issue, and click
+**Resubmit Registration**. You can resubmit as many times as needed.
+
+**I don't see my progress/stars updating**
+Progress logs automatically when you complete a round of 10 questions in a module or game —
+make sure you reach the "Round Complete" screen rather than navigating away mid-round.
+
+**The page is in the wrong language**
+Use the language switcher in the navigation bar; your selection is saved per device, so
+you'll need to reset it again on a new device or browser.
