@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const path = require('path')
 require('dotenv').config()
 
 const authRoutes          = require('./routes/auth')
@@ -10,6 +11,7 @@ const adminAuthRoutes     = require('./routes/adminAuth')
 const superadminAuthRoutes = require('./routes/superadminAuth')
 const adminRoutes         = require('./routes/admin')
 const superadminRoutes    = require('./routes/superadmin')
+const contactRoutes       = require('./routes/contact')
 const listenScienceRoutes = require('./routes/listenScience')
 const listenMathsRoutes = require('./routes/listenMaths')
 const listenEnglishRoutes = require('./routes/listenEnglish')
@@ -45,6 +47,7 @@ app.use(cors({
 }))
 app.use(express.json())
 app.use(cookieParser())
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 const PORT = process.env.PORT || 5000
 
@@ -61,6 +64,7 @@ app.use('/api/admin/auth', adminAuthRoutes)
 app.use('/api/superadmin/auth', superadminAuthRoutes)
 app.use('/api/admin', adminRoutes)
 app.use('/api/superadmin', superadminRoutes)
+app.use('/api/contact', contactRoutes)
 
 app.get('/', (req, res) => {
   res.send('hello bachho')

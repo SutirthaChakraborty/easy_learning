@@ -1,6 +1,11 @@
 const SAOrganization = require('../models/superadmin/Organization')
 const AdminOrganization = require('../models/admin/Organization')
 const GlobalSettings = require('../models/superadmin/GlobalSettings')
+const OrgAdmin = require('../models/admin/OrgAdmin')
+const Student = require('../models/admin/Student')
+const Tutor = require('../models/admin/Tutor')
+const ContactMessage = require('../models/ContactMessage')
+const { getPerformanceForEmail } = require('../utils/performance')
 
 // ── Organizations ─────────────────────────────────────────────────────────────
 
@@ -40,13 +45,13 @@ const rejectOrg = async (req, res) => {
     const { reason } = req.body
     const saOrg = await SAOrganization.findByIdAndUpdate(
       req.params.id,
-      { status: 'rejected', rejectionReason: reason || '' },
+      { status: 'rejected', rejectionReason: reason },
       { new: true }
     )
     if (!saOrg) return res.status(404).json({ success: false, message: 'Organization not found' })
 
     if (saOrg.adminOrgId) {
-      await AdminOrganization.findByIdAndUpdate(saOrg.adminOrgId, { status: 'rejected', rejectionReason: reason || '' })
+      await AdminOrganization.findByIdAndUpdate(saOrg.adminOrgId, { status: 'rejected', rejectionReason: reason })
     }
 
     res.json({ success: true, org: saOrg })
@@ -63,8 +68,90 @@ const updateSubscription = async (req, res) => {
       { ...(plan && { subscriptionPlan: plan }), ...(subscriptionStatus && { subscriptionStatus }) },
       { new: true }
     )
+    if (!saOrg) return res.status(404).json({ success: false, message: 'Organization not found' })
     res.json({ success: true, org: saOrg })
   } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+// ── Approved org drill-down: admin identity, teachers, students, performance ──
+
+const getOrgAdminDetail = async (req, res) => {
+  try {
+    const saOrg = await SAOrganization.findById(req.params.id)
+    if (!saOrg) return res.status(404).json({ success: false, message: 'Organization not found' })
+
+    const admin = await OrgAdmin.findOne({ uid: saOrg.adminUid })
+      .select('name email phone designation designationOther photoURL')
+    res.json({ success: true, admin })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getOrgStudents = async (req, res) => {
+  try {
+    const saOrg = await SAOrganization.findById(req.params.id)
+    if (!saOrg || !saOrg.adminOrgId) return res.json({ success: true, students: [] })
+
+    const filter = { orgId: saOrg.adminOrgId }
+    if (req.query.search) filter.name = { $regex: req.query.search.trim(), $options: 'i' }
+    const students = await Student.find(filter).sort({ createdAt: -1 })
+    res.json({ success: true, students })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getOrgTutors = async (req, res) => {
+  try {
+    const saOrg = await SAOrganization.findById(req.params.id)
+    if (!saOrg || !saOrg.adminOrgId) return res.json({ success: true, tutors: [] })
+
+    const filter = { orgId: saOrg.adminOrgId }
+    if (req.query.search) filter.name = { $regex: req.query.search.trim(), $options: 'i' }
+    const tutors = await Tutor.find(filter).sort({ createdAt: -1 })
+    res.json({ success: true, tutors })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getOrgStudentPerformance = async (req, res) => {
+  try {
+    const saOrg = await SAOrganization.findById(req.params.id)
+    if (!saOrg || !saOrg.adminOrgId) return res.status(404).json({ success: false, message: 'Organization not found' })
+
+    const student = await Student.findOne({ _id: req.params.studentId, orgId: saOrg.adminOrgId })
+    if (!student) return res.status(404).json({ success: false, message: 'Student not found' })
+
+    const performance = await getPerformanceForEmail(student.email)
+    res.json({ success: true, student: { id: student._id, name: student.name, email: student.email }, performance })
+  } catch (err) {
+    console.error('getOrgStudentPerformance error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getOrgTutorPerformance = async (req, res) => {
+  try {
+    const saOrg = await SAOrganization.findById(req.params.id)
+    if (!saOrg || !saOrg.adminOrgId) return res.status(404).json({ success: false, message: 'Organization not found' })
+
+    const tutor = await Tutor.findOne({ _id: req.params.tutorId, orgId: saOrg.adminOrgId }).populate('studentIds', 'name email')
+    if (!tutor) return res.status(404).json({ success: false, message: 'Tutor not found' })
+
+    const students = await Promise.all(
+      (tutor.studentIds || []).map(async (s) => ({
+        studentId: s._id, name: s.name, email: s.email,
+        performance: await getPerformanceForEmail(s.email),
+      }))
+    )
+
+    res.json({ success: true, tutor: { id: tutor._id, name: tutor.name, email: tutor.email }, students })
+  } catch (err) {
+    console.error('getOrgTutorPerformance error:', err)
     res.status(500).json({ success: false, message: 'Internal server error' })
   }
 }
@@ -99,7 +186,6 @@ const getSettings = async (req, res) => {
 const upsertSetting = async (req, res) => {
   try {
     const { key, value, description } = req.body
-    if (!key || value === undefined) return res.status(400).json({ success: false, message: 'key and value are required' })
     const setting = await GlobalSettings.findOneAndUpdate(
       { key },
       { key, value, description: description || '' },
@@ -111,4 +197,37 @@ const upsertSetting = async (req, res) => {
   }
 }
 
-module.exports = { getOrganizations, approveOrg, rejectOrg, updateSubscription, getStats, getSettings, upsertSetting }
+// ── Contact messages ──────────────────────────────────────────────────────────
+
+const getContactMessages = async (req, res) => {
+  try {
+    const { status } = req.query
+    const filter = status ? { status } : {}
+    const messages = await ContactMessage.find(filter).sort({ createdAt: -1 })
+    res.json({ success: true, messages })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const respondToContact = async (req, res) => {
+  try {
+    const { status, reply } = req.body
+    const update = {}
+    if (status) update.status = status
+    if (reply !== undefined) { update.reply = reply; update.respondedAt = new Date() }
+
+    const message = await ContactMessage.findByIdAndUpdate(req.params.id, update, { new: true })
+    if (!message) return res.status(404).json({ success: false, message: 'Message not found' })
+    res.json({ success: true, message })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+module.exports = {
+  getOrganizations, approveOrg, rejectOrg, updateSubscription,
+  getOrgAdminDetail, getOrgStudents, getOrgTutors, getOrgStudentPerformance, getOrgTutorPerformance,
+  getStats, getSettings, upsertSetting,
+  getContactMessages, respondToContact,
+}

@@ -12,7 +12,8 @@
                    "english":  "English",
                    "mathematics":  "Mathematics",
                    "science":  "Science",
-                   "greeting":  "Hello {{name}}"
+                   "greeting":  "Hello {{name}}",
+                   "contact":  "Contact Us"
                },
     "hero":  {
                  "greeting":  "Hello {{name}}",

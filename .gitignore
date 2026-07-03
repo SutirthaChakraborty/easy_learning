@@ -24,6 +24,9 @@ yarn-error.log*
 # Testing
 coverage/
 
+# Uploaded files (multer)
+server/uploads/
+
 # Editor & OS
 .DS_Store
 Thumbs.db

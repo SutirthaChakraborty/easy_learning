@@ -570,6 +570,217 @@
   font-size: 0.95rem;
 }
 
+.fieldError {
+  color: #e74c3c;
+  font-size: 0.8rem;
+  margin: 4px 0 0;
+}
+
+/* ── Org detail drawer ───────────────────────────────────── */
+.viewDetailBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(79, 142, 247, 0.12);
+  color: #4f8ef7;
+  border: 1px solid rgba(79, 142, 247, 0.35);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.viewDetailBtn:hover { background: rgba(79, 142, 247, 0.25); }
+
+.wideModal {
+  max-width: 640px;
+}
+
+.detailGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailRow {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.detailRow span { color: rgba(255, 255, 255, 0.5); }
+.detailRow strong { color: #fff; }
+
+.searchBarSA {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px 14px;
+  margin-bottom: 14px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.searchBarSA input {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.9rem;
+}
+
+.tutorPerfList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.tutorPerfRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.mutedText { color: rgba(255, 255, 255, 0.4); }
+
+.viewBtnSA {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(247, 168, 37, 0.1);
+  color: #f7a825;
+  border: 1px solid rgba(247, 168, 37, 0.3);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.82rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.viewBtnSA:hover { background: rgba(247, 168, 37, 0.22); }
+
+.perfOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 110;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.perfPanel {
+  background: #14121f;
+  border: 1px solid rgba(247, 168, 37, 0.35);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+}
+
+.perfGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 14px;
+}
+
+.perfStat {
+  background: rgba(247, 168, 37, 0.08);
+  border: 1px solid rgba(247, 168, 37, 0.2);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+}
+
+.perfStat span {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.perfStat label {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4px;
+}
+
+/* ── Contact messages ────────────────────────────────────── */
+.messageCard {
+  background: #1a1828;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.messageHeader strong { color: #fff; font-size: 1rem; }
+
+.messageBody {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.attachmentLink {
+  color: #4f8ef7;
+  font-size: 0.85rem;
+  text-decoration: underline;
+  width: fit-content;
+}
+
+.replyText {
+  background: rgba(46, 204, 113, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+.replyRow {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.replyRow textarea {
+  flex: 1;
+}
+
 /* ── Modal ───────────────────────────────────────────────── */
 .modalOverlay {
   position: fixed;

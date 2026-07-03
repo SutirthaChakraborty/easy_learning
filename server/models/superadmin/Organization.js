@@ -16,6 +16,8 @@ const schema = new mongoose.Schema({
   subscriptionStatus: { type: String, enum: ['active', 'expired', 'cancelled'], default: 'active' },
   approvedAt: { type: Date, default: null },
   approvedBy: { type: String, default: '' },
+  logoUrl: { type: String, default: '' },
+  adminDesignation: { type: String, default: '' },
 }, { timestamps: true })
 
 module.exports = superAdminDb.model('Organization', schema)
