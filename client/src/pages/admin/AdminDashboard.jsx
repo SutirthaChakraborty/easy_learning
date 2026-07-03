@@ -7,7 +7,6 @@ import {
   MdSearch, MdInsights, MdEdit, MdSupportAgent,
 } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
-import ContactForm from "../../components/ContactForm/ContactForm";
 import { DESIGNATION_OPTIONS, ORG_TYPE_OPTIONS, designationLabel } from "../../utils/designations";
 import styles from "./AdminDashboard.module.css";
 
@@ -23,6 +22,7 @@ const NAV = [
   { key: "students", label: "Students", icon: <MdSchool /> },
   { key: "parents", label: "Parents", icon: <MdFamilyRestroom /> },
   { key: "reports", label: "Reports", icon: <MdBarChart /> },
+  { key: "chat", label: "Messages", icon: <MdSupportAgent /> },
 ];
 
 function useAdminApi(token) {
@@ -266,6 +266,37 @@ function PerformanceModal({ data, onClose }) {
   );
 }
 
+// ── Chat panel ──────────────────────────────────────────────────────────────
+function ChatPanel({ messages, draft, onDraftChange, onSend, sending }) {
+  return (
+    <div className={styles.chatPanel}>
+      <div className={styles.chatMessages}>
+        {messages.length === 0 ? (
+          <p className={styles.empty}>No messages yet. Start the conversation with the Super Admin.</p>
+        ) : (
+          messages.map((m) => (
+            <div key={m._id} className={`${styles.chatBubble} ${m.senderRole === "admin" ? styles.chatBubbleMine : styles.chatBubbleTheirs}`}>
+              <p>{m.message}</p>
+              <span className={styles.chatTime}>{new Date(m.createdAt).toLocaleString()}</span>
+            </div>
+          ))
+        )}
+      </div>
+      <div className={styles.chatInputRow}>
+        <textarea
+          rows={2}
+          value={draft}
+          onChange={(e) => onDraftChange(e.target.value)}
+          placeholder="Message the Super Admin…"
+        />
+        <button className={styles.primaryBtn} onClick={onSend} disabled={sending || !draft.trim()}>
+          {sending ? "Sending…" : "Send"}
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 const AdminDashboard = () => {
   const { adminUser, adminLogout, getAdminToken } = useAdminAuth();
@@ -287,7 +318,10 @@ const AdminDashboard = () => {
   const [modalLoading, setModalLoading] = useState(false);
   const [modalError, setModalError] = useState("");
   const [perfModal, setPerfModal] = useState(null);
-  const [contactOpen, setContactOpen] = useState(false);
+  const [chatMessages, setChatMessages] = useState([]);
+  const [chatDraft, setChatDraft] = useState("");
+  const [chatUnread, setChatUnread] = useState(0);
+  const [chatSending, setChatSending] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -308,6 +342,17 @@ const AdminDashboard = () => {
     Promise.all([loadStats(), loadProfile()]).finally(() => setLoading(false));
   }, [loadStats, loadProfile]);
 
+  const pollChatUnread = useCallback(async () => {
+    const d = await get("/chat/unread-count");
+    if (d.success) setChatUnread(d.count);
+  }, [get]);
+
+  useEffect(() => {
+    pollChatUnread();
+    const iv = setInterval(pollChatUnread, 25000);
+    return () => clearInterval(iv);
+  }, [pollChatUnread]);
+
   const loadTutors = useCallback(async (search) => {
     const d = await get(`/tutors${search ? `?search=${encodeURIComponent(search)}` : ""}`);
     if (d.success) setTutors(d.tutors);
@@ -316,6 +361,11 @@ const AdminDashboard = () => {
   const loadStudents = useCallback(async (search) => {
     const d = await get(`/students${search ? `?search=${encodeURIComponent(search)}` : ""}`);
     if (d.success) setStudents(d.students);
+  }, [get]);
+
+  const loadChat = useCallback(async () => {
+    const d = await get("/chat");
+    if (d.success) { setChatMessages(d.messages); setChatUnread(0); }
   }, [get]);
 
   const loadSection = useCallback(async (sec) => {
@@ -328,8 +378,16 @@ const AdminDashboard = () => {
       const d = await get("/parents"); if (d.success) setParents(d.parents);
     } else if (sec === "org") {
       const d = await get("/org"); if (d.success) setOrg(d.org);
-    }
-  }, [get, loadTutors, loadStudents, tutorSearch, studentSearch]);
+    } else if (sec === "chat") loadChat();
+  }, [get, loadTutors, loadStudents, loadChat, tutorSearch, studentSearch]);
+
+  const handleSendChat = async () => {
+    if (!chatDraft.trim()) return;
+    setChatSending(true);
+    const d = await post("/chat", { message: chatDraft.trim() });
+    setChatSending(false);
+    if (d.success) { setChatDraft(""); loadChat(); }
+  };
 
   const handleLogout = () => { adminLogout(); navigate("/"); };
 
@@ -440,11 +498,9 @@ const AdminDashboard = () => {
               onClick={() => loadSection(n.key)}
             >
               {n.icon} <span>{n.label}</span>
+              {n.key === "chat" && chatUnread > 0 && <span className={styles.navDot} />}
             </button>
           ))}
-          <button className={styles.navItem} onClick={() => setContactOpen(true)}>
-            <MdSupportAgent /> <span>Contact Support</span>
-          </button>
         </nav>
         <button className={styles.logoutBtn} onClick={handleLogout}>
           <MdLogout /> <span>Logout</span>
@@ -461,7 +517,7 @@ const AdminDashboard = () => {
         )}
         {org && org.status === "rejected" && (
           <div className={`${styles.banner} ${styles.bannerRed}`}>
-            <MdClose /> Your organization was rejected. Reason: {org.rejectionReason || "No reason given."}
+            <MdClose /> Your organization was rejected. Reason: {org.rejectionReason || "No reason given."} You can update your details and resubmit for review.
           </div>
         )}
 
@@ -528,6 +584,27 @@ const AdminDashboard = () => {
                 )}
                 {org.status === "approved" && (
                   <div className={styles.approvedMsg}><MdCheckCircle /> Approved — you can now manage your team.</div>
+                )}
+                {org.status === "rejected" && (
+                  <button className={styles.primaryBtn} onClick={() => openModal({
+                    title: "Resubmit Organization",
+                    endpoint: "/org",
+                    fields: orgRegistrationFields,
+                    initial: {
+                      name: org.name, type: org.type, address: org.address, phone: org.phone,
+                      designation: profile?.designation || "", designationOther: profile?.designationOther || "",
+                    },
+                  })}>
+                    <MdEdit /> Resubmit Registration
+                  </button>
+                )}
+                {org.rejectionHistory?.length > 0 && (
+                  <div className={styles.rejectionHistory}>
+                    <h4>Past Rejections</h4>
+                    {org.rejectionHistory.map((h, i) => (
+                      <p key={i}>{new Date(h.rejectedAt).toLocaleDateString()}: {h.reason}</p>
+                    ))}
+                  </div>
                 )}
               </div>
             )}
@@ -686,6 +763,23 @@ const AdminDashboard = () => {
             </div>
           </>
         )}
+
+        {/* ── Messages (chat with Super Admin) ── */}
+        {section === "chat" && (
+          <>
+            <div className={styles.pageHeader}>
+              <h1>Messages</h1>
+              <p>Chat directly with the Super Admin about your organization or registration.</p>
+            </div>
+            <ChatPanel
+              messages={chatMessages}
+              draft={chatDraft}
+              onDraftChange={setChatDraft}
+              onSend={handleSendChat}
+              sending={chatSending}
+            />
+          </>
+        )}
       </main>
 
       {/* Modal */}
@@ -703,26 +797,6 @@ const AdminDashboard = () => {
 
       {/* Performance modal */}
       {perfModal && <PerformanceModal data={perfModal} onClose={() => setPerfModal(null)} />}
-
-      {/* Contact support modal */}
-      {contactOpen && (
-        <div className={styles.modalOverlay} onClick={() => setContactOpen(false)}>
-          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <div className={styles.modalHeader}>
-              <h3>Contact Super Admin</h3>
-              <button className={styles.modalClose} onClick={() => setContactOpen(false)}><MdClose /></button>
-            </div>
-            <ContactForm
-              fixedRole="admin"
-              defaultName={adminUser?.name || ""}
-              defaultEmail={adminUser?.email || ""}
-              defaultOrgName={org?.name || ""}
-              compact
-              onSuccess={() => setContactOpen(false)}
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

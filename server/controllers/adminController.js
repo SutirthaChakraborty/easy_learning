@@ -15,11 +15,40 @@ const registerOrg = async (req, res) => {
     const { name, type, address, phone, designation, designationOther } = req.body
 
     const existing = await Organization.findOne({ adminUid: req.admin.uid })
-    if (existing) {
-      return res.status(409).json({ success: false, message: 'You already have a registered organization', org: existing })
-    }
-
     const logoUrl = req.file ? fileUrl(req, 'org-logos', req.file.filename) : ''
+
+    if (existing) {
+      if (existing.status !== 'rejected') {
+        return res.status(409).json({ success: false, message: 'You already have a registered organization', org: existing })
+      }
+
+      // Resubmission after rejection: edit in place, go back to pending.
+      // The rejection reason was already archived into rejectionHistory by rejectOrg at rejection time.
+      existing.name = name
+      existing.type = type || 'school'
+      existing.address = address || ''
+      existing.phone = phone || ''
+      if (logoUrl) existing.logoUrl = logoUrl
+      existing.status = 'pending'
+      existing.rejectionReason = ''
+      await existing.save()
+
+      await SAOrganization.findOneAndUpdate({ adminOrgId: existing._id.toString() }, {
+        name, type: type || 'school', address: address || '', phone: phone || '',
+        status: 'pending', rejectionReason: '',
+        adminDesignation: designation === 'other' ? designationOther : designation,
+        ...(logoUrl ? { logoUrl } : {}),
+      })
+
+      await OrgAdmin.findByIdAndUpdate(req.admin.id, {
+        orgId: existing._id,
+        designation: designation || '',
+        designationOther: designation === 'other' ? (designationOther || '') : '',
+        ...(phone ? { phone } : {}),
+      })
+
+      return res.json({ success: true, org: existing, resubmitted: true })
+    }
 
     const org = await Organization.create({
       name, type: type || 'school', address: address || '', phone: phone || '',

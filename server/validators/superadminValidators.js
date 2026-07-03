@@ -23,4 +23,9 @@ const respondContactValidator = [
   body('reply').optional({ checkFalsy: true }).trim().isLength({ max: 2000 }).withMessage('Reply is too long'),
 ]
 
-module.exports = { rejectOrgValidator, subscriptionValidator, settingValidator, respondContactValidator }
+const sendChatMessageValidator = [
+  body('message').trim().notEmpty().withMessage('Message is required')
+    .isLength({ max: 2000 }).withMessage('Message is too long'),
+]
+
+module.exports = { rejectOrgValidator, subscriptionValidator, settingValidator, respondContactValidator, sendChatMessageValidator }

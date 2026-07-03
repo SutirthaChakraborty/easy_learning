@@ -666,6 +666,102 @@
 .modalSubmit:hover:not(:disabled) { filter: brightness(1.1); }
 .modalSubmit:disabled { opacity: 0.6; cursor: not-allowed; }
 
+/* ── Notification dot ────────────────────────────────────── */
+.navDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2ecc71;
+  box-shadow: 0 0 6px rgba(46, 204, 113, 0.7);
+  flex-shrink: 0;
+}
+
+/* ── Rejection history ───────────────────────────────────── */
+.rejectionHistory {
+  background: rgba(231, 76, 60, 0.08);
+  border: 1px solid rgba(231, 76, 60, 0.25);
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.rejectionHistory h4 {
+  color: #e74c3c;
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+}
+.rejectionHistory p { margin: 2px 0; }
+
+/* ── Chat panel ───────────────────────────────────────────── */
+.chatPanel {
+  display: flex;
+  flex-direction: column;
+  background: #1a1828;
+  border: 1px solid rgba(162, 89, 247, 0.25);
+  border-radius: 14px;
+  height: 60vh;
+  max-width: 700px;
+  overflow: hidden;
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chatBubble {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.chatBubble p { margin: 0; word-break: break-word; }
+
+.chatBubbleMine {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #a259f7, #6c5ce7);
+  color: #fff;
+  border-bottom-right-radius: 2px;
+}
+
+.chatBubbleTheirs {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border-bottom-left-radius: 2px;
+}
+
+.chatTime {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.7rem;
+  opacity: 0.6;
+}
+
+.chatInputRow {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border-top: 1px solid rgba(162, 89, 247, 0.2);
+}
+
+.chatInputRow textarea {
+  flex: 1;
+  resize: none;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(162, 89, 247, 0.3);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #fff;
+  font-family: inherit;
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   .sidebar {

@@ -11,6 +11,7 @@ const schema = new mongoose.Schema({
   phone: { type: String, default: '' },
   status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' },
   rejectionReason: { type: String, default: '' },
+  rejectionHistory: { type: [{ reason: String, rejectedAt: { type: Date, default: Date.now } }], default: [] },
   adminOrgId: { type: String, default: '' },
   subscriptionPlan: { type: String, enum: ['free', 'basic', 'pro', 'enterprise'], default: 'free' },
   subscriptionStatus: { type: String, enum: ['active', 'expired', 'cancelled'], default: 'active' },

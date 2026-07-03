@@ -22,16 +22,18 @@ const getOrganizations = async (req, res) => {
 
 const approveOrg = async (req, res) => {
   try {
-    const saOrg = await SAOrganization.findByIdAndUpdate(
-      req.params.id,
-      { status: 'approved', approvedAt: new Date(), approvedBy: process.env.SUPER_ADMIN_EMAIL },
-      { new: true }
-    )
+    const saOrg = await SAOrganization.findById(req.params.id)
     if (!saOrg) return res.status(404).json({ success: false, message: 'Organization not found' })
 
-    // Sync approval to admin DB
+    // Reversible: callable regardless of current status (pending/rejected/approved all flip to approved)
+    saOrg.status = 'approved'
+    saOrg.approvedAt = new Date()
+    saOrg.approvedBy = process.env.SUPER_ADMIN_EMAIL
+    saOrg.rejectionReason = ''
+    await saOrg.save()
+
     if (saOrg.adminOrgId) {
-      await AdminOrganization.findByIdAndUpdate(saOrg.adminOrgId, { status: 'approved' })
+      await AdminOrganization.findByIdAndUpdate(saOrg.adminOrgId, { status: 'approved', rejectionReason: '' })
     }
 
     res.json({ success: true, org: saOrg })
@@ -43,15 +45,20 @@ const approveOrg = async (req, res) => {
 const rejectOrg = async (req, res) => {
   try {
     const { reason } = req.body
-    const saOrg = await SAOrganization.findByIdAndUpdate(
-      req.params.id,
-      { status: 'rejected', rejectionReason: reason },
-      { new: true }
-    )
+    const saOrg = await SAOrganization.findById(req.params.id)
     if (!saOrg) return res.status(404).json({ success: false, message: 'Organization not found' })
 
+    // Reversible: callable regardless of current status (also doubles as a "suspend" action on an approved org)
+    saOrg.status = 'rejected'
+    saOrg.rejectionReason = reason
+    saOrg.rejectionHistory.push({ reason, rejectedAt: new Date() })
+    await saOrg.save()
+
     if (saOrg.adminOrgId) {
-      await AdminOrganization.findByIdAndUpdate(saOrg.adminOrgId, { status: 'rejected', rejectionReason: reason })
+      await AdminOrganization.findByIdAndUpdate(saOrg.adminOrgId, {
+        $set: { status: 'rejected', rejectionReason: reason },
+        $push: { rejectionHistory: { reason, rejectedAt: new Date() } },
+      })
     }
 
     res.json({ success: true, org: saOrg })

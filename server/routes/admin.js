@@ -6,6 +6,7 @@ const { uploadOrgLogo, uploadAvatar, handleUpload } = require('../middleware/upl
 const {
   registerOrgValidator, updateIdentityValidator,
   createTutorValidator, createStudentValidator, createParentValidator, createBatchValidator,
+  sendChatMessageValidator,
 } = require('../validators/adminValidators')
 const {
   registerOrg, getOrg,
@@ -16,6 +17,7 @@ const {
   getParents, createParent,
   getStats,
 } = require('../controllers/adminController')
+const { getMyThread, sendMyMessage, getMyUnreadCount } = require('../controllers/chatController')
 
 router.use(adminAuth)
 
@@ -26,6 +28,10 @@ router.patch('/profile', handleUpload(uploadAvatar.single('avatar')), updateIden
 
 router.get('/org', getOrg)
 router.post('/org', handleUpload(uploadOrgLogo.single('logo')), registerOrgValidator, validate, registerOrg)
+
+router.get('/chat', getMyThread)
+router.post('/chat', sendChatMessageValidator, validate, sendMyMessage)
+router.get('/chat/unread-count', getMyUnreadCount)
 
 router.get('/tutors', getTutors)
 router.post('/tutors', createTutorValidator, validate, createTutor)
