@@ -1,0 +1,122 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: "Fredoka", sans-serif;
+}
+
+.row {
+  display: flex;
+  gap: 14px;
+}
+
+.row .field {
+  flex: 1;
+  min-width: 0;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.field input,
+.field select,
+.field textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: #a259f7;
+}
+
+.fileLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+}
+
+.fileLabel:hover {
+  border-color: #a259f7;
+  color: #fff;
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.8rem;
+}
+
+.serverError {
+  color: #e74c3c;
+  background: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.submitBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #a259f7, #6c5ce7);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.2s;
+}
+
+.submitBtn:hover:not(:disabled) { filter: brightness(1.1); }
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.compact .row { flex-direction: column; }
+
+.success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 24px 12px;
+  color: #fff;
+}
+
+.successIcon {
+  font-size: 3rem;
+  color: #2ecc71;
+  margin-bottom: 8px;
+}
+
+.success h3 { margin: 0; }
+.success p { color: rgba(255, 255, 255, 0.6); margin: 0 0 12px; }

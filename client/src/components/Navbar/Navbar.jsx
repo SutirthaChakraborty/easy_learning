@@ -37,6 +37,12 @@ const Navbar = () => {
           </NavLink>
         </div>
 
+        <div className={styles.dropdown}>
+          <NavLink to="/contact-us" className={styles.btn1} onClick={close}>
+            {t("navbar.contact", { defaultValue: "Contact Us" })}
+          </NavLink>
+        </div>
+
         {user ? (
           <div className={styles.userArea}>
             <NavLink to="/dashboard" className={styles.dashboardLink} onClick={close}>

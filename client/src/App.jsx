@@ -23,6 +23,7 @@ import SpellingGame from "./pages/games/SpellingGame";
 import MemoryGame from "./pages/games/MemoryGame";
 import PuzzleGame from "./pages/games/PuzzleGame";
 import Login from "./pages/Login";
+import ContactUs from "./pages/ContactUs";
 import AdminLogin from "./pages/AdminLogin";
 import SuperAdminLogin from "./pages/SuperAdminLogin";
 import Dashboard from "./pages/Dashboard";
@@ -48,6 +49,7 @@ function AnimatedRoutes() {
         <Route path="/games/memory" element={<MemoryGame />} />
         <Route path="/games/puzzle" element={<PuzzleGame />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />

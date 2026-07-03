@@ -4,11 +4,16 @@ import {
   MdAdminPanelSettings, MdDashboard, MdPeople, MdGroups,
   MdSchool, MdFamilyRestroom, MdBarChart, MdLogout, MdAdd,
   MdDelete, MdBusiness, MdClose, MdCheckCircle, MdPending,
+  MdSearch, MdInsights, MdEdit, MdSupportAgent,
 } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
+import ContactForm from "../../components/ContactForm/ContactForm";
+import { DESIGNATION_OPTIONS, ORG_TYPE_OPTIONS, designationLabel } from "../../utils/designations";
 import styles from "./AdminDashboard.module.css";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^[0-9+\-\s()]{7,15}$/;
 
 const NAV = [
   { key: "overview", label: "Overview", icon: <MdDashboard /> },
@@ -35,6 +40,15 @@ function useAdminApi(token) {
     return r.json();
   }, [token]);
 
+  const postForm = useCallback(async (path, formData, method = "POST") => {
+    const r = await fetch(`${API}/api/admin${path}`, {
+      method,
+      headers: { Authorization: `Bearer ${token}` },
+      body: formData,
+    });
+    return r.json();
+  }, [token]);
+
   const del = useCallback(async (path) => {
     const r = await fetch(`${API}/api/admin${path}`, {
       method: "DELETE",
@@ -43,14 +57,59 @@ function useAdminApi(token) {
     return r.json();
   }, [token]);
 
-  return { get, post, del };
+  return { get, post, postForm, del };
 }
 
-// ── Mini modal ────────────────────────────────────────────────────────────────
-function Modal({ title, fields, onSubmit, onClose, loading }) {
-  const [form, setForm] = useState({});
+// ── Field-level validation ──────────────────────────────────────────────────
+function validateField(f, value, form) {
+  const isVisible = !f.showIf || f.showIf(form);
+  if (!isVisible) return null;
+
+  const strVal = typeof value === "string" ? value.trim() : value;
+  const isEmpty = value === undefined || value === null || strVal === "" || (f.type === "file" && !value);
+
+  if (f.required && isEmpty) return `${f.label} is required`;
+  if (isEmpty) return null;
+
+  if (f.type === "email" && !EMAIL_RE.test(strVal)) return "Enter a valid email address";
+  if (f.type === "tel" && !PHONE_RE.test(strVal)) return "Enter a valid phone number";
+  if (f.type === "number") {
+    const n = Number(strVal);
+    if (Number.isNaN(n)) return `${f.label} must be a number`;
+    if (f.min !== undefined && n < f.min) return `${f.label} must be at least ${f.min}`;
+    if (f.max !== undefined && n > f.max) return `${f.label} must be at most ${f.max}`;
+  }
+  if (f.minLength && strVal.length < f.minLength) return `${f.label} must be at least ${f.minLength} characters`;
+  if (f.maxLength && strVal.length > f.maxLength) return `${f.label} must be at most ${f.maxLength} characters`;
+  return null;
+}
+
+function validateForm(fields, form) {
+  const errors = {};
+  fields.forEach((f) => {
+    const err = validateField(f, form[f.key], form);
+    if (err) errors[f.key] = err;
+  });
+  return errors;
+}
+
+// ── Mini modal (config-driven form) ─────────────────────────────────────────
+function Modal({ title, fields, onSubmit, onClose, loading, serverError, initial }) {
+  const [form, setForm] = useState(initial || {});
+  const [touched, setTouched] = useState({});
+  const errors = validateForm(fields, form);
+
   const handleChange = (k, v) => setForm((f) => ({ ...f, [k]: v }));
-  const handleSubmit = (e) => { e.preventDefault(); onSubmit(form); };
+  const handleBlur = (k) => setTouched((t) => ({ ...t, [k]: true }));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTouched(Object.fromEntries(fields.map((f) => [f.key, true])));
+    if (Object.keys(errors).length > 0) return;
+    onSubmit(form);
+  };
+
+  const hasErrors = Object.keys(errors).length > 0;
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
@@ -60,19 +119,43 @@ function Modal({ title, fields, onSubmit, onClose, loading }) {
           <button className={styles.modalClose} onClick={onClose}><MdClose /></button>
         </div>
         <form onSubmit={handleSubmit} className={styles.modalForm}>
-          {fields.map((f) => (
-            <div key={f.key} className={styles.modalField}>
-              <label>{f.label}</label>
-              <input
-                type={f.type || "text"}
-                placeholder={f.placeholder || f.label}
-                required={f.required}
-                value={form[f.key] || ""}
-                onChange={(e) => handleChange(f.key, e.target.value)}
-              />
-            </div>
-          ))}
-          <button type="submit" className={styles.modalSubmit} disabled={loading}>
+          {fields.map((f) => {
+            if (f.showIf && !f.showIf(form)) return null;
+            const showError = touched[f.key] && errors[f.key];
+            return (
+              <div key={f.key} className={styles.modalField}>
+                <label>{f.label}{f.required && " *"}</label>
+                {f.type === "select" ? (
+                  <select
+                    value={form[f.key] ?? ""}
+                    onChange={(e) => handleChange(f.key, e.target.value)}
+                    onBlur={() => handleBlur(f.key)}
+                  >
+                    <option value="" disabled>{f.placeholder || "Select…"}</option>
+                    {f.options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+                  </select>
+                ) : f.type === "file" ? (
+                  <input
+                    type="file"
+                    accept={f.accept || "image/*"}
+                    onChange={(e) => handleChange(f.key, e.target.files?.[0] || null)}
+                    onBlur={() => handleBlur(f.key)}
+                  />
+                ) : (
+                  <input
+                    type={f.type === "tel" ? "text" : (f.type || "text")}
+                    placeholder={f.placeholder || f.label}
+                    value={form[f.key] || ""}
+                    onChange={(e) => handleChange(f.key, e.target.value)}
+                    onBlur={() => handleBlur(f.key)}
+                  />
+                )}
+                {showError && <span className={styles.fieldError}>{errors[f.key]}</span>}
+              </div>
+            );
+          })}
+          {serverError && <p className={styles.serverError}>{serverError}</p>}
+          <button type="submit" className={styles.modalSubmit} disabled={loading || (Object.keys(touched).length > 0 && hasErrors)}>
             {loading ? "Saving…" : "Save"}
           </button>
         </form>
@@ -95,25 +178,29 @@ function StatCard({ label, value, icon, color }) {
 }
 
 // ── Data table ────────────────────────────────────────────────────────────────
-function DataTable({ columns, rows, onDelete, emptyMsg }) {
+function DataTable({ columns, rows, actions, emptyMsg }) {
   if (!rows.length) return <p className={styles.empty}>{emptyMsg}</p>;
   return (
     <div className={styles.tableWrap}>
       <table className={styles.table}>
         <thead>
           <tr>{columns.map((c) => <th key={c.key}>{c.label}</th>)}
-            {onDelete && <th>Action</th>}
+            {actions && <th>Actions</th>}
           </tr>
         </thead>
         <tbody>
           {rows.map((row) => (
             <tr key={row._id}>
               {columns.map((c) => <td key={c.key}>{c.render ? c.render(row) : row[c.key] || "—"}</td>)}
-              {onDelete && (
+              {actions && (
                 <td>
-                  <button className={styles.deleteBtn} onClick={() => onDelete(row._id)}>
-                    <MdDelete />
-                  </button>
+                  <div className={styles.rowActions}>
+                    {actions.map((a, i) => (
+                      <button key={i} className={a.variant === "delete" ? styles.deleteBtn : styles.viewBtn} title={a.title} onClick={() => a.onClick(row)}>
+                        {a.icon}
+                      </button>
+                    ))}
+                  </div>
                 </td>
               )}
             </tr>
@@ -124,22 +211,83 @@ function DataTable({ columns, rows, onDelete, emptyMsg }) {
   );
 }
 
+// ── Search bar ────────────────────────────────────────────────────────────────
+function SearchBar({ value, onChange, placeholder }) {
+  return (
+    <div className={styles.searchBar}>
+      <MdSearch />
+      <input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} />
+    </div>
+  );
+}
+
+// ── Performance modal ─────────────────────────────────────────────────────────
+function PerformanceModal({ data, onClose }) {
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.modalHeader}>
+          <h3>Performance — {data.name}</h3>
+          <button className={styles.modalClose} onClick={onClose}><MdClose /></button>
+        </div>
+
+        {data.type === "student" ? (
+          data.performance.linked ? (
+            <div className={styles.perfGrid}>
+              <div className={styles.perfStat}><span>{data.performance.totalXP}</span><label>Total XP</label></div>
+              <div className={styles.perfStat}><span>{data.performance.totalSessions}</span><label>Sessions</label></div>
+              <div className={styles.perfStat}><span>{data.performance.totalMinutes}</span><label>Minutes</label></div>
+              <div className={styles.perfStat}><span>{data.performance.averageScore}%</span><label>Avg Score</label></div>
+              <div className={styles.perfStat}><span>{data.performance.achievementCount}</span><label>Achievements</label></div>
+            </div>
+          ) : (
+            <p className={styles.empty}>No learning activity recorded yet for this student's linked email.</p>
+          )
+        ) : (
+          data.students.length === 0 ? (
+            <p className={styles.empty}>This tutor has no students assigned yet.</p>
+          ) : (
+            <div className={styles.tutorPerfList}>
+              {data.students.map((s) => (
+                <div key={s.studentId} className={styles.tutorPerfRow}>
+                  <strong>{s.name}</strong>
+                  {s.performance.linked ? (
+                    <span>{s.performance.totalXP} XP · {s.performance.totalSessions} sessions · {s.performance.averageScore}% avg</span>
+                  ) : (
+                    <span className={styles.mutedText}>No activity yet</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 const AdminDashboard = () => {
   const { adminUser, adminLogout, getAdminToken } = useAdminAuth();
   const navigate = useNavigate();
   const token = getAdminToken();
-  const { get, post, del } = useAdminApi(token);
+  const { get, post, postForm, del } = useAdminApi(token);
 
   const [section, setSection] = useState("overview");
   const [stats, setStats] = useState({ tutors: 0, students: 0, batches: 0, parents: 0, org: null });
   const [org, setOrg] = useState(null);
+  const [profile, setProfile] = useState(null);
   const [tutors, setTutors] = useState([]);
   const [batches, setBatches] = useState([]);
   const [students, setStudents] = useState([]);
   const [parents, setParents] = useState([]);
+  const [tutorSearch, setTutorSearch] = useState("");
+  const [studentSearch, setStudentSearch] = useState("");
   const [modal, setModal] = useState(null);
   const [modalLoading, setModalLoading] = useState(false);
+  const [modalError, setModalError] = useState("");
+  const [perfModal, setPerfModal] = useState(null);
+  const [contactOpen, setContactOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -151,37 +299,65 @@ const AdminDashboard = () => {
     if (data.success) { setStats(data.stats); setOrg(data.stats.org); }
   }, [get]);
 
+  const loadProfile = useCallback(async () => {
+    const data = await get("/profile");
+    if (data.success) setProfile(data.admin);
+  }, [get]);
+
   useEffect(() => {
-    loadStats().finally(() => setLoading(false));
-  }, [loadStats]);
+    Promise.all([loadStats(), loadProfile()]).finally(() => setLoading(false));
+  }, [loadStats, loadProfile]);
+
+  const loadTutors = useCallback(async (search) => {
+    const d = await get(`/tutors${search ? `?search=${encodeURIComponent(search)}` : ""}`);
+    if (d.success) setTutors(d.tutors);
+  }, [get]);
+
+  const loadStudents = useCallback(async (search) => {
+    const d = await get(`/students${search ? `?search=${encodeURIComponent(search)}` : ""}`);
+    if (d.success) setStudents(d.students);
+  }, [get]);
 
   const loadSection = useCallback(async (sec) => {
     setSection(sec);
-    if (sec === "tutors") {
-      const d = await get("/tutors"); if (d.success) setTutors(d.tutors);
-    } else if (sec === "batches") {
+    if (sec === "tutors") loadTutors(tutorSearch);
+    else if (sec === "batches") {
       const d = await get("/batches"); if (d.success) setBatches(d.batches);
-    } else if (sec === "students") {
-      const d = await get("/students"); if (d.success) setStudents(d.students);
-    } else if (sec === "parents") {
+    } else if (sec === "students") loadStudents(studentSearch);
+    else if (sec === "parents") {
       const d = await get("/parents"); if (d.success) setParents(d.parents);
     } else if (sec === "org") {
       const d = await get("/org"); if (d.success) setOrg(d.org);
     }
-  }, [get]);
+  }, [get, loadTutors, loadStudents, tutorSearch, studentSearch]);
 
   const handleLogout = () => { adminLogout(); navigate("/"); };
 
-  const openModal = (config) => setModal(config);
+  const openModal = (config) => { setModal(config); setModalError(""); };
   const closeModal = () => setModal(null);
+
+  const submitViaForm = (endpoint, form, fields) => {
+    const formData = new FormData();
+    fields.forEach((f) => {
+      const v = form[f.key];
+      if (v !== undefined && v !== null && v !== "") formData.append(f.key, v);
+    });
+    return postForm(endpoint, formData, modal.method || "POST");
+  };
 
   const handleModalSubmit = async (form) => {
     setModalLoading(true);
+    setModalError("");
     try {
-      const data = await post(modal.endpoint, form);
-      if (!data.success) { alert(data.message); return; }
+      const hasFile = modal.fields.some((f) => f.type === "file");
+      const data = hasFile
+        ? await submitViaForm(modal.endpoint, form, modal.fields)
+        : await post(modal.endpoint, form);
+
+      if (!data.success) { setModalError(data.message || "Something went wrong"); return; }
       closeModal();
       loadStats();
+      loadProfile();
       loadSection(section);
     } finally {
       setModalLoading(false);
@@ -195,6 +371,16 @@ const AdminDashboard = () => {
     loadSection(section);
   };
 
+  const openStudentPerformance = async (student) => {
+    const d = await get(`/students/${student._id}/performance`);
+    if (d.success) setPerfModal({ type: "student", name: student.name, performance: d.performance });
+  };
+
+  const openTutorPerformance = async (tutor) => {
+    const d = await get(`/tutors/${tutor._id}/performance`);
+    if (d.success) setPerfModal({ type: "tutor", name: tutor.name, students: d.students });
+  };
+
   if (loading || adminUser === undefined) {
     return <div className={styles.splash}><MdAdminPanelSettings className={styles.splashIcon} /><p>Loading…</p></div>;
   }
@@ -203,6 +389,23 @@ const AdminDashboard = () => {
     const map = { approved: styles.badgeGreen, pending: styles.badgeYellow, rejected: styles.badgeRed };
     return <span className={`${styles.badge} ${map[status] || styles.badgeYellow}`}>{status}</span>;
   };
+
+  const orgRegistrationFields = [
+    { key: "name", label: "Organization Name", required: true, minLength: 2, maxLength: 100 },
+    { key: "type", label: "Type", type: "select", required: true, options: ORG_TYPE_OPTIONS },
+    { key: "address", label: "Address", maxLength: 200 },
+    { key: "phone", label: "Phone", type: "tel" },
+    { key: "designation", label: "Your Designation (Principal / Father / Mother / etc.)", type: "select", required: true, options: DESIGNATION_OPTIONS },
+    { key: "designationOther", label: "Please specify", required: true, showIf: (f) => f.designation === "other", maxLength: 50 },
+    { key: "logo", label: "Organization Logo (optional)", type: "file", accept: "image/*" },
+  ];
+
+  const profileFields = [
+    { key: "designation", label: "Your Designation", type: "select", required: true, options: DESIGNATION_OPTIONS },
+    { key: "designationOther", label: "Please specify", required: true, showIf: (f) => f.designation === "other", maxLength: 50 },
+    { key: "phone", label: "Phone", type: "tel" },
+    { key: "avatar", label: "Profile Photo (optional)", type: "file", accept: "image/*" },
+  ];
 
   return (
     <div className={styles.layout}>
@@ -215,6 +418,19 @@ const AdminDashboard = () => {
         <div className={styles.adminInfo}>
           {adminUser?.name && <p className={styles.adminName}>{adminUser.name}</p>}
           <p className={styles.adminEmail}>{adminUser?.email}</p>
+          {profile?.designation && <p className={styles.adminDesignation}>{designationLabel(profile)}</p>}
+          <button
+            className={styles.editProfileBtn}
+            onClick={() => openModal({
+              title: "Edit Your Profile",
+              endpoint: "/profile",
+              method: "PATCH",
+              fields: profileFields,
+              initial: { designation: profile?.designation || "", designationOther: profile?.designationOther || "", phone: profile?.phone || "" },
+            })}
+          >
+            <MdEdit /> Edit Profile
+          </button>
         </div>
         <nav className={styles.nav}>
           {NAV.map((n) => (
@@ -226,6 +442,9 @@ const AdminDashboard = () => {
               {n.icon} <span>{n.label}</span>
             </button>
           ))}
+          <button className={styles.navItem} onClick={() => setContactOpen(true)}>
+            <MdSupportAgent /> <span>Contact Support</span>
+          </button>
         </nav>
         <button className={styles.logoutBtn} onClick={handleLogout}>
           <MdLogout /> <span>Logout</span>
@@ -270,6 +489,7 @@ const AdminDashboard = () => {
             )}
             {org && (
               <div className={styles.orgSummary}>
+                {org.logoUrl && <img src={org.logoUrl} alt="" className={styles.orgLogo} />}
                 <h3>{org.name}</h3>
                 <p>{org.type?.replace("_", " ")} · {orgStatusBadge(org.status)}</p>
               </div>
@@ -286,27 +506,26 @@ const AdminDashboard = () => {
             {!org ? (
               <div className={styles.setupCard}>
                 <h2>Register Your Organization</h2>
-                <p>This will create your org and send it for Super Admin approval.</p>
+                <p>This will create your org and send it for Super Admin approval. Please also declare your identity (e.g. Principal, Father, Mother).</p>
                 <button className={styles.primaryBtn} onClick={() => openModal({
                   title: "Register Organization",
                   endpoint: "/org",
-                  fields: [
-                    { key: "name", label: "Organization Name", required: true },
-                    { key: "type", label: "Type (school / coaching_centre / institution / other)" },
-                    { key: "address", label: "Address" },
-                    { key: "phone", label: "Phone" },
-                  ],
+                  fields: orgRegistrationFields,
                 })}>
                   <MdAdd /> Register Now
                 </button>
               </div>
             ) : (
               <div className={styles.orgCard}>
+                {org.logoUrl && <img src={org.logoUrl} alt="" className={styles.orgLogo} />}
                 <div className={styles.orgCardRow}><span>Name</span><strong>{org.name}</strong></div>
                 <div className={styles.orgCardRow}><span>Type</span><strong>{org.type?.replace("_", " ")}</strong></div>
                 <div className={styles.orgCardRow}><span>Address</span><strong>{org.address || "—"}</strong></div>
                 <div className={styles.orgCardRow}><span>Phone</span><strong>{org.phone || "—"}</strong></div>
                 <div className={styles.orgCardRow}><span>Status</span><strong>{orgStatusBadge(org.status)}</strong></div>
+                {profile?.designation && (
+                  <div className={styles.orgCardRow}><span>Declared By</span><strong>{designationLabel(profile)}</strong></div>
+                )}
                 {org.status === "approved" && (
                   <div className={styles.approvedMsg}><MdCheckCircle /> Approved — you can now manage your team.</div>
                 )}
@@ -324,15 +543,16 @@ const AdminDashboard = () => {
                 title: "Add Tutor",
                 endpoint: "/tutors",
                 fields: [
-                  { key: "name", label: "Full Name", required: true },
+                  { key: "name", label: "Full Name", required: true, minLength: 2, maxLength: 100 },
                   { key: "email", label: "Email", type: "email", required: true },
-                  { key: "phone", label: "Phone" },
-                  { key: "subject", label: "Subject" },
+                  { key: "phone", label: "Phone", type: "tel" },
+                  { key: "subject", label: "Subject", maxLength: 50 },
                 ],
               })}>
                 <MdAdd /> Add Tutor
               </button>
             </div>
+            <SearchBar value={tutorSearch} onChange={(v) => { setTutorSearch(v); loadTutors(v); }} placeholder="Search tutors by name…" />
             <DataTable
               columns={[
                 { key: "name", label: "Name" },
@@ -342,7 +562,10 @@ const AdminDashboard = () => {
                 { key: "status", label: "Status" },
               ]}
               rows={tutors}
-              onDelete={(id) => handleDelete("/tutors", id)}
+              actions={[
+                { icon: <MdInsights />, title: "View Performance", onClick: openTutorPerformance },
+                { icon: <MdDelete />, title: "Delete", variant: "delete", onClick: (row) => handleDelete("/tutors", row._id) },
+              ]}
               emptyMsg="No tutors yet. Add your first tutor."
             />
           </>
@@ -357,9 +580,9 @@ const AdminDashboard = () => {
                 title: "Create Batch",
                 endpoint: "/batches",
                 fields: [
-                  { key: "name", label: "Batch Name", required: true },
-                  { key: "subject", label: "Subject" },
-                  { key: "description", label: "Description" },
+                  { key: "name", label: "Batch Name", required: true, minLength: 2, maxLength: 100 },
+                  { key: "subject", label: "Subject", maxLength: 50 },
+                  { key: "description", label: "Description", maxLength: 300 },
                 ],
               })}>
                 <MdAdd /> Create Batch
@@ -374,7 +597,7 @@ const AdminDashboard = () => {
                 { key: "status", label: "Status" },
               ]}
               rows={batches}
-              onDelete={(id) => handleDelete("/batches", id)}
+              actions={[{ icon: <MdDelete />, title: "Delete", variant: "delete", onClick: (row) => handleDelete("/batches", row._id) }]}
               emptyMsg="No batches yet. Create your first batch."
             />
           </>
@@ -389,15 +612,16 @@ const AdminDashboard = () => {
                 title: "Add Student",
                 endpoint: "/students",
                 fields: [
-                  { key: "name", label: "Full Name", required: true },
+                  { key: "name", label: "Full Name", required: true, minLength: 2, maxLength: 100 },
                   { key: "email", label: "Email", type: "email" },
-                  { key: "age", label: "Age", type: "number" },
-                  { key: "grade", label: "Grade / Class" },
+                  { key: "age", label: "Age", type: "number", min: 3, max: 25 },
+                  { key: "grade", label: "Grade / Class", maxLength: 20 },
                 ],
               })}>
                 <MdAdd /> Add Student
               </button>
             </div>
+            <SearchBar value={studentSearch} onChange={(v) => { setStudentSearch(v); loadStudents(v); }} placeholder="Search students by name…" />
             <DataTable
               columns={[
                 { key: "name", label: "Name" },
@@ -407,7 +631,10 @@ const AdminDashboard = () => {
                 { key: "status", label: "Status" },
               ]}
               rows={students}
-              onDelete={(id) => handleDelete("/students", id)}
+              actions={[
+                { icon: <MdInsights />, title: "View Performance", onClick: openStudentPerformance },
+                { icon: <MdDelete />, title: "Delete", variant: "delete", onClick: (row) => handleDelete("/students", row._id) },
+              ]}
               emptyMsg="No students yet. Add your first student."
             />
           </>
@@ -422,9 +649,9 @@ const AdminDashboard = () => {
                 title: "Add Parent",
                 endpoint: "/parents",
                 fields: [
-                  { key: "name", label: "Full Name", required: true },
+                  { key: "name", label: "Full Name", required: true, minLength: 2, maxLength: 100 },
                   { key: "email", label: "Email", type: "email", required: true },
-                  { key: "phone", label: "Phone" },
+                  { key: "phone", label: "Phone", type: "tel" },
                 ],
               })}>
                 <MdAdd /> Add Parent
@@ -455,7 +682,7 @@ const AdminDashboard = () => {
               <StatCard label="Total Parents" value={stats.parents} icon={<MdFamilyRestroom />} color="#f7a825" />
             </div>
             <div className={styles.reportNote}>
-              <MdBarChart /> Detailed per-student and per-batch analytics will appear here once students start completing lessons and quizzes.
+              <MdBarChart /> Use the Tutors or Students section, search by name, then click the performance icon to view detailed learning stats.
             </div>
           </>
         )}
@@ -466,10 +693,35 @@ const AdminDashboard = () => {
         <Modal
           title={modal.title}
           fields={modal.fields}
+          initial={modal.initial}
           onSubmit={handleModalSubmit}
           onClose={closeModal}
           loading={modalLoading}
+          serverError={modalError}
         />
+      )}
+
+      {/* Performance modal */}
+      {perfModal && <PerformanceModal data={perfModal} onClose={() => setPerfModal(null)} />}
+
+      {/* Contact support modal */}
+      {contactOpen && (
+        <div className={styles.modalOverlay} onClick={() => setContactOpen(false)}>
+          <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalHeader}>
+              <h3>Contact Super Admin</h3>
+              <button className={styles.modalClose} onClick={() => setContactOpen(false)}><MdClose /></button>
+            </div>
+            <ContactForm
+              fixedRole="admin"
+              defaultName={adminUser?.name || ""}
+              defaultEmail={adminUser?.email || ""}
+              defaultOrgName={org?.name || ""}
+              compact
+              onSuccess={() => setContactOpen(false)}
+            />
+          </div>
+        </div>
       )}
     </div>
   );

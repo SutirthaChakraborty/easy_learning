@@ -1,0 +1,46 @@
+.page {
+  min-height: 80vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  background: #0f0e17;
+}
+
+.card {
+  width: 100%;
+  max-width: 620px;
+  background: #1a1828;
+  border: 1px solid rgba(162, 89, 247, 0.25);
+  border-radius: 20px;
+  padding: 32px;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.headerIcon {
+  font-size: 2.4rem;
+  color: #a259f7;
+  flex-shrink: 0;
+}
+
+.header h1 {
+  margin: 0 0 6px;
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  .card { padding: 22px; }
+}

@@ -10,6 +10,7 @@ const schema = new mongoose.Schema({
   phone: { type: String, default: '' },
   status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' },
   rejectionReason: { type: String, default: '' },
+  logoUrl: { type: String, default: '' },
 }, { timestamps: true })
 
 module.exports = adminDb.model('Organization', schema)
