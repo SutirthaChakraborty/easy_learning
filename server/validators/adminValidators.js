@@ -26,7 +26,7 @@ const createTutorValidator = [
   body('name').trim().notEmpty().withMessage('Name is required')
     .isLength({ min: 2, max: 100 }).withMessage('Name must be 2-100 characters'),
   body('email').trim().notEmpty().withMessage('Email is required')
-    .isEmail().withMessage('Invalid email address').normalizeEmail(),
+    .isEmail().withMessage('Invalid email address'),
   body('phone').optional({ checkFalsy: true }).matches(PHONE_REGEX).withMessage('Invalid phone number'),
   body('subject').optional({ checkFalsy: true }).trim().isLength({ max: 50 }).withMessage('Subject is too long'),
 ]
@@ -34,7 +34,7 @@ const createTutorValidator = [
 const createStudentValidator = [
   body('name').trim().notEmpty().withMessage('Name is required')
     .isLength({ min: 2, max: 100 }).withMessage('Name must be 2-100 characters'),
-  body('email').optional({ checkFalsy: true }).trim().isEmail().withMessage('Invalid email address').normalizeEmail(),
+  body('email').optional({ checkFalsy: true }).trim().isEmail().withMessage('Invalid email address'),
   body('age').optional({ checkFalsy: true }).isInt({ min: 3, max: 25 }).withMessage('Age must be between 3 and 25'),
   body('grade').optional({ checkFalsy: true }).trim().isLength({ max: 20 }).withMessage('Grade is too long'),
 ]
@@ -43,7 +43,7 @@ const createParentValidator = [
   body('name').trim().notEmpty().withMessage('Name is required')
     .isLength({ min: 2, max: 100 }).withMessage('Name must be 2-100 characters'),
   body('email').trim().notEmpty().withMessage('Email is required')
-    .isEmail().withMessage('Invalid email address').normalizeEmail(),
+    .isEmail().withMessage('Invalid email address'),
   body('phone').optional({ checkFalsy: true }).matches(PHONE_REGEX).withMessage('Invalid phone number'),
 ]
 

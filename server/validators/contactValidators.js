@@ -4,7 +4,7 @@ const contactValidator = [
   body('name').trim().notEmpty().withMessage('Name is required')
     .isLength({ min: 2, max: 100 }).withMessage('Name must be 2-100 characters'),
   body('email').trim().notEmpty().withMessage('Email is required')
-    .isEmail().withMessage('Invalid email address').normalizeEmail(),
+    .isEmail().withMessage('Invalid email address'),
   body('role').notEmpty().withMessage('Role is required')
     .isIn(['student', 'admin', 'teacher', 'parent', 'other']).withMessage('Invalid role'),
   body('orgName').optional({ checkFalsy: true }).trim().isLength({ max: 150 }).withMessage('Organization name is too long'),
