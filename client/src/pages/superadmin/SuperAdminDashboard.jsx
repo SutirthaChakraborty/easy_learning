@@ -9,6 +9,7 @@ import {
 import { MdClose, MdInsights } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 import { designationLabel } from "../../utils/designations";
+import StudentDashboardViewer from "../../components/StudentDashboardViewer/StudentDashboardViewer";
 import styles from "./SuperAdminDashboard.module.css";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
@@ -168,13 +169,14 @@ function SettingModal({ onSave, onClose, loading, serverError }) {
 }
 
 // ── Org detail drawer: admin identity + teachers + students + performance ────
-function OrgDetailModal({ org, get, onClose }) {
+function OrgDetailModal({ org, get, token, onClose }) {
   const [tab, setTab] = useState("admin");
   const [admin, setAdmin] = useState(null);
   const [students, setStudents] = useState([]);
   const [tutors, setTutors] = useState([]);
   const [search, setSearch] = useState("");
   const [perf, setPerf] = useState(null);
+  const [dashboardViewerStudent, setDashboardViewerStudent] = useState(null);
 
   useEffect(() => {
     get(`/organizations/${org._id}/admin`).then((d) => { if (d.success) setAdmin(d.admin); });
@@ -205,7 +207,12 @@ function OrgDetailModal({ org, get, onClose }) {
 
   const viewStudentPerf = async (student) => {
     const d = await get(`/organizations/${org._id}/students/${student._id}/performance`);
-    if (d.success) setPerf({ type: "student", name: student.name, performance: d.performance });
+    if (!d.success) return;
+    if (d.performance.linked) {
+      setDashboardViewerStudent({ id: student._id, name: student.name });
+    } else {
+      setPerf({ type: "student", name: student.name, performance: d.performance });
+    }
   };
 
   const viewTutorPerf = async (tutor) => {
@@ -297,6 +304,15 @@ function OrgDetailModal({ org, get, onClose }) {
           </div>
         )}
       </div>
+
+      {dashboardViewerStudent && (
+        <StudentDashboardViewer
+          apiBase={`${API}/api/superadmin/organizations/${org._id}/students/${dashboardViewerStudent.id}/dashboard`}
+          token={token}
+          displayName={dashboardViewerStudent.name}
+          onClose={() => setDashboardViewerStudent(null)}
+        />
+      )}
     </div>
   );
 }
@@ -855,7 +871,7 @@ const SuperAdminDashboard = () => {
 
       {/* Org detail drawer */}
       {detailOrg && (
-        <OrgDetailModal org={detailOrg} get={get} onClose={() => setDetailOrg(null)} />
+        <OrgDetailModal org={detailOrg} get={get} token={token} onClose={() => setDetailOrg(null)} />
       )}
     </div>
   );

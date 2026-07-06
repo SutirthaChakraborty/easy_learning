@@ -84,7 +84,7 @@ function Stars({ count }) {
 
 // ── Main component ──────────────────────────────────────────────────────────────
 
-export default function ProgressMap({ achievements, stats, onClose }) {
+export default function ProgressMap({ achievements, stats, onClose, disablePersistence }) {
   const { t }    = useTranslation()
   const { user } = useAuth()
 
@@ -120,6 +120,7 @@ export default function ProgressMap({ achievements, stats, onClose }) {
   const storageKey = `progressMap_${user?.uid || user?.email || 'guest'}`
 
   useEffect(() => {
+    if (disablePersistence) return
     if (!achievements?.length && !stats) return
     try {
       localStorage.setItem(storageKey, JSON.stringify({
@@ -128,10 +129,11 @@ export default function ProgressMap({ achievements, stats, onClose }) {
         savedAt: Date.now(),
       }))
     } catch { /* quota exceeded — silently skip */ }
-  }, [achievements, stats, storageKey])
+  }, [achievements, stats, storageKey, disablePersistence])
 
   // Load saved data as fallback when live data is absent
   const [saved] = useState(() => {
+    if (disablePersistence) return null
     try {
       const raw = localStorage.getItem(storageKey)
       return raw ? JSON.parse(raw) : null
