@@ -3,6 +3,7 @@ const router = express.Router()
 const adminAuth = require('../middleware/adminAuth')
 const validate = require('../middleware/validate')
 const { uploadOrgLogo, uploadAvatar, handleUpload } = require('../middleware/upload')
+const { adminStudentAccess } = require('../middleware/studentDashboardAccess')
 const {
   registerOrgValidator, updateIdentityValidator,
   createTutorValidator, createStudentValidator, createParentValidator, createBatchValidator,
@@ -17,6 +18,14 @@ const {
   getParents, createParent,
   getStats,
 } = require('../controllers/adminController')
+const {
+  getStats:        getStudentDashStats,
+  getActivity:     getStudentDashActivity,
+  getAchievements: getStudentDashAchievements,
+  getPerformance:  getStudentDashPerformance,
+  getAnswers:      getStudentDashAnswers,
+  getRounds:       getStudentDashRounds,
+} = require('../controllers/dashboardController')
 const { getMyThread, sendMyMessage, getMyUnreadCount } = require('../controllers/chatController')
 
 router.use(adminAuth)
@@ -46,6 +55,12 @@ router.get('/students', getStudents)
 router.post('/students', createStudentValidator, validate, createStudent)
 router.delete('/students/:id', deleteStudent)
 router.get('/students/:id/performance', getStudentPerformance)
+router.get('/students/:id/dashboard/stats',        adminStudentAccess, getStudentDashStats)
+router.get('/students/:id/dashboard/activity',      adminStudentAccess, getStudentDashActivity)
+router.get('/students/:id/dashboard/achievements',  adminStudentAccess, getStudentDashAchievements)
+router.get('/students/:id/dashboard/performance',   adminStudentAccess, getStudentDashPerformance)
+router.get('/students/:id/dashboard/answers',       adminStudentAccess, getStudentDashAnswers)
+router.get('/students/:id/dashboard/rounds',        adminStudentAccess, getStudentDashRounds)
 
 router.get('/parents', getParents)
 router.post('/parents', createParentValidator, validate, createParent)

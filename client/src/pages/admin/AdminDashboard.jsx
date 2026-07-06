@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 import { DESIGNATION_OPTIONS, ORG_TYPE_OPTIONS, designationLabel } from "../../utils/designations";
+import StudentDashboardViewer from "../../components/StudentDashboardViewer/StudentDashboardViewer";
 import styles from "./AdminDashboard.module.css";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
@@ -318,6 +319,7 @@ const AdminDashboard = () => {
   const [modalLoading, setModalLoading] = useState(false);
   const [modalError, setModalError] = useState("");
   const [perfModal, setPerfModal] = useState(null);
+  const [dashboardViewerStudent, setDashboardViewerStudent] = useState(null);
   const [chatMessages, setChatMessages] = useState([]);
   const [chatDraft, setChatDraft] = useState("");
   const [chatUnread, setChatUnread] = useState(0);
@@ -431,7 +433,12 @@ const AdminDashboard = () => {
 
   const openStudentPerformance = async (student) => {
     const d = await get(`/students/${student._id}/performance`);
-    if (d.success) setPerfModal({ type: "student", name: student.name, performance: d.performance });
+    if (!d.success) return;
+    if (d.performance.linked) {
+      setDashboardViewerStudent({ id: student._id, name: student.name });
+    } else {
+      setPerfModal({ type: "student", name: student.name, performance: d.performance });
+    }
   };
 
   const openTutorPerformance = async (tutor) => {
@@ -797,6 +804,15 @@ const AdminDashboard = () => {
 
       {/* Performance modal */}
       {perfModal && <PerformanceModal data={perfModal} onClose={() => setPerfModal(null)} />}
+
+      {dashboardViewerStudent && (
+        <StudentDashboardViewer
+          apiBase={`${API}/api/admin/students/${dashboardViewerStudent.id}/dashboard`}
+          token={token}
+          displayName={dashboardViewerStudent.name}
+          onClose={() => setDashboardViewerStudent(null)}
+        />
+      )}
     </div>
   );
 };
