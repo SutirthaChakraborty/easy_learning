@@ -52,6 +52,44 @@ const createBatchValidator = [
     .isLength({ min: 2, max: 100 }).withMessage('Batch name must be 2-100 characters'),
   body('subject').optional({ checkFalsy: true }).trim().isLength({ max: 50 }).withMessage('Subject is too long'),
   body('description').optional({ checkFalsy: true }).trim().isLength({ max: 300 }).withMessage('Description is too long'),
+  body('academicYear').optional({ checkFalsy: true }).trim().isLength({ max: 20 }).withMessage('Academic year is too long'),
+  body('term').optional({ checkFalsy: true }).trim().isLength({ max: 30 }).withMessage('Term is too long'),
+  body('maxStudents').optional({ checkFalsy: true }).isInt({ min: 1 }).withMessage('Max students must be a positive number'),
+]
+
+const updateBatchValidator = [
+  body('name').optional({ checkFalsy: true }).trim().isLength({ min: 2, max: 100 }).withMessage('Batch name must be 2-100 characters'),
+  body('description').optional({ checkFalsy: true }).trim().isLength({ max: 300 }).withMessage('Description is too long'),
+  body('academicYear').optional({ checkFalsy: true }).trim().isLength({ max: 20 }).withMessage('Academic year is too long'),
+  body('term').optional({ checkFalsy: true }).trim().isLength({ max: 30 }).withMessage('Term is too long'),
+  body('maxStudents').optional({ nullable: true }).isInt({ min: 1 }).withMessage('Max students must be a positive number'),
+  body('status').optional({ checkFalsy: true }).isIn(['active', 'inactive']).withMessage('Invalid status'),
+]
+
+const createSubjectValidator = [
+  body('name').trim().notEmpty().withMessage('Subject name is required')
+    .isLength({ min: 2, max: 60 }).withMessage('Subject name must be 2-60 characters'),
+  body('code').optional({ checkFalsy: true }).trim().isLength({ max: 30 }).withMessage('Subject code is too long'),
+  body('description').optional({ checkFalsy: true }).trim().isLength({ max: 200 }).withMessage('Description is too long'),
+]
+
+const updateSubjectValidator = [
+  body('name').optional({ checkFalsy: true }).trim().isLength({ min: 2, max: 60 }).withMessage('Subject name must be 2-60 characters'),
+  body('description').optional({ checkFalsy: true }).trim().isLength({ max: 200 }).withMessage('Description is too long'),
+  body('status').optional({ checkFalsy: true }).isIn(['active', 'inactive']).withMessage('Invalid status'),
+]
+
+const addStudentsToBatchValidator = [
+  body('studentIds').isArray({ min: 1 }).withMessage('At least one student is required'),
+  body('studentIds.*').isMongoId().withMessage('Invalid student id'),
+]
+
+const addSubjectToBatchValidator = [
+  body('subjectId').notEmpty().withMessage('Subject is required').isMongoId().withMessage('Invalid subject id'),
+]
+
+const assignTeacherValidator = [
+  body('tutorId').notEmpty().withMessage('Teacher is required').isMongoId().withMessage('Invalid teacher id'),
 ]
 
 const sendChatMessageValidator = [
@@ -61,6 +99,9 @@ const sendChatMessageValidator = [
 
 module.exports = {
   registerOrgValidator, updateIdentityValidator,
-  createTutorValidator, createStudentValidator, createParentValidator, createBatchValidator,
+  createTutorValidator, createStudentValidator, createParentValidator,
+  createBatchValidator, updateBatchValidator,
+  createSubjectValidator, updateSubjectValidator,
+  addStudentsToBatchValidator, addSubjectToBatchValidator, assignTeacherValidator,
   sendChatMessageValidator,
 }

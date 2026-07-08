@@ -4,9 +4,19 @@ const Tutor = require('../models/admin/Tutor')
 const Student = require('../models/admin/Student')
 const Parent = require('../models/admin/Parent')
 const Batch = require('../models/admin/Batch')
+const Subject = require('../models/admin/Subject')
 const OrgAdmin = require('../models/admin/OrgAdmin')
 const { getPerformanceForEmail } = require('../utils/performance')
 const { fileUrl } = require('../middleware/upload')
+const batchService = require('../services/batchService')
+
+const handleServiceError = (res, err) => {
+  if (err instanceof batchService.ServiceError) {
+    return res.status(err.statusCode).json({ success: false, message: err.message, ...(err.max !== undefined ? { capacity: { max: err.max, current: err.current, attempted: err.attempted } } : {}) })
+  }
+  console.error(err)
+  return res.status(500).json({ success: false, message: 'Internal server error' })
+}
 
 // ── Organization ─────────────────────────────────────────────────────────────
 
@@ -70,6 +80,8 @@ const registerOrg = async (req, res) => {
       designationOther: designation === 'other' ? (designationOther || '') : '',
       ...(phone ? { phone } : {}),
     })
+
+    await batchService.ensureDefaultSubjects(org._id)
 
     res.status(201).json({ success: true, org })
   } catch (err) {
@@ -168,7 +180,9 @@ const deleteTutor = async (req, res) => {
   try {
     const org = await Organization.findOne({ adminUid: req.admin.uid })
     if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
-    await Tutor.findOneAndDelete({ _id: req.params.id, orgId: org._id })
+    const tutor = await Tutor.findOne({ _id: req.params.id, orgId: org._id })
+    if (!tutor) return res.status(404).json({ success: false, message: 'Tutor not found' })
+    await batchService.deleteTutorCascade(tutor._id)
     res.json({ success: true })
   } catch (err) {
     res.status(500).json({ success: false, message: 'Internal server error' })
@@ -206,8 +220,25 @@ const getBatches = async (req, res) => {
     const batches = await Batch.find({ orgId: org._id })
       .populate('tutorIds', 'name email')
       .populate('studentIds', 'name email')
+      .populate('subjects.subject', 'name code')
+      .populate('subjects.teacherIds', 'name email')
       .sort({ createdAt: -1 })
     res.json({ success: true, batches })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getBatch = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+      .populate('studentIds', 'name email age grade')
+      .populate('subjects.subject', 'name code')
+      .populate('subjects.teacherIds', 'name email')
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+    res.json({ success: true, batch })
   } catch (err) {
     res.status(500).json({ success: false, message: 'Internal server error' })
   }
@@ -218,9 +249,36 @@ const createBatch = async (req, res) => {
     const org = await Organization.findOne({ adminUid: req.admin.uid })
     if (!org) return res.status(400).json({ success: false, message: 'Register your organization first' })
 
-    const { name, subject, description } = req.body
-    const batch = await Batch.create({ name, subject: subject || '', description: description || '', orgId: org._id })
+    const { name, subject, description, academicYear, term, maxStudents } = req.body
+    const batch = await Batch.create({
+      name, subject: subject || '', description: description || '',
+      academicYear: academicYear || '', term: term || '',
+      maxStudents: maxStudents ? Number(maxStudents) : null,
+      orgId: org._id,
+    })
     res.status(201).json({ success: true, batch })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const updateBatch = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+
+    const { name, description, academicYear, term, maxStudents, status } = req.body
+    const update = {}
+    if (name !== undefined) update.name = name
+    if (description !== undefined) update.description = description
+    if (academicYear !== undefined) update.academicYear = academicYear
+    if (term !== undefined) update.term = term
+    if (maxStudents !== undefined) update.maxStudents = maxStudents === null || maxStudents === '' ? null : Number(maxStudents)
+    if (status !== undefined) update.status = status
+
+    const batch = await Batch.findOneAndUpdate({ _id: req.params.id, orgId: org._id }, update, { new: true })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+    res.json({ success: true, batch })
   } catch (err) {
     res.status(500).json({ success: false, message: 'Internal server error' })
   }
@@ -230,8 +288,166 @@ const deleteBatch = async (req, res) => {
   try {
     const org = await Organization.findOne({ adminUid: req.admin.uid })
     if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
-    await Batch.findOneAndDelete({ _id: req.params.id, orgId: org._id })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+    await batchService.deleteBatchCascade(batch._id)
     res.json({ success: true })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const addStudentsToBatchHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.addStudentsToBatch(batch._id, req.body.studentIds)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const removeStudentFromBatchHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.removeStudentFromBatch(batch._id, req.params.studentId)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const addSubjectToBatchHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.addSubjectToBatch(batch._id, req.body.subjectId)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const removeSubjectFromBatchHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.removeSubjectFromBatch(batch._id, req.params.subjectAssignmentId)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const assignTeacherToSubjectHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.assignTeacherToSubject(batch._id, req.params.subjectAssignmentId, req.body.tutorId)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const unassignTeacherFromSubjectHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.unassignTeacherFromSubject(batch._id, req.params.subjectAssignmentId, req.params.tutorId)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+// ── Subjects ──────────────────────────────────────────────────────────────────
+
+const getSubjects = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.json({ success: true, subjects: [] })
+    const filter = { orgId: org._id }
+    if (req.query.status) filter.status = req.query.status
+    const subjects = await Subject.find(filter).sort({ name: 1 })
+    res.json({ success: true, subjects })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const createSubject = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Register your organization first' })
+
+    const { name, code, description } = req.body
+    const dup = await Subject.findOne({ orgId: org._id, name: { $regex: `^${name.trim()}$`, $options: 'i' } })
+    if (dup) return res.status(409).json({ success: false, message: 'A subject with this name already exists' })
+
+    const subject = await Subject.create({ name, code: code || '', description: description || '', orgId: org._id })
+    res.status(201).json({ success: true, subject })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const updateSubject = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+
+    const { name, description, status } = req.body
+    const update = {}
+    if (name !== undefined) update.name = name
+    if (description !== undefined) update.description = description
+    if (status !== undefined) update.status = status
+
+    const subject = await Subject.findOneAndUpdate({ _id: req.params.id, orgId: org._id }, update, { new: true })
+    if (!subject) return res.status(404).json({ success: false, message: 'Subject not found' })
+    res.json({ success: true, subject })
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const deleteSubject = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+
+    const subject = await Subject.findOne({ _id: req.params.id, orgId: org._id })
+    if (!subject) return res.status(404).json({ success: false, message: 'Subject not found' })
+
+    const inUse = await Batch.exists({ orgId: org._id, 'subjects.subject': subject._id })
+    if (inUse) {
+      subject.status = 'inactive'
+      await subject.save()
+      return res.json({ success: true, deactivated: true, subject })
+    }
+
+    await Subject.deleteOne({ _id: subject._id })
+    res.json({ success: true, deactivated: false })
   } catch (err) {
     res.status(500).json({ success: false, message: 'Internal server error' })
   }
@@ -276,7 +492,9 @@ const deleteStudent = async (req, res) => {
   try {
     const org = await Organization.findOne({ adminUid: req.admin.uid })
     if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
-    await Student.findOneAndDelete({ _id: req.params.id, orgId: org._id })
+    const student = await Student.findOne({ _id: req.params.id, orgId: org._id })
+    if (!student) return res.status(404).json({ success: false, message: 'Student not found' })
+    await batchService.deleteStudentCascade(student._id)
     res.json({ success: true })
   } catch (err) {
     res.status(500).json({ success: false, message: 'Internal server error' })
@@ -354,7 +572,11 @@ module.exports = {
   registerOrg, getOrg,
   getProfile, updateProfile,
   getTutors, createTutor, deleteTutor, getTutorPerformance,
-  getBatches, createBatch, deleteBatch,
+  getBatches, getBatch, createBatch, updateBatch, deleteBatch,
+  addStudentsToBatch: addStudentsToBatchHandler, removeStudentFromBatch: removeStudentFromBatchHandler,
+  addSubjectToBatch: addSubjectToBatchHandler, removeSubjectFromBatch: removeSubjectFromBatchHandler,
+  assignTeacherToSubject: assignTeacherToSubjectHandler, unassignTeacherFromSubject: unassignTeacherFromSubjectHandler,
+  getSubjects, createSubject, updateSubject, deleteSubject,
   getStudents, createStudent, deleteStudent, getStudentPerformance,
   getParents, createParent,
   getStats,
