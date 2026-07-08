@@ -2,6 +2,7 @@ const Batch = require('../models/admin/Batch')
 const Tutor = require('../models/admin/Tutor')
 const Student = require('../models/admin/Student')
 const Subject = require('../models/admin/Subject')
+const { checkTeacherConflict } = require('./scheduleConflictService')
 
 class ServiceError extends Error {
   constructor(message, statusCode = 400, extra = {}) {
@@ -14,6 +15,12 @@ class ServiceError extends Error {
 class CapacityError extends ServiceError {
   constructor(max, current, attempted) {
     super('Adding these students would exceed the batch capacity', 409, { max, current, attempted })
+  }
+}
+
+class ScheduleConflictError extends ServiceError {
+  constructor(conflicts) {
+    super('This time slot conflicts with a teacher\'s existing schedule', 409, { conflicts })
   }
 }
 
@@ -174,6 +181,49 @@ async function unassignTeacherFromSubject(batchId, subjectAssignmentId, tutorId)
   return batch
 }
 
+// ── Weekly schedule (per subject assignment; shared by every teacher on it) ──
+
+async function checkAssignmentConflicts(orgId, teacherIds, slot, exclude = {}) {
+  const allConflicts = []
+  for (const tutorId of teacherIds) {
+    const conflicts = await checkTeacherConflict(orgId, tutorId, slot, exclude)
+    if (conflicts.length === 0) continue
+    const tutor = await Tutor.findById(tutorId).select('name')
+    allConflicts.push(...conflicts.map((c) => ({ ...c, tutorId, tutorName: tutor?.name || 'Unknown teacher' })))
+  }
+  return allConflicts
+}
+
+async function addScheduleSlot(batchId, subjectAssignmentId, slot) {
+  const batch = await Batch.findById(batchId)
+  if (!batch) throw new ServiceError('Batch not found', 404)
+
+  const assignment = batch.subjects.id(subjectAssignmentId)
+  if (!assignment) throw new ServiceError('Subject assignment not found', 404)
+
+  const conflicts = await checkAssignmentConflicts(batch.orgId, assignment.teacherIds, slot)
+  if (conflicts.length > 0) throw new ScheduleConflictError(conflicts)
+
+  assignment.schedule.push(slot)
+  await batch.save()
+  return batch
+}
+
+async function removeScheduleSlot(batchId, subjectAssignmentId, slotId) {
+  const batch = await Batch.findById(batchId)
+  if (!batch) throw new ServiceError('Batch not found', 404)
+
+  const assignment = batch.subjects.id(subjectAssignmentId)
+  if (!assignment) throw new ServiceError('Subject assignment not found', 404)
+
+  const slotDoc = assignment.schedule.id(slotId)
+  if (!slotDoc) throw new ServiceError('Schedule slot not found', 404)
+
+  slotDoc.deleteOne()
+  await batch.save()
+  return batch
+}
+
 // ── Batch <-> Student roster ──────────────────────────────────────────────────
 
 async function addStudentsToBatch(batchId, studentIds) {
@@ -279,6 +329,7 @@ async function deleteStudentCascade(studentId) {
 module.exports = {
   ServiceError,
   CapacityError,
+  ScheduleConflictError,
   ensureDefaultSubjects,
   syncBatchDerivedFields,
   recomputeTutorDerivedFields,
@@ -287,6 +338,8 @@ module.exports = {
   removeSubjectFromBatch,
   assignTeacherToSubject,
   unassignTeacherFromSubject,
+  addScheduleSlot,
+  removeScheduleSlot,
   addStudentsToBatch,
   removeStudentFromBatch,
   deleteBatchCascade,

@@ -10,16 +10,18 @@ const {
   createBatchValidator, updateBatchValidator,
   createSubjectValidator, updateSubjectValidator,
   addStudentsToBatchValidator, addSubjectToBatchValidator, assignTeacherValidator,
+  scheduleSlotValidator, checkConflictValidator,
   sendChatMessageValidator,
 } = require('../validators/adminValidators')
 const {
   registerOrg, getOrg,
   getProfile, updateProfile,
-  getTutors, createTutor, deleteTutor, getTutorPerformance,
+  getTutors, createTutor, deleteTutor, getTutorPerformance, getTutorSchedule,
   getBatches, getBatch, createBatch, updateBatch, deleteBatch,
   addStudentsToBatch, removeStudentFromBatch,
   addSubjectToBatch, removeSubjectFromBatch,
   assignTeacherToSubject, unassignTeacherFromSubject,
+  addScheduleSlot, removeScheduleSlot, checkScheduleConflict,
   getSubjects, createSubject, updateSubject, deleteSubject,
   getStudents, createStudent, deleteStudent, getStudentPerformance,
   getParents, createParent,
@@ -53,6 +55,9 @@ router.get('/tutors', getTutors)
 router.post('/tutors', createTutorValidator, validate, createTutor)
 router.delete('/tutors/:id', deleteTutor)
 router.get('/tutors/:id/performance', getTutorPerformance)
+router.get('/tutors/:id/schedule', getTutorSchedule)
+
+router.post('/schedule/check-conflict', checkConflictValidator, validate, checkScheduleConflict)
 
 router.get('/subjects', getSubjects)
 router.post('/subjects', createSubjectValidator, validate, createSubject)
@@ -70,6 +75,8 @@ router.post('/batches/:id/subjects', addSubjectToBatchValidator, validate, addSu
 router.delete('/batches/:id/subjects/:subjectAssignmentId', removeSubjectFromBatch)
 router.post('/batches/:id/subjects/:subjectAssignmentId/teachers', assignTeacherValidator, validate, assignTeacherToSubject)
 router.delete('/batches/:id/subjects/:subjectAssignmentId/teachers/:tutorId', unassignTeacherFromSubject)
+router.post('/batches/:id/subjects/:subjectAssignmentId/schedule', scheduleSlotValidator, validate, addScheduleSlot)
+router.delete('/batches/:id/subjects/:subjectAssignmentId/schedule/:slotId', removeScheduleSlot)
 
 router.get('/students', getStudents)
 router.post('/students', createStudentValidator, validate, createStudent)

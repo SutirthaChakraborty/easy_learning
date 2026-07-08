@@ -9,10 +9,16 @@ const OrgAdmin = require('../models/admin/OrgAdmin')
 const { getPerformanceForEmail } = require('../utils/performance')
 const { fileUrl } = require('../middleware/upload')
 const batchService = require('../services/batchService')
+const { checkTeacherConflict } = require('../services/scheduleConflictService')
 
 const handleServiceError = (res, err) => {
   if (err instanceof batchService.ServiceError) {
-    return res.status(err.statusCode).json({ success: false, message: err.message, ...(err.max !== undefined ? { capacity: { max: err.max, current: err.current, attempted: err.attempted } } : {}) })
+    return res.status(err.statusCode).json({
+      success: false,
+      message: err.message,
+      ...(err.max !== undefined ? { capacity: { max: err.max, current: err.current, attempted: err.attempted } } : {}),
+      ...(err.conflicts !== undefined ? { conflicts: err.conflicts } : {}),
+    })
   }
   console.error(err)
   return res.status(500).json({ success: false, message: 'Internal server error' })
@@ -381,6 +387,87 @@ const unassignTeacherFromSubjectHandler = async (req, res) => {
   }
 }
 
+// ── Weekly schedule ─────────────────────────────────────────────────────────
+
+const addScheduleSlotHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const { dayOfWeek, startTime, endTime } = req.body
+    const updated = await batchService.addScheduleSlot(batch._id, req.params.subjectAssignmentId, {
+      dayOfWeek: Number(dayOfWeek), startTime, endTime,
+    })
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const removeScheduleSlotHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.removeScheduleSlot(batch._id, req.params.subjectAssignmentId, req.params.slotId)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const checkScheduleConflict = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+
+    const { tutorId, dayOfWeek, startTime, endTime, scheduleSlotId } = req.body
+    const conflicts = await checkTeacherConflict(
+      org._id, tutorId, { dayOfWeek: Number(dayOfWeek), startTime, endTime }, { scheduleSlotId }
+    )
+    res.json({ success: true, conflicts })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const getTutorSchedule = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+
+    const tutor = await Tutor.findOne({ _id: req.params.id, orgId: org._id })
+    if (!tutor) return res.status(404).json({ success: false, message: 'Tutor not found' })
+
+    const batches = await Batch.find({ orgId: org._id, 'subjects.teacherIds': tutor._id })
+      .populate('subjects.subject', 'name')
+
+    const schedule = []
+    for (const batch of batches) {
+      for (const assignment of batch.subjects) {
+        const teaches = assignment.teacherIds.some((tid) => tid.toString() === tutor._id.toString())
+        if (!teaches) continue
+        for (const slot of assignment.schedule) {
+          schedule.push({
+            batchId: batch._id, batchName: batch.name,
+            subjectId: assignment.subject?._id, subjectName: assignment.subject?.name,
+            dayOfWeek: slot.dayOfWeek, startTime: slot.startTime, endTime: slot.endTime,
+          })
+        }
+      }
+    }
+    res.json({ success: true, schedule })
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
 // ── Subjects ──────────────────────────────────────────────────────────────────
 
 const getSubjects = async (req, res) => {
@@ -572,11 +659,12 @@ const getStats = async (req, res) => {
 module.exports = {
   registerOrg, getOrg,
   getProfile, updateProfile,
-  getTutors, createTutor, deleteTutor, getTutorPerformance,
+  getTutors, createTutor, deleteTutor, getTutorPerformance, getTutorSchedule,
   getBatches, getBatch, createBatch, updateBatch, deleteBatch,
   addStudentsToBatch: addStudentsToBatchHandler, removeStudentFromBatch: removeStudentFromBatchHandler,
   addSubjectToBatch: addSubjectToBatchHandler, removeSubjectFromBatch: removeSubjectFromBatchHandler,
   assignTeacherToSubject: assignTeacherToSubjectHandler, unassignTeacherFromSubject: unassignTeacherFromSubjectHandler,
+  addScheduleSlot: addScheduleSlotHandler, removeScheduleSlot: removeScheduleSlotHandler, checkScheduleConflict,
   getSubjects, createSubject, updateSubject, deleteSubject,
   getStudents, createStudent, deleteStudent, getStudentPerformance,
   getParents, createParent,
