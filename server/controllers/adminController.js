@@ -225,6 +225,7 @@ const getBatches = async (req, res) => {
     if (!org) return res.json({ success: true, batches: [] })
     const batches = await Batch.find({ orgId: org._id })
       .populate('tutorIds', 'name email')
+      .populate('directTutorIds', 'name email')
       .populate('studentIds', 'name email')
       .populate('subjects.subject', 'name code')
       .populate('subjects.teacherIds', 'name email')
@@ -241,6 +242,7 @@ const getBatch = async (req, res) => {
     if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
     const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
       .populate('studentIds', 'name email age grade')
+      .populate('directTutorIds', 'name email')
       .populate('subjects.subject', 'name code')
       .populate('subjects.teacherIds', 'name email')
     if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
@@ -381,6 +383,34 @@ const unassignTeacherFromSubjectHandler = async (req, res) => {
     if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
 
     const updated = await batchService.unassignTeacherFromSubject(batch._id, req.params.subjectAssignmentId, req.params.tutorId)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const assignTeacherToBatchHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.addTeacherToBatch(batch._id, req.body.tutorId)
+    res.json({ success: true, batch: updated })
+  } catch (err) {
+    handleServiceError(res, err)
+  }
+}
+
+const removeTeacherFromBatchHandler = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+    const batch = await Batch.findOne({ _id: req.params.id, orgId: org._id })
+    if (!batch) return res.status(404).json({ success: false, message: 'Batch not found' })
+
+    const updated = await batchService.removeTeacherFromBatch(batch._id, req.params.tutorId)
     res.json({ success: true, batch: updated })
   } catch (err) {
     handleServiceError(res, err)
@@ -664,6 +694,7 @@ module.exports = {
   addStudentsToBatch: addStudentsToBatchHandler, removeStudentFromBatch: removeStudentFromBatchHandler,
   addSubjectToBatch: addSubjectToBatchHandler, removeSubjectFromBatch: removeSubjectFromBatchHandler,
   assignTeacherToSubject: assignTeacherToSubjectHandler, unassignTeacherFromSubject: unassignTeacherFromSubjectHandler,
+  assignTeacherToBatch: assignTeacherToBatchHandler, removeTeacherFromBatch: removeTeacherFromBatchHandler,
   addScheduleSlot: addScheduleSlotHandler, removeScheduleSlot: removeScheduleSlotHandler, checkScheduleConflict,
   getSubjects, createSubject, updateSubject, deleteSubject,
   getStudents, createStudent, deleteStudent, getStudentPerformance,

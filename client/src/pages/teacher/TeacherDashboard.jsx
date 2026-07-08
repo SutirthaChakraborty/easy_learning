@@ -1,0 +1,126 @@
+import { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import { MdLogout, MdGroups, MdVisibility } from "react-icons/md";
+import { useAdminAuth } from "../../context/AdminAuthContext";
+import DataTable from "../../components/Admin/DataTable";
+import TeacherBatchDetail from "./TeacherBatchDetail";
+import styles from "../admin/AdminDashboard.module.css";
+
+const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
+
+function useTeacherApi(token) {
+  const get = useCallback(async (path) => {
+    const r = await fetch(`${API}/api/teacher${path}`, { headers: { Authorization: `Bearer ${token}` } });
+    return r.json();
+  }, [token]);
+
+  const post = useCallback(async (path, body) => {
+    const r = await fetch(`${API}/api/teacher${path}`, {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return r.json();
+  }, [token]);
+
+  const del = useCallback(async (path) => {
+    const r = await fetch(`${API}/api/teacher${path}`, {
+      method: "DELETE",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    return r.json();
+  }, [token]);
+
+  return { get, post, del };
+}
+
+const TeacherDashboard = () => {
+  const { teacherUser, teacherLogout, getTeacherToken } = useAdminAuth();
+  const navigate = useNavigate();
+  const token = getTeacherToken();
+  const { get, post, del } = useTeacherApi(token);
+
+  const [batches, setBatches] = useState([]);
+  const [selectedBatchId, setSelectedBatchId] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!teacherUser && teacherUser !== undefined) navigate("/teacher-login");
+  }, [teacherUser, navigate]);
+
+  const loadBatches = useCallback(async () => {
+    const d = await get("/batches");
+    if (d.success) setBatches(d.batches);
+  }, [get]);
+
+  useEffect(() => {
+    loadBatches().finally(() => setLoading(false));
+  }, [loadBatches]);
+
+  const handleLogout = () => { teacherLogout(); navigate("/"); };
+
+  if (loading || teacherUser === undefined) {
+    return <div className={styles.splash}><FaChalkboardTeacher className={styles.splashIcon} /><p>Loading…</p></div>;
+  }
+
+  return (
+    <div className={styles.layout}>
+      <aside className={styles.sidebar}>
+        <div className={styles.sidebarHeader}>
+          <FaChalkboardTeacher className={styles.sidebarLogo} />
+          <span>Teacher Panel</span>
+        </div>
+        <div className={styles.adminInfo}>
+          {teacherUser?.name && <p className={styles.adminName}>{teacherUser.name}</p>}
+          <p className={styles.adminEmail}>{teacherUser?.email}</p>
+        </div>
+        <nav className={styles.nav}>
+          <button className={`${styles.navItem} ${styles.navActive}`}>
+            <MdGroups /> <span>My Batches</span>
+          </button>
+        </nav>
+        <button className={styles.logoutBtn} onClick={handleLogout}>
+          <MdLogout /> <span>Logout</span>
+        </button>
+      </aside>
+
+      <main className={styles.main}>
+        {selectedBatchId ? (
+          <TeacherBatchDetail
+            batchId={selectedBatchId}
+            teacherId={teacherUser?.id}
+            get={get}
+            post={post}
+            del={del}
+            onClose={() => setSelectedBatchId(null)}
+            onChanged={loadBatches}
+          />
+        ) : (
+          <>
+            <div className={styles.pageHeader}>
+              <h1>My Batches</h1>
+              <p>Welcome back, {teacherUser?.name || teacherUser?.email}</p>
+            </div>
+            <DataTable
+              columns={[
+                { key: "name", label: "Batch Name" },
+                { key: "academicYear", label: "Year / Term", render: (r) => [r.academicYear, r.term].filter(Boolean).join(" · ") || "—" },
+                { key: "subjects", label: "Subjects", render: (r) => r.subjects?.length || 0 },
+                { key: "studentIds", label: "Students", render: (r) => `${r.studentIds?.length || 0}${r.maxStudents ? ` / ${r.maxStudents}` : ""}` },
+                { key: "status", label: "Status" },
+              ]}
+              rows={batches}
+              actions={[
+                { icon: <MdVisibility />, title: "Open Batch", onClick: (row) => setSelectedBatchId(row._id) },
+              ]}
+              emptyMsg="No batches assigned to you yet. Ask your admin to add you to a batch."
+            />
+          </>
+        )}
+      </main>
+    </div>
+  );
+};
+
+export default TeacherDashboard;

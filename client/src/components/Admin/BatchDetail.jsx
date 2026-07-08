@@ -72,6 +72,24 @@ export default function BatchDetail({ batchId, get, post, del, onClose, onChange
     refreshAfterChange();
   };
 
+  const handleAddBatchTeachers = async (tutorIds) => {
+    setPickerLoading(true);
+    setPickerError("");
+    for (const tutorId of tutorIds) {
+      const d = await post(`/batches/${batchId}/teachers`, { tutorId });
+      if (!d.success) { setPickerLoading(false); setPickerError(d.message || "Something went wrong"); return; }
+    }
+    setPickerLoading(false);
+    closePicker();
+    refreshAfterChange();
+  };
+
+  const handleRemoveBatchTeacher = async (tutorId) => {
+    if (!confirm("Remove this teacher from the batch?")) return;
+    await del(`/batches/${batchId}/teachers/${tutorId}`);
+    refreshAfterChange();
+  };
+
   const handleAddTeachers = async (subjectAssignmentId, tutorIds) => {
     setPickerLoading(true);
     setPickerError("");
@@ -96,6 +114,10 @@ export default function BatchDetail({ batchId, get, post, del, onClose, onChange
     .filter((s) => !batch.studentIds.some((bs) => bs._id === s._id))
     .map((s) => ({ id: s._id, label: s.name, sublabel: s.email || s.grade }));
 
+  const batchTeacherPickerItems = allTutors
+    .filter((t) => !batch.directTutorIds.some((bt) => bt._id === t._id))
+    .map((t) => ({ id: t._id, label: t.name, sublabel: t.email }));
+
   const subjectPickerItems = allSubjects
     .filter((s) => s.status === "active" && !batch.subjects.some((a) => a.subject?._id === s._id))
     .map((s) => ({ id: s._id, label: s.name, sublabel: s.code }));
@@ -116,6 +138,9 @@ export default function BatchDetail({ batchId, get, post, del, onClose, onChange
       <div className={styles.tabs}>
         <button className={`${styles.tab} ${tab === "roster" ? styles.tabActive : ""}`} onClick={() => setTab("roster")}>
           Roster ({batch.studentIds.length})
+        </button>
+        <button className={`${styles.tab} ${tab === "teachers" ? styles.tabActive : ""}`} onClick={() => setTab("teachers")}>
+          Teachers ({batch.directTutorIds.length})
         </button>
         <button className={`${styles.tab} ${tab === "subjects" ? styles.tabActive : ""}`} onClick={() => setTab("subjects")}>
           Subjects ({batch.subjects.length})
@@ -142,6 +167,29 @@ export default function BatchDetail({ batchId, get, post, del, onClose, onChange
             actions={[{ icon: <MdClose />, title: "Remove", variant: "delete", onClick: (row) => handleRemoveStudent(row._id) }]}
             emptyMsg="No students in this batch yet."
           />
+        </>
+      )}
+
+      {tab === "teachers" && (
+        <>
+          <div className={styles.pageHeader}>
+            <p className={styles.detailMeta}>Teachers assigned to this batch as a whole (in addition to any per-subject teachers).</p>
+            <button className={styles.primaryBtn} onClick={() => setPicker("addBatchTeacher")}>
+              <MdAdd /> Add Teacher
+            </button>
+          </div>
+          {batch.directTutorIds.length === 0 ? (
+            <p className={styles.empty}>No teachers assigned to this batch yet.</p>
+          ) : (
+            <div className={styles.chipRow}>
+              {batch.directTutorIds.map((t) => (
+                <span key={t._id} className={styles.chip}>
+                  {t.name}
+                  <button onClick={() => handleRemoveBatchTeacher(t._id)}><MdClose /></button>
+                </span>
+              ))}
+            </div>
+          )}
         </>
       )}
 
@@ -217,6 +265,19 @@ export default function BatchDetail({ batchId, get, post, del, onClose, onChange
           serverError={pickerError}
           searchPlaceholder="Search students…"
           emptyMsg="No more students to add."
+        />
+      )}
+
+      {picker === "addBatchTeacher" && (
+        <MultiSelectModal
+          title="Add Teachers to Batch"
+          items={batchTeacherPickerItems}
+          onConfirm={handleAddBatchTeachers}
+          onClose={closePicker}
+          loading={pickerLoading}
+          serverError={pickerError}
+          searchPlaceholder="Search teachers…"
+          emptyMsg="No more teachers to add."
         />
       )}
 

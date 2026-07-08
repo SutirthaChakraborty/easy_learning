@@ -1,6 +1,6 @@
 import * as FramerMotion from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { FaUserGraduate, FaUserShield, FaCrown } from "react-icons/fa";
+import { FaUserGraduate, FaUserShield, FaCrown, FaChalkboardTeacher } from "react-icons/fa";
 import { MdAdminPanelSettings } from "react-icons/md";
 import styles from "./RoleSelect.module.css";
 import logo from "/logo.png";
@@ -23,6 +23,15 @@ const roles = [
     color: "#a259f7",
     gradient: "linear-gradient(135deg, #3b1a6e 0%, #6a1e99 100%)",
     route: "/admin-login",
+  },
+  {
+    key: "teacher",
+    icon: <FaChalkboardTeacher />,
+    title: "Teacher",
+    description: "View and manage the batches your admin has assigned to you.",
+    color: "#22c55e",
+    gradient: "linear-gradient(135deg, #14532d 0%, #15803d 100%)",
+    route: "/teacher-login",
   },
   {
     key: "superadmin",

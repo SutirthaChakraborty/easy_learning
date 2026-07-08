@@ -21,6 +21,7 @@ const {
   addStudentsToBatch, removeStudentFromBatch,
   addSubjectToBatch, removeSubjectFromBatch,
   assignTeacherToSubject, unassignTeacherFromSubject,
+  assignTeacherToBatch, removeTeacherFromBatch,
   addScheduleSlot, removeScheduleSlot, checkScheduleConflict,
   getSubjects, createSubject, updateSubject, deleteSubject,
   getStudents, createStudent, deleteStudent, getStudentPerformance,
@@ -75,6 +76,8 @@ router.post('/batches/:id/subjects', addSubjectToBatchValidator, validate, addSu
 router.delete('/batches/:id/subjects/:subjectAssignmentId', removeSubjectFromBatch)
 router.post('/batches/:id/subjects/:subjectAssignmentId/teachers', assignTeacherValidator, validate, assignTeacherToSubject)
 router.delete('/batches/:id/subjects/:subjectAssignmentId/teachers/:tutorId', unassignTeacherFromSubject)
+router.post('/batches/:id/teachers', assignTeacherValidator, validate, assignTeacherToBatch)
+router.delete('/batches/:id/teachers/:tutorId', removeTeacherFromBatch)
 router.post('/batches/:id/subjects/:subjectAssignmentId/schedule', scheduleSlotValidator, validate, addScheduleSlot)
 router.delete('/batches/:id/subjects/:subjectAssignmentId/schedule/:slotId', removeScheduleSlot)
 
