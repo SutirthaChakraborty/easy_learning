@@ -2,6 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import { MdArrowBack, MdAdd, MdClose } from "react-icons/md";
 import DataTable from "./DataTable";
 import MultiSelectModal from "./MultiSelectModal";
+import ScheduleEditor from "./ScheduleEditor";
+import WeeklyScheduleGrid from "./WeeklyScheduleGrid";
 import styles from "./AdminUI.module.css";
 
 export default function BatchDetail({ batchId, get, post, del, onClose, onChanged }) {
@@ -154,33 +156,53 @@ export default function BatchDetail({ batchId, get, post, del, onClose, onChange
           {batch.subjects.length === 0 ? (
             <p className={styles.empty}>No subjects added to this batch yet.</p>
           ) : (
-            batch.subjects.map((assignment) => (
-              <div key={assignment._id} className={styles.subjectCard}>
-                <div className={styles.subjectCardHeader}>
-                  <h3>{assignment.subject?.name || "Unknown subject"}</h3>
-                  <div className={styles.subjectCardActions}>
-                    <button className={styles.viewBtn} title="Add Teacher" onClick={() => setPicker({ type: "addTeacher", subjectAssignmentId: assignment._id })}>
-                      <MdAdd />
-                    </button>
-                    <button className={styles.deleteBtn} title="Remove Subject" onClick={() => handleRemoveSubject(assignment._id)}>
-                      <MdClose />
-                    </button>
-                  </div>
-                </div>
-                {assignment.teacherIds.length === 0 ? (
-                  <p className={styles.empty}>No teachers assigned yet.</p>
-                ) : (
-                  <div className={styles.chipRow}>
-                    {assignment.teacherIds.map((t) => (
-                      <span key={t._id} className={styles.chip}>
-                        {t.name}
-                        <button onClick={() => handleRemoveTeacher(assignment._id, t._id)}><MdClose /></button>
-                      </span>
-                    ))}
-                  </div>
+            <>
+              <WeeklyScheduleGrid
+                events={batch.subjects.flatMap((a) =>
+                  a.schedule.map((slot) => ({
+                    ...slot,
+                    label: a.subject?.name || "Subject",
+                    sublabel: a.teacherIds.map((t) => t.name).join(", "),
+                  }))
                 )}
-              </div>
-            ))
+              />
+              {batch.subjects.map((assignment) => (
+                <div key={assignment._id} className={styles.subjectCard}>
+                  <div className={styles.subjectCardHeader}>
+                    <h3>{assignment.subject?.name || "Unknown subject"}</h3>
+                    <div className={styles.subjectCardActions}>
+                      <button className={styles.viewBtn} title="Add Teacher" onClick={() => setPicker({ type: "addTeacher", subjectAssignmentId: assignment._id })}>
+                        <MdAdd />
+                      </button>
+                      <button className={styles.deleteBtn} title="Remove Subject" onClick={() => handleRemoveSubject(assignment._id)}>
+                        <MdClose />
+                      </button>
+                    </div>
+                  </div>
+                  {assignment.teacherIds.length === 0 ? (
+                    <p className={styles.empty}>No teachers assigned yet.</p>
+                  ) : (
+                    <div className={styles.chipRow}>
+                      {assignment.teacherIds.map((t) => (
+                        <span key={t._id} className={styles.chip}>
+                          {t.name}
+                          <button onClick={() => handleRemoveTeacher(assignment._id, t._id)}><MdClose /></button>
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <ScheduleEditor
+                    schedule={assignment.schedule}
+                    teacherIds={assignment.teacherIds.map((t) => t._id)}
+                    post={post}
+                    del={del}
+                    addPath={`/batches/${batchId}/subjects/${assignment._id}/schedule`}
+                    deletePath={(slotId) => `/batches/${batchId}/subjects/${assignment._id}/schedule/${slotId}`}
+                    onChanged={refreshAfterChange}
+                  />
+                </div>
+              ))}
+            </>
           )}
         </>
       )}

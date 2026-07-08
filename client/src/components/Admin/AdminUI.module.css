@@ -495,3 +495,106 @@
   padding: 2px;
   font-size: 0.95rem;
 }
+
+.mutedText {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ── Schedule editor ─────────────────────────────────────── */
+.scheduleEditor {
+  margin-top: 10px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.scheduleForm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.scheduleForm select,
+.scheduleForm input[type="time"] {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: #fff;
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.scheduleForm select option {
+  background: #1a1828;
+  color: #fff;
+}
+
+.scheduleWarning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f7a825;
+  background: rgba(247, 168, 37, 0.1);
+  border: 1px solid rgba(247, 168, 37, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  margin: 10px 0 0;
+}
+
+/* ── Weekly schedule grid ────────────────────────────────── */
+.weekGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.weekGridDay {
+  background: #1a1828;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px;
+  min-height: 80px;
+}
+
+.weekGridDay h5 {
+  margin: 0 0 8px;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.weekGridEmpty {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem;
+}
+
+.weekGridEvent {
+  display: flex;
+  flex-direction: column;
+  background: rgba(162, 89, 247, 0.1);
+  border: 1px solid rgba(162, 89, 247, 0.25);
+  border-radius: 8px;
+  padding: 6px 8px;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+}
+
+.weekGridEvent strong {
+  color: #c084fc;
+  font-size: 0.75rem;
+}
+
+.weekGridEvent span {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 900px) {
+  .weekGrid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+}

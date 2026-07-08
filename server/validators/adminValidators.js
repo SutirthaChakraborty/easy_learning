@@ -1,5 +1,5 @@
 const { body } = require('express-validator')
-const { DESIGNATION_OPTIONS, ORG_TYPE_OPTIONS, PHONE_REGEX } = require('../utils/constants')
+const { DESIGNATION_OPTIONS, ORG_TYPE_OPTIONS, PHONE_REGEX, TIME_REGEX } = require('../utils/constants')
 
 const registerOrgValidator = [
   body('name').trim().notEmpty().withMessage('Organization name is required')
@@ -92,6 +92,23 @@ const assignTeacherValidator = [
   body('tutorId').notEmpty().withMessage('Teacher is required').isMongoId().withMessage('Invalid teacher id'),
 ]
 
+const scheduleSlotValidator = [
+  body('dayOfWeek').isInt({ min: 0, max: 6 }).withMessage('Day of week must be between 0 (Sun) and 6 (Sat)'),
+  body('startTime').matches(TIME_REGEX).withMessage('Start time must be in HH:mm format'),
+  body('endTime').matches(TIME_REGEX).withMessage('End time must be in HH:mm format')
+    .custom((value, { req }) => {
+      if (value <= req.body.startTime) throw new Error('End time must be after start time')
+      return true
+    }),
+]
+
+const checkConflictValidator = [
+  body('tutorId').notEmpty().withMessage('Teacher is required').isMongoId().withMessage('Invalid teacher id'),
+  body('dayOfWeek').isInt({ min: 0, max: 6 }).withMessage('Day of week must be between 0 (Sun) and 6 (Sat)'),
+  body('startTime').matches(TIME_REGEX).withMessage('Start time must be in HH:mm format'),
+  body('endTime').matches(TIME_REGEX).withMessage('End time must be in HH:mm format'),
+]
+
 const sendChatMessageValidator = [
   body('message').trim().notEmpty().withMessage('Message is required')
     .isLength({ max: 2000 }).withMessage('Message is too long'),
@@ -103,5 +120,6 @@ module.exports = {
   createBatchValidator, updateBatchValidator,
   createSubjectValidator, updateSubjectValidator,
   addStudentsToBatchValidator, addSubjectToBatchValidator, assignTeacherValidator,
+  scheduleSlotValidator, checkConflictValidator,
   sendChatMessageValidator,
 }
