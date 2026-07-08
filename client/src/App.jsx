@@ -26,9 +26,11 @@ import Login from "./pages/Login";
 import ContactUs from "./pages/ContactUs";
 import AdminLogin from "./pages/AdminLogin";
 import SuperAdminLogin from "./pages/SuperAdminLogin";
+import TeacherLogin from "./pages/TeacherLogin";
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import SuperAdminDashboard from "./pages/superadmin/SuperAdminDashboard";
+import TeacherDashboard from "./pages/teacher/TeacherDashboard";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -52,9 +54,11 @@ function AnimatedRoutes() {
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />
+        <Route path="/teacher-login" element={<TeacherLogin />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/superadmin-dashboard" element={<SuperAdminDashboard />} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
       </Routes>
     </AnimatePresence>
   );
@@ -62,7 +66,7 @@ function AnimatedRoutes() {
 
 function AppLayout() {
   const location = useLocation();
-  const hideNavbar = ["/", "/login", "/admin-login", "/superadmin-login", "/admin-dashboard", "/superadmin-dashboard"].includes(location.pathname);
+  const hideNavbar = ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard"].includes(location.pathname);
 
   return (
     <>

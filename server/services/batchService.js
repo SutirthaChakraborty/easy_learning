@@ -47,33 +47,37 @@ async function ensureDefaultSubjects(orgId) {
 
 async function syncBatchDerivedFields(batchId) {
   const batch = await Batch.findById(batchId)
-  if (!batch) return
-  const tutorIdSet = new Set()
+  if (!batch) return null
+  const tutorIdSet = new Set(batch.directTutorIds.map(idStr))
   for (const assignment of batch.subjects) {
     for (const tid of assignment.teacherIds) tutorIdSet.add(idStr(tid))
   }
   batch.tutorIds = Array.from(tutorIdSet)
   await batch.save()
+  return batch
 }
 
 async function recomputeTutorDerivedFields(tutorId) {
   const tutor = await Tutor.findById(tutorId)
   if (!tutor) return
 
-  const batches = await Batch.find({ orgId: tutor.orgId, 'subjects.teacherIds': tutorId })
+  const batches = await Batch.find({
+    orgId: tutor.orgId,
+    $or: [{ directTutorIds: tutorId }, { 'subjects.teacherIds': tutorId }],
+  })
   const batchIdSet = new Set()
   const subjectIdSet = new Set()
   const studentIdSet = new Set()
 
   for (const batch of batches) {
-    let teachesInBatch = false
+    let inBatch = batch.directTutorIds.some((tid) => idStr(tid) === idStr(tutorId))
     for (const assignment of batch.subjects) {
       if (assignment.teacherIds.some((tid) => idStr(tid) === idStr(tutorId))) {
-        teachesInBatch = true
+        inBatch = true
         subjectIdSet.add(idStr(assignment.subject))
       }
     }
-    if (teachesInBatch) {
+    if (inBatch) {
       batchIdSet.add(idStr(batch._id))
       for (const sid of batch.studentIds) studentIdSet.add(idStr(sid))
     }
@@ -133,10 +137,10 @@ async function removeSubjectFromBatch(batchId, subjectAssignmentId) {
   assignment.deleteOne()
   await batch.save()
 
-  await syncBatchDerivedFields(batchId)
+  const synced = await syncBatchDerivedFields(batchId)
   for (const tid of affectedTutorIds) await recomputeTutorDerivedFields(tid)
 
-  return batch
+  return synced
 }
 
 // ── Batch <-> Teacher (within a subject assignment) ──────────────────────────
@@ -157,10 +161,10 @@ async function assignTeacherToSubject(batchId, subjectAssignmentId, tutorId) {
   assignment.teacherIds.push(tutorId)
   await batch.save()
 
-  await syncBatchDerivedFields(batchId)
+  const synced = await syncBatchDerivedFields(batchId)
   await recomputeTutorDerivedFields(tutorId)
 
-  return batch
+  return synced
 }
 
 async function unassignTeacherFromSubject(batchId, subjectAssignmentId, tutorId) {
@@ -175,10 +179,46 @@ async function unassignTeacherFromSubject(batchId, subjectAssignmentId, tutorId)
   if (assignment.teacherIds.length === before) throw new ServiceError('Teacher is not assigned to this subject', 404)
 
   await batch.save()
-  await syncBatchDerivedFields(batchId)
+  const synced = await syncBatchDerivedFields(batchId)
   await recomputeTutorDerivedFields(tutorId)
 
-  return batch
+  return synced
+}
+
+// ── Batch <-> Teacher (batch-level, independent of any subject) ─────────────
+
+async function addTeacherToBatch(batchId, tutorId) {
+  const batch = await Batch.findById(batchId)
+  if (!batch) throw new ServiceError('Batch not found', 404)
+
+  const tutor = await Tutor.findOne({ _id: tutorId, orgId: batch.orgId })
+  if (!tutor) throw new ServiceError('Tutor not found', 404)
+
+  const alreadyAssigned = batch.directTutorIds.some((tid) => idStr(tid) === idStr(tutorId))
+  if (alreadyAssigned) throw new ServiceError('Teacher is already assigned to this batch', 409)
+
+  batch.directTutorIds.push(tutorId)
+  await batch.save()
+
+  const synced = await syncBatchDerivedFields(batchId)
+  await recomputeTutorDerivedFields(tutorId)
+
+  return synced
+}
+
+async function removeTeacherFromBatch(batchId, tutorId) {
+  const batch = await Batch.findById(batchId)
+  if (!batch) throw new ServiceError('Batch not found', 404)
+
+  const before = batch.directTutorIds.length
+  batch.directTutorIds = batch.directTutorIds.filter((tid) => idStr(tid) !== idStr(tutorId))
+  if (batch.directTutorIds.length === before) throw new ServiceError('Teacher is not assigned to this batch', 404)
+
+  await batch.save()
+  const synced = await syncBatchDerivedFields(batchId)
+  await recomputeTutorDerivedFields(tutorId)
+
+  return synced
 }
 
 // ── Weekly schedule (per subject assignment; shared by every teacher on it) ──
@@ -273,7 +313,7 @@ async function deleteBatchCascade(batchId) {
   if (!batch) return
 
   const studentIds = batch.studentIds.map(idStr)
-  const tutorIdSet = new Set()
+  const tutorIdSet = new Set(batch.directTutorIds.map(idStr))
   for (const assignment of batch.subjects) {
     for (const tid of assignment.teacherIds) tutorIdSet.add(idStr(tid))
   }
@@ -288,7 +328,10 @@ async function deleteTutorCascade(tutorId) {
   const tutor = await Tutor.findById(tutorId)
   if (!tutor) return
 
-  const affectedBatches = await Batch.find({ orgId: tutor.orgId, 'subjects.teacherIds': tutorId })
+  const affectedBatches = await Batch.find({
+    orgId: tutor.orgId,
+    $or: [{ directTutorIds: tutorId }, { 'subjects.teacherIds': tutorId }],
+  })
   const affectedBatchIds = affectedBatches.map((b) => b._id)
   const affectedStudentIdSet = new Set()
   for (const batch of affectedBatches) {
@@ -298,7 +341,7 @@ async function deleteTutorCascade(tutorId) {
   if (affectedBatchIds.length > 0) {
     await Batch.updateMany(
       { _id: { $in: affectedBatchIds } },
-      { $pull: { 'subjects.$[].teacherIds': tutorId } }
+      { $pull: { 'subjects.$[].teacherIds': tutorId, directTutorIds: tutorId } }
     )
   }
 
@@ -315,6 +358,7 @@ async function deleteStudentCascade(studentId) {
   const affectedBatches = await Batch.find({ studentIds: studentId })
   const affectedTutorIdSet = new Set()
   for (const batch of affectedBatches) {
+    for (const tid of batch.directTutorIds) affectedTutorIdSet.add(idStr(tid))
     for (const assignment of batch.subjects) {
       for (const tid of assignment.teacherIds) affectedTutorIdSet.add(idStr(tid))
     }
@@ -338,6 +382,8 @@ module.exports = {
   removeSubjectFromBatch,
   assignTeacherToSubject,
   unassignTeacherFromSubject,
+  addTeacherToBatch,
+  removeTeacherFromBatch,
   addScheduleSlot,
   removeScheduleSlot,
   addStudentsToBatch,

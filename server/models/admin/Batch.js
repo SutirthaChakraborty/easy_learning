@@ -22,6 +22,8 @@ const schema = new mongoose.Schema({
   maxStudents: { type: Number, default: null, min: 1 },
   subjects: [subjectAssignmentSchema],
   orgId: { type: mongoose.Schema.Types.ObjectId, ref: 'Organization', required: true },
+  directTutorIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tutor' }],
+  // Derived (batchService.syncBatchDerivedFields): union of directTutorIds + subjects[].teacherIds.
   tutorIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Tutor' }],
   studentIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Student' }],
   status: { type: String, enum: ['active', 'inactive'], default: 'active' },
@@ -29,5 +31,6 @@ const schema = new mongoose.Schema({
 
 schema.index({ orgId: 1, 'subjects.teacherIds': 1 })
 schema.index({ orgId: 1, 'subjects.subject': 1 })
+schema.index({ orgId: 1, tutorIds: 1 })
 
 module.exports = adminDb.model('Batch', schema)
