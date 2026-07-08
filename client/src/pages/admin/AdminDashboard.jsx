@@ -4,22 +4,26 @@ import {
   MdAdminPanelSettings, MdDashboard, MdPeople, MdGroups,
   MdSchool, MdFamilyRestroom, MdBarChart, MdLogout, MdAdd,
   MdDelete, MdBusiness, MdClose, MdCheckCircle, MdPending,
-  MdSearch, MdInsights, MdEdit, MdSupportAgent,
+  MdInsights, MdEdit, MdSupportAgent, MdMenuBook, MdVisibility,
 } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 import { DESIGNATION_OPTIONS, ORG_TYPE_OPTIONS, designationLabel } from "../../utils/designations";
 import StudentDashboardViewer from "../../components/StudentDashboardViewer/StudentDashboardViewer";
+import Modal from "../../components/Admin/Modal";
+import DataTable from "../../components/Admin/DataTable";
+import StatCard from "../../components/Admin/StatCard";
+import SearchBar from "../../components/Admin/SearchBar";
+import BatchDetail from "../../components/Admin/BatchDetail";
 import styles from "./AdminDashboard.module.css";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const PHONE_RE = /^[0-9+\-\s()]{7,15}$/;
 
 const NAV = [
   { key: "overview", label: "Overview", icon: <MdDashboard /> },
   { key: "org", label: "Organization", icon: <MdBusiness /> },
   { key: "tutors", label: "Tutors", icon: <MdPeople /> },
   { key: "batches", label: "Batches", icon: <MdGroups /> },
+  { key: "subjects", label: "Subjects", icon: <MdMenuBook /> },
   { key: "students", label: "Students", icon: <MdSchool /> },
   { key: "parents", label: "Parents", icon: <MdFamilyRestroom /> },
   { key: "reports", label: "Reports", icon: <MdBarChart /> },
@@ -59,167 +63,6 @@ function useAdminApi(token) {
   }, [token]);
 
   return { get, post, postForm, del };
-}
-
-// ── Field-level validation ──────────────────────────────────────────────────
-function validateField(f, value, form) {
-  const isVisible = !f.showIf || f.showIf(form);
-  if (!isVisible) return null;
-
-  const strVal = typeof value === "string" ? value.trim() : value;
-  const isEmpty = value === undefined || value === null || strVal === "" || (f.type === "file" && !value);
-
-  if (f.required && isEmpty) return `${f.label} is required`;
-  if (isEmpty) return null;
-
-  if (f.type === "email" && !EMAIL_RE.test(strVal)) return "Enter a valid email address";
-  if (f.type === "tel" && !PHONE_RE.test(strVal)) return "Enter a valid phone number";
-  if (f.type === "number") {
-    const n = Number(strVal);
-    if (Number.isNaN(n)) return `${f.label} must be a number`;
-    if (f.min !== undefined && n < f.min) return `${f.label} must be at least ${f.min}`;
-    if (f.max !== undefined && n > f.max) return `${f.label} must be at most ${f.max}`;
-  }
-  if (f.minLength && strVal.length < f.minLength) return `${f.label} must be at least ${f.minLength} characters`;
-  if (f.maxLength && strVal.length > f.maxLength) return `${f.label} must be at most ${f.maxLength} characters`;
-  return null;
-}
-
-function validateForm(fields, form) {
-  const errors = {};
-  fields.forEach((f) => {
-    const err = validateField(f, form[f.key], form);
-    if (err) errors[f.key] = err;
-  });
-  return errors;
-}
-
-// ── Mini modal (config-driven form) ─────────────────────────────────────────
-function Modal({ title, fields, onSubmit, onClose, loading, serverError, initial }) {
-  const [form, setForm] = useState(initial || {});
-  const [touched, setTouched] = useState({});
-  const errors = validateForm(fields, form);
-
-  const handleChange = (k, v) => setForm((f) => ({ ...f, [k]: v }));
-  const handleBlur = (k) => setTouched((t) => ({ ...t, [k]: true }));
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setTouched(Object.fromEntries(fields.map((f) => [f.key, true])));
-    if (Object.keys(errors).length > 0) return;
-    onSubmit(form);
-  };
-
-  const hasErrors = Object.keys(errors).length > 0;
-
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.modalHeader}>
-          <h3>{title}</h3>
-          <button className={styles.modalClose} onClick={onClose}><MdClose /></button>
-        </div>
-        <form onSubmit={handleSubmit} className={styles.modalForm}>
-          {fields.map((f) => {
-            if (f.showIf && !f.showIf(form)) return null;
-            const showError = touched[f.key] && errors[f.key];
-            return (
-              <div key={f.key} className={styles.modalField}>
-                <label>{f.label}{f.required && " *"}</label>
-                {f.type === "select" ? (
-                  <select
-                    value={form[f.key] ?? ""}
-                    onChange={(e) => handleChange(f.key, e.target.value)}
-                    onBlur={() => handleBlur(f.key)}
-                  >
-                    <option value="" disabled>{f.placeholder || "Select…"}</option>
-                    {f.options.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
-                  </select>
-                ) : f.type === "file" ? (
-                  <input
-                    type="file"
-                    accept={f.accept || "image/*"}
-                    onChange={(e) => handleChange(f.key, e.target.files?.[0] || null)}
-                    onBlur={() => handleBlur(f.key)}
-                  />
-                ) : (
-                  <input
-                    type={f.type === "tel" ? "text" : (f.type || "text")}
-                    placeholder={f.placeholder || f.label}
-                    value={form[f.key] || ""}
-                    onChange={(e) => handleChange(f.key, e.target.value)}
-                    onBlur={() => handleBlur(f.key)}
-                  />
-                )}
-                {showError && <span className={styles.fieldError}>{errors[f.key]}</span>}
-              </div>
-            );
-          })}
-          {serverError && <p className={styles.serverError}>{serverError}</p>}
-          <button type="submit" className={styles.modalSubmit} disabled={loading || (Object.keys(touched).length > 0 && hasErrors)}>
-            {loading ? "Saving…" : "Save"}
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-}
-
-// ── Stat card ─────────────────────────────────────────────────────────────────
-function StatCard({ label, value, icon, color }) {
-  return (
-    <div className={styles.statCard} style={{ borderColor: color }}>
-      <div className={styles.statIcon} style={{ color }}>{icon}</div>
-      <div className={styles.statInfo}>
-        <span className={styles.statValue}>{value}</span>
-        <span className={styles.statLabel}>{label}</span>
-      </div>
-    </div>
-  );
-}
-
-// ── Data table ────────────────────────────────────────────────────────────────
-function DataTable({ columns, rows, actions, emptyMsg }) {
-  if (!rows.length) return <p className={styles.empty}>{emptyMsg}</p>;
-  return (
-    <div className={styles.tableWrap}>
-      <table className={styles.table}>
-        <thead>
-          <tr>{columns.map((c) => <th key={c.key}>{c.label}</th>)}
-            {actions && <th>Actions</th>}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row._id}>
-              {columns.map((c) => <td key={c.key}>{c.render ? c.render(row) : row[c.key] || "—"}</td>)}
-              {actions && (
-                <td>
-                  <div className={styles.rowActions}>
-                    {actions.map((a, i) => (
-                      <button key={i} className={a.variant === "delete" ? styles.deleteBtn : styles.viewBtn} title={a.title} onClick={() => a.onClick(row)}>
-                        {a.icon}
-                      </button>
-                    ))}
-                  </div>
-                </td>
-              )}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-// ── Search bar ────────────────────────────────────────────────────────────────
-function SearchBar({ value, onChange, placeholder }) {
-  return (
-    <div className={styles.searchBar}>
-      <MdSearch />
-      <input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} />
-    </div>
-  );
 }
 
 // ── Performance modal ─────────────────────────────────────────────────────────
@@ -311,6 +154,8 @@ const AdminDashboard = () => {
   const [profile, setProfile] = useState(null);
   const [tutors, setTutors] = useState([]);
   const [batches, setBatches] = useState([]);
+  const [selectedBatchId, setSelectedBatchId] = useState(null);
+  const [subjects, setSubjects] = useState([]);
   const [students, setStudents] = useState([]);
   const [parents, setParents] = useState([]);
   const [tutorSearch, setTutorSearch] = useState("");
@@ -372,9 +217,12 @@ const AdminDashboard = () => {
 
   const loadSection = useCallback(async (sec) => {
     setSection(sec);
+    setSelectedBatchId(null);
     if (sec === "tutors") loadTutors(tutorSearch);
     else if (sec === "batches") {
       const d = await get("/batches"); if (d.success) setBatches(d.batches);
+    } else if (sec === "subjects") {
+      const d = await get("/subjects"); if (d.success) setSubjects(d.subjects);
     } else if (sec === "students") loadStudents(studentSearch);
     else if (sec === "parents") {
       const d = await get("/parents"); if (d.success) setParents(d.parents);
@@ -382,6 +230,10 @@ const AdminDashboard = () => {
       const d = await get("/org"); if (d.success) setOrg(d.org);
     } else if (sec === "chat") loadChat();
   }, [get, loadTutors, loadStudents, loadChat, tutorSearch, studentSearch]);
+
+  const loadBatches = useCallback(async () => {
+    const d = await get("/batches"); if (d.success) setBatches(d.batches);
+  }, [get]);
 
   const handleSendChat = async () => {
     if (!chatDraft.trim()) return;
@@ -657,6 +509,16 @@ const AdminDashboard = () => {
 
         {/* ── Batches ── */}
         {section === "batches" && (
+          selectedBatchId ? (
+            <BatchDetail
+              batchId={selectedBatchId}
+              get={get}
+              post={post}
+              del={del}
+              onClose={() => setSelectedBatchId(null)}
+              onChanged={() => { loadBatches(); loadStats(); }}
+            />
+          ) : (
           <>
             <div className={styles.pageHeader}>
               <h1>Batches / Classes</h1>
@@ -665,7 +527,9 @@ const AdminDashboard = () => {
                 endpoint: "/batches",
                 fields: [
                   { key: "name", label: "Batch Name", required: true, minLength: 2, maxLength: 100 },
-                  { key: "subject", label: "Subject", maxLength: 50 },
+                  { key: "academicYear", label: "Academic Year (e.g. 2026-27)", maxLength: 20 },
+                  { key: "term", label: "Term / Semester", maxLength: 30 },
+                  { key: "maxStudents", label: "Max Students (optional)", type: "number", min: 1 },
                   { key: "description", label: "Description", maxLength: 300 },
                 ],
               })}>
@@ -675,14 +539,59 @@ const AdminDashboard = () => {
             <DataTable
               columns={[
                 { key: "name", label: "Batch Name" },
-                { key: "subject", label: "Subject" },
+                { key: "academicYear", label: "Year / Term", render: (r) => [r.academicYear, r.term].filter(Boolean).join(" · ") || "—" },
+                { key: "subjects", label: "Subjects", render: (r) => r.subjects?.length || 0 },
                 { key: "tutorIds", label: "Tutors", render: (r) => r.tutorIds?.length || 0 },
-                { key: "studentIds", label: "Students", render: (r) => r.studentIds?.length || 0 },
+                { key: "studentIds", label: "Students", render: (r) => `${r.studentIds?.length || 0}${r.maxStudents ? ` / ${r.maxStudents}` : ""}` },
                 { key: "status", label: "Status" },
               ]}
               rows={batches}
-              actions={[{ icon: <MdDelete />, title: "Delete", variant: "delete", onClick: (row) => handleDelete("/batches", row._id) }]}
+              actions={[
+                { icon: <MdVisibility />, title: "Open Batch", onClick: (row) => setSelectedBatchId(row._id) },
+                { icon: <MdDelete />, title: "Delete", variant: "delete", onClick: (row) => handleDelete("/batches", row._id) },
+              ]}
               emptyMsg="No batches yet. Create your first batch."
+            />
+          </>
+          )
+        )}
+
+        {/* ── Subjects ── */}
+        {section === "subjects" && (
+          <>
+            <div className={styles.pageHeader}>
+              <h1>Subjects</h1>
+              <button className={styles.primaryBtn} onClick={() => openModal({
+                title: "Add Subject",
+                endpoint: "/subjects",
+                fields: [
+                  { key: "name", label: "Subject Name", required: true, minLength: 2, maxLength: 60 },
+                  { key: "code", label: "Code (optional, e.g. english)", maxLength: 30 },
+                  { key: "description", label: "Description", maxLength: 200 },
+                ],
+              })}>
+                <MdAdd /> Add Subject
+              </button>
+            </div>
+            <DataTable
+              columns={[
+                { key: "name", label: "Name" },
+                { key: "code", label: "Code" },
+                { key: "isDefault", label: "Default", render: (r) => (r.isDefault ? "Yes" : "No") },
+                { key: "status", label: "Status" },
+              ]}
+              rows={subjects}
+              actions={[
+                {
+                  icon: <MdDelete />, title: "Remove", variant: "delete",
+                  onClick: async (row) => {
+                    if (!confirm("Remove this subject?")) return;
+                    await del(`/subjects/${row._id}`);
+                    loadSection("subjects");
+                  },
+                },
+              ]}
+              emptyMsg="No subjects yet. English, Maths, and Science are added automatically when you register your organization."
             />
           </>
         )}

@@ -6,14 +6,21 @@ const { uploadOrgLogo, uploadAvatar, handleUpload } = require('../middleware/upl
 const { adminStudentAccess } = require('../middleware/studentDashboardAccess')
 const {
   registerOrgValidator, updateIdentityValidator,
-  createTutorValidator, createStudentValidator, createParentValidator, createBatchValidator,
+  createTutorValidator, createStudentValidator, createParentValidator,
+  createBatchValidator, updateBatchValidator,
+  createSubjectValidator, updateSubjectValidator,
+  addStudentsToBatchValidator, addSubjectToBatchValidator, assignTeacherValidator,
   sendChatMessageValidator,
 } = require('../validators/adminValidators')
 const {
   registerOrg, getOrg,
   getProfile, updateProfile,
   getTutors, createTutor, deleteTutor, getTutorPerformance,
-  getBatches, createBatch, deleteBatch,
+  getBatches, getBatch, createBatch, updateBatch, deleteBatch,
+  addStudentsToBatch, removeStudentFromBatch,
+  addSubjectToBatch, removeSubjectFromBatch,
+  assignTeacherToSubject, unassignTeacherFromSubject,
+  getSubjects, createSubject, updateSubject, deleteSubject,
   getStudents, createStudent, deleteStudent, getStudentPerformance,
   getParents, createParent,
   getStats,
@@ -47,9 +54,22 @@ router.post('/tutors', createTutorValidator, validate, createTutor)
 router.delete('/tutors/:id', deleteTutor)
 router.get('/tutors/:id/performance', getTutorPerformance)
 
+router.get('/subjects', getSubjects)
+router.post('/subjects', createSubjectValidator, validate, createSubject)
+router.patch('/subjects/:id', updateSubjectValidator, validate, updateSubject)
+router.delete('/subjects/:id', deleteSubject)
+
 router.get('/batches', getBatches)
 router.post('/batches', createBatchValidator, validate, createBatch)
+router.get('/batches/:id', getBatch)
+router.patch('/batches/:id', updateBatchValidator, validate, updateBatch)
 router.delete('/batches/:id', deleteBatch)
+router.post('/batches/:id/students', addStudentsToBatchValidator, validate, addStudentsToBatch)
+router.delete('/batches/:id/students/:studentId', removeStudentFromBatch)
+router.post('/batches/:id/subjects', addSubjectToBatchValidator, validate, addSubjectToBatch)
+router.delete('/batches/:id/subjects/:subjectAssignmentId', removeSubjectFromBatch)
+router.post('/batches/:id/subjects/:subjectAssignmentId/teachers', assignTeacherValidator, validate, assignTeacherToSubject)
+router.delete('/batches/:id/subjects/:subjectAssignmentId/teachers/:tutorId', unassignTeacherFromSubject)
 
 router.get('/students', getStudents)
 router.post('/students', createStudentValidator, validate, createStudent)
