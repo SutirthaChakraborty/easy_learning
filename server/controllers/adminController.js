@@ -387,6 +387,7 @@ const getSubjects = async (req, res) => {
   try {
     const org = await Organization.findOne({ adminUid: req.admin.uid })
     if (!org) return res.json({ success: true, subjects: [] })
+    await batchService.ensureDefaultSubjects(org._id)
     const filter = { orgId: org._id }
     if (req.query.status) filter.status = req.query.status
     const subjects = await Subject.find(filter).sort({ name: 1 })

@@ -28,9 +28,10 @@ const DEFAULT_SUBJECTS = [
 // ── Subject catalog seeding ───────────────────────────────────────────────────
 
 async function ensureDefaultSubjects(orgId) {
-  const existing = await Subject.find({ orgId }).select('code')
-  const existingCodes = new Set(existing.map((s) => s.code))
-  const toCreate = DEFAULT_SUBJECTS.filter((s) => !existingCodes.has(s.code))
+  const existing = await Subject.find({ orgId }).select('code name')
+  const existingCodes = new Set(existing.map((s) => s.code).filter(Boolean))
+  const existingNames = new Set(existing.map((s) => s.name.toLowerCase()))
+  const toCreate = DEFAULT_SUBJECTS.filter((s) => !existingCodes.has(s.code) && !existingNames.has(s.name.toLowerCase()))
   if (toCreate.length === 0) return
   await Subject.insertMany(toCreate.map((s) => ({ ...s, orgId, isDefault: true })))
 }
