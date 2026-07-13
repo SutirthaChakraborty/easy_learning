@@ -28,4 +28,12 @@ const sendChatMessageValidator = [
     .isLength({ max: 2000 }).withMessage('Message is too long'),
 ]
 
-module.exports = { rejectOrgValidator, subscriptionValidator, settingValidator, respondContactValidator, sendChatMessageValidator }
+const rejectUploadValidator = [
+  body('reason').trim().notEmpty().withMessage('A rejection reason is required')
+    .isLength({ min: 5, max: 500 }).withMessage('Reason must be 5-500 characters'),
+]
+
+module.exports = {
+  rejectOrgValidator, subscriptionValidator, settingValidator, respondContactValidator, sendChatMessageValidator,
+  rejectUploadValidator,
+}

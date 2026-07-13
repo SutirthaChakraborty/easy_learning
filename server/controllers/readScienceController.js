@@ -19,7 +19,7 @@ const applyTranslation = (doc, lang) => {
 const getAllQuestions = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const questions = await ReadScience.find().sort({ id: 1 })
+    const questions = await ReadScience.find({ status: 'approved' }).sort({ id: 1 })
     const data = questions.map(q => applyTranslation(q, lang))
     res.json({ success: true, count: data.length, data })
   } catch (err) {
@@ -31,7 +31,7 @@ const getAllQuestions = async (req, res) => {
 const getQuestionById = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const question = await ReadScience.findOne({ id: Number(req.params.id) })
+    const question = await ReadScience.findOne({ id: Number(req.params.id), status: 'approved' })
     if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
     res.json({ success: true, data: applyTranslation(question, lang) })
   } catch (err) {

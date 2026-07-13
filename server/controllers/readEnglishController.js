@@ -4,7 +4,7 @@ const seedData = require('../data/read_english.json')
 // GET /api/read/english
 const getAllQuestions = async (req, res) => {
   try {
-    const questions = await ReadEnglish.find().sort({ id: 1 })
+    const questions = await ReadEnglish.find({ status: 'approved' }).sort({ id: 1 })
     res.json({ success: true, count: questions.length, data: questions })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
@@ -14,7 +14,7 @@ const getAllQuestions = async (req, res) => {
 // GET /api/read/english/:id
 const getQuestionById = async (req, res) => {
   try {
-    const question = await ReadEnglish.findOne({ id: Number(req.params.id) })
+    const question = await ReadEnglish.findOne({ id: Number(req.params.id), status: 'approved' })
     if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
     res.json({ success: true, data: question })
   } catch (err) {

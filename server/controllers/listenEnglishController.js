@@ -4,7 +4,7 @@ const seedData = require('../data/listen_english.json')
 // GET /api/listen/english  — all questions (optional ?level=N filter)
 const getAllQuestions = async (req, res) => {
   try {
-    const filter = req.query.level ? { level: Number(req.query.level) } : {}
+    const filter = { status: 'approved', ...(req.query.level ? { level: Number(req.query.level) } : {}) }
     const questions = await ListenEnglish.find(filter).sort({ id: 1 })
     res.json({ success: true, count: questions.length, data: questions })
   } catch (err) {
@@ -15,7 +15,7 @@ const getAllQuestions = async (req, res) => {
 // GET /api/listen/english/:id
 const getQuestionById = async (req, res) => {
   try {
-    const question = await ListenEnglish.findOne({ id: Number(req.params.id) })
+    const question = await ListenEnglish.findOne({ id: Number(req.params.id), status: 'approved' })
     if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
     res.json({ success: true, data: question })
   } catch (err) {
