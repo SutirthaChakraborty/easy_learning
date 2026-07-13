@@ -4,7 +4,7 @@ const seedData = require('../data/speak_english.json')
 // GET /api/speak/english  — all prompts
 const getAllPrompts = async (req, res) => {
   try {
-    const prompts = await SpeakEnglish.find().sort({ id: 1 })
+    const prompts = await SpeakEnglish.find({ status: 'approved' }).sort({ id: 1 })
     res.json({ success: true, count: prompts.length, data: prompts })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
@@ -14,7 +14,7 @@ const getAllPrompts = async (req, res) => {
 // GET /api/speak/english/:id
 const getPromptById = async (req, res) => {
   try {
-    const prompt = await SpeakEnglish.findOne({ id: Number(req.params.id) })
+    const prompt = await SpeakEnglish.findOne({ id: Number(req.params.id), status: 'approved' })
     if (!prompt) return res.status(404).json({ success: false, message: 'Prompt not found' })
     res.json({ success: true, data: prompt })
   } catch (err) {

@@ -3,7 +3,7 @@ const path = require('path')
 const multer = require('multer')
 
 const UPLOAD_ROOT = path.join(__dirname, '..', 'uploads')
-const SUBFOLDERS = ['org-logos', 'avatars', 'contact-attachments']
+const SUBFOLDERS = ['org-logos', 'avatars', 'contact-attachments', 'question-uploads']
 
 SUBFOLDERS.forEach((folder) => {
   const dir = path.join(UPLOAD_ROOT, folder)
@@ -12,6 +12,10 @@ SUBFOLDERS.forEach((folder) => {
 
 const IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif']
 const DOCUMENT_TYPES = [...IMAGE_TYPES, 'application/pdf']
+const SPREADSHEET_TYPES = [
+  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  'application/octet-stream', // some browsers/OSes misreport .xlsx as this — extension check below covers it
+]
 
 function makeStorage(folder) {
   return multer.diskStorage({
@@ -38,6 +42,14 @@ function documentFileFilter(req, file, cb) {
   cb(null, true)
 }
 
+function spreadsheetFileFilter(req, file, cb) {
+  const isXlsxExt = path.extname(file.originalname).toLowerCase() === '.xlsx'
+  if (!isXlsxExt || !SPREADSHEET_TYPES.includes(file.mimetype)) {
+    return cb(new Error('Only .xlsx Excel files are allowed'))
+  }
+  cb(null, true)
+}
+
 const uploadOrgLogo = multer({
   storage: makeStorage('org-logos'),
   fileFilter: imageFileFilter,
@@ -55,6 +67,23 @@ const uploadContactAttachment = multer({
   fileFilter: documentFileFilter,
   limits: { fileSize: 10 * 1024 * 1024 },
 })
+
+// Memory storage: the controller needs the raw bytes to parse+validate before
+// deciding whether to keep an audit copy — see saveBufferToUploads() below.
+const uploadQuestionSheet = multer({
+  storage: multer.memoryStorage(),
+  fileFilter: spreadsheetFileFilter,
+  limits: { fileSize: 5 * 1024 * 1024 },
+})
+
+// Persists an in-memory upload buffer to disk after the controller has
+// already validated it, using the same naming convention as makeStorage().
+function saveBufferToUploads(subfolder, buffer, originalname) {
+  const ext = path.extname(originalname).toLowerCase()
+  const filename = `${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`
+  fs.writeFileSync(path.join(UPLOAD_ROOT, subfolder, filename), buffer)
+  return filename
+}
 
 // Wraps a multer middleware so file-filter/size errors become JSON 400s instead of crashing/500ing
 function handleUpload(uploader) {
@@ -81,6 +110,8 @@ module.exports = {
   uploadOrgLogo,
   uploadAvatar,
   uploadContactAttachment,
+  uploadQuestionSheet,
   handleUpload,
   fileUrl,
+  saveBufferToUploads,
 }

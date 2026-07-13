@@ -14,7 +14,7 @@ const applyTranslation = (doc, lang) => {
 const getAllPrompts = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const prompts = await SpeakMaths.find().sort({ id: 1 })
+    const prompts = await SpeakMaths.find({ status: 'approved' }).sort({ id: 1 })
     const data = prompts.map(p => applyTranslation(p, lang))
     res.json({ success: true, count: data.length, data })
   } catch (err) {
@@ -26,7 +26,7 @@ const getAllPrompts = async (req, res) => {
 const getPromptById = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const prompt = await SpeakMaths.findOne({ id: Number(req.params.id) })
+    const prompt = await SpeakMaths.findOne({ id: Number(req.params.id), status: 'approved' })
     if (!prompt) return res.status(404).json({ success: false, message: 'Prompt not found' })
     res.json({ success: true, data: applyTranslation(prompt, lang) })
   } catch (err) {

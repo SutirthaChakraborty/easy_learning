@@ -1,13 +1,19 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaChalkboardTeacher } from "react-icons/fa";
-import { MdLogout, MdGroups, MdVisibility } from "react-icons/md";
+import { MdLogout, MdGroups, MdVisibility, MdUploadFile } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 import DataTable from "../../components/Admin/DataTable";
 import TeacherBatchDetail from "./TeacherBatchDetail";
+import TeacherQuestionUpload from "./TeacherQuestionUpload";
 import styles from "../admin/AdminDashboard.module.css";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
+
+const NAV = [
+  { key: "batches", label: "My Batches", icon: <MdGroups /> },
+  { key: "questions", label: "Upload Questions", icon: <MdUploadFile /> },
+];
 
 function useTeacherApi(token) {
   const get = useCallback(async (path) => {
@@ -24,6 +30,15 @@ function useTeacherApi(token) {
     return r.json();
   }, [token]);
 
+  const postForm = useCallback(async (path, formData, method = "POST") => {
+    const r = await fetch(`${API}/api/teacher${path}`, {
+      method,
+      headers: { Authorization: `Bearer ${token}` },
+      body: formData,
+    });
+    return r.json();
+  }, [token]);
+
   const del = useCallback(async (path) => {
     const r = await fetch(`${API}/api/teacher${path}`, {
       method: "DELETE",
@@ -32,15 +47,16 @@ function useTeacherApi(token) {
     return r.json();
   }, [token]);
 
-  return { get, post, del };
+  return { get, post, postForm, del };
 }
 
 const TeacherDashboard = () => {
   const { teacherUser, teacherLogout, getTeacherToken } = useAdminAuth();
   const navigate = useNavigate();
   const token = getTeacherToken();
-  const { get, post, del } = useTeacherApi(token);
+  const { get, post, postForm, del } = useTeacherApi(token);
 
+  const [section, setSection] = useState("batches");
   const [batches, setBatches] = useState([]);
   const [selectedBatchId, setSelectedBatchId] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -76,9 +92,15 @@ const TeacherDashboard = () => {
           <p className={styles.adminEmail}>{teacherUser?.email}</p>
         </div>
         <nav className={styles.nav}>
-          <button className={`${styles.navItem} ${styles.navActive}`}>
-            <MdGroups /> <span>My Batches</span>
-          </button>
+          {NAV.map((n) => (
+            <button
+              key={n.key}
+              className={`${styles.navItem} ${section === n.key ? styles.navActive : ""}`}
+              onClick={() => { setSection(n.key); setSelectedBatchId(null); }}
+            >
+              {n.icon} <span>{n.label}</span>
+            </button>
+          ))}
         </nav>
         <button className={styles.logoutBtn} onClick={handleLogout}>
           <MdLogout /> <span>Logout</span>
@@ -86,7 +108,9 @@ const TeacherDashboard = () => {
       </aside>
 
       <main className={styles.main}>
-        {selectedBatchId ? (
+        {section === "questions" ? (
+          <TeacherQuestionUpload get={get} postForm={postForm} token={token} />
+        ) : selectedBatchId ? (
           <TeacherBatchDetail
             batchId={selectedBatchId}
             teacherId={teacherUser?.id}
