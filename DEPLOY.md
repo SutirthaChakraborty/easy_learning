@@ -81,19 +81,36 @@ cd /var/www/easy_learning/server
 nano .env
 ```
 
-Copy the block below and fill in your values. Your local `server/.env` already has most of these — just update `CLIENT_URL` and use a strong `JWT_SECRET` for production.
+Copy the block below and fill in your values. Your local `server/.env` already has all of these — copy every value across (not just `MONGODB_URI`/`JWT_SECRET`), and only update `CLIENT_URL`. The app uses **three separate MongoDB connections** (main, admin, super-admin) and **four separate JWT secrets** (student, admin, super-admin, teacher) — if any of these are missing, that login flow's Google sign-in throws and the API returns a generic "Internal server error".
 
 ```env
 PORT=5000
+
+# Main app DB (students)
 MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.wqthdik.mongodb.net/mydb?retryWrites=true&w=majority
-CLIENT_URL=https://quizify.cloud
 JWT_SECRET=<replace-with-a-long-random-string>
 JWT_EXPIRES_IN=7d
+
+# Admin DB (org admins + tutors/teachers) — separate cluster
+ADMIN_MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.r9mcewc.mongodb.net/admindb?retryWrites=true&w=majority
+ADMIN_JWT_SECRET=<replace-with-a-long-random-string>
+ADMIN_JWT_EXPIRES_IN=7d
+
+# Super-admin DB — separate cluster
+SUPERADMIN_MONGODB_URI=mongodb+srv://<user>:<password>@cluster0.xszbqqt.mongodb.net/superadmindb?retryWrites=true&w=majority
+SUPERADMIN_JWT_SECRET=<replace-with-a-long-random-string>
+
+# Teacher auth (uses the admin DB's Tutor model, but its own JWT secret)
+TEACHER_JWT_SECRET=<replace-with-a-long-random-string>
+TEACHER_JWT_EXPIRES_IN=7d
+
+CLIENT_URL=https://quizify.cloud
 ```
 
 > **`CLIENT_URL`** must be exactly `https://quizify.cloud` — this is what Express uses for CORS.  
-> **`MONGODB_URI`** — copy the full URI from your local `server/.env`, it points to `cluster0.wqthdik.mongodb.net`.  
-> **`JWT_SECRET`** — generate a strong secret: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`
+> **`MONGODB_URI` / `ADMIN_MONGODB_URI` / `SUPERADMIN_MONGODB_URI`** — copy the full URIs from your local `server/.env`; each points to a different Atlas cluster (`wqthdik`, `r9mcewc`, `xszbqqt` respectively).  
+> **Every `*_JWT_SECRET`** — generate a strong secret per key: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`. It's fine to reuse your local `.env` values instead of regenerating.  
+> **MongoDB Atlas Network Access** — remember all three clusters need the VPS IP whitelisted (see "Before You Start"), not just the one `mydb` cluster.
 
 ---
 
