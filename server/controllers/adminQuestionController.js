@@ -1,14 +1,15 @@
 const QuestionUploadBatch = require('../models/superadmin/QuestionUploadBatch')
 const { getQuestionModel } = require('../utils/questionModels')
 
-// GET /api/superadmin/question-uploads/stats
+// GET /api/admin/questions/uploads/stats
 const getUploadStats = async (req, res) => {
   try {
+    const orgId = String(req.admin.orgId)
     const [total, pending, approved, rejected] = await Promise.all([
-      QuestionUploadBatch.countDocuments(),
-      QuestionUploadBatch.countDocuments({ status: 'pending' }),
-      QuestionUploadBatch.countDocuments({ status: 'approved' }),
-      QuestionUploadBatch.countDocuments({ status: 'rejected' }),
+      QuestionUploadBatch.countDocuments({ orgId }),
+      QuestionUploadBatch.countDocuments({ orgId, status: 'pending' }),
+      QuestionUploadBatch.countDocuments({ orgId, status: 'approved' }),
+      QuestionUploadBatch.countDocuments({ orgId, status: 'rejected' }),
     ])
     res.json({ success: true, stats: { totalUploads: total, pendingUploads: pending, approvedUploads: approved, rejectedUploads: rejected } })
   } catch (err) {
@@ -16,11 +17,11 @@ const getUploadStats = async (req, res) => {
   }
 }
 
-// GET /api/superadmin/question-uploads?status=&module=&subject=
+// GET /api/admin/questions/uploads?status=&module=&subject=
 const getUploadBatches = async (req, res) => {
   try {
     const { status, module, subject } = req.query
-    const filter = {}
+    const filter = { orgId: String(req.admin.orgId) }
     if (status) filter.status = status
     if (module) filter.module = module
     if (subject) filter.subject = subject
@@ -31,10 +32,10 @@ const getUploadBatches = async (req, res) => {
   }
 }
 
-// GET /api/superadmin/question-uploads/:id
+// GET /api/admin/questions/uploads/:id
 const getUploadBatchDetail = async (req, res) => {
   try {
-    const batch = await QuestionUploadBatch.findById(req.params.id)
+    const batch = await QuestionUploadBatch.findOne({ _id: req.params.id, orgId: String(req.admin.orgId) })
     if (!batch) return res.status(404).json({ success: false, message: 'Upload batch not found' })
 
     const Model = getQuestionModel(batch.module, batch.subject)
@@ -45,10 +46,10 @@ const getUploadBatchDetail = async (req, res) => {
   }
 }
 
-// PUT /api/superadmin/question-uploads/:id/approve
+// POST /api/admin/questions/uploads/:id/approve
 const approveUploadBatch = async (req, res) => {
   try {
-    const batch = await QuestionUploadBatch.findById(req.params.id)
+    const batch = await QuestionUploadBatch.findOne({ _id: req.params.id, orgId: String(req.admin.orgId) })
     if (!batch) return res.status(404).json({ success: false, message: 'Upload batch not found' })
 
     const Model = getQuestionModel(batch.module, batch.subject)
@@ -57,7 +58,7 @@ const approveUploadBatch = async (req, res) => {
     // Reversible: callable regardless of current status (pending/rejected/approved all flip to approved)
     batch.status = 'approved'
     batch.reviewedAt = new Date()
-    batch.reviewedBy = process.env.SUPER_ADMIN_EMAIL
+    batch.reviewedBy = req.admin.email
     batch.rejectionReason = ''
     await batch.save()
 
@@ -69,11 +70,11 @@ const approveUploadBatch = async (req, res) => {
   }
 }
 
-// PUT /api/superadmin/question-uploads/:id/reject
+// POST /api/admin/questions/uploads/:id/reject
 const rejectUploadBatch = async (req, res) => {
   try {
     const { reason } = req.body
-    const batch = await QuestionUploadBatch.findById(req.params.id)
+    const batch = await QuestionUploadBatch.findOne({ _id: req.params.id, orgId: String(req.admin.orgId) })
     if (!batch) return res.status(404).json({ success: false, message: 'Upload batch not found' })
 
     const Model = getQuestionModel(batch.module, batch.subject)
@@ -82,7 +83,7 @@ const rejectUploadBatch = async (req, res) => {
     // Reversible: callable regardless of current status (also doubles as a "pull back" action on an approved batch)
     batch.status = 'rejected'
     batch.reviewedAt = new Date()
-    batch.reviewedBy = process.env.SUPER_ADMIN_EMAIL
+    batch.reviewedBy = req.admin.email
     batch.rejectionReason = reason
     batch.rejectionHistory.push({ reason, rejectedAt: new Date() })
     await batch.save()

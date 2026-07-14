@@ -235,6 +235,7 @@
                     "loadingQ":  "Đang tải câu hỏi…",
                     "loadingP":  "Đang tải gợi ý…",
                     "serverErr":  "Không thể tải. Máy chủ có đang chạy không?",
+                    "noQuestions":  "Chưa có câu hỏi nào. Vui lòng quay lại sau!",
                     "listen":  {
                                    "listen":  "Nghe",
                                    "playing":  "Đang phát…",

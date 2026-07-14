@@ -245,6 +245,7 @@
                     "loadingQ":  "Loading questions…",
                     "loadingP":  "Loading prompts…",
                     "serverErr":  "Could not load. Is the server running?",
+                    "noQuestions":  "No questions so far. Please check back later!",
                     "listen":  {
                                    "listen":  "Listen",
                                    "playing":  "Playing…",

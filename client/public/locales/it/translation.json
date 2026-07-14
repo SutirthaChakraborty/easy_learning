@@ -235,6 +235,7 @@
                     "loadingQ":  "Caricamento domande…",
                     "loadingP":  "Caricamento suggerimenti…",
                     "serverErr":  "Impossibile caricare. Il server è in esecuzione?",
+                    "noQuestions":  "Ancora nessuna domanda. Ricontrolla più tardi!",
                     "listen":  {
                                    "listen":  "Ascoltare",
                                    "playing":  "In riproduzione…",

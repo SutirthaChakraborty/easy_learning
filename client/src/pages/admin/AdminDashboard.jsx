@@ -5,6 +5,7 @@ import {
   MdSchool, MdFamilyRestroom, MdBarChart, MdLogout, MdAdd,
   MdDelete, MdBusiness, MdClose, MdCheckCircle, MdPending,
   MdInsights, MdEdit, MdSupportAgent, MdMenuBook, MdVisibility,
+  MdRateReview, MdThumbDown,
 } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 import { DESIGNATION_OPTIONS, ORG_TYPE_OPTIONS, designationLabel } from "../../utils/designations";
@@ -26,6 +27,7 @@ const NAV = [
   { key: "subjects", label: "Subjects", icon: <MdMenuBook /> },
   { key: "students", label: "Students", icon: <MdSchool /> },
   { key: "parents", label: "Parents", icon: <MdFamilyRestroom /> },
+  { key: "questions", label: "Question Review", icon: <MdRateReview /> },
   { key: "reports", label: "Reports", icon: <MdBarChart /> },
   { key: "chat", label: "Messages", icon: <MdSupportAgent /> },
 ];
@@ -110,6 +112,60 @@ function PerformanceModal({ data, onClose }) {
   );
 }
 
+// ── Question upload batch detail: parsed rows + row errors ───────────────────
+function QuestionBatchDetailModal({ batchId, get, onClose }) {
+  const [batch, setBatch] = useState(null);
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    get(`/questions/uploads/${batchId}`).then((d) => {
+      if (d.success) { setBatch(d.batch); setRows(d.rows); }
+    });
+  }, [batchId, get]);
+
+  const rowColumns = rows.length
+    ? Object.keys(rows[0])
+      .filter((k) => !["_id", "__v", "status", "submittedBy", "uploadBatchId", "createdAt", "updatedAt", "translations", "id"].includes(k))
+      .map((k) => ({ key: k, label: k, render: (r) => Array.isArray(r[k]) ? r[k].join(", ") : String(r[k] ?? "—") }))
+    : [];
+
+  return (
+    <div className={styles.modalOverlay} onClick={onClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.modalHeader}>
+          <h3>{batch ? batch.originalFilename : "Loading…"}</h3>
+          <button className={styles.modalClose} onClick={onClose}><MdClose /></button>
+        </div>
+        {!batch ? <p className={styles.empty}>Loading…</p> : (
+          <>
+            <p className={styles.mutedText}>
+              {batch.module} / {batch.subject} · {batch.submittedByName} ({batch.submittedByEmail})
+            </p>
+
+            {batch.rowErrors?.length > 0 && (
+              <>
+                <p className={styles.mutedText} style={{ marginTop: 16 }}>Skipped rows ({batch.rowErrors.length}):</p>
+                <DataTable
+                  columns={[
+                    { key: "row", label: "Row" },
+                    { key: "field", label: "Field" },
+                    { key: "message", label: "Error" },
+                  ]}
+                  rows={batch.rowErrors.map((e, i) => ({ _id: `err-${i}`, ...e }))}
+                  emptyMsg="No errors"
+                />
+              </>
+            )}
+
+            <p className={styles.mutedText} style={{ marginTop: 16 }}>Submitted questions ({rows.length}):</p>
+            <DataTable columns={rowColumns} rows={rows} emptyMsg="No rows found for this batch." />
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Chat panel ──────────────────────────────────────────────────────────────
 function ChatPanel({ messages, draft, onDraftChange, onSend, sending }) {
   return (
@@ -160,6 +216,10 @@ const AdminDashboard = () => {
   const [parents, setParents] = useState([]);
   const [tutorSearch, setTutorSearch] = useState("");
   const [studentSearch, setStudentSearch] = useState("");
+  const [questionStats, setQuestionStats] = useState({ totalUploads: 0, pendingUploads: 0, approvedUploads: 0, rejectedUploads: 0 });
+  const [questionBatches, setQuestionBatches] = useState([]);
+  const [questionFilterStatus, setQuestionFilterStatus] = useState("all");
+  const [viewQuestionBatchId, setViewQuestionBatchId] = useState(null);
   const [modal, setModal] = useState(null);
   const [modalLoading, setModalLoading] = useState(false);
   const [modalError, setModalError] = useState("");
@@ -215,6 +275,21 @@ const AdminDashboard = () => {
     if (d.success) { setChatMessages(d.messages); setChatUnread(0); }
   }, [get]);
 
+  const loadQuestionStats = useCallback(async () => {
+    const d = await get("/questions/uploads/stats");
+    if (d.success) setQuestionStats(d.stats);
+  }, [get]);
+
+  const loadQuestionBatches = useCallback(async (status) => {
+    const query = status && status !== "all" ? `?status=${status}` : "";
+    const d = await get(`/questions/uploads${query}`);
+    if (d.success) setQuestionBatches(d.batches);
+  }, [get]);
+
+  useEffect(() => {
+    loadQuestionStats();
+  }, [loadQuestionStats]);
+
   const loadSection = useCallback(async (sec) => {
     setSection(sec);
     setSelectedBatchId(null);
@@ -229,7 +304,8 @@ const AdminDashboard = () => {
     } else if (sec === "org") {
       const d = await get("/org"); if (d.success) setOrg(d.org);
     } else if (sec === "chat") loadChat();
-  }, [get, loadTutors, loadStudents, loadChat, tutorSearch, studentSearch]);
+    else if (sec === "questions") { loadQuestionStats(); loadQuestionBatches(questionFilterStatus); }
+  }, [get, loadTutors, loadStudents, loadChat, loadQuestionStats, loadQuestionBatches, tutorSearch, studentSearch, questionFilterStatus]);
 
   const loadBatches = useCallback(async () => {
     const d = await get("/batches"); if (d.success) setBatches(d.batches);
@@ -281,6 +357,17 @@ const AdminDashboard = () => {
     await del(`${path}/${id}`);
     loadStats();
     loadSection(section);
+  };
+
+  const handleQuestionFilterChange = (status) => {
+    setQuestionFilterStatus(status);
+    loadQuestionBatches(status);
+  };
+
+  const handleApproveQuestion = async (batch) => {
+    await post(`/questions/uploads/${batch._id}/approve`, {});
+    loadQuestionStats();
+    loadQuestionBatches(questionFilterStatus);
   };
 
   const openStudentPerformance = async (student) => {
@@ -358,6 +445,7 @@ const AdminDashboard = () => {
             >
               {n.icon} <span>{n.label}</span>
               {n.key === "chat" && chatUnread > 0 && <span className={styles.navDot} />}
+              {n.key === "questions" && questionStats.pendingUploads > 0 && <span className={styles.navDot} />}
             </button>
           ))}
         </nav>
@@ -664,6 +752,53 @@ const AdminDashboard = () => {
           </>
         )}
 
+        {/* ── Question Review ── */}
+        {section === "questions" && (
+          <>
+            <div className={styles.pageHeader}>
+              <h1>Question Review</h1>
+              <p>Approve or reject question uploads submitted by your teachers.</p>
+            </div>
+
+            <div className={styles.statsGrid}>
+              <StatCard label="Total Uploads" value={questionStats.totalUploads} icon={<MdRateReview />} color="#f7a825" />
+              <StatCard label="Pending Review" value={questionStats.pendingUploads} icon={<MdPending />} color="#4f8ef7" />
+              <StatCard label="Approved" value={questionStats.approvedUploads} icon={<MdCheckCircle />} color="#2ecc71" />
+              <StatCard label="Rejected" value={questionStats.rejectedUploads} icon={<MdThumbDown />} color="#e74c3c" />
+            </div>
+
+            <select value={questionFilterStatus} onChange={(e) => handleQuestionFilterChange(e.target.value)} style={{ marginBottom: 12 }}>
+              {["all", "pending", "approved", "rejected"].map((s) => (
+                <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>
+              ))}
+            </select>
+
+            <DataTable
+              columns={[
+                { key: "originalFilename", label: "File" },
+                { key: "module", label: "Module / Subject", render: (r) => `${r.module} / ${r.subject}` },
+                { key: "submittedByName", label: "Teacher", render: (r) => `${r.submittedByName} (${r.submittedByEmail})` },
+                { key: "rowCount", label: "Rows", render: (r) => `${r.rowCount}${r.skippedRowCount ? ` (+${r.skippedRowCount} skipped)` : ""}` },
+                { key: "status", label: "Status", render: (r) => <span className={`${styles.badge} ${{ approved: styles.badgeGreen, pending: styles.badgeYellow, rejected: styles.badgeRed }[r.status] || styles.badgeYellow}`}>{r.status}</span> },
+                { key: "createdAt", label: "Uploaded", render: (r) => new Date(r.createdAt).toLocaleDateString() },
+              ]}
+              rows={questionBatches}
+              actions={[
+                { icon: <MdVisibility />, title: "View Questions", onClick: (row) => setViewQuestionBatchId(row._id) },
+                { icon: <MdCheckCircle />, title: "Approve", onClick: handleApproveQuestion },
+                {
+                  icon: <MdThumbDown />, title: "Reject", variant: "delete", onClick: (row) => openModal({
+                    title: "Reject Question Upload",
+                    endpoint: `/questions/uploads/${row._id}/reject`,
+                    fields: [{ key: "reason", label: "Reason", required: true, minLength: 5, maxLength: 500 }],
+                  }),
+                },
+              ]}
+              emptyMsg={`No question uploads${questionFilterStatus !== "all" ? ` with status "${questionFilterStatus}"` : ""} found.`}
+            />
+          </>
+        )}
+
         {/* ── Reports ── */}
         {section === "reports" && (
           <>
@@ -713,6 +848,11 @@ const AdminDashboard = () => {
 
       {/* Performance modal */}
       {perfModal && <PerformanceModal data={perfModal} onClose={() => setPerfModal(null)} />}
+
+      {/* Question upload batch detail (parsed rows) */}
+      {viewQuestionBatchId && (
+        <QuestionBatchDetailModal batchId={viewQuestionBatchId} get={get} onClose={() => setViewQuestionBatchId(null)} />
+      )}
 
       {dashboardViewerStudent && (
         <StudentDashboardViewer

@@ -5,7 +5,6 @@ import {
   FaClock, FaChartBar, FaCog, FaSignOutAlt, FaTachometerAlt,
   FaGlobe, FaThumbsUp, FaThumbsDown, FaSearch, FaChalkboardTeacher,
   FaUserGraduate, FaChartLine, FaEnvelopeOpenText, FaComments,
-  FaFileExcel,
 } from "react-icons/fa";
 import { MdClose, MdInsights } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
@@ -19,7 +18,6 @@ const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").r
 const NAV = [
   { key: "overview", label: "Overview", icon: <FaTachometerAlt /> },
   { key: "organizations", label: "Organizations", icon: <FaBuilding /> },
-  { key: "question-uploads", label: "Question Review", icon: <FaFileExcel /> },
   { key: "chat", label: "Admin Chat", icon: <FaComments /> },
   { key: "contact", label: "Contact Messages", icon: <FaEnvelopeOpenText /> },
   { key: "reports", label: "Reports", icon: <FaChartBar /> },
@@ -320,63 +318,6 @@ function OrgDetailModal({ org, get, token, onClose }) {
   );
 }
 
-// ── Question upload batch detail: parsed rows + row errors ───────────────────
-function UploadBatchDetailModal({ batchId, get, onClose }) {
-  const [batch, setBatch] = useState(null);
-  const [rows, setRows] = useState([]);
-
-  useEffect(() => {
-    get(`/question-uploads/${batchId}`).then((d) => {
-      if (d.success) { setBatch(d.batch); setRows(d.rows); }
-    });
-  }, [batchId, get]);
-
-  const rowColumns = rows.length
-    ? Object.keys(rows[0])
-      .filter((k) => !["_id", "__v", "status", "submittedBy", "uploadBatchId", "createdAt", "updatedAt", "translations", "id"].includes(k))
-      .map((k) => ({ key: k, label: k, render: (r) => Array.isArray(r[k]) ? r[k].join(", ") : String(r[k] ?? "—") }))
-    : [];
-
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={`${styles.modal} ${styles.wideModal}`} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.modalHeader}>
-          <h3>{batch ? batch.originalFilename : "Loading…"}</h3>
-          <button className={styles.modalClose} onClick={onClose}><MdClose /></button>
-        </div>
-        {!batch ? <p className={styles.empty}>Loading…</p> : (
-          <>
-            <p className={styles.orgMeta}>
-              {batch.module} / {batch.subject} · {batch.submittedByName} ({batch.submittedByEmail}) · {batch.orgName}
-            </p>
-            <a href={batch.originalFileUrl} target="_blank" rel="noreferrer" className={styles.attachmentLink}>
-              Download original file
-            </a>
-
-            {batch.rowErrors?.length > 0 && (
-              <>
-                <p className={styles.orgMeta} style={{ marginTop: 16 }}>Skipped rows ({batch.rowErrors.length}):</p>
-                <DataTable
-                  columns={[
-                    { key: "row", label: "Row" },
-                    { key: "field", label: "Field" },
-                    { key: "message", label: "Error" },
-                  ]}
-                  rows={batch.rowErrors.map((e, i) => ({ _id: `err-${i}`, ...e }))}
-                  emptyMsg="No errors"
-                />
-              </>
-            )}
-
-            <p className={styles.orgMeta} style={{ marginTop: 16 }}>Submitted questions ({rows.length}):</p>
-            <DataTable columns={rowColumns} rows={rows} emptyMsg="No rows found for this batch." />
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
-
 // ── Admin chat: conversation list + thread ────────────────────────────────────
 function ChatSection({ conversations, activeConvo, messages, draft, onOpen, onDraftChange, onSend, sending }) {
   return (
@@ -435,11 +376,6 @@ const SuperAdminDashboard = () => {
   const [section, setSection] = useState("overview");
   const [stats, setStats] = useState({ totalOrgs: 0, pendingOrgs: 0, approvedOrgs: 0, rejectedOrgs: 0 });
   const [orgs, setOrgs] = useState([]);
-  const [uploadStats, setUploadStats] = useState({ totalUploads: 0, pendingUploads: 0, approvedUploads: 0, rejectedUploads: 0 });
-  const [uploadBatches, setUploadBatches] = useState([]);
-  const [uploadFilterStatus, setUploadFilterStatus] = useState("all");
-  const [rejectUploadTarget, setRejectUploadTarget] = useState(null);
-  const [detailBatchId, setDetailBatchId] = useState(null);
   const [settings, setSettings] = useState([]);
   const [messages, setMessages] = useState([]);
   const [messageFilter, setMessageFilter] = useState("all");
@@ -473,17 +409,6 @@ const SuperAdminDashboard = () => {
     if (d.success) setOrgs(d.orgs);
   }, [get]);
 
-  const loadUploadStats = useCallback(async () => {
-    const d = await get("/question-uploads/stats");
-    if (d.success) setUploadStats(d.stats);
-  }, [get]);
-
-  const loadUploadBatches = useCallback(async (status) => {
-    const query = status && status !== "all" ? `?status=${status}` : "";
-    const d = await get(`/question-uploads${query}`);
-    if (d.success) setUploadBatches(d.batches);
-  }, [get]);
-
   const loadSettings = useCallback(async () => {
     const d = await get("/settings");
     if (d.success) setSettings(d.settings);
@@ -507,8 +432,7 @@ const SuperAdminDashboard = () => {
 
   useEffect(() => {
     loadStats().finally(() => setLoading(false));
-    loadUploadStats();
-  }, [loadStats, loadUploadStats]);
+  }, [loadStats]);
 
   useEffect(() => {
     pollChatUnread();
@@ -519,11 +443,10 @@ const SuperAdminDashboard = () => {
   const handleSection = useCallback(async (sec) => {
     setSection(sec);
     if (sec === "organizations") loadOrgs(filterStatus);
-    else if (sec === "question-uploads") { loadUploadStats(); loadUploadBatches(uploadFilterStatus); }
     else if (sec === "settings") loadSettings();
     else if (sec === "contact") loadMessages(messageFilter);
     else if (sec === "chat") loadConversations();
-  }, [filterStatus, uploadFilterStatus, messageFilter, loadOrgs, loadUploadStats, loadUploadBatches, loadSettings, loadMessages, loadConversations]);
+  }, [filterStatus, messageFilter, loadOrgs, loadSettings, loadMessages, loadConversations]);
 
   const openConversation = async (convo) => {
     setActiveConvo(convo);
@@ -570,28 +493,6 @@ const SuperAdminDashboard = () => {
     setRejectTarget(null);
     loadStats();
     loadOrgs(filterStatus);
-  };
-
-  const handleUploadFilterChange = (status) => {
-    setUploadFilterStatus(status);
-    loadUploadBatches(status);
-  };
-
-  const handleApproveUpload = async (id) => {
-    setActionLoading(id + "_approve");
-    await put(`/question-uploads/${id}/approve`);
-    setActionLoading(null);
-    loadUploadStats();
-    loadUploadBatches(uploadFilterStatus);
-  };
-
-  const handleRejectUploadConfirm = async (reason) => {
-    setActionLoading("reject-upload");
-    await put(`/question-uploads/${rejectUploadTarget}/reject`, { reason });
-    setActionLoading(null);
-    setRejectUploadTarget(null);
-    loadUploadStats();
-    loadUploadBatches(uploadFilterStatus);
   };
 
   const handlePlanChange = async (id, plan) => {
@@ -641,7 +542,6 @@ const SuperAdminDashboard = () => {
             >
               {n.icon} <span>{n.label}</span>
               {n.key === "organizations" && stats.pendingOrgs > 0 && <span className={styles.navDot} />}
-              {n.key === "question-uploads" && uploadStats.pendingUploads > 0 && <span className={styles.navDot} />}
               {n.key === "chat" && chatUnreadTotal > 0 && <span className={styles.navDot} />}
             </button>
           ))}
@@ -797,96 +697,6 @@ const SuperAdminDashboard = () => {
                         <details className={styles.rejectionHistory}>
                           <summary>Rejection history ({org.rejectionHistory.length})</summary>
                           {org.rejectionHistory.map((h, i) => (
-                            <p key={i} className={styles.rejectedReason}>{new Date(h.rejectedAt).toLocaleString()}: {h.reason}</p>
-                          ))}
-                        </details>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </>
-        )}
-
-        {/* ── Question Upload Review ── */}
-        {section === "question-uploads" && (
-          <>
-            <div className={styles.pageHeader}>
-              <h1>Question Review</h1>
-              <div className={styles.filterRow}>
-                {["all", "pending", "approved", "rejected"].map((s) => (
-                  <button
-                    key={s}
-                    className={`${styles.filterBtn} ${uploadFilterStatus === s ? styles.filterActive : ""}`}
-                    onClick={() => handleUploadFilterChange(s)}
-                  >
-                    {s.charAt(0).toUpperCase() + s.slice(1)}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className={styles.statsGrid}>
-              <StatCard label="Total Uploads" value={uploadStats.totalUploads} icon={<FaFileExcel />} color="#f7a825" />
-              <StatCard label="Pending Review" value={uploadStats.pendingUploads} icon={<FaClock />} color="#4f8ef7" />
-              <StatCard label="Approved" value={uploadStats.approvedUploads} icon={<FaCheckCircle />} color="#2ecc71" />
-              <StatCard label="Rejected" value={uploadStats.rejectedUploads} icon={<FaTimesCircle />} color="#e74c3c" />
-            </div>
-
-            {uploadBatches.length === 0 ? (
-              <p className={styles.empty}>No question uploads {uploadFilterStatus !== "all" ? `with status "${uploadFilterStatus}"` : ""} found.</p>
-            ) : (
-              <div className={styles.orgList}>
-                {uploadBatches.map((b) => (
-                  <div key={b._id} className={styles.orgCard}>
-                    <div className={styles.orgCardLeft}>
-                      <FaFileExcel className={styles.orgIcon} />
-                      <div>
-                        <h3 className={styles.orgName}>{b.originalFilename}</h3>
-                        <p className={styles.orgMeta}>
-                          {b.module} / {b.subject} · {b.submittedByName} ({b.submittedByEmail}) · {b.orgName}
-                        </p>
-                        <p className={styles.orgAddr}>
-                          {b.rowCount} question{b.rowCount === 1 ? "" : "s"}{b.skippedRowCount ? `, ${b.skippedRowCount} skipped` : ""}
-                        </p>
-                        <p className={styles.orgDate}>Uploaded: {new Date(b.createdAt).toLocaleDateString()}</p>
-                      </div>
-                    </div>
-                    <div className={styles.orgCardRight}>
-                      <div className={styles.orgBadges}>
-                        <StatusBadge status={b.status} />
-                      </div>
-
-                      <div className={styles.orgActions}>
-                        {b.status !== "approved" && (
-                          <button
-                            className={styles.approveBtn}
-                            onClick={() => handleApproveUpload(b._id)}
-                            disabled={actionLoading === b._id + "_approve"}
-                          >
-                            <FaThumbsUp /> {actionLoading === b._id + "_approve" ? "…" : "Approve"}
-                          </button>
-                        )}
-                        {b.status !== "rejected" && (
-                          <button className={styles.rejectOrgBtn} onClick={() => setRejectUploadTarget(b._id)}>
-                            <FaThumbsDown /> Reject
-                          </button>
-                        )}
-                      </div>
-
-                      <button className={styles.viewDetailBtn} onClick={() => setDetailBatchId(b._id)}>
-                        <FaChartLine /> View Questions
-                      </button>
-
-                      {b.status === "rejected" && b.rejectionReason && (
-                        <p className={styles.rejectedReason}>Reason: {b.rejectionReason}</p>
-                      )}
-
-                      {b.rejectionHistory?.length > 0 && (
-                        <details className={styles.rejectionHistory}>
-                          <summary>Rejection history ({b.rejectionHistory.length})</summary>
-                          {b.rejectionHistory.map((h, i) => (
                             <p key={i} className={styles.rejectedReason}>{new Date(h.rejectedAt).toLocaleString()}: {h.reason}</p>
                           ))}
                         </details>
@@ -1065,20 +875,6 @@ const SuperAdminDashboard = () => {
         <OrgDetailModal org={detailOrg} get={get} token={token} onClose={() => setDetailOrg(null)} />
       )}
 
-      {/* Reject question upload modal */}
-      {rejectUploadTarget && (
-        <RejectModal
-          title="Reject Question Upload"
-          onConfirm={handleRejectUploadConfirm}
-          onClose={() => setRejectUploadTarget(null)}
-          loading={actionLoading === "reject-upload"}
-        />
-      )}
-
-      {/* Question upload batch detail (parsed rows) */}
-      {detailBatchId && (
-        <UploadBatchDetailModal batchId={detailBatchId} get={get} onClose={() => setDetailBatchId(null)} />
-      )}
     </div>
   );
 };
