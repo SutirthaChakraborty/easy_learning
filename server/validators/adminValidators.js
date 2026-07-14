@@ -114,6 +114,11 @@ const sendChatMessageValidator = [
     .isLength({ max: 2000 }).withMessage('Message is too long'),
 ]
 
+const rejectUploadValidator = [
+  body('reason').trim().notEmpty().withMessage('A rejection reason is required')
+    .isLength({ min: 5, max: 500 }).withMessage('Reason must be 5-500 characters'),
+]
+
 module.exports = {
   registerOrgValidator, updateIdentityValidator,
   createTutorValidator, createStudentValidator, createParentValidator,
@@ -122,4 +127,5 @@ module.exports = {
   addStudentsToBatchValidator, addSubjectToBatchValidator, assignTeacherValidator,
   scheduleSlotValidator, checkConflictValidator,
   sendChatMessageValidator,
+  rejectUploadValidator,
 }

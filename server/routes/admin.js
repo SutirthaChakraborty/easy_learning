@@ -12,6 +12,7 @@ const {
   addStudentsToBatchValidator, addSubjectToBatchValidator, assignTeacherValidator,
   scheduleSlotValidator, checkConflictValidator,
   sendChatMessageValidator,
+  rejectUploadValidator,
 } = require('../validators/adminValidators')
 const {
   registerOrg, getOrg,
@@ -37,6 +38,9 @@ const {
   getRounds:       getStudentDashRounds,
 } = require('../controllers/dashboardController')
 const { getMyThread, sendMyMessage, getMyUnreadCount } = require('../controllers/chatController')
+const {
+  getUploadStats, getUploadBatches, getUploadBatchDetail, approveUploadBatch, rejectUploadBatch,
+} = require('../controllers/adminQuestionController')
 
 router.use(adminAuth)
 
@@ -94,5 +98,11 @@ router.get('/students/:id/dashboard/rounds',        adminStudentAccess, getStude
 
 router.get('/parents', getParents)
 router.post('/parents', createParentValidator, validate, createParent)
+
+router.get('/questions/uploads/stats', getUploadStats)
+router.get('/questions/uploads', getUploadBatches)
+router.get('/questions/uploads/:id', getUploadBatchDetail)
+router.post('/questions/uploads/:id/approve', approveUploadBatch)
+router.post('/questions/uploads/:id/reject', rejectUploadValidator, validate, rejectUploadBatch)
 
 module.exports = router

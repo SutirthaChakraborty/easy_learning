@@ -5,7 +5,6 @@ const validate = require('../middleware/validate')
 const { superadminStudentAccess } = require('../middleware/studentDashboardAccess')
 const {
   rejectOrgValidator, subscriptionValidator, settingValidator, respondContactValidator, sendChatMessageValidator,
-  rejectUploadValidator,
 } = require('../validators/superadminValidators')
 const {
   getOrganizations, approveOrg, rejectOrg, updateSubscription,
@@ -13,9 +12,6 @@ const {
   getStats, getSettings, upsertSetting,
   getContactMessages, respondToContact,
 } = require('../controllers/superadminController')
-const {
-  getUploadStats, getUploadBatches, getUploadBatchDetail, approveUploadBatch, rejectUploadBatch,
-} = require('../controllers/questionReviewController')
 const {
   getStats:        getStudentDashStats,
   getActivity:     getStudentDashActivity,
@@ -57,11 +53,5 @@ router.post('/settings', settingValidator, validate, upsertSetting)
 
 router.get('/contact', getContactMessages)
 router.put('/contact/:id', respondContactValidator, validate, respondToContact)
-
-router.get('/question-uploads/stats', getUploadStats)
-router.get('/question-uploads', getUploadBatches)
-router.get('/question-uploads/:id', getUploadBatchDetail)
-router.put('/question-uploads/:id/approve', approveUploadBatch)
-router.put('/question-uploads/:id/reject', rejectUploadValidator, validate, rejectUploadBatch)
 
 module.exports = router
