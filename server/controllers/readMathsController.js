@@ -1,5 +1,6 @@
 const ReadMaths = require('../models/ReadMaths')
 const seedData = require('../data/read_maths.json')
+const { buildQuestionVisibilityFilter } = require('../utils/questionVisibility')
 
 const applyTranslation = (doc, lang) => {
   const obj = doc.toObject ? doc.toObject() : { ...doc }
@@ -19,7 +20,8 @@ const applyTranslation = (doc, lang) => {
 const getAllQuestions = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const questions = await ReadMaths.find({ status: 'approved' }).sort({ id: 1 })
+    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'read', 'maths')
+    const questions = await ReadMaths.find({ status: 'approved', ...visibility }).sort({ id: 1 })
     const data = questions.map(q => applyTranslation(q, lang))
     res.json({ success: true, count: data.length, data })
   } catch (err) {
@@ -31,7 +33,8 @@ const getAllQuestions = async (req, res) => {
 const getQuestionById = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const question = await ReadMaths.findOne({ id: Number(req.params.id), status: 'approved' })
+    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'read', 'maths')
+    const question = await ReadMaths.findOne({ id: Number(req.params.id), status: 'approved', ...visibility })
     if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
     res.json({ success: true, data: applyTranslation(question, lang) })
   } catch (err) {

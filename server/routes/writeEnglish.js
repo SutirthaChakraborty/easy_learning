@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const { dashboardAuth } = require('../middleware/authMiddleware')
 const {
   getAllItems,
   getItemById,
@@ -8,8 +9,8 @@ const {
 } = require('../controllers/writeEnglishController')
 
 router.post('/seed', seedItems)
-router.get('/', getAllItems)
-router.get('/:id', getItemById)
+router.get('/', dashboardAuth, getAllItems)
+router.get('/:id', dashboardAuth, getItemById)
 router.delete('/all', deleteAllItems)
 
 module.exports = router

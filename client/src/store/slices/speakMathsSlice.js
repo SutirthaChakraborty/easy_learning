@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { authHeaders } from '../../utils/authHeaders'
 
 export const fetchMathsSpeakPrompts = createAsyncThunk(
   'speakMaths/fetchAll',
   async (lang = 'en', { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/maths?lang=${lang}`, { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/maths?lang=${lang}`, { credentials: 'include', headers: authHeaders() })
     if (!res.ok) return rejectWithValue('Failed to fetch maths speaking prompts')
     const json = await res.json()
     return json.data

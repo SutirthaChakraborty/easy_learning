@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { authHeaders } from '../../utils/authHeaders'
 
 export const fetchScienceSpeakPrompts = createAsyncThunk(
   'speakScience/fetchAll',
   async (lang = 'en', { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/science?lang=${lang}`, { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/science?lang=${lang}`, { credentials: 'include', headers: authHeaders() })
     if (!res.ok) return rejectWithValue('Failed to fetch science speaking prompts')
     const json = await res.json()
     return json.data

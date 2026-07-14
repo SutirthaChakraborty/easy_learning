@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { authHeaders } from '../../utils/authHeaders'
 
 export const fetchMathsQuestions = createAsyncThunk(
   'listenMaths/fetchAll',
   async (lang = 'en', { rejectWithValue }) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/listen/maths?lang=${lang}`, { credentials: 'include' })
+    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/listen/maths?lang=${lang}`, { credentials: 'include', headers: authHeaders() })
     if (!res.ok) return rejectWithValue('Failed to fetch maths questions')
     const json = await res.json()
     return json.data
