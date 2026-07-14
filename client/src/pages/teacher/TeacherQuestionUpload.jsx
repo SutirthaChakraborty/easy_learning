@@ -95,7 +95,7 @@ export default function TeacherQuestionUpload({ get, postForm, token }) {
       <div className={styles.pageHeader}>
         <div>
           <h1>Upload Questions</h1>
-          <p>Submit new questions for review. A super admin approves them before they appear to students.</p>
+          <p>Submit new questions for review. Your org admin approves them before they appear to students.</p>
         </div>
       </div>
 

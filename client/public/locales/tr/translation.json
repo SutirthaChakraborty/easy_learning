@@ -235,6 +235,7 @@
                     "loadingQ":  "Sorular yükleniyor…",
                     "loadingP":  "İpuçları yükleniyor…",
                     "serverErr":  "Yüklenemedi. Sunucu çalışıyor mu?",
+                    "noQuestions":  "Şimdilik hiç soru yok. Lütfen daha sonra tekrar kontrol edin!",
                     "listen":  {
                                    "listen":  "Dinle",
                                    "playing":  "Oynatılıyor…",

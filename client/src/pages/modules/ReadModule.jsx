@@ -218,6 +218,20 @@ const ReadModule = () => {
     );
   }
 
+  if (data.length === 0) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.bgOverlay} />
+        <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noQuestions")}</p>
+          <button className={styles.backBtn} onClick={() => { playSlide(); navigate(`/subject/${subject}`); }}>
+            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.back")}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (!story) return null;
 
   const isCorrect = selected === story.answer;

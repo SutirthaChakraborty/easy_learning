@@ -235,6 +235,7 @@
                     "loadingQ":  "Memuat pertanyaan…",
                     "loadingP":  "Memuat petunjuk…",
                     "serverErr":  "Tidak bisa memuat. Apakah server berjalan?",
+                    "noQuestions":  "Belum ada soal sejauh ini. Silakan periksa lagi nanti!",
                     "listen":  {
                                    "listen":  "Mendengarkan",
                                    "playing":  "Memutar…",

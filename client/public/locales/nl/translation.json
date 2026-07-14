@@ -235,6 +235,7 @@
                     "loadingQ":  "Vragen laden…",
                     "loadingP":  "Tips laden…",
                     "serverErr":  "Kan niet laden. Werkt de server?",
+                    "noQuestions":  "Nog geen vragen. Kom later nog eens terug!",
                     "listen":  {
                                    "listen":  "Luisteren",
                                    "playing":  "Bezig…",
