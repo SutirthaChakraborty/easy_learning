@@ -1,5 +1,6 @@
 const WriteScience = require('../models/WriteScience')
 const seedData = require('../data/write_science.json')
+const { buildQuestionVisibilityFilter } = require('../utils/questionVisibility')
 
 const applyTranslation = (doc, lang) => {
   const obj = doc.toObject ? doc.toObject() : { ...doc }
@@ -14,7 +15,8 @@ const applyTranslation = (doc, lang) => {
 const getAllQuestions = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const filter = { status: 'approved', ...(req.query.level ? { level: Number(req.query.level) } : {}) }
+    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'write', 'science')
+    const filter = { status: 'approved', ...visibility, ...(req.query.level ? { level: Number(req.query.level) } : {}) }
     const questions = await WriteScience.find(filter).sort({ id: 1 })
     const data = questions.map(q => applyTranslation(q, lang))
     res.json({ success: true, count: data.length, data })
@@ -27,7 +29,8 @@ const getAllQuestions = async (req, res) => {
 const getQuestionById = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const question = await WriteScience.findOne({ id: Number(req.params.id), status: 'approved' })
+    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'write', 'science')
+    const question = await WriteScience.findOne({ id: Number(req.params.id), status: 'approved', ...visibility })
     if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
     res.json({ success: true, data: applyTranslation(question, lang) })
   } catch (err) {

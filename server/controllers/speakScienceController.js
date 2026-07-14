@@ -1,5 +1,6 @@
 const SpeakScience = require('../models/SpeakScience')
 const seedData = require('../data/speak_science.json')
+const { buildQuestionVisibilityFilter } = require('../utils/questionVisibility')
 
 const applyTranslation = (doc, lang) => {
   const obj = doc.toObject ? doc.toObject() : { ...doc }
@@ -14,7 +15,8 @@ const applyTranslation = (doc, lang) => {
 const getAllPrompts = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const filter = { status: 'approved', ...(req.query.category ? { category: req.query.category } : {}) }
+    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'science')
+    const filter = { status: 'approved', ...visibility, ...(req.query.category ? { category: req.query.category } : {}) }
     const prompts = await SpeakScience.find(filter).sort({ id: 1 })
     const data = prompts.map(p => applyTranslation(p, lang))
     res.json({ success: true, count: data.length, data })
@@ -27,7 +29,8 @@ const getAllPrompts = async (req, res) => {
 const getPromptById = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const prompt = await SpeakScience.findOne({ id: Number(req.params.id), status: 'approved' })
+    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'science')
+    const prompt = await SpeakScience.findOne({ id: Number(req.params.id), status: 'approved', ...visibility })
     if (!prompt) return res.status(404).json({ success: false, message: 'Prompt not found' })
     res.json({ success: true, data: applyTranslation(prompt, lang) })
   } catch (err) {

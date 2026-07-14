@@ -11,6 +11,11 @@ const schema = new mongoose.Schema({
   orgId: { type: String, required: true },
   orgName: { type: String, required: true },
 
+  // Class/roster Batch ids (adminDb) this upload is targeted at. Questions inserted
+  // under this upload are only visible to students on one of these batches — see
+  // server/utils/questionVisibility.js.
+  batchIds: { type: [String], default: [] },
+
   originalFilename: { type: String, required: true },
   originalFileUrl: { type: String, required: true },
 

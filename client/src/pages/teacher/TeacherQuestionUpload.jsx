@@ -24,13 +24,26 @@ export default function TeacherQuestionUpload({ get, postForm, token }) {
   const [result, setResult] = useState(null);
   const [error, setError] = useState("");
   const [uploads, setUploads] = useState([]);
+  const [myBatches, setMyBatches] = useState([]);
+  const [selectedBatchIds, setSelectedBatchIds] = useState([]);
 
   const loadUploads = useCallback(async () => {
     const d = await get("/questions/uploads");
     if (d.success) setUploads(d.batches);
   }, [get]);
 
-  useEffect(() => { loadUploads(); }, [loadUploads]);
+  const loadBatches = useCallback(async () => {
+    const d = await get("/batches");
+    if (d.success) setMyBatches(d.batches);
+  }, [get]);
+
+  useEffect(() => { loadUploads(); loadBatches(); }, [loadUploads, loadBatches]);
+
+  const batchNameById = (id) => myBatches.find((b) => b._id === id)?.name || id;
+
+  const toggleBatch = (id) => {
+    setSelectedBatchIds((prev) => prev.includes(id) ? prev.filter((b) => b !== id) : [...prev, id]);
+  };
 
   const handleDownloadTemplate = async () => {
     setDownloading(true);
@@ -59,6 +72,7 @@ export default function TeacherQuestionUpload({ get, postForm, token }) {
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!file) { setError("Please choose a .xlsx file"); return; }
+    if (selectedBatchIds.length === 0) { setError("Select at least one batch these questions should be visible to"); return; }
     setUploading(true);
     setError("");
     setResult(null);
@@ -66,11 +80,13 @@ export default function TeacherQuestionUpload({ get, postForm, token }) {
     formData.append("module", module);
     formData.append("subject", subject);
     formData.append("file", file);
+    formData.append("batchIds", JSON.stringify(selectedBatchIds));
     const d = await postForm("/questions/upload", formData);
     setUploading(false);
     if (!d.success) { setError(d.message || "Upload failed"); if (d.rowErrors) setResult(d); return; }
     setResult(d);
     setFile(null);
+    setSelectedBatchIds([]);
     loadUploads();
   };
 
@@ -104,6 +120,26 @@ export default function TeacherQuestionUpload({ get, postForm, token }) {
         <div className={styles.modalField}>
           <label>Filled template (.xlsx)</label>
           <input type="file" accept=".xlsx" onChange={(e) => setFile(e.target.files?.[0] || null)} />
+        </div>
+
+        <div className={styles.modalField}>
+          <label>Visible to batch(es)</label>
+          {myBatches.length === 0 ? (
+            <span>You have no assigned batches yet — ask your admin to add you to one.</span>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+              {myBatches.map((b) => (
+                <label key={b._id} style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: "normal" }}>
+                  <input
+                    type="checkbox"
+                    checked={selectedBatchIds.includes(b._id)}
+                    onChange={() => toggleBatch(b._id)}
+                  />
+                  {b.name}
+                </label>
+              ))}
+            </div>
+          )}
         </div>
 
         {error && <span className={styles.fieldError}>{error}</span>}
@@ -140,6 +176,7 @@ export default function TeacherQuestionUpload({ get, postForm, token }) {
       <DataTable
         columns={[
           { key: "module", label: "Module / Subject", render: (r) => `${cap(r.module)} / ${cap(r.subject)}` },
+          { key: "batches", label: "Batches", render: (r) => (r.batchIds || []).map(batchNameById).join(", ") || "—" },
           { key: "originalFilename", label: "File" },
           { key: "rowCount", label: "Rows", render: (r) => `${r.rowCount}${r.skippedRowCount ? ` (+${r.skippedRowCount} skipped)` : ""}` },
           { key: "status", label: "Status", render: (r) => <StatusBadge status={r.status} /> },

@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const { dashboardAuth } = require('../middleware/authMiddleware')
 const {
   getAllPrompts,
   getPromptById,
@@ -8,8 +9,8 @@ const {
 } = require('../controllers/speakMathsController')
 
 router.post('/seed', seedPrompts)
-router.get('/', getAllPrompts)
-router.get('/:id', getPromptById)
+router.get('/', dashboardAuth, getAllPrompts)
+router.get('/:id', dashboardAuth, getPromptById)
 router.delete('/all', deleteAllPrompts)
 
 module.exports = router

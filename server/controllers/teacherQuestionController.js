@@ -2,6 +2,7 @@ const path = require('path')
 const ExcelJS = require('exceljs')
 const Counter = require('../models/Counter')
 const Organization = require('../models/admin/Organization')
+const Batch = require('../models/admin/Batch')
 const QuestionUploadBatch = require('../models/superadmin/QuestionUploadBatch')
 const { getQuestionModel, MODULES, SUBJECTS } = require('../utils/questionModels')
 const { validateRow } = require('../utils/questionValidation')
@@ -42,6 +43,17 @@ const uploadQuestions = async (req, res) => {
     const Model = getQuestionModel(module, subject)
     if (!Model) return res.status(400).json({ success: false, message: 'Invalid module or subject' })
     if (!req.file) return res.status(400).json({ success: false, message: 'An .xlsx file is required' })
+
+    // batchIds is validated/parsed into an array by uploadQuestionsValidator. Only allow
+    // targeting batches this teacher is actually assigned to, in their own org.
+    const requestedBatchIds = req.body.batchIds
+    const assignedBatches = await Batch.find({
+      _id: { $in: requestedBatchIds }, orgId: req.teacher.orgId, tutorIds: req.teacher.id,
+    }).select('_id')
+    if (assignedBatches.length !== requestedBatchIds.length) {
+      return res.status(400).json({ success: false, message: 'One or more selected batches are not assigned to you' })
+    }
+    const batchIds = assignedBatches.map((b) => b._id.toString())
 
     const workbook = new ExcelJS.Workbook()
     await workbook.xlsx.load(req.file.buffer)
@@ -100,6 +112,7 @@ const uploadQuestions = async (req, res) => {
       submittedByEmail: req.teacher.email,
       orgId: req.teacher.orgId,
       orgName: org?.name || '',
+      batchIds,
       originalFilename: req.file.originalname,
       originalFileUrl,
       rowCount: validRows.length,
