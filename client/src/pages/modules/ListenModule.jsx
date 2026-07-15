@@ -122,10 +122,13 @@ const ListenModule = () => {
 
   const scienceQuestions = useSelector((state) => state.listenScience.questions);
   const scienceStatus    = useSelector((state) => state.listenScience.status);
+  const scienceNoOrg     = useSelector((state) => state.listenScience.noOrgQuestions);
   const mathsQuestions   = useSelector((state) => state.listenMaths.questions);
   const mathsStatus      = useSelector((state) => state.listenMaths.status);
+  const mathsNoOrg       = useSelector((state) => state.listenMaths.noOrgQuestions);
   const englishQuestions = useSelector((state) => state.listenEnglish.questions);
   const englishStatus    = useSelector((state) => state.listenEnglish.status);
+  const englishNoOrg     = useSelector((state) => state.listenEnglish.noOrgQuestions);
 
   const isScience = subject === "science";
   const isMaths   = subject === "maths";
@@ -133,6 +136,7 @@ const ListenModule = () => {
 
   const data         = isScience ? scienceQuestions : isMaths ? mathsQuestions : isEnglish ? englishQuestions : (lessons[subject]?.listen || []);
   const activeStatus = isScience ? scienceStatus    : isMaths ? mathsStatus    : isEnglish ? englishStatus    : "succeeded";
+  const noOrgQuestions = isScience ? scienceNoOrg   : isMaths ? mathsNoOrg     : isEnglish ? englishNoOrg     : false;
 
   // Initial fetch
   useEffect(() => {
@@ -440,6 +444,20 @@ const ListenModule = () => {
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.serverErr")}</p>
           <button className={styles.backBtn} onClick={() => dispatch(retry())}>{t("modules.retry")}</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (data.length === 0 && noOrgQuestions) {
+    return (
+      <div className={styles.page}>
+        <div className={styles.bgOverlay} />
+        <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
+          <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noOrgQuestions")}</p>
+          <button className={styles.backBtn} onClick={() => { playSlide(); navigate(`/subject/${subject}`); }}>
+            <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.back")}
+          </button>
         </div>
       </div>
     );

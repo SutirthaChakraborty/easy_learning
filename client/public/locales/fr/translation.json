@@ -236,6 +236,7 @@
     "loadingP": "Chargement des invites…",
     "serverErr": "Impossible de charger. Le serveur est-il en marche?",
     "noQuestions": "Aucune question pour l'instant. Reviens plus tard !",
+    "noOrgQuestions": "Aucune question n'a encore été mise en ligne par l'établissement.",
     "listen": {
       "listen": "Écouter",
       "playing": "En cours…",

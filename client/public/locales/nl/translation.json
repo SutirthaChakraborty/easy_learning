@@ -236,6 +236,7 @@
                     "loadingP":  "Tips laden…",
                     "serverErr":  "Kan niet laden. Werkt de server?",
                     "noQuestions":  "Nog geen vragen. Kom later nog eens terug!",
+                    "noOrgQuestions":  "Er zijn nog geen vragen geüpload door de organisatie.",
                     "listen":  {
                                    "listen":  "Luisteren",
                                    "playing":  "Bezig…",

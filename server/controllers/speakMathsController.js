@@ -15,10 +15,10 @@ const applyTranslation = (doc, lang) => {
 const getAllPrompts = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'maths')
+    const { filter: visibility, noOrgQuestions } = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'maths')
     const prompts = await SpeakMaths.find({ status: 'approved', ...visibility }).sort({ id: 1 })
     const data = prompts.map(p => applyTranslation(p, lang))
-    res.json({ success: true, count: data.length, data })
+    res.json({ success: true, count: data.length, data, noOrgQuestions })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
@@ -28,7 +28,7 @@ const getAllPrompts = async (req, res) => {
 const getPromptById = async (req, res) => {
   try {
     const lang = req.query.lang || 'en'
-    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'maths')
+    const { filter: visibility } = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'maths')
     const prompt = await SpeakMaths.findOne({ id: Number(req.params.id), status: 'approved', ...visibility })
     if (!prompt) return res.status(404).json({ success: false, message: 'Prompt not found' })
     res.json({ success: true, data: applyTranslation(prompt, lang) })
