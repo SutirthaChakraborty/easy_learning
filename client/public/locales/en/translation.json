@@ -246,6 +246,7 @@
                     "loadingP":  "Loading prompts…",
                     "serverErr":  "Could not load. Is the server running?",
                     "noQuestions":  "No questions so far. Please check back later!",
+                    "noOrgQuestions":  "There is no questions uploaded from the organization so far.",
                     "listen":  {
                                    "listen":  "Listen",
                                    "playing":  "Playing…",

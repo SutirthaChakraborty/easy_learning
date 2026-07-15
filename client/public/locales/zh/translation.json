@@ -236,6 +236,7 @@
                     "loadingP":  "加载提示中…",
                     "serverErr":  "无法加载。服务器是否运行中？",
                     "noQuestions":  "目前还没有问题。请稍后再来查看！",
+                    "noOrgQuestions":  "该机构目前还没有上传任何问题。",
                     "listen":  {
                                    "listen":  "听",
                                    "playing":  "播放中…",

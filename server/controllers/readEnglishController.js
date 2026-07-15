@@ -5,9 +5,9 @@ const { buildQuestionVisibilityFilter } = require('../utils/questionVisibility')
 // GET /api/read/english
 const getAllQuestions = async (req, res) => {
   try {
-    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'read', 'english')
+    const { filter: visibility, noOrgQuestions } = await buildQuestionVisibilityFilter(req.user.email, 'read', 'english')
     const questions = await ReadEnglish.find({ status: 'approved', ...visibility }).sort({ id: 1 })
-    res.json({ success: true, count: questions.length, data: questions })
+    res.json({ success: true, count: questions.length, data: questions, noOrgQuestions })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
@@ -16,7 +16,7 @@ const getAllQuestions = async (req, res) => {
 // GET /api/read/english/:id
 const getQuestionById = async (req, res) => {
   try {
-    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'read', 'english')
+    const { filter: visibility } = await buildQuestionVisibilityFilter(req.user.email, 'read', 'english')
     const question = await ReadEnglish.findOne({ id: Number(req.params.id), status: 'approved', ...visibility })
     if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
     res.json({ success: true, data: question })

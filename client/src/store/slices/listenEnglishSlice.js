@@ -7,7 +7,7 @@ export const fetchEnglishQuestions = createAsyncThunk(
     const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/listen/english`, { credentials: 'include', headers: authHeaders() })
     if (!res.ok) return rejectWithValue('Failed to fetch english listening questions')
     const json = await res.json()
-    return json.data
+    return { data: json.data, noOrgQuestions: json.noOrgQuestions }
   }
 )
 
@@ -17,6 +17,7 @@ const listenEnglishSlice = createSlice({
     questions: [],
     status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
     error: null,
+    noOrgQuestions: false,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -27,8 +28,9 @@ const listenEnglishSlice = createSlice({
       })
       .addCase(fetchEnglishQuestions.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        const arr = action.payload ? [...action.payload].sort(() => Math.random() - 0.5) : []
+        const arr = action.payload.data ? [...action.payload.data].sort(() => Math.random() - 0.5) : []
         state.questions = arr.slice(0, Math.min(10, arr.length))
+        state.noOrgQuestions = action.payload.noOrgQuestions
       })
       .addCase(fetchEnglishQuestions.rejected, (state, action) => {
         state.status = 'failed'

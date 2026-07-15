@@ -236,6 +236,7 @@
                     "loadingP":  "İpuçları yükleniyor…",
                     "serverErr":  "Yüklenemedi. Sunucu çalışıyor mu?",
                     "noQuestions":  "Şimdilik hiç soru yok. Lütfen daha sonra tekrar kontrol edin!",
+                    "noOrgQuestions":  "Kurum tarafından henüz soru yüklenmedi.",
                     "listen":  {
                                    "listen":  "Dinle",
                                    "playing":  "Oynatılıyor…",

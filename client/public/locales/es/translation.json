@@ -236,6 +236,7 @@
                     "loadingP":  "Cargando indicaciones…",
                     "serverErr":  "No se pudo cargar. ¿El servidor está en funcionamiento?",
                     "noQuestions":  "Todavía no hay preguntas. ¡Vuelve a comprobarlo más tarde!",
+                    "noOrgQuestions":  "Todavía no se han subido preguntas de la organización.",
                     "listen":  {
                                    "listen":  "Escuchar",
                                    "playing":  "Reproduciendo…",

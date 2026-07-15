@@ -236,6 +236,7 @@
     "loadingP": "Hinweise werden geladen…",
     "serverErr": "Konnte nicht geladen werden. Läuft der Server?",
     "noQuestions": "Bisher keine Fragen. Bitte schau später noch einmal vorbei!",
+    "noOrgQuestions": "Es wurden bisher keine Fragen von der Organisation hochgeladen.",
     "listen": {
       "listen": "Zuhören",
       "playing": "Läuft…",

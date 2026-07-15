@@ -5,9 +5,9 @@ const { buildQuestionVisibilityFilter } = require('../utils/questionVisibility')
 // GET /api/speak/english  — all prompts
 const getAllPrompts = async (req, res) => {
   try {
-    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'english')
+    const { filter: visibility, noOrgQuestions } = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'english')
     const prompts = await SpeakEnglish.find({ status: 'approved', ...visibility }).sort({ id: 1 })
-    res.json({ success: true, count: prompts.length, data: prompts })
+    res.json({ success: true, count: prompts.length, data: prompts, noOrgQuestions })
   } catch (err) {
     res.status(500).json({ success: false, message: err.message })
   }
@@ -16,7 +16,7 @@ const getAllPrompts = async (req, res) => {
 // GET /api/speak/english/:id
 const getPromptById = async (req, res) => {
   try {
-    const visibility = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'english')
+    const { filter: visibility } = await buildQuestionVisibilityFilter(req.user.email, 'speak', 'english')
     const prompt = await SpeakEnglish.findOne({ id: Number(req.params.id), status: 'approved', ...visibility })
     if (!prompt) return res.status(404).json({ success: false, message: 'Prompt not found' })
     res.json({ success: true, data: prompt })

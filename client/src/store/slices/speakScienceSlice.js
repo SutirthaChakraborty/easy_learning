@@ -7,7 +7,7 @@ export const fetchScienceSpeakPrompts = createAsyncThunk(
     const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/speak/science?lang=${lang}`, { credentials: 'include', headers: authHeaders() })
     if (!res.ok) return rejectWithValue('Failed to fetch science speaking prompts')
     const json = await res.json()
-    return json.data
+    return { data: json.data, noOrgQuestions: json.noOrgQuestions }
   }
 )
 
@@ -17,12 +17,14 @@ const speakScienceSlice = createSlice({
     prompts: [],
     status: 'idle',
     error: null,
+    noOrgQuestions: false,
   },
   reducers: {
     resetScienceSpeakPrompts: (state) => {
       state.prompts = []
       state.status = 'idle'
       state.error = null
+      state.noOrgQuestions = false
     }
   },
   extraReducers: (builder) => {
@@ -33,8 +35,9 @@ const speakScienceSlice = createSlice({
       })
       .addCase(fetchScienceSpeakPrompts.fulfilled, (state, action) => {
         state.status = 'succeeded'
-        const arr = action.payload ? [...action.payload].sort(() => Math.random() - 0.5) : []
+        const arr = action.payload.data ? [...action.payload.data].sort(() => Math.random() - 0.5) : []
         state.prompts = arr.slice(0, Math.min(10, arr.length))
+        state.noOrgQuestions = action.payload.noOrgQuestions
       })
       .addCase(fetchScienceSpeakPrompts.rejected, (state, action) => {
         state.status = 'failed'

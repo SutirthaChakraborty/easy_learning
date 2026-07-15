@@ -236,6 +236,7 @@
                     "loadingP":  "Memuat petunjuk…",
                     "serverErr":  "Tidak bisa memuat. Apakah server berjalan?",
                     "noQuestions":  "Belum ada soal sejauh ini. Silakan periksa lagi nanti!",
+                    "noOrgQuestions":  "Belum ada soal yang diunggah oleh organisasi sejauh ini.",
                     "listen":  {
                                    "listen":  "Mendengarkan",
                                    "playing":  "Memutar…",
