@@ -226,7 +226,8 @@
   border: 3px solid #dedc5c;
   z-index: 200;
   pointer-events: none;
-  white-space: nowrap;
+  max-width: min(90vw, 480px);
+  text-align: center;
 }
 
 /* ─── TABLET ─── */

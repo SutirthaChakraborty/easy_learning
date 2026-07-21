@@ -1,11 +1,17 @@
 .wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
   margin-bottom: 14px;
 }
 
 .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 40px;
   padding: 7px 18px;
   border-radius: 20px;
   border: 2px solid rgba(255, 255, 255, 0.25);
@@ -35,4 +41,15 @@
   border-color: transparent;
   color: white;
   box-shadow: 0 4px 12px rgba(231, 76, 60, 0.45);
+}
+
+@media (max-width: 360px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
 }

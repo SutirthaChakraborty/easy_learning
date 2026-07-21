@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaChalkboardTeacher } from "react-icons/fa";
-import { MdLogout, MdGroups, MdVisibility, MdUploadFile } from "react-icons/md";
+import { MdLogout, MdGroups, MdVisibility, MdUploadFile, MdMenu, MdClose } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 import DataTable from "../../components/Admin/DataTable";
 import TeacherBatchDetail from "./TeacherBatchDetail";
@@ -57,6 +57,7 @@ const TeacherDashboard = () => {
   const { get, post, postForm, del } = useTeacherApi(token);
 
   const [section, setSection] = useState("batches");
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [batches, setBatches] = useState([]);
   const [selectedBatchId, setSelectedBatchId] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -82,10 +83,36 @@ const TeacherDashboard = () => {
 
   return (
     <div className={styles.layout}>
-      <aside className={styles.sidebar}>
+      {/* Mobile top bar */}
+      <div className={styles.mobileTopBar}>
+        <button
+          className={styles.hamburgerBtn}
+          onClick={() => setMobileNavOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          <MdMenu />
+        </button>
+        <span className={styles.mobileTopBarTitle}>
+          <FaChalkboardTeacher /> Teacher Panel
+        </span>
+      </div>
+
+      {/* Backdrop for mobile drawer */}
+      {mobileNavOpen && (
+        <div className={styles.sidebarBackdrop} onClick={() => setMobileNavOpen(false)} />
+      )}
+
+      <aside className={`${styles.sidebar} ${mobileNavOpen ? styles.sidebarOpen : ""}`}>
         <div className={styles.sidebarHeader}>
           <FaChalkboardTeacher className={styles.sidebarLogo} />
           <span>Teacher Panel</span>
+          <button
+            className={styles.sidebarCloseBtn}
+            onClick={() => setMobileNavOpen(false)}
+            aria-label="Close menu"
+          >
+            <MdClose />
+          </button>
         </div>
         <div className={styles.adminInfo}>
           {teacherUser?.name && <p className={styles.adminName}>{teacherUser.name}</p>}
@@ -96,7 +123,7 @@ const TeacherDashboard = () => {
             <button
               key={n.key}
               className={`${styles.navItem} ${section === n.key ? styles.navActive : ""}`}
-              onClick={() => { setSection(n.key); setSelectedBatchId(null); }}
+              onClick={() => { setSection(n.key); setSelectedBatchId(null); setMobileNavOpen(false); }}
             >
               {n.icon} <span>{n.label}</span>
             </button>

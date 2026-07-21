@@ -6,7 +6,7 @@ import {
   FaGlobe, FaThumbsUp, FaThumbsDown, FaSearch, FaChalkboardTeacher,
   FaUserGraduate, FaChartLine, FaEnvelopeOpenText, FaComments,
 } from "react-icons/fa";
-import { MdClose, MdInsights } from "react-icons/md";
+import { MdClose, MdInsights, MdMenu } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 import { designationLabel } from "../../utils/designations";
 import StudentDashboardViewer from "../../components/StudentDashboardViewer/StudentDashboardViewer";
@@ -374,6 +374,7 @@ const SuperAdminDashboard = () => {
   const { get, put, post } = useSAApi(token);
 
   const [section, setSection] = useState("overview");
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [stats, setStats] = useState({ totalOrgs: 0, pendingOrgs: 0, approvedOrgs: 0, rejectedOrgs: 0 });
   const [orgs, setOrgs] = useState([]);
   const [settings, setSettings] = useState([]);
@@ -523,11 +524,37 @@ const SuperAdminDashboard = () => {
 
   return (
     <div className={styles.layout}>
+      {/* Mobile top bar */}
+      <div className={styles.mobileTopBar}>
+        <button
+          className={styles.hamburgerBtn}
+          onClick={() => setMobileNavOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          <MdMenu />
+        </button>
+        <span className={styles.mobileTopBarTitle}>
+          <FaCrown /> Super Admin
+        </span>
+      </div>
+
+      {/* Backdrop for mobile drawer */}
+      {mobileNavOpen && (
+        <div className={styles.sidebarBackdrop} onClick={() => setMobileNavOpen(false)} />
+      )}
+
       {/* Sidebar */}
-      <aside className={styles.sidebar}>
+      <aside className={`${styles.sidebar} ${mobileNavOpen ? styles.sidebarOpen : ""}`}>
         <div className={styles.sidebarHeader}>
           <FaCrown className={styles.sidebarLogo} />
           <span>Super Admin</span>
+          <button
+            className={styles.sidebarCloseBtn}
+            onClick={() => setMobileNavOpen(false)}
+            aria-label="Close menu"
+          >
+            <MdClose />
+          </button>
         </div>
         <div className={styles.adminInfo}>
           <p className={styles.adminName}>Learningo Super Admin</p>
@@ -538,7 +565,7 @@ const SuperAdminDashboard = () => {
             <button
               key={n.key}
               className={`${styles.navItem} ${section === n.key ? styles.navActive : ""}`}
-              onClick={() => handleSection(n.key)}
+              onClick={() => { handleSection(n.key); setMobileNavOpen(false); }}
             >
               {n.icon} <span>{n.label}</span>
               {n.key === "organizations" && stats.pendingOrgs > 0 && <span className={styles.navDot} />}

@@ -309,6 +309,12 @@
     gap: 8px;
   }
 
+  .userName {
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
+  }
+
   .dashboardLink {
     width: 100%;
     justify-content: center;
@@ -328,11 +334,15 @@
 .hamburger {
   display: none;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
   z-index: 1002;
 }
 
@@ -417,6 +427,12 @@
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
+  }
+
+  .userName {
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
   }
 
   .logout {

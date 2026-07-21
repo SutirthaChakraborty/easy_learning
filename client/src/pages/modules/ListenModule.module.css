@@ -160,7 +160,7 @@
 .stopBtn { background: linear-gradient(#ff9800, #e65100); color: white; box-shadow: 0 6px #bf360c; }
 .replayBtn { background: transparent; border: none; padding: 0; box-shadow: none; cursor: default; }
 
-.audioPlayer { height: 40px; border-radius: 20px; }
+.audioPlayer { height: 40px; border-radius: 20px; max-width: 100%; }
 
 /* RESULT */
 .result { margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
