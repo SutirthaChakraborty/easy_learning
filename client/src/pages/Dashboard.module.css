@@ -584,9 +584,17 @@
   .sectionHeader { flex-direction: column; align-items: flex-start; }
 
   .heatCell { width: 10px; height: 10px; }
+
+  .yearSelect { min-height: 40px; padding: 8px 28px 8px 12px; }
 }
 
 @media (max-width: 480px) {
   .statsRow { grid-template-columns: 1fr; }
   .greeting { font-size: 1.3rem; }
+
+  .progressMapBtn {
+    white-space: normal;
+    max-width: 100%;
+    text-align: center;
+  }
 }

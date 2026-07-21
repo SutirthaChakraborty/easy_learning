@@ -26,6 +26,61 @@
   50% { opacity: 0.4; }
 }
 
+/* ── Mobile top bar (hidden on desktop) ─────────────────────── */
+.mobileTopBar {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  background: #14121f;
+  border-bottom: 1px solid rgba(247, 168, 37, 0.2);
+  padding: 12px 16px;
+}
+
+.hamburgerBtn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.mobileTopBarTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f7a825;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.sidebarBackdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 150;
+}
+
+.sidebarCloseBtn {
+  display: none;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 4px;
+  align-items: center;
+}
+
 /* ── Sidebar ─────────────────────────────────────────────── */
 .sidebar {
   width: 250px;
@@ -38,6 +93,7 @@
   top: 0;
   height: 100vh;
   overflow-y: auto;
+  flex-shrink: 0;
 }
 
 .sidebarHeader {
@@ -1075,8 +1131,126 @@
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .sidebar { width: 60px; }
-  .sidebarHeader span, .adminInfo, .navItem span, .logoutBtn span, .sidebarCapabilities { display: none; }
-  .navItem { justify-content: center; padding: 12px; }
-  .main { padding: 20px 16px; }
+  .layout {
+    flex-direction: column;
+  }
+
+  .mobileTopBar {
+    display: flex;
+  }
+
+  .sidebarBackdrop {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 270px;
+    max-width: 82vw;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 200;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .sidebarCloseBtn {
+    display: flex;
+  }
+
+  .main {
+    padding: 20px 16px;
+    width: 100%;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .chatLayout {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .convoList {
+    width: 100%;
+    max-height: 240px;
+  }
+
+  .convoThread {
+    height: 60vh;
+  }
+
+  .settingsHeader {
+    display: none;
+  }
+
+  .settingRow {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .settingValue,
+  .settingDesc {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 16px 12px;
+  }
+
+  .pageHeader h1 {
+    font-size: 1.4rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .statCard {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .statValue {
+    font-size: 1.4rem;
+  }
+
+  .orgCard {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .orgCardRight {
+    align-items: flex-start;
+  }
+
+  .orgBadges {
+    justify-content: flex-start;
+  }
+
+  .rejectedReason {
+    text-align: left;
+    max-width: none;
+  }
+
+  .modal {
+    padding: 20px;
+  }
+
+  .searchBarSA {
+    max-width: 100%;
+  }
+
+  .chatBubble {
+    max-width: 88%;
+  }
 }

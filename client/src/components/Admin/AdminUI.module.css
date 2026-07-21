@@ -3,6 +3,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
@@ -120,6 +122,7 @@
   font-size: 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: background 0.15s;
 }
 
@@ -137,6 +140,7 @@
   font-size: 1rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   transition: background 0.15s;
 }
 
@@ -154,7 +158,8 @@
   border-radius: 12px;
   padding: 10px 16px;
   margin-bottom: 18px;
-  max-width: 360px;
+  max-width: min(360px, 100%);
+  box-sizing: border-box;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -187,6 +192,8 @@
   border-radius: 16px;
   width: 100%;
   max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 28px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }
@@ -316,6 +323,8 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   padding: 8px 12px;
+  max-width: 100%;
+  box-sizing: border-box;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -391,6 +400,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 8px;
 }
 
@@ -410,6 +421,7 @@
 .tabs {
   display: flex;
   gap: 4px;
+  flex-wrap: wrap;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 20px;
 }
@@ -453,6 +465,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 12px;
 }
 
@@ -596,5 +610,107 @@
 @media (max-width: 900px) {
   .weekGrid {
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    padding: 10px 12px;
+    font-size: 0.88rem;
+  }
+
+  .deleteBtn,
+  .viewBtn {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .primaryBtn,
+  .modalSubmit {
+    min-height: 40px;
+  }
+
+  .tab {
+    min-height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .weekGrid {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 6px;
+  }
+
+  .weekGridDay {
+    padding: 8px;
+    min-height: 60px;
+  }
+
+  .weekGridEvent {
+    padding: 5px 6px;
+  }
+
+  .searchBar,
+  .multiSelectSearch {
+    max-width: 100%;
+  }
+
+  .modal,
+  .modalWide {
+    padding: 18px;
+    max-height: 92vh;
+  }
+
+  .modalField input,
+  .modalField select {
+    padding: 12px 14px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .deleteBtn,
+  .viewBtn {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .tab {
+    padding: 8px 12px;
+  }
+
+  .statCard {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .statIcon {
+    font-size: 1.5rem;
+  }
+
+  .statValue {
+    font-size: 1.4rem;
+  }
+
+  .detailHeader h1 {
+    font-size: 1.3rem;
+  }
+
+  .chip button {
+    padding: 4px;
+  }
+
+  .scheduleForm {
+    flex-wrap: wrap;
+  }
+
+  .scheduleForm select,
+  .scheduleForm input[type="time"] {
+    flex: 1 1 auto;
+    min-width: 90px;
   }
 }

@@ -102,6 +102,10 @@
 
 .compact .row { flex-direction: column; }
 
+@media (max-width: 480px) {
+  .row { flex-direction: column; gap: 16px; }
+}
+
 .success {
   display: flex;
   flex-direction: column;

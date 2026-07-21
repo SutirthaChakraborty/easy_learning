@@ -5,7 +5,7 @@ import {
   MdSchool, MdFamilyRestroom, MdBarChart, MdLogout, MdAdd,
   MdDelete, MdBusiness, MdClose, MdCheckCircle, MdPending,
   MdInsights, MdEdit, MdSupportAgent, MdMenuBook, MdVisibility,
-  MdRateReview, MdThumbDown,
+  MdRateReview, MdThumbDown, MdMenu,
 } from "react-icons/md";
 import { useAdminAuth } from "../../context/AdminAuthContext";
 import { DESIGNATION_OPTIONS, ORG_TYPE_OPTIONS, designationLabel } from "../../utils/designations";
@@ -205,6 +205,7 @@ const AdminDashboard = () => {
   const { get, post, postForm, del } = useAdminApi(token);
 
   const [section, setSection] = useState("overview");
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [stats, setStats] = useState({ tutors: 0, students: 0, batches: 0, parents: 0, org: null });
   const [org, setOrg] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -413,11 +414,37 @@ const AdminDashboard = () => {
 
   return (
     <div className={styles.layout}>
+      {/* Mobile top bar */}
+      <div className={styles.mobileTopBar}>
+        <button
+          className={styles.hamburgerBtn}
+          onClick={() => setMobileNavOpen((v) => !v)}
+          aria-label="Toggle menu"
+        >
+          <MdMenu />
+        </button>
+        <span className={styles.mobileTopBarTitle}>
+          <MdAdminPanelSettings /> Admin Panel
+        </span>
+      </div>
+
+      {/* Backdrop for mobile drawer */}
+      {mobileNavOpen && (
+        <div className={styles.sidebarBackdrop} onClick={() => setMobileNavOpen(false)} />
+      )}
+
       {/* Sidebar */}
-      <aside className={styles.sidebar}>
+      <aside className={`${styles.sidebar} ${mobileNavOpen ? styles.sidebarOpen : ""}`}>
         <div className={styles.sidebarHeader}>
           <MdAdminPanelSettings className={styles.sidebarLogo} />
           <span>Admin Panel</span>
+          <button
+            className={styles.sidebarCloseBtn}
+            onClick={() => setMobileNavOpen(false)}
+            aria-label="Close menu"
+          >
+            <MdClose />
+          </button>
         </div>
         <div className={styles.adminInfo}>
           {adminUser?.name && <p className={styles.adminName}>{adminUser.name}</p>}
@@ -441,7 +468,7 @@ const AdminDashboard = () => {
             <button
               key={n.key}
               className={`${styles.navItem} ${section === n.key ? styles.navActive : ""}`}
-              onClick={() => loadSection(n.key)}
+              onClick={() => { loadSection(n.key); setMobileNavOpen(false); }}
             >
               {n.icon} <span>{n.label}</span>
               {n.key === "chat" && chatUnread > 0 && <span className={styles.navDot} />}

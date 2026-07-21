@@ -27,7 +27,7 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
         style={{
           background: "linear-gradient(135deg,#1a1a3e,#16213e)",
           borderRadius: 24,
-          padding: "36px 32px",
+          padding: "clamp(20px, 6vw, 36px) clamp(16px, 5vw, 32px)",
           maxWidth: 420,
           width: "100%",
           boxShadow: "0 24px 64px rgba(0,0,0,0.7)",
@@ -41,10 +41,10 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
         {/* Header */}
         {!isPractice ? (
           <div style={{ marginBottom: 8 }}>
-            <GiCrossedSwords style={{ fontSize: "2.5rem", color: passed ? "#FFD700" : "#e74c3c" }} />
+            <GiCrossedSwords style={{ fontSize: "clamp(2rem, 8vw, 2.5rem)", color: passed ? "#FFD700" : "#e74c3c" }} />
             <h1 style={{
               color: passed ? "#FFD700" : "#e74c3c",
-              fontSize: "1.7rem", fontWeight: 800, margin: "10px 0 4px",
+              fontSize: "clamp(1.35rem, 6vw, 1.7rem)", fontWeight: 800, margin: "10px 0 4px",
             }}>
               {passed ? "Warrior Passed!" : "Warrior Failed"}
             </h1>
@@ -56,8 +56,8 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
           </div>
         ) : (
           <div style={{ marginBottom: 8 }}>
-            <GiPartyPopper style={{ fontSize: "2.5rem", color: "#6c63ff" }} />
-            <h1 style={{ color: "#fff", fontSize: "1.7rem", fontWeight: 800, margin: "10px 0 4px" }}>
+            <GiPartyPopper style={{ fontSize: "clamp(2rem, 8vw, 2.5rem)", color: "#6c63ff" }} />
+            <h1 style={{ color: "#fff", fontSize: "clamp(1.35rem, 6vw, 1.7rem)", fontWeight: 800, margin: "10px 0 4px" }}>
               Round Complete!
             </h1>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", margin: 0 }}>

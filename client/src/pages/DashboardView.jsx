@@ -534,13 +534,13 @@ export default function DashboardView({
               <div style={{ padding: '20px 24px 16px', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
                   <h2 style={{ color: '#fff', fontSize: '1.3rem', fontWeight: 700, margin: 0 }}><FaChartBar /> My Answers</h2>
-                  <button onClick={() => setShowResults(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: 8, padding: '6px 14px', cursor: 'pointer', fontSize: '0.9rem' }}><FaTimes /> Close</button>
+                  <button onClick={() => setShowResults(false)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#fff', borderRadius: 8, padding: '10px 14px', cursor: 'pointer', fontSize: '0.9rem', minHeight: 40, display: 'flex', alignItems: 'center', gap: 6 }}><FaTimes /> Close</button>
                 </div>
                 <div style={{ display: 'flex', gap: 8 }}>
                   <button
                     onClick={() => setActiveTab('practice')}
                     style={{
-                      flex: 1, padding: '8px 0', borderRadius: 10, border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '0.95rem', transition: 'all 0.2s',
+                      flex: 1, padding: '10px 0', minHeight: 40, borderRadius: 10, border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '0.95rem', transition: 'all 0.2s',
                       background: activeTab === 'practice' ? '#6c63ff' : 'rgba(255,255,255,0.07)',
                       color: activeTab === 'practice' ? '#fff' : 'rgba(255,255,255,0.5)',
                     }}
@@ -550,7 +550,7 @@ export default function DashboardView({
                   <button
                     onClick={() => setActiveTab('warrior')}
                     style={{
-                      flex: 1, padding: '8px 0', borderRadius: 10, border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '0.95rem', transition: 'all 0.2s',
+                      flex: 1, padding: '10px 0', minHeight: 40, borderRadius: 10, border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '0.95rem', transition: 'all 0.2s',
                       background: activeTab === 'warrior' ? '#e74c3c' : 'rgba(255,255,255,0.07)',
                       color: activeTab === 'warrior' ? '#fff' : 'rgba(255,255,255,0.5)',
                     }}

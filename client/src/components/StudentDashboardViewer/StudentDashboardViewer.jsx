@@ -64,8 +64,9 @@ export default function StudentDashboardViewer({ apiBase, token, displayName, on
         style={{
           position: 'fixed', top: 16, right: 16, zIndex: 501,
           background: 'rgba(20,20,40,0.85)', border: '1px solid rgba(255,255,255,0.15)',
-          color: '#fff', borderRadius: 8, padding: '8px 16px', cursor: 'pointer',
+          color: '#fff', borderRadius: 8, padding: '10px 16px', cursor: 'pointer',
           fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: 6,
+          minHeight: 40,
         }}
       >
         <FaTimes /> Close
