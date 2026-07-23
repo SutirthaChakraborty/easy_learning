@@ -1,8 +1,7 @@
 <div align="center">
 
 <img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Version-0.1.0-blue?style=for-the-badge" />
-<img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Platform-Web-orange?style=for-the-badge" />
 <img src="https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=for-the-badge&logo=node.js" />
 <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" />
@@ -49,10 +48,17 @@
   - [Authentication](#authentication-endpoints)
   - [Learning Content](#learning-content-endpoints)
   - [Mini-Games](#mini-game-endpoints)
-- [Database Models](#database-models)
-- [Authentication System](#authentication-system)
+  - [Dashboard & Progress](#dashboard--progress-endpoints)
+  - [Admin](#admin-endpoints)
+  - [Super-Admin](#super-admin-endpoints)
+  - [Teacher](#teacher-endpoints)
+  - [Contact](#contact-endpoint)
+- [Database Architecture & Models](#database-architecture--models)
+- [Roles & Authentication](#roles--authentication)
+- [Internationalization (i18n)](#internationalization-i18n)
 - [Accessibility](#accessibility)
 - [Design System](#design-system)
+- [Deployment](#deployment)
 - [Branch Strategy & Contributing](#branch-strategy--contributing)
 - [Roadmap](#roadmap)
 - [The Team](#the-team)
@@ -65,7 +71,9 @@
 
 **Easy Learn** is an accessible, gamified web learning platform designed for **children aged 5–14 with dyslexia and other learning disabilities**. It combines multi-sensory learning techniques with game mechanics to make education engaging and effective for every type of learner.
 
-The platform covers **three core subjects** — English, Mathematics, and Science — each with four learning modes: Listen, Read, Write, and Speak. Mini-games reinforce skills, while an XP and badge system keeps children motivated.
+The platform covers **three core subjects** — English, Mathematics, and Science — each with four learning modes: Listen, Read, Write, and Speak. Mini-games reinforce skills, a round-based scoring system (with a "Warrior" speed-bonus mode) drives motivation, and a personal dashboard tracks XP, streaks, and achievements over time.
+
+Beyond the student experience, Easy Learn is a small multi-tenant platform: **organizations** (schools/tutoring centres) sign up, a **super-admin** approves them, an **org admin** manages tutors/batches/students, and **teachers** upload their own question banks that are scoped to the batches they teach.
 
 **Built by Futuresight Analytics Limited** (Ireland).
 
@@ -75,15 +83,22 @@ The platform covers **three core subjects** — English, Mathematics, and Scienc
 
 | Feature | Description | Status |
 |---|---|---|
-| Multi-Sensory Modules | Listen, Read, Write, Speak — four modes per subject | In Progress |
-| Dyslexia Mode | OpenDyslexic font, wider letter spacing, color overlays | In Progress |
-| Gamification Engine | XP points, levels, badges, streaks, leaderboards | In Progress |
-| Mini-Games | Spelling Bee, Memory Match, Word Puzzle | In Progress |
-| Dual Authentication | Google OAuth (Firebase) + Email/Password (JWT) | Done |
-| Text-to-Speech | Web Speech API integration for all content | Planned |
-| Progress Dashboard | Real-time reports for parents and teachers | Planned |
+| Multi-Sensory Modules | Listen, Read, Write, Speak — four modes across English, Maths, Science (12 combinations) | Done |
+| Dyslexia-Friendly Typography | Increased letter/word spacing and line height applied globally via the Fredoka type system | Done |
+| Round-Based Scoring | Every module/game is capped at 10 questions per round; Practice vs. Warrior mode toggle | Done |
+| Warrior Bonus Scoring | Speed bonus stars for fast correct answers (≤10s / ≤15s / ≤20s) on top of the base star-per-correct-answer | Done |
+| Mini-Games | Spelling Bee, Memory Match, Word Puzzle | Done |
+| Student Dashboard | XP/level, activity heatmap, performance chart, round history, 16-badge achievement system | Done |
+| Multi-Role Platform | Student, Teacher, Org Admin, Super-Admin — each with its own login and dashboard | Done |
+| Batch-Scoped Question Uploads | Teachers upload question banks (Excel) targeted at specific batches; admin reviews & approves | Done |
+| Admin ↔ Super-Admin Chat | Threaded messaging with unread badges (polling-based) between org admins and the super admin | Done |
+| Organization Onboarding | Org registration, reversible approve/reject with history, resubmission after rejection | Done |
+| Dual Authentication | Google OAuth (Firebase) + Email/Password (JWT) — separate per role | Done |
+| Internationalization | 14 of 21 planned languages live via i18next, incl. RTL support | In Progress |
+| 3D Animated Background | Ambient parallax "brick" scene shared across the whole app | Done |
+| Contact Us | Public contact form (student/parent/teacher/admin/other) routed to the super-admin | Done |
+| Text-to-Speech / Speech Recognition | Web Speech API in the Speak & Listen modules | Done |
 | AI Personalization | Adaptive difficulty, emotion detection, gesture input | Future |
-| Multi-Language Support | Additional languages beyond English | Future |
 
 ---
 
@@ -93,14 +108,19 @@ The platform covers **three core subjects** — English, Mathematics, and Scienc
 
 | Technology | Version | Purpose |
 |---|---|---|
-| React | 19 | UI framework |
+| React | 19.2 | UI framework |
 | Vite | 8 | Build tool & dev server |
-| React Router | 7 | Client-side routing |
-| Redux Toolkit | 2 | Global state management |
-| Firebase Auth | 12 | Google OAuth integration |
-| Framer Motion | 12 | Animations and transitions |
-| React Icons | 5 | SVG icon library |
-| Fredoka (fontsource) | 5 | Primary UI font |
+| React Router | 7.14 | Client-side routing |
+| Redux Toolkit | 2.11 | Global state management |
+| Firebase Auth | 12.12 | Google OAuth integration |
+| Framer Motion | 12.38 | Animations and transitions |
+| Recharts | 3.8 | Dashboard charts |
+| i18next / react-i18next | 26 / 17 | Internationalization |
+| i18next-http-backend | 4 | Loads `/locales/*/translation.json` at runtime |
+| i18next-browser-languagedetector | 8.2 | Detects/persists user language |
+| React Icons | 5.6 | SVG icon library |
+| Fredoka (fontsource) | 5.2 | Primary UI font |
+| @vitejs/plugin-basic-ssl | 2.3 | Local HTTPS dev server (required for mic access on some browsers) |
 | CSS Modules | — | Component-scoped styles |
 
 ### Backend
@@ -108,23 +128,28 @@ The platform covers **three core subjects** — English, Mathematics, and Scienc
 | Technology | Version | Purpose |
 |---|---|---|
 | Node.js | >= 18 | Server runtime |
-| Express | 4 | REST API framework |
-| MongoDB (Atlas) | 7 | NoSQL database |
-| Mongoose | 8 | MongoDB ODM |
-| JSON Web Token | 9 | Token-based authentication |
+| Express | 4.21 | REST API framework |
+| MongoDB (Atlas) | driver 7.2 | NoSQL database — **3 separate clusters/connections** |
+| Mongoose | 8.10 | MongoDB ODM |
+| JSON Web Token | 9 | Token-based authentication (4 independent secrets, one per role) |
 | bcryptjs | 3 | Password hashing |
-| cors | 2 | Cross-origin request handling |
-| dotenv | 16 | Environment variable management |
-| nodemon | 3 | Dev auto-restart |
+| express-validator | 7.3 | Request validation for admin/super-admin/teacher/contact forms |
+| multer / multer-storage-cloudinary | 2.2 / 4 | File uploads (avatars, org logos, contact attachments, question sheets) |
+| cloudinary | 1.41 | Hosted image storage for org logos |
+| exceljs | 4.4 | Reads/writes the `.xlsx` question-upload template |
+| google-translate-api-x | 10.7 | Backs the `npm run translate` locale-generation script |
+| cors | 2.8 | Cross-origin request handling (per-origin allowlist) |
+| cookie-parser | 1.4 | httpOnly session cookie parsing |
+| dotenv | 16.5 | Environment variable management |
+| nodemon | 3.1 | Dev auto-restart |
 
-### Planned AI/ML (Phase 3–4)
+### Planned AI/ML
 
 | Technology | Purpose |
 |---|---|
 | ml5.js | Face detection, pose estimation, sound classification |
 | TensorFlow.js | Custom model inference in-browser |
 | Teachable Machine | Train custom gesture/sound models |
-| Web Speech API | Text-to-speech, speech recognition |
 | MediaPipe Hands | Real-time hand tracking |
 
 ---
@@ -134,106 +159,71 @@ The platform covers **three core subjects** — English, Mathematics, and Scienc
 ```
 easy_learning/                          ← Monorepo root
 │
-├── client/                             ← React + Vite frontend (port 3000)
+├── client/                             ← React + Vite frontend (port 5173/3000)
 │   ├── index.html
 │   ├── vite.config.js
 │   ├── package.json
-│   ├── .env                            ← Firebase API key (copy from .env.example)
+│   ├── .env                            ← Firebase API key + API base URL (copy from .env.example)
+│   ├── public/
+│   │   └── locales/{lang}/translation.json  ← i18next resources (14 languages)
 │   └── src/
 │       ├── main.jsx                    ← App entry point, Redux Provider
 │       ├── App.jsx                     ← Router + all page routes
-│       ├── index.css                   ← Global styles, design tokens
-│       ├── components/                 ← Reusable UI components
-│       │   ├── Navbar/
-│       │   ├── Hero/
-│       │   ├── Card/
-│       │   ├── Button/
-│       │   ├── Modal/
-│       │   ├── Loader/
-│       │   ├── Footer/
-│       │   ├── AudioPlayer/
-│       │   ├── ProgressBar/
-│       │   └── ToggleSwitch/
+│       ├── index.css                   ← Global styles, dyslexia-friendly base typography
+│       ├── i18n/i18n.js                ← i18next init (http-backend + language detector)
+│       ├── components/
+│       │   ├── Navbar/, Hero/, Cards/, ProgressBar/, ModeToggle/, ContactForm/
+│       │   ├── LanguageSwitcher/       ← Language picker (RTL-aware)
+│       │   ├── RoundComplete/          ← Shared end-of-round results overlay
+│       │   ├── Background3D/           ← Ambient 3D parallax background layer
+│       │   ├── StudentDashboardViewer/ ← Read-only dashboard viewer (admin/teacher/super-admin drill-down)
+│       │   └── Admin/                  ← Shared admin/super-admin UI kit (DataTable, Modal, SearchBar, MultiSelect, ScheduleEditor, WeeklyScheduleGrid, StatCard...)
 │       ├── pages/                      ← Route-level pages
-│       │   ├── Home.jsx
-│       │   ├── Learn.jsx
-│       │   ├── SubjectPage.jsx
-│       │   ├── GamesPage.jsx
-│       │   ├── modules/                ← Learning module players
-│       │   │   ├── ListenModule.jsx
-│       │   │   ├── ReadModule.jsx
-│       │   │   ├── WriteModule.jsx
-│       │   │   └── SpeakModule.jsx
-│       │   └── games/                  ← Mini-game pages
-│       │       ├── SpellingGame.jsx
-│       │       ├── MemoryGame.jsx
-│       │       └── PuzzleGame.jsx
-│       ├── store/                      ← Redux store + slices
-│       │   └── store.js                ← 16 slices (one per module/subject combo)
+│       │   ├── Home.jsx, Learn.jsx, SubjectPage.jsx, GamesPage.jsx, ContactUs.jsx
+│       │   ├── Login.jsx, RoleSelect.jsx, AdminLogin.jsx, TeacherLogin.jsx, SuperAdminLogin.jsx
+│       │   ├── Dashboard.jsx, DashboardView.jsx, ProgressMap.jsx
+│       │   ├── modules/                ← Learning module players (Read/Write/Listen/Speak)
+│       │   ├── games/                  ← Mini-game pages (Spelling/Memory/Puzzle)
+│       │   ├── admin/AdminDashboard.jsx
+│       │   ├── superadmin/SuperAdminDashboard.jsx
+│       │   └── teacher/                ← TeacherDashboard, TeacherBatchDetail, TeacherQuestionUpload
+│       ├── store/
+│       │   └── store.js + slices/      ← Redux Toolkit slices (dashboard + one per module/subject combo)
 │       ├── context/
-│       │   ├── AuthContext.jsx         ← Auth state (JWT + Firebase)
-│       │   ├── ProgressContext.jsx     ← XP, badges, streak state
-│       │   └── ThemeContext.jsx        ← Dyslexia mode, contrast toggle
-│       ├── firebase/
-│       │   └── auth.js                 ← Firebase init + Google sign-in
-│       ├── data/
-│       │   └── lessons.js              ← Hardcoded fallback lesson data
-│       ├── utils/                      ← Pure utility functions
-│       └── assets/                     ← Images, sounds, backgrounds
+│       │   ├── AuthContext.jsx         ← Student auth (JWT + Firebase)
+│       │   └── AdminAuthContext.jsx    ← Admin, teacher, and super-admin auth (3 independent JWTs)
+│       ├── firebase/auth.js            ← Firebase init + Google sign-in
+│       ├── utils/                      ← authHeaders, warriorBonus, designations, etc.
+│       └── assets/
 │
 ├── server/                             ← Node.js + Express API (port 5000)
-│   ├── server.js                       ← Express app entry point, route mounting
+│   ├── server.js                       ← Express app entry point, route mounting, CORS allowlist
 │   ├── package.json
 │   ├── .env                            ← Secrets (copy from .env.example)
-│   ├── routes/                         ← Route definitions (16+ files)
-│   │   ├── auth.js
-│   │   ├── readEnglish.js
-│   │   ├── readMaths.js
-│   │   ├── readScience.js
-│   │   ├── listenEnglish.js
-│   │   ├── listenMaths.js
-│   │   ├── listenScience.js
-│   │   ├── writeEnglish.js
-│   │   ├── writeMaths.js
-│   │   ├── writeScience.js
-│   │   ├── speakEnglish.js
-│   │   ├── speakMaths.js
-│   │   ├── speakScience.js
-│   │   ├── spellEnglish.js
-│   │   ├── memoryMatch.js
-│   │   ├── wordPuzzle.js
-│   │   └── learn.js
+│   ├── db/adminDb.js, superAdminDb.js  ← Secondary Mongoose connections
+│   ├── config/cloudinary.js
+│   ├── routes/                         ← ~25 route files
 │   ├── controllers/                    ← Request handlers (mirror of routes/)
-│   ├── models/                         ← Mongoose schemas (17 models)
-│   ├── middleware/                     ← Auth middleware
-│   ├── config/                         ← App configuration (db connection)
+│   ├── models/                         ← 23 default-DB models
+│   │   ├── admin/                      ← 7 models (Organization, OrgAdmin, Tutor, Student, Parent, Subject, Batch)
+│   │   └── superadmin/                 ← 4 models (Organization, GlobalSettings, ChatMessage, QuestionUploadBatch)
+│   ├── middleware/                     ← authMiddleware (per-role + dashboardAuth), upload.js, validate.js
+│   ├── validators/                     ← express-validator chains per form
+│   ├── utils/                          ← constants, performance aggregation, questionVisibility
+│   ├── uploads/                        ← multer disk storage (avatars, contact-attachments, question-uploads) — gitignored
+│   ├── scripts/                        ← translate-content.js, seed-all.js
 │   └── data/                           ← Seed data + seed script
-│       ├── seed.js                     ← Populates all 17 collections
-│       ├── read_english.json
-│       ├── read_maths.json
-│       ├── read_science.json
-│       ├── listen_english.json
-│       ├── listen_maths.json
-│       ├── listen_science.json
-│       ├── write_english.json
-│       ├── write_maths.json
-│       ├── write_science.json
-│       ├── speak_english.json
-│       ├── speak_maths.json
-│       ├── speak_science.json
-│       ├── spell_english.json
-│       ├── memory_match.json
-│       ├── word_puzzle.json
-│       └── learn.json
+│       ├── seed.js                     ← Populates the default-DB question/game collections
+│       └── *.json                      ← 16 fixture files (one per module/subject + games + learn)
 │
 ├── docs/
-│   └── design-guide.md                 ← Typography, colors, accessibility standards
+│   ├── design-guide.md                 ← Typography, colors, accessibility standards
+│   └── user-manual.md                  ← End-user walkthrough
 ├── updates/                            ← Daily & weekly team progress reports
 │   ├── daily/                          ← YYYY-MM-DD.md
 │   └── weekly/                         ← week-NN-YYYY.md
-├── setup.sh                            ← Auto-install (Linux/macOS)
-├── setup.bat                           ← Auto-install (Windows CMD)
-├── setup.ps1                           ← Auto-install (Windows PowerShell)
+├── setup.sh / setup.bat / setup.ps1    ← Auto-install scripts (macOS/Linux, Windows CMD, PowerShell)
+├── DEPLOY.md                           ← Hostinger VPS deployment guide (Nginx + PM2 + MongoDB Atlas)
 ├── PROJECT_PLAN.md                     ← 16-week development roadmap
 └── README.md
 ```
@@ -247,8 +237,9 @@ easy_learning/                          ← Monorepo root
 - **Node.js >= 18** — [nodejs.org](https://nodejs.org)
 - **npm >= 9** (bundled with Node.js)
 - **Git** — [git-scm.com](https://git-scm.com)
-- A MongoDB Atlas account (or local MongoDB instance)
+- A MongoDB Atlas account (the app expects **three** connection strings — see [Environment Variables](#environment-variables))
 - A Firebase project (for Google OAuth)
+- A Cloudinary account (for organization logo uploads)
 
 ### One-Command Setup
 
@@ -288,7 +279,7 @@ cp client/.env.example client/.env
 # Start BOTH frontend and backend together (recommended)
 npm run dev
 
-# Start frontend only  →  http://localhost:3000
+# Start frontend only  →  http://localhost:5173
 npm run client
 
 # Start backend only   →  http://localhost:5000
@@ -297,43 +288,71 @@ npm run server
 
 ### Seeding the Database
 
-Populate all 17 MongoDB collections with lesson and game data:
+Populate the default-DB question/game collections with lesson and game data:
 
 ```bash
 cd server && npm run seed
 ```
 
-This runs `server/data/seed.js` and inserts all JSON fixture data.
+This runs `server/data/seed.js` and inserts all JSON fixture data. `npm run seed:all` (`server/scripts/seed-all.js`) is available for a broader multi-collection reseed, and `npm run translate` (`server/scripts/translate-content.js`) can auto-generate locale content via `google-translate-api-x`.
 
 ---
 
 ## Environment Variables
 
+Easy Learn talks to **three independent MongoDB clusters** and signs **four independent JWT secrets**, one per role. All are required — a missing one causes that role's login flow to fail with a generic "Internal server error".
+
 ### Server — `server/.env`
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<dbname>
 CLIENT_URL=http://localhost:5173
+
+# Main app DB (students, learning content, activity/dashboard data)
+MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<dbname>
 JWT_SECRET=your_strong_random_secret_here
 JWT_EXPIRES_IN=7d
+
+# Admin DB (organizations, tutors/teachers, students, parents, batches)
+ADMIN_MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<admindb>
+ADMIN_JWT_SECRET=your_strong_random_secret_here
+ADMIN_JWT_EXPIRES_IN=7d
+
+# Super-admin DB (org approvals, global settings, contact messages, chat, question review)
+SUPERADMIN_MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<superadmindb>
+SUPERADMIN_JWT_SECRET=your_strong_random_secret_here
+
+# Teacher auth (reads the admin DB's Tutor model, signs its own JWT)
+TEACHER_JWT_SECRET=your_strong_random_secret_here
+TEACHER_JWT_EXPIRES_IN=7d
+
+# Cloudinary (organization logo uploads)
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 ```
 
 | Variable | Required | Description |
 |---|---|---|
 | `PORT` | No | Express server port (default: 5000) |
-| `MONGODB_URI` | Yes | MongoDB Atlas connection string |
-| `CLIENT_URL` | Yes | Frontend origin for CORS |
-| `JWT_SECRET` | Yes | Secret for signing JWT tokens — change before production |
-| `JWT_EXPIRES_IN` | No | Token TTL (default: `7d`) |
+| `CLIENT_URL` | Yes | Frontend origin(s) for CORS — comma-separated for multiple origins |
+| `MONGODB_URI` | Yes | Default-DB MongoDB Atlas connection string |
+| `JWT_SECRET` / `JWT_EXPIRES_IN` | Yes / No | Student JWT signing secret / TTL (default `7d`) |
+| `ADMIN_MONGODB_URI` | Yes | Admin-DB connection string |
+| `ADMIN_JWT_SECRET` / `ADMIN_JWT_EXPIRES_IN` | Yes / No | Org-admin JWT signing secret / TTL |
+| `SUPERADMIN_MONGODB_URI` | Yes | Super-admin-DB connection string |
+| `SUPERADMIN_JWT_SECRET` | Yes | Super-admin JWT signing secret |
+| `TEACHER_JWT_SECRET` / `TEACHER_JWT_EXPIRES_IN` | Yes / No | Teacher JWT signing secret / TTL |
+| `CLOUDINARY_*` | Yes | Cloudinary credentials for org-logo uploads |
 
 ### Client — `client/.env`
 
 ```env
 VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_API_BASE_URL=http://localhost:5000/api
 ```
 
-The remaining Firebase config values (authDomain, projectId, etc.) are set inside `client/src/firebase/auth.js`.
+The remaining Firebase config values (authDomain, projectId, etc.) are hardcoded inside `client/src/firebase/auth.js`.
 
 ---
 
@@ -341,7 +360,7 @@ The remaining Firebase config values (authDomain, projectId, etc.) are set insid
 
 Base URL: `http://localhost:5000`
 
-All responses follow the shape:
+Most responses follow the shape:
 
 ```json
 {
@@ -364,43 +383,22 @@ Error responses:
 
 ### Authentication Endpoints
 
-#### `POST /api/auth/register`
+Each role authenticates independently and receives its own JWT.
 
-Register a new user with email and password.
+| Role | Method | Endpoint | Description |
+|---|---|---|---|
+| Student | `POST` | `/api/auth/register` | Register with email + password |
+| Student | `POST` | `/api/auth/login` | Login with email + password → JWT |
+| Student | `POST` | `/api/auth/session` | Sync a Firebase Google OAuth user → sets an httpOnly session cookie |
+| Student | `GET` | `/api/auth/session` | Get the currently authenticated session user |
+| Student | `DELETE` | `/api/auth/session` | Clear the session cookie (logout) |
+| Admin | `POST` | `/api/admin/auth/google` | Firebase Google sign-in for org admins |
+| Admin | `GET` | `/api/admin/auth/me` | Get current admin from JWT |
+| Super-Admin | `POST` | `/api/superadmin/auth/login` | Email/password login (single super-admin account, no Google) |
+| Teacher | `POST` | `/api/teacher/auth/google` | Firebase Google sign-in for teachers |
+| Teacher | `GET` | `/api/teacher/auth/me` | Get current teacher from JWT |
 
-**Request body:**
-```json
-{
-  "name": "Jane Smith",
-  "email": "jane@example.com",
-  "password": "securePassword123"
-}
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "token": "<jwt>",
-  "user": { "id": "...", "name": "Jane Smith", "email": "jane@example.com" }
-}
-```
-
----
-
-#### `POST /api/auth/login`
-
-Login with email and password, returns a JWT.
-
-**Request body:**
-```json
-{
-  "email": "jane@example.com",
-  "password": "securePassword123"
-}
-```
-
-**Response:**
+**Example — `POST /api/auth/login` response:**
 ```json
 {
   "success": true,
@@ -408,46 +406,19 @@ Login with email and password, returns a JWT.
   "user": { "id": "...", "name": "Jane Smith", "email": "jane@example.com" }
 }
 ```
-
----
-
-#### `POST /api/auth/session`
-
-Sync a Firebase Google OAuth user to the server session (sets an httpOnly cookie).
-
-**Request body:**
-```json
-{
-  "uid": "firebase_uid",
-  "email": "jane@example.com",
-  "displayName": "Jane Smith"
-}
-```
-
----
-
-#### `GET /api/auth/session`
-
-Returns the currently authenticated session user.
-
----
-
-#### `DELETE /api/auth/session`
-
-Clears the session cookie (logout for Firebase users).
 
 ---
 
 ### Learning Content Endpoints
 
-All content endpoints share the same four operations. Replace `{module}` with one of `read`, `listen`, `write`, `speak` and `{subject}` with one of `english`, `maths`, `science`.
+Replace `{module}` with one of `read`, `listen`, `write`, `speak` and `{subject}` with one of `english`, `maths`, `science`.
 
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/{module}/{subject}` | Get all questions for this module/subject |
-| `GET` | `/api/{module}/{subject}/:id` | Get a single question by ID |
-| `POST` | `/api/{module}/{subject}/seed` | Seed this collection from JSON data |
-| `DELETE` | `/api/{module}/{subject}/all` | Delete all content in this collection |
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `GET` | `/api/{module}/{subject}` | `dashboardAuth` | Get questions for this module/subject — batch-scoped for org students, seed data for everyone else |
+| `GET` | `/api/{module}/{subject}/:id` | `dashboardAuth` | Get a single question by ID |
+| `POST` | `/api/{module}/{subject}/seed` | none | Seed this collection from JSON fixture data |
+| `DELETE` | `/api/{module}/{subject}/all` | none | Delete all content in this collection |
 
 **Available combinations (12 total):**
 
@@ -458,12 +429,15 @@ All content endpoints share the same four operations. Replace `{module}` with on
 | `write` | `/api/write/english` | `/api/write/maths` | `/api/write/science` |
 | `speak` | `/api/speak/english` | `/api/speak/maths` | `/api/speak/science` |
 
+> A logged-in student who belongs to an organization (has a `Student` record) sees **only** their batch's approved teacher-uploaded questions for that module/subject — never seed data. A student with no `Student` record sees the developer/seed question bank instead. If a batch has no approved uploads for that module/subject, the response includes `"noOrgQuestions": true` instead of falling back.
+
 **Example — `GET /api/read/english`:**
 
 ```json
 {
   "success": true,
   "count": 5,
+  "noOrgQuestions": false,
   "data": [
     {
       "id": 1,
@@ -478,27 +452,11 @@ All content endpoints share the same four operations. Replace `{module}` with on
 }
 ```
 
-**Example — `GET /api/listen/english`:**
-
-```json
-{
-  "success": true,
-  "count": 5,
-  "data": [
-    {
-      "id": 1,
-      "sentence": "The cat sat on the mat.",
-      "level": "beginner",
-      "emoji": "🐱",
-      "xp": 10
-    }
-  ]
-}
-```
-
 ---
 
 ### Mini-Game Endpoints
+
+These stay public (no `dashboardAuth`) since they're not tied to per-organization content.
 
 #### Spelling Bee — `/api/spell/english`
 
@@ -506,233 +464,228 @@ All content endpoints share the same four operations. Replace `{module}` with on
 |---|---|---|
 | `GET` | `/api/spell/english` | Get all spelling words |
 | `GET` | `/api/spell/english/:id` | Get a single word |
-
-**Response shape:**
-```json
-{
-  "id": 1,
-  "word": "beautiful",
-  "hint": "Something pleasing to the eye",
-  "difficulty": "medium",
-  "emoji": "🌸"
-}
-```
+| `POST` | `/api/spell/english/check` | Check a submitted answer |
 
 #### Memory Match — `/api/game/memory-match`
 
 | Method | Endpoint | Description |
 |---|---|---|
-| `GET` | `/api/game/memory-match` | Get card pair sets |
-
-**Response shape:**
-```json
-{
-  "id": 1,
-  "difficulty": "easy",
-  "pairs": [
-    { "word": "cat", "image": "cat.png", "emoji": "🐱" }
-  ]
-}
-```
+| `GET` | `/api/game/memory-match` | Get all card-pair sets |
+| `GET` | `/api/game/memory-match/cards` | Get a shuffled play set |
+| `POST` | `/api/game/memory-match/check` | Check a submitted pair match |
 
 #### Word Puzzle — `/api/game/word-puzzle`
 
 | Method | Endpoint | Description |
 |---|---|---|
 | `GET` | `/api/game/word-puzzle` | Get puzzle challenges |
-
-**Response shape:**
-```json
-{
-  "id": 1,
-  "letters": ["d", "o", "g"],
-  "answer": "dog",
-  "difficulty": "easy",
-  "emoji": "🐶"
-}
-```
+| `GET` | `/api/game/word-puzzle/play` | Get a play set |
+| `POST` | `/api/game/word-puzzle/check` | Check a submitted answer |
 
 ---
 
-## Database Models
+### Dashboard & Progress Endpoints
 
-MongoDB is used with Mongoose. There are **17 collections** total.
+All under `/api/dashboard`, protected by `dashboardAuth` (accepts either a JWT bearer token or the Firebase session cookie).
 
-### User
-
-```
-users
-├── name         String  required
-├── email        String  required, unique
-├── passwordHash String  required (bcryptjs)
-├── createdAt    Date    auto
-└── updatedAt    Date    auto
-```
-
-### Learning Content (pattern — applies to all 12 module/subject combos)
-
-**Read (ReadEnglish, ReadMaths, ReadScience):**
-```
-id        Number
-title     String
-content   String
-question  String
-options   [String]
-answer    String
-emoji     String
-```
-
-**Listen (ListenEnglish, ListenMaths, ListenScience):**
-```
-id        Number
-sentence  String
-level     String   (beginner | intermediate | advanced)
-emoji     String
-xp        Number
-```
-
-**Write (WriteEnglish, WriteMaths, WriteScience):**
-```
-id        Number
-character String
-type      String   (letter | word | number | symbol)
-hint      String
-level     String
-emoji     String
-```
-
-**Speak (SpeakEnglish, SpeakMaths, SpeakScience):**
-```
-id            Number
-word          String
-pronunciation String
-level         String
-emoji         String
-```
-
-### Game Models
-
-**SpellEnglish:**
-```
-id         Number
-word       String
-hint       String
-difficulty String
-emoji      String
-```
-
-**MemoryMatch:**
-```
-id         Number
-difficulty String
-pairs      [{ word, image, emoji }]
-```
-
-**WordPuzzle:**
-```
-id         Number
-letters    [String]
-answer     String
-difficulty String
-emoji      String
-```
-
----
-
-## Authentication System
-
-Easy Learn uses a **dual authentication strategy** to support both social login and traditional email/password accounts.
-
-### Strategy 1 — Google OAuth via Firebase
-
-1. User clicks "Sign in with Google"
-2. Firebase redirects to Google's OAuth consent screen
-3. On success, Firebase returns a user object client-side
-4. Frontend sends the user's UID and profile to `POST /api/auth/session`
-5. Server sets an httpOnly session cookie
-6. `AuthContext` marks the user as authenticated
-
-### Strategy 2 — Email/Password via JWT
-
-1. User registers at `POST /api/auth/register` — password is hashed with bcryptjs before storage
-2. On login at `POST /api/auth/login`, server compares the provided password against the hash
-3. On success, server returns a signed JWT (expires in 7 days by default)
-4. Frontend stores the JWT in `localStorage` under the key `jwt_token`
-5. Subsequent requests include the token in the Authorization header
-6. `AuthContext` validates the token on every app load
-
-### Auth Context API
-
-Located at `client/src/context/AuthContext.jsx`. Provides:
-
-| Value / Method | Type | Description |
+| Method | Endpoint | Description |
 |---|---|---|
-| `user` | Object | Current authenticated user, or `null` |
-| `registerManual(name, email, password)` | Function | Create a new account |
-| `loginManual(email, password)` | Function | Sign in with credentials |
-| `logout()` | Function | Clear auth state and redirect to home |
-| `getToken()` | Function | Retrieve JWT from localStorage |
+| `POST` | `/log-session` | Log a completed module/game session (duration, XP, score) — auto-checks & awards achievements |
+| `GET` | `/stats` | Level, total XP, streak, session count |
+| `GET` | `/activity` | Daily activity heatmap data |
+| `GET` | `/achievements` | Earned achievements (of 16 defined badges) |
+| `GET` | `/performance` | XP-over-time series for the dashboard chart |
+| `GET` | `/module-stars` | Per-module/subject star totals |
+| `POST` | `/log-answer` | Log a single question answer |
+| `GET` | `/answers` | Answer history |
+| `POST` | `/log-round` | Log a completed 10-question round (stars, warrior bonus, pass/fail) |
+| `GET` | `/rounds` | Round history |
+
+---
+
+### Admin Endpoints
+
+All under `/api/admin`, protected by admin JWT. Scoped to the admin's own organization throughout.
+
+| Area | Method | Endpoint(s) | Description |
+|---|---|---|---|
+| Profile / Org | `GET/PATCH` | `/profile`, `GET/POST /org` | Admin identity (incl. designation, avatar) and organization registration/edit |
+| Chat | `GET/POST` | `/chat`, `/chat/unread-count` | Threaded chat with the super-admin |
+| Tutors | `GET/POST/PATCH/DELETE` | `/tutors`, `/tutors/:id`, `.../performance`, `.../schedule` | Manage tutors, view performance & schedule |
+| Subjects | `GET/POST/PATCH/DELETE` | `/subjects`, `/subjects/:id` | Manage subject catalogue |
+| Batches | `GET/POST/PATCH/DELETE` | `/batches`, `/batches/:id`, `.../students`, `.../subjects`, `.../teachers`, `.../schedule` | Class rosters, subject assignment, teacher assignment, weekly schedule |
+| Students | `GET/POST/PATCH/DELETE` | `/students`, `/students/:id`, `.../performance`, `.../dashboard/*` | Manage students; drill into a student's dashboard (stats/activity/achievements/performance/answers/rounds) |
+| Parents | `GET/POST` | `/parents` | Manage parent records |
+| Question Review | `GET/POST/PATCH` | `/questions/uploads*`, `/questions/:module/:subject/:id` | Review/approve/reject teacher-uploaded question batches; edit individual questions |
+
+---
+
+### Super-Admin Endpoints
+
+All under `/api/superadmin`, protected by super-admin JWT. There is a single super-admin account for the whole platform.
+
+| Area | Method | Endpoint(s) | Description |
+|---|---|---|---|
+| Organizations | `GET/PUT` | `/organizations`, `.../approve`, `.../reject`, `.../subscription` | List, reversibly approve/reject (with history), and manage subscription for orgs |
+| Org drill-down | `GET` | `/organizations/:id/admin`, `.../students`, `.../tutors`, `.../students/:id/performance`, `.../students/:id/dashboard/*` | Inspect any org's admin identity, roster, and per-student dashboard |
+| Chat | `GET/POST` | `/chat`, `/chat/unread-count`, `/chat/:id` | Conversation list (one per org) + per-org thread |
+| Settings | `GET/POST` | `/settings` | Global key/value platform settings |
+| Contact | `GET/PUT` | `/contact`, `/contact/:id` | Review and respond to public Contact Us submissions |
+
+---
+
+### Teacher Endpoints
+
+All under `/api/teacher`, protected by teacher JWT. Scoped to batches the teacher is assigned to.
+
+| Area | Method | Endpoint(s) | Description |
+|---|---|---|---|
+| Students | `GET/PATCH` | `/students`, `/students/:id` | View/update students in the teacher's batches |
+| Batches | `GET/POST/DELETE` | `/batches`, `/batches/:id`, `.../students`, `.../schedule` | View assigned batches, manage roster & schedule |
+| Question Uploads | `GET/POST/PATCH` | `/questions/template`, `/questions/upload`, `/questions/uploads*`, `/questions/:module/:subject/:id` | Download the `.xlsx` template, upload a batch-scoped question sheet, track review status, edit questions |
+
+---
+
+### Contact Endpoint
+
+| Method | Endpoint | Auth | Description |
+|---|---|---|---|
+| `POST` | `/api/contact` | none | Public contact form (role: student/admin/teacher/parent/other), optional file attachment — routed to the super-admin |
+
+---
+
+## Database Architecture & Models
+
+Easy Learn intentionally uses **three separate MongoDB connections/databases**, each owned by a different role's controllers:
+
+| DB | Env var | Owns |
+|---|---|---|
+| Default DB | `MONGODB_URI` | Student accounts, all learning-content collections, dashboard/activity data — keyed by email string |
+| Admin DB | `ADMIN_MONGODB_URI` | Organizations, org admins, tutors/teachers, students, parents, subjects, batches |
+| Super-admin DB | `SUPERADMIN_MONGODB_URI` | A mirrored `Organization` record, global settings, contact messages, admin↔super-admin chat, question-upload review batches |
+
+`Organization` is intentionally duplicated across the admin and super-admin DBs and kept in sync manually in the controllers. Cross-DB lookups (e.g. an admin's student dashboard, or a super-admin drilling into an org) join by **email string**, not a shared `ObjectId`.
+
+### Default DB — key models
+
+**User** — `name`, `email` (unique), `passwordHash`, timestamps.
+
+**Learning content** (pattern applies to all 12 `{Read|Write|Listen|Speak}{English|Maths|Science}` collections):
+```
+id        Number
+question / content / character / word   (field name varies by module)
+options   [String]        (read)
+answer    String
+level / difficulty  String
+emoji     String
+xp        Number           (listen)
+```
+
+**Game models** — `SpellEnglish` (word/hint/difficulty/emoji), `MemoryMatch` (difficulty/pairs), `WordPuzzle` (letters/answer/difficulty/emoji).
+
+**Progress/dashboard models:**
+- `StudentActivity` — daily activity per email (`sessions[]`, `totalMinutes`, `totalXP`, `totalSessions`)
+- `StudentAchievement` — earned achievements per email + achievement ID
+- `StudentAnswer` — per-question answer log
+- `StudentRound` — one doc per completed round (`email`, `module`, `subject`, `mode`, `stars`, `bonusStars`, `totalStars`, `passed`, `completedAt`)
+- `ContactMessage` — public Contact Us submissions (persisted in the super-admin DB)
+- `Counter` — auto-increment helper for seed IDs
+
+### Admin DB — models (`server/models/admin/`)
+
+`Organization`, `OrgAdmin` (incl. `designation`), `Tutor`, `Student` (incl. `batchIds`), `Parent`, `Subject`, `Batch` (roster + per-subject teacher assignment + weekly schedule).
+
+### Super-admin DB — models (`server/models/superadmin/`)
+
+`Organization` (mirror, incl. `rejectionHistory`), `GlobalSettings`, `ChatMessage` (keyed by `adminUid`, two independent read-flags), `QuestionUploadBatch` (an upload/review event — not to be confused with the roster `Batch` model above).
+
+---
+
+## Roles & Authentication
+
+Easy Learn has **four independent roles**, each with its own login, JWT secret, and (for three of them) Google OAuth flow:
+
+| Role | Sign-in methods | Token storage | React context |
+|---|---|---|---|
+| Student | Google OAuth (Firebase → httpOnly session cookie) or Email/Password (JWT) | `localStorage: jwt_token` / `firebase_jwt` | `AuthContext.jsx` |
+| Org Admin | Google OAuth (Firebase → JWT) | `localStorage` (admin key) | `AdminAuthContext.jsx` |
+| Teacher | Google OAuth (Firebase → JWT) | `localStorage` (teacher key) | `AdminAuthContext.jsx` |
+| Super-Admin | Email/Password only (single account) | `localStorage` (super-admin key) | `AdminAuthContext.jsx` |
+
+### Student — Google OAuth via Firebase
+
+1. User clicks "Sign in with Google" → Firebase handles the OAuth consent screen
+2. Frontend sends the Firebase user's UID/profile to `POST /api/auth/session`
+3. Server sets an httpOnly session cookie
+4. `AuthContext` marks the user as authenticated
+
+### Student — Email/Password via JWT
+
+1. Register at `POST /api/auth/register` — password hashed with bcryptjs
+2. Login at `POST /api/auth/login` — server compares against the hash, returns a signed JWT (`JWT_EXPIRES_IN`, default 7d)
+3. Frontend stores the JWT in `localStorage` and attaches it as a Bearer token on subsequent requests
+
+### Admin / Teacher / Super-Admin
+
+Admin and teacher both authenticate via a Firebase Google popup, then exchange the Firebase ID token for a role-specific JWT (`ADMIN_JWT_SECRET` / `TEACHER_JWT_SECRET`) — the app resolves their `OrgAdmin`/`Tutor` record in the admin DB by email. The super-admin is the one exception: a single seeded account authenticates with email/password only, signed with `SUPERADMIN_JWT_SECRET`.
 
 ### Protected Routes
 
-All lesson and game pages require authentication. Components use the `useAuth()` hook and redirect unauthenticated users to `/login`.
+Learning-content and dashboard endpoints require `dashboardAuth` (student JWT or Firebase session cookie). Admin/teacher/super-admin API routes each require their own JWT middleware. **Note:** the client-side module pages currently have no route guard — an unauthenticated visitor hitting a module page sees the module's generic error state rather than a "please log in" prompt (a known gap; `Dashboard.jsx` has the pattern to copy for a proper fix).
+
+---
+
+## Internationalization (i18n)
+
+The frontend uses `i18next` + `react-i18next` + `i18next-http-backend`, loading resources from `client/public/locales/{lang}/translation.json`. The selected language persists in `localStorage` under `i18nextLng`; RTL languages automatically set `dir="rtl"` on `<html>`.
+
+**Currently shipped (14 of 21 planned languages):** `en, es, pt, fr, it, de, nl, ru, tr, zh, ja, ko, id, vi`
+**Planned but not yet added:** `hi, bn, mr, ta, te, ur, ar` (`ar`/`ur` are RTL)
+
+All new UI text should go through `t('key')` — never hardcode English strings — and the key must be added to every locale file. Dashboard achievement names look up `dashboard.achievements.{id}.name` with an English `defaultValue` fallback so untranslated languages degrade gracefully.
+
+`npm run translate` (`server/scripts/translate-content.js`) can bootstrap new locale files via `google-translate-api-x`.
 
 ---
 
 ## Accessibility
 
-Easy Learn targets **WCAG 2.1 Level AA** compliance.
+Dyslexia-friendly typography (Fredoka font, `letter-spacing: 0.05em`, `line-height: 1.6`, `word-spacing: 0.1em`) is applied **globally by default** rather than behind a toggle. There is currently no user-facing high-contrast or OpenDyslexic-font switch — see [`docs/design-guide.md`](./docs/design-guide.md) for the full accessibility standards this project targets (WCAG 2.1 AA) and for gaps to close.
 
-| Feature | Implementation |
+| Feature | Status |
 |---|---|
-| Dyslexia Font | OpenDyslexic via `ThemeContext` toggle |
-| Letter Spacing | 0.05em globally; increased in dyslexia mode |
-| Line Height | 1.6 base; 1.8+ in dyslexia mode |
-| Color Contrast | Minimum 4.5:1 for normal text, 3:1 for large text |
-| High Contrast Mode | Toggle via Accessibility Toolbar |
-| Keyboard Navigation | All interactive elements reachable via Tab |
-| Focus Indicators | Visible on all focusable elements |
-| Text-to-Speech | Web Speech API (planned full integration) |
-| Alt Text | All images have descriptive alt attributes |
-| Form Labels | All inputs have associated `<label>` elements |
+| Dyslexia-friendly base typography | Done — applied globally |
+| Keyboard navigation | Implemented on interactive elements |
+| Alt text / form labels | Implemented across pages |
+| Text-to-Speech / Speech Recognition | Done — Web Speech API in Speak/Listen modules |
+| Toggleable dyslexia font / high-contrast mode | Not yet implemented |
 
 ---
 
 ## Design System
 
-### Color Palette
+### Look & Feel
 
-| Token | Hex | Usage |
+The app uses a dark, deep-space theme (`radial-gradient` navy background) with an ambient animated 3D "brick" backdrop (`components/Background3D`) shared across every page, and Framer Motion for page/element transitions.
+
+| Token | Value | Usage |
 |---|---|---|
-| Primary | `#6c63ff` | Buttons, links, key accents |
-| Secondary | `#ff6584` | Highlights, badge colors |
-| Accent | `#43e97b` | Success states, XP bar fill |
-| Warning | `#f7971e` | Streak indicators, alerts |
-| Dark | `#1a1a2e` | Main background |
-| Mid | `#16213e` | Section and card backgrounds |
-
-### Typography
-
-| Role | Font | Size |
-|---|---|---|
-| Primary (default) | Fredoka | 18px base |
-| Dyslexia mode | OpenDyslexic | 18px base |
-| Line height | — | 1.6 (body), 1.8 (dyslexia mode) |
+| Background | `#16234a → #060912` (radial gradient) | App-wide background |
+| Font | Fredoka | Primary UI typeface, 18px base |
 
 Full design guidelines are in [docs/design-guide.md](./docs/design-guide.md).
+
+---
+
+## Deployment
+
+Production deployment (Hostinger VPS, Nginx + PM2 + MongoDB Atlas, domain `quizify.cloud`) is documented step-by-step in [DEPLOY.md](./DEPLOY.md), including the three-cluster/four-secret environment setup, Nginx reverse-proxy config, and the redeploy checklist.
 
 ---
 
 ## Branch Strategy & Contributing
 
 We use a **feature-branch workflow**. No one pushes directly to `main`.
-
-```
-main
-├── features-sutirtha      ← Architecture, project management
-├── features-parichay      ← Frontend features
-└── features-raunak        ← Business/strategic features
-```
 
 ### Branch Rules
 
@@ -757,7 +710,7 @@ chore:     Maintenance tasks (deps, config)
 
 ### Contributing Steps
 
-1. Checkout your assigned feature branch
+1. Create a feature branch off `main`
 2. Make focused, well-scoped changes
 3. Commit with the convention above
 4. Open a PR against `main` with a clear description
@@ -781,10 +734,11 @@ Based on the 16-week plan in [PROJECT_PLAN.md](./PROJECT_PLAN.md):
 
 | Phase | Focus | Status |
 |---|---|---|
-| Phase 1 — Foundation | Scaffolding, design system, auth, gamification engine | Partially done |
-| Phase 2 — Core Learning | All 12 learning modules, 3 mini-games, TTS, dashboards | In progress |
-| Phase 3 — AI Features | ml5.js, gesture recognition, emotion detection, sound models | Planned |
-| Phase 4 — Launch | Accessibility audit, performance, cross-browser testing, deploy | Planned |
+| Phase 1 — Foundation | Scaffolding, design system, auth, gamification engine | Done |
+| Phase 2 — Core Learning | 12 learning modules, 3 mini-games, TTS, round scoring, student dashboard | Done |
+| Phase 3 — Platform | Multi-role auth (admin/super-admin/teacher), batch-scoped question uploads, i18n, org onboarding & chat | Mostly done — i18n at 14/21 languages |
+| Phase 4 — AI Features | ml5.js, gesture recognition, emotion detection, sound models | Planned |
+| Phase 5 — Launch Hardening | Accessibility toggle, full i18n coverage, cross-browser/perf audit | Planned |
 
 ---
 
@@ -792,11 +746,11 @@ Based on the 16-week plan in [PROJECT_PLAN.md](./PROJECT_PLAN.md):
 
 <div align="center">
 
-| Role | Name | Branch | Responsibilities |
-|---|---|---|---|
-| Project Owner | **Sutirtha Chakraborty** | `features-sutirtha` | Product vision, architecture, project management |
-| Developer | **Parichay Dutta Biswas** | `features-parichay` | Frontend development, feature implementation |
-| Company Owner | **Raunak** | `features-raunak` | Strategic direction, business requirements |
+| Role | Name | Responsibilities |
+|---|---|---|
+| Project Owner | **Sutirtha Chakraborty** | Product vision, architecture, project management |
+| Developer | **Parichay Dutta Biswas** | Full-stack development, feature implementation |
+| Company Owner | **Raunak** | Strategic direction, business requirements |
 
 </div>
 
@@ -833,16 +787,17 @@ Based on the 16-week plan in [PROJECT_PLAN.md](./PROJECT_PLAN.md):
 
 ## License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+This repository does not currently include a published `LICENSE` file. All rights reserved by **Futuresight Analytics Limited** unless/until a license is added — contact the team above for usage terms.
 
 ---
 
 ## Acknowledgements
 
-- [OpenDyslexic](https://opendyslexic.org/) — Dyslexia-friendly typeface
 - [WCAG 2.1](https://www.w3.org/TR/WCAG21/) — Web Content Accessibility Guidelines
 - [MongoDB Atlas](https://www.mongodb.com/atlas) — Cloud database hosting
 - [Firebase](https://firebase.google.com/) — Google OAuth integration
+- [Cloudinary](https://cloudinary.com/) — Image hosting for organization logos
+- [i18next](https://www.i18next.com/) — Internationalization framework
 - All educators, parents, and children who inspired this work
 
 ---

@@ -1,16 +1,32 @@
-# React + Vite
+# Easy Learn — Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 + Vite frontend for **Easy Learn**, a gamified learning platform for children with dyslexia. See the [root README](../README.md) for the full project overview, API reference, environment setup, and architecture.
 
-Currently, two official plugins are available:
+## Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev      # http://localhost:5173
+```
 
-## React Compiler
+Requires `client/.env` with `VITE_FIREBASE_API_KEY` and `VITE_API_BASE_URL` — see [Environment Variables](../README.md#environment-variables) in the root README.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Scripts
 
-## Expanding the ESLint configuration
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the Vite dev server with HMR |
+| `npm run build` | Production build to `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Structure
+
+Routing, state, and feature code live under `src/` — see [Project Structure](../README.md#project-structure) in the root README for the full breakdown of `components/`, `pages/`, `store/`, `context/`, and `i18n/`.
+
+## Notable Setup Details
+
+- **State**: Redux Toolkit (`src/store/`) — one slice per module/subject combo plus a `dashboard` slice.
+- **i18n**: `i18next` loads translations from `public/locales/{lang}/translation.json` at runtime — see [Internationalization](../README.md#internationalization-i18n).
+- **Auth**: `context/AuthContext.jsx` (students) and `context/AdminAuthContext.jsx` (admin/teacher/super-admin) — see [Roles & Authentication](../README.md#roles--authentication).
+- **HTTPS dev server**: `@vitejs/plugin-basic-ssl` is available if you need local HTTPS (e.g. for microphone access in the Speak module on browsers that require a secure context).
