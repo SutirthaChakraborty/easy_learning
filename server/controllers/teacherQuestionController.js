@@ -11,6 +11,8 @@ const { fileUrl, saveBufferToUploads } = require('../middleware/upload')
 const TEMPLATE_DIR = path.join(__dirname, '../templates/questions')
 const MAX_ROWS = 500
 
+const PROTECTED_QUESTION_FIELDS = new Set(['_id', 'id', 'status', 'submittedBy', 'uploadBatchId', 'createdAt', 'updatedAt', '__v'])
+
 // GET /api/teacher/questions/template?module=&subject=
 const getQuestionTemplate = (req, res) => {
   const module = String(req.query.module || '').toLowerCase()
@@ -166,4 +168,28 @@ const getMyUploadBatchDetail = async (req, res) => {
   }
 }
 
-module.exports = { getQuestionTemplate, uploadQuestions, getMyUploadBatches, getMyUploadBatchDetail }
+// PATCH /api/teacher/questions/:module/:subject/:id — only questions this teacher submitted
+const updateQuestion = async (req, res) => {
+  try {
+    const Model = getQuestionModel(req.params.module, req.params.subject)
+    if (!Model) return res.status(400).json({ success: false, message: 'Invalid module or subject' })
+
+    const question = await Model.findOne({ _id: req.params.id, submittedBy: req.teacher.id })
+    if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
+
+    for (const [key, value] of Object.entries(req.body)) {
+      if (PROTECTED_QUESTION_FIELDS.has(key)) continue
+      if (!Model.schema.path(key)) continue
+      question[key] = value
+    }
+    await question.save()
+
+    res.json({ success: true, question })
+  } catch (err) {
+    if (err.name === 'ValidationError') return res.status(400).json({ success: false, message: err.message })
+    console.error('updateQuestion error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+module.exports = { getQuestionTemplate, uploadQuestions, getMyUploadBatches, getMyUploadBatchDetail, updateQuestion }

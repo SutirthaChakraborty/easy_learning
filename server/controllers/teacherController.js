@@ -37,6 +37,34 @@ const getStudents = async (req, res) => {
   }
 }
 
+// A student is only editable by a teacher if the student is actually assigned to
+// them (Student.tutorIds is kept in sync by batchService whenever rosters change).
+const updateStudent = async (req, res) => {
+  try {
+    const student = await Student.findOne({ _id: req.params.id, orgId: req.teacher.orgId, tutorIds: req.teacher.id })
+    if (!student) return res.status(404).json({ success: false, message: 'Student not found' })
+
+    const { name, email, age, grade, status } = req.body
+
+    if (email) {
+      const dup = await Student.findOne({ orgId: req.teacher.orgId, email: email.toLowerCase(), _id: { $ne: student._id } })
+      if (dup) return res.status(409).json({ success: false, message: 'A student with this email already exists' })
+    }
+
+    if (name !== undefined) student.name = name
+    if (email !== undefined) student.email = email
+    if (age !== undefined) student.age = age === '' || age === null ? null : Number(age)
+    if (grade !== undefined) student.grade = grade
+    if (status !== undefined) student.status = status
+
+    await student.save()
+    res.json({ success: true, student })
+  } catch (err) {
+    if (err.name === 'ValidationError') return res.status(400).json({ success: false, message: err.message })
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
 const getBatches = async (req, res) => {
   try {
     const batches = await Batch.find({ orgId: req.teacher.orgId, tutorIds: req.teacher.id })
@@ -54,7 +82,7 @@ const getBatches = async (req, res) => {
 const getBatch = async (req, res) => {
   try {
     const batch = await findAssignedBatch(req)
-      .populate('studentIds', 'name email age grade')
+      .populate('studentIds', 'name email age grade status')
       .populate('directTutorIds', 'name email')
       .populate('subjects.subject', 'name code')
       .populate('subjects.teacherIds', 'name email')
@@ -156,7 +184,7 @@ const getStudentPerformance = async (req, res) => {
 }
 
 module.exports = {
-  getStudents,
+  getStudents, updateStudent,
   getBatches, getBatch,
   addStudentsToBatch, removeStudentFromBatch,
   addScheduleSlot, removeScheduleSlot, checkScheduleConflict,

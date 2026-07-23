@@ -1,5 +1,8 @@
 const QuestionUploadBatch = require('../models/superadmin/QuestionUploadBatch')
+const Organization = require('../models/admin/Organization')
 const { getQuestionModel } = require('../utils/questionModels')
+
+const PROTECTED_QUESTION_FIELDS = new Set(['_id', 'id', 'status', 'submittedBy', 'uploadBatchId', 'createdAt', 'updatedAt', '__v'])
 
 // GET /api/admin/questions/uploads/stats
 const getUploadStats = async (req, res) => {
@@ -96,4 +99,35 @@ const rejectUploadBatch = async (req, res) => {
   }
 }
 
-module.exports = { getUploadStats, getUploadBatches, getUploadBatchDetail, approveUploadBatch, rejectUploadBatch }
+// PATCH /api/admin/questions/:module/:subject/:id
+const updateQuestion = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+
+    const Model = getQuestionModel(req.params.module, req.params.subject)
+    if (!Model) return res.status(400).json({ success: false, message: 'Invalid module or subject' })
+
+    const question = await Model.findById(req.params.id)
+    if (!question || !question.uploadBatchId) return res.status(404).json({ success: false, message: 'Question not found' })
+
+    // Scope to this admin's own org via the upload batch it came from.
+    const uploadBatch = await QuestionUploadBatch.findOne({ _id: question.uploadBatchId, orgId: String(org._id) })
+    if (!uploadBatch) return res.status(404).json({ success: false, message: 'Question not found' })
+
+    for (const [key, value] of Object.entries(req.body)) {
+      if (PROTECTED_QUESTION_FIELDS.has(key)) continue
+      if (!Model.schema.path(key)) continue
+      question[key] = value
+    }
+    await question.save()
+
+    res.json({ success: true, question })
+  } catch (err) {
+    if (err.name === 'ValidationError') return res.status(400).json({ success: false, message: err.message })
+    console.error('updateQuestion error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+module.exports = { getUploadStats, getUploadBatches, getUploadBatchDetail, approveUploadBatch, rejectUploadBatch, updateQuestion }

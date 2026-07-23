@@ -21,9 +21,9 @@ function useTeacherApi(token) {
     return r.json();
   }, [token]);
 
-  const post = useCallback(async (path, body) => {
+  const post = useCallback(async (path, body, method = "POST") => {
     const r = await fetch(`${API}/api/teacher${path}`, {
-      method: "POST",
+      method,
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
@@ -136,7 +136,7 @@ const TeacherDashboard = () => {
 
       <main className={styles.main}>
         {section === "questions" ? (
-          <TeacherQuestionUpload get={get} postForm={postForm} token={token} />
+          <TeacherQuestionUpload get={get} post={post} postForm={postForm} token={token} />
         ) : selectedBatchId ? (
           <TeacherBatchDetail
             batchId={selectedBatchId}

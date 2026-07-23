@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
-import { MdCloudUpload, MdFileDownload } from "react-icons/md";
+import { MdCloudUpload, MdFileDownload, MdVisibility } from "react-icons/md";
 import DataTable from "../../components/Admin/DataTable";
+import QuestionBatchDetailModal from "../../components/Admin/QuestionBatchDetailModal";
 import styles from "../admin/AdminDashboard.module.css";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
@@ -15,7 +16,7 @@ function StatusBadge({ status }) {
   return <span className={`${styles.badge} ${STATUS_BADGE[status] || ""}`}>{status}</span>;
 }
 
-export default function TeacherQuestionUpload({ get, postForm, token }) {
+export default function TeacherQuestionUpload({ get, post, postForm, token }) {
   const [module, setModule] = useState("read");
   const [subject, setSubject] = useState("english");
   const [file, setFile] = useState(null);
@@ -26,6 +27,7 @@ export default function TeacherQuestionUpload({ get, postForm, token }) {
   const [uploads, setUploads] = useState([]);
   const [myBatches, setMyBatches] = useState([]);
   const [selectedBatchIds, setSelectedBatchIds] = useState([]);
+  const [viewUploadId, setViewUploadId] = useState(null);
 
   const loadUploads = useCallback(async () => {
     const d = await get("/questions/uploads");
@@ -183,8 +185,13 @@ export default function TeacherQuestionUpload({ get, postForm, token }) {
           { key: "createdAt", label: "Uploaded", render: (r) => new Date(r.createdAt).toLocaleDateString() },
         ]}
         rows={uploads}
+        actions={[{ icon: <MdVisibility />, title: "View / Edit Questions", onClick: (row) => setViewUploadId(row._id) }]}
         emptyMsg="No uploads yet. Submit your first batch of questions above."
       />
+
+      {viewUploadId && (
+        <QuestionBatchDetailModal batchId={viewUploadId} get={get} post={post} onClose={() => setViewUploadId(null)} />
+      )}
     </>
   );
 }

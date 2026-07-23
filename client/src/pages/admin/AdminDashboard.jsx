@@ -15,6 +15,7 @@ import DataTable from "../../components/Admin/DataTable";
 import StatCard from "../../components/Admin/StatCard";
 import SearchBar from "../../components/Admin/SearchBar";
 import BatchDetail from "../../components/Admin/BatchDetail";
+import QuestionBatchDetailModal from "../../components/Admin/QuestionBatchDetailModal";
 import styles from "./AdminDashboard.module.css";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
@@ -38,9 +39,9 @@ function useAdminApi(token) {
     return r.json();
   }, [token]);
 
-  const post = useCallback(async (path, body) => {
+  const post = useCallback(async (path, body, method = "POST") => {
     const r = await fetch(`${API}/api/admin${path}`, {
-      method: "POST",
+      method,
       headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
@@ -106,60 +107,6 @@ function PerformanceModal({ data, onClose }) {
               ))}
             </div>
           )
-        )}
-      </div>
-    </div>
-  );
-}
-
-// ── Question upload batch detail: parsed rows + row errors ───────────────────
-function QuestionBatchDetailModal({ batchId, get, onClose }) {
-  const [batch, setBatch] = useState(null);
-  const [rows, setRows] = useState([]);
-
-  useEffect(() => {
-    get(`/questions/uploads/${batchId}`).then((d) => {
-      if (d.success) { setBatch(d.batch); setRows(d.rows); }
-    });
-  }, [batchId, get]);
-
-  const rowColumns = rows.length
-    ? Object.keys(rows[0])
-      .filter((k) => !["_id", "__v", "status", "submittedBy", "uploadBatchId", "createdAt", "updatedAt", "translations", "id"].includes(k))
-      .map((k) => ({ key: k, label: k, render: (r) => Array.isArray(r[k]) ? r[k].join(", ") : String(r[k] ?? "—") }))
-    : [];
-
-  return (
-    <div className={styles.modalOverlay} onClick={onClose}>
-      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <div className={styles.modalHeader}>
-          <h3>{batch ? batch.originalFilename : "Loading…"}</h3>
-          <button className={styles.modalClose} onClick={onClose}><MdClose /></button>
-        </div>
-        {!batch ? <p className={styles.empty}>Loading…</p> : (
-          <>
-            <p className={styles.mutedText}>
-              {batch.module} / {batch.subject} · {batch.submittedByName} ({batch.submittedByEmail})
-            </p>
-
-            {batch.rowErrors?.length > 0 && (
-              <>
-                <p className={styles.mutedText} style={{ marginTop: 16 }}>Skipped rows ({batch.rowErrors.length}):</p>
-                <DataTable
-                  columns={[
-                    { key: "row", label: "Row" },
-                    { key: "field", label: "Field" },
-                    { key: "message", label: "Error" },
-                  ]}
-                  rows={batch.rowErrors.map((e, i) => ({ _id: `err-${i}`, ...e }))}
-                  emptyMsg="No errors"
-                />
-              </>
-            )}
-
-            <p className={styles.mutedText} style={{ marginTop: 16 }}>Submitted questions ({rows.length}):</p>
-            <DataTable columns={rowColumns} rows={rows} emptyMsg="No rows found for this batch." />
-          </>
         )}
       </div>
     </div>
@@ -341,7 +288,7 @@ const AdminDashboard = () => {
       const hasFile = modal.fields.some((f) => f.type === "file");
       const data = hasFile
         ? await submitViaForm(modal.endpoint, form, modal.fields)
-        : await post(modal.endpoint, form);
+        : await post(modal.endpoint, form, modal.method || "POST");
 
       if (!data.success) { setModalError(data.message || "Something went wrong"); return; }
       closeModal();
@@ -403,6 +350,24 @@ const AdminDashboard = () => {
     { key: "designation", label: "Your Designation (Principal / Father / Mother / etc.)", type: "select", required: true, options: DESIGNATION_OPTIONS },
     { key: "designationOther", label: "Please specify", required: true, showIf: (f) => f.designation === "other", maxLength: 50 },
     { key: "logo", label: "Organization Logo (optional)", type: "file", accept: "image/*" },
+  ];
+
+  const STATUS_OPTIONS = [{ value: "active", label: "Active" }, { value: "inactive", label: "Inactive" }];
+
+  const tutorFields = [
+    { key: "name", label: "Full Name", required: true, minLength: 2, maxLength: 100 },
+    { key: "email", label: "Email", type: "email", required: true },
+    { key: "phone", label: "Phone", type: "tel" },
+    { key: "subject", label: "Subject", maxLength: 50 },
+    { key: "status", label: "Status", type: "select", options: STATUS_OPTIONS },
+  ];
+
+  const studentFields = [
+    { key: "name", label: "Full Name", required: true, minLength: 2, maxLength: 100 },
+    { key: "email", label: "Email", type: "email" },
+    { key: "age", label: "Age", type: "number", min: 3, max: 25 },
+    { key: "grade", label: "Grade / Class", maxLength: 20 },
+    { key: "status", label: "Status", type: "select", options: STATUS_OPTIONS },
   ];
 
   const profileFields = [
@@ -559,18 +524,19 @@ const AdminDashboard = () => {
                 {org.status === "approved" && (
                   <div className={styles.approvedMsg}><MdCheckCircle /> Approved — you can now manage your team.</div>
                 )}
-                {org.status === "rejected" && (
-                  <button className={styles.primaryBtn} onClick={() => openModal({
-                    title: "Resubmit Organization",
-                    endpoint: "/org",
-                    fields: orgRegistrationFields,
-                    initial: {
-                      name: org.name, type: org.type, address: org.address, phone: org.phone,
-                      designation: profile?.designation || "", designationOther: profile?.designationOther || "",
-                    },
-                  })}>
-                    <MdEdit /> Resubmit Registration
-                  </button>
+                <button className={styles.primaryBtn} onClick={() => openModal({
+                  title: org.status === "rejected" ? "Resubmit Organization" : "Edit Organization",
+                  endpoint: "/org",
+                  fields: orgRegistrationFields,
+                  initial: {
+                    name: org.name, type: org.type, address: org.address, phone: org.phone,
+                    designation: profile?.designation || "", designationOther: profile?.designationOther || "",
+                  },
+                })}>
+                  <MdEdit /> {org.status === "rejected" ? "Resubmit Registration" : "Edit Organization"}
+                </button>
+                {org.status === "approved" && (
+                  <p className={styles.mutedText}>Editing your organization's details will send it back to the Super Admin for re-approval.</p>
                 )}
                 {org.rejectionHistory?.length > 0 && (
                   <div className={styles.rejectionHistory}>
@@ -615,6 +581,15 @@ const AdminDashboard = () => {
               rows={tutors}
               actions={[
                 { icon: <MdInsights />, title: "View Performance", onClick: openTutorPerformance },
+                {
+                  icon: <MdEdit />, title: "Edit", onClick: (row) => openModal({
+                    title: "Edit Tutor",
+                    endpoint: `/tutors/${row._id}`,
+                    method: "PATCH",
+                    fields: tutorFields,
+                    initial: { name: row.name, email: row.email, phone: row.phone, subject: row.subject, status: row.status },
+                  }),
+                },
                 { icon: <MdDelete />, title: "Delete", variant: "delete", onClick: (row) => handleDelete("/tutors", row._id) },
               ]}
               emptyMsg="No tutors yet. Add your first tutor."
@@ -741,6 +716,15 @@ const AdminDashboard = () => {
               rows={students}
               actions={[
                 { icon: <MdInsights />, title: "View Performance", onClick: openStudentPerformance },
+                {
+                  icon: <MdEdit />, title: "Edit", onClick: (row) => openModal({
+                    title: "Edit Student",
+                    endpoint: `/students/${row._id}`,
+                    method: "PATCH",
+                    fields: studentFields,
+                    initial: { name: row.name, email: row.email, age: row.age, grade: row.grade, status: row.status },
+                  }),
+                },
                 { icon: <MdDelete />, title: "Delete", variant: "delete", onClick: (row) => handleDelete("/students", row._id) },
               ]}
               emptyMsg="No students yet. Add your first student."
@@ -878,7 +862,7 @@ const AdminDashboard = () => {
 
       {/* Question upload batch detail (parsed rows) */}
       {viewQuestionBatchId && (
-        <QuestionBatchDetailModal batchId={viewQuestionBatchId} get={get} onClose={() => setViewQuestionBatchId(null)} />
+        <QuestionBatchDetailModal batchId={viewQuestionBatchId} get={get} post={post} onClose={() => setViewQuestionBatchId(null)} />
       )}
 
       {dashboardViewerStudent && (
