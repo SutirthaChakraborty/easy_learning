@@ -278,8 +278,9 @@
 /* ── Pending alert ───────────────────────────────────────── */
 .pendingAlert {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 12px 16px;
   background: rgba(79, 142, 247, 0.1);
   border: 1px solid rgba(79, 142, 247, 0.35);
   border-radius: 12px;
@@ -451,6 +452,7 @@
 
 .orgActions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -664,7 +666,9 @@
 
 .detailRow {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 4px 12px;
   padding: 10px 14px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 10px;
@@ -672,7 +676,7 @@
 }
 
 .detailRow span { color: rgba(255, 255, 255, 0.5); }
-.detailRow strong { color: #fff; }
+.detailRow strong { color: #fff; word-break: break-word; text-align: right; }
 
 .searchBarSA {
   display: flex;
@@ -706,9 +710,10 @@
 
 .tutorPerfRow {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 6px 12px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 10px;
   padding: 10px 14px;
@@ -752,8 +757,11 @@
   border-radius: 16px;
   width: 100%;
   max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 24px;
   box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  box-sizing: border-box;
 }
 
 .perfGrid {
@@ -829,12 +837,14 @@
 
 .replyRow {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   align-items: flex-start;
 }
 
 .replyRow textarea {
   flex: 1;
+  min-width: 200px;
 }
 
 /* ── Modal ───────────────────────────────────────────────── */
@@ -856,6 +866,9 @@
   border-radius: 16px;
   width: 100%;
   max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
   padding: 28px;
   box-shadow: 0 24px 60px rgba(0,0,0,0.5);
 }
@@ -1252,5 +1265,52 @@
 
   .chatBubble {
     max-width: 88%;
+  }
+
+  .modalClose {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 4px;
+  }
+
+  .viewBtnSA,
+  .approveBtn,
+  .rejectOrgBtn,
+  .viewDetailBtn,
+  .reviewBtn,
+  .filterBtn {
+    min-height: 40px;
+  }
+
+  .replyRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .replyRow .approveBtn {
+    align-self: flex-end;
+  }
+
+  .chatInputRow {
+    flex-direction: column;
+  }
+
+  .chatInputRow .approveBtn {
+    align-self: flex-end;
+  }
+
+  .convoRow {
+    min-height: 44px;
+  }
+
+  .orgActions {
+    width: 100%;
+  }
+
+  .orgActions .approveBtn,
+  .orgActions .rejectOrgBtn {
+    flex: 1 1 auto;
+    justify-content: center;
   }
 }

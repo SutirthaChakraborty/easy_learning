@@ -9,6 +9,7 @@ import { AnimatePresence } from "framer-motion";
 
 import { AuthProvider } from "./context/AuthContext";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
+import Background3D from "./components/Background3D/Background3D";
 import Navbar from "./components/Navbar/Navbar";
 import RoleSelect from "./pages/RoleSelect";
 import Home from "./pages/Home";
@@ -70,6 +71,7 @@ function AppLayout() {
 
   return (
     <>
+      <Background3D />
       {!hideNavbar && <Navbar />}
       <div style={{ paddingTop: hideNavbar ? "0" : "80px", flex: 1, display: "flex", flexDirection: "column" }}>
         <AnimatedRoutes />

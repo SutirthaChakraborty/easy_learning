@@ -6,10 +6,6 @@
   justify-content: center;
   gap: 40px;
   padding: 40px 60px;
-  background-image: url('../../assets/bg1.jpg');
-  background-size: cover;
-  background-position: inherit;
-  background-repeat: no-repeat;
   overflow: hidden;
 }
 

@@ -5,9 +5,6 @@
   justify-content: center;
   align-items: flex-start;
   padding: 90px 20px 20px;
-  background-image: url('../assets/bg1.jpg');
-  background-size: cover;
-  background-position: center;
   position: relative;
 }
 
@@ -192,11 +189,13 @@
 
 /* ─── MOBILE ─── */
 @media (max-width: 480px) {
-  .page { padding: 12px; }
+  /* Keep enough top padding to clear the absolutely-positioned .topBar (top:16)
+     and .progress (top:62) indicators so the card doesn't render underneath them. */
+  .page { padding: 96px 12px 16px; }
   .card { padding: 18px 16px; margin: 10px 0; }
   .title { font-size: 22px; }
   .storyBox { font-size: 15px; padding: 14px; }
   .question { font-size: 16px; }
   .option { font-size: 15px; }
-  .score { top: 12px; right: 12px; font-size: 14px; padding: 8px 14px; }
+  .score { font-size: 14px; padding: 8px 14px; }
 }

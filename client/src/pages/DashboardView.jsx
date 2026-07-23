@@ -490,8 +490,8 @@ export default function DashboardView({
                   </div>
                 </div>
 
-                <div style={{ flex: 1 }}>
-                  <div style={{ display: 'flex', gap: 2, marginBottom: 4 }}>
+                <div style={{ flex: 1, minWidth: 160 }}>
+                  <div style={{ display: 'flex', gap: 2, marginBottom: 4, flexWrap: 'wrap' }}>
                     {Array.from({ length: 10 }).map((_, si) => (
                       si < r.stars
                         ? <FaStar key={si} color="#FFD700" style={{ fontSize: '0.85rem' }} />
