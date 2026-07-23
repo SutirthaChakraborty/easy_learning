@@ -1,813 +1,378 @@
-<div align="center">
+# Learningo — User Manual
 
-<img src="https://img.shields.io/badge/Status-Active%20Development-brightgreen?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Version-1.0.0-blue?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Platform-Web-orange?style=for-the-badge" />
-<img src="https://img.shields.io/badge/Node.js-%3E%3D18-339933?style=for-the-badge&logo=node.js" />
-<img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react" />
+A guide for the people who *use* Learningo day to day: students, parents, organization
+admins, and the platform super admin. For how the app is built, see
+[design-guide.md](./design-guide.md) — this document is about what you can click and what
+happens when you do.
 
-<br /><br />
+## Contents
 
-```
-███████╗ █████╗ ███████╗██╗   ██╗    ██╗     ███████╗ █████╗ ██████╗ ███╗   ██╗
-██╔════╝██╔══██╗██╔════╝╚██╗ ██╔╝    ██║     ██╔════╝██╔══██╗██╔══██╗████╗  ██║
-█████╗  ███████║███████╗ ╚████╔╝     ██║     █████╗  ███████║██████╔╝██╔██╗ ██║
-██╔══╝  ██╔══██║╚════██║  ╚██╔╝      ██║     ██╔══╝  ██╔══██║██╔══██╗██║╚██╗██║
-███████╗██║  ██║███████║   ██║       ███████╗███████╗██║  ██║██║  ██║██║ ╚████║
-╚══════╝╚═╝  ╚═╝╚══════╝   ╚═╝       ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
-```
-
-# Easy Learn — Gamified Learning for Every Mind
-
-### *An inclusive, interactive learning platform built for children with dyslexia and learning disabilities*
-
-<br/>
-
-> **"Every child deserves a learning experience that fits their mind — not the other way around."**
-
-<br/>
+1. [Getting started](#1-getting-started)
+2. [For Students](#2-for-students)
+3. [For Admins (Schools / Coaching Centres / Parents)](#3-for-admins-schools--coaching-centres--parents)
+4. [For Teachers](#4-for-teachers)
+5. [For the Super Admin](#5-for-the-super-admin)
+6. [Language support](#6-language-support)
+7. [Contact & support](#7-contact--support)
+8. [Troubleshooting](#8-troubleshooting)
 
 ---
 
-</div>
+## 1. Getting started
 
-## Table of Contents
+When you open the site, you land on a **role selection screen** with four cards:
 
-- [About the Project](#about-the-project)
-- [Key Features](#key-features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [One-Command Setup](#one-command-setup)
-  - [Manual Setup](#manual-setup)
-  - [Running the App](#running-the-app)
-  - [Seeding the Database](#seeding-the-database)
-- [Environment Variables](#environment-variables)
-- [API Reference](#api-reference)
-  - [Authentication](#authentication-endpoints)
-  - [Learning Content](#learning-content-endpoints)
-  - [Mini-Games](#mini-game-endpoints)
-  - [Dashboard & Progress](#dashboard--progress-endpoints)
-  - [Admin](#admin-endpoints)
-  - [Super-Admin](#super-admin-endpoints)
-  - [Teacher](#teacher-endpoints)
-  - [Contact](#contact-endpoint)
-- [Database Architecture & Models](#database-architecture--models)
-- [Roles & Authentication](#roles--authentication)
-- [Internationalization (i18n)](#internationalization-i18n)
-- [Accessibility](#accessibility)
-- [Design System](#design-system)
-- [Deployment](#deployment)
-- [Branch Strategy & Contributing](#branch-strategy--contributing)
-- [Roadmap](#roadmap)
-- [The Team](#the-team)
-- [About the Company](#about-the-company)
-- [License](#license)
-
----
-
-## About the Project
-
-**Easy Learn** is an accessible, gamified web learning platform designed for **children aged 5–14 with dyslexia and other learning disabilities**. It combines multi-sensory learning techniques with game mechanics to make education engaging and effective for every type of learner.
-
-The platform covers **three core subjects** — English, Mathematics, and Science — each with four learning modes: Listen, Read, Write, and Speak. Mini-games reinforce skills, a round-based scoring system (with a "Warrior" speed-bonus mode) drives motivation, and a personal dashboard tracks XP, streaks, and achievements over time.
-
-Beyond the student experience, Easy Learn is a small multi-tenant platform: **organizations** (schools/tutoring centres) sign up, a **super-admin** approves them, an **org admin** manages tutors/batches/students, and **teachers** upload their own question banks that are scoped to the batches they teach.
-
-**Built by Futuresight Analytics Limited** (Ireland).
-
----
-
-## Key Features
-
-| Feature | Description | Status |
+| Card | Who it's for | Where it sends you |
 |---|---|---|
-| Multi-Sensory Modules | Listen, Read, Write, Speak — four modes across English, Maths, Science (12 combinations) | Done |
-| Dyslexia-Friendly Typography | Increased letter/word spacing and line height applied globally via the Fredoka type system | Done |
-| Round-Based Scoring | Every module/game is capped at 10 questions per round; Practice vs. Warrior mode toggle | Done |
-| Warrior Bonus Scoring | Speed bonus stars for fast correct answers (≤10s / ≤15s / ≤20s) on top of the base star-per-correct-answer | Done |
-| Mini-Games | Spelling Bee, Memory Match, Word Puzzle | Done |
-| Student Dashboard | XP/level, activity heatmap, performance chart, round history, 16-badge achievement system | Done |
-| Multi-Role Platform | Student, Teacher, Org Admin, Super-Admin — each with its own login and dashboard | Done |
-| Batch-Scoped Question Uploads | Teachers upload question banks (Excel) targeted at specific batches; admin reviews & approves | Done |
-| Admin ↔ Super-Admin Chat | Threaded messaging with unread badges (polling-based) between org admins and the super admin | Done |
-| Organization Onboarding | Org registration, reversible approve/reject with history, resubmission after rejection | Done |
-| Dual Authentication | Google OAuth (Firebase) + Email/Password (JWT) — separate per role | Done |
-| Internationalization | 14 of 21 planned languages live via i18next, incl. RTL support | In Progress |
-| 3D Animated Background | Ambient parallax "brick" scene shared across the whole app | Done |
-| Contact Us | Public contact form (student/parent/teacher/admin/other) routed to the super-admin | Done |
-| Text-to-Speech / Speech Recognition | Web Speech API in the Speak & Listen modules | Done |
-| AI Personalization | Adaptive difficulty, emotion detection, gesture input | Future |
+| **Student** | Kids using the lessons and games | Student sign-in page |
+| **Admin / Parents** | Anyone running or supervising a school, coaching centre, or home-school group | Admin sign-in page |
+| **Teacher** | Teachers/tutors an Admin has already added, who need to manage their own batches | Teacher sign-in page |
+| **Super Admin** | The single platform operator who approves organizations | Super Admin sign-in page |
+
+Pick the card that matches your role and click **Sign In**. You'll also notice a subtle,
+animated 3D background across every page — it's purely decorative and doesn't affect any
+functionality (it automatically stays still if your device/browser has "reduce motion"
+enabled).
 
 ---
 
-## Tech Stack
+## 2. For Students
 
-### Frontend
+### 2.1 Signing in
 
-| Technology | Version | Purpose |
+On the Student sign-in page you can either:
+
+- **Continue with Google** — one click, no password to remember, or
+- **Sign in with email and password** — use the toggle at the bottom of the card to switch
+  between "Sign In" and "Sign Up" if you don't have an account yet.
+
+Once signed in you're taken to the **Home** page.
+
+### 2.2 Navigating the app
+
+The top navigation bar (visible on every page except sign-in/dashboard-style full-screen
+pages) gives you:
+
+- **Home** — back to the main screen
+- **Dashboard** — your personal progress page (see §2.5)
+- **Contact Us** — reach the Learningo team with a question or issue
+- A **language switcher** — change the app's language at any time (see §6)
+- **Logout**
+
+### 2.3 Learning modules
+
+The Home page has two big buttons — **Start Learning** (a general, story-based reading quiz
+that mixes topics, not tied to one subject) and **Play Games** (see §2.4) — plus three
+**subject cards**: **English**, **Mathematics**, and **Science**. Picking a subject card
+opens that subject's page with four skill modules:
+
+| Module | Skill | XP per round |
 |---|---|---|
-| React | 19.2 | UI framework |
-| Vite | 8 | Build tool & dev server |
-| React Router | 7.14 | Client-side routing |
-| Redux Toolkit | 2.11 | Global state management |
-| Firebase Auth | 12.12 | Google OAuth integration |
-| Framer Motion | 12.38 | Animations and transitions |
-| Recharts | 3.8 | Dashboard charts |
-| i18next / react-i18next | 26 / 17 | Internationalization |
-| i18next-http-backend | 4 | Loads `/locales/*/translation.json` at runtime |
-| i18next-browser-languagedetector | 8.2 | Detects/persists user language |
-| React Icons | 5.6 | SVG icon library |
-| Fredoka (fontsource) | 5.2 | Primary UI font |
-| @vitejs/plugin-basic-ssl | 2.3 | Local HTTPS dev server (required for mic access on some browsers) |
-| CSS Modules | — | Component-scoped styles |
+| **Listen** | Listening comprehension | 30 XP |
+| **Read** | Reading comprehension | 20 XP |
+| **Write** | Writing practice | 15 XP |
+| **Speak** | Speaking practice | 10 XP |
 
-### Backend
+Every module is played in **rounds of exactly 10 questions**, and each module has a
+**Practice / Warrior** toggle:
 
-| Technology | Version | Purpose |
-|---|---|---|
-| Node.js | >= 18 | Server runtime |
-| Express | 4.21 | REST API framework |
-| MongoDB (Atlas) | driver 7.2 | NoSQL database — **3 separate clusters/connections** |
-| Mongoose | 8.10 | MongoDB ODM |
-| JSON Web Token | 9 | Token-based authentication (4 independent secrets, one per role) |
-| bcryptjs | 3 | Password hashing |
-| express-validator | 7.3 | Request validation for admin/super-admin/teacher/contact forms |
-| multer / multer-storage-cloudinary | 2.2 / 4 | File uploads (avatars, org logos, contact attachments, question sheets) |
-| cloudinary | 1.41 | Hosted image storage for org logos |
-| exceljs | 4.4 | Reads/writes the `.xlsx` question-upload template |
-| google-translate-api-x | 10.7 | Backs the `npm run translate` locale-generation script |
-| cors | 2.8 | Cross-origin request handling (per-origin allowlist) |
-| cookie-parser | 1.4 | httpOnly session cookie parsing |
-| dotenv | 16.5 | Environment variable management |
-| nodemon | 3.1 | Dev auto-restart |
+- **Practice** — untimed, no pass/fail — just play and earn 1 star per correct answer.
+- **Warrior** — timed per question, and the round is graded **Passed** (6 or more correct
+  out of 10) or **Failed**. Answering fast earns bonus stars on top of the normal star per
+  correct answer: within 10 seconds → +5 bonus stars, within 15 seconds → +4, within 20
+  seconds → +3.
 
-### Planned AI/ML
+When you finish the 10th question, a **Round Complete** screen shows your result and saves
+it to your dashboard automatically.
 
-| Technology | Purpose |
+### 2.4 Games
+
+From the **Game Zone** (`/games`) you can play three standalone games (English only, not
+tied to a specific subject module):
+
+- **Spelling Bee** (Easy) — spell the word from a clue
+- **Memory Match** (Medium) — find all the matching pairs
+- **Word Puzzle** (Hard) — unscramble jumbled letters
+
+Each game shows up to 3 stars based on your best performance, just like the subject
+modules.
+
+### 2.5 Your Dashboard
+
+The Dashboard is your personal progress hub. At the top, a **Level badge** shows your
+current level and an XP progress bar toward the next one, alongside two buttons:
+
+- **Results** — opens a "My Answers" view with **Practice** and **Warrior** tabs, so you
+  can review past answers.
+- **Progress Map** — opens a full board-game-style map of all 12 module slots (3 subjects ×
+  4 skills), showing which are Mastered, In Progress, or Not Started, with stars earned in
+  each.
+
+Below that:
+
+- **Stats cards** — Total XP, Sessions completed, Today's activity time, current Streak
+  (days in a row), and total Achievements earned.
+- **Performance chart** — a trend line of your XP over the last 30 days.
+- **Activity heatmap** — a calendar-style grid (like a contribution graph) showing which
+  days you were active and how much you did, colored from light to dark by activity level.
+  You can switch between years if you've been using the app for a while.
+- **Achievements** — a grid of badges (grouped as Learning, Games, Streak, XP Milestones,
+  Special) you've earned or have yet to unlock, each showing the date earned or the XP
+  reward needed.
+- **Round History** — a scrollable list of your completed rounds, each showing the
+  module/subject, Practice or Passed/Failed (Warrior), and stars earned.
+
+Nothing needs to be logged manually — playing a module or game round automatically updates
+your dashboard.
+
+---
+
+## 3. For Admins (Schools / Coaching Centres / Parents)
+
+The **Admin** role is for anyone who wants to register and run a group of students under an
+organization — a school, a coaching centre, or even a single parent/family group.
+
+### 3.1 Signing in
+
+Admin sign-in is **Google-only** — click **Continue with Google** on the Admin login page.
+There's a **Back to Role Selection** link if you picked the wrong card.
+
+### 3.2 Registering your organization
+
+The first time you sign in, your dashboard's **Overview** section shows a **Set Up Your
+Organization** prompt. Go to the **Organization** section and click **Register Now** to
+fill in:
+
+- Organization Name
+- Type (school, coaching centre, etc.)
+- Address
+- Phone
+- **Your Designation** — how you're declaring yourself (Principal, Father, Mother, etc.;
+  choose "Other" to specify your own)
+- An optional Organization Logo
+
+Submitting sends your organization to the **Super Admin for approval**. Your Organization
+section will show a status: **Pending**, **Approved**, or **Rejected**.
+
+- If **rejected**, you'll see the reason and can click **Resubmit Registration** to correct
+  and resend — as many times as needed. A full history of past rejections is kept and shown
+  to you.
+- Once **Approved**, you'll see "Approved — you can now manage your team," and the rest of
+  the dashboard unlocks.
+- You can go back and **edit your organization's details at any time**, even after
+  approval (button label changes to "Edit Organization" once approved). Editing an already
+  **approved** organization sends it back to the Super Admin as **Pending** for
+  re-approval — you'll see a note explaining this before you submit. Editing while still
+  **Pending** just updates the details in place.
+
+### 3.3 Running your organization
+
+Once approved, the sidebar gives you:
+
+| Section | What you do there |
 |---|---|
-| ml5.js | Face detection, pose estimation, sound classification |
-| TensorFlow.js | Custom model inference in-browser |
-| Teachable Machine | Train custom gesture/sound models |
-| MediaPipe Hands | Real-time hand tracking |
+| **Overview** | Summary counts of your Tutors, Batches, Students, Parents |
+| **Organization** | View/edit your org's registration details and status |
+| **Tutors** | Add and edit teachers (Name, Email, Phone, Subject, Status) |
+| **Batches** | Create class groups (Name, Academic Year/Term, max students, description); manage each batch's student roster, whole-batch teachers, and per-subject teacher/schedule assignments (see §3.4) |
+| **Subjects** | Define the named subjects your organization teaches, for batch scheduling purposes (English, Maths, and Science are created for you automatically when you register) |
+| **Students** | Add and edit students (Name, Email, Age, Grade/Class, Status) |
+| **Parents** | Add parent/guardian records and link them to students (with consent tracking) |
+| **Question Review** | Approve or reject question sets your Teachers upload, and edit individual questions (see §3.5) |
+| **Reports** | Search a Tutor or Student by name, then open their performance view for detailed learning stats |
+| **Messages** | A direct chat with the Super Admin (see §3.6) |
+
+Each list (Tutors, Batches, Subjects, Students, Parents) uses the same pattern: an **Add**
+button opens a form, and existing records show in a searchable table. Tutors and Students
+also have an **Edit** (pencil) action to update their details in place, alongside **View
+Performance** and **Delete**. You can also update your own **Edit Profile** details
+(designation, phone, profile photo) from the sidebar.
+
+### 3.4 Managing a batch's teachers, subjects, and schedule
+
+Opening a batch (from the **Batches** section) gives you three tabs:
+
+- **Roster** — the students currently in this batch, with a capacity indicator if you set
+  a maximum.
+- **Teachers** — teachers assigned to the batch as a whole, in addition to any assigned to
+  a specific subject below.
+- **Subjects** — add one or more of your organization's Subjects to this batch. For each
+  subject you can assign one or more teachers and build a **weekly schedule** (day, time
+  slot) shown both per-subject and as a combined weekly grid for the whole batch.
+
+A teacher only sees and can manage batches (and, within a batch, only the subjects) they've
+actually been assigned to — see §4.
+
+### 3.5 Reviewing questions submitted by Teachers
+
+The **Question Review** section lists every question upload your Teachers have submitted,
+with stats for Total/Pending/Approved/Rejected and a status filter. For each upload you can:
+
+- **View Questions** — open the full list of questions in that upload, and edit any of
+  them if needed (e.g. fix a typo before approving).
+- **Approve** — the questions become visible to students in the batch(es) the teacher
+  targeted.
+- **Reject** — you're prompted for a reason, which the teacher sees against that upload.
+
+Approving and rejecting are **reversible**, just like organization approval — you can
+change your mind later. Students only ever see **approved** questions, and only ones
+uploaded for their own batch (or the built-in question bank, if they aren't in any batch).
+
+### 3.6 Messaging the Super Admin
+
+The **Messages** section is a private, threaded chat between you and the Super Admin — use
+it for approval questions, platform issues, or anything that doesn't fit the public Contact
+Us form. Unread messages show a badge that updates automatically every ~25 seconds.
 
 ---
 
-## Project Structure
+## 4. For Teachers
 
-```
-easy_learning/                          ← Monorepo root
-│
-├── client/                             ← React + Vite frontend (port 5173/3000)
-│   ├── index.html
-│   ├── vite.config.js
-│   ├── package.json
-│   ├── .env                            ← Firebase API key + API base URL (copy from .env.example)
-│   ├── public/
-│   │   └── locales/{lang}/translation.json  ← i18next resources (14 languages)
-│   └── src/
-│       ├── main.jsx                    ← App entry point, Redux Provider
-│       ├── App.jsx                     ← Router + all page routes
-│       ├── index.css                   ← Global styles, dyslexia-friendly base typography
-│       ├── i18n/i18n.js                ← i18next init (http-backend + language detector)
-│       ├── components/
-│       │   ├── Navbar/, Hero/, Cards/, ProgressBar/, ModeToggle/, ContactForm/
-│       │   ├── LanguageSwitcher/       ← Language picker (RTL-aware)
-│       │   ├── RoundComplete/          ← Shared end-of-round results overlay
-│       │   ├── Background3D/           ← Ambient 3D parallax background layer
-│       │   ├── StudentDashboardViewer/ ← Read-only dashboard viewer (admin/teacher/super-admin drill-down)
-│       │   └── Admin/                  ← Shared admin/super-admin UI kit (DataTable, Modal, SearchBar, MultiSelect, ScheduleEditor, WeeklyScheduleGrid, StatCard...)
-│       ├── pages/                      ← Route-level pages
-│       │   ├── Home.jsx, Learn.jsx, SubjectPage.jsx, GamesPage.jsx, ContactUs.jsx
-│       │   ├── Login.jsx, RoleSelect.jsx, AdminLogin.jsx, TeacherLogin.jsx, SuperAdminLogin.jsx
-│       │   ├── Dashboard.jsx, DashboardView.jsx, ProgressMap.jsx
-│       │   ├── modules/                ← Learning module players (Read/Write/Listen/Speak)
-│       │   ├── games/                  ← Mini-game pages (Spelling/Memory/Puzzle)
-│       │   ├── admin/AdminDashboard.jsx
-│       │   ├── superadmin/SuperAdminDashboard.jsx
-│       │   └── teacher/                ← TeacherDashboard, TeacherBatchDetail, TeacherQuestionUpload
-│       ├── store/
-│       │   └── store.js + slices/      ← Redux Toolkit slices (dashboard + one per module/subject combo)
-│       ├── context/
-│       │   ├── AuthContext.jsx         ← Student auth (JWT + Firebase)
-│       │   └── AdminAuthContext.jsx    ← Admin, teacher, and super-admin auth (3 independent JWTs)
-│       ├── firebase/auth.js            ← Firebase init + Google sign-in
-│       ├── utils/                      ← authHeaders, warriorBonus, designations, etc.
-│       └── assets/
-│
-├── server/                             ← Node.js + Express API (port 5000)
-│   ├── server.js                       ← Express app entry point, route mounting, CORS allowlist
-│   ├── package.json
-│   ├── .env                            ← Secrets (copy from .env.example)
-│   ├── db/adminDb.js, superAdminDb.js  ← Secondary Mongoose connections
-│   ├── config/cloudinary.js
-│   ├── routes/                         ← ~25 route files
-│   ├── controllers/                    ← Request handlers (mirror of routes/)
-│   ├── models/                         ← 23 default-DB models
-│   │   ├── admin/                      ← 7 models (Organization, OrgAdmin, Tutor, Student, Parent, Subject, Batch)
-│   │   └── superadmin/                 ← 4 models (Organization, GlobalSettings, ChatMessage, QuestionUploadBatch)
-│   ├── middleware/                     ← authMiddleware (per-role + dashboardAuth), upload.js, validate.js
-│   ├── validators/                     ← express-validator chains per form
-│   ├── utils/                          ← constants, performance aggregation, questionVisibility
-│   ├── uploads/                        ← multer disk storage (avatars, contact-attachments, question-uploads) — gitignored
-│   ├── scripts/                        ← translate-content.js, seed-all.js
-│   └── data/                           ← Seed data + seed script
-│       ├── seed.js                     ← Populates the default-DB question/game collections
-│       └── *.json                      ← 16 fixture files (one per module/subject + games + learn)
-│
-├── docs/
-│   ├── design-guide.md                 ← Typography, colors, accessibility standards
-│   └── user-manual.md                  ← End-user walkthrough
-├── updates/                            ← Daily & weekly team progress reports
-│   ├── daily/                          ← YYYY-MM-DD.md
-│   └── weekly/                         ← week-NN-YYYY.md
-├── setup.sh / setup.bat / setup.ps1    ← Auto-install scripts (macOS/Linux, Windows CMD, PowerShell)
-├── DEPLOY.md                           ← Hostinger VPS deployment guide (Nginx + PM2 + MongoDB Atlas)
-├── PROJECT_PLAN.md                     ← 16-week development roadmap
-└── README.md
-```
+The **Teacher** role is for individual tutors/teachers who've already been added to an
+organization by its Admin (in the Admin's **Tutors** section) and want to manage their own
+batches directly, instead of going through the Admin for everything.
+
+### 4.1 Signing in
+
+Teacher sign-in is **Google-only**, on the Teacher login page — click **Continue with
+Google**. There's no self-registration: your Admin must have already added you as a Tutor
+using the same email address as your Google account. If no matching record is found,
+you'll see a message asking you to have your Admin add you first, and you won't be able to
+proceed until they do.
+
+### 4.2 My Batches
+
+The Teacher dashboard's **My Batches** section lists only the batches your Admin has
+assigned you to (whether as a whole-batch teacher or for a specific subject). Opening a
+batch lets you:
+
+- View and manage its student roster (add/remove students).
+- Edit the weekly schedule, but **only for subjects you personally teach** in that batch —
+  subject and teacher assignments themselves stay Admin-only.
+
+If you don't see a batch you expect, ask your Admin to add you to it.
+
+### 4.3 Uploading questions
+
+The **Upload Questions** section lets you submit new questions for your students to
+practice, subject to your Admin's approval:
+
+1. Pick a **Module** (Listen, Read, Write, Speak) and a **Subject** (English, Maths,
+   Science).
+2. Click **Download template** to get a spreadsheet (.xlsx) with the right columns for
+   that module/subject.
+3. Fill it in and upload it, choosing which of your batch(es) it should be visible to
+   (required — you must pick at least one).
+4. The upload appears in **My Uploads** with a **Pending** status. You can open it to
+   review or edit the questions while it's still pending.
+
+Your Admin reviews each upload and either **approves** it (so it becomes visible to
+students in the batch(es) you selected) or **rejects** it with a reason. You cannot
+approve your own questions.
 
 ---
 
-## Getting Started
+## 5. For the Super Admin
 
-### Prerequisites
+There is exactly **one** Super Admin account for the whole platform (set up by whoever
+deploys/operates Learningo). It signs in with an **email and password** on the Super Admin
+login page — there's no self-registration or Google sign-in for this role.
 
-- **Node.js >= 18** — [nodejs.org](https://nodejs.org)
-- **npm >= 9** (bundled with Node.js)
-- **Git** — [git-scm.com](https://git-scm.com)
-- A MongoDB Atlas account (the app expects **three** connection strings — see [Environment Variables](#environment-variables))
-- A Firebase project (for Google OAuth)
-- A Cloudinary account (for organization logo uploads)
+The Super Admin dashboard sidebar has:
 
-### One-Command Setup
-
-The setup scripts install all dependencies and copy `.env.example` → `.env` for both client and server.
-
-| OS | Command |
+| Section | What you do there |
 |---|---|
-| Linux / macOS | `bash setup.sh` |
-| Windows CMD | `setup.bat` |
-| Windows PowerShell | `powershell -ExecutionPolicy Bypass -File setup.ps1` |
+| **Overview** | Platform-wide summary; flags pending organizations awaiting review |
+| **Organizations** | Approve or reject registered organizations; filter by All / Pending / Approved / Rejected |
+| **Admin Chat** | Threaded chat with every organization's admin (mirrors each admin's Messages section) |
+| **Contact Messages** | Public messages submitted via the Contact Us form by anyone (students, admins, teachers, parents, other) |
+| **Reports** | Open an approved organization to view its Tutors' and Students' performance data |
+| **Settings** | Global key/value platform settings (add, view, and describe platform-wide configuration values) |
 
-### Manual Setup
+### 5.1 Reviewing organizations
 
-```bash
-# 1. Clone the repository
-git clone https://github.com/SutirthaChakraborty/easy_learning.git
-cd easy_learning
+Each organization card shows its name, type, admin email, address, and registration date.
+From here you can:
 
-# 2. Install root dependencies (concurrently)
-npm install
+- **Approve** — unlocks the org's dashboard for its admin, and lets you set a
+  **subscription plan** for it.
+- **Reject** — prompts you for a reason, which the admin sees and can act on.
 
-# 3. Install client dependencies
-cd client && npm install && cd ..
+Approving and rejecting are **fully reversible** — you can approve, later reject, then
+approve again if circumstances change. Every rejection (past and present) stays visible in
+that org's **rejection history**, so nothing is lost even after re-approval.
 
-# 4. Install server dependencies
-cd server && npm install && cd ..
+Once an org is approved, click **View Admin / Teachers / Students** to drill into its
+people and their performance data.
 
-# 5. Copy and fill in environment files
-cp server/.env.example server/.env
-cp client/.env.example client/.env
-# Edit both .env files with your real credentials
-```
+### 5.2 Handling contact messages
 
-### Running the App
-
-```bash
-# Start BOTH frontend and backend together (recommended)
-npm run dev
-
-# Start frontend only  →  http://localhost:5173
-npm run client
-
-# Start backend only   →  http://localhost:5000
-npm run server
-```
-
-### Seeding the Database
-
-Populate the default-DB question/game collections with lesson and game data:
-
-```bash
-cd server && npm run seed
-```
-
-This runs `server/data/seed.js` and inserts all JSON fixture data. `npm run seed:all` (`server/scripts/seed-all.js`) is available for a broader multi-collection reseed, and `npm run translate` (`server/scripts/translate-content.js`) can auto-generate locale content via `google-translate-api-x`.
+The **Contact Messages** section lists everything submitted through the public Contact Us
+form (see §7) — separate from the private Admin Chat, since anyone can submit one without
+being logged in as an org admin. Filter by status (**Open / In Progress / Resolved**) and
+use **Reply & Resolve** to respond to a message and close it out.
 
 ---
 
-## Environment Variables
+## 6. Language support
 
-Easy Learn talks to **three independent MongoDB clusters** and signs **four independent JWT secrets**, one per role. All are required — a missing one causes that role's login flow to fail with a generic "Internal server error".
+Learningo currently supports **14 languages**:
 
-### Server — `server/.env`
+English, Spanish, Portuguese, French, Italian, German, Dutch, Russian, Turkish, Chinese,
+Japanese, Korean, Indonesian, and Vietnamese.
 
-```env
-PORT=5000
-CLIENT_URL=http://localhost:5173
-
-# Main app DB (students, learning content, activity/dashboard data)
-MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<dbname>
-JWT_SECRET=your_strong_random_secret_here
-JWT_EXPIRES_IN=7d
-
-# Admin DB (organizations, tutors/teachers, students, parents, batches)
-ADMIN_MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<admindb>
-ADMIN_JWT_SECRET=your_strong_random_secret_here
-ADMIN_JWT_EXPIRES_IN=7d
-
-# Super-admin DB (org approvals, global settings, contact messages, chat, question review)
-SUPERADMIN_MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/<superadmindb>
-SUPERADMIN_JWT_SECRET=your_strong_random_secret_here
-
-# Teacher auth (reads the admin DB's Tutor model, signs its own JWT)
-TEACHER_JWT_SECRET=your_strong_random_secret_here
-TEACHER_JWT_EXPIRES_IN=7d
-
-# Cloudinary (organization logo uploads)
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-```
-
-| Variable | Required | Description |
-|---|---|---|
-| `PORT` | No | Express server port (default: 5000) |
-| `CLIENT_URL` | Yes | Frontend origin(s) for CORS — comma-separated for multiple origins |
-| `MONGODB_URI` | Yes | Default-DB MongoDB Atlas connection string |
-| `JWT_SECRET` / `JWT_EXPIRES_IN` | Yes / No | Student JWT signing secret / TTL (default `7d`) |
-| `ADMIN_MONGODB_URI` | Yes | Admin-DB connection string |
-| `ADMIN_JWT_SECRET` / `ADMIN_JWT_EXPIRES_IN` | Yes / No | Org-admin JWT signing secret / TTL |
-| `SUPERADMIN_MONGODB_URI` | Yes | Super-admin-DB connection string |
-| `SUPERADMIN_JWT_SECRET` | Yes | Super-admin JWT signing secret |
-| `TEACHER_JWT_SECRET` / `TEACHER_JWT_EXPIRES_IN` | Yes / No | Teacher JWT signing secret / TTL |
-| `CLOUDINARY_*` | Yes | Cloudinary credentials for org-logo uploads |
-
-### Client — `client/.env`
-
-```env
-VITE_FIREBASE_API_KEY=your_firebase_api_key
-VITE_API_BASE_URL=http://localhost:5000/api
-```
-
-The remaining Firebase config values (authDomain, projectId, etc.) are hardcoded inside `client/src/firebase/auth.js`.
+Use the **language switcher** (globe icon) in the navigation bar to change the app's
+language at any time — your choice is remembered on that device for next time.
 
 ---
 
-## API Reference
+## 7. Contact & support
 
-Base URL: `http://localhost:5000`
+Anyone — student, parent/guardian, organization admin, teacher/tutor, or other — can reach
+the Learningo team via **Contact Us** in the navigation bar. Fill in who you are, your name,
+email, organization (optional), a subject, and your message (with an optional image/PDF
+attachment); it goes straight to the Super Admin's **Contact Messages** list. No account is
+required.
 
-Most responses follow the shape:
-
-```json
-{
-  "success": true,
-  "count": 5,
-  "data": [ ... ]
-}
-```
-
-Error responses:
-
-```json
-{
-  "success": false,
-  "message": "Description of what went wrong"
-}
-```
+If you're already an org **Admin**, prefer the **Messages** section on your dashboard for
+anything related to your organization's approval or account — it's a direct, private
+conversation with the Super Admin rather than a one-off form.
 
 ---
 
-### Authentication Endpoints
-
-Each role authenticates independently and receives its own JWT.
-
-| Role | Method | Endpoint | Description |
-|---|---|---|---|
-| Student | `POST` | `/api/auth/register` | Register with email + password |
-| Student | `POST` | `/api/auth/login` | Login with email + password → JWT |
-| Student | `POST` | `/api/auth/session` | Sync a Firebase Google OAuth user → sets an httpOnly session cookie |
-| Student | `GET` | `/api/auth/session` | Get the currently authenticated session user |
-| Student | `DELETE` | `/api/auth/session` | Clear the session cookie (logout) |
-| Admin | `POST` | `/api/admin/auth/google` | Firebase Google sign-in for org admins |
-| Admin | `GET` | `/api/admin/auth/me` | Get current admin from JWT |
-| Super-Admin | `POST` | `/api/superadmin/auth/login` | Email/password login (single super-admin account, no Google) |
-| Teacher | `POST` | `/api/teacher/auth/google` | Firebase Google sign-in for teachers |
-| Teacher | `GET` | `/api/teacher/auth/me` | Get current teacher from JWT |
-
-**Example — `POST /api/auth/login` response:**
-```json
-{
-  "success": true,
-  "token": "<jwt>",
-  "user": { "id": "...", "name": "Jane Smith", "email": "jane@example.com" }
-}
-```
-
----
-
-### Learning Content Endpoints
-
-Replace `{module}` with one of `read`, `listen`, `write`, `speak` and `{subject}` with one of `english`, `maths`, `science`.
-
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| `GET` | `/api/{module}/{subject}` | `dashboardAuth` | Get questions for this module/subject — batch-scoped for org students, seed data for everyone else |
-| `GET` | `/api/{module}/{subject}/:id` | `dashboardAuth` | Get a single question by ID |
-| `POST` | `/api/{module}/{subject}/seed` | none | Seed this collection from JSON fixture data |
-| `DELETE` | `/api/{module}/{subject}/all` | none | Delete all content in this collection |
-
-**Available combinations (12 total):**
-
-| Module | English | Maths | Science |
-|---|---|---|---|
-| `read` | `/api/read/english` | `/api/read/maths` | `/api/read/science` |
-| `listen` | `/api/listen/english` | `/api/listen/maths` | `/api/listen/science` |
-| `write` | `/api/write/english` | `/api/write/maths` | `/api/write/science` |
-| `speak` | `/api/speak/english` | `/api/speak/maths` | `/api/speak/science` |
-
-> A logged-in student who belongs to an organization (has a `Student` record) sees **only** their batch's approved teacher-uploaded questions for that module/subject — never seed data. A student with no `Student` record sees the developer/seed question bank instead. If a batch has no approved uploads for that module/subject, the response includes `"noOrgQuestions": true` instead of falling back.
-
-**Example — `GET /api/read/english`:**
-
-```json
-{
-  "success": true,
-  "count": 5,
-  "noOrgQuestions": false,
-  "data": [
-    {
-      "id": 1,
-      "title": "Colours",
-      "content": "Colours make art beautiful...",
-      "question": "What are red, blue and yellow called?",
-      "options": ["Secondary colours", "Primary colours", "Warm colours"],
-      "answer": "Primary colours",
-      "emoji": "🎨"
-    }
-  ]
-}
-```
-
----
-
-### Mini-Game Endpoints
-
-These stay public (no `dashboardAuth`) since they're not tied to per-organization content.
-
-#### Spelling Bee — `/api/spell/english`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/spell/english` | Get all spelling words |
-| `GET` | `/api/spell/english/:id` | Get a single word |
-| `POST` | `/api/spell/english/check` | Check a submitted answer |
-
-#### Memory Match — `/api/game/memory-match`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/game/memory-match` | Get all card-pair sets |
-| `GET` | `/api/game/memory-match/cards` | Get a shuffled play set |
-| `POST` | `/api/game/memory-match/check` | Check a submitted pair match |
-
-#### Word Puzzle — `/api/game/word-puzzle`
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `GET` | `/api/game/word-puzzle` | Get puzzle challenges |
-| `GET` | `/api/game/word-puzzle/play` | Get a play set |
-| `POST` | `/api/game/word-puzzle/check` | Check a submitted answer |
-
----
-
-### Dashboard & Progress Endpoints
-
-All under `/api/dashboard`, protected by `dashboardAuth` (accepts either a JWT bearer token or the Firebase session cookie).
-
-| Method | Endpoint | Description |
-|---|---|---|
-| `POST` | `/log-session` | Log a completed module/game session (duration, XP, score) — auto-checks & awards achievements |
-| `GET` | `/stats` | Level, total XP, streak, session count |
-| `GET` | `/activity` | Daily activity heatmap data |
-| `GET` | `/achievements` | Earned achievements (of 16 defined badges) |
-| `GET` | `/performance` | XP-over-time series for the dashboard chart |
-| `GET` | `/module-stars` | Per-module/subject star totals |
-| `POST` | `/log-answer` | Log a single question answer |
-| `GET` | `/answers` | Answer history |
-| `POST` | `/log-round` | Log a completed 10-question round (stars, warrior bonus, pass/fail) |
-| `GET` | `/rounds` | Round history |
-
----
-
-### Admin Endpoints
-
-All under `/api/admin`, protected by admin JWT. Scoped to the admin's own organization throughout.
-
-| Area | Method | Endpoint(s) | Description |
-|---|---|---|---|
-| Profile / Org | `GET/PATCH` | `/profile`, `GET/POST /org` | Admin identity (incl. designation, avatar) and organization registration/edit |
-| Chat | `GET/POST` | `/chat`, `/chat/unread-count` | Threaded chat with the super-admin |
-| Tutors | `GET/POST/PATCH/DELETE` | `/tutors`, `/tutors/:id`, `.../performance`, `.../schedule` | Manage tutors, view performance & schedule |
-| Subjects | `GET/POST/PATCH/DELETE` | `/subjects`, `/subjects/:id` | Manage subject catalogue |
-| Batches | `GET/POST/PATCH/DELETE` | `/batches`, `/batches/:id`, `.../students`, `.../subjects`, `.../teachers`, `.../schedule` | Class rosters, subject assignment, teacher assignment, weekly schedule |
-| Students | `GET/POST/PATCH/DELETE` | `/students`, `/students/:id`, `.../performance`, `.../dashboard/*` | Manage students; drill into a student's dashboard (stats/activity/achievements/performance/answers/rounds) |
-| Parents | `GET/POST` | `/parents` | Manage parent records |
-| Question Review | `GET/POST/PATCH` | `/questions/uploads*`, `/questions/:module/:subject/:id` | Review/approve/reject teacher-uploaded question batches; edit individual questions |
-
----
-
-### Super-Admin Endpoints
-
-All under `/api/superadmin`, protected by super-admin JWT. There is a single super-admin account for the whole platform.
-
-| Area | Method | Endpoint(s) | Description |
-|---|---|---|---|
-| Organizations | `GET/PUT` | `/organizations`, `.../approve`, `.../reject`, `.../subscription` | List, reversibly approve/reject (with history), and manage subscription for orgs |
-| Org drill-down | `GET` | `/organizations/:id/admin`, `.../students`, `.../tutors`, `.../students/:id/performance`, `.../students/:id/dashboard/*` | Inspect any org's admin identity, roster, and per-student dashboard |
-| Chat | `GET/POST` | `/chat`, `/chat/unread-count`, `/chat/:id` | Conversation list (one per org) + per-org thread |
-| Settings | `GET/POST` | `/settings` | Global key/value platform settings |
-| Contact | `GET/PUT` | `/contact`, `/contact/:id` | Review and respond to public Contact Us submissions |
-
----
-
-### Teacher Endpoints
-
-All under `/api/teacher`, protected by teacher JWT. Scoped to batches the teacher is assigned to.
-
-| Area | Method | Endpoint(s) | Description |
-|---|---|---|---|
-| Students | `GET/PATCH` | `/students`, `/students/:id` | View/update students in the teacher's batches |
-| Batches | `GET/POST/DELETE` | `/batches`, `/batches/:id`, `.../students`, `.../schedule` | View assigned batches, manage roster & schedule |
-| Question Uploads | `GET/POST/PATCH` | `/questions/template`, `/questions/upload`, `/questions/uploads*`, `/questions/:module/:subject/:id` | Download the `.xlsx` template, upload a batch-scoped question sheet, track review status, edit questions |
-
----
-
-### Contact Endpoint
-
-| Method | Endpoint | Auth | Description |
-|---|---|---|---|
-| `POST` | `/api/contact` | none | Public contact form (role: student/admin/teacher/parent/other), optional file attachment — routed to the super-admin |
-
----
-
-## Database Architecture & Models
-
-Easy Learn intentionally uses **three separate MongoDB connections/databases**, each owned by a different role's controllers:
-
-| DB | Env var | Owns |
-|---|---|---|
-| Default DB | `MONGODB_URI` | Student accounts, all learning-content collections, dashboard/activity data — keyed by email string |
-| Admin DB | `ADMIN_MONGODB_URI` | Organizations, org admins, tutors/teachers, students, parents, subjects, batches |
-| Super-admin DB | `SUPERADMIN_MONGODB_URI` | A mirrored `Organization` record, global settings, contact messages, admin↔super-admin chat, question-upload review batches |
-
-`Organization` is intentionally duplicated across the admin and super-admin DBs and kept in sync manually in the controllers. Cross-DB lookups (e.g. an admin's student dashboard, or a super-admin drilling into an org) join by **email string**, not a shared `ObjectId`.
-
-### Default DB — key models
-
-**User** — `name`, `email` (unique), `passwordHash`, timestamps.
-
-**Learning content** (pattern applies to all 12 `{Read|Write|Listen|Speak}{English|Maths|Science}` collections):
-```
-id        Number
-question / content / character / word   (field name varies by module)
-options   [String]        (read)
-answer    String
-level / difficulty  String
-emoji     String
-xp        Number           (listen)
-```
-
-**Game models** — `SpellEnglish` (word/hint/difficulty/emoji), `MemoryMatch` (difficulty/pairs), `WordPuzzle` (letters/answer/difficulty/emoji).
-
-**Progress/dashboard models:**
-- `StudentActivity` — daily activity per email (`sessions[]`, `totalMinutes`, `totalXP`, `totalSessions`)
-- `StudentAchievement` — earned achievements per email + achievement ID
-- `StudentAnswer` — per-question answer log
-- `StudentRound` — one doc per completed round (`email`, `module`, `subject`, `mode`, `stars`, `bonusStars`, `totalStars`, `passed`, `completedAt`)
-- `ContactMessage` — public Contact Us submissions (persisted in the super-admin DB)
-- `Counter` — auto-increment helper for seed IDs
-
-### Admin DB — models (`server/models/admin/`)
-
-`Organization`, `OrgAdmin` (incl. `designation`), `Tutor`, `Student` (incl. `batchIds`), `Parent`, `Subject`, `Batch` (roster + per-subject teacher assignment + weekly schedule).
-
-### Super-admin DB — models (`server/models/superadmin/`)
-
-`Organization` (mirror, incl. `rejectionHistory`), `GlobalSettings`, `ChatMessage` (keyed by `adminUid`, two independent read-flags), `QuestionUploadBatch` (an upload/review event — not to be confused with the roster `Batch` model above).
-
----
-
-## Roles & Authentication
-
-Easy Learn has **four independent roles**, each with its own login, JWT secret, and (for three of them) Google OAuth flow:
-
-| Role | Sign-in methods | Token storage | React context |
-|---|---|---|---|
-| Student | Google OAuth (Firebase → httpOnly session cookie) or Email/Password (JWT) | `localStorage: jwt_token` / `firebase_jwt` | `AuthContext.jsx` |
-| Org Admin | Google OAuth (Firebase → JWT) | `localStorage` (admin key) | `AdminAuthContext.jsx` |
-| Teacher | Google OAuth (Firebase → JWT) | `localStorage` (teacher key) | `AdminAuthContext.jsx` |
-| Super-Admin | Email/Password only (single account) | `localStorage` (super-admin key) | `AdminAuthContext.jsx` |
-
-### Student — Google OAuth via Firebase
-
-1. User clicks "Sign in with Google" → Firebase handles the OAuth consent screen
-2. Frontend sends the Firebase user's UID/profile to `POST /api/auth/session`
-3. Server sets an httpOnly session cookie
-4. `AuthContext` marks the user as authenticated
-
-### Student — Email/Password via JWT
-
-1. Register at `POST /api/auth/register` — password hashed with bcryptjs
-2. Login at `POST /api/auth/login` — server compares against the hash, returns a signed JWT (`JWT_EXPIRES_IN`, default 7d)
-3. Frontend stores the JWT in `localStorage` and attaches it as a Bearer token on subsequent requests
-
-### Admin / Teacher / Super-Admin
-
-Admin and teacher both authenticate via a Firebase Google popup, then exchange the Firebase ID token for a role-specific JWT (`ADMIN_JWT_SECRET` / `TEACHER_JWT_SECRET`) — the app resolves their `OrgAdmin`/`Tutor` record in the admin DB by email. The super-admin is the one exception: a single seeded account authenticates with email/password only, signed with `SUPERADMIN_JWT_SECRET`.
-
-### Protected Routes
-
-Learning-content and dashboard endpoints require `dashboardAuth` (student JWT or Firebase session cookie). Admin/teacher/super-admin API routes each require their own JWT middleware. **Note:** the client-side module pages currently have no route guard — an unauthenticated visitor hitting a module page sees the module's generic error state rather than a "please log in" prompt (a known gap; `Dashboard.jsx` has the pattern to copy for a proper fix).
-
----
-
-## Internationalization (i18n)
-
-The frontend uses `i18next` + `react-i18next` + `i18next-http-backend`, loading resources from `client/public/locales/{lang}/translation.json`. The selected language persists in `localStorage` under `i18nextLng`; RTL languages automatically set `dir="rtl"` on `<html>`.
-
-**Currently shipped (14 of 21 planned languages):** `en, es, pt, fr, it, de, nl, ru, tr, zh, ja, ko, id, vi`
-**Planned but not yet added:** `hi, bn, mr, ta, te, ur, ar` (`ar`/`ur` are RTL)
-
-All new UI text should go through `t('key')` — never hardcode English strings — and the key must be added to every locale file. Dashboard achievement names look up `dashboard.achievements.{id}.name` with an English `defaultValue` fallback so untranslated languages degrade gracefully.
-
-`npm run translate` (`server/scripts/translate-content.js`) can bootstrap new locale files via `google-translate-api-x`.
-
----
-
-## Accessibility
-
-Dyslexia-friendly typography (Fredoka font, `letter-spacing: 0.05em`, `line-height: 1.6`, `word-spacing: 0.1em`) is applied **globally by default** rather than behind a toggle. There is currently no user-facing high-contrast or OpenDyslexic-font switch — see [`docs/design-guide.md`](./docs/design-guide.md) for the full accessibility standards this project targets (WCAG 2.1 AA) and for gaps to close.
-
-| Feature | Status |
-|---|---|
-| Dyslexia-friendly base typography | Done — applied globally |
-| Keyboard navigation | Implemented on interactive elements |
-| Alt text / form labels | Implemented across pages |
-| Text-to-Speech / Speech Recognition | Done — Web Speech API in Speak/Listen modules |
-| Toggleable dyslexia font / high-contrast mode | Not yet implemented |
-
----
-
-## Design System
-
-### Look & Feel
-
-The app uses a dark, deep-space theme (`radial-gradient` navy background) with an ambient animated 3D "brick" backdrop (`components/Background3D`) shared across every page, and Framer Motion for page/element transitions.
-
-| Token | Value | Usage |
-|---|---|---|
-| Background | `#16234a → #060912` (radial gradient) | App-wide background |
-| Font | Fredoka | Primary UI typeface, 18px base |
-
-Full design guidelines are in [docs/design-guide.md](./docs/design-guide.md).
-
----
-
-## Deployment
-
-Production deployment (Hostinger VPS, Nginx + PM2 + MongoDB Atlas, domain `quizify.cloud`) is documented step-by-step in [DEPLOY.md](./DEPLOY.md), including the three-cluster/four-secret environment setup, Nginx reverse-proxy config, and the redeploy checklist.
-
----
-
-## Branch Strategy & Contributing
-
-We use a **feature-branch workflow**. No one pushes directly to `main`.
-
-### Branch Rules
-
-| Rule | Detail |
-|---|---|
-| Branch from `main` | Always create branches off `main` |
-| Pull Requests | All merges require at least one reviewer approval |
-| Commit convention | Use prefixes below |
-| No force push to `main` | Protected branch |
-
-### Commit Message Convention
-
-```
-feat:      New feature
-fix:       Bug fix
-docs:      Documentation changes
-style:     Formatting, missing semicolons, etc.
-refactor:  Code restructuring without behavior change
-test:      Adding or updating tests
-chore:     Maintenance tasks (deps, config)
-```
-
-### Contributing Steps
-
-1. Create a feature branch off `main`
-2. Make focused, well-scoped changes
-3. Commit with the convention above
-4. Open a PR against `main` with a clear description
-5. Request review from at least one teammate
-6. Add a daily standup entry in `updates/daily/YYYY-MM-DD.md`
-
-### Update Reports
-
-Progress reports live in `updates/`:
-
-- **Daily standup** — `updates/daily/YYYY-MM-DD.md`
-  - What did I do? / What will I do? / Any blockers?
-- **Weekly sprint summary** — `updates/weekly/week-NN-YYYY.md`
-  - Goals, Achievements, Upcoming work, Team notes
-
----
-
-## Roadmap
-
-Based on the 16-week plan in [PROJECT_PLAN.md](./PROJECT_PLAN.md):
-
-| Phase | Focus | Status |
-|---|---|---|
-| Phase 1 — Foundation | Scaffolding, design system, auth, gamification engine | Done |
-| Phase 2 — Core Learning | 12 learning modules, 3 mini-games, TTS, round scoring, student dashboard | Done |
-| Phase 3 — Platform | Multi-role auth (admin/super-admin/teacher), batch-scoped question uploads, i18n, org onboarding & chat | Mostly done — i18n at 14/21 languages |
-| Phase 4 — AI Features | ml5.js, gesture recognition, emotion detection, sound models | Planned |
-| Phase 5 — Launch Hardening | Accessibility toggle, full i18n coverage, cross-browser/perf audit | Planned |
-
----
-
-## The Team
-
-<div align="center">
-
-| Role | Name | Responsibilities |
-|---|---|---|
-| Project Owner | **Sutirtha Chakraborty** | Product vision, architecture, project management |
-| Developer | **Parichay Dutta Biswas** | Full-stack development, feature implementation |
-| Company Owner | **Raunak** | Strategic direction, business requirements |
-
-</div>
-
----
-
-## About the Company
-
-<div align="center">
-
-```
-╔══════════════════════════════════════════════════════╗
-║           FUTURESIGHT ANALYTICS LIMITED              ║
-║                                                      ║
-║       Data & AI Consultancy and Recruitment          ║
-║            Registered in Ireland                     ║
-╚══════════════════════════════════════════════════════╝
-```
-
-</div>
-
-**Futuresight Analytics Limited** is a Data & AI consultancy and recruitment firm registered in Ireland. We partner with organizations to unlock the power of data-driven decision-making and AI innovation.
-
-| Service | Description |
-|---|---|
-| Consultancy | Data strategy, AI implementation, digital transformation |
-| Recruitment | Connecting top data & AI talent with leading organizations |
-
-| Channel | Details |
-|---|---|
-| Email | [talent@futuresightanalytics.eu](mailto:talent@futuresightanalytics.eu) |
-| Phone | [+353 899 77 66 44](tel:+353899776644) |
-
----
-
-## License
-
-This repository does not currently include a published `LICENSE` file. All rights reserved by **Futuresight Analytics Limited** unless/until a license is added — contact the team above for usage terms.
-
----
-
-## Acknowledgements
-
-- [WCAG 2.1](https://www.w3.org/TR/WCAG21/) — Web Content Accessibility Guidelines
-- [MongoDB Atlas](https://www.mongodb.com/atlas) — Cloud database hosting
-- [Firebase](https://firebase.google.com/) — Google OAuth integration
-- [Cloudinary](https://cloudinary.com/) — Image hosting for organization logos
-- [i18next](https://www.i18next.com/) — Internationalization framework
-- All educators, parents, and children who inspired this work
-
----
-
-<div align="center">
-
-Made with care by the **Easy Learn** team at **Futuresight Analytics Limited**
-
-*Registered in Ireland*
-
-[![Futuresight Analytics](https://img.shields.io/badge/Futuresight%20Analytics-Data%20%26%20AI-blue?style=for-the-badge)](mailto:talent@futuresightanalytics.eu)
-
-</div>
+## 8. Troubleshooting
+
+**"Continue with Google" isn't working / nothing happens**
+Your browser is likely blocking the sign-in popup. Allow popups for this site and try
+again. If the popup closes immediately, it may have been closed accidentally — just retry.
+
+**I registered my organization but don't see anything unlocked yet**
+New organizations start as **Pending** until the Super Admin reviews them. Check the
+Organization section for the current status; you'll be notified of the outcome there.
+
+**My organization was rejected — what now?**
+Open the Organization section, review the stated reason, fix the issue, and click
+**Resubmit Registration**. You can resubmit as many times as needed.
+
+**I edited my organization's details and now it says Pending again**
+That's expected — editing an already-approved organization sends it back to the Super
+Admin for a quick re-approval. Your dashboard stays accessible in the meantime.
+
+**Signing in as a Teacher says "no account found"**
+Your Admin needs to add you as a Tutor (Name, Email, Phone, Subject) under their
+**Tutors** section first, using the same email as the Google account you're signing in
+with. Ask them to add you, then try signing in again.
+
+**A student can't see any questions in a module**
+If they belong to an organization (added by an Admin/Teacher as a Student), they only see
+questions approved for their specific batch — not the general question bank. If their
+batch hasn't had any questions uploaded and approved yet for that module/subject, they'll
+see a message saying so instead of questions; check with their Teacher/Admin.
+
+**I don't see my progress/stars updating**
+Progress logs automatically when you complete a round of 10 questions in a module or game —
+make sure you reach the "Round Complete" screen rather than navigating away mid-round.
+
+**The page is in the wrong language**
+Use the language switcher in the navigation bar; your selection is saved per device, so
+you'll need to reset it again on a new device or browser.
