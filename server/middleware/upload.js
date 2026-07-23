@@ -1,9 +1,11 @@
 const fs = require('fs')
 const path = require('path')
 const multer = require('multer')
+const { CloudinaryStorage } = require('multer-storage-cloudinary')
+const cloudinary = require('../config/cloudinary')
 
 const UPLOAD_ROOT = path.join(__dirname, '..', 'uploads')
-const SUBFOLDERS = ['org-logos', 'avatars', 'contact-attachments', 'question-uploads']
+const SUBFOLDERS = ['avatars', 'contact-attachments', 'question-uploads']
 
 SUBFOLDERS.forEach((folder) => {
   const dir = path.join(UPLOAD_ROOT, folder)
@@ -50,8 +52,16 @@ function spreadsheetFileFilter(req, file, cb) {
   cb(null, true)
 }
 
+const cloudinaryStorage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'org-logos',
+    allowed_formats: ['jpg', 'jpeg', 'png', 'webp', 'gif'],
+  },
+})
+
 const uploadOrgLogo = multer({
-  storage: makeStorage('org-logos'),
+  storage: cloudinaryStorage,
   fileFilter: imageFileFilter,
   limits: { fileSize: 5 * 1024 * 1024 },
 })

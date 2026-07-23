@@ -7,7 +7,6 @@ const Batch = require('../models/admin/Batch')
 const Subject = require('../models/admin/Subject')
 const OrgAdmin = require('../models/admin/OrgAdmin')
 const { getPerformanceForEmail } = require('../utils/performance')
-const { fileUrl } = require('../middleware/upload')
 const batchService = require('../services/batchService')
 const { checkTeacherConflict } = require('../services/scheduleConflictService')
 
@@ -31,7 +30,7 @@ const registerOrg = async (req, res) => {
     const { name, type, address, phone, designation, designationOther } = req.body
 
     const existing = await Organization.findOne({ adminUid: req.admin.uid })
-    const logoUrl = req.file ? fileUrl(req, 'org-logos', req.file.filename) : ''
+    const logoUrl = req.file ? req.file.path : ''
 
     if (existing) {
       if (existing.status !== 'rejected') {
