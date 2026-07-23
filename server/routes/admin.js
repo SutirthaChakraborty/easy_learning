@@ -6,7 +6,7 @@ const { uploadOrgLogo, uploadAvatar, handleUpload } = require('../middleware/upl
 const { adminStudentAccess } = require('../middleware/studentDashboardAccess')
 const {
   registerOrgValidator, updateIdentityValidator,
-  createTutorValidator, createStudentValidator, createParentValidator,
+  createTutorValidator, updateTutorValidator, createStudentValidator, updateStudentValidator, createParentValidator,
   createBatchValidator, updateBatchValidator,
   createSubjectValidator, updateSubjectValidator,
   addStudentsToBatchValidator, addSubjectToBatchValidator, assignTeacherValidator,
@@ -17,7 +17,7 @@ const {
 const {
   registerOrg, getOrg,
   getProfile, updateProfile,
-  getTutors, createTutor, deleteTutor, getTutorPerformance, getTutorSchedule,
+  getTutors, createTutor, updateTutor, deleteTutor, getTutorPerformance, getTutorSchedule,
   getBatches, getBatch, createBatch, updateBatch, deleteBatch,
   addStudentsToBatch, removeStudentFromBatch,
   addSubjectToBatch, removeSubjectFromBatch,
@@ -25,7 +25,7 @@ const {
   assignTeacherToBatch, removeTeacherFromBatch,
   addScheduleSlot, removeScheduleSlot, checkScheduleConflict,
   getSubjects, createSubject, updateSubject, deleteSubject,
-  getStudents, createStudent, deleteStudent, getStudentPerformance,
+  getStudents, createStudent, updateStudent, deleteStudent, getStudentPerformance,
   getParents, createParent,
   getStats,
 } = require('../controllers/adminController')
@@ -39,7 +39,7 @@ const {
 } = require('../controllers/dashboardController')
 const { getMyThread, sendMyMessage, getMyUnreadCount } = require('../controllers/chatController')
 const {
-  getUploadStats, getUploadBatches, getUploadBatchDetail, approveUploadBatch, rejectUploadBatch,
+  getUploadStats, getUploadBatches, getUploadBatchDetail, approveUploadBatch, rejectUploadBatch, updateQuestion,
 } = require('../controllers/adminQuestionController')
 
 router.use(adminAuth)
@@ -58,6 +58,7 @@ router.get('/chat/unread-count', getMyUnreadCount)
 
 router.get('/tutors', getTutors)
 router.post('/tutors', createTutorValidator, validate, createTutor)
+router.patch('/tutors/:id', updateTutorValidator, validate, updateTutor)
 router.delete('/tutors/:id', deleteTutor)
 router.get('/tutors/:id/performance', getTutorPerformance)
 router.get('/tutors/:id/schedule', getTutorSchedule)
@@ -87,6 +88,7 @@ router.delete('/batches/:id/subjects/:subjectAssignmentId/schedule/:slotId', rem
 
 router.get('/students', getStudents)
 router.post('/students', createStudentValidator, validate, createStudent)
+router.patch('/students/:id', updateStudentValidator, validate, updateStudent)
 router.delete('/students/:id', deleteStudent)
 router.get('/students/:id/performance', getStudentPerformance)
 router.get('/students/:id/dashboard/stats',        adminStudentAccess, getStudentDashStats)
@@ -104,5 +106,6 @@ router.get('/questions/uploads', getUploadBatches)
 router.get('/questions/uploads/:id', getUploadBatchDetail)
 router.post('/questions/uploads/:id/approve', approveUploadBatch)
 router.post('/questions/uploads/:id/reject', rejectUploadValidator, validate, rejectUploadBatch)
+router.patch('/questions/:module/:subject/:id', updateQuestion)
 
 module.exports = router

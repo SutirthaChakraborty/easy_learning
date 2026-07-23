@@ -1,11 +1,21 @@
 import { useCallback, useEffect, useState } from "react";
-import { MdArrowBack, MdAdd, MdClose } from "react-icons/md";
+import { MdArrowBack, MdAdd, MdClose, MdEdit } from "react-icons/md";
 import DataTable from "../../components/Admin/DataTable";
+import Modal from "../../components/Admin/Modal";
 import MultiSelectModal from "../../components/Admin/MultiSelectModal";
 import ScheduleEditor from "../../components/Admin/ScheduleEditor";
 import WeeklyScheduleGrid from "../../components/Admin/WeeklyScheduleGrid";
 import { dayLabel } from "../../utils/schedule";
 import styles from "../../components/Admin/AdminUI.module.css";
+
+const STUDENT_STATUS_OPTIONS = [{ value: "active", label: "Active" }, { value: "inactive", label: "Inactive" }];
+const studentEditFields = [
+  { key: "name", label: "Full Name", required: true, minLength: 2, maxLength: 100 },
+  { key: "email", label: "Email", type: "email" },
+  { key: "age", label: "Age", type: "number", min: 3, max: 25 },
+  { key: "grade", label: "Grade / Class", maxLength: 20 },
+  { key: "status", label: "Status", type: "select", options: STUDENT_STATUS_OPTIONS },
+];
 
 // A trimmed sibling of components/Admin/BatchDetail.jsx for the teacher dashboard:
 // roster can be edited, but subjects/other-teacher assignment stay admin-only —
@@ -18,6 +28,9 @@ export default function TeacherBatchDetail({ batchId, teacherId, get, post, del,
   const [pickerLoading, setPickerLoading] = useState(false);
   const [pickerError, setPickerError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [editingStudent, setEditingStudent] = useState(null);
+  const [editLoading, setEditLoading] = useState(false);
+  const [editError, setEditError] = useState("");
 
   const loadBatch = useCallback(async () => {
     const d = await get(`/batches/${batchId}`);
@@ -51,6 +64,16 @@ export default function TeacherBatchDetail({ batchId, teacherId, get, post, del,
   const handleRemoveStudent = async (studentId) => {
     if (!confirm("Remove this student from the batch?")) return;
     await del(`/batches/${batchId}/students/${studentId}`);
+    refreshAfterChange();
+  };
+
+  const handleEditStudent = async (form) => {
+    setEditLoading(true);
+    setEditError("");
+    const d = await post(`/students/${editingStudent._id}`, form, "PATCH");
+    setEditLoading(false);
+    if (!d.success) { setEditError(d.message || "Something went wrong"); return; }
+    setEditingStudent(null);
     refreshAfterChange();
   };
 
@@ -97,9 +120,15 @@ export default function TeacherBatchDetail({ batchId, teacherId, get, post, del,
               { key: "name", label: "Name" },
               { key: "email", label: "Email" },
               { key: "grade", label: "Grade" },
+              { key: "status", label: "Status" },
             ]}
             rows={batch.studentIds}
-            actions={[{ icon: <MdClose />, title: "Remove", variant: "delete", onClick: (row) => handleRemoveStudent(row._id) }]}
+            actions={[
+              {
+                icon: <MdEdit />, title: "Edit", onClick: (row) => { setEditingStudent(row); setEditError(""); },
+              },
+              { icon: <MdClose />, title: "Remove", variant: "delete", onClick: (row) => handleRemoveStudent(row._id) },
+            ]}
             emptyMsg="No students in this batch yet."
           />
         </>
@@ -177,6 +206,21 @@ export default function TeacherBatchDetail({ batchId, teacherId, get, post, del,
           serverError={pickerError}
           searchPlaceholder="Search students…"
           emptyMsg="No more students to add."
+        />
+      )}
+
+      {editingStudent && (
+        <Modal
+          title="Edit Student"
+          fields={studentEditFields}
+          initial={{
+            name: editingStudent.name, email: editingStudent.email,
+            age: editingStudent.age, grade: editingStudent.grade, status: editingStudent.status,
+          }}
+          onSubmit={handleEditStudent}
+          onClose={() => setEditingStudent(null)}
+          loading={editLoading}
+          serverError={editError}
         />
       )}
     </div>

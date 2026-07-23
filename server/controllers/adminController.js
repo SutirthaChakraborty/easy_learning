@@ -33,24 +33,25 @@ const registerOrg = async (req, res) => {
     const logoUrl = req.file ? req.file.path : ''
 
     if (existing) {
-      if (existing.status !== 'rejected') {
-        return res.status(409).json({ success: false, message: 'You already have a registered organization', org: existing })
-      }
+      // Editing an already-registered org: apply changes in place. If it was previously
+      // approved or rejected, this counts as a resubmission and sends it back to pending
+      // for the Super Admin to re-review. Already-pending edits just update in place.
+      const needsResubmission = existing.status === 'approved' || existing.status === 'rejected'
 
-      // Resubmission after rejection: edit in place, go back to pending.
-      // The rejection reason was already archived into rejectionHistory by rejectOrg at rejection time.
       existing.name = name
       existing.type = type || 'school'
       existing.address = address || ''
       existing.phone = phone || ''
       if (logoUrl) existing.logoUrl = logoUrl
-      existing.status = 'pending'
-      existing.rejectionReason = ''
+      if (needsResubmission) {
+        existing.status = 'pending'
+        existing.rejectionReason = ''
+      }
       await existing.save()
 
       await SAOrganization.findOneAndUpdate({ adminOrgId: existing._id.toString() }, {
         name, type: type || 'school', address: address || '', phone: phone || '',
-        status: 'pending', rejectionReason: '',
+        ...(needsResubmission ? { status: 'pending', rejectionReason: '' } : {}),
         adminDesignation: designation === 'other' ? designationOther : designation,
         ...(logoUrl ? { logoUrl } : {}),
       })
@@ -62,7 +63,7 @@ const registerOrg = async (req, res) => {
         ...(phone ? { phone } : {}),
       })
 
-      return res.json({ success: true, org: existing, resubmitted: true })
+      return res.json({ success: true, org: existing, resubmitted: needsResubmission })
     }
 
     const org = await Organization.create({
@@ -177,6 +178,34 @@ const createTutor = async (req, res) => {
     res.status(201).json({ success: true, tutor })
   } catch (err) {
     console.error('createTutor error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+const updateTutor = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+
+    const { name, email, phone, subject, status } = req.body
+
+    if (email !== undefined) {
+      const dup = await Tutor.findOne({ orgId: org._id, email: email.toLowerCase(), _id: { $ne: req.params.id } })
+      if (dup) return res.status(409).json({ success: false, message: 'A tutor with this email already exists' })
+    }
+
+    const update = {}
+    if (name !== undefined) update.name = name
+    if (email !== undefined) update.email = email
+    if (phone !== undefined) update.phone = phone
+    if (subject !== undefined) update.subject = subject
+    if (status !== undefined) update.status = status
+
+    const tutor = await Tutor.findOneAndUpdate({ _id: req.params.id, orgId: org._id }, update, { new: true, runValidators: true })
+    if (!tutor) return res.status(404).json({ success: false, message: 'Tutor not found' })
+    res.json({ success: true, tutor })
+  } catch (err) {
+    console.error('updateTutor error:', err)
     res.status(500).json({ success: false, message: 'Internal server error' })
   }
 }
@@ -605,6 +634,34 @@ const createStudent = async (req, res) => {
   }
 }
 
+const updateStudent = async (req, res) => {
+  try {
+    const org = await Organization.findOne({ adminUid: req.admin.uid })
+    if (!org) return res.status(400).json({ success: false, message: 'Organization not found' })
+
+    const { name, email, age, grade, status } = req.body
+
+    if (email) {
+      const dup = await Student.findOne({ orgId: org._id, email: email.toLowerCase(), _id: { $ne: req.params.id } })
+      if (dup) return res.status(409).json({ success: false, message: 'A student with this email already exists' })
+    }
+
+    const update = {}
+    if (name !== undefined) update.name = name
+    if (email !== undefined) update.email = email
+    if (age !== undefined) update.age = age === '' || age === null ? null : Number(age)
+    if (grade !== undefined) update.grade = grade
+    if (status !== undefined) update.status = status
+
+    const student = await Student.findOneAndUpdate({ _id: req.params.id, orgId: org._id }, update, { new: true, runValidators: true })
+    if (!student) return res.status(404).json({ success: false, message: 'Student not found' })
+    res.json({ success: true, student })
+  } catch (err) {
+    console.error('updateStudent error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
 const deleteStudent = async (req, res) => {
   try {
     const org = await Organization.findOne({ adminUid: req.admin.uid })
@@ -688,7 +745,7 @@ const getStats = async (req, res) => {
 module.exports = {
   registerOrg, getOrg,
   getProfile, updateProfile,
-  getTutors, createTutor, deleteTutor, getTutorPerformance, getTutorSchedule,
+  getTutors, createTutor, updateTutor, deleteTutor, getTutorPerformance, getTutorSchedule,
   getBatches, getBatch, createBatch, updateBatch, deleteBatch,
   addStudentsToBatch: addStudentsToBatchHandler, removeStudentFromBatch: removeStudentFromBatchHandler,
   addSubjectToBatch: addSubjectToBatchHandler, removeSubjectFromBatch: removeSubjectFromBatchHandler,
@@ -696,7 +753,7 @@ module.exports = {
   assignTeacherToBatch: assignTeacherToBatchHandler, removeTeacherFromBatch: removeTeacherFromBatchHandler,
   addScheduleSlot: addScheduleSlotHandler, removeScheduleSlot: removeScheduleSlotHandler, checkScheduleConflict,
   getSubjects, createSubject, updateSubject, deleteSubject,
-  getStudents, createStudent, deleteStudent, getStudentPerformance,
+  getStudents, createStudent, updateStudent, deleteStudent, getStudentPerformance,
   getParents, createParent,
   getStats,
 }
