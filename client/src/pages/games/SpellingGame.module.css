@@ -1,8 +1,5 @@
 .page {
   min-height: calc(100vh - 80px);
-  background-image: url('../../assets/bg1.jpg');
-  background-size: cover;
-  background-position: center;
   position: relative;
 }
 
@@ -221,4 +218,18 @@
   .clueText { font-size: 16px; }
   .scoreBox { font-size: 15px; padding: 6px 14px; }
   .celebration { font-size: 20px; padding: 14px 24px; width: 90%; }
+}
+
+/* ─── SHORT VIEWPORT (landscape tablets / small laptops) ─── */
+@media (max-height: 680px) and (min-width: 600px) {
+  .content { padding: 8px 16px 10px; }
+  .title { font-size: 24px; margin: 2px 0 6px; }
+  .dots { margin-bottom: 6px; }
+  .card { padding: 14px 20px; gap: 12px; }
+  .wordEmoji { font-size: 38px; }
+  .clueText { font-size: 15px; padding: 8px 14px; }
+  .slots { gap: 6px; }
+  .slot { width: 44px; height: 48px; font-size: 20px; }
+  .letterBtns { gap: 8px; }
+  .letterBtn { width: 46px; height: 46px; font-size: 19px; }
 }

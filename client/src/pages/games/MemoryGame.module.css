@@ -1,8 +1,5 @@
 .page {
   min-height: calc(100vh - 80px);
-  background-image: url('../../assets/bg1.jpg');
-  background-size: cover;
-  background-position: center;
   position: relative;
 }
 
@@ -191,8 +188,8 @@
 }
 .restartBtn:hover { filter: brightness(1.1); }
 
-/* ─── SMALL TABLET ─── */
-@media (max-width: 640px) {
+/* ─── TABLET ─── */
+@media (max-width: 768px) {
   .grid { gap: 8px; max-width: 320px; }
   .cardInner { min-height: 60px; }
   .pageIcon { font-size: 34px; }
@@ -201,7 +198,7 @@
 }
 
 /* ─── MOBILE ─── */
-@media (max-width: 420px) {
+@media (max-width: 480px) {
   .content { padding: 12px 12px 16px; }
   .grid { gap: 7px; max-width: 270px; }
   .cardInner { min-height: 52px; }
@@ -213,4 +210,14 @@
   .winCard { padding: 30px 24px; }
   .winTitle { font-size: 32px; }
   .winEmoji { font-size: 56px; }
+}
+
+/* ─── SHORT VIEWPORT (landscape phones/tablets) ─── */
+@media (max-height: 680px) and (min-width: 600px) {
+  .content { padding: 8px 20px 10px; }
+  .pageIcon { font-size: 28px; margin: 2px 0; }
+  .title { font-size: 20px; margin: 0 0 2px; }
+  .subtitle { font-size: 12px; margin: 0 0 6px; }
+  .grid { gap: 7px; max-width: 260px; }
+  .cardInner { min-height: 46px; }
 }

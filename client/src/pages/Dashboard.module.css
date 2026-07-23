@@ -10,7 +10,7 @@
 /* ── Page wrapper ────────────────────────────────────────────────────────────── */
 .dashboard {
   min-height: 100vh;
-  background: url('/dashboardbg.png') center / cover no-repeat fixed;
+  background: transparent;
   padding: 32px 24px 60px;
   color: #e6edf3;
   font-family: "Fredoka", sans-serif;

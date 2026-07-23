@@ -338,8 +338,10 @@
 
 .orgCardRow {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 4px 12px;
   font-size: 0.95rem;
 }
 
@@ -349,6 +351,8 @@
 
 .orgCardRow strong {
   color: #fff;
+  word-break: break-word;
+  text-align: right;
 }
 
 .orgSummary {
@@ -525,9 +529,10 @@
 
 .tutorPerfRow {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 6px 12px;
   background: rgba(255, 255, 255, 0.04);
   border-radius: 10px;
   padding: 10px 14px;
@@ -614,6 +619,9 @@
   border-radius: 16px;
   width: 100%;
   max-width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-sizing: border-box;
   padding: 28px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }
@@ -895,11 +903,31 @@
     padding: 20px;
   }
 
+  .modalClose {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    padding: 4px;
+  }
+
+  .primaryBtn,
+  .editProfileBtn {
+    min-height: 40px;
+  }
+
   .chatPanel {
     height: 70vh;
   }
 
   .chatBubble {
     max-width: 88%;
+  }
+
+  .chatInputRow {
+    flex-direction: column;
+  }
+
+  .chatInputRow .primaryBtn {
+    align-self: flex-end;
   }
 }

@@ -1,0 +1,80 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 1400px;
+  background: radial-gradient(ellipse at top, #16234a 0%, #060912 78%);
+}
+
+.scene {
+  position: absolute;
+  inset: -15%;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.15s linear;
+}
+
+.brick {
+  position: absolute;
+  width: var(--size);
+  height: calc(var(--size) * 0.62);
+  top: var(--top);
+  left: var(--left);
+  background: var(--color);
+  border-radius: 10px;
+  box-shadow:
+    inset 0 4px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -6px 10px rgba(0, 0, 0, 0.35),
+    0 12px 28px rgba(0, 0, 0, 0.5);
+  opacity: 0.8;
+  animation: float var(--duration) ease-in-out var(--delay) infinite;
+}
+
+.studRow {
+  position: absolute;
+  top: -22%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16%;
+}
+
+.stud {
+  width: 24%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color);
+  filter: brightness(1.2);
+  box-shadow:
+    inset 0 -3px 4px rgba(0, 0, 0, 0.35),
+    inset 0 2px 2px rgba(255, 255, 255, 0.45);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateZ(var(--depth)) translateY(0) rotateX(15deg) rotateY(-14deg) rotateZ(0deg);
+  }
+  50% {
+    transform: translateZ(var(--depth)) translateY(-32px) rotateX(15deg) rotateY(-14deg)
+      rotateZ(calc(7deg * var(--spin)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scene {
+    transition: none;
+  }
+  .brick {
+    animation: none;
+    transform: translateZ(var(--depth)) rotateX(15deg) rotateY(-14deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .brick:nth-child(n + 9) {
+    display: none;
+  }
+}
