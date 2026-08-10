@@ -1,6 +1,7 @@
 const Organization   = require('../models/admin/Organization')
 const SAOrganization = require('../models/superadmin/Organization')
 const Student        = require('../models/admin/Student')
+const Child          = require('../models/Child')
 
 // Authorizes an org admin to view one of their own students' learning dashboard,
 // then swaps req.user to that student's identity so the existing dashboardController
@@ -40,4 +41,20 @@ const superadminStudentAccess = async (req, res, next) => {
   }
 }
 
-module.exports = { adminStudentAccess, superadminStudentAccess }
+// Authorizes an independent parent to view one of their own kids' learning dashboard,
+// same swap trick as adminStudentAccess above.
+const parentChildAccess = async (req, res, next) => {
+  try {
+    const child = await Child.findOne({ _id: req.params.id, parentId: req.parent.id })
+    if (!child) return res.status(404).json({ success: false, message: 'Child not found' })
+    if (!child.email) return res.status(404).json({ success: false, message: 'Child has no linked learning account' })
+
+    req.user = { email: child.email, name: child.name }
+    next()
+  } catch (err) {
+    console.error('parentChildAccess error:', err)
+    res.status(500).json({ success: false, message: 'Internal server error' })
+  }
+}
+
+module.exports = { adminStudentAccess, superadminStudentAccess, parentChildAccess }

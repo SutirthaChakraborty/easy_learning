@@ -1,7 +1,7 @@
 import * as FramerMotion from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FaUserGraduate, FaUserShield, FaCrown, FaChalkboardTeacher } from "react-icons/fa";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { MdAdminPanelSettings, MdFamilyRestroom } from "react-icons/md";
 import styles from "./RoleSelect.module.css";
 import logo from "/logo.png";
 
@@ -16,9 +16,18 @@ const roles = [
     route: "/login",
   },
   {
+    key: "parent",
+    icon: <MdFamilyRestroom />,
+    title: "Parent",
+    description: "Add your kids and track their learning progress — no organization needed.",
+    color: "#ec4899",
+    gradient: "linear-gradient(135deg, #6e1a3f 0%, #991e5c 100%)",
+    route: "/parent-login",
+  },
+  {
     key: "admin",
     icon: <MdAdminPanelSettings />,
-    title: "Admin / Parents",
+    title: "Admin",
     description: "Monitor student progress and manage learning activities.",
     color: "#a259f7",
     gradient: "linear-gradient(135deg, #3b1a6e 0%, #6a1e99 100%)",
