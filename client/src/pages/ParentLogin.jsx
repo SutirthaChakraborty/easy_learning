@@ -3,17 +3,17 @@ import * as FramerMotion from "framer-motion";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { MdAdminPanelSettings } from "react-icons/md";
+import { MdFamilyRestroom } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { useAdminAuth } from "../context/AdminAuthContext";
 import styles from "./Login.module.css";
-import adminStyles from "./AdminLogin.module.css";
+import parentStyles from "./ParentLogin.module.css";
 
-const AdminLogin = () => {
+const ParentLogin = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { adminGoogleSignIn } = useAdminAuth();
+  const { parentGoogleSignIn } = useAdminAuth();
 
   const handleGoogle = async () => {
     setError("");
@@ -21,8 +21,8 @@ const AdminLogin = () => {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const { uid, email, displayName, photoURL } = result.user;
-      await adminGoogleSignIn(uid, email, displayName || "", photoURL || "");
-      navigate("/admin-dashboard");
+      await parentGoogleSignIn(uid, email, displayName || "", photoURL || "");
+      navigate("/parent-dashboard");
     } catch (err) {
       const cancelled = ["auth/popup-closed-by-user", "auth/cancelled-popup-request"];
       if (cancelled.includes(err.code)) {
@@ -47,17 +47,17 @@ const AdminLogin = () => {
     >
       <div className={styles.overlay} />
       <div className={styles.content}>
-        <div className={`${styles.card} ${adminStyles.card}`}>
-          <div className={adminStyles.iconWrap}>
-            <MdAdminPanelSettings />
+        <div className={`${styles.card} ${parentStyles.card}`}>
+          <div className={parentStyles.iconWrap}>
+            <MdFamilyRestroom />
           </div>
-          <h1 className={`${styles.title} ${adminStyles.title}`}>Admin Login</h1>
+          <h1 className={`${styles.title} ${parentStyles.title}`}>Parent Login</h1>
           <p className={styles.subtitle}>
-            Sign in with your Google account to access the organization dashboard.
+            Sign in with your Google account to add your kids and track their learning progress.
           </p>
 
           <button
-            className={`${styles.googleBtn} ${adminStyles.googleBtn}`}
+            className={`${styles.googleBtn} ${parentStyles.googleBtn}`}
             onClick={handleGoogle}
             disabled={loading}
             type="button"
@@ -69,7 +69,7 @@ const AdminLogin = () => {
           {error && <p className={styles.error}>{error}</p>}
 
           <button
-            className={adminStyles.backBtn}
+            className={parentStyles.backBtn}
             onClick={() => navigate("/")}
             type="button"
           >
@@ -81,4 +81,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default ParentLogin;

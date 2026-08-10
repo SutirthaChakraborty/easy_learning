@@ -20,7 +20,10 @@ const {
   getAnswers:      getStudentDashAnswers,
   getRounds:       getStudentDashRounds,
 } = require('../controllers/dashboardController')
-const { listConversations, getOrgThread, sendOrgMessage, getTotalUnreadCount } = require('../controllers/chatController')
+const {
+  listConversations, getOrgThread, sendOrgMessage, getTotalUnreadCount,
+  listParentConversations, getParentThread, sendParentMessage, getParentTotalUnreadCount,
+} = require('../controllers/chatController')
 
 router.use(superadminAuth)
 
@@ -47,6 +50,11 @@ router.get('/chat', listConversations)
 router.get('/chat/unread-count', getTotalUnreadCount)
 router.get('/chat/:id', getOrgThread)
 router.post('/chat/:id', sendChatMessageValidator, validate, sendOrgMessage)
+
+router.get('/parent-chat', listParentConversations)
+router.get('/parent-chat/unread-count', getParentTotalUnreadCount)
+router.get('/parent-chat/:id', getParentThread)
+router.post('/parent-chat/:id', sendChatMessageValidator, validate, sendParentMessage)
 
 router.get('/settings', getSettings)
 router.post('/settings', settingValidator, validate, upsertSetting)

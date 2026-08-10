@@ -19,6 +19,7 @@ const NAV = [
   { key: "overview", label: "Overview", icon: <FaTachometerAlt /> },
   { key: "organizations", label: "Organizations", icon: <FaBuilding /> },
   { key: "chat", label: "Admin Chat", icon: <FaComments /> },
+  { key: "parentchat", label: "Parent Chat", icon: <FaComments /> },
   { key: "contact", label: "Contact Messages", icon: <FaEnvelopeOpenText /> },
   { key: "reports", label: "Reports", icon: <FaChartBar /> },
   { key: "settings", label: "Settings", icon: <FaCog /> },
@@ -366,6 +367,54 @@ function ChatSection({ conversations, activeConvo, messages, draft, onOpen, onDr
   );
 }
 
+// ── Parent chat: conversation list + thread ────────────────────────────────────
+function ParentChatSection({ conversations, activeConvo, messages, draft, onOpen, onDraftChange, onSend, sending }) {
+  return (
+    <div className={styles.chatLayout}>
+      <div className={styles.convoList}>
+        {conversations.length === 0 ? (
+          <p className={styles.empty}>No conversations yet.</p>
+        ) : (
+          conversations.map((c) => (
+            <button
+              key={c.parentUid}
+              className={`${styles.convoRow} ${activeConvo?.parentUid === c.parentUid ? styles.convoActive : ""}`}
+              onClick={() => onOpen(c)}
+            >
+              <strong>{c.parentName || "Unknown parent"}</strong>
+              {c.unreadCount > 0 && <span className={styles.navDot} />}
+              <p className={styles.convoPreview}>{c.lastMessage}</p>
+              <span className={styles.convoMeta}>{c.parentEmail} · {new Date(c.lastAt).toLocaleDateString()}</span>
+            </button>
+          ))
+        )}
+      </div>
+      <div className={styles.convoThread}>
+        {!activeConvo ? (
+          <p className={styles.empty}>Select a conversation.</p>
+        ) : (
+          <>
+            <div className={styles.chatMessages}>
+              {messages.map((m) => (
+                <div key={m._id} className={`${styles.chatBubble} ${m.senderRole === "superadmin" ? styles.chatBubbleMine : styles.chatBubbleTheirs}`}>
+                  <p>{m.message}</p>
+                  <span className={styles.chatTime}>{new Date(m.createdAt).toLocaleString()}</span>
+                </div>
+              ))}
+            </div>
+            <div className={styles.chatInputRow}>
+              <textarea rows={2} value={draft} onChange={(e) => onDraftChange(e.target.value)} placeholder="Reply to parent…" />
+              <button className={styles.approveBtn} onClick={onSend} disabled={sending || !draft.trim()}>
+                {sending ? "Sending…" : "Send"}
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 const SuperAdminDashboard = () => {
   const { superAdminUser, superAdminLogout, getSuperAdminToken } = useAdminAuth();
@@ -394,6 +443,12 @@ const SuperAdminDashboard = () => {
   const [convoDraft, setConvoDraft] = useState("");
   const [convoSending, setConvoSending] = useState(false);
   const [chatUnreadTotal, setChatUnreadTotal] = useState(0);
+  const [parentConversations, setParentConversations] = useState([]);
+  const [activeParentConvo, setActiveParentConvo] = useState(null);
+  const [parentConvoMessages, setParentConvoMessages] = useState([]);
+  const [parentConvoDraft, setParentConvoDraft] = useState("");
+  const [parentConvoSending, setParentConvoSending] = useState(false);
+  const [parentChatUnreadTotal, setParentChatUnreadTotal] = useState(0);
 
   useEffect(() => {
     if (!superAdminUser && superAdminUser !== undefined) navigate("/superadmin-login");
@@ -431,6 +486,16 @@ const SuperAdminDashboard = () => {
     if (d.success) setChatUnreadTotal(d.count);
   }, [get]);
 
+  const loadParentConversations = useCallback(async () => {
+    const d = await get("/parent-chat");
+    if (d.success) setParentConversations(d.conversations);
+  }, [get]);
+
+  const pollParentChatUnread = useCallback(async () => {
+    const d = await get("/parent-chat/unread-count");
+    if (d.success) setParentChatUnreadTotal(d.count);
+  }, [get]);
+
   useEffect(() => {
     loadStats().finally(() => setLoading(false));
   }, [loadStats]);
@@ -441,13 +506,20 @@ const SuperAdminDashboard = () => {
     return () => clearInterval(iv);
   }, [pollChatUnread]);
 
+  useEffect(() => {
+    pollParentChatUnread();
+    const iv = setInterval(pollParentChatUnread, 25000);
+    return () => clearInterval(iv);
+  }, [pollParentChatUnread]);
+
   const handleSection = useCallback(async (sec) => {
     setSection(sec);
     if (sec === "organizations") loadOrgs(filterStatus);
     else if (sec === "settings") loadSettings();
     else if (sec === "contact") loadMessages(messageFilter);
     else if (sec === "chat") loadConversations();
-  }, [filterStatus, messageFilter, loadOrgs, loadSettings, loadMessages, loadConversations]);
+    else if (sec === "parentchat") loadParentConversations();
+  }, [filterStatus, messageFilter, loadOrgs, loadSettings, loadMessages, loadConversations, loadParentConversations]);
 
   const openConversation = async (convo) => {
     setActiveConvo(convo);
@@ -466,6 +538,26 @@ const SuperAdminDashboard = () => {
       const t = await get(`/chat/${activeConvo.orgId}`);
       if (t.success) setConvoMessages(t.messages);
       loadConversations();
+    }
+  };
+
+  const openParentConversation = async (convo) => {
+    setActiveParentConvo(convo);
+    const d = await get(`/parent-chat/${convo.parentId}`);
+    if (d.success) setParentConvoMessages(d.messages);
+    loadParentConversations();
+  };
+
+  const handleSendParentConvo = async () => {
+    if (!parentConvoDraft.trim() || !activeParentConvo) return;
+    setParentConvoSending(true);
+    const d = await post(`/parent-chat/${activeParentConvo.parentId}`, { message: parentConvoDraft.trim() });
+    setParentConvoSending(false);
+    if (d.success) {
+      setParentConvoDraft("");
+      const t = await get(`/parent-chat/${activeParentConvo.parentId}`);
+      if (t.success) setParentConvoMessages(t.messages);
+      loadParentConversations();
     }
   };
 
@@ -570,6 +662,7 @@ const SuperAdminDashboard = () => {
               {n.icon} <span>{n.label}</span>
               {n.key === "organizations" && stats.pendingOrgs > 0 && <span className={styles.navDot} />}
               {n.key === "chat" && chatUnreadTotal > 0 && <span className={styles.navDot} />}
+              {n.key === "parentchat" && parentChatUnreadTotal > 0 && <span className={styles.navDot} />}
             </button>
           ))}
         </nav>
@@ -752,6 +845,26 @@ const SuperAdminDashboard = () => {
               onDraftChange={setConvoDraft}
               onSend={handleSendConvo}
               sending={convoSending}
+            />
+          </>
+        )}
+
+        {/* ── Parent Chat ── */}
+        {section === "parentchat" && (
+          <>
+            <div className={styles.pageHeader}>
+              <h1>Parent Chat</h1>
+              <p>Message independent parents directly about their account or their kids.</p>
+            </div>
+            <ParentChatSection
+              conversations={parentConversations}
+              activeConvo={activeParentConvo}
+              messages={parentConvoMessages}
+              draft={parentConvoDraft}
+              onOpen={openParentConversation}
+              onDraftChange={setParentConvoDraft}
+              onSend={handleSendParentConvo}
+              sending={parentConvoSending}
             />
           </>
         )}
