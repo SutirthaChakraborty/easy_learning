@@ -9,23 +9,25 @@ happens when you do.
 
 1. [Getting started](#1-getting-started)
 2. [For Students](#2-for-students)
-3. [For Admins (Schools / Coaching Centres / Parents)](#3-for-admins-schools--coaching-centres--parents)
-4. [For Teachers](#4-for-teachers)
-5. [For the Super Admin](#5-for-the-super-admin)
-6. [Language support](#6-language-support)
-7. [Contact & support](#7-contact--support)
-8. [Troubleshooting](#8-troubleshooting)
+3. [For Parents](#3-for-parents)
+4. [For Admins (Schools / Coaching Centres)](#4-for-admins-schools--coaching-centres)
+5. [For Teachers](#5-for-teachers)
+6. [For the Super Admin](#6-for-the-super-admin)
+7. [Language support](#7-language-support)
+8. [Contact & support](#8-contact--support)
+9. [Troubleshooting](#9-troubleshooting)
 
 ---
 
 ## 1. Getting started
 
-When you open the site, you land on a **role selection screen** with four cards:
+When you open the site, you land on a **role selection screen** with five cards:
 
 | Card | Who it's for | Where it sends you |
 |---|---|---|
 | **Student** | Kids using the lessons and games | Student sign-in page |
-| **Admin / Parents** | Anyone running or supervising a school, coaching centre, or home-school group | Admin sign-in page |
+| **Parent** | A parent/guardian who wants to add their kids and watch their progress, with no organization involved | Parent sign-in page |
+| **Admin** | Anyone running or supervising a school or coaching centre | Admin sign-in page |
 | **Teacher** | Teachers/tutors an Admin has already added, who need to manage their own batches | Teacher sign-in page |
 | **Super Admin** | The single platform operator who approves organizations | Super Admin sign-in page |
 
@@ -54,9 +56,10 @@ The top navigation bar (visible on every page except sign-in/dashboard-style ful
 pages) gives you:
 
 - **Home** — back to the main screen
+- **About Us** — the Learningo story and mission
 - **Dashboard** — your personal progress page (see §2.5)
 - **Contact Us** — reach the Learningo team with a question or issue
-- A **language switcher** — change the app's language at any time (see §6)
+- A **language switcher** — change the app's language at any time (see §7)
 - **Logout**
 
 ### 2.3 Learning modules
@@ -127,17 +130,52 @@ your dashboard.
 
 ---
 
-## 3. For Admins (Schools / Coaching Centres / Parents)
+## 3. For Parents
 
-The **Admin** role is for anyone who wants to register and run a group of students under an
-organization — a school, a coaching centre, or even a single parent/family group.
+The **Parent** role is for a parent or guardian who just wants to add their own kids and
+keep an eye on their progress — no organization, batch, or admin required.
 
 ### 3.1 Signing in
+
+Parent sign-in is **Google-only** — click **Continue with Google** on the Parent login page.
+There's a **Back to Role Selection** link if you picked the wrong card. There's no
+self-registration form; signing in with Google the first time creates your parent account
+automatically.
+
+### 3.2 My Kids
+
+The **My Kids** section is where you manage your children:
+
+- **Add Kid** — enter their Name, Age, and Email. The email is used to link the kid to
+  their own Learningo student account, if they have one.
+- **Edit** (pencil) or **Remove** any kid you've added.
+- **Performance** (chart icon) — opens that kid's progress:
+  - If their email matches a student account with recorded activity, you see their full
+    **Dashboard** (stats, heatmap, chart, achievements, round history — the same view
+    described in §2.5).
+  - If not, you see a simple summary panel instead (Total XP, Sessions, Minutes, Average
+    Score, Achievements), which reads as empty/zero until they've started learning under
+    that email.
+
+### 3.3 Chatting with the Super Admin
+
+The **Chat with Us** section is a private, threaded chat with the Super Admin for account
+questions or issues — the same pattern Admins use (see §4.6). Unread messages show a badge
+that updates automatically every ~25 seconds.
+
+---
+
+## 4. For Admins (Schools / Coaching Centres)
+
+The **Admin** role is for anyone who wants to register and run a group of students under an
+organization — a school or a coaching centre.
+
+### 4.1 Signing in
 
 Admin sign-in is **Google-only** — click **Continue with Google** on the Admin login page.
 There's a **Back to Role Selection** link if you picked the wrong card.
 
-### 3.2 Registering your organization
+### 4.2 Registering your organization
 
 The first time you sign in, your dashboard's **Overview** section shows a **Set Up Your
 Organization** prompt. Go to the **Organization** section and click **Register Now** to
@@ -165,7 +203,7 @@ section will show a status: **Pending**, **Approved**, or **Rejected**.
   re-approval — you'll see a note explaining this before you submit. Editing while still
   **Pending** just updates the details in place.
 
-### 3.3 Running your organization
+### 4.3 Running your organization
 
 Once approved, the sidebar gives you:
 
@@ -174,13 +212,13 @@ Once approved, the sidebar gives you:
 | **Overview** | Summary counts of your Tutors, Batches, Students, Parents |
 | **Organization** | View/edit your org's registration details and status |
 | **Tutors** | Add and edit teachers (Name, Email, Phone, Subject, Status) |
-| **Batches** | Create class groups (Name, Academic Year/Term, max students, description); manage each batch's student roster, whole-batch teachers, and per-subject teacher/schedule assignments (see §3.4) |
+| **Batches** | Create class groups (Name, Academic Year/Term, max students, description); manage each batch's student roster, whole-batch teachers, and per-subject teacher/schedule assignments (see §4.4) |
 | **Subjects** | Define the named subjects your organization teaches, for batch scheduling purposes (English, Maths, and Science are created for you automatically when you register) |
 | **Students** | Add and edit students (Name, Email, Age, Grade/Class, Status) |
-| **Parents** | Add parent/guardian records and link them to students (with consent tracking) |
-| **Question Review** | Approve or reject question sets your Teachers upload, and edit individual questions (see §3.5) |
+| **Parents** | Add parent/guardian records for your organization's students and link them (with consent tracking) — separate from the standalone Parent portal in §3 |
+| **Question Review** | Approve or reject question sets your Teachers upload, and edit individual questions (see §4.5) |
 | **Reports** | Search a Tutor or Student by name, then open their performance view for detailed learning stats |
-| **Messages** | A direct chat with the Super Admin (see §3.6) |
+| **Messages** | A direct chat with the Super Admin (see §4.6) |
 
 Each list (Tutors, Batches, Subjects, Students, Parents) uses the same pattern: an **Add**
 button opens a form, and existing records show in a searchable table. Tutors and Students
@@ -188,7 +226,7 @@ also have an **Edit** (pencil) action to update their details in place, alongsid
 Performance** and **Delete**. You can also update your own **Edit Profile** details
 (designation, phone, profile photo) from the sidebar.
 
-### 3.4 Managing a batch's teachers, subjects, and schedule
+### 4.4 Managing a batch's teachers, subjects, and schedule
 
 Opening a batch (from the **Batches** section) gives you three tabs:
 
@@ -201,9 +239,9 @@ Opening a batch (from the **Batches** section) gives you three tabs:
   slot) shown both per-subject and as a combined weekly grid for the whole batch.
 
 A teacher only sees and can manage batches (and, within a batch, only the subjects) they've
-actually been assigned to — see §4.
+actually been assigned to — see §5.
 
-### 3.5 Reviewing questions submitted by Teachers
+### 4.5 Reviewing questions submitted by Teachers
 
 The **Question Review** section lists every question upload your Teachers have submitted,
 with stats for Total/Pending/Approved/Rejected and a status filter. For each upload you can:
@@ -218,7 +256,7 @@ Approving and rejecting are **reversible**, just like organization approval — 
 change your mind later. Students only ever see **approved** questions, and only ones
 uploaded for their own batch (or the built-in question bank, if they aren't in any batch).
 
-### 3.6 Messaging the Super Admin
+### 4.6 Messaging the Super Admin
 
 The **Messages** section is a private, threaded chat between you and the Super Admin — use
 it for approval questions, platform issues, or anything that doesn't fit the public Contact
@@ -226,13 +264,13 @@ Us form. Unread messages show a badge that updates automatically every ~25 secon
 
 ---
 
-## 4. For Teachers
+## 5. For Teachers
 
 The **Teacher** role is for individual tutors/teachers who've already been added to an
 organization by its Admin (in the Admin's **Tutors** section) and want to manage their own
 batches directly, instead of going through the Admin for everything.
 
-### 4.1 Signing in
+### 5.1 Signing in
 
 Teacher sign-in is **Google-only**, on the Teacher login page — click **Continue with
 Google**. There's no self-registration: your Admin must have already added you as a Tutor
@@ -240,7 +278,7 @@ using the same email address as your Google account. If no matching record is fo
 you'll see a message asking you to have your Admin add you first, and you won't be able to
 proceed until they do.
 
-### 4.2 My Batches
+### 5.2 My Batches
 
 The Teacher dashboard's **My Batches** section lists only the batches your Admin has
 assigned you to (whether as a whole-batch teacher or for a specific subject). Opening a
@@ -252,7 +290,7 @@ batch lets you:
 
 If you don't see a batch you expect, ask your Admin to add you to it.
 
-### 4.3 Uploading questions
+### 5.3 Uploading questions
 
 The **Upload Questions** section lets you submit new questions for your students to
 practice, subject to your Admin's approval:
@@ -272,7 +310,7 @@ approve your own questions.
 
 ---
 
-## 5. For the Super Admin
+## 6. For the Super Admin
 
 There is exactly **one** Super Admin account for the whole platform (set up by whoever
 deploys/operates Learningo). It signs in with an **email and password** on the Super Admin
@@ -285,11 +323,12 @@ The Super Admin dashboard sidebar has:
 | **Overview** | Platform-wide summary; flags pending organizations awaiting review |
 | **Organizations** | Approve or reject registered organizations; filter by All / Pending / Approved / Rejected |
 | **Admin Chat** | Threaded chat with every organization's admin (mirrors each admin's Messages section) |
-| **Contact Messages** | Public messages submitted via the Contact Us form by anyone (students, admins, teachers, parents, other) |
+| **Parent Chat** | Threaded chat with every standalone Parent account (mirrors each parent's Chat with Us section, §3.3) |
+| **Contact Messages** | Public messages submitted via the Contact Us form by anyone (students, parents, admins, teachers, other) |
 | **Reports** | Open an approved organization to view its Tutors' and Students' performance data |
 | **Settings** | Global key/value platform settings (add, view, and describe platform-wide configuration values) |
 
-### 5.1 Reviewing organizations
+### 6.1 Reviewing organizations
 
 Each organization card shows its name, type, admin email, address, and registration date.
 From here you can:
@@ -305,16 +344,16 @@ that org's **rejection history**, so nothing is lost even after re-approval.
 Once an org is approved, click **View Admin / Teachers / Students** to drill into its
 people and their performance data.
 
-### 5.2 Handling contact messages
+### 6.2 Handling contact messages
 
 The **Contact Messages** section lists everything submitted through the public Contact Us
-form (see §7) — separate from the private Admin Chat, since anyone can submit one without
-being logged in as an org admin. Filter by status (**Open / In Progress / Resolved**) and
-use **Reply & Resolve** to respond to a message and close it out.
+form (see §8) — separate from the private Admin Chat and Parent Chat, since anyone can
+submit one without being logged in. Filter by status (**Open / In Progress / Resolved**)
+and use **Reply & Resolve** to respond to a message and close it out.
 
 ---
 
-## 6. Language support
+## 7. Language support
 
 Learningo currently supports **14 languages**:
 
@@ -326,7 +365,7 @@ language at any time — your choice is remembered on that device for next time.
 
 ---
 
-## 7. Contact & support
+## 8. Contact & support
 
 Anyone — student, parent/guardian, organization admin, teacher/tutor, or other — can reach
 the Learningo team via **Contact Us** in the navigation bar. Fill in who you are, your name,
@@ -334,13 +373,13 @@ email, organization (optional), a subject, and your message (with an optional im
 attachment); it goes straight to the Super Admin's **Contact Messages** list. No account is
 required.
 
-If you're already an org **Admin**, prefer the **Messages** section on your dashboard for
-anything related to your organization's approval or account — it's a direct, private
-conversation with the Super Admin rather than a one-off form.
+If you're already an org **Admin** or a signed-in **Parent**, prefer the **Messages** /
+**Chat with Us** section on your dashboard instead — it's a direct, private conversation
+with the Super Admin rather than a one-off form.
 
 ---
 
-## 8. Troubleshooting
+## 9. Troubleshooting
 
 **"Continue with Google" isn't working / nothing happens**
 Your browser is likely blocking the sign-in popup. Allow popups for this site and try
@@ -362,6 +401,12 @@ Admin for a quick re-approval. Your dashboard stays accessible in the meantime.
 Your Admin needs to add you as a Tutor (Name, Email, Phone, Subject) under their
 **Tutors** section first, using the same email as the Google account you're signing in
 with. Ask them to add you, then try signing in again.
+
+**I added a kid on my Parent account but their Performance shows no activity**
+The Performance view links to a real student account by matching the email you entered for
+that kid. Make sure it's the exact email your child uses to sign in as a Student (see §2.1)
+and that they've completed at least one round — the full dashboard only appears once
+there's recorded activity under that email.
 
 **A student can't see any questions in a module**
 If they belong to an organization (added by an Admin/Teacher as a Student), they only see
