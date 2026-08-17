@@ -25,6 +25,7 @@ import MemoryGame from "./pages/games/MemoryGame";
 import PuzzleGame from "./pages/games/PuzzleGame";
 import Login from "./pages/Login";
 import ContactUs from "./pages/ContactUs";
+import AboutUs from "./pages/AboutUs";
 import AdminLogin from "./pages/AdminLogin";
 import SuperAdminLogin from "./pages/SuperAdminLogin";
 import TeacherLogin from "./pages/TeacherLogin";
@@ -55,6 +56,7 @@ function AnimatedRoutes() {
         <Route path="/games/puzzle" element={<PuzzleGame />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />
         <Route path="/teacher-login" element={<TeacherLogin />} />
@@ -72,10 +74,12 @@ function AnimatedRoutes() {
 function AppLayout() {
   const location = useLocation();
   const hideNavbar = ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
+  // The student home page gets its own full-viewport video background instead of the 3D brick scene
+  const hideBackground3D = location.pathname === "/home";
 
   return (
     <>
-      <Background3D />
+      {!hideBackground3D && <Background3D />}
       {!hideNavbar && <Navbar />}
       <div style={{ paddingTop: hideNavbar ? "0" : "80px", flex: 1, display: "flex", flexDirection: "column" }}>
         <AnimatedRoutes />

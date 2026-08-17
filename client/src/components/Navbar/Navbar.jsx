@@ -4,7 +4,11 @@ import styles from "./Navbar.module.css";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "/logo.png";
 import { playSlide } from "../../utils/sounds";
-import { FaLayerGroup, FaSignOutAlt, FaTachometerAlt, FaHandPaper } from "react-icons/fa";
+import {
+  FaHome, FaInfoCircle, FaEnvelope, FaSignOutAlt,
+  FaHandPaper, FaLayerGroup,
+} from "react-icons/fa";
+import { RiBarChart2Fill } from "react-icons/ri";
 import { useAuth } from "../../context/AuthContext";
 import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
@@ -24,56 +28,70 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const pillClass = (colorClass) => ({ isActive }) =>
+    `${styles.navPill} ${styles[colorClass]} ${isActive ? styles.navPillActive : ""}`;
+
   return (
     <nav className={styles.navbar}>
-      <div className={styles.logo}>
-        <Link to="/home" onClick={close}><img src={logo} alt="logo" /></Link>
-      </div>
+      <div className={styles.bar}>
+        <Link to="/home" className={styles.logo} onClick={close}>
+          <img src={logo} alt="logo" />
+        </Link>
 
-      <div className={`${styles.menu} ${mobileOpen ? styles.menuOpen : ""}`}>
-        <div className={styles.dropdown}>
-          <NavLink to="/home" className={styles.btn1} onClick={close}>
-            {t("navbar.home")}
-          </NavLink>
-        </div>
-
-        <div className={styles.dropdown}>
-          <NavLink to="/contact-us" className={styles.btn1} onClick={close}>
-            {t("navbar.contact", { defaultValue: "Contact Us" })}
-          </NavLink>
-        </div>
-
-        {user ? (
-          <div className={styles.userArea}>
-            <NavLink to="/dashboard" className={styles.dashboardLink} onClick={close}>
-              <FaTachometerAlt className={styles.loginIcon} /> {t("navbar.dashboard")}
+        <div className={`${styles.menu} ${mobileOpen ? styles.menuOpen : ""}`}>
+          <div className={styles.navLinks}>
+            <NavLink to="/home" className={pillClass("navHome")} onClick={close}>
+              <span className={styles.navIconWrap}><FaHome className={styles.navIcon} /></span>
+              {t("navbar.home")}
             </NavLink>
-            <span className={styles.userName}>
-              <FaHandPaper /> {t("navbar.greeting", { name: firstName })}
-            </span>
-            <button className={styles.logout} onClick={handleLogout}>
-              <FaSignOutAlt className={styles.loginIcon} /> {t("navbar.logout")}
-            </button>
+
+            <NavLink to="/about-us" className={pillClass("navAbout")} onClick={close}>
+              <span className={styles.navIconWrap}><FaInfoCircle className={styles.navIcon} /></span>
+              {t("navbar.about", { defaultValue: "About Us" })}
+            </NavLink>
+
+            <NavLink to="/contact-us" className={pillClass("navContact")} onClick={close}>
+              <span className={styles.navIconWrap}><FaEnvelope className={styles.navIcon} /></span>
+              {t("navbar.contact", { defaultValue: "Contact Us" })}
+            </NavLink>
+
+            {user && (
+              <NavLink to="/dashboard" className={styles.dashboardLink} onClick={close}>
+                <RiBarChart2Fill className={styles.navIcon} /> {t("navbar.dashboard")}
+              </NavLink>
+            )}
           </div>
-        ) : (
-          <button className={styles.login} onClick={handleLogin}>
-            <FaLayerGroup className={styles.loginIcon} /> {t("navbar.login")}
-          </button>
-        )}
 
-        {/* Language switcher sits at the end of the menu (or in-menu on mobile) */}
-        <LanguageSwitcher />
+          <div className={styles.rightGroup}>
+            <LanguageSwitcher />
+
+            {user ? (
+              <div className={styles.userArea}>
+                <span className={styles.userName}>
+                  <FaHandPaper /> {t("navbar.greeting", { name: firstName })}
+                </span>
+                <button className={styles.logout} onClick={handleLogout}>
+                  <FaSignOutAlt className={styles.loginIcon} /> {t("navbar.logout")}
+                </button>
+              </div>
+            ) : (
+              <button className={styles.login} onClick={handleLogin}>
+                <FaLayerGroup className={styles.loginIcon} /> {t("navbar.login")}
+              </button>
+            )}
+          </div>
+        </div>
+
+        <button
+          className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ""}`}
+          onClick={() => setMobileOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-
-      <button
-        className={`${styles.hamburger} ${mobileOpen ? styles.hamburgerOpen : ""}`}
-        onClick={() => setMobileOpen((prev) => !prev)}
-        aria-label="Toggle menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </nav>
   );
 };
