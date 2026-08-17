@@ -74,8 +74,8 @@ function AnimatedRoutes() {
 function AppLayout() {
   const location = useLocation();
   const hideNavbar = ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
-  // The student home page gets its own full-viewport video background instead of the 3D brick scene
-  const hideBackground3D = location.pathname === "/home";
+  // Home, About Us and Contact Us get their own full-viewport video background instead of the 3D brick scene
+  const hideBackground3D = ["/home", "/about-us", "/contact-us"].includes(location.pathname);
 
   return (
     <>

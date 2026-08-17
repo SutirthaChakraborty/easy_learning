@@ -1,95 +1,237 @@
 .page {
-  min-height: 80vh;
+  min-height: calc(100vh - 80px);
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 40px 20px;
-  background: #0f0e17;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px 20px 60px;
 }
 
-.card {
+/* ─── Hero ─── */
+.hero {
   width: 100%;
-  max-width: 680px;
-  background: #1a1828;
-  border: 1px solid rgba(162, 89, 247, 0.25);
-  border-radius: 20px;
-  padding: 32px;
+  max-width: 760px;
+  text-align: center;
+  margin-bottom: 28px;
 }
 
-.header {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 20px;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #ef6c00;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 7px 16px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  margin-bottom: 16px;
 }
 
-.headerIcon {
-  font-size: 2.4rem;
-  color: #f45b69;
-  flex-shrink: 0;
+.heroTitle {
+  margin: 0 0 12px;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.7rem, 4.2vw, 2.6rem);
+  line-height: 1.2;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
-.header h1 {
-  margin: 0 0 6px;
-  color: #fff;
-  font-size: 1.6rem;
+.heroSubtitle {
+  margin: 0 auto;
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.6;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
-.header p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.55);
-  font-size: 0.95rem;
+/* ─── Main panel ─── */
+.panel {
+  width: 100%;
+  max-width: 820px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 26px;
+  padding: 36px;
+  box-shadow: 0 20px 48px rgba(10, 30, 15, 0.3);
 }
 
 .paragraph {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.98rem;
-  line-height: 1.7;
-  margin: 0 0 24px;
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.75;
+  margin: 0 0 28px;
+  text-align: center;
 }
 
+.sectionTitle {
+  margin: 0 0 16px;
+  font-family: "Fredoka", sans-serif;
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-align: center;
+  background: linear-gradient(90deg, #ef6c00, #2e7d32);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Worlds (pastel cards, matches home "Choose Your World") ─── */
 .worlds {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 36px;
 }
 
 .world {
+  flex: 1 1 220px;
+  max-width: 260px;
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 14px 16px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  border-radius: 20px;
+  padding: 22px 18px;
+  box-shadow: 0 10px 24px rgba(10, 30, 15, 0.1);
 }
 
-.worldIcon {
-  font-size: 1.4rem;
-  color: #a259f7;
-  margin-top: 3px;
-  flex-shrink: 0;
+.purple { background: #f3e8ff; }
+.blue   { background: #e3f2fd; }
+.green  { background: #e8f5e9; }
+
+.worldIconWrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
 }
+
+.worldIcon { font-size: 1.5rem; }
+.purple .worldIcon { color: #6d28d9; }
+.blue   .worldIcon { color: #1565c0; }
+.green  .worldIcon { color: #2e7d32; }
 
 .world h3 {
-  margin: 0 0 4px;
-  color: #fff;
-  font-size: 1rem;
+  margin: 0;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
+.purple h3 { color: #6d28d9; }
+.blue   h3 { color: #1565c0; }
+.green  h3 { color: #2e7d32; }
 
 .world p {
   margin: 0;
-  color: rgba(255, 255, 255, 0.6);
-  font-size: 0.9rem;
+  color: #4b5563;
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
-.link {
-  color: #a259f7;
-  font-weight: 600;
-  text-decoration: underline;
+/* ─── Values ─── */
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 36px;
 }
+
+.valueCard {
+  background: rgba(249, 250, 251, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  padding: 20px 16px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.valueCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(10, 30, 15, 0.12);
+}
+
+.valueIconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #66bb6a, #2e7d32);
+  color: white;
+  margin-bottom: 12px;
+}
+
+.valueIcon { font-size: 1.2rem; }
+
+.valueCard h3 {
+  margin: 0 0 6px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.valueCard p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+/* ─── CTA ─── */
+.ctaRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(180deg, #ff9d3b, #ef6c00);
+  color: white;
+  border: none;
+  padding: 13px 30px;
+  border-radius: 999px;
+  font-family: "Fredoka", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 6px #c25400;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.ctaBtn:hover { transform: scale(1.03); }
+.ctaBtn:active { transform: scale(0.97); box-shadow: 0 4px #c25400; }
+.ctaIcon { font-size: 0.9em; }
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #2e7d32;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+.contactLink:hover { text-decoration: underline; }
 
 @media (max-width: 600px) {
-  .card { padding: 22px; }
+  .panel { padding: 24px 18px; }
+  .worlds { flex-direction: column; align-items: center; }
+  .world { max-width: 320px; width: 100%; }
 }
