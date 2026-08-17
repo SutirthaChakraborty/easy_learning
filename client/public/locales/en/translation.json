@@ -13,17 +13,28 @@
                    "mathematics":  "Mathematics",
                    "science":  "Science",
                    "greeting":  "Hello {{name}}",
-                   "contact":  "Contact Us"
+                   "contact":  "Contact Us",
+                   "about":  "About Us"
                },
     "hero":  {
-                 "greeting":  "Hello {{name}}",
+                 "greeting":  "Hi, {{name}}!",
                  "startLearning":  "Start Learning",
-                 "playGames":  "Play Games"
+                 "startAdventure":  "Start Your Adventure",
+                 "continueAdventure":  "Continue Adventure",
+                 "readyForAdventure":  "Ready for your next adventure?",
+                 "listen":  "Listen",
+                 "playGames":  "Play Games",
+                 "chooseWorld":  "Choose Your World",
+                 "chooseWorldHint":  "Choose a world below to begin your first adventure!",
+                 "pickUpWhereLeftOff":  "Pick up right where you left off",
+                 "keepGoing":  "Keep going!",
+                 "stories":  "Stories"
              },
     "cards":  {
-                  "english":  "English",
-                  "mathematics":  "Mathematics",
-                  "science":  "Science"
+                  "english":  { "title": "English Kingdom", "tagline": "Learn with words and stories" },
+                  "maths":  { "title": "Maths Galaxy", "tagline": "Solve, practice and explore" },
+                  "science":  { "title": "Science Lab", "tagline": "Discover, experiment and understand" },
+                  "enterWorld":  "Enter World"
               },
     "login":  {
                   "joinTitle":  "Join Learningo!",

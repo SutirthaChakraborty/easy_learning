@@ -8,9 +8,9 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  color: white;
+  background: rgba(51, 65, 92, 0.08);
+  border: 1px solid rgba(51, 65, 92, 0.18);
+  color: #33415c;
   padding: 8px 13px;
   border-radius: 20px;
   cursor: pointer;
@@ -23,7 +23,7 @@
 }
 
 .trigger:hover {
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(51, 65, 92, 0.16);
   transform: translateY(-2px);
 }
 
