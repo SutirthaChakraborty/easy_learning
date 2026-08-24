@@ -12,17 +12,38 @@
     "english": "Englisch",
     "mathematics": "Mathematik",
     "science": "Naturwissenschaft",
-    "greeting": "Hallo {{name}}"
+    "greeting": "Hallo {{name}}",
+    "contact": "Kontakt",
+    "about": "Über uns"
   },
   "hero": {
     "greeting": "Hallo {{name}}",
     "startLearning": "Lernen beginnen",
-    "playGames": "Spiele spielen"
+    "playGames": "Spiele spielen",
+    "startAdventure": "Starte dein Abenteuer",
+    "continueAdventure": "Abenteuer fortsetzen",
+    "readyForAdventure": "Bereit für dein nächstes Abenteuer?",
+    "listen": "Zuhören",
+    "chooseWorld": "Wähle deine Welt",
+    "chooseWorldHint": "Wähle unten eine Welt, um dein erstes Abenteuer zu beginnen!",
+    "pickUpWhereLeftOff": "Mach genau da weiter, wo du aufgehört hast",
+    "keepGoing": "Weiter so!",
+    "stories": "Geschichten"
   },
   "cards": {
-    "english": "Englisch",
-    "mathematics": "Mathematik",
-    "science": "Naturwissenschaft"
+    "english": {
+      "title": "Englisch-Königreich",
+      "tagline": "Lerne mit Wörtern und Geschichten"
+    },
+    "maths": {
+      "title": "Mathe-Galaxie",
+      "tagline": "Löse, übe und entdecke"
+    },
+    "science": {
+      "title": "Wissenschaftslabor",
+      "tagline": "Entdecke, experimentiere und verstehe"
+    },
+    "enterWorld": "Welt betreten"
   },
   "login": {
     "joinTitle": "Tritt Learningo bei!",
@@ -164,6 +185,15 @@
         "name": "Nachteule",
         "description": "Nach 21 Uhr lernen"
       }
+    },
+    "progressMap": {
+      "title": "Fortschrittskarte",
+      "btnLabel": "Fortschrittskarte",
+      "subtitle": "{{completed}} von {{total}} Modulen gemeistert",
+      "completed": "Gemeistert",
+      "inProgress": "In Bearbeitung",
+      "locked": "Nicht begonnen",
+      "close": "Schließen"
     }
   },
   "subjectPage": {
@@ -291,7 +321,12 @@
       "enc3": "Brillant! Du bist so mutig!",
       "enc4": "Was für eine tolle Antwort!",
       "enc5": "Das war wunderbar!",
-      "micError": "Mikrofon nicht verfügbar — Berechtigungen prüfen!"
+      "micError": "Mikrofon nicht verfügbar — Berechtigungen prüfen!",
+      "micPermission": "Mikrofonzugriff verweigert — klicke auf das Schloss-Symbol in der Adressleiste und erlaube das Mikrofon.",
+      "micNotFound": "Kein Mikrofon gefunden — bitte eines anschließen und erneut versuchen.",
+      "micBusy": "Das Mikrofon wird von einer anderen App verwendet — schließe sie und versuche es erneut.",
+      "micUnsupported": "Dein Browser unterstützt keine Aufnahme — bitte verwende Chrome oder Firefox.",
+      "micInsecure": "Das Mikrofon benötigt eine sichere Verbindung (HTTPS). Bitte öffne die App über https:// oder verwende localhost."
     }
   }
 }

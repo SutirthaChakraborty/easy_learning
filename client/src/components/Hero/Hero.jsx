@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import Cards from "../Cards/Cards";
 import SubjectOverlay from "../SubjectOverlay/SubjectOverlay";
+import SubjectBottomNav from "../SubjectBottomNav/SubjectBottomNav";
 import styles from "./Hero.module.css";
 import {
   FaGamepad, FaVolumeUp,
@@ -150,10 +151,16 @@ const Hero = () => {
           {t("hero.playGames")} <FaGamepad className={styles.btnIcon} />
         </button>
 
-        <h2 className={styles.chooseWorldTitle}>
-          {t("hero.chooseWorld", { defaultValue: "Choose Your World" })}
-        </h2>
-        <Cards onSelect={setActiveSubject} />
+        <div className={styles.desktopCards}>
+          <h2 className={styles.chooseWorldTitle}>
+            {t("hero.chooseWorld", { defaultValue: "Choose Your World" })}
+          </h2>
+          <Cards onSelect={setActiveSubject} />
+        </div>
+      </div>
+
+      <div className={styles.mobileNavWrap}>
+        <SubjectBottomNav onSelect={setActiveSubject} />
       </div>
 
       <AnimatePresence>

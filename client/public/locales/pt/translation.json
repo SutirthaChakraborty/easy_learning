@@ -12,17 +12,38 @@
                    "english":  "Inglês",
                    "mathematics":  "Matemática",
                    "science":  "Ciências",
-                   "greeting":  "Olá {{name}}"
+                   "greeting":  "Olá {{name}}",
+                   "contact":  "Fale Conosco",
+                   "about":  "Sobre Nós"
                },
     "hero":  {
                  "greeting":  "Olá {{name}}",
                  "startLearning":  "Começar a aprender",
-                 "playGames":  "Jogar jogos"
+                 "playGames":  "Jogar jogos",
+                 "startAdventure":  "Comece sua aventura",
+                 "continueAdventure":  "Continuar aventura",
+                 "readyForAdventure":  "Pronto para sua próxima aventura?",
+                 "listen":  "Ouvir",
+                 "chooseWorld":  "Escolha seu mundo",
+                 "chooseWorldHint":  "Escolha um mundo abaixo para começar sua primeira aventura!",
+                 "pickUpWhereLeftOff":  "Continue de onde parou",
+                 "keepGoing":  "Continue assim!",
+                 "stories":  "Histórias"
              },
     "cards":  {
-                  "english":  "Inglês",
-                  "mathematics":  "Matemática",
-                  "science":  "Ciências"
+                  "english":  {
+                                  "title":  "Reino do Inglês",
+                                  "tagline":  "Aprenda com palavras e histórias"
+                              },
+                  "maths":  {
+                                "title":  "Galáxia da Matemática",
+                                "tagline":  "Resolva, pratique e explore"
+                            },
+                  "science":  {
+                                  "title":  "Laboratório de Ciências",
+                                  "tagline":  "Descubra, experimente e compreenda"
+                              },
+                  "enterWorld":  "Entrar no Mundo"
               },
     "login":  {
                   "joinTitle":  "Junte-se ao Learningo!",
@@ -164,7 +185,16 @@
                                                              "name":  "Coruja Noturna",
                                                              "description":  "Estude depois das 21h"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "Mapa de Progresso",
+                                          "btnLabel":  "Mapa de Progresso",
+                                          "subtitle":  "{{completed}} de {{total}} módulos dominados",
+                                          "completed":  "Dominado",
+                                          "inProgress":  "Em Progresso",
+                                          "locked":  "Não Iniciado",
+                                          "close":  "Fechar"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "Voltar",
@@ -291,7 +321,12 @@
                                   "enc3":  "Brilhante! Você é tão corajoso!",
                                   "enc4":  "Que resposta fantástica!",
                                   "enc5":  "Isso foi maravilhoso!",
-                                  "micError":  "Microfone não disponível — verifique as permissões!"
+                                  "micError":  "Microfone não disponível — verifique as permissões!",
+                                  "micPermission":  "Acesso ao microfone negado — clique no ícone de cadeado na barra de endereço e permita o microfone.",
+                                  "micNotFound":  "Nenhum microfone encontrado — conecte um e tente novamente.",
+                                  "micBusy":  "O microfone está sendo usado por outro aplicativo — feche-o e tente novamente.",
+                                  "micUnsupported":  "Seu navegador não suporta gravação — use o Chrome ou o Firefox.",
+                                  "micInsecure":  "O microfone requer uma conexão segura (HTTPS). Abra o aplicativo via https:// ou use localhost."
                               }
                 }
 }

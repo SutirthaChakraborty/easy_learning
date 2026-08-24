@@ -12,17 +12,38 @@
                    "english":  "英語",
                    "mathematics":  "数学",
                    "science":  "理科",
-                   "greeting":  "こんにちは {{name}}"
+                   "greeting":  "こんにちは {{name}}",
+                   "contact":  "お問い合わせ",
+                   "about":  "私たちについて"
                },
     "hero":  {
                  "greeting":  "こんにちは {{name}}",
                  "startLearning":  "学習を始める",
-                 "playGames":  "ゲームで遊ぶ"
+                 "playGames":  "ゲームで遊ぶ",
+                 "startAdventure":  "冒険を始めよう",
+                 "continueAdventure":  "冒険を続ける",
+                 "readyForAdventure":  "次の冒険の準備はできた？",
+                 "listen":  "聴く",
+                 "chooseWorld":  "世界を選ぼう",
+                 "chooseWorldHint":  "下から世界を選んで、最初の冒険を始めよう！",
+                 "pickUpWhereLeftOff":  "前回の続きから始めよう",
+                 "keepGoing":  "その調子！",
+                 "stories":  "物語"
              },
     "cards":  {
-                  "english":  "英語",
-                  "mathematics":  "数学",
-                  "science":  "理科"
+                  "english":  {
+                                  "title":  "英語の王国",
+                                  "tagline":  "言葉と物語で学ぼう"
+                              },
+                  "maths":  {
+                                "title":  "数学の銀河",
+                                "tagline":  "解いて、練習して、探究しよう"
+                            },
+                  "science":  {
+                                  "title":  "理科ラボ",
+                                  "tagline":  "発見して、実験して、理解しよう"
+                              },
+                  "enterWorld":  "世界に入る"
               },
     "login":  {
                   "joinTitle":  "Learningo に参加！",
@@ -164,7 +185,16 @@
                                                              "name":  "夜型",
                                                              "description":  "午後 9 時以降に学習する"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "進捗マップ",
+                                          "btnLabel":  "進捗マップ",
+                                          "subtitle":  "{{total}}個中{{completed}}個のモジュールをマスター",
+                                          "completed":  "マスター済み",
+                                          "inProgress":  "進行中",
+                                          "locked":  "未着手",
+                                          "close":  "閉じる"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "戻る",
@@ -291,7 +321,12 @@
                                   "enc3":  "すごい！とても勇気があるね！",
                                   "enc4":  "なんて素晴らしい答え！",
                                   "enc5":  "それは素晴らしかった！",
-                                  "micError":  "マイクが使えません — 権限を確認してください！"
+                                  "micError":  "マイクが使えません — 権限を確認してください！",
+                                  "micPermission":  "マイクへのアクセスが拒否されました — アドレスバーの鍵アイコンをクリックしてマイクを許可してください。",
+                                  "micNotFound":  "マイクが見つかりません — マイクを接続してもう一度お試しください。",
+                                  "micBusy":  "マイクは別のアプリで使用中です — そのアプリを閉じてもう一度お試しください。",
+                                  "micUnsupported":  "お使いのブラウザは録音に対応していません — Chrome または Firefox をご利用ください。",
+                                  "micInsecure":  "マイクには安全な接続（HTTPS）が必要です。https:// または localhost でアプリを開いてください。"
                               }
                 }
 }

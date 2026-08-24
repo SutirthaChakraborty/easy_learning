@@ -43,7 +43,7 @@ const GamesPage = () => {
       <div className={styles.content}>
         <FramerMotion.motion.button
           className={styles.backBtn}
-          onClick={() => { playSlide(); navigate("/"); }}
+          onClick={() => { playSlide(); navigate("/home"); }}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >

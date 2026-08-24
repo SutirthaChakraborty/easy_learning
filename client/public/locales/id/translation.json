@@ -12,17 +12,38 @@
                    "english":  "Bahasa Inggris",
                    "mathematics":  "Matematika",
                    "science":  "Sains",
-                   "greeting":  "Halo {{name}}"
+                   "greeting":  "Halo {{name}}",
+                   "contact":  "Hubungi Kami",
+                   "about":  "Tentang Kami"
                },
     "hero":  {
                  "greeting":  "Halo {{name}}",
                  "startLearning":  "Mulai Belajar",
-                 "playGames":  "Main Permainan"
+                 "playGames":  "Main Permainan",
+                 "startAdventure":  "Mulai Petualanganmu",
+                 "continueAdventure":  "Lanjutkan Petualangan",
+                 "readyForAdventure":  "Siap untuk petualangan berikutnya?",
+                 "listen":  "Dengarkan",
+                 "chooseWorld":  "Pilih Duniamu",
+                 "chooseWorldHint":  "Pilih dunia di bawah untuk memulai petualangan pertamamu!",
+                 "pickUpWhereLeftOff":  "Lanjutkan dari tempat terakhir",
+                 "keepGoing":  "Terus semangat!",
+                 "stories":  "Cerita"
              },
     "cards":  {
-                  "english":  "Bahasa Inggris",
-                  "mathematics":  "Matematika",
-                  "science":  "Sains"
+                  "english":  {
+                                  "title":  "Kerajaan Bahasa Inggris",
+                                  "tagline":  "Belajar dengan kata dan cerita"
+                              },
+                  "maths":  {
+                                "title":  "Galaksi Matematika",
+                                "tagline":  "Selesaikan, latih, dan jelajahi"
+                            },
+                  "science":  {
+                                  "title":  "Laboratorium Sains",
+                                  "tagline":  "Temukan, bereksperimen, dan pahami"
+                              },
+                  "enterWorld":  "Masuk Dunia"
               },
     "login":  {
                   "joinTitle":  "Bergabung dengan Learningo!",
@@ -164,7 +185,16 @@
                                                              "name":  "Burung Hantu Malam",
                                                              "description":  "Belajar setelah pukul 9 malam"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "Peta Kemajuan",
+                                          "btnLabel":  "Peta Kemajuan",
+                                          "subtitle":  "{{completed}} dari {{total}} modul dikuasai",
+                                          "completed":  "Dikuasai",
+                                          "inProgress":  "Sedang Berlangsung",
+                                          "locked":  "Belum Dimulai",
+                                          "close":  "Tutup"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "Kembali",
@@ -291,7 +321,12 @@
                                   "enc3":  "Brilian! Kamu sangat berani!",
                                   "enc4":  "Jawaban yang fantastis!",
                                   "enc5":  "Itu luar biasa!",
-                                  "micError":  "Mikrofon tidak tersedia — periksa izin!"
+                                  "micError":  "Mikrofon tidak tersedia — periksa izin!",
+                                  "micPermission":  "Akses mikrofon ditolak — klik ikon gembok di bilah alamat browser dan izinkan mikrofon.",
+                                  "micNotFound":  "Mikrofon tidak ditemukan — silakan pasang mikrofon dan coba lagi.",
+                                  "micBusy":  "Mikrofon sedang digunakan oleh aplikasi lain — tutup aplikasi tersebut dan coba lagi.",
+                                  "micUnsupported":  "Browser Anda tidak mendukung perekaman — silakan gunakan Chrome atau Firefox.",
+                                  "micInsecure":  "Mikrofon memerlukan koneksi aman (HTTPS). Buka aplikasi melalui https:// atau gunakan localhost."
                               }
                 }
 }

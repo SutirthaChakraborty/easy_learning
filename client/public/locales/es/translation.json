@@ -12,17 +12,38 @@
                    "english":  "Inglés",
                    "mathematics":  "Matemáticas",
                    "science":  "Ciencias",
-                   "greeting":  "Hola {{name}}"
+                   "greeting":  "Hola {{name}}",
+                   "contact":  "Contáctanos",
+                   "about":  "Sobre Nosotros"
                },
     "hero":  {
                  "greeting":  "Hola {{name}}",
                  "startLearning":  "Empezar a aprender",
-                 "playGames":  "Jugar juegos"
+                 "playGames":  "Jugar juegos",
+                 "startAdventure":  "Comienza tu aventura",
+                 "continueAdventure":  "Continuar aventura",
+                 "readyForAdventure":  "¿Listo para tu próxima aventura?",
+                 "listen":  "Escuchar",
+                 "chooseWorld":  "Elige tu mundo",
+                 "chooseWorldHint":  "¡Elige un mundo abajo para comenzar tu primera aventura!",
+                 "pickUpWhereLeftOff":  "Continúa donde lo dejaste",
+                 "keepGoing":  "¡Sigue adelante!",
+                 "stories":  "Cuentos"
              },
     "cards":  {
-                  "english":  "Inglés",
-                  "mathematics":  "Matemáticas",
-                  "science":  "Ciencias"
+                  "english":  {
+                                  "title":  "Reino del Inglés",
+                                  "tagline":  "Aprende con palabras e historias"
+                              },
+                  "maths":  {
+                                "title":  "Galaxia de Matemáticas",
+                                "tagline":  "Resuelve, practica y explora"
+                            },
+                  "science":  {
+                                  "title":  "Laboratorio de Ciencias",
+                                  "tagline":  "Descubre, experimenta y comprende"
+                              },
+                  "enterWorld":  "Entrar al Mundo"
               },
     "login":  {
                   "joinTitle":  "¡Únete a Learningo!",
@@ -164,7 +185,16 @@
                                                              "name":  "Búho Nocturno",
                                                              "description":  "Estudia después de las 9 PM"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "Mapa de Progreso",
+                                          "btnLabel":  "Mapa de Progreso",
+                                          "subtitle":  "{{completed}} de {{total}} módulos dominados",
+                                          "completed":  "Dominado",
+                                          "inProgress":  "En Progreso",
+                                          "locked":  "No Iniciado",
+                                          "close":  "Cerrar"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "Atrás",
@@ -291,7 +321,12 @@
                                   "enc3":  "¡Brillante! ¡Eres muy valiente!",
                                   "enc4":  "¡Qué respuesta fantástica!",
                                   "enc5":  "¡Eso fue maravilloso!",
-                                  "micError":  "Micrófono no disponible — ¡comprueba los permisos!"
+                                  "micError":  "Micrófono no disponible — ¡comprueba los permisos!",
+                                  "micPermission":  "Acceso al micrófono denegado — haz clic en el ícono de candado en la barra de direcciones y permite el micrófono.",
+                                  "micNotFound":  "No se encontró micrófono — conecta uno e inténtalo de nuevo.",
+                                  "micBusy":  "El micrófono está siendo usado por otra aplicación — ciérrala e inténtalo de nuevo.",
+                                  "micUnsupported":  "Tu navegador no admite grabación — usa Chrome o Firefox.",
+                                  "micInsecure":  "El micrófono requiere una conexión segura (HTTPS). Abre la aplicación mediante https:// o usa localhost."
                               }
                 }
 }

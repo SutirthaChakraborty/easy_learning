@@ -12,17 +12,38 @@
                    "english":  "Tiếng Anh",
                    "mathematics":  "Toán",
                    "science":  "Khoa Học",
-                   "greeting":  "Xin chào {{name}}"
+                   "greeting":  "Xin chào {{name}}",
+                   "contact":  "Liên Hệ",
+                   "about":  "Giới Thiệu"
                },
     "hero":  {
                  "greeting":  "Xin chào {{name}}",
                  "startLearning":  "Bắt Đầu Học",
-                 "playGames":  "Chơi Trò Chơi"
+                 "playGames":  "Chơi Trò Chơi",
+                 "startAdventure":  "Bắt Đầu Cuộc Phiêu Lưu",
+                 "continueAdventure":  "Tiếp Tục Phiêu Lưu",
+                 "readyForAdventure":  "Sẵn sàng cho cuộc phiêu lưu tiếp theo chưa?",
+                 "listen":  "Nghe",
+                 "chooseWorld":  "Chọn Thế Giới Của Bạn",
+                 "chooseWorldHint":  "Chọn một thế giới bên dưới để bắt đầu cuộc phiêu lưu đầu tiên của bạn!",
+                 "pickUpWhereLeftOff":  "Tiếp tục từ nơi bạn đã dừng lại",
+                 "keepGoing":  "Cố lên nhé!",
+                 "stories":  "Truyện"
              },
     "cards":  {
-                  "english":  "Tiếng Anh",
-                  "mathematics":  "Toán",
-                  "science":  "Khoa Học"
+                  "english":  {
+                                  "title":  "Vương Quốc Tiếng Anh",
+                                  "tagline":  "Học cùng từ vựng và câu chuyện"
+                              },
+                  "maths":  {
+                                "title":  "Thiên Hà Toán Học",
+                                "tagline":  "Giải, luyện tập và khám phá"
+                            },
+                  "science":  {
+                                  "title":  "Phòng Thí Nghiệm Khoa Học",
+                                  "tagline":  "Khám phá, thử nghiệm và thấu hiểu"
+                              },
+                  "enterWorld":  "Vào Thế Giới"
               },
     "login":  {
                   "joinTitle":  "Tham gia Learningo!",
@@ -164,7 +185,16 @@
                                                              "name":  "Cú Đêm",
                                                              "description":  "Học sau 9 giờ tối"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "Bản Đồ Tiến Trình",
+                                          "btnLabel":  "Bản Đồ Tiến Trình",
+                                          "subtitle":  "Đã thành thạo {{completed}} / {{total}} mô-đun",
+                                          "completed":  "Đã Thành Thạo",
+                                          "inProgress":  "Đang Thực Hiện",
+                                          "locked":  "Chưa Bắt Đầu",
+                                          "close":  "Đóng"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "Quay lại",
@@ -291,7 +321,12 @@
                                   "enc3":  "Xuất sắc! Bạn dũng cảm lắm!",
                                   "enc4":  "Câu trả lời tuyệt vời!",
                                   "enc5":  "Điều đó thật tuyệt vời!",
-                                  "micError":  "Không có micro — kiểm tra quyền!"
+                                  "micError":  "Không có micro — kiểm tra quyền!",
+                                  "micPermission":  "Quyền truy cập micro bị từ chối — nhấp vào biểu tượng ổ khóa trên thanh địa chỉ trình duyệt và cho phép sử dụng micro.",
+                                  "micNotFound":  "Không tìm thấy micro — vui lòng cắm micro và thử lại.",
+                                  "micBusy":  "Micro đang được sử dụng bởi ứng dụng khác — vui lòng đóng ứng dụng đó và thử lại.",
+                                  "micUnsupported":  "Trình duyệt của bạn không hỗ trợ ghi âm — vui lòng sử dụng Chrome hoặc Firefox.",
+                                  "micInsecure":  "Micro yêu cầu kết nối an toàn (HTTPS). Vui lòng mở ứng dụng qua https:// hoặc sử dụng localhost."
                               }
                 }
 }
