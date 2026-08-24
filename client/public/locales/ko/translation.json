@@ -12,17 +12,38 @@
                    "english":  "영어",
                    "mathematics":  "수학",
                    "science":  "과학",
-                   "greeting":  "안녕하세요 {{name}}"
+                   "greeting":  "안녕하세요 {{name}}",
+                   "contact":  "문의하기",
+                   "about":  "소개"
                },
     "hero":  {
                  "greeting":  "안녕하세요 {{name}}",
                  "startLearning":  "학습 시작",
-                 "playGames":  "게임 하기"
+                 "playGames":  "게임 하기",
+                 "startAdventure":  "모험을 시작하세요",
+                 "continueAdventure":  "모험 계속하기",
+                 "readyForAdventure":  "다음 모험을 떠날 준비 됐나요?",
+                 "listen":  "듣기",
+                 "chooseWorld":  "세계를 선택하세요",
+                 "chooseWorldHint":  "아래에서 세계를 선택해 첫 모험을 시작하세요!",
+                 "pickUpWhereLeftOff":  "이어서 계속하기",
+                 "keepGoing":  "계속 힘내세요!",
+                 "stories":  "이야기"
              },
     "cards":  {
-                  "english":  "영어",
-                  "mathematics":  "수학",
-                  "science":  "과학"
+                  "english":  {
+                                  "title":  "영어 왕국",
+                                  "tagline":  "단어와 이야기로 배워요"
+                              },
+                  "maths":  {
+                                "title":  "수학 은하",
+                                "tagline":  "풀고, 연습하고, 탐구해요"
+                            },
+                  "science":  {
+                                  "title":  "과학 실험실",
+                                  "tagline":  "발견하고, 실험하고, 이해해요"
+                              },
+                  "enterWorld":  "세계로 입장"
               },
     "login":  {
                   "joinTitle":  "Learningo에 가입하세요!",
@@ -164,7 +185,16 @@
                                                              "name":  "밤올빼미",
                                                              "description":  "오후 9시 이후에 공부"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "진행 지도",
+                                          "btnLabel":  "진행 지도",
+                                          "subtitle":  "{{total}}개 중 {{completed}}개 모듈 마스터",
+                                          "completed":  "마스터함",
+                                          "inProgress":  "진행 중",
+                                          "locked":  "시작 전",
+                                          "close":  "닫기"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "뒤로",
@@ -291,7 +321,12 @@
                                   "enc3":  "훌륭해요! 정말 용감해요!",
                                   "enc4":  "정말 훌륭한 답이에요!",
                                   "enc5":  "정말 멋졌어요!",
-                                  "micError":  "마이크를 사용할 수 없어요 — 권한을 확인하세요!"
+                                  "micError":  "마이크를 사용할 수 없어요 — 권한을 확인하세요!",
+                                  "micPermission":  "마이크 접근이 거부되었습니다 — 주소 표시줄의 자물쇠 아이콘을 클릭해 마이크를 허용하세요.",
+                                  "micNotFound":  "마이크를 찾을 수 없습니다 — 마이크를 연결한 후 다시 시도하세요.",
+                                  "micBusy":  "다른 앱에서 마이크를 사용 중입니다 — 해당 앱을 닫고 다시 시도하세요.",
+                                  "micUnsupported":  "브라우저가 녹음을 지원하지 않습니다 — Chrome 또는 Firefox를 사용하세요.",
+                                  "micInsecure":  "마이크는 보안 연결(HTTPS)이 필요합니다. https:// 또는 localhost로 앱을 열어주세요."
                               }
                 }
 }

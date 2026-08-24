@@ -12,17 +12,38 @@
     "english": "Anglais",
     "mathematics": "Mathématiques",
     "science": "Sciences",
-    "greeting": "Bonjour {{name}}"
+    "greeting": "Bonjour {{name}}",
+    "contact": "Contactez-nous",
+    "about": "À propos"
   },
   "hero": {
     "greeting": "Bonjour {{name}}",
     "startLearning": "Commencer à apprendre",
-    "playGames": "Jouer aux jeux"
+    "playGames": "Jouer aux jeux",
+    "startAdventure": "Commence ton aventure",
+    "continueAdventure": "Continuer l\u0027aventure",
+    "readyForAdventure": "Prêt pour ta prochaine aventure ?",
+    "listen": "Écouter",
+    "chooseWorld": "Choisis ton monde",
+    "chooseWorldHint": "Choisis un monde ci-dessous pour commencer ta première aventure !",
+    "pickUpWhereLeftOff": "Reprends là où tu t\u0027es arrêté",
+    "keepGoing": "Continue comme ça !",
+    "stories": "Histoires"
   },
   "cards": {
-    "english": "Anglais",
-    "mathematics": "Mathématiques",
-    "science": "Sciences"
+    "english": {
+      "title": "Royaume de l\u0027Anglais",
+      "tagline": "Apprends avec des mots et des histoires"
+    },
+    "maths": {
+      "title": "Galaxie des Maths",
+      "tagline": "Résous, pratique et explore"
+    },
+    "science": {
+      "title": "Labo des Sciences",
+      "tagline": "Découvre, expérimente et comprends"
+    },
+    "enterWorld": "Entrer dans le Monde"
   },
   "login": {
     "joinTitle": "Rejoignez Learningo !",
@@ -164,6 +185,15 @@
         "name": "Oiseau de Nuit",
         "description": "Étudie après 21 h"
       }
+    },
+    "progressMap": {
+      "title": "Carte de Progression",
+      "btnLabel": "Carte de Progression",
+      "subtitle": "{{completed}} sur {{total}} modules maîtrisés",
+      "completed": "Maîtrisé",
+      "inProgress": "En cours",
+      "locked": "Non commencé",
+      "close": "Fermer"
     }
   },
   "subjectPage": {
@@ -235,8 +265,8 @@
     "loadingQ": "Chargement des questions…",
     "loadingP": "Chargement des invites…",
     "serverErr": "Impossible de charger. Le serveur est-il en marche?",
-    "noQuestions": "Aucune question pour l'instant. Reviens plus tard !",
-    "noOrgQuestions": "Aucune question n'a encore été mise en ligne par l'établissement.",
+    "noQuestions": "Aucune question pour l\u0027instant. Reviens plus tard !",
+    "noOrgQuestions": "Aucune question n\u0027a encore été mise en ligne par l\u0027établissement.",
     "listen": {
       "listen": "Écouter",
       "playing": "En cours…",
@@ -291,7 +321,12 @@
       "enc3": "Brillant! Tu es courageux!",
       "enc4": "Quelle réponse fantastique!",
       "enc5": "C\u0027était merveilleux!",
-      "micError": "Microphone non disponible — vérifies les permissions!"
+      "micError": "Microphone non disponible — vérifies les permissions!",
+      "micPermission": "Accès au microphone refusé — clique sur l\u0027icône de cadenas dans la barre d\u0027adresse et autorise le microphone.",
+      "micNotFound": "Aucun microphone trouvé — branche-en un et réessaie.",
+      "micBusy": "Le microphone est utilisé par une autre application — ferme-la et réessaie.",
+      "micUnsupported": "Ton navigateur ne prend pas en charge l\u0027enregistrement — utilise Chrome ou Firefox.",
+      "micInsecure": "Le microphone nécessite une connexion sécurisée (HTTPS). Ouvre l\u0027application via https:// ou utilise localhost."
     }
   }
 }

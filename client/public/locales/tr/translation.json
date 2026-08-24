@@ -12,17 +12,38 @@
                    "english":  "İngilizce",
                    "mathematics":  "Matematik",
                    "science":  "Fen Bilgisi",
-                   "greeting":  "Merhaba {{name}}"
+                   "greeting":  "Merhaba {{name}}",
+                   "contact":  "Bize Ulaşın",
+                   "about":  "Hakkımızda"
                },
     "hero":  {
                  "greeting":  "Merhaba {{name}}",
                  "startLearning":  "Öğrenmeye Başla",
-                 "playGames":  "Oyun Oyna"
+                 "playGames":  "Oyun Oyna",
+                 "startAdventure":  "Maceranı Başlat",
+                 "continueAdventure":  "Maceraya Devam Et",
+                 "readyForAdventure":  "Bir sonraki maceran için hazır mısın?",
+                 "listen":  "Dinle",
+                 "chooseWorld":  "Dünyanı Seç",
+                 "chooseWorldHint":  "İlk macerana başlamak için aşağıdan bir dünya seç!",
+                 "pickUpWhereLeftOff":  "Kaldığın yerden devam et",
+                 "keepGoing":  "Böyle devam et!",
+                 "stories":  "Hikayeler"
              },
     "cards":  {
-                  "english":  "İngilizce",
-                  "mathematics":  "Matematik",
-                  "science":  "Fen Bilgisi"
+                  "english":  {
+                                  "title":  "İngilizce Krallığı",
+                                  "tagline":  "Kelimeler ve hikayelerle öğren"
+                              },
+                  "maths":  {
+                                "title":  "Matematik Galaksisi",
+                                "tagline":  "Çöz, alıştırma yap ve keşfet"
+                            },
+                  "science":  {
+                                  "title":  "Bilim Laboratuvarı",
+                                  "tagline":  "Keşfet, deney yap ve anla"
+                              },
+                  "enterWorld":  "Dünyaya Gir"
               },
     "login":  {
                   "joinTitle":  "Learningo\u0027ya Katıl!",
@@ -164,7 +185,16 @@
                                                              "name":  "Gece Baykuşu",
                                                              "description":  "Gece 9\u0027dan sonra çalış"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "İlerleme Haritası",
+                                          "btnLabel":  "İlerleme Haritası",
+                                          "subtitle":  "{{total}} modülden {{completed}} tanesi tamamlandı",
+                                          "completed":  "Tamamlandı",
+                                          "inProgress":  "Devam Ediyor",
+                                          "locked":  "Başlanmadı",
+                                          "close":  "Kapat"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "Geri",
@@ -291,7 +321,12 @@
                                   "enc3":  "Harika! Çok cesursun!",
                                   "enc4":  "Ne harika bir cevap!",
                                   "enc5":  "Bu muhteşemdi!",
-                                  "micError":  "Mikrofon kullanılamıyor — izinleri kontrol et!"
+                                  "micError":  "Mikrofon kullanılamıyor — izinleri kontrol et!",
+                                  "micPermission":  "Mikrofon erişimi reddedildi — adres çubuğundaki kilit simgesine tıklayıp mikrofona izin ver.",
+                                  "micNotFound":  "Mikrofon bulunamadı — lütfen bir mikrofon bağlayıp tekrar dene.",
+                                  "micBusy":  "Mikrofon başka bir uygulama tarafından kullanılıyor — onu kapatıp tekrar dene.",
+                                  "micUnsupported":  "Tarayıcın kayıt özelliğini desteklemiyor — lütfen Chrome veya Firefox kullan.",
+                                  "micInsecure":  "Mikrofon güvenli bir bağlantı (HTTPS) gerektirir. Uygulamayı https:// üzerinden veya localhost ile aç."
                               }
                 }
 }

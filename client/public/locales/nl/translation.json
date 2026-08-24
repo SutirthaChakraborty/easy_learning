@@ -12,17 +12,38 @@
                    "english":  "Engels",
                    "mathematics":  "Wiskunde",
                    "science":  "Wetenschap",
-                   "greeting":  "Hallo {{name}}"
+                   "greeting":  "Hallo {{name}}",
+                   "contact":  "Contact",
+                   "about":  "Over Ons"
                },
     "hero":  {
                  "greeting":  "Hallo {{name}}",
                  "startLearning":  "Begin met leren",
-                 "playGames":  "Speel spelletjes"
+                 "playGames":  "Speel spelletjes",
+                 "startAdventure":  "Begin je avontuur",
+                 "continueAdventure":  "Avontuur voortzetten",
+                 "readyForAdventure":  "Klaar voor je volgende avontuur?",
+                 "listen":  "Luisteren",
+                 "chooseWorld":  "Kies je wereld",
+                 "chooseWorldHint":  "Kies hieronder een wereld om je eerste avontuur te beginnen!",
+                 "pickUpWhereLeftOff":  "Ga verder waar je gebleven was",
+                 "keepGoing":  "Ga zo door!",
+                 "stories":  "Verhalen"
              },
     "cards":  {
-                  "english":  "Engels",
-                  "mathematics":  "Wiskunde",
-                  "science":  "Wetenschap"
+                  "english":  {
+                                  "title":  "Engels Koninkrijk",
+                                  "tagline":  "Leer met woorden en verhalen"
+                              },
+                  "maths":  {
+                                "title":  "Wiskunde Melkweg",
+                                "tagline":  "Los op, oefen en ontdek"
+                            },
+                  "science":  {
+                                  "title":  "Wetenschapslab",
+                                  "tagline":  "Ontdek, experimenteer en begrijp"
+                              },
+                  "enterWorld":  "Ga de wereld in"
               },
     "login":  {
                   "joinTitle":  "Doe mee met Learningo!",
@@ -164,7 +185,16 @@
                                                              "name":  "Nachtegaal",
                                                              "description":  "Studeren na 21:00 uur"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "Voortgangskaart",
+                                          "btnLabel":  "Voortgangskaart",
+                                          "subtitle":  "{{completed}} van {{total}} modules onder de knie",
+                                          "completed":  "Onder de knie",
+                                          "inProgress":  "Bezig",
+                                          "locked":  "Nog niet begonnen",
+                                          "close":  "Sluiten"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "Terug",
@@ -291,7 +321,12 @@
                                   "enc3":  "Geweldig! Je bent zo dapper!",
                                   "enc4":  "Wat een fantastisch antwoord!",
                                   "enc5":  "Dat was geweldig!",
-                                  "micError":  "Microfoon niet beschikbaar — controleer machtigingen!"
+                                  "micError":  "Microfoon niet beschikbaar — controleer machtigingen!",
+                                  "micPermission":  "Microfoontoegang geweigerd — klik op het slotpictogram in de adresbalk en sta de microfoon toe.",
+                                  "micNotFound":  "Geen microfoon gevonden — sluit er een aan en probeer het opnieuw.",
+                                  "micBusy":  "De microfoon wordt gebruikt door een andere app — sluit deze en probeer het opnieuw.",
+                                  "micUnsupported":  "Je browser ondersteunt geen opname — gebruik Chrome of Firefox.",
+                                  "micInsecure":  "De microfoon vereist een beveiligde verbinding (HTTPS). Open de app via https:// of gebruik localhost."
                               }
                 }
 }

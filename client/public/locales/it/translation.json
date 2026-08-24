@@ -12,17 +12,38 @@
                    "english":  "Inglese",
                    "mathematics":  "Matematica",
                    "science":  "Scienze",
-                   "greeting":  "Ciao {{name}}"
+                   "greeting":  "Ciao {{name}}",
+                   "contact":  "Contattaci",
+                   "about":  "Chi Siamo"
                },
     "hero":  {
                  "greeting":  "Ciao {{name}}",
                  "startLearning":  "Inizia ad imparare",
-                 "playGames":  "Gioca"
+                 "playGames":  "Gioca",
+                 "startAdventure":  "Inizia la tua avventura",
+                 "continueAdventure":  "Continua l\u0027avventura",
+                 "readyForAdventure":  "Pronto per la tua prossima avventura?",
+                 "listen":  "Ascolta",
+                 "chooseWorld":  "Scegli il tuo mondo",
+                 "chooseWorldHint":  "Scegli un mondo qui sotto per iniziare la tua prima avventura!",
+                 "pickUpWhereLeftOff":  "Riprendi da dove avevi lasciato",
+                 "keepGoing":  "Continua così!",
+                 "stories":  "Storie"
              },
     "cards":  {
-                  "english":  "Inglese",
-                  "mathematics":  "Matematica",
-                  "science":  "Scienze"
+                  "english":  {
+                                  "title":  "Regno dell\u0027Inglese",
+                                  "tagline":  "Impara con parole e storie"
+                              },
+                  "maths":  {
+                                "title":  "Galassia della Matematica",
+                                "tagline":  "Risolvi, esercitati ed esplora"
+                            },
+                  "science":  {
+                                  "title":  "Laboratorio di Scienze",
+                                  "tagline":  "Scopri, sperimenta e comprendi"
+                              },
+                  "enterWorld":  "Entra nel Mondo"
               },
     "login":  {
                   "joinTitle":  "Unisciti a Learningo!",
@@ -164,7 +185,16 @@
                                                              "name":  "Nottambulo",
                                                              "description":  "Studia dopo le 21:00"
                                                          }
-                                       }
+                                       },
+                      "progressMap":  {
+                                          "title":  "Mappa dei Progressi",
+                                          "btnLabel":  "Mappa dei Progressi",
+                                          "subtitle":  "{{completed}} di {{total}} moduli padroneggiati",
+                                          "completed":  "Padroneggiato",
+                                          "inProgress":  "In corso",
+                                          "locked":  "Non iniziato",
+                                          "close":  "Chiudi"
+                                      }
                   },
     "subjectPage":  {
                         "back":  "Indietro",
@@ -236,7 +266,7 @@
                     "loadingP":  "Caricamento suggerimenti…",
                     "serverErr":  "Impossibile caricare. Il server è in esecuzione?",
                     "noQuestions":  "Ancora nessuna domanda. Ricontrolla più tardi!",
-                    "noOrgQuestions":  "Non sono ancora state caricate domande da parte dell'organizzazione.",
+                    "noOrgQuestions":  "Non sono ancora state caricate domande da parte dell\u0027organizzazione.",
                     "listen":  {
                                    "listen":  "Ascoltare",
                                    "playing":  "In riproduzione…",
@@ -291,7 +321,12 @@
                                   "enc3":  "Brillante! Sei così coraggioso!",
                                   "enc4":  "Che risposta fantastica!",
                                   "enc5":  "Era meraviglioso!",
-                                  "micError":  "Microfono non disponibile — controlla i permessi!"
+                                  "micError":  "Microfono non disponibile — controlla i permessi!",
+                                  "micPermission":  "Accesso al microfono negato — clicca sull\u0027icona del lucchetto nella barra degli indirizzi e consenti il microfono.",
+                                  "micNotFound":  "Nessun microfono trovato — collegane uno e riprova.",
+                                  "micBusy":  "Il microfono è in uso da un\u0027altra app — chiudila e riprova.",
+                                  "micUnsupported":  "Il tuo browser non supporta la registrazione — usa Chrome o Firefox.",
+                                  "micInsecure":  "Il microfono richiede una connessione sicura (HTTPS). Apri l\u0027app tramite https:// oppure usa localhost."
                               }
                 }
 }
