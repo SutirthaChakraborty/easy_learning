@@ -1,0 +1,3 @@
+1. When ever we are clicking on the back button from the questions page, it takes me to the old modules page. I don't want that page, I just want the lay over page instead. 
+Make the "/" page background good.
+Make the Admin, Parents, Teachers dashboard looks good

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "../context/AuthContext";
+import RoboticBackground from "../components/RoboticBackground/RoboticBackground";
 import styles from "./Login.module.css";
 
 const Login = () => {
@@ -78,7 +79,7 @@ const Login = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
-      <div className={styles.overlay} />
+      <RoboticBackground />
 
       <div className={styles.content}>
         <div className={styles.card}>
