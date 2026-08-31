@@ -141,7 +141,7 @@ export default function ProgressMap({ achievements, stats, onClose, disablePersi
   })
 
   const liveAchievements = achievements?.length ? achievements : (saved?.achievements ?? [])
-  const liveStats        = stats ?? saved?.stats ?? {}
+  const liveStats = stats ?? saved?.stats ?? {}
 
   // ── Derived status ────────────────────────────────────────────────────────────
 

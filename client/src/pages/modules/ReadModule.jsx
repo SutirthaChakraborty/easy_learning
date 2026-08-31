@@ -228,7 +228,7 @@ const ReadModule = () => {
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noOrgQuestions")}</p>
-          <button className={styles.backBtn} onClick={() => { playSlide(); navigate(`/subject/${subject}`); }}>
+          <button className={styles.backBtn} onClick={() => { playSlide(); navigate("/home", { state: { openSubject: subject } }); }}>
             <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.back")}
           </button>
         </div>
@@ -242,7 +242,7 @@ const ReadModule = () => {
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noQuestions")}</p>
-          <button className={styles.backBtn} onClick={() => { playSlide(); navigate(`/subject/${subject}`); }}>
+          <button className={styles.backBtn} onClick={() => { playSlide(); navigate("/home", { state: { openSubject: subject } }); }}>
             <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} /> {t("modules.back")}
           </button>
         </div>
@@ -268,7 +268,7 @@ const ReadModule = () => {
         <div className={styles.topBar}>
           <FramerMotion.motion.button
             className={styles.backBtn}
-            onClick={() => { playSlide(); navigate(`/subject/${subject}`); }}
+            onClick={() => { playSlide(); navigate("/home", { state: { openSubject: subject } }); }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -402,7 +402,7 @@ const ReadModule = () => {
             stars={roundResult.stars}
             bonusStars={roundResult.bonusStars}
             onPlayAgain={handlePlayAgain}
-            onBack={() => { playSlide(); navigate(`/subject/${subject}`); }}
+            onBack={() => { playSlide(); navigate("/home", { state: { openSubject: subject } }); }}
           />
         )}
       </AnimatePresence>

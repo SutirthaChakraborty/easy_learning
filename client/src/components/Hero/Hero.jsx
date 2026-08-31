@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
@@ -37,13 +37,22 @@ function getContinueRoute(round) {
 
 const Hero = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const { user } = useAuth();
   const { t } = useTranslation();
 
   const rounds = useSelector((state) => state.dashboard.rounds);
   const [roundsLoaded, setRoundsLoaded] = useState(false);
-  const [activeSubject, setActiveSubject] = useState(null);
+  const [activeSubject, setActiveSubject] = useState(location.state?.openSubject || null);
+
+  // Coming back from a module page reopens the subject overlay instead of
+  // landing on a blank Home — then clear the state so it doesn't reopen again.
+  useEffect(() => {
+    if (location.state?.openSubject) {
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location.state, location.pathname, navigate]);
 
   const fullName = user?.name || user?.email?.split("@")[0];
   const firstName = fullName?.split(" ")[0];

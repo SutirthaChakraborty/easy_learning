@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { useAdminAuth } from "../context/AdminAuthContext";
+import RoboticBackground from "../components/RoboticBackground/RoboticBackground";
 import styles from "./Login.module.css";
 import adminStyles from "./AdminLogin.module.css";
 
@@ -45,7 +46,7 @@ const AdminLogin = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
-      <div className={styles.overlay} />
+      <RoboticBackground />
       <div className={styles.content}>
         <div className={`${styles.card} ${adminStyles.card}`}>
           <div className={adminStyles.iconWrap}>

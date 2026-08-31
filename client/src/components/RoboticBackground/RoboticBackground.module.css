@@ -1,0 +1,68 @@
+.base {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 85% 78%, rgba(99, 102, 241, 0.12) 0%, transparent 42%),
+    linear-gradient(180deg, #05070c 0%, #0a0e1a 55%, #05070c 100%);
+}
+
+.grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.09) 1px, transparent 1px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 0%, transparent 75%);
+}
+
+.scanline {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.scanline::before {
+  content: "";
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  top: -160px;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent, rgba(34, 211, 238, 0.14), transparent);
+  animation: scan 8s linear infinite;
+}
+
+@keyframes scan {
+  0% { top: -160px; }
+  100% { top: 100%; }
+}
+
+.botIcon {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  color: rgba(34, 211, 238, 0.14);
+  filter: drop-shadow(0 0 14px rgba(34, 211, 238, 0.2));
+  animation: botFloat 10s ease-in-out infinite;
+}
+
+@keyframes botFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scanline::before,
+  .botIcon {
+    animation: none;
+  }
+}
