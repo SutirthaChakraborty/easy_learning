@@ -21,6 +21,7 @@ import { getWarriorBonus } from "../../utils/warriorBonus";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
 import ModeToggle from "../../components/ModeToggle/ModeToggle";
 import RoundComplete from "../../components/RoundComplete/RoundComplete";
+import VideoBackground from "../../components/VideoBackground/VideoBackground";
 import {
   FaArrowLeft, FaStar, FaQuestion, FaTimes,
 } from "react-icons/fa";
@@ -201,6 +202,7 @@ const ReadModule = () => {
   if (activeStatus === "loading") {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <p style={{ color: "#fff", fontSize: "1.4rem" }}>{t("modules.loadingQ")}</p>
@@ -213,6 +215,7 @@ const ReadModule = () => {
     const retry = isScience ? fetchScienceReadQuestions : isEnglish ? fetchEnglishReadQuestions : fetchMathsReadQuestions;
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.serverErr")}</p>
@@ -225,6 +228,7 @@ const ReadModule = () => {
   if (data.length === 0 && noOrgQuestions) {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noOrgQuestions")}</p>
@@ -239,6 +243,7 @@ const ReadModule = () => {
   if (data.length === 0) {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noQuestions")}</p>
@@ -262,6 +267,7 @@ const ReadModule = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.bgOverlay} />
 
       <div className={styles.content}>

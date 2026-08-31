@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import * as FramerMotion from "framer-motion";
 import styles from "./SpellingGame.module.css";
+import VideoBackground from "../../components/VideoBackground/VideoBackground";
 
 import { playBtn, playSlide, playCorrect, playWrong } from "../../utils/sounds";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
@@ -233,6 +234,7 @@ const SpellingGame = () => {
   if (status === "loading" || status === "idle") {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <p style={{ color: "#fff", textAlign: "center", marginTop: "40%" }}>
           Loading words…
@@ -244,6 +246,7 @@ const SpellingGame = () => {
   if (status === "failed" || (status === "succeeded" && !current)) {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <p style={{ color: "#fff", textAlign: "center", marginTop: "40%" }}>
           Failed to load words.
@@ -260,6 +263,7 @@ const SpellingGame = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.bgOverlay} />
 
       <div className={styles.content}>

@@ -9,6 +9,7 @@ import { fetchMathsSpeakPrompts, resetMathsSpeakPrompts } from "../../store/slic
 import { fetchEnglishSpeakPrompts } from "../../store/slices/speakEnglishSlice";
 import { logDashboardSession, logRoundResult } from "../../store/slices/dashboardSlice";
 import RoundComplete from "../../components/RoundComplete/RoundComplete";
+import VideoBackground from "../../components/VideoBackground/VideoBackground";
 import styles from "./SpeakModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
 import { getQuestionLang } from "../../utils/questionLang";
@@ -224,6 +225,7 @@ const SpeakModule = () => {
   if (activeStatus === "loading") {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <p style={{ color: "#fff", fontSize: "1.4rem" }}>{t("modules.loadingP")}</p>
@@ -236,6 +238,7 @@ const SpeakModule = () => {
     const retry = isScience ? fetchScienceSpeakPrompts : isEnglish ? fetchEnglishSpeakPrompts : fetchMathsSpeakPrompts;
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.serverErr")}</p>
@@ -248,6 +251,7 @@ const SpeakModule = () => {
   if (prompts.length === 0 && noOrgQuestions) {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noOrgQuestions")}</p>
@@ -262,6 +266,7 @@ const SpeakModule = () => {
   if (prompts.length === 0) {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noQuestions")}</p>
@@ -283,6 +288,7 @@ const SpeakModule = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.bgOverlay} />
 
       <div className={styles.content}>
