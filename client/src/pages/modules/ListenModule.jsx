@@ -11,6 +11,7 @@ import { fetchEnglishQuestions } from "../../store/slices/listenEnglishSlice";
 import { logDashboardSession, logRoundResult } from "../../store/slices/dashboardSlice";
 import { getWarriorBonus } from "../../utils/warriorBonus";
 import RoundComplete from "../../components/RoundComplete/RoundComplete";
+import VideoBackground from "../../components/VideoBackground/VideoBackground";
 import styles from "./ListenModule.module.css";
 import { playBtn, playSlide } from "../../utils/sounds";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
@@ -426,6 +427,7 @@ const ListenModule = () => {
   if (activeStatus === "loading") {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
           <p style={{ color: "#fff", fontSize: "1.4rem" }}>{t("modules.loadingQ")}</p>
@@ -440,6 +442,7 @@ const ListenModule = () => {
                 : fetchEnglishQuestions;
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.serverErr")}</p>
@@ -452,6 +455,7 @@ const ListenModule = () => {
   if (data.length === 0 && noOrgQuestions) {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noOrgQuestions")}</p>
@@ -466,6 +470,7 @@ const ListenModule = () => {
   if (data.length === 0) {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: "1rem" }}>
           <p style={{ color: "#fff", fontSize: "1.2rem" }}>{t("modules.noQuestions")}</p>
@@ -487,6 +492,7 @@ const ListenModule = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.bgOverlay} />
 
       <div className={styles.content}>

@@ -74,12 +74,15 @@ function AnimatedRoutes() {
 function AppLayout() {
   const location = useLocation();
   const hideNavbar = ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
-  // Home, About Us and Contact Us get their own full-viewport video background, and the
-  // role-select gate + every login page share the RoboticBackground instead of the 3D brick scene
+  // Home, About Us, Contact Us, the question modules and the games pages all get the
+  // same full-viewport video background, and the role-select gate + every login page
+  // share the RoboticBackground instead of the 3D brick scene
   const hideBackground3D = [
     "/", "/home", "/about-us", "/contact-us",
     "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login",
-  ].includes(location.pathname);
+  ].includes(location.pathname)
+    || location.pathname.startsWith("/module/")
+    || location.pathname.startsWith("/games");
 
   return (
     <>

@@ -18,6 +18,7 @@ import { logDashboardSession, logDashboardAnswer, logRoundResult } from "../../s
 import { getWarriorBonus } from "../../utils/warriorBonus";
 import RoundComplete from "../../components/RoundComplete/RoundComplete";
 import styles from "./PuzzleGame.module.css";
+import VideoBackground from "../../components/VideoBackground/VideoBackground";
 
 import { playBtn, playSlide, playCorrect, playWrong } from "../../utils/sounds";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
@@ -219,6 +220,7 @@ const PuzzleGame = () => {
   if (status === "loading" || status === "idle") {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content}>
           <p style={{ color: "#fff", textAlign: "center", marginTop: 80, fontSize: "1.4rem" }}>
@@ -232,6 +234,7 @@ const PuzzleGame = () => {
   if (status === "failed") {
     return (
       <div className={styles.page}>
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content}>
           <p style={{ color: "#e74c3c", textAlign: "center", marginTop: 80, fontSize: "1.2rem" }}>
@@ -253,6 +256,7 @@ const PuzzleGame = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.bgOverlay} />
 
       <div className={styles.content}>

@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import * as FramerMotion from "framer-motion";
 import { fetchModuleStars } from "../store/slices/dashboardSlice";
+import VideoBackground from "../components/VideoBackground/VideoBackground";
 import styles from "./GamesPage.module.css";
 import { playSlide } from "../utils/sounds";
 import {
   FaGamepad, FaPencilAlt, FaPuzzlePiece,
-  FaStar, FaRegStar, FaTrophy, FaMedal, FaAward, FaBullseye, FaArrowLeft,
+  FaStar, FaRegStar, FaTrophy, FaMedal, FaAward, FaBullseye, FaArrowLeft, FaArrowRight,
 } from "react-icons/fa";
 import { GiCardPlay, GiPartyPopper } from "react-icons/gi";
-import { MdSportsEsports } from "react-icons/md";
 
 const gameStarKeys = { spelling: "spelling_english", memory: "memory", puzzle: "puzzle_english" };
 const gameIds = ["spelling", "memory", "puzzle"];
@@ -38,7 +38,10 @@ const GamesPage = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.overlay} />
+      <div className={styles.blobPurple} />
+      <div className={styles.blobTeal} />
 
       <div className={styles.content}>
         <FramerMotion.motion.button
@@ -47,12 +50,12 @@ const GamesPage = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} />
+          <FaArrowLeft className={styles.backIcon} />
           {t("gamesPage.back")}
         </FramerMotion.motion.button>
 
         <div className={styles.header}>
-          <div className={styles.headerEmoji}><FaGamepad /></div>
+          <div className={styles.headerIconBadge}><FaGamepad /></div>
           <h1 className={styles.title}>{t("gamesPage.title")}</h1>
           <p className={styles.subtitle}>{t("gamesPage.subtitle")}</p>
         </div>
@@ -67,11 +70,12 @@ const GamesPage = () => {
                 initial={{ opacity: 0, y: 60 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.15, duration: 0.4 }}
-                whileHover={{ scale: 1.06, y: -10 }}
+                whileHover={{ y: -10 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => { playSlide(); navigate(gameRoutes[id]); }}
               >
-                <div className={styles.cardEmoji}><Icon style={{ color: "#ffffffa2" }} /></div>
+                <div className={styles.cardSheen} />
+                <div className={styles.iconBadge}><Icon /></div>
                 <h2 className={styles.cardTitle}>{t(`gamesPage.${id}.title`)}</h2>
                 <p className={styles.cardDesc}>{t(`gamesPage.${id}.desc`)}</p>
                 <div className={styles.cardMeta}>
@@ -80,14 +84,14 @@ const GamesPage = () => {
                     {[1, 2, 3].map((s) => {
                       const count = moduleStarsData[gameStarKeys[id]] ?? 0;
                       return s <= count
-                        ? <FaStar key={s} color="#FFD700" />
-                        : <FaRegStar key={s} color="rgba(255,255,255,0.4)" />;
+                        ? <FaStar key={s} color="#FFD54A" />
+                        : <FaRegStar key={s} color="rgba(255,255,255,0.35)" />;
                     })}
                   </span>
                 </div>
                 <div className={styles.playNow}>
-                  <MdSportsEsports style={{ marginRight: 6, verticalAlign: "middle", fontSize: 20 }} />
-                  {t("gamesPage.playNow")}
+                  <span>{t("gamesPage.playNow")}</span>
+                  <FaArrowRight className={styles.playArrow} />
                 </div>
               </FramerMotion.motion.div>
             );
@@ -95,12 +99,12 @@ const GamesPage = () => {
         </div>
 
         <div className={styles.trophyRow}>
-          <FaTrophy color="#FFD700" />
-          <FaMedal  color="#FFD700" />
-          <FaAward  color="#FFD700" />
-          <FaMedal  color="#C0C0C0" />
-          <FaBullseye color="#e74c3c" />
-          <GiPartyPopper color="#a29bfe" />
+          <span className={styles.trophyChip}><FaTrophy color="#FFD700" /></span>
+          <span className={styles.trophyChip}><FaMedal  color="#FFD700" /></span>
+          <span className={styles.trophyChip}><FaAward  color="#FFD700" /></span>
+          <span className={styles.trophyChip}><FaMedal  color="#C0C0C0" /></span>
+          <span className={styles.trophyChip}><FaBullseye color="#ff6b6b" /></span>
+          <span className={styles.trophyChip}><GiPartyPopper color="#a29bfe" /></span>
         </div>
       </div>
     </FramerMotion.motion.div>

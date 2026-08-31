@@ -12,6 +12,7 @@ import {
 } from "../../store/slices/memoryMatchSlice";
 import { logDashboardSession } from "../../store/slices/dashboardSlice";
 import styles from "./MemoryGame.module.css";
+import VideoBackground from "../../components/VideoBackground/VideoBackground";
 
 import { playBtn, playSlide, playCorrect } from "../../utils/sounds";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
@@ -109,6 +110,7 @@ const MemoryGame = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content}>
           <p style={{ color: "#fff", fontSize: "1.4rem", marginTop: "4rem" }}>
@@ -126,6 +128,7 @@ const MemoryGame = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
+        <VideoBackground />
         <div className={styles.bgOverlay} />
         <div className={styles.content}>
           <p style={{ color: "#ff6b6b", fontSize: "1.2rem", marginTop: "4rem" }}>
@@ -147,6 +150,7 @@ const MemoryGame = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.bgOverlay} />
 
       <div className={styles.content}>
