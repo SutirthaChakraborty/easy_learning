@@ -1,0 +1,462 @@
+/* AR games hub.
+
+   The layout is a fixed-height flex column: header, callout, group pills,
+   blurb, board (the only flexible row), footer. The board fills whatever is
+   left and its grid divides that space exactly, so tiles shrink instead of the
+   page growing. Nothing here can scroll. */
+
+.hub {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% -10%, #1b2c5e 0%, #0a1024 55%, #05070f 100%);
+  color: #eaf3ff;
+  font-family: "Fredoka", system-ui, sans-serif;
+  padding: max(6px, env(safe-area-inset-top)) 10px max(6px, env(safe-area-inset-bottom));
+  gap: clamp(4px, 0.9vh, 10px);
+  z-index: 800;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@supports not (height: 100dvh) {
+  .hub { height: 100vh; }
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(600px 300px at 85% 15%, rgba(124, 92, 255, 0.16), transparent 70%),
+    radial-gradient(500px 260px at 10% 85%, rgba(46, 230, 208, 0.12), transparent 70%);
+}
+
+/* ── header ──────────────────────────────────────────────────────────────── */
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.headTitle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: clamp(14px, 3vw, 22px);
+  font-weight: 800;
+  background: linear-gradient(90deg, #7ee8ff, #b98cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headIcon {
+  -webkit-text-fill-color: #7ee8ff;
+  color: #7ee8ff;
+  font-size: clamp(15px, 3vw, 22px);
+}
+
+.headRight { display: flex; gap: 6px; }
+
+.iconBtn {
+  width: clamp(32px, 6.5vw, 40px);
+  height: clamp(32px, 6.5vw, 40px);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  color: #cfe3ff;
+  font-size: clamp(12px, 2.4vw, 16px);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+.iconBtn:hover { background: rgba(255, 255, 255, 0.16); }
+.iconBtn:active { transform: scale(0.92); }
+
+/* ── callout ─────────────────────────────────────────────────────────────── */
+.callout { flex-shrink: 0; z-index: 1; }
+
+.calloutBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(6px, 1.2vh, 11px) clamp(10px, 2vw, 16px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 217, 61, 0.4);
+  background: linear-gradient(100deg, rgba(255, 217, 61, 0.16), rgba(255, 217, 61, 0.05));
+  color: #ffe38a;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.calloutBtn:hover { background: linear-gradient(100deg, rgba(255, 217, 61, 0.26), rgba(255, 217, 61, 0.1)); }
+.calloutBtn:active { transform: scale(0.99); }
+
+.calloutIcon { font-size: clamp(18px, 3.6vw, 26px); flex-shrink: 0; }
+
+.calloutText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.calloutText strong {
+  font-size: clamp(11px, 2.2vw, 15px);
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calloutText em {
+  font-style: normal;
+  font-size: clamp(9px, 1.8vw, 12px);
+  color: rgba(255, 227, 138, 0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── group pills ─────────────────────────────────────────────────────────── */
+.groups {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 4px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.groupPill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  padding: clamp(4px, 0.9vh, 8px) 2px;
+  min-width: 0;
+  border-radius: 13px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(200, 218, 242, 0.85);
+  font-family: inherit;
+  font-size: clamp(7.5px, 1.5vw, 11px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.groupPill:hover { background: rgba(255, 255, 255, 0.12); }
+.groupPill:active { transform: scale(0.95); }
+
+.groupIcon { font-size: clamp(13px, 2.6vw, 19px); line-height: 1.1; }
+
+.groupName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.groupOn {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border-color: currentColor;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14) inset;
+}
+
+/* Group accent colours, applied to the active pill's border. */
+.teal.groupOn { border-color: #2ee6d0; box-shadow: 0 4px 16px rgba(46, 230, 208, 0.3); }
+.blue.groupOn { border-color: #3d9bff; box-shadow: 0 4px 16px rgba(61, 155, 255, 0.3); }
+.red.groupOn { border-color: #ff5c72; box-shadow: 0 4px 16px rgba(255, 92, 114, 0.3); }
+.purple.groupOn { border-color: #b98cff; box-shadow: 0 4px 16px rgba(185, 140, 255, 0.3); }
+.orange.groupOn { border-color: #ff9f2e; box-shadow: 0 4px 16px rgba(255, 159, 46, 0.3); }
+.pink.groupOn { border-color: #ff7ac0; box-shadow: 0 4px 16px rgba(255, 122, 192, 0.3); }
+.green.groupOn { border-color: #38d477; box-shadow: 0 4px 16px rgba(56, 212, 119, 0.3); }
+.yellow.groupOn { border-color: #ffd93d; box-shadow: 0 4px 16px rgba(255, 217, 61, 0.3); }
+
+.groupBlurb {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: clamp(9px, 1.8vw, 12.5px);
+  color: rgba(178, 199, 228, 0.85);
+  z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.groupBlurb strong { color: #fff; font-size: clamp(11px, 2.2vw, 15px); }
+
+/* ── board ───────────────────────────────────────────────────────────────── */
+.board {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  z-index: 1;
+}
+
+.grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: clamp(5px, 1vw, 10px);
+}
+
+/* Portrait: two columns, four rows — the same eight tiles, taller than wide. */
+@media (max-aspect-ratio: 9 / 10) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.pageBtn {
+  align-self: center;
+  width: clamp(26px, 4.5vw, 38px);
+  height: clamp(42px, 9vh, 68px);
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #cfe3ff;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: clamp(12px, 2.4vw, 17px);
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.pageBtn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.16); }
+.pageBtn:disabled { opacity: 0.25; cursor: default; }
+.pagePrev { margin-right: clamp(4px, 1vw, 8px); }
+.pageNext { margin-left: clamp(4px, 1vw, 8px); }
+
+/* ── tiles ───────────────────────────────────────────────────────────────── */
+.tile {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(1px, 0.4vh, 4px);
+  padding: clamp(6px, 1.4vh, 13px) clamp(8px, 1.4vw, 14px);
+  border-radius: clamp(12px, 2vw, 20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  color: #eaf3ff;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
+}
+
+/* Colour is a left edge plus a wash, not a full fill — a grid of eight
+   saturated blocks is exactly the visual clutter this population does not
+   need. */
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--accent, #3d9bff);
+}
+
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--accent, #3d9bff) 22%, transparent), transparent 60%);
+}
+
+/* color-mix is widely supported, but fall back to a flat tint where it is not. */
+@supports not (background: color-mix(in srgb, red 10%, blue)) {
+  .tile::after { background: linear-gradient(155deg, rgba(61, 155, 255, 0.14), transparent 60%); }
+}
+
+.tile.teal { --accent: #2ee6d0; }
+.tile.blue { --accent: #3d9bff; }
+.tile.red { --accent: #ff5c72; }
+.tile.purple { --accent: #b98cff; }
+.tile.orange { --accent: #ff9f2e; }
+.tile.pink { --accent: #ff7ac0; }
+.tile.green { --accent: #38d477; }
+.tile.yellow { --accent: #ffd93d; }
+
+.tileBig {
+  border-color: rgba(255, 217, 61, 0.45);
+  box-shadow: 0 8px 26px rgba(255, 217, 61, 0.18);
+}
+
+.tileIcon {
+  font-size: clamp(16px, 3.4vh, 30px);
+  line-height: 1.1;
+}
+
+.tileTitle {
+  font-size: clamp(10.5px, 2vh, 16px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tileHow {
+  font-size: clamp(8px, 1.5vh, 11.5px);
+  line-height: 1.3;
+  color: rgba(190, 210, 238, 0.85);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tileMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: auto;
+}
+
+.verb,
+.life,
+.chip {
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: clamp(7px, 1.3vh, 10px);
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(206, 224, 246, 0.9);
+}
+
+.life {
+  color: #8bf0b4;
+  border-color: rgba(56, 212, 119, 0.36);
+  background: rgba(56, 212, 119, 0.12);
+}
+
+.tileFoot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  width: 100%;
+}
+
+.domainChips {
+  display: flex;
+  gap: 3px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.tileProgress {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.stage {
+  width: clamp(14px, 2.4vh, 19px);
+  height: clamp(14px, 2.4vh, 19px);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #7ee8ff;
+  color: #06101f;
+  font-size: clamp(8px, 1.4vh, 11px);
+  font-weight: 800;
+}
+
+.stars { display: flex; gap: 1px; font-size: clamp(7px, 1.3vh, 10px); }
+.starOn { color: #ffd93d; }
+.starOff { color: rgba(255, 255, 255, 0.2); }
+
+.newBadge {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(185, 140, 255, 0.18);
+  border: 1px solid rgba(185, 140, 255, 0.42);
+  color: #d9c2ff;
+  font-size: clamp(7px, 1.3vh, 10px);
+  font-weight: 800;
+}
+
+/* Very tight tiles: drop the description before anything else. */
+@media (max-height: 620px) {
+  .tileHow { display: none; }
+}
+@media (max-height: 480px) {
+  .tileMeta { display: none; }
+  .callout { display: none; }
+  .groupBlurb { display: none; }
+}
+
+/* ── footer ──────────────────────────────────────────────────────────────── */
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 0;
+  font-size: clamp(8px, 1.6vw, 11px);
+  color: rgba(150, 172, 202, 0.8);
+  z-index: 1;
+  min-height: 20px;
+}
+
+.dots { display: flex; gap: 5px; }
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.24);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.dot:hover { background: rgba(255, 255, 255, 0.45); }
+.dotOn { background: #7ee8ff; transform: scale(1.35); }
+
+.footNote {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footCount,
+.footTotal { white-space: nowrap; }
+
+@media (max-width: 520px) {
+  .footNote { display: none; }
+}

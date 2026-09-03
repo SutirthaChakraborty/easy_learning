@@ -9,6 +9,7 @@ import { playSlide } from "../utils/sounds";
 import {
   FaGamepad, FaPencilAlt, FaPuzzlePiece,
   FaStar, FaRegStar, FaTrophy, FaMedal, FaAward, FaBullseye, FaArrowLeft,
+  FaCamera, FaHandPaper,
 } from "react-icons/fa";
 import { GiCardPlay, GiPartyPopper } from "react-icons/gi";
 import { MdSportsEsports } from "react-icons/md";
@@ -93,6 +94,33 @@ const GamesPage = () => {
             );
           })}
         </div>
+
+        {/* Camera games: a separate, full-viewport section, so it gets its own
+            banner rather than a fourth card in a grid sized for three. */}
+        <FramerMotion.motion.button
+          className={styles.arBanner}
+          onClick={() => { playSlide(); navigate("/games/ar"); }}
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.45, duration: 0.4 }}
+          whileHover={{ scale: 1.02, y: -3 }}
+          whileTap={{ scale: 0.985 }}
+        >
+          <span className={styles.arIcon}><FaCamera /></span>
+          <span className={styles.arText}>
+            <strong>{t("gamesPage.ar.title", { defaultValue: "Camera Games" })}</strong>
+            <em>
+              {t("gamesPage.ar.desc", {
+                defaultValue:
+                  "See yourself on screen and reach out to play. Over 50 games for moving, looking, remembering and everyday skills.",
+              })}
+            </em>
+          </span>
+          <span className={styles.arGo}>
+            <FaHandPaper />
+            {t("gamesPage.ar.cta", { defaultValue: "Open" })}
+          </span>
+        </FramerMotion.motion.button>
 
         <div className={styles.trophyRow}>
           <FaTrophy color="#FFD700" />

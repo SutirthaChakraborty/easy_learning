@@ -33,6 +33,7 @@ const memoryMatchRoutes   = require('./routes/memoryMatch')
 const wordPuzzleRoutes    = require('./routes/wordPuzzle')
 const learnRoutes         = require('./routes/learn')
 const dashboardRoutes     = require('./routes/dashboard')
+const arRoutes            = require('./routes/ar')
 
 // Initialise separate DB connections before routes load models
 require('./db/adminDb')
@@ -49,6 +50,10 @@ app.use(cors({
   },
   credentials: true,
 }))
+// AR telemetry retries up to 25 rounds of trial-level data in one POST, which
+// overruns the 100kb default. Mounted first so the global parser sees the body
+// as already read and skips it — every other route keeps the default limit.
+app.use('/api/ar', express.json({ limit: '2mb' }))
 app.use(express.json())
 app.use(cookieParser())
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
@@ -95,6 +100,7 @@ app.use('/api/game/memory-match', memoryMatchRoutes)
 app.use('/api/game/word-puzzle',  wordPuzzleRoutes)
 app.use('/api/learn',            learnRoutes)
 app.use('/api/dashboard',        dashboardRoutes)
+app.use('/api/ar',               arRoutes)
 
 // Global error handler — catches any unhandled errors from route handlers
 app.use((err, req, res, _next) => {

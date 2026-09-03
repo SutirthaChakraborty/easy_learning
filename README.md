@@ -57,7 +57,7 @@ pages) gives you:
 
 - **Home** — back to the main screen
 - **About Us** — the Learningo story and mission
-- **Dashboard** — your personal progress page (see §2.5)
+- **Dashboard** — your personal progress page (see §2.6)
 - **Contact Us** — reach the Learningo team with a question or issue
 - A **language switcher** — change the app's language at any time (see §7)
 - **Logout**
@@ -65,7 +65,7 @@ pages) gives you:
 ### 2.3 Learning modules
 
 The Home page has two big buttons — **Start Learning** (a general, story-based reading quiz
-that mixes topics, not tied to one subject) and **Play Games** (see §2.4) — plus three
+that mixes topics, not tied to one subject) and **Play Games** (see §2.4 and §2.5) — plus three
 **subject cards**: **English**, **Mathematics**, and **Science**. Picking a subject card
 opens that subject's page with four skill modules:
 
@@ -100,7 +100,46 @@ tied to a specific subject module):
 Each game shows up to 3 stars based on your best performance, just like the subject
 modules.
 
-### 2.5 Your Dashboard
+### 2.5 Camera Games
+
+The **Camera Games** banner on the Game Zone opens `/games/ar` — over sixty activities you
+play by moving. You see yourself on screen and reach out to touch, trace, sort, freeze and
+copy. They need a camera and nothing else; no controller, no touchscreen.
+
+The games are grouped by what they practise rather than by theme:
+
+| Group | What it works on |
+| --- | --- |
+| **Body & Reach** | reaching, aiming, using two hands, crossing the middle |
+| **Look & Find** | spotting the right one, listening, reading, space words |
+| **Stop & Think** | waiting, freezing, ignoring distractions, changing rules |
+| **Remember** | holding things in mind, copying an order, missing items |
+| **Letters & Numbers** | sounds, spelling, writing in the air, counting, money |
+| **Move & Copy** | rhythm, imitation, tracing, drawing |
+| **My Day** | washing, dressing, packing, sorting, staying safe |
+| **Talk & Together** | following instructions, feelings, asking for help |
+
+**Do "Set Up My Space" first.** It is five easy stretches, it takes under a minute, and it
+tells the games how far this particular child can comfortably reach so every target lands
+somewhere they can actually get to.
+
+A few things worth knowing:
+
+- **Speed is never the point.** A slow, correct, unaided answer earns full marks. There is
+  no buzzer and no losing points.
+- **Everything is adjustable mid-game** — press the cog. Bigger targets, extra time (up to
+  four times as long), seated play, one hand only, calm visuals, high contrast, voice-only
+  or text-only instructions, vibration strength.
+- **The camera never leaves the device.** No video, photo or frame is recorded, saved or
+  uploaded. Only the measurements are kept, and only if you leave that switch on.
+- **Progress** (`/games/ar/insights`) shows what was understood, how much help was needed,
+  and thinking time and moving time as separate numbers — plus a CSV export. It works
+  offline. There is an Erase button that really erases.
+
+Developers and therapists: see [docs/AR-GAMES.md](./docs/AR-GAMES.md) for the engine
+architecture, the prompt-fading ladder, what is measured and the stated limits.
+
+### 2.6 Your Dashboard
 
 The Dashboard is your personal progress hub. At the top, a **Level badge** shows your
 current level and an XP progress bar toward the next one, alongside two buttons:
@@ -152,7 +191,7 @@ The **My Kids** section is where you manage your children:
 - **Performance** (chart icon) — opens that kid's progress:
   - If their email matches a student account with recorded activity, you see their full
     **Dashboard** (stats, heatmap, chart, achievements, round history — the same view
-    described in §2.5).
+    described in §2.6).
   - If not, you see a simple summary panel instead (Total XP, Sessions, Minutes, Average
     Score, Achievements), which reads as empty/zero until they've started learning under
     that email.

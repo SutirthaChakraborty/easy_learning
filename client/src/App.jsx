@@ -23,6 +23,9 @@ import SpeakModule from "./pages/modules/SpeakModule";
 import SpellingGame from "./pages/games/SpellingGame";
 import MemoryGame from "./pages/games/MemoryGame";
 import PuzzleGame from "./pages/games/PuzzleGame";
+import ARHub from "./ar/pages/ARHub";
+import ARGame from "./ar/pages/ARGame";
+import ARInsights from "./ar/pages/ARInsights";
 import Login from "./pages/Login";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
@@ -54,6 +57,11 @@ function AnimatedRoutes() {
         <Route path="/games/spelling" element={<SpellingGame />} />
         <Route path="/games/memory" element={<MemoryGame />} />
         <Route path="/games/puzzle" element={<PuzzleGame />} />
+        {/* Camera (MediaPipe) games. `/games/ar/insights` is matched before the
+            :gameId route so it cannot be swallowed as a game id. */}
+        <Route path="/games/ar" element={<ARHub />} />
+        <Route path="/games/ar/insights" element={<ARInsights />} />
+        <Route path="/games/ar/:gameId" element={<ARGame />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUs />} />
@@ -73,9 +81,13 @@ function AnimatedRoutes() {
 
 function AppLayout() {
   const location = useLocation();
-  const hideNavbar = ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
+  // The camera games own the whole viewport: they must not scroll, and a navbar
+  // above them would be a target a child reaches into by accident. The 3D scene
+  // is dropped too — no point burning GPU behind a full-screen camera feed.
+  const isAR = location.pathname.startsWith("/games/ar");
+  const hideNavbar = isAR || ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
   // Home, About Us and Contact Us get their own full-viewport video background instead of the 3D brick scene
-  const hideBackground3D = ["/home", "/about-us", "/contact-us"].includes(location.pathname);
+  const hideBackground3D = isAR || ["/home", "/about-us", "/contact-us"].includes(location.pathname);
 
   return (
     <>
