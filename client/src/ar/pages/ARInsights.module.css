@@ -115,7 +115,7 @@
 /* ── tabs ────────────────────────────────────────────────────────────────── */
 .tabs {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 4px;
   flex-shrink: 0;
 }
@@ -144,6 +144,15 @@
   background: rgba(61, 155, 255, 0.22);
   border-color: rgba(126, 232, 255, 0.5);
   color: #7ee8ff;
+}
+
+/* Five tabs on a narrow phone: the icons carry the meaning and the words are
+   dropped, rather than five labels each ellipsised to two letters. Placed after
+   `.tab` because both are single-class selectors — the later rule wins, so a
+   media query above the base rule would silently lose to it. */
+@media (max-width: 460px) {
+  .tab span { display: none; }
+  .tab { padding: clamp(6px, 1.2vh, 10px) 4px; font-size: 14px; }
 }
 
 /* ── panes ───────────────────────────────────────────────────────────────── */
@@ -470,4 +479,180 @@
   font-size: clamp(8.5px, 1.6vw, 11px);
   color: #ffd3d9;
   flex-shrink: 0;
+}
+
+/* ── the Journey tab ─────────────────────────────────────────────────────── */
+/* A compact stat strip at the top of the first card. Not the page's KPIs —
+   those stay understanding and independence; these are the child's own
+   figures, which an adult should be able to see because the child is told
+   them. */
+.jStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-bottom: 5px;
+}
+
+.jStat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 3px 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: clamp(7.5px, 1.4vw, 10px);
+  color: rgba(178, 199, 228, 0.9);
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.jStat strong {
+  font-size: clamp(11px, 2vw, 15px);
+  color: #ffe38a;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Below this width the three cards stack, so each gets a third of the height
+   and the stat strip has to give most of it back to the chart — otherwise the
+   chart is squeezed to a band too short to read. Five stats on one row, small,
+   with the labels beside the numbers rather than beneath them. */
+@media (max-width: 900px) {
+  .jStats { gap: 3px; margin-bottom: 3px; }
+  .jStat {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 3px;
+    padding: 2px 6px;
+    font-size: 8.5px;
+  }
+  .jStat strong { font-size: 11px; }
+}
+
+/* A game played several times with nothing cleared: the actionable row. */
+.rowWarn {
+  background: rgba(255, 159, 46, 0.1);
+  border-color: rgba(255, 159, 46, 0.34);
+}
+
+.warnIcon {
+  color: #ffb347;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+/* Demonstrated / given / inferred. The numbers are deliberately not summed. */
+.howList {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.howRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 8px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.howN {
+  flex-shrink: 0;
+  min-width: 26px;
+  text-align: center;
+  font-size: clamp(13px, 2.4vw, 19px);
+  font-weight: 900;
+  color: #38d477;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.15;
+}
+
+/* Granted and inferred are shown in a quieter colour than demonstrated: the
+   difference between them is the point of this card. */
+.howSoft { color: #ffb347; }
+
+.howText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  font-size: clamp(8px, 1.5vw, 10.5px);
+  line-height: 1.32;
+  color: rgba(190, 210, 238, 0.86);
+}
+
+.howText strong { color: #fff; font-size: clamp(9px, 1.7vw, 12px); }
+
+/* The prose is clamped rather than allowed to overflow the card. All THREE
+   rows have to be visible: the whole point of this card is that a reader sees
+   demonstrated, granted and inferred side by side, and a layout that silently
+   drops the third one would overstate the child's progress — which is exactly
+   the failure this card exists to prevent. The full text stays available as the
+   row's title attribute. */
+.howText span {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .howRow { padding: 4px 7px; gap: 6px; }
+  .howText span { -webkit-line-clamp: 2; }
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.badgeChip {
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: clamp(7.5px, 1.4vw, 10px);
+  font-weight: 800;
+  color: #08111f;
+  background: linear-gradient(140deg, #ffd93d, #ffb347);
+}
+
+.howFoot {
+  margin: 6px 0 0;
+  font-size: clamp(7.5px, 1.4vw, 10px);
+  color: rgba(150, 172, 202, 0.85);
+  line-height: 1.35;
+  flex-shrink: 0;
+}
+
+/* The card body is a fixed box; when the three explanations cannot fit, their
+   prose goes before their counts do. */
+@media (max-height: 700px) {
+  .howText { font-size: 8px; }
+  .howFoot { display: none; }
+}
+
+/* Below this the card cannot hold three rows of explained text. The prose goes
+   and the three numbers with their labels stay, because a reader who sees
+   "5 demonstrated / 1 given / 1 inferred" has the distinction even without the
+   paragraph — whereas a reader who sees only the first row does not. The prose
+   is still on each row's tooltip. */
+@media (max-height: 640px) {
+  .howText span { display: none; }
+  .badges { display: none; }
+  .howList { gap: 3px; }
+  .howRow { padding: 2px 7px; align-items: center; }
+  .howN { font-size: 13px; min-width: 20px; }
+  .howText strong { font-size: 9.5px; }
+  .jStat:nth-child(n + 4) { display: none; }
 }

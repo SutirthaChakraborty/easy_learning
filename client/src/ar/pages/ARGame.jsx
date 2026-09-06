@@ -5,7 +5,7 @@
  * to mean (the next game in the same group, wrapping round).
  */
 import { useCallback, useMemo } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { FaArrowLeft } from 'react-icons/fa'
 import ARStage from '../core/ARStage'
 import { getGame, gamesInGroup } from '../catalog/games'
@@ -13,8 +13,14 @@ import styles from './ARGame.module.css'
 
 export default function ARGame() {
   const { gameId } = useParams()
+  const [search] = useSearchParams()
   const navigate = useNavigate()
   const game = getGame(gameId)
+
+  // `?level=3` comes from tapping a level pip on the hub tile. Out-of-range or
+  // still-locked values are clamped by the journey, not here.
+  const raw = Number(search.get('level'))
+  const requestedLevel = Number.isFinite(raw) && raw >= 1 ? raw : null
 
   const nextGameId = useMemo(() => {
     if (!game) return null
@@ -47,5 +53,13 @@ export default function ARGame() {
 
   // `key` forces a full remount when the game changes, so no tracker, clock or
   // telemetry session can ever leak from one game into the next.
-  return <ARStage key={game.id} game={game} onExit={exit} onNext={nextGameId ? goNext : null} />
+  return (
+    <ARStage
+      key={`${game.id}:${requestedLevel ?? 'auto'}`}
+      game={game}
+      level={requestedLevel}
+      onExit={exit}
+      onNext={nextGameId ? goNext : null}
+    />
+  )
 }

@@ -24,6 +24,10 @@ const PATTERNS = {
   neutral: [12],
   start: [30, 60, 30, 60, 60],
   finish: [40, 50, 40, 50, 90],
+  // A level opening is the biggest moment in the app, so it gets the longest
+  // pattern — a rising staircase the hand can feel as "going up".
+  levelUp: [30, 40, 45, 40, 60, 40, 130],
+  badge: [60, 40, 60, 40, 140],
   warn: [70],
   beat: [14],
 }

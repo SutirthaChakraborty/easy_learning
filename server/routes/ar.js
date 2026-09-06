@@ -6,6 +6,7 @@ const {
   logSessions,
   getSessions,
   getSession,
+  getJourney,
   getInsights,
   deleteMySessions,
 } = require('../controllers/arController')
@@ -19,6 +20,9 @@ router.post('/session',       logSession)
 router.post('/sessions',      logSessions)
 router.get('/sessions',       getSessions)
 router.get('/session/:id',    getSession)
+// The restore path: the hub asks for this on load so a child who changes device
+// gets their levels and points back.
+router.get('/journey',        getJourney)
 router.get('/insights',       getInsights)
 router.delete('/sessions',    deleteMySessions)
 

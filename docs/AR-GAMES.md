@@ -191,9 +191,292 @@ Stage G can never be awarded by the game.
 which is what makes stage E meaningfully harder than stage D on identical
 content.
 
+There is now a **third** system sitting on top of these two — the visible
+five-level journey in §5. It leaves prompt fading completely alone, but it does
+bound the difficulty staircase: the staircase no longer roams the whole range of
+every dimension, only the band the child's current level allows. Read §5 before
+interpreting any difficulty number, because a stored staircase position is now a
+preference *inside* a band rather than an absolute.
+
 ---
 
-## 5. The child capability profile
+## 5. Journey, levels and points
+
+Three systems decide how hard a trial is and what it is worth. They compose, and
+a reader who has understood only two of them will misread every number in the
+app.
+
+| system | who sees it | what it moves | what moves it |
+| --- | --- | --- | --- |
+| **level** (`core/journey.js`) | the child: chosen, shown as five pips, celebrated | a floor **and** a ceiling on every dimension the game declares — an *envelope* | clearing a level, by comprehension |
+| **staircase** (`core/adaptive.js`) | nobody, deliberately | one dimension at a time, **inside** the current level's envelope | three clean successes up, two genuine errors down |
+| **prompt stage** (A–G) | an adult, in the HUD and the dashboard | how much help is given, on identical content | five of the last six answered independently → fade; two errors → restore |
+
+The level decides the band, the staircase tunes within the band, and prompt
+fading is orthogonal to both — any stage can occur at any level. So "level 3" is
+not a difficulty setting the way "Medium" is. It is the promise that no trial
+this round is easier than the level-3 floor or harder than the level-4 floor,
+which is what `bandFor()` in `adaptive.js` clamps every trial to. A child on
+level 4 having a bad run therefore gets *easier level-4 trials*, never level-1
+trials, and a child who is flying gets a taste of level 5 without leaving the
+level they chose.
+
+Settings → Help → Difficulty: **Fixed** collapses the envelope to a point (floor
+= ceiling = the chosen level's plan) and is the only way to stop the staircase
+moving at all. It is the therapist taking the wheel, and it overrides the child's
+choice on **both** counts: `resolveLevel()` returns `settings.fixedLevel` before
+it looks at the requested level or at the unlock, so the round is played at that
+level *and judged against that level's bar*, and a pass writes an ordinary clear
+with the levels below it backfilled. The in-game level picker is shown
+non-interactive while it is on, and the intro reads "Set in settings".
+
+That is the coherent choice — crediting level-5 work against level 1's 55 % bar
+would be worse — but it has a consequence worth stating: **fixed mode can unlock
+levels the child never climbed to**, including levels above their current one,
+because the adult asserted the level and the child met its bar. The uploaded
+round records `settingsSnapshot.difficultyMode` and `level`, so a clear made this
+way is identifiable after the fact; it is not distinguishable from a
+self-chosen clear by `clearedBy` alone.
+
+### How a level plan is derived
+
+Not five presets per game: 69 games × 5 hand-written presets is 345 of them, and
+they would drift out of step with the engines within a week. A plan is computed
+from what the catalogue already declares.
+
+1. Each dimension in the game's rotation (`DIMS[…]` in `catalog/games.js` — the
+   same order the staircase rotates through) has **room**: the number of steps
+   between the game's declared `start` index and the end of that dimension's
+   value list in `DIMENSIONS`.
+2. A level gets a **budget** of `round(fraction × total room)`, with fractions
+   `[0, 0.2, 0.42, 0.68, 1]`.
+3. The budget is spent **round-robin** through the rotation — one step on the
+   first dimension, one on the second, … and round again — so no single demand
+   runs far ahead of the others. That is the staircase's own rule applied to the
+   envelope. Leftover budget lands on whichever dimensions come first in the
+   rotation, which is why the first dimension can sit a step ahead at level 4.
+
+Two consequences worth stating plainly: **level 1 is always exactly the game's
+declared starting point** (budget 0), and **level 5 always has every dimension
+at its ceiling** (budget = total room), so a journey genuinely ends somewhere and
+adding a value to a dimension in `DIMENSIONS` raises every game's level 5
+automatically.
+
+`levelBounds()` then sets the ceiling to the *next* level's floor — the absolute
+maximum at level 5. `levelChange(game, level)` diffs two consecutive plans and
+phrases what moved in child words ("smaller targets · more to choose from")
+rather than a per-game string, so the copy on the tile cannot drift out of step
+with what the engine will actually do.
+
+| level | name | icon | comprehension needed to clear |
+| --- | --- | --- | --- |
+| 1 | First Steps | 🌱 | 55 % |
+| 2 | Warming Up | 🌿 | 60 % |
+| 3 | Getting Good | 🌟 | 65 % |
+| 4 | Strong | 💪 | 70 % |
+| 5 | Champion | 🏆 | 75 % |
+
+### Worked example: Find & Touch
+
+`find-touch-colour` uses the `discriminate` rotation — `targetSize`, `choices`,
+`distractors`, `eccentricity`, `window` — and declares no `start` overrides, so
+every dimension begins at index 0. Room is 5 + 5 + 4 + 4 + 5 = **23** steps,
+giving budgets of 0, 5, 10, 16 and 23:
+
+| level | indices | target radius | choices | distractors | reach | response window |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 0 0 0 0 0 | 0.155 | 2 | none | 0.40 | unlimited |
+| 2 | 1 1 1 1 1 | 0.135 | 2 | unrelated | 0.55 | unlimited |
+| 3 | 2 2 2 2 2 | 0.115 | 3 | related | 0.70 | 3.5 × own median |
+| 4 | 4 3 3 3 3 | 0.085 | 4 | similar | 0.85 | 2.8 × own median |
+| 5 | 5 5 4 4 5 | 0.072 | 6 | confusable | 1.00 | 1.8 × own median |
+
+Level 4 is where it shows: 16 steps into a five-wide rotation is three full
+passes plus one, and the one goes to `targetSize`. Level 5 exhausts every
+dimension, as it must.
+
+Note the plateaus. `choices` index 0 and 1 are both 2, and `window` index 0 and 1
+are both unlimited, so level 2 raises all five indices but only three of them
+change anything the child can feel. That is deliberate in the value lists — the
+first step into a new demand is a freebie — but it does mean `levelChange()` can
+name a dimension whose *value* did not move.
+
+One caveat on the table: `distractors` is the one dimension the prompt ladder
+also shifts (−2 at stage A through +2 at stage F, clamped to the list), so the
+similarity actually delivered can sit either side of the plan. Every other
+dimension arrives exactly as tabulated.
+
+### Clearing a level
+
+Comprehension is `summarise().comprehensionPct` — precisely
+`(correct + correctInhibit + near) / answered`. Three things earn it: the right
+answer; the right answer reached imprecisely or late (`near`); and, in the
+inhibition games, correctly *not* moving on a no-go trial (`correctInhibit`).
+That last one matters more than it looks: the whole Stop & Think group emits it,
+so in a go/no-go round a successful withhold counts towards clearing exactly as
+a successful reach does — which is right, because withholding is the skill that
+game is teaching.
+
+A round clears the level it was played at when it has **at least 4 trials** and
+comprehension at or above that level's bar. **Speed appears nowhere in this
+decision.** A round shorter than 4 trials is a sample, not an attempt: it earns
+points, but it neither clears the level nor counts towards the attempt tally the
+anti-wall rule below uses.
+
+When a round does not clear, the child is never told they failed — `advice` names
+the single thing that would clear it ("Get 65 % of the turns right to open the
+next level", or "Play a few more turns to finish this level").
+
+A level can end up marked cleared four ways. Which one is stored per level in
+`cleared[level].by`, and `journeySnapshot()` reports `clearedByEffort` and
+`clearedImplied` next to the raw clear count — because "demonstrated", "granted
+for persistence", "inferred" and "arrived from another device" are four
+different claims about a child. Collapsing them into a single "cleared" count
+would silently overstate what the child has actually shown, so nothing in this
+codebase is allowed to.
+
+| `by` | rule | what it actually claims |
+| --- | --- | --- |
+| `criterion` | ≥ 4 trials and comprehension ≥ the bar | demonstrated at this level, on this device |
+| `effort` | third or later ≥ 4-trial attempt at this level, comprehension within 20 points of the bar | real repeated effort landing close to the bar |
+| `implied` | backfilled for every level below one that was just cleared | inferred from a higher clear, never observed |
+| `remote` | arrived via `mergeRemoteJourney()` | this device has no evidence at all |
+
+The `effort` path is the anti-wall rule, and it exists because one badly-matched
+level can otherwise end a child's use of the app entirely. Backfilling is sound
+because level plans are **monotone** — every level's floor is at least the floor
+below it — so clearing level 4 genuinely is evidence about levels 1 to 3; it also
+makes "all five" reachable for a child an adult started at level 3.
+
+A *clean* clear opens two levels instead of one (comprehension ≥ 92 % and 3
+stars): a child who has visibly passed straight through a level should not have
+to grind the next one to arrive where they already are. Settings → Help →
+**Unlock all levels (adult)** (`journeyUnlockAll`) is the override that makes
+every level selectable without playing; clearing one still has to be earned.
+
+**Not every game has a journey.** `hasJourney(game)` is false when the catalogue
+entry sets `journey: false` or declares no adaptive dimensions, and today that is
+exactly one game — `setup-space`, which is a five-stretch *measurement* of the
+child's reach, not a challenge. It shows no pips, has no levels to clear, and
+uploads `level: null` rather than a spurious level 1 so no clinical view reports
+a not-cleared verdict for it. It still earns points, because the child played.
+
+**A mission is one level, not eight.** `missionEngine` builds each stage as a
+pseudo-game with id `<missionId>:<stageId>`, and `activeLevel()` resolves that
+composite by prefix to the *mission's* level — so "My Whole Day" runs its whole
+chain at one envelope rather than eight independent ones, and produces a single
+`ARSession` whose trials carry `stage` rather than eight sessions with eight
+levels. The `whole-day` badge reads `levelsCleared(missionId)` for the same
+reason.
+
+**A cleared level is not evidence of real-world transfer.** It says this child
+answered enough of a camera task correctly, at a known envelope of demand, with a
+known amount of help. Transfer is prompt stage **G**, checked by an adult away
+from the screen, and neither a level nor a point total can ever award it (§1,
+§4).
+
+### Points
+
+One function, `pointsFor()`, decides every point in the app, and it returns the
+itemised rows the results screen shows so the child can see where each point came
+from.
+
+| row | value | when |
+| --- | --- | --- |
+| turns played | 10 + 2 per turn, counting at most 24 turns (max 58) | always |
+| got it right | `60 × (comprehension × 0.75 + independence × 0.25)` | any quality above zero |
+| level bonus | ×1.0 / 1.2 / 1.4 / 1.6 / 1.8 on the two rows above | levels 2–5 |
+| your best yet | 30 | beat this child's own best on this game **and** level |
+| level cleared | 40 the first time, 12 for passing it again | cleared |
+| first game today | 15 | first round of the day |
+
+The quality weighting is identical to `starsFor()` — understanding three
+quarters, independence one quarter, speed nothing — so the points a child sees
+and the stars they see can never tell different stories. The three bonuses are
+added *after* the level multiplier rather than multiplied by it. A personal best
+needs to beat the stored one by 0.02 on the 0–1 quality score, and needs the same
+4-trial minimum, so noise cannot pay out.
+
+Two invariants hold everywhere:
+
+- **Speed earns nothing.** No latency, movement-time or pace term appears in
+  `pointsFor`, in `starsFor`, or in any badge condition. A slow, correct, unaided
+  round is a maximum-scoring round.
+- **Every round earns something.** The floor is turning up and taking turns, so
+  the worst possible round still pays 10; the best possible one — 24 turns,
+  perfect, unaided, a first clear of level 5, a personal best, first game of the
+  day — pays 297.
+
+Points are the child's currency: the hub total, the results screen, and a
+cosmetic rank ladder (Explorer → Grand Champion, seven stops, `RANKS`). The ten
+badges follow the same discipline: none is awarded for speed, and none can be
+lost, because taking a badge away from a child who missed a week through illness
+would teach exactly the wrong lesson.
+
+On the insights screen points are **context, never the headline**. The KPI strip
+across the top of every tab — understanding, independence, thinking time, moving
+time — is the headline and is always visible; the Journey tab's own stat strip
+leads with levels cleared and carries points and rank after them. A reader who
+looks at that screen sees understanding first whichever tab is open.
+
+Points and dashboard XP are **not the same number**. A round's `xp` equals its
+points inside the AR section, but `mirrorToDashboard()` divides by
+`AR_XP_DIVISOR` (4) before crediting the app-wide `StudentActivity.totalXP`,
+because journey points top out near 300 where every other module's round is
+worth at most 70. Without the scaling one camera game would be worth four reading
+lessons in a shared economy that nothing else opted into.
+
+### Where the journey lives
+
+| place | what | why there |
+| --- | --- | --- |
+| `profile.journey` in localStorage (`core/profile.js`) | the source of truth: `points`, `lifetimePoints`, `days[]`, `badges[]`, and per game `{ level, cleared{}, best{}, attempts{}, plays, points }` | offline and anonymous play has to behave identically, and no camera-adjacent data needs a server to be useful |
+| per-round fields on the uploaded `ARSession` (`core/telemetry.js`) | `level`, `levelCleared`, `clearedBy`, `newBest`, `pointsAwarded`, `pointsBreakdown`, `journeyPoints`, `stars`, `xp` (= `pointsAwarded`) | a stored round reads back as "level 3, cleared by criterion, 96 points" without recomputing it from trials |
+| `GET /api/ar/journey` → `mergeRemoteJourney()` | cross-device recovery, pulled once when the hub mounts | a child who changes device or clears their browser gets their levels back |
+| the `journey` block on `GET /api/ar/insights` | the clinical read: per game `levelInWindow`, `levelsCleared`, and the clear counts split four ways | it is the only surface that keeps criterion / effort / unknown / implied apart server-side |
+
+The server does not keep a journey of its own. `GET /api/ar/journey` rebuilds one
+from the rounds that were uploaded — points summed from `pointsAwarded`, days
+from the UTC-bucketed `startedAt`, and per game the levels that have a
+`levelCleared: true` round — so there is exactly one record and no second running
+total to drift out of step with it. Two details it has to reproduce, or the
+restore quietly costs a child progress:
+
+- **it backfills.** Only levels that a round cleared are uploaded, so returning
+  just those would hand back a path with holes in it — and cost the all-five
+  trophy to a child who had finished a game by skipping ahead. It fills 1…max
+  from the same monotonicity argument the device uses.
+- **it reproduces the clean-clear double unlock.** The offered level is
+  `max(bestClear + 1, cleanClear + 2)`, falling back to the hardest level ever
+  *played* when nothing has cleared. `stars` and `summary.comprehensionPct` are on
+  the same session, so a clean clear is recognisable server-side.
+
+The `journey` block on `GET /api/ar/insights` is a different question and is
+scoped to the requested window, which is why its per-game level field is called
+`levelInWindow`: a game cleared at level 4 last term and played at level 2 last
+week must not read as a regression. It also re-derives `implied` server-side
+(implied levels are never uploaded) and resolves a level cleared more than once
+to its strongest provenance.
+
+The merge then takes **the better of the two** per field — higher points, higher
+unlocked level, more plays, the union of played days and of cleared levels — so
+a device that has been offline for a week can never be overwritten by a staler
+server copy, and a server round-trip can never cost a child progress. What it
+*can* cost is provenance: the payload carries which levels cleared but not how,
+so a clear that arrives this way is stored `by: 'remote'` (§10).
+
+`recordRound()` is the only writer *on the play path*, called exactly once per
+round from `ARStage` — which is also why stars, the clear verdict and the points
+are all settled *before* `recorder.end()` uploads the round; otherwise the stored
+and uploaded copies of the same round would disagree. Two other functions write
+journey state: `mergeRemoteJourney()` on the restore path above, and
+`resetJourney()`, which Settings → Data calls alongside `resetProfile()` so that
+an erase during a round also clears the *ambient* level and the round in progress
+cannot record a clear against the child who was just erased.
+
+---
+
+## 6. The child capability profile
 
 Deliberately not "easy / medium / hard". Two children with the same diagnosis
 can have opposite profiles, and one child can have excellent visual
@@ -217,7 +500,7 @@ both).
 
 ---
 
-## 6. Data
+## 7. Data
 
 ### What is recorded
 
@@ -226,6 +509,15 @@ per game family: `timingErrorMs` (rhythm), `coverage` / `traceAccuracy` /
 `meanDeviation` / `strayCount` (tracing), `bilateralOffsetMs` /
 `usedBothHands` (two-hand), `postureScore` / `holdBreaks` (imitation and
 freeze), `crossedMidline`, `stepLatenciesMs`, `pipelineLatencyMs`.
+
+Each round also carries the journey verdict listed in §5: which level it was
+played at, whether it cleared, and the itemised points. Note the asymmetry with
+that section's four-way table — **a session's `clearedBy` can only ever be
+`'criterion'`, `'effort'` or `null`.** `implied` and `remote` are device-side
+bookkeeping for levels that no round ever cleared, so they are never attached to
+a session and a consumer switching on this field needs three branches, not five.
+A clinical view that wants the implied count re-derives it from monotonicity, as
+`getInsights` does.
 
 ### What is never recorded
 
@@ -255,15 +547,16 @@ offset, and part of it is us.
 | `POST /api/ar/sessions` | batch retry, tolerant of one bad row |
 | `GET /api/ar/sessions` | the caller's rounds, trials excluded |
 | `GET /api/ar/session/:id` | one round including trials |
-| `GET /api/ar/insights?days=` | per-game / per-domain / per-hand / progression |
+| `GET /api/ar/insights?days=` | per-game / per-domain / per-hand / progression / life skills, plus a `journey` block with the clear counts split four ways |
 | `DELETE /api/ar/sessions` | erase all of the caller's AR telemetry |
+| `GET /api/ar/journey` | levels, points and played days rebuilt from the caller's rounds, for `mergeRemoteJourney()` |
 
 Rounds are also mirrored into `StudentRound` and `StudentActivity` so camera
 games show up in the child's normal progress alongside the other modules.
 
 ---
 
-## 7. No scrolling. Anywhere.
+## 8. No scrolling. Anywhere.
 
 `/games`, `/games/ar`, `/games/ar/insights` and every game are fixed to the
 viewport with `overflow: hidden`. A child reaching at a screen must not be able
@@ -286,7 +579,7 @@ Verified in Chrome at 320×568, 390×844, 844×390, 820×1180, 1180×820 and
 
 ---
 
-## 8. Running it
+## 9. Running it
 
 ```bash
 cd client && npm install && npm run dev     # https://localhost:5173/games/ar
@@ -324,7 +617,7 @@ commit for the scripts):
 
 ---
 
-## 9. Known limits, stated plainly
+## 10. Known limits, stated plainly
 
 - **Haptics.** `navigator.vibrate` works on Android. iOS Safari has no vibration
   API, so we fall back to a paired game controller's actuator, then to a
@@ -342,6 +635,19 @@ commit for the scripts):
 - **Clean/dirty** ships as "does it need washing?", because clean and dirty are
   states a single picture cannot show, and an unanswerable question is worse
   than a differently-framed one.
+- **Restored progress loses its provenance.** `GET /api/ar/journey` says which
+  levels a child cleared but not by which route, so `mergeRemoteJourney()` marks
+  everything it restores `by: 'remote'`. Such a level counts in
+  `levelsCleared()` but in neither the `clearedByEffort` nor the
+  `clearedImplied` tally, so in an aggregate it reads like a criterion clear.
+  Anything clinical should read `cleared[level].by` per level rather than
+  subtract the two counters — and a child on a borrowed device has, strictly, an
+  unattributed clear rather than a demonstrated one.
+- **A journey day is a UTC day.** `days[]`, the five-days badge and the
+  "first game today" bonus all bucket on the UTC date, which is what the rest of
+  the platform's `StudentActivity` rows do, so they agree with each other rather
+  than with the child's local midnight. Points-only, but it means one local day
+  far from UTC can pay the daily bonus twice.
 - **Nothing here is validated as an assessment.** The metrics are descriptive.
   Treating movement smoothness as a diagnosis would be wrong, and the dashboard
   says so where a reader will see it.

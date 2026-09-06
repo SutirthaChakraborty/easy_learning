@@ -83,6 +83,9 @@ export function startSession(meta) {
     pausedMs: 0,
     pauseCount: 0,
     difficulty: meta.difficulty || {},
+    // The visible journey level this round was played at. Set here as well as in
+    // end() so an abandoned round still says which level was attempted.
+    level: meta.level ?? null,
     promptStageStart: meta.promptStage || 'A',
     promptStageEnd: meta.promptStage || 'A',
     settingsSnapshot: {
@@ -194,6 +197,18 @@ export function startSession(meta) {
       session.pipeline = report
     },
 
+    /**
+     * The summary as it stands, without ending the round.
+     *
+     * Exists because stars, points and the level verdict are all computed *from*
+     * the summary and must be part of the session before it is uploaded — the
+     * upload fires inside `end()`, so anything decided after that call would be
+     * missing from the stored copy.
+     */
+    summaryNow() {
+      return summarise(session)
+    },
+
     /** Ends, summarises, persists locally and (if allowed) uploads. */
     async end(extra = {}) {
       if (pauseStartedAt != null) api.pauseEnd()
@@ -201,20 +216,43 @@ export function startSession(meta) {
       session.durationMs = Math.round(performance.now() - startPerf)
       session.activeMs = Math.max(0, Math.round(session.durationMs - session.pausedMs))
       session.outcome = extra.outcome || 'completed'
-      session.stars = extra.stars ?? null
-      session.xp = extra.xp ?? null
       session.summary = summarise(session)
       session.profile = profileSnapshot()
+
+      // ── the journey: level played, whether it cleared, points awarded ──
+      //
+      // A game with no journey (the calibration task) must upload nulls, not
+      // level 1 with `cleared: false`. Otherwise every consumer has to special-
+      // case it by game id, and a clinical report shows a level and a
+      // not-cleared verdict for a five-stretch measurement that has no levels.
+      // Points are still real: the child played, so the child earned.
+      const j = extra.journey || null
+      const onJourney = Boolean(j?.journey)
+      session.level = onJourney ? (extra.level ?? j.level) : null
+      session.levelCleared = onJourney ? Boolean(j.cleared) : null
+      session.clearedBy = onJourney ? j.clearedBy ?? null : null
+      session.newBest = onJourney ? Boolean(j.beatBest) : null
+      session.pointsAwarded = j?.points?.total ?? extra.points ?? null
+      session.pointsBreakdown = j?.points?.rows ?? null
+      session.journeyPoints = j?.totalPoints ?? null
+      session.stars = extra.stars ?? null
+      // The dashboard's XP currency and the child's points are the same number,
+      // so a camera game credits the same streak as a reading lesson.
+      session.xp = extra.xp ?? session.pointsAwarded ?? null
       delete session.startPerf
 
       pushRoundHistory(session.gameId, {
         at: session.endedAt,
         accuracyPct: session.summary.accuracyPct,
+        comprehensionPct: session.summary.comprehensionPct,
         trials: session.summary.trials,
         medianLatencyMs: session.summary.medianLatencyMs,
         independentPct: session.summary.independentPct,
         promptStage: session.promptStageEnd,
         stars: session.stars,
+        level: session.level,
+        cleared: session.levelCleared,
+        points: session.pointsAwarded,
       })
 
       persistLocal(session)
@@ -472,6 +510,27 @@ export async function flushPendingSessions() {
 }
 
 /**
+ * The journey as the server has it, so a child who changes device or browser
+ * gets their levels and points back. Merging is the caller's job
+ * (`mergeRemoteJourney`) and always takes the better of the two — a device that
+ * has been offline is never overwritten by a staler server copy.
+ */
+export async function fetchRemoteJourney() {
+  if (!loggedIn()) return null
+  try {
+    const res = await fetch(`${API}/ar/journey`, {
+      headers: { ...authHeaders() },
+      credentials: 'include',
+    })
+    if (!res.ok) return null
+    const body = await res.json()
+    return body?.data || null
+  } catch {
+    return null
+  }
+}
+
+/**
  * Aggregates the on-device history into the numbers the insights screen shows.
  * Runs locally so the screen works offline and for anonymous play.
  */
@@ -492,6 +551,8 @@ export function aggregateLocal(sessions = localSessions()) {
       independent: 0,
       latencies: [],
       history: [],
+      level: 0,
+      points: 0,
     })
     g.sessions++
     for (const t of s.trials || []) {
@@ -504,9 +565,15 @@ export function aggregateLocal(sessions = localSessions()) {
     g.history.push({
       at: s.endedAt || s.startedAt,
       accuracyPct: s.summary?.accuracyPct ?? null,
+      comprehensionPct: s.summary?.comprehensionPct ?? null,
       independentPct: s.summary?.independentPct ?? null,
       promptStage: s.promptStageEnd,
+      level: s.level ?? null,
+      cleared: s.levelCleared ?? null,
+      points: s.pointsAwarded ?? null,
     })
+    g.level = Math.max(g.level || 0, s.level || 0)
+    g.points = (g.points || 0) + (s.pointsAwarded || 0)
   }
 
   const domainTally = {}
@@ -537,6 +604,9 @@ export function aggregateLocal(sessions = localSessions()) {
     medianMovementMs: round(median(answered.map((t) => t.movementTimeMs))),
     pathEfficiency: round(mean(answered.map((t) => t.pathEfficiency)), 3),
     minutesPlayed: Math.round(sessions.reduce((s, x) => s + (x.activeMs || 0), 0) / 60000),
+    pointsEarned: sessions.reduce((s, x) => s + (x.pointsAwarded || 0), 0),
+    // Rounds that cleared a level — not distinct levels, which journey.js owns.
+    levelClears: sessions.filter((x) => x.levelCleared).length,
     byHand: {
       left: handSlice(answered, 'left'),
       right: handSlice(answered, 'right'),
@@ -569,8 +639,11 @@ function handSlice(trials, side) {
 }
 
 /**
- * Star rating. Weighted so understanding dominates and speed contributes only
- * a little — a slow, accurate, independent child should still earn 3 stars.
+ * Star rating: understanding at three quarters, independence at one quarter.
+ *
+ * Speed is not a term. Not a small term — absent. A slow, accurate, independent
+ * child earns three stars, and the same weighting is reused by `pointsFor` in
+ * journey.js so the stars and the points a child sees can never disagree.
  */
 export function starsFor(summary) {
   if (!summary || !summary.trials) return 0

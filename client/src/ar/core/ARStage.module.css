@@ -502,7 +502,202 @@
   line-height: 1.35;
 }
 
+/* ── the journey ─────────────────────────────────────────────────────────── */
+/* Level tag in the top bar, so "which level am I on" never needs a menu. */
+.levelTag {
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 800;
+  color: #ffe38a;
+  background: rgba(255, 200, 60, 0.16);
+  border: 1px solid rgba(255, 200, 60, 0.42);
+  white-space: nowrap;
+}
+
+/* Intro: the level picker is the pips themselves — one screen, big targets. */
+.introLevels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.introLevelWhat {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: clamp(11px, 2.2vw, 14px);
+  line-height: 1.3;
+}
+
+.introLevelWhat strong { color: #ffe38a; }
+.introLevelWhat span { color: rgba(206, 226, 255, 0.82); }
+
+/* Results: points, and why. The "why" is the part that teaches a child which
+   of the things they did actually earned them something. */
+.pointsBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pointsTotal {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.pointsPlus {
+  font-size: clamp(26px, 6vw, 42px);
+  font-weight: 900;
+  color: #ffd93d;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 3px 14px rgba(255, 217, 61, 0.45);
+}
+
+.pointsWord {
+  font-size: clamp(11px, 2.2vw, 15px);
+  font-weight: 700;
+  color: rgba(255, 231, 150, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pointsRows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pointsRows li {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 9px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: clamp(10px, 2vw, 13px);
+  animation: pointsIn 0.34s ease backwards;
+}
+
+.pointsRows li:nth-child(1) { animation-delay: 0.05s; }
+.pointsRows li:nth-child(2) { animation-delay: 0.13s; }
+.pointsRows li:nth-child(3) { animation-delay: 0.21s; }
+.pointsRows li:nth-child(4) { animation-delay: 0.29s; }
+.pointsRows li:nth-child(5) { animation-delay: 0.37s; }
+.pointsRows li:nth-child(6) { animation-delay: 0.45s; }
+
+@keyframes pointsIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.pointsBest {
+  background: rgba(255, 217, 61, 0.16) !important;
+  border: 1px solid rgba(255, 217, 61, 0.42);
+}
+
+.pointsIcon { font-size: 13px; line-height: 1; }
+.pointsLabel { text-align: left; color: rgba(219, 233, 255, 0.94); }
+
+.pointsVal {
+  font-weight: 800;
+  color: #7ee8ff;
+  font-variant-numeric: tabular-nums;
+}
+
+.pointsTally {
+  margin: 0;
+  font-size: clamp(9px, 1.8vw, 12px);
+  color: rgba(178, 199, 228, 0.86);
+}
+
+.resultPath {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.unlockLine {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: clamp(11px, 2.2vw, 15px);
+  font-weight: 800;
+  color: #6ee7a8;
+}
+
+.adviceLine {
+  margin: 0;
+  font-size: clamp(10px, 2vw, 13px);
+  color: rgba(206, 226, 255, 0.82);
+  line-height: 1.35;
+}
+
+.resultWin {
+  border-color: rgba(110, 231, 168, 0.5);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.62), 0 0 0 1px rgba(110, 231, 168, 0.2) inset;
+}
+
+.badgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.badgeWon {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: clamp(9px, 1.8vw, 12px);
+  font-weight: 800;
+  color: #08111f;
+  background: linear-gradient(140deg, #ffd93d, #ffb347);
+  box-shadow: 0 3px 12px rgba(255, 179, 71, 0.4);
+}
+
+.detailToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: transparent;
+  color: rgba(178, 199, 228, 0.86);
+  font-size: clamp(9px, 1.8vw, 12px);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.detailToggle:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
+
 /* ── very short viewports: drop the optional rows rather than scroll ────── */
+@media (max-height: 620px) {
+  .pointsTally { display: none; }
+  .pointsRows {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+  }
+  .introLevelWhat span { display: none; }
+}
+
 @media (max-height: 480px) {
   .introIcon { font-size: clamp(24px, 6vh, 34px); }
   .tagRow { display: none; }
@@ -513,9 +708,18 @@
   .metricGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .metricCell:nth-child(n + 5) { display: none; }
   .introCard, .pauseCard, .resultCard { gap: 4px; padding: 10px 14px; }
+  /* Keep the four rows that matter most: turns, correctness, best, unlock. */
+  .pointsRows li:nth-child(n + 5) { display: none; }
+  .badgeRow { display: none; }
+  .introLevelWhat { display: none; }
 }
 
 @media (max-width: 380px) {
   .metricGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .metricCell:nth-child(n + 5) { display: none; }
+  .pointsRows { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pointsRows li { animation: none; }
 }

@@ -121,23 +121,30 @@ The games are grouped by what they practise rather than by theme:
 
 **Do "Set Up My Space" first.** It is five easy stretches, it takes under a minute, and it
 tells the games how far this particular child can comfortably reach so every target lands
-somewhere they can actually get to.
+somewhere they can actually get to. It is a measurement rather than a game, so it is the
+one activity with no levels of its own.
 
 A few things worth knowing:
 
-- **Speed is never the point.** A slow, correct, unaided answer earns full marks. There is
-  no buzzer and no losing points.
+- **Five levels per game, walked one at a time.** Clearing a level opens the next. A
+  child who keeps trying and lands close is moved on rather than left stuck.
+- **Points for playing more and for playing better.** Turns taken, turns right, help not
+  needed, and beating your own best on that game.
+- **Speed is never the point.** A slow, correct, unaided answer earns full marks — and
+  earns the same points as a fast one. There is no buzzer and no losing points.
 - **Everything is adjustable mid-game** — press the cog. Bigger targets, extra time (up to
   four times as long), seated play, one hand only, calm visuals, high contrast, voice-only
   or text-only instructions, vibration strength.
 - **The camera never leaves the device.** No video, photo or frame is recorded, saved or
   uploaded. Only the measurements are kept, and only if you leave that switch on.
 - **Progress** (`/games/ar/insights`) shows what was understood, how much help was needed,
-  and thinking time and moving time as separate numbers — plus a CSV export. It works
+  and thinking time and moving time as separate numbers, plus a Journey tab with the level
+  reached in each game and which games a child is stuck on — and a CSV export. It works
   offline. There is an Erase button that really erases.
 
 Developers and therapists: see [docs/AR-GAMES.md](./docs/AR-GAMES.md) for the engine
-architecture, the prompt-fading ladder, what is measured and the stated limits.
+architecture, the prompt-fading ladder, how levels and points are worked out, what is
+measured and the stated limits.
 
 ### 2.6 Your Dashboard
 

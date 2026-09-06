@@ -71,6 +71,10 @@ export const GAMES = [
     lifeSkill: 'bodyAwareness',
     featured: true,
     usesReach: false,
+    // A measurement, not a challenge. Five levels of "hold your arm out" would
+    // be five levels of nothing, and locking the calibration behind a level
+    // would lock every other game's reach envelope behind it too.
+    journey: false,
     config: {},
   }),
   g({

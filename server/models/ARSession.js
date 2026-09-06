@@ -172,6 +172,43 @@ const arSessionSchema = new mongoose.Schema({
   stars:   { type: Number, default: null },
   xp:      { type: Number, default: null },
 
+  // ── the journey, mirroring client/src/ar/core/journey.js field for field ──
+  //
+  // `level` is the VISIBLE level the round was played at, 1..5. A level is an
+  // envelope of difficulty rather than a preset, and the invisible per-trial
+  // staircase still roams inside it — which is why two rounds at the same level
+  // can carry quite different `difficulty` above. Null for the calibration and
+  // setup tasks that have no journey, and for every round uploaded before the
+  // journey existed.
+  //
+  // `clearedBy` records HOW a level was cleared, and its three values must stay
+  // distinguishable rather than being folded into `levelCleared` alone, because
+  // they are not the same claim about the child:
+  //   'criterion' the child met the comprehension bar — demonstrated skill.
+  //   'effort'    the anti-wall rule: three attempts that landed within 20
+  //               points of the bar, so the level was granted for persistence
+  //               to stop one badly-matched level ending their use of the app.
+  //   'implied'   a level backfilled because a harder one was cleared and level
+  //               plans are monotone — inference, never observation.
+  // A clinician reading a report has to be able to tell evidence from granted
+  // and inferred progress, so anything that summarises these counts them
+  // separately. Only 'criterion' and 'effort' can ever arrive on a session,
+  // since a round is a thing that actually happened; 'implied' lives in the
+  // child's journey state and is re-derived server-side (see getInsights).
+  // Left free-form, like `hand` on a trial: a value this server has not heard
+  // of yet must not void a whole round of data.
+  //
+  // Note what is absent: no speed measure feeds any of this. Points come from
+  // participation, comprehension, independence, level, and beating the child's
+  // own previous best on the same game and level. Speed earns nothing anywhere.
+  level:           { type: Number, default: null },
+  levelCleared:    { type: Boolean, default: null },
+  clearedBy:       { type: String, default: null },  // 'criterion' | 'effort'
+  newBest:         { type: Boolean, default: null }, // beat this child's own best for this game + level
+  pointsAwarded:   { type: Number, default: null },
+  pointsBreakdown: { type: Mixed, default: null },   // [{ key, label, points, icon }] exactly as the child was shown it
+  journeyPoints:   { type: Number, default: null },  // the child's running total after this round
+
   summary: { type: summarySchema, default: () => ({}) },
   profile: { type: Mixed, default: null }, // dominantHand, latencyMs, capabilities
 
@@ -183,5 +220,12 @@ const arSessionSchema = new mongoose.Schema({
 arSessionSchema.index({ email: 1, clientSessionId: 1 }, { unique: true })
 // The read path: this child's history for one game, newest first.
 arSessionSchema.index({ email: 1, gameId: 1, startedAt: -1 })
+// The journey read path, which asks level-shaped questions about one game:
+// which levels of it this child has cleared, and how they did at a given level.
+// Without the third key those queries walk every round the child ever played on
+// the game to look at a single small number; with it they seek straight to the
+// levels in question. Its { email } prefix also bounds the whole-journey
+// restore read in getJourney.
+arSessionSchema.index({ email: 1, gameId: 1, level: 1 })
 
 module.exports = mongoose.model('ARSession', arSessionSchema)

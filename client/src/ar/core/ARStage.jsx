@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom'
 import {
   FaArrowLeft, FaPause, FaPlay, FaRedo, FaCog, FaCamera, FaTimes,
   FaStar, FaRegStar, FaHandPaper, FaChartLine, FaLightbulb, FaForward,
+  FaChevronDown, FaChevronUp, FaUnlock, FaTrophy,
 } from 'react-icons/fa'
 import { ARTracker } from './tracker'
 import { GameClock } from './clock'
@@ -25,6 +26,12 @@ import { unlockSpeech, speak, cancelSpeech } from './tts'
 import { scaledReachBox, isCalibrated } from './profile'
 import { makeRng } from './geometry'
 import { nextTargetFor, PROMPT_INFO } from './adaptive'
+import {
+  beginRound, resolveLevel, recordRound, tileProgress, hasJourney,
+  levelChange, LEVEL_META, LEVELS,
+} from './journey'
+import { GAMES } from '../catalog/games'
+import LevelPips from './LevelPips'
 import SettingsSheet from './SettingsSheet'
 import styles from './ARStage.module.css'
 
@@ -47,7 +54,7 @@ const CAMERA_HELP = {
   },
 }
 
-export default function ARStage({ game, onExit, onNext }) {
+export default function ARStage({ game, onExit, onNext, level: requestedLevel = null }) {
   const navigate = useNavigate()
   const wrapRef = useRef(null)
   const videoRef = useRef(null)
@@ -62,6 +69,21 @@ export default function ARStage({ game, onExit, onNext }) {
   const [hud, setHud] = useState({ trial: 0, total: 0, score: 0, streak: 0, promptStage: 'A', step: null })
   const [result, setResult] = useState(null)
   const [liveMetrics, setLiveMetrics] = useState(null)
+
+  // ── the journey level of this round ────────────────────────────────────────
+  // A round's level has to be settled *before* the module is built, because
+  // `difficultySnapshot()` resolves difficulty during construction. The pending
+  // value therefore lives in a ref that `startGame`/`doRestart` read, and the
+  // resolved value goes into state for display.
+  const journeyOn = hasJourney(game)
+  const pinned = settings.difficultyMode === 'fixed'
+  // `pinned` is a real dependency — a fixed difficulty overrides the requested
+  // level — but the linter cannot see it inside resolveLevel's own settings read.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const initialLevel = useMemo(() => resolveLevel(game, requestedLevel), [game, requestedLevel, pinned])
+  const pendingLevelRef = useRef(initialLevel)
+  const [level, setLevel] = useState(initialLevel)
+  const [progress, setProgress] = useState(() => (journeyOn ? tileProgress(game) : null))
 
   const trackerRef = useRef(null)
   const clockRef = useRef(null)
@@ -149,20 +171,41 @@ export default function ARStage({ game, onExit, onNext }) {
       const recorder = recorderRef.current
       if (!recorder) return
       recorder.setPipeline(trackerRef.current?.latencyReport() || null)
-      // The summary is only built inside end(), so stars are read from what it
-      // returns rather than from the in-progress session.
-      const session = await recorder.end({ outcome: extra.outcome || 'completed' })
-      const finalStars = starsFor(session.summary)
-      const xp = xpFor(session.summary, finalStars)
-      session.stars = finalStars
-      session.xp = xp
 
-      if (!getSettings().reducedMotion) particlesRef.current?.confetti()
+      // Stars, the level verdict and points are all computed from the summary,
+      // and the upload fires inside end() — so they are settled *first* and
+      // handed in, rather than stamped onto the session afterwards where the
+      // stored and uploaded copies would disagree.
+      const summary = recorder.summaryNow()
+      const finalStars = starsFor(summary)
+      const journeyResult = recordRound(game, summary, finalStars, { allGames: GAMES })
+      const xp = journeyResult.points?.total ?? xpFor(summary, finalStars)
+
+      const session = await recorder.end({
+        outcome: extra.outcome || 'completed',
+        stars: finalStars,
+        xp,
+        level: journeyResult.journey ? journeyResult.level : null,
+        journey: journeyResult,
+      })
+
+      const s = getSettings()
+      if (!s.reducedMotion) {
+        particlesRef.current?.confetti()
+        // A level that opened deserves more than the ordinary round confetti.
+        if (journeyResult.unlockedLevel) particlesRef.current?.confetti()
+      }
       cueFinish()
-      setResult({ session, stars: finalStars, xp, extra, next: nextTargetFor(game) })
+      if (journeyResult.unlockedLevel) {
+        sfx.levelUp()
+        haptic('levelUp')
+      }
+      if (journeyResult.newBadges?.length) haptic('badge')
+      setProgress(journeyOn ? tileProgress(game) : null)
+      setResult({ session, stars: finalStars, xp, extra, journey: journeyResult, next: nextTargetFor(game) })
       setPhase('results')
     },
-    [game]
+    [game, journeyOn]
   )
 
   // ── the api handed to the game module ──────────────────────────────────────
@@ -321,6 +364,12 @@ export default function ARStage({ game, onExit, onNext }) {
     clockRef.current = clock
     particlesRef.current = particles
 
+    // Settle the level BEFORE the module exists: a module resolves its
+    // difficulty while it is being constructed.
+    const opened = beginRound(game, pendingLevelRef.current)
+    pendingLevelRef.current = opened.level
+    setLevel(opened.level)
+
     const module = game.create(game)
     const diff = module.difficultySnapshot?.() || null
     const recorder = startSession({
@@ -331,6 +380,7 @@ export default function ARStage({ game, onExit, onNext }) {
       lifeSkill: game.lifeSkill,
       group: game.group,
       difficulty: diff,
+      level: opened.journey ? opened.level : null,
       promptStage: nextTargetFor(game)?.promptStage || 'A',
     })
     recorderRef.current = recorder
@@ -416,6 +466,11 @@ export default function ARStage({ game, onExit, onNext }) {
     const newClock = new GameClock()
     clockRef.current = newClock
     particlesRef.current?.clear()
+
+    const opened = beginRound(game, pendingLevelRef.current)
+    pendingLevelRef.current = opened.level
+    setLevel(opened.level)
+
     const module = game.create(game)
     const recorder = startSession({
       gameId: game.id,
@@ -425,6 +480,7 @@ export default function ARStage({ game, onExit, onNext }) {
       lifeSkill: game.lifeSkill,
       group: game.group,
       difficulty: module.difficultySnapshot?.() || null,
+      level: opened.journey ? opened.level : null,
       promptStage: nextTargetFor(game)?.promptStage || 'A',
     })
     recorderRef.current = recorder
@@ -435,6 +491,15 @@ export default function ARStage({ game, onExit, onNext }) {
     bannerRef.current = null
     beginPlay()
   }, [game, makeApi, beginPlay])
+
+  /** Replays or advances to a specific level. Used by the pips and by results. */
+  const playLevel = useCallback(
+    (n) => {
+      pendingLevelRef.current = resolveLevel(game, n)
+      void doRestart()
+    },
+    [game, doRestart]
+  )
 
   const exit = useCallback(() => {
     const clock = clockRef.current
@@ -519,7 +584,14 @@ export default function ARStage({ game, onExit, onNext }) {
           </button>
 
           <div className={styles.topCentre}>
-            <span className={styles.gameName}>{game.title}</span>
+            <span className={styles.gameName}>
+              {game.title}
+              {journeyOn && (
+                <span className={styles.levelTag} title={`Level ${level} of ${LEVELS}`}>
+                  {LEVEL_META[level - 1].icon} L{level}
+                </span>
+              )}
+            </span>
             {hud.total > 0 && (
               <span className={styles.counter}>
                 {Math.min(hud.trial, hud.total)}/{hud.total}
@@ -585,6 +657,40 @@ export default function ARStage({ game, onExit, onNext }) {
             <div className={styles.introIcon}>{game.icon}</div>
             <h1 className={styles.introTitle}>{game.title}</h1>
             <p className={styles.introHow}>{game.how}</p>
+
+            {journeyOn && progress && (
+              <div className={styles.introLevels}>
+                {/* The pips are the level picker: one screen, big targets, no
+                    submenu. When an adult has pinned the difficulty they stop
+                    being a choice, because picking one would change nothing. */}
+                <LevelPips
+                  pips={progress.pips.map((p) => ({
+                    ...p,
+                    current: p.n === level,
+                    unlocked: pinned ? p.n <= level : p.unlocked,
+                  }))}
+                  size="lg"
+                  onPick={
+                    pinned
+                      ? null
+                      : (n) => {
+                          pendingLevelRef.current = n
+                          setLevel(resolveLevel(game, n))
+                          haptic('tap')
+                        }
+                  }
+                />
+                <p className={styles.introLevelWhat}>
+                  <strong>
+                    Level {level} · {LEVEL_META[level - 1].name}
+                  </strong>
+                  <span>
+                    {pinned ? 'Set in settings · ' : ''}
+                    {levelChange(game, level)}
+                  </span>
+                </p>
+              </div>
+            )}
 
             <div className={styles.tagRow}>
               {domainLabels.slice(0, 4).map((d) => (
@@ -687,7 +793,10 @@ export default function ARStage({ game, onExit, onNext }) {
       {phase === 'results' && result && (
         <Results
           result={result}
+          progress={progress}
+          pinned={pinned}
           onAgain={doRestart}
+          onPlayLevel={playLevel}
           onExit={exit}
           onNext={onNext}
           onInsights={() => {
@@ -711,11 +820,30 @@ export default function ARStage({ game, onExit, onNext }) {
 }
 
 /**
- * The results screen shows the child three stars and the adult the numbers that
- * actually mean something. Never a single mixed "score" as the headline.
+ * The results screen.
+ *
+ * Two audiences, deliberately layered. The child sees stars, the points they
+ * earned and *why* they earned them, and where they now are on the path — the
+ * things that make another go worth having. The adult can open the clinical
+ * numbers underneath. Neither ever sees a single mixed score as the headline,
+ * and nothing on this screen rewards being fast.
  */
-function Results({ result, onAgain, onExit, onNext, onInsights }) {
+function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNext, onInsights }) {
+  const [showDetail, setShowDetail] = useState(false)
   const s = result.session.summary || {}
+  const j = result.journey
+  const pts = j?.points
+
+  const headline = j?.unlockedLevel
+    ? `Level ${j.level} cleared!`
+    : j?.cleared
+      ? 'Passed again!'
+      : result.stars === 3
+        ? 'Brilliant!'
+        : result.stars === 2
+          ? 'Great work!'
+          : 'Good try!'
+
   const rows = [
     { label: 'Got the idea', value: fmtPct(s.comprehensionPct), hint: 'correct + right answer reached imprecisely' },
     { label: 'On their own', value: fmtPct(s.independentPct), hint: 'correct with no prompt' },
@@ -734,7 +862,7 @@ function Results({ result, onAgain, onExit, onNext, onInsights }) {
 
   return (
     <div className={styles.sheet}>
-      <div className={styles.resultCard}>
+      <div className={`${styles.resultCard} ${j?.unlockedLevel ? styles.resultWin : ''}`}>
         <div className={styles.starRow}>
           {[1, 2, 3].map((i) =>
             i <= result.stars ? (
@@ -744,33 +872,115 @@ function Results({ result, onAgain, onExit, onNext, onInsights }) {
             )
           )}
         </div>
-        <h2 className={styles.resultTitle}>
-          {result.stars === 3 ? 'Brilliant!' : result.stars === 2 ? 'Great work!' : 'Good try!'}
-        </h2>
-        <p className={styles.resultSub}>
-          {s.trials} turn{s.trials === 1 ? '' : 's'} · +{result.xp} XP
-        </p>
+        <h2 className={styles.resultTitle}>{headline}</h2>
 
-        <div className={styles.metricGrid}>
-          {rows.slice(0, 6).map((r) => (
-            <div key={r.label} className={styles.metricCell} title={r.hint}>
-              <span className={styles.metricValue}>{r.value}</span>
-              <span className={styles.metricLabel}>{r.label}</span>
+        {/* ── points: the number, then why ── */}
+        {pts && (
+          <div className={styles.pointsBlock}>
+            <div className={styles.pointsTotal}>
+              <span className={styles.pointsPlus}>+{pts.total}</span>
+              <span className={styles.pointsWord}>points</span>
             </div>
-          ))}
-        </div>
+            <ul className={styles.pointsRows}>
+              {pts.rows.map((r) => (
+                <li key={r.key} className={r.key === 'best' ? styles.pointsBest : undefined}>
+                  <span className={styles.pointsIcon} aria-hidden>
+                    {r.icon}
+                  </span>
+                  <span className={styles.pointsLabel}>{r.label}</span>
+                  <span className={styles.pointsVal}>+{r.points}</span>
+                </li>
+              ))}
+            </ul>
+            <p className={styles.pointsTally}>
+              {j.totalPoints} points in all · {j.rank.icon} {j.rank.name}
+            </p>
+          </div>
+        )}
 
-        {result.next && (
-          <p className={styles.nextUp}>
-            <FaLightbulb /> Next: <strong>{result.next.promptName}</strong>
-            {result.next.focus ? ` · working on ${result.next.focus.toLowerCase()}` : ''}
-          </p>
+        {/* ── where this leaves them on the path ── */}
+        {j?.journey && progress && (
+          <div className={styles.resultPath}>
+            <LevelPips
+              /* With the difficulty pinned by an adult, the child's own unlock
+                 does not describe the round that was just played, and showing
+                 the played level as "locked" would be nonsense. */
+              pips={progress.pips.map((p) => ({
+                ...p,
+                current: p.n === (j.nextLevel ?? j.level),
+                unlocked: pinned ? p.n <= j.level : p.unlocked,
+              }))}
+              size="md"
+              onPick={pinned ? null : onPlayLevel}
+            />
+            {j.unlockedLevel ? (
+              <p className={styles.unlockLine}>
+                <FaUnlock /> Level {j.unlockedLevel} is open
+                {j.clearedBy === 'effort' ? ' — you kept trying, so it opened' : ''}
+              </p>
+            ) : j.complete ? (
+              <p className={styles.unlockLine}>
+                <FaTrophy /> All five levels done — you finished this journey
+              </p>
+            ) : (
+              <p className={styles.adviceLine}>{j.advice}</p>
+            )}
+          </div>
+        )}
+
+        {j?.newBadges?.length ? (
+          <div className={styles.badgeRow}>
+            {j.newBadges.map((b) => (
+              <span key={b.id} className={styles.badgeWon} title={b.how}>
+                <span aria-hidden>{b.icon}</span> {b.name}
+              </span>
+            ))}
+          </div>
+        ) : null}
+
+        {/* ── the clinical numbers, folded away so the child sees a game ── */}
+        <button
+          className={styles.detailToggle}
+          onClick={() => setShowDetail((v) => !v)}
+          aria-expanded={showDetail}
+        >
+          {showDetail ? <FaChevronUp /> : <FaChevronDown />} For grown-ups
+        </button>
+
+        {showDetail && (
+          <>
+            <div className={styles.metricGrid}>
+              {rows.slice(0, 6).map((r) => (
+                <div key={r.label} className={styles.metricCell} title={r.hint}>
+                  <span className={styles.metricValue}>{r.value}</span>
+                  <span className={styles.metricLabel}>{r.label}</span>
+                </div>
+              ))}
+            </div>
+            {result.next && (
+              <p className={styles.nextUp}>
+                <FaLightbulb /> Next: <strong>{result.next.promptName}</strong>
+                {result.next.focus ? ` · working on ${result.next.focus.toLowerCase()}` : ''}
+              </p>
+            )}
+          </>
         )}
 
         <div className={styles.resultBtns}>
-          <button className={styles.playBtn} onClick={onAgain}>
-            <FaRedo /> Play again
-          </button>
+          {j?.nextLevel && j.nextLevelUnlocked ? (
+            <button className={styles.playBtn} onClick={() => onPlayLevel(j.nextLevel)}>
+              <FaPlay /> Play level {j.nextLevel}
+            </button>
+          ) : (
+            <button className={styles.playBtn} onClick={onAgain}>
+              <FaRedo /> Play again
+            </button>
+          )}
+          {j?.nextLevel && j.nextLevelUnlocked && (
+            <button className={styles.ghostBtn} onClick={onAgain}>
+              <FaRedo /> Level {j.level} again
+            </button>
+          )}
           {onNext && (
             <button className={styles.ghostBtn} onClick={onNext}>
               <FaForward /> Next game

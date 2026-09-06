@@ -16,10 +16,17 @@
  *
  * The staircase is deliberately asymmetric: three clean successes to step up,
  * two genuine errors to step down. "Correct but slow" is never an error.
+ *
+ *   LEVEL       the visible five-stop journey (journey.js). A level is an
+ *               *envelope*: it puts a floor and a ceiling on every dimension, and
+ *               the staircase above roams only inside it. That is the whole
+ *               interaction between the two systems — a level decides the band,
+ *               the staircase tunes within the band.
  */
 import { gameState, saveGameState, updateCapability, personalWindowMs } from './profile'
 import { getSettings } from './settings'
 import { clamp } from './geometry'
+import { activeLevel, levelBounds, levelPlan, hasJourney, clampLevel } from './journey'
 
 /**
  * The difficulty dimensions. Index 0 is always the most supported setting.
@@ -133,27 +140,54 @@ export const PROMPT_INFO = {
 }
 
 /**
+ * The floor/ceiling the staircase may move between for this round.
+ *
+ * In `fixed` mode the therapist has taken the wheel: the chosen level's plan is
+ * used exactly, with no room to move. Otherwise the current journey level sets
+ * the band. A game with no journey (calibration) gets the full range, as before.
+ */
+function bandFor(game) {
+  const s = getSettings()
+  if (!hasJourney(game)) {
+    const floor = {}
+    const ceil = {}
+    for (const d of game.adaptive?.dimensions || []) {
+      if (!DIMENSIONS[d]) continue
+      floor[d] = clamp(game.adaptive?.start?.[d] ?? 0, 0, DIMENSIONS[d].values.length - 1)
+      ceil[d] = DIMENSIONS[d].values.length - 1
+    }
+    return { floor, ceil, level: 1, locked: false }
+  }
+  if (s.difficultyMode === 'fixed') {
+    const plan = levelPlan(game, clampLevel(s.fixedLevel))
+    return { floor: plan, ceil: plan, level: clampLevel(s.fixedLevel), locked: true }
+  }
+  return { ...levelBounds(game, activeLevel(game.id)), locked: false }
+}
+
+/**
  * Resolves the concrete parameters for the next trial of a game.
  *
  * @param {object} game a catalogue entry with `id` and `adaptive.dimensions`
- * @returns {object} { level: {dim -> value}, promptStage, prompt, indices }
+ * @returns {object} { level: {dim -> value}, promptStage, prompt, indices, journeyLevel }
  */
 export function resolveDifficulty(game) {
   const s = getSettings()
   const st = gameState(game.id)
   const dims = game.adaptive?.dimensions || ['targetSize', 'choices']
+  const band = bandFor(game)
   const indices = {}
   const level = {}
 
   for (const dim of dims) {
     const spec = DIMENSIONS[dim]
     if (!spec) continue
-    let idx
-    if (s.difficultyMode === 'fixed') {
-      idx = clamp(Math.round((s.fixedLevel - 1) * ((spec.values.length - 1) / 4)), 0, spec.values.length - 1)
-    } else {
-      idx = clamp(st.levels?.[dim] ?? game.adaptive?.start?.[dim] ?? 0, 0, spec.values.length - 1)
-    }
+    const lo = band.floor[dim] ?? 0
+    const hi = Math.max(lo, band.ceil[dim] ?? spec.values.length - 1)
+    // The stored staircase position is a *preference* inside the band, not an
+    // absolute: raising the journey level lifts the floor under it immediately.
+    const stored = st.levels?.[dim] ?? game.adaptive?.start?.[dim] ?? lo
+    const idx = band.locked ? lo : clamp(stored, lo, hi)
     indices[dim] = idx
     level[dim] = spec.values[idx]
   }
@@ -181,7 +215,7 @@ export function resolveDifficulty(game) {
     level.distractors = dspec[shifted]
   }
 
-  return { level, indices, promptStage, prompt, dims }
+  return { level, indices, promptStage, prompt, dims, journeyLevel: band.level }
 }
 
 /**
@@ -202,8 +236,16 @@ export function recordTrialOutcome(game, trial) {
   const st = gameState(game.id)
   const dims = (game.adaptive?.dimensions || []).filter((d) => DIMENSIONS[d])
 
+  // The staircase moves inside the current level's envelope and never outside
+  // it: stepping down must not undo the level the child chose, and stepping up
+  // must not smuggle them into the next one.
+  const band = bandFor(game)
   const levels = { ...(st.levels || {}) }
-  for (const d of dims) if (levels[d] == null) levels[d] = game.adaptive?.start?.[d] ?? 0
+  for (const d of dims) {
+    const lo = band.floor[d] ?? 0
+    const hi = Math.max(lo, band.ceil[d] ?? DIMENSIONS[d].values.length - 1)
+    levels[d] = clamp(levels[d] ?? game.adaptive?.start?.[d] ?? lo, lo, hi)
+  }
 
   const trials = (st.trials || 0) + 1
   const correct = (st.correct || 0) + (trial.accuracy === 'correct' ? 1 : 0)
@@ -232,7 +274,7 @@ export function recordTrialOutcome(game, trial) {
       let tries = 0
       while (tries < dims.length) {
         const dim = dims[(dimCursor + tries) % dims.length]
-        const max = DIMENSIONS[dim].values.length - 1
+        const max = Math.max(band.floor[dim] ?? 0, band.ceil[dim] ?? DIMENSIONS[dim].values.length - 1)
         if (levels[dim] < max) {
           stepped = { dim, from: levels[dim], to: levels[dim] + 1, direction: 1 }
           levels[dim] += 1
@@ -248,7 +290,9 @@ export function recordTrialOutcome(game, trial) {
       let tries = 0
       while (tries < dims.length) {
         const dim = dims[(dimCursor - 1 - tries + dims.length * 2) % dims.length]
-        if (levels[dim] > 0) {
+        // Never below the level's floor: a child on level 4 who has a bad run
+        // gets easier level-4 trials, not level-1 trials.
+        if (levels[dim] > (band.floor[dim] ?? 0)) {
           stepped = { dim, from: levels[dim], to: levels[dim] - 1, direction: -1 }
           levels[dim] -= 1
           dimCursor = (dimCursor - 1 - tries + dims.length * 2) % dims.length

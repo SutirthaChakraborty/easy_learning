@@ -40,6 +40,11 @@ export const DEFAULT_SETTINGS = {
   promptMode: 'adaptive', // 'adaptive' | fixed stage 'A'..'F'
   difficultyMode: 'adaptive', // 'adaptive' | 'fixed'
   fixedLevel: 1,
+  // Opens all five journey levels of every game. For a child who is already
+  // competent and should not have to grind level 1 to prove it, and for a
+  // therapist who wants to probe a specific level. Off by default, because the
+  // unlock *is* the reward.
+  journeyUnlockAll: false,
   showMetrics: false, // live latency/accuracy HUD for the therapist
   mirrorView: true,
   showSkeleton: true,

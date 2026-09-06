@@ -17,6 +17,7 @@ import { getSettings, updateSettings, resetSettings, DEFAULT_SETTINGS } from './
 import { hapticCapabilities, haptic, sfx, unlockAudio } from './feedback'
 import { speak } from './tts'
 import { PROMPT_STAGES, PROMPT_INFO } from './adaptive'
+import { LEVELS, LEVEL_META, clampLevel, resetJourney } from './journey'
 import { resetProfile, loadProfile } from './profile'
 import styles from './SettingsSheet.module.css'
 
@@ -274,7 +275,7 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
               </div>
               <Choice
                 label="Difficulty"
-                hint="Adaptive moves one demand at a time — target size, then number of choices, then distractor similarity."
+                hint="Adaptive moves one demand at a time — target size, then number of choices, then distractor similarity. Fixed holds one journey level instead."
                 value={s.difficultyMode}
                 options={[
                   { v: 'adaptive', l: 'Adaptive' },
@@ -284,16 +285,37 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
               />
               {s.difficultyMode === 'fixed' && (
                 <Slider
-                  label="Fixed level"
+                  label="Held at journey level"
+                  // The round is played AND judged at this level — the level
+                  // picker in the game is overridden while this is on. Saying
+                  // so matters: a clear earned here is written to the child's
+                  // journey exactly like one they chose for themselves.
+                  hint="Plays and scores every round at this level, whichever the child picks. A pass is recorded as a real clear."
                   value={s.fixedLevel}
                   min={1}
-                  max={5}
+                  max={LEVELS}
                   step={1}
-                  fmt={(v) => `Level ${v}`}
+                  fmt={(v) => {
+                    // A settings blob written by an older build can hold a level
+                    // outside 1..5, and the slider hands its stored value straight
+                    // to fmt without clamping it.
+                    const meta = LEVEL_META[clampLevel(v) - 1]
+                    return `${meta.icon} ${meta.n} · ${meta.name}`
+                  }}
                   onChange={(v) => set({ fixedLevel: v })}
                 />
               )}
-              <div className={styles.stageHelp}>
+              <Toggle
+                // Adult framing in the LABEL, not only the hint: at 520 px the
+                // hint is hidden and the label is all that survives, and
+                // "open all levels" alone reads like a feature for the child
+                // rather than an override of their reward.
+                label="Unlock all levels (adult)"
+                hint="For a child already past level 1, or to probe one level. Clearing still has to be earned."
+                on={s.journeyUnlockAll}
+                onChange={(v) => set({ journeyUnlockAll: v })}
+              />
+              <div className={`${styles.stageHelp} ${styles.optional}`}>
                 <strong>Stage G — real-world transfer.</strong>{' '}
                 {PROMPT_INFO.G.help} A high score here is not evidence the skill
                 generalised; that has to be checked away from the screen.
@@ -336,12 +358,22 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                 </button>
               ) : (
                 <div className={styles.confirmRow}>
-                  <span>Erase the reach calibration, capability profile and every stored round?</span>
+                  <span>
+                    Erase the reach calibration, capability profile, level progress, points
+                    and every stored round?
+                  </span>
                   <div>
                     <button
                       className={styles.danger}
                       onClick={() => {
                         resetProfile()
+                        // The stored journey lives inside the profile, so the line
+                        // above already blanks the levels, points and badges. This
+                        // call is for the *ambient* level: the sheet opens mid-round
+                        // too, and an uncleared active level would let the round in
+                        // progress record a clear — with the lower levels backfilled
+                        // behind it — against the child who was just erased.
+                        resetJourney()
                         try {
                           localStorage.removeItem('ar_sessions_v1')
                         } catch {

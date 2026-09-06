@@ -77,6 +77,9 @@ function blankProfile(key) {
     capabilities: Object.fromEntries(CAPABILITIES.map((c) => [c, emptyEstimate()])),
     // Per-game adaptive state: { levelIdx, promptStage, dimIdx, streak, errors }
     games: {},
+    // The visible five-level journey, points and badges. Owned by journey.js,
+    // stored here so one erase takes everything about a child with it.
+    journey: { points: 0, lifetimePoints: 0, byGame: {}, badges: [], days: [], updatedAt: null },
     totals: { trials: 0, sessions: 0, correct: 0 },
   }
 }
@@ -252,7 +255,9 @@ export function saveGameState(gameId, patch) {
 export function pushRoundHistory(gameId, summary) {
   const p = loadProfile()
   const st = gameState(gameId)
-  st.history = [...(st.history || []), summary].slice(-20)
+  // 30 rounds rather than 20: five levels of history per game needs the room,
+  // and the per-game trend chart on the insights screen reads from here.
+  st.history = [...(st.history || []), summary].slice(-30)
   st.lastPlayedAt = new Date().toISOString()
   st.bestScore = Math.max(st.bestScore || 0, summary.accuracyPct || 0)
   p.games[gameId] = st
