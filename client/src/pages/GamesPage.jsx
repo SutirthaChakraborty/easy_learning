@@ -3,11 +3,7 @@ import { useTranslation } from "react-i18next";
 import * as FramerMotion from "framer-motion";
 import styles from "./GamesPage.module.css";
 import { playSlide } from "../utils/sounds";
-import {
-  FaGamepad, FaTrophy, FaMedal, FaAward, FaBullseye, FaArrowLeft,
-  FaCamera, FaHandPaper,
-} from "react-icons/fa";
-import { GiPartyPopper } from "react-icons/gi";
+import { FaGamepad, FaArrowLeft, FaCamera, FaHandPaper } from "react-icons/fa";
 
 const GamesPage = () => {
   const navigate = useNavigate();
@@ -42,39 +38,32 @@ const GamesPage = () => {
           </p>
         </div>
 
-        <FramerMotion.motion.button
-          className={styles.arBanner}
-          onClick={() => { playSlide(); navigate("/games/ar"); }}
-          initial={{ opacity: 0, y: 24 }}
+        <FramerMotion.motion.div
+          className={styles.arCard}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.15, duration: 0.4 }}
-          whileHover={{ scale: 1.02, y: -3 }}
-          whileTap={{ scale: 0.985 }}
         >
-          <span className={styles.arIcon}><FaCamera /></span>
-          <span className={styles.arText}>
-            <strong>{t("gamesPage.ar.title", { defaultValue: "Camera Games" })}</strong>
-            <em>
-              {t("gamesPage.ar.desc", {
-                defaultValue:
-                  "See yourself on screen and reach out to play. Over 50 games for moving, looking, remembering and everyday skills.",
-              })}
-            </em>
-          </span>
-          <span className={styles.arGo}>
-            <FaHandPaper />
-            {t("gamesPage.ar.cta", { defaultValue: "Open" })}
-          </span>
-        </FramerMotion.motion.button>
-
-        <div className={styles.trophyRow}>
-          <FaTrophy color="#FFD700" />
-          <FaMedal  color="#FFD700" />
-          <FaAward  color="#FFD700" />
-          <FaMedal  color="#C0C0C0" />
-          <FaBullseye color="#e74c3c" />
-          <GiPartyPopper color="#a29bfe" />
-        </div>
+          <div className={styles.arIconBadge}><FaCamera /></div>
+          <h2 className={styles.arCardTitle}>
+            {t("gamesPage.ar.title", { defaultValue: "Camera Games" })}
+          </h2>
+          <p className={styles.arCardDesc}>
+            {t("gamesPage.ar.desc", {
+              defaultValue:
+                "See yourself on screen and reach out to play. Over 50 games for moving, looking, remembering and everyday skills.",
+            })}
+          </p>
+          <FramerMotion.motion.button
+            className={styles.arCta}
+            onClick={() => { playSlide(); navigate("/games/ar"); }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.97 }}
+          >
+            <FaHandPaper style={{ marginRight: 8, verticalAlign: "middle" }} />
+            {t("gamesPage.ar.cta", { defaultValue: "Open Camera Games" })}
+          </FramerMotion.motion.button>
+        </FramerMotion.motion.div>
       </div>
     </FramerMotion.motion.div>
   );

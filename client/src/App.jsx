@@ -73,10 +73,12 @@ function AnimatedRoutes() {
 
 function AppLayout() {
   const location = useLocation();
-  // The camera games own the whole viewport: they must not scroll, and a navbar
-  // above them would be a target a child reaches into by accident. The 3D scene
-  // is dropped too — no point burning GPU behind a full-screen camera feed.
-  const isAR = location.pathname.startsWith("/games/ar");
+  // An active camera session (gameplay itself, or the calibration/insights
+  // screens that run alongside it) owns the whole viewport: it must not
+  // scroll, and a navbar above it would be a target a child reaches into by
+  // accident. The Camera Games hub is just a menu, so it keeps the normal
+  // site header and background like any other page.
+  const isAR = location.pathname.startsWith("/games/ar/");
   const hideNavbar = isAR || ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
   // Home, About Us, Contact Us, the question modules and the games pages all get the
   // same full-viewport video background, and the role-select gate + every login page
