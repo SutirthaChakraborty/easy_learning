@@ -1,14 +1,10 @@
-﻿{
+{
   "navbar": {
     "home": "Startseite",
-    "games": "Spiele",
     "lessons": "Lektionen",
     "dashboard": "Dashboard",
     "login": "Anmelden",
     "logout": "Abmelden",
-    "spellingBee": "Rechtschreibung",
-    "memoryMatch": "Gedächtnisspiel",
-    "wordPuzzle": "Worträtsel",
     "english": "Englisch",
     "mathematics": "Mathematik",
     "science": "Naturwissenschaft",
@@ -19,7 +15,6 @@
   "hero": {
     "greeting": "Hallo {{name}}",
     "startLearning": "Lernen beginnen",
-    "playGames": "Spiele spielen",
     "startAdventure": "Starte dein Abenteuer",
     "continueAdventure": "Abenteuer fortsetzen",
     "readyForAdventure": "Bereit für dein nächstes Abenteuer?",
@@ -27,8 +22,7 @@
     "chooseWorld": "Wähle deine Welt",
     "chooseWorldHint": "Wähle unten eine Welt, um dein erstes Abenteuer zu beginnen!",
     "pickUpWhereLeftOff": "Mach genau da weiter, wo du aufgehört hast",
-    "keepGoing": "Weiter so!",
-    "stories": "Geschichten"
+    "keepGoing": "Weiter so!"
   },
   "cards": {
     "english": {
@@ -235,27 +229,6 @@
       }
     }
   },
-  "gamesPage": {
-    "back": "Zurück",
-    "title": "Spielzone",
-    "subtitle": "Wähle ein Spiel und fang an!",
-    "playNow": "Jetzt spielen",
-    "diffEasy": "Einfach",
-    "diffMedium": "Mittel",
-    "diffHard": "Schwer",
-    "spelling": {
-      "title": "Buchstabieren",
-      "desc": "Buchstabiere das Wort!"
-    },
-    "memory": {
-      "title": "Gedächtnisspiel",
-      "desc": "Finde alle passenden Paare!"
-    },
-    "puzzle": {
-      "title": "Wortpuzzle",
-      "desc": "Ordne die gemischten Buchstaben!"
-    }
-  },
   "modules": {
     "back": "Zurück",
     "next": "Weiter →",
@@ -285,10 +258,6 @@
       "correct": "Brillant! +1 Stern",
       "wrong": "Die Antwort war: {{answer}}",
       "celebration": "Richtig!"
-    },
-    "learn": {
-      "question": "Frage {{current}} / {{total}}",
-      "finishRound": "Runde beenden →"
     },
     "write": {
       "whiteboard": "Dein Whiteboard",

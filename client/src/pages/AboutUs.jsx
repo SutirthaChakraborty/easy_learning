@@ -44,7 +44,7 @@ const AboutUs = () => {
 
   const handleStart = () => {
     playSlide();
-    setTimeout(() => navigate("/learn"), 350);
+    setTimeout(() => navigate("/home"), 350);
   };
 
   return (

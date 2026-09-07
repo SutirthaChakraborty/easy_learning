@@ -28,10 +28,6 @@ const writeEnglishRoutes = require('./routes/writeEnglish')
 const speakScienceRoutes = require('./routes/speakScience')
 const speakMathsRoutes   = require('./routes/speakMaths')
 const speakEnglishRoutes = require('./routes/speakEnglish')
-const spellEnglishRoutes  = require('./routes/spellEnglish')
-const memoryMatchRoutes   = require('./routes/memoryMatch')
-const wordPuzzleRoutes    = require('./routes/wordPuzzle')
-const learnRoutes         = require('./routes/learn')
 const dashboardRoutes     = require('./routes/dashboard')
 
 // Initialise separate DB connections before routes load models
@@ -90,10 +86,6 @@ app.use('/api/write/english', writeEnglishRoutes)
 app.use('/api/speak/science', speakScienceRoutes)
 app.use('/api/speak/maths',   speakMathsRoutes)
 app.use('/api/speak/english', speakEnglishRoutes)
-app.use('/api/spell/english',    spellEnglishRoutes)
-app.use('/api/game/memory-match', memoryMatchRoutes)
-app.use('/api/game/word-puzzle',  wordPuzzleRoutes)
-app.use('/api/learn',            learnRoutes)
 app.use('/api/dashboard',        dashboardRoutes)
 
 // Global error handler — catches any unhandled errors from route handlers

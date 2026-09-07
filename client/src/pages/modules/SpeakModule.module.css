@@ -44,6 +44,20 @@
 }
 .backBtn:hover { background: rgba(255,255,255,0.28); }
 
+.nextBtn {
+  padding: 12px 30px;
+  border-radius: 24px;
+  border: none;
+  background: #6c5ce7;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px #4527a0;
+}
+.nextBtn:hover { filter: brightness(1.1); }
+
 .moduleTitle {
   font-size: 26px;
   font-weight: bold;

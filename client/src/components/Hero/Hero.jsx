@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -8,9 +8,9 @@ import SubjectOverlay from "../SubjectOverlay/SubjectOverlay";
 import SubjectBottomNav from "../SubjectBottomNav/SubjectBottomNav";
 import styles from "./Hero.module.css";
 import {
-  FaGamepad, FaVolumeUp,
+  FaVolumeUp,
   FaHeadphones, FaBookOpen, FaPencilAlt, FaMicrophone,
-  FaPuzzlePiece, FaSpellCheck, FaCompass,
+  FaCompass,
 } from "react-icons/fa";
 import { playSlide } from "../../utils/sounds";
 import { useAuth } from "../../context/AuthContext";
@@ -19,20 +19,17 @@ import { SUBJECT_ICON_IMAGES } from "../../data/subjectIcons";
 
 const MODULE_ICONS = {
   listen: FaHeadphones, read: FaBookOpen, write: FaPencilAlt, speak: FaMicrophone,
-  learn: FaBookOpen, puzzle: FaPuzzlePiece, spelling: FaSpellCheck,
 };
 
 // Where "Continue Adventure" should send the student, based on their most
 // recently completed round (module + subject).
 function getContinueRoute(round) {
-  if (!round) return "/learn";
+  if (!round) return "/home";
   const { module: mod, subject } = round;
   if (["listen", "read", "write", "speak"].includes(mod) && subject) {
     return `/module/${mod}/${subject}`;
   }
-  if (mod === "puzzle") return "/games/puzzle";
-  if (mod === "spelling") return "/games/spelling";
-  return "/learn";
+  return "/home";
 }
 
 const Hero = () => {
@@ -45,6 +42,7 @@ const Hero = () => {
   const rounds = useSelector((state) => state.dashboard.rounds);
   const [roundsLoaded, setRoundsLoaded] = useState(false);
   const [activeSubject, setActiveSubject] = useState(location.state?.openSubject || null);
+  const cardsRef = useRef(null);
 
   // Coming back from a module page reopens the subject overlay instead of
   // landing on a blank Home — then clear the state so it doesn't reopen again.
@@ -77,8 +75,14 @@ const Hero = () => {
 
   const handleCTA = () => {
     playSlide();
-    const target = isReturningStudent ? getContinueRoute(lastRound) : "/learn";
-    setTimeout(() => navigate(target), 400);
+    if (isReturningStudent) {
+      const target = getContinueRoute(lastRound);
+      setTimeout(() => navigate(target), 400);
+      return;
+    }
+    // New students are already on Home, which shows the subject cards right
+    // below — just scroll to them instead of navigating anywhere.
+    cardsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const handleListen = () => {
@@ -96,17 +100,9 @@ const Hero = () => {
   const subjectLabel = subjectImage
     ? t(`subjectPage.${lastRound.subject}.label`)
     : null;
-  const moduleLabel = lastRound && (
-    ["listen", "read", "write", "speak"].includes(lastRound.module)
-      ? t(`subjectPage.modules.${lastRound.module}.label`)
-      : lastRound.module === "learn"
-        ? t("hero.stories", { defaultValue: "Stories" })
-        : lastRound.module === "puzzle"
-          ? t("gamesPage.puzzle.title")
-          : lastRound.module === "spelling"
-            ? t("gamesPage.spelling.title")
-            : null
-  );
+  const moduleLabel = lastRound && ["listen", "read", "write", "speak"].includes(lastRound.module)
+    ? t(`subjectPage.modules.${lastRound.module}.label`)
+    : null;
 
   return (
     <section className={styles.hero}>
@@ -156,11 +152,7 @@ const Hero = () => {
           )}
         </div>
 
-        <button type="button" className={styles.play} onClick={() => { playSlide(); navigate("/games"); }}>
-          {t("hero.playGames")} <FaGamepad className={styles.btnIcon} />
-        </button>
-
-        <div className={styles.desktopCards}>
+        <div className={styles.desktopCards} ref={cardsRef}>
           <h2 className={styles.chooseWorldTitle}>
             {t("hero.chooseWorld", { defaultValue: "Choose Your World" })}
           </h2>
