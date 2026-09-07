@@ -13,16 +13,11 @@ import Background3D from "./components/Background3D/Background3D";
 import Navbar from "./components/Navbar/Navbar";
 import RoleSelect from "./pages/RoleSelect";
 import Home from "./pages/Home";
-import Learn from "./pages/Learn";
 import SubjectPage from "./pages/SubjectPage";
-import GamesPage from "./pages/GamesPage";
 import ListenModule from "./pages/modules/ListenModule";
 import ReadModule from "./pages/modules/ReadModule";
 import WriteModule from "./pages/modules/WriteModule";
 import SpeakModule from "./pages/modules/SpeakModule";
-import SpellingGame from "./pages/games/SpellingGame";
-import MemoryGame from "./pages/games/MemoryGame";
-import PuzzleGame from "./pages/games/PuzzleGame";
 import Login from "./pages/Login";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
@@ -44,16 +39,11 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<RoleSelect />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/learn" element={<Learn />} />
         <Route path="/subject/:subject" element={<SubjectPage />} />
         <Route path="/module/listen/:subject" element={<ListenModule />} />
         <Route path="/module/read/:subject" element={<ReadModule />} />
         <Route path="/module/write/:subject" element={<WriteModule />} />
         <Route path="/module/speak/:subject" element={<SpeakModule />} />
-        <Route path="/games" element={<GamesPage />} />
-        <Route path="/games/spelling" element={<SpellingGame />} />
-        <Route path="/games/memory" element={<MemoryGame />} />
-        <Route path="/games/puzzle" element={<PuzzleGame />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUs />} />
@@ -81,8 +71,7 @@ function AppLayout() {
     "/", "/home", "/about-us", "/contact-us",
     "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login",
   ].includes(location.pathname)
-    || location.pathname.startsWith("/module/")
-    || location.pathname.startsWith("/games");
+    || location.pathname.startsWith("/module/");
 
   return (
     <>

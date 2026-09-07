@@ -1,0 +1,170 @@
+.options { display: flex; flex-direction: column; gap: 12px; }
+
+.option {
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: none;
+  background: rgba(197, 197, 197, 0.88);
+  font-size: 17px;
+  font-family: "Fredoka", sans-serif;
+  color: #1a1a2e;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+.option:disabled { cursor: not-allowed; opacity: 0.7; }
+.option.selected { background: rgba(108, 92, 231, 0.55); color: white; }
+
+.letter {
+  background: #6c5ce7;
+  color: white;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.submitBtn {
+  margin-top: 16px;
+  padding: 12px 30px;
+  border-radius: 24px;
+  border: none;
+  background: #6c5ce7;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px #4527a0;
+}
+.submitBtn:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+
+/* Sequence builder (drag_order / tap_sequence / letter_bank) */
+.builtRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px;
+  margin-bottom: 14px;
+  background: rgba(255,255,255,0.08);
+  border: 2px dashed rgba(255,255,255,0.25);
+  border-radius: 12px;
+  align-items: center;
+}
+.builtChip {
+  background: #6c5ce7;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+}
+.undoBtn {
+  margin-left: auto;
+  background: rgba(231,76,60,0.85);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 600;
+}
+
+/* Match pairs */
+.matchGrid { display: flex; gap: 20px; justify-content: center; }
+.matchCol { display: flex; flex-direction: column; gap: 10px; min-width: 120px; }
+.matchItem {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: rgba(197,197,197,0.88);
+  color: #1a1a2e;
+  font-weight: 600;
+  font-size: 17px;
+  cursor: pointer;
+  font-family: "Fredoka", sans-serif;
+}
+.matchItem:disabled { cursor: not-allowed; }
+.matchSelected { border-color: #6c5ce7; background: rgba(108,92,231,0.35); }
+.matchSolved { background: rgba(46,204,113,0.5); opacity: 0.85; }
+.matchWrong { background: rgba(231,76,60,0.6) !important; animation: shakeChip 0.3s; }
+
+@keyframes shakeChip {
+  0% { transform: translateX(0); } 25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); }
+}
+
+/* Sort bins */
+.binsRow { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 16px; }
+.bin {
+  flex: 1;
+  min-width: 130px;
+  background: rgba(255,255,255,0.08);
+  border: 2px dashed rgba(255,255,255,0.3);
+  border-radius: 14px;
+  padding: 10px;
+  cursor: pointer;
+  min-height: 90px;
+}
+.binLabel { color: #dedc5c; font-weight: 700; text-align: center; margin-bottom: 8px; font-size: 15px; }
+.binItems { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.binChip {
+  background: #6c5ce7;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Typed answers */
+.typedWrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.typedInput {
+  width: 100%;
+  max-width: 420px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.92);
+  color: #1a1a2e;
+  font-size: 18px;
+  font-family: "Fredoka", sans-serif;
+  resize: vertical;
+}
+.typedInput:disabled { opacity: 0.7; }
+
+/* Mic record */
+.micWrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.recordBtn, .stopBtn {
+  padding: 14px 28px;
+  border-radius: 20px;
+  border: none;
+  font-size: 17px;
+  font-weight: bold;
+  font-family: "Fredoka", sans-serif;
+  cursor: pointer;
+  color: white;
+}
+.recordBtn { background: linear-gradient(135deg,#6c63ff,#8e85ff); }
+.recordBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+.stopBtn { background: #e74c3c; }
+.voiceWarning { color: #ffb8b8; font-size: 14px; margin: 0; }
+.audioPlayer { width: 240px; max-width: 100%; }
+
+@media (max-width: 480px) {
+  .matchGrid { gap: 10px; }
+  .matchCol { min-width: 100px; }
+  .bin { min-width: 100px; }
+}
