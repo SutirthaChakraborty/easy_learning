@@ -6,7 +6,7 @@ import logo from "/logo.png";
 import { playSlide } from "../../utils/sounds";
 import {
   FaHome, FaInfoCircle, FaEnvelope, FaSignOutAlt,
-  FaHandPaper, FaLayerGroup,
+  FaHandPaper, FaLayerGroup, FaGamepad,
 } from "react-icons/fa";
 import { RiBarChart2Fill } from "react-icons/ri";
 import { useAuth } from "../../context/AuthContext";
@@ -48,6 +48,11 @@ const Navbar = () => {
             <NavLink to="/about-us" className={pillClass("navAbout")} onClick={close}>
               <span className={styles.navIconWrap}><FaInfoCircle className={styles.navIcon} /></span>
               {t("navbar.about", { defaultValue: "About Us" })}
+            </NavLink>
+
+            <NavLink to="/games" className={pillClass("navGames")} onClick={close}>
+              <span className={styles.navIconWrap}><FaGamepad className={styles.navIcon} /></span>
+              {t("navbar.games", { defaultValue: "Games" })}
             </NavLink>
 
             <NavLink to="/contact-us" className={pillClass("navContact")} onClick={close}>

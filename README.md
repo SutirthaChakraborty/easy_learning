@@ -57,7 +57,8 @@ pages) gives you:
 
 - **Home** — back to the main screen
 - **About Us** — the Learningo story and mission
-- **Dashboard** — your personal progress page (see §2.4)
+- **Games** — the Game Zone, home to the Camera Games (see §2.4)
+- **Dashboard** — your personal progress page (see §2.5)
 - **Contact Us** — reach the Learningo team with a question or issue
 - A **language switcher** — change the app's language at any time (see §7)
 - **Logout**
@@ -87,7 +88,54 @@ Every module is played in **rounds of exactly 10 questions**, and each module ha
 When you finish the 10th question, a **Round Complete** screen shows your result and saves
 it to your dashboard automatically.
 
-### 2.4 Your Dashboard
+### 2.4 Games
+
+The **Games** link in the navigation bar opens the **Game Zone** (`/games`), home to the
+**Camera Games** — over sixty activities you play by moving. You see yourself on screen and
+reach out to touch, trace, sort, freeze and copy. They need a camera and nothing else; no
+controller, no touchscreen.
+
+The games are grouped by what they practise rather than by theme:
+
+| Group | What it works on |
+| --- | --- |
+| **Body & Reach** | reaching, aiming, using two hands, crossing the middle |
+| **Look & Find** | spotting the right one, listening, reading, space words |
+| **Stop & Think** | waiting, freezing, ignoring distractions, changing rules |
+| **Remember** | holding things in mind, copying an order, missing items |
+| **Letters & Numbers** | sounds, spelling, writing in the air, counting, money |
+| **Move & Copy** | rhythm, imitation, tracing, drawing |
+| **My Day** | washing, dressing, packing, sorting, staying safe |
+| **Talk & Together** | following instructions, feelings, asking for help |
+
+**Do "Set Up My Space" first.** It is five easy stretches, it takes under a minute, and it
+tells the games how far this particular child can comfortably reach so every target lands
+somewhere they can actually get to. It is a measurement rather than a game, so it is the
+one activity with no levels of its own.
+
+A few things worth knowing:
+
+- **Five levels per game, walked one at a time.** Clearing a level opens the next. A
+  child who keeps trying and lands close is moved on rather than left stuck.
+- **Points for playing more and for playing better.** Turns taken, turns right, help not
+  needed, and beating your own best on that game.
+- **Speed is never the point.** A slow, correct, unaided answer earns full marks — and
+  earns the same points as a fast one. There is no buzzer and no losing points.
+- **Everything is adjustable mid-game** — press the cog. Bigger targets, extra time (up to
+  four times as long), seated play, one hand only, calm visuals, high contrast, voice-only
+  or text-only instructions, vibration strength.
+- **The camera never leaves the device.** No video, photo or frame is recorded, saved or
+  uploaded. Only the measurements are kept, and only if you leave that switch on.
+- **Progress** (`/games/ar/insights`) shows what was understood, how much help was needed,
+  and thinking time and moving time as separate numbers, plus a Journey tab with the level
+  reached in each game and which games a child is stuck on — and a CSV export. It works
+  offline. There is an Erase button that really erases.
+
+Developers and therapists: see [docs/AR-GAMES.md](./docs/AR-GAMES.md) for the engine
+architecture, the prompt-fading ladder, how levels and points are worked out, what is
+measured and the stated limits.
+
+### 2.5 Your Dashboard
 
 The Dashboard is your personal progress hub. At the top, a **Level badge** shows your
 current level and an XP progress bar toward the next one, alongside two buttons:
@@ -139,7 +187,7 @@ The **My Kids** section is where you manage your children:
 - **Performance** (chart icon) — opens that kid's progress:
   - If their email matches a student account with recorded activity, you see their full
     **Dashboard** (stats, heatmap, chart, achievements, round history — the same view
-    described in §2.4).
+    described in §2.5).
   - If not, you see a simple summary panel instead (Total XP, Sessions, Minutes, Average
     Score, Achievements), which reads as empty/zero until they've started learning under
     that email.

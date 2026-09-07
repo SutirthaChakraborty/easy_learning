@@ -1,0 +1,730 @@
+/* AR game shell.
+   Hard rule for this whole section: nothing scrolls. The stage is fixed to the
+   viewport, every layer is absolutely positioned over it, and all type scales
+   with clamp() so a results card fits a 320 px phone and a 4K display without
+   ever producing an overflow. */
+
+.stage {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  background: #05070f;
+  touch-action: none;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  z-index: 900;
+  font-family: "Fredoka", system-ui, sans-serif;
+}
+
+/* Older browsers without dvh: fall back to the layout viewport. */
+@supports not (height: 100dvh) {
+  .stage { height: 100vh; }
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* `contain`, never `cover`. Cropping the camera to the screen's shape threw
+     away up to two thirds of the horizontal field of view on a phone held
+     upright — so a child reaching sideways vanished from a picture that is the
+     whole point of the app, and the reach calibration recorded an envelope
+     shaped by the crop rather than by the child. Letterbox bars are a smaller
+     cost than losing the camera. */
+  object-fit: contain;
+  transition: opacity 0.35s ease;
+  background: #05070f;
+}
+
+/* Sized and positioned in JS to exactly the letterboxed picture, so stage space
+   and camera space are the same rectangle (see layoutCanvas in ARStage.jsx). */
+.canvas {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* ── top bar ─────────────────────────────────────────────────────────────── */
+.topBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: max(8px, env(safe-area-inset-top)) 10px 8px;
+  background: linear-gradient(to bottom, rgba(4, 8, 20, 0.72), rgba(4, 8, 20, 0));
+  z-index: 5;
+}
+
+.topCentre {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.gameName {
+  font-size: clamp(13px, 2.6vw, 19px);
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.counter {
+  font-size: clamp(11px, 2vw, 15px);
+  font-weight: 700;
+  color: #cfe3ff;
+  background: rgba(10, 20, 44, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 2px 10px;
+  flex-shrink: 0;
+}
+
+.topRight {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.streak {
+  font-size: clamp(11px, 2vw, 15px);
+  font-weight: 700;
+  color: #ffd93d;
+  white-space: nowrap;
+}
+
+.promptChip {
+  width: clamp(24px, 5vw, 30px);
+  height: clamp(24px, 5vw, 30px);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: clamp(11px, 2.1vw, 14px);
+  font-weight: 800;
+  color: #06101f;
+  background: #7ee8ff;
+  flex-shrink: 0;
+  cursor: help;
+}
+
+.iconBtn {
+  width: clamp(34px, 7vw, 42px);
+  height: clamp(34px, 7vw, 42px);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(9, 16, 34, 0.66);
+  color: #fff;
+  font-size: clamp(13px, 2.6vw, 17px);
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+.iconBtn:hover:not(:disabled) { background: rgba(30, 52, 100, 0.85); }
+.iconBtn:active:not(:disabled) { transform: scale(0.92); }
+.iconBtn:disabled { opacity: 0.35; cursor: default; }
+
+/* ── instruction banner ──────────────────────────────────────────────────── */
+.promptBar {
+  position: absolute;
+  top: clamp(52px, 9vh, 74px);
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: min(92vw, 780px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 20px;
+  border-radius: 18px;
+  background: rgba(6, 12, 28, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.promptMain {
+  font-size: clamp(16px, 3.4vw, 27px);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+}
+
+.promptSub {
+  font-size: clamp(11px, 2.1vw, 15px);
+  color: rgba(214, 231, 255, 0.85);
+  line-height: 1.3;
+}
+
+.stepToast {
+  position: absolute;
+  bottom: clamp(14px, 4vh, 28px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(10, 30, 22, 0.85);
+  border: 1px solid rgba(56, 212, 119, 0.5);
+  color: #8bf0b4;
+  font-size: clamp(11px, 2vw, 14px);
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 4;
+  animation: toastIn 0.3s ease, toastOut 0.4s ease 2.4s forwards;
+  pointer-events: none;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translate(-50%, 12px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+@keyframes toastOut {
+  to { opacity: 0; }
+}
+
+.metrics {
+  position: absolute;
+  left: 10px;
+  bottom: max(10px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  max-width: 60vw;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: rgba(4, 8, 20, 0.78);
+  border: 1px solid rgba(126, 232, 255, 0.28);
+  color: #7ee8ff;
+  font-size: clamp(9px, 1.7vw, 12px);
+  font-variant-numeric: tabular-nums;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* ── overlay sheets ──────────────────────────────────────────────────────── */
+.sheet {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: max(10px, env(safe-area-inset-top)) 12px max(10px, env(safe-area-inset-bottom));
+  background: radial-gradient(ellipse at center, rgba(6, 12, 30, 0.82), rgba(3, 5, 14, 0.94));
+  backdrop-filter: blur(10px);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.introCard,
+.pauseCard,
+.resultCard,
+.loadingCard {
+  position: relative;
+  width: min(92vw, 560px);
+  max-height: calc(100dvh - 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(5px, 1.1vh, 12px);
+  padding: clamp(14px, 3vh, 28px) clamp(16px, 4vw, 32px);
+  border-radius: clamp(18px, 3vw, 28px);
+  background: linear-gradient(160deg, rgba(22, 35, 74, 0.96), rgba(9, 14, 32, 0.97));
+  border: 1px solid rgba(126, 232, 255, 0.24);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.62);
+  text-align: center;
+  overflow: hidden;
+}
+
+.sheetClose {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #cfe3ff;
+  cursor: pointer;
+}
+.sheetClose:hover { background: rgba(255, 255, 255, 0.16); }
+
+.introIcon {
+  font-size: clamp(34px, 7vh, 56px);
+  line-height: 1;
+}
+
+.introTitle {
+  margin: 0;
+  font-size: clamp(19px, 4.4vw, 32px);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.introHow {
+  margin: 0;
+  font-size: clamp(12px, 2.4vw, 16px);
+  color: rgba(214, 231, 255, 0.9);
+  line-height: 1.45;
+  max-width: 44ch;
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.tag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: clamp(9px, 1.8vw, 12px);
+  font-weight: 700;
+  color: #a9c8ff;
+  background: rgba(61, 155, 255, 0.16);
+  border: 1px solid rgba(61, 155, 255, 0.4);
+  white-space: nowrap;
+}
+
+.tagLife {
+  color: #8bf0b4;
+  background: rgba(56, 212, 119, 0.14);
+  border-color: rgba(56, 212, 119, 0.42);
+}
+
+.calibNote {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 12px;
+  background: rgba(255, 217, 61, 0.11);
+  border: 1px solid rgba(255, 217, 61, 0.34);
+  color: #ffe38a;
+  font-size: clamp(10px, 2vw, 13px);
+  line-height: 1.35;
+  text-align: left;
+}
+
+.playBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: clamp(9px, 1.8vh, 14px) clamp(18px, 4vw, 30px);
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #3d9bff, #7c5cff);
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(14px, 2.8vw, 19px);
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(61, 155, 255, 0.42);
+  transition: transform 0.12s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.playBtn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(61, 155, 255, 0.55); }
+.playBtn:active { transform: scale(0.97); }
+
+.ghostBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: clamp(7px, 1.4vh, 11px) clamp(13px, 3vw, 20px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.07);
+  color: #dce9ff;
+  font-family: inherit;
+  font-size: clamp(11px, 2.2vw, 15px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+.ghostBtn:hover { background: rgba(255, 255, 255, 0.15); }
+
+.linkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: none;
+  color: #7ee8ff;
+  font-family: inherit;
+  font-size: clamp(10px, 2vw, 13px);
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.privacyNote {
+  margin: 0;
+  font-size: clamp(9px, 1.7vw, 11.5px);
+  color: rgba(160, 184, 216, 0.8);
+  line-height: 1.35;
+  max-width: 40ch;
+}
+
+/* ── loading ─────────────────────────────────────────────────────────────── */
+.loadingCard p {
+  margin: 0;
+  font-size: clamp(12px, 2.4vw, 16px);
+  color: #cfe3ff;
+}
+
+.spinner {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 4px solid rgba(126, 232, 255, 0.2);
+  border-top-color: #7ee8ff;
+  animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── pause ───────────────────────────────────────────────────────────────── */
+.pauseCard h2 {
+  margin: 0;
+  font-size: clamp(22px, 5vw, 34px);
+  color: #fff;
+}
+
+.pauseSub {
+  margin: 0;
+  font-size: clamp(12px, 2.3vw, 16px);
+  color: rgba(214, 231, 255, 0.85);
+}
+
+.pauseBtns,
+.resultBtns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* ── results ─────────────────────────────────────────────────────────────── */
+.starRow {
+  display: flex;
+  gap: clamp(6px, 1.6vw, 12px);
+  font-size: clamp(30px, 7vh, 52px);
+}
+
+.starOn {
+  color: #ffd93d;
+  filter: drop-shadow(0 3px 10px rgba(255, 217, 61, 0.6));
+  animation: starPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+
+.starOff { color: rgba(255, 255, 255, 0.22); }
+
+@keyframes starPop {
+  from { transform: scale(0) rotate(-40deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+.resultTitle {
+  margin: 0;
+  font-size: clamp(20px, 4.6vw, 32px);
+  font-weight: 800;
+  color: #fff;
+}
+
+.resultSub {
+  margin: 0;
+  font-size: clamp(11px, 2.2vw, 15px);
+  color: rgba(214, 231, 255, 0.85);
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+}
+
+.metricCell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: clamp(6px, 1.2vh, 10px) 4px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-width: 0;
+}
+
+.metricValue {
+  font-size: clamp(13px, 2.7vw, 20px);
+  font-weight: 800;
+  color: #7ee8ff;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.metricLabel {
+  font-size: clamp(8px, 1.6vw, 11px);
+  color: rgba(178, 199, 228, 0.9);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.nextUp {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: clamp(10px, 2vw, 13px);
+  color: #ffe38a;
+  line-height: 1.35;
+}
+
+/* ── the journey ─────────────────────────────────────────────────────────── */
+/* Level tag in the top bar, so "which level am I on" never needs a menu. */
+.levelTag {
+  margin-left: 8px;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 800;
+  color: #ffe38a;
+  background: rgba(255, 200, 60, 0.16);
+  border: 1px solid rgba(255, 200, 60, 0.42);
+  white-space: nowrap;
+}
+
+/* Intro: the level picker is the pips themselves — one screen, big targets. */
+.introLevels {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.introLevelWhat {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: clamp(11px, 2.2vw, 14px);
+  line-height: 1.3;
+}
+
+.introLevelWhat strong { color: #ffe38a; }
+.introLevelWhat span { color: rgba(206, 226, 255, 0.82); }
+
+/* Results: points, and why. The "why" is the part that teaches a child which
+   of the things they did actually earned them something. */
+.pointsBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.pointsTotal {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.pointsPlus {
+  font-size: clamp(26px, 6vw, 42px);
+  font-weight: 900;
+  color: #ffd93d;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 3px 14px rgba(255, 217, 61, 0.45);
+}
+
+.pointsWord {
+  font-size: clamp(11px, 2.2vw, 15px);
+  font-weight: 700;
+  color: rgba(255, 231, 150, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pointsRows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pointsRows li {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 9px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.05);
+  font-size: clamp(10px, 2vw, 13px);
+  animation: pointsIn 0.34s ease backwards;
+}
+
+.pointsRows li:nth-child(1) { animation-delay: 0.05s; }
+.pointsRows li:nth-child(2) { animation-delay: 0.13s; }
+.pointsRows li:nth-child(3) { animation-delay: 0.21s; }
+.pointsRows li:nth-child(4) { animation-delay: 0.29s; }
+.pointsRows li:nth-child(5) { animation-delay: 0.37s; }
+.pointsRows li:nth-child(6) { animation-delay: 0.45s; }
+
+@keyframes pointsIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: none; }
+}
+
+.pointsBest {
+  background: rgba(255, 217, 61, 0.16) !important;
+  border: 1px solid rgba(255, 217, 61, 0.42);
+}
+
+.pointsIcon { font-size: 13px; line-height: 1; }
+.pointsLabel { text-align: left; color: rgba(219, 233, 255, 0.94); }
+
+.pointsVal {
+  font-weight: 800;
+  color: #7ee8ff;
+  font-variant-numeric: tabular-nums;
+}
+
+.pointsTally {
+  margin: 0;
+  font-size: clamp(9px, 1.8vw, 12px);
+  color: rgba(178, 199, 228, 0.86);
+}
+
+.resultPath {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+}
+
+.unlockLine {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: clamp(11px, 2.2vw, 15px);
+  font-weight: 800;
+  color: #6ee7a8;
+}
+
+.adviceLine {
+  margin: 0;
+  font-size: clamp(10px, 2vw, 13px);
+  color: rgba(206, 226, 255, 0.82);
+  line-height: 1.35;
+}
+
+.resultWin {
+  border-color: rgba(110, 231, 168, 0.5);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.62), 0 0 0 1px rgba(110, 231, 168, 0.2) inset;
+}
+
+.badgeRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+}
+
+.badgeWon {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: clamp(9px, 1.8vw, 12px);
+  font-weight: 800;
+  color: #08111f;
+  background: linear-gradient(140deg, #ffd93d, #ffb347);
+  box-shadow: 0 3px 12px rgba(255, 179, 71, 0.4);
+}
+
+.detailToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: transparent;
+  color: rgba(178, 199, 228, 0.86);
+  font-size: clamp(9px, 1.8vw, 12px);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.detailToggle:hover { background: rgba(255, 255, 255, 0.07); color: #fff; }
+
+/* ── very short viewports: drop the optional rows rather than scroll ────── */
+@media (max-height: 620px) {
+  .pointsTally { display: none; }
+  .pointsRows {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
+  }
+  .introLevelWhat span { display: none; }
+}
+
+@media (max-height: 480px) {
+  .introIcon { font-size: clamp(24px, 6vh, 34px); }
+  .tagRow { display: none; }
+  .calibNote { display: none; }
+  .privacyNote { display: none; }
+  .pauseSub { display: none; }
+  .nextUp { display: none; }
+  .metricGrid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .metricCell:nth-child(n + 5) { display: none; }
+  .introCard, .pauseCard, .resultCard { gap: 4px; padding: 10px 14px; }
+  /* Keep the four rows that matter most: turns, correctness, best, unlock. */
+  .pointsRows li:nth-child(n + 5) { display: none; }
+  .badgeRow { display: none; }
+  .introLevelWhat { display: none; }
+}
+
+@media (max-width: 380px) {
+  .metricGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metricCell:nth-child(n + 5) { display: none; }
+  .pointsRows { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pointsRows li { animation: none; }
+}

@@ -1,0 +1,146 @@
+/* The level path. Sizes are in em so one --pipSize drives everything. */
+.path {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.sm { --pipSize: 20px; --trailW: 10px; }
+.md { --pipSize: 30px; --trailW: 16px; }
+.lg { --pipSize: 46px; --trailW: 26px; }
+
+/* `sm` is the size used on hub tiles, and a tile's width varies enormously
+   between a two-column phone and a four-column laptop. It scales with the
+   viewport rather than staying at its smallest everywhere, because on a tile
+   these pips are not a decoration — they are the one part that tells the child
+   where they are, and they have to be a comfortable tap target. */
+@media (min-width: 900px) {
+  .sm { --pipSize: 27px; --trailW: 13px; }
+}
+
+/* Two tile columns on a narrow phone leaves about 150px of tile width, and five
+   pips plus their trails have to fit inside it without wrapping. */
+@media (max-width: 380px) {
+  .sm { --pipSize: 17px; --trailW: 7px; }
+  .lg { --pipSize: 38px; --trailW: 18px; }
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* The trail sits to the left of its pip and is drawn at pip-centre height. */
+.trail {
+  position: absolute;
+  right: calc(100% - 1px);
+  top: calc(var(--pipSize) / 2 - 2px);
+  width: var(--trailW);
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.trailOn {
+  background: linear-gradient(90deg, #4ade80, #86efac);
+  box-shadow: 0 0 8px rgba(74, 222, 128, 0.5);
+}
+
+.pip {
+  width: var(--pipSize);
+  height: var(--pipSize);
+  margin-left: var(--trailW);
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.22);
+  background: rgba(12, 18, 34, 0.72);
+  color: #cfe0f5;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  font-size: calc(var(--pipSize) * 0.46);
+  line-height: 1;
+  padding: 0;
+  flex: none;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+}
+
+.step:first-child .pip {
+  margin-left: 0;
+}
+
+button.pip {
+  cursor: pointer;
+}
+
+button.pip:hover {
+  transform: scale(1.14);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+}
+
+button.pip:focus-visible {
+  outline: 3px solid #7dd3fc;
+  outline-offset: 2px;
+}
+
+.glyph {
+  font-size: calc(var(--pipSize) * 0.42);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── states ── */
+.cleared {
+  background: var(--pip, #6ee7a8);
+  border-color: color-mix(in srgb, var(--pip, #6ee7a8) 70%, white);
+  color: #08111f;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--pip, #6ee7a8) 55%, transparent);
+}
+
+.current {
+  border-color: var(--pip, #ffd76a);
+  color: #fff;
+  background: color-mix(in srgb, var(--pip, #ffd76a) 24%, rgba(12, 18, 34, 0.9));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pip, #ffd76a) 32%, transparent);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.open {
+  border-style: dashed;
+  border-color: rgba(255, 255, 255, 0.34);
+}
+
+.locked {
+  opacity: 0.34;
+  color: #8ba3c7;
+}
+
+.name {
+  font-size: calc(var(--pipSize) * 0.3);
+  margin-top: 4px;
+  color: #cfe0f5;
+  white-space: nowrap;
+  max-width: calc(var(--pipSize) + var(--trailW));
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.nameOff {
+  opacity: 0.4;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--pip, #ffd76a) 30%, transparent); }
+  50% { box-shadow: 0 0 0 8px color-mix(in srgb, var(--pip, #ffd76a) 8%, transparent); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .current { animation: none; }
+  button.pip:hover { transform: none; }
+}

@@ -1,0 +1,346 @@
+/* Settings sheet. Five small tabs, and a 2-column pane on short viewports, so
+   no pane ever needs to scroll — the same no-scroll rule as the rest of the AR
+   section. */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: max(8px, env(safe-area-inset-top)) 10px max(8px, env(safe-area-inset-bottom));
+  background: rgba(3, 6, 16, 0.76);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  overflow: hidden;
+  font-family: "Fredoka", system-ui, sans-serif;
+}
+
+.sheet {
+  width: min(94vw, 620px);
+  max-height: calc(100dvh - 16px);
+  display: flex;
+  flex-direction: column;
+  border-radius: clamp(16px, 3vw, 24px);
+  background: linear-gradient(165deg, rgba(24, 38, 78, 0.98), rgba(9, 14, 32, 0.99));
+  border: 1px solid rgba(126, 232, 255, 0.24);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.66);
+  overflow: hidden;
+}
+
+@supports not (height: 100dvh) {
+  .sheet { max-height: calc(100vh - 16px); }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(9px, 2vh, 14px) clamp(12px, 3vw, 20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  flex-shrink: 0;
+}
+
+.head h2 {
+  margin: 0;
+  font-size: clamp(14px, 3vw, 20px);
+  font-weight: 800;
+  color: #fff;
+}
+
+.close {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #cfe3ff;
+  cursor: pointer;
+}
+.close:hover { background: rgba(255, 255, 255, 0.18); }
+
+.tabs {
+  display: flex;
+  gap: 3px;
+  padding: 7px clamp(8px, 2vw, 14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.tab {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 2px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: rgba(178, 199, 228, 0.8);
+  font-family: inherit;
+  font-size: clamp(8.5px, 1.7vw, 11px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.tab svg { font-size: clamp(12px, 2.4vw, 15px); }
+.tab:hover { background: rgba(255, 255, 255, 0.07); color: #dce9ff; }
+
+.tabOn {
+  background: rgba(61, 155, 255, 0.2);
+  color: #7ee8ff;
+}
+
+.body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: clamp(6px, 1.4vh, 12px) clamp(10px, 2.5vw, 18px);
+  overflow: hidden;
+}
+
+/* Two columns when the viewport is short (phone in landscape, small laptop):
+   six rows become three, which fits without a scrollbar. */
+@media (max-height: 620px) {
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px 12px;
+    align-content: start;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: clamp(5px, 1.1vh, 9px) 2px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  min-width: 0;
+}
+.row:last-child { border-bottom: none; }
+
+.rowOff { opacity: 0.42; pointer-events: none; }
+
+.rowText {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  flex: 1;
+}
+
+.rowLabel {
+  font-size: clamp(11px, 2.2vw, 14px);
+  font-weight: 700;
+  color: #eaf3ff;
+  line-height: 1.25;
+}
+
+.rowLabel em {
+  font-style: normal;
+  color: #7ee8ff;
+  font-variant-numeric: tabular-nums;
+  margin-left: 5px;
+}
+
+.rowHint {
+  font-size: clamp(8.5px, 1.6vw, 11px);
+  color: rgba(160, 184, 216, 0.82);
+  line-height: 1.3;
+}
+
+/* Standing notes marked `.optional` go first: they are background an adult can
+   read on a taller screen, and dropping one buys back a whole grid cell for the
+   controls, which are the part that has to stay reachable. This starts at 620px
+   — the same point the sheet becomes a two-column grid — because that is where
+   a long hint rendered at half width first costs more rows than the note does.
+   Hints themselves go a little later. */
+@media (max-height: 620px) {
+  .optional { display: none; }
+}
+
+@media (max-height: 520px) {
+  .rowHint { display: none; }
+}
+
+.switch {
+  position: relative;
+  width: 44px;
+  height: 25px;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  cursor: pointer;
+  transition: background 0.18s;
+  padding: 0;
+}
+
+.switchOn { background: #38d477; border-color: #38d477; }
+
+.knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 19px;
+  height: 19px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.18s cubic-bezier(0.34, 1.4, 0.64, 1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+}
+
+.switchOn .knob { transform: translateX(19px); }
+
+.range {
+  width: clamp(90px, 26vw, 160px);
+  flex-shrink: 0;
+  accent-color: #3d9bff;
+  height: 22px;
+}
+
+.segments {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 3px;
+  flex-shrink: 0;
+  max-width: 58%;
+}
+
+.segment {
+  padding: 4px 9px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+  color: #c3d6f0;
+  font-family: inherit;
+  font-size: clamp(9px, 1.8vw, 12px);
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.segment:hover { background: rgba(255, 255, 255, 0.14); }
+
+.segmentOn {
+  background: #3d9bff;
+  border-color: #3d9bff;
+  color: #fff;
+}
+
+.stageHelp,
+.note {
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  padding: 7px 11px;
+  margin: 3px 0;
+  border-radius: 10px;
+  background: rgba(126, 232, 255, 0.09);
+  border: 1px solid rgba(126, 232, 255, 0.22);
+  color: #bfe4f5;
+  font-size: clamp(9px, 1.7vw, 11.5px);
+  line-height: 1.4;
+}
+
+.stageHelp strong,
+.note strong { color: #fff; }
+
+.note svg { flex-shrink: 0; margin-top: 2px; }
+
+.danger {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 92, 114, 0.5);
+  background: rgba(255, 92, 114, 0.12);
+  color: #ff9aa8;
+  font-family: inherit;
+  font-size: clamp(9.5px, 1.9vw, 12px);
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.danger:hover { background: rgba(255, 92, 114, 0.22); }
+
+.confirmRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 11px;
+  border-radius: 10px;
+  background: rgba(255, 92, 114, 0.1);
+  border: 1px solid rgba(255, 92, 114, 0.36);
+  font-size: clamp(9.5px, 1.8vw, 12px);
+  color: #ffd3d9;
+}
+
+.confirmRow > div { display: flex; gap: 6px; }
+
+.cancel {
+  padding: 7px 13px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(255, 255, 255, 0.08);
+  color: #dce9ff;
+  font-family: inherit;
+  font-size: clamp(9.5px, 1.9vw, 12px);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: clamp(7px, 1.6vh, 12px) clamp(10px, 2.5vw, 18px);
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  flex-shrink: 0;
+}
+
+.reset {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #b2c7e4;
+  font-family: inherit;
+  font-size: clamp(9.5px, 1.9vw, 12px);
+  font-weight: 700;
+  cursor: pointer;
+}
+.reset:hover { background: rgba(255, 255, 255, 0.14); }
+
+.footNote {
+  flex: 1;
+  text-align: center;
+  font-size: clamp(8.5px, 1.6vw, 11px);
+  color: rgba(150, 172, 202, 0.75);
+}
+
+.done {
+  padding: 7px 20px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #3d9bff, #7c5cff);
+  color: #fff;
+  font-family: inherit;
+  font-size: clamp(11px, 2.1vw, 14px);
+  font-weight: 800;
+  cursor: pointer;
+}
+.done:active { transform: scale(0.97); }

@@ -1,0 +1,677 @@
+/* AR games hub.
+
+   The layout is a fixed-height flex column: header, callout, group trail,
+   blurb, board (the only flexible row), footer. The board fills whatever is
+   left and its grid divides that space exactly, so tiles shrink instead of the
+   page growing. Nothing here can scroll.
+
+   When space runs out the order of sacrifice is deliberate: the game
+   description goes first, then the domain chips, then the callout and the group
+   blurb. The level pips are the LAST thing to go, because they are the only
+   part of a tile that tells a child where they are. */
+
+.hub {
+  position: fixed;
+  inset: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: radial-gradient(ellipse at 20% -10%, #1b2c5e 0%, #0a1024 55%, #05070f 100%);
+  color: #eaf3ff;
+  font-family: "Fredoka", system-ui, sans-serif;
+  padding: max(6px, env(safe-area-inset-top)) 10px max(6px, env(safe-area-inset-bottom));
+  gap: clamp(4px, 0.9vh, 10px);
+  z-index: 800;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+@supports not (height: 100dvh) {
+  .hub { height: 100vh; }
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(600px 300px at 85% 15%, rgba(124, 92, 255, 0.16), transparent 70%),
+    radial-gradient(500px 260px at 10% 85%, rgba(46, 230, 208, 0.12), transparent 70%);
+}
+
+/* ── header ──────────────────────────────────────────────────────────────── */
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+.headTitle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: clamp(14px, 3vw, 22px);
+  font-weight: 800;
+  background: linear-gradient(90deg, #7ee8ff, #b98cff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.headIcon {
+  -webkit-text-fill-color: #7ee8ff;
+  color: #7ee8ff;
+  font-size: clamp(15px, 3vw, 22px);
+}
+
+.headRight { display: flex; align-items: center; gap: 6px; }
+
+.iconBtn {
+  width: clamp(32px, 6.5vw, 40px);
+  height: clamp(32px, 6.5vw, 40px);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  color: #cfe3ff;
+  font-size: clamp(12px, 2.4vw, 16px);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+.iconBtn:hover { background: rgba(255, 255, 255, 0.16); }
+.iconBtn:active { transform: scale(0.92); }
+
+/* Points and rank. The thin bar underneath is progress to the next rank, so
+   the number always has a visible "nearly there" to it. */
+.pointsChip {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: clamp(3px, 0.7vh, 6px) clamp(8px, 1.6vw, 12px);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 217, 61, 0.42);
+  background: linear-gradient(100deg, rgba(255, 217, 61, 0.2), rgba(255, 217, 61, 0.06));
+  color: #ffe38a;
+  font-family: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: background 0.15s, transform 0.1s;
+}
+.pointsChip:hover { background: linear-gradient(100deg, rgba(255, 217, 61, 0.3), rgba(255, 217, 61, 0.12)); }
+.pointsChip:active { transform: scale(0.96); }
+
+.rankIcon { font-size: clamp(12px, 2.4vw, 17px); line-height: 1; }
+
+.pointsNum {
+  font-size: clamp(11px, 2.2vw, 16px);
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+
+.rankBar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: var(--p, 0%);
+  background: linear-gradient(90deg, #ffd93d, #ff9f2e);
+  border-radius: 0 3px 0 0;
+}
+
+/* ── callout ─────────────────────────────────────────────────────────────── */
+.callout { flex-shrink: 0; z-index: 1; }
+
+.calloutBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: clamp(6px, 1.2vh, 11px) clamp(10px, 2vw, 16px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 217, 61, 0.4);
+  background: linear-gradient(100deg, rgba(255, 217, 61, 0.16), rgba(255, 217, 61, 0.05));
+  color: #ffe38a;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.calloutBtn:hover { background: linear-gradient(100deg, rgba(255, 217, 61, 0.26), rgba(255, 217, 61, 0.1)); }
+.calloutBtn:active { transform: scale(0.99); }
+
+.calloutIcon { font-size: clamp(18px, 3.6vw, 26px); flex-shrink: 0; }
+
+.calloutText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.calloutText strong {
+  font-size: clamp(11px, 2.2vw, 15px);
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calloutText em {
+  font-style: normal;
+  font-size: clamp(9px, 1.8vw, 12px);
+  color: rgba(255, 227, 138, 0.85);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* A word next to the arrow: "Play" is unambiguous where a chevron is not. */
+.calloutGo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: clamp(4px, 0.9vh, 8px) clamp(9px, 1.8vw, 15px);
+  border-radius: 999px;
+  background: #ffd93d;
+  color: #1a1200;
+  font-size: clamp(10px, 2vw, 14px);
+  font-weight: 900;
+}
+
+/* ── the group trail ─────────────────────────────────────────────────────── */
+.groups {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 4px;
+  flex-shrink: 0;
+  z-index: 1;
+  position: relative;
+}
+
+/* A dotted line behind the icons, so eight buttons read as one path rather
+   than eight unrelated choices. */
+.groups::before {
+  content: "";
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: clamp(16px, 2.4vh, 24px);
+  height: 0;
+  border-top: 2px dashed rgba(255, 255, 255, 0.13);
+  pointer-events: none;
+}
+
+.groupPill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2px;
+  padding: clamp(3px, 0.7vh, 6px) 2px;
+  min-width: 0;
+  border-radius: 13px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(200, 218, 242, 0.85);
+  font-family: inherit;
+  font-size: clamp(7.5px, 1.5vw, 11px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+.groupPill:hover { background: rgba(255, 255, 255, 0.09); }
+.groupPill:active { transform: scale(0.95); }
+
+/* The ring is the group's completion: a conic sweep of cleared levels. */
+.ring {
+  position: relative;
+  width: clamp(28px, 4.4vh, 40px);
+  height: clamp(28px, 4.4vh, 40px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: conic-gradient(
+    var(--ringC, #7ee8ff) calc(var(--p, 0) * 1%),
+    rgba(255, 255, 255, 0.14) 0
+  );
+  flex-shrink: 0;
+}
+
+.ringIn {
+  width: calc(100% - 5px);
+  height: calc(100% - 5px);
+  border-radius: 50%;
+  background: #0d1530;
+  display: grid;
+  place-items: center;
+}
+
+.groupIcon { font-size: clamp(13px, 2.4vh, 20px); line-height: 1; }
+
+.ringDone {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: clamp(12px, 1.8vh, 16px);
+  height: clamp(12px, 1.8vh, 16px);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #38d477;
+  color: #04140a;
+  font-size: clamp(7px, 1.1vh, 10px);
+  border: 2px solid #0d1530;
+}
+
+.groupName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.groupOn {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.13);
+  border-color: currentColor;
+}
+
+/* Group accent colours: the active pill's border and its completion ring. */
+.teal { --ringC: #2ee6d0; }
+.blue { --ringC: #3d9bff; }
+.red { --ringC: #ff5c72; }
+.purple { --ringC: #b98cff; }
+.orange { --ringC: #ff9f2e; }
+.pink { --ringC: #ff7ac0; }
+.green { --ringC: #38d477; }
+.yellow { --ringC: #ffd93d; }
+
+.teal.groupOn { border-color: #2ee6d0; box-shadow: 0 4px 16px rgba(46, 230, 208, 0.3); }
+.blue.groupOn { border-color: #3d9bff; box-shadow: 0 4px 16px rgba(61, 155, 255, 0.3); }
+.red.groupOn { border-color: #ff5c72; box-shadow: 0 4px 16px rgba(255, 92, 114, 0.3); }
+.purple.groupOn { border-color: #b98cff; box-shadow: 0 4px 16px rgba(185, 140, 255, 0.3); }
+.orange.groupOn { border-color: #ff9f2e; box-shadow: 0 4px 16px rgba(255, 159, 46, 0.3); }
+.pink.groupOn { border-color: #ff7ac0; box-shadow: 0 4px 16px rgba(255, 122, 192, 0.3); }
+.green.groupOn { border-color: #38d477; box-shadow: 0 4px 16px rgba(56, 212, 119, 0.3); }
+.yellow.groupOn { border-color: #ffd93d; box-shadow: 0 4px 16px rgba(255, 217, 61, 0.3); }
+
+.groupBlurb {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  font-size: clamp(9px, 1.8vw, 12.5px);
+  color: rgba(178, 199, 228, 0.85);
+  z-index: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.groupBlurb strong { color: #fff; font-size: clamp(11px, 2.2vw, 15px); }
+
+.groupCount {
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(126, 232, 255, 0.14);
+  border: 1px solid rgba(126, 232, 255, 0.32);
+  color: #a5e9ff;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── board ───────────────────────────────────────────────────────────────── */
+.board {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: stretch;
+  z-index: 1;
+}
+
+.grid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: clamp(5px, 1vw, 10px);
+}
+
+/* Portrait: two columns, four rows — the same eight tiles, taller than wide. */
+@media (max-aspect-ratio: 9 / 10) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.pageBtn {
+  align-self: center;
+  width: clamp(26px, 4.5vw, 38px);
+  height: clamp(42px, 9vh, 68px);
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: #cfe3ff;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: clamp(12px, 2.4vw, 17px);
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.pageBtn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.16); }
+.pageBtn:disabled { opacity: 0.25; cursor: default; }
+.pagePrev { margin-right: clamp(4px, 1vw, 8px); }
+.pageNext { margin-left: clamp(4px, 1vw, 8px); }
+
+/* ── tiles ───────────────────────────────────────────────────────────────── */
+/* The tile is a container, not a button: the play area and the level pips are
+   siblings, because a button nested inside a button is invalid HTML and
+   browsers resolve the click on it unpredictably. */
+.tile {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: clamp(12px, 2vw, 20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+  color: #eaf3ff;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32);
+}
+
+/* Colour is a left edge plus a wash, not a full fill — a grid of eight
+   saturated blocks is exactly the visual clutter this population does not
+   need. */
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--accent, #3d9bff);
+  z-index: 2;
+}
+
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 90% at 0% 0%, color-mix(in srgb, var(--accent, #3d9bff) 22%, transparent), transparent 60%);
+}
+
+/* color-mix is widely supported, but fall back to a flat tint where it is not. */
+@supports not (background: color-mix(in srgb, red 10%, blue)) {
+  .tile::after { background: linear-gradient(155deg, rgba(61, 155, 255, 0.14), transparent 60%); }
+}
+
+.tile.teal { --accent: #2ee6d0; }
+.tile.blue { --accent: #3d9bff; }
+.tile.red { --accent: #ff5c72; }
+.tile.purple { --accent: #b98cff; }
+.tile.orange { --accent: #ff9f2e; }
+.tile.pink { --accent: #ff7ac0; }
+.tile.green { --accent: #38d477; }
+.tile.yellow { --accent: #ffd93d; }
+
+.tileBig {
+  border-color: rgba(255, 217, 61, 0.45);
+  box-shadow: 0 8px 26px rgba(255, 217, 61, 0.18);
+}
+
+/* A finished journey is worth showing on the tile itself. */
+.tileDone {
+  border-color: rgba(56, 212, 119, 0.5);
+  box-shadow: 0 8px 26px rgba(56, 212, 119, 0.18);
+}
+
+/* The whole upper area is the play button, so the common case — "play the level
+   I am on" — is one large tap with no menu in between. */
+.tilePlay {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Centred, not top-aligned. A tile is much taller than its content on a big
+     screen, and pushing the text to the top left a dead void in the middle of
+     every tile — which reads as "something failed to load" rather than as
+     space. */
+  justify-content: center;
+  gap: clamp(2px, 0.6vh, 6px);
+  padding: clamp(6px, 1.3vh, 12px) clamp(8px, 1.4vw, 14px) clamp(2px, 0.5vh, 5px);
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.tilePlay:hover .tileTitle { color: #fff; text-decoration: underline solid rgba(255, 255, 255, 0.35); }
+.tilePlay:active { transform: scale(0.99); }
+.tilePlay:focus-visible { outline: 3px solid #7dd3fc; outline-offset: -3px; border-radius: inherit; }
+
+.tileTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+}
+
+/* The picture leads, because a good proportion of these children cannot read
+   the title. On a tall tile it grows into the space rather than leaving a void. */
+.tileIcon {
+  font-size: clamp(18px, 4.6vh, 46px);
+  line-height: 1.05;
+}
+
+/* Which level this child is on — the first thing to read on a played tile. */
+.levelFlag {
+  flex-shrink: 0;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(255, 217, 61, 0.16);
+  border: 1px solid rgba(255, 217, 61, 0.42);
+  color: #ffe38a;
+  font-size: clamp(8px, 1.4vh, 11px);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.doneFlag {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(56, 212, 119, 0.18);
+  border: 1px solid rgba(56, 212, 119, 0.45);
+  color: #8bf0b4;
+  font-size: clamp(8px, 1.4vh, 11px);
+}
+
+.newBadge {
+  flex-shrink: 0;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: rgba(185, 140, 255, 0.18);
+  border: 1px solid rgba(185, 140, 255, 0.42);
+  color: #d9c2ff;
+  font-size: clamp(7px, 1.3vh, 10px);
+  font-weight: 800;
+}
+
+.tileTitle {
+  font-size: clamp(10.5px, 2vh, 16px);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tileHow {
+  font-size: clamp(8px, 1.5vh, 11.5px);
+  line-height: 1.3;
+  color: rgba(190, 210, 238, 0.85);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tileMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 2px;
+}
+
+.life,
+.chip {
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: clamp(7px, 1.3vh, 10px);
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(206, 224, 246, 0.9);
+}
+
+.life {
+  color: #8bf0b4;
+  border-color: rgba(56, 212, 119, 0.36);
+  background: rgba(56, 212, 119, 0.12);
+}
+
+/* The journey row. Never hidden: it is the only part of the tile that says
+   where this child is, and a locked pip is how they see there is more. */
+.tileBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  padding: clamp(4px, 0.8vh, 8px) clamp(6px, 1vw, 10px) clamp(5px, 1vh, 9px) clamp(8px, 1.4vw, 14px);
+  position: relative;
+  z-index: 1;
+  /* A hairline and a slightly darker ground separate the path from the game's
+     description, so the pips read as a distinct thing to look at and touch
+     rather than as more of the same text block. */
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(3, 7, 18, 0.28);
+}
+
+.speakBtn {
+  width: clamp(22px, 3.4vh, 28px);
+  height: clamp(22px, 3.4vh, 28px);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+  color: #a5c9f5;
+  font-size: clamp(9px, 1.5vh, 13px);
+  cursor: pointer;
+}
+.speakBtn:hover { background: rgba(255, 255, 255, 0.18); color: #fff; }
+.speakBtn:active { transform: scale(0.9); }
+
+.setupNote {
+  font-size: clamp(7px, 1.3vh, 10px);
+  font-weight: 700;
+  color: rgba(160, 182, 212, 0.8);
+}
+
+/* Order of sacrifice as space runs out. */
+@media (max-height: 700px) {
+  .tileHow { -webkit-line-clamp: 1; }
+}
+@media (max-height: 620px) {
+  .tileHow { display: none; }
+}
+@media (max-height: 540px) {
+  .tileMeta { display: none; }
+}
+@media (max-height: 480px) {
+  .callout { display: none; }
+  .groupBlurb { display: none; }
+  .groupName { display: none; }
+}
+/* Two columns on a narrow phone leaves ~150px per tile: the speaker goes so the
+   five pips keep their full size. */
+@media (max-width: 380px) {
+  .speakBtn { display: none; }
+}
+
+/* ── footer ──────────────────────────────────────────────────────────────── */
+.foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 0;
+  font-size: clamp(8px, 1.6vw, 11px);
+  color: rgba(150, 172, 202, 0.8);
+  z-index: 1;
+  min-height: 20px;
+}
+
+.dots { display: flex; gap: 6px; }
+
+/* Bigger than a decorative dot: this is a control a child uses. */
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.24);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.dot:hover { background: rgba(255, 255, 255, 0.45); }
+.dotOn { background: #7ee8ff; transform: scale(1.3); }
+
+.footNote {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footCount,
+.footTotal { white-space: nowrap; }
+
+@media (max-width: 520px) {
+  .footNote { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dotOn { transform: none; }
+}

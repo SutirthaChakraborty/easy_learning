@@ -7,10 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predev": "node scripts/setup-mediapipe.mjs",
+    "prebuild": "node scripts/setup-mediapipe.mjs",
+    "setup:ar": "node scripts/setup-mediapipe.mjs"
   },
   "dependencies": {
     "@fontsource/fredoka": "^5.2.10",
+    "@mediapipe/tasks-vision": "^1.0.1",
     "@reduxjs/toolkit": "^2.11.2",
     "firebase": "^12.12.1",
     "framer-motion": "^12.38.0",

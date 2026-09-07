@@ -18,6 +18,10 @@ import ListenModule from "./pages/modules/ListenModule";
 import ReadModule from "./pages/modules/ReadModule";
 import WriteModule from "./pages/modules/WriteModule";
 import SpeakModule from "./pages/modules/SpeakModule";
+import GamesPage from "./pages/GamesPage";
+import ARHub from "./ar/pages/ARHub";
+import ARGame from "./ar/pages/ARGame";
+import ARInsights from "./ar/pages/ARInsights";
 import Login from "./pages/Login";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
@@ -44,6 +48,12 @@ function AnimatedRoutes() {
         <Route path="/module/read/:subject" element={<ReadModule />} />
         <Route path="/module/write/:subject" element={<WriteModule />} />
         <Route path="/module/speak/:subject" element={<SpeakModule />} />
+        <Route path="/games" element={<GamesPage />} />
+        {/* Camera (MediaPipe) games. `/games/ar/insights` is matched before the
+            :gameId route so it cannot be swallowed as a game id. */}
+        <Route path="/games/ar" element={<ARHub />} />
+        <Route path="/games/ar/insights" element={<ARInsights />} />
+        <Route path="/games/ar/:gameId" element={<ARGame />} />
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUs />} />
@@ -63,11 +73,15 @@ function AnimatedRoutes() {
 
 function AppLayout() {
   const location = useLocation();
-  const hideNavbar = ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
+  // The camera games own the whole viewport: they must not scroll, and a navbar
+  // above them would be a target a child reaches into by accident. The 3D scene
+  // is dropped too — no point burning GPU behind a full-screen camera feed.
+  const isAR = location.pathname.startsWith("/games/ar");
+  const hideNavbar = isAR || ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
   // Home, About Us, Contact Us, the question modules and the games pages all get the
   // same full-viewport video background, and the role-select gate + every login page
   // share the RoboticBackground instead of the 3D brick scene
-  const hideBackground3D = [
+  const hideBackground3D = isAR || [
     "/", "/home", "/about-us", "/contact-us",
     "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login",
   ].includes(location.pathname)
