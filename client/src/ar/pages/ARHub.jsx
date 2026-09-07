@@ -161,6 +161,7 @@ export default function ARHub() {
 
   return (
     <div className={styles.hub} ref={wrapRef} data-group={group.id}>
+      <div className={styles.overlay} aria-hidden />
       <div className={styles.glow} aria-hidden />
 
       <header className={styles.head}>
