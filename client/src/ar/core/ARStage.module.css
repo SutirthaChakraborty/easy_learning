@@ -25,21 +25,26 @@
   .stage { height: 100vh; }
 }
 
-.video,
-.canvas {
+.video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-.video {
-  object-fit: cover;
+  /* `contain`, never `cover`. Cropping the camera to the screen's shape threw
+     away up to two thirds of the horizontal field of view on a phone held
+     upright — so a child reaching sideways vanished from a picture that is the
+     whole point of the app, and the reach calibration recorded an envelope
+     shaped by the crop rather than by the child. Letterbox bars are a smaller
+     cost than losing the camera. */
+  object-fit: contain;
   transition: opacity 0.35s ease;
   background: #05070f;
 }
 
+/* Sized and positioned in JS to exactly the letterboxed picture, so stage space
+   and camera space are the same rectangle (see layoutCanvas in ARStage.jsx). */
 .canvas {
+  position: absolute;
   pointer-events: none;
 }
 

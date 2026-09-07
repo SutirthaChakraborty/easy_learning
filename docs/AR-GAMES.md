@@ -74,11 +74,44 @@ camera → MediaPipe → tracker (normalised frame) → engine (game logic)
 | **stage** | `[0,1]` over the visible play area, mirrored so x grows to the *child's* right |
 | **pixel** | stage × canvas size, for drawing only |
 
-The video is rendered `object-fit: cover`, so part of the frame is cropped.
-`makeStageTransform` reproduces that exact crop — which is why a fingertip
-drawn at the child's fingertip actually lands on the target they are reaching
-for. Radii are always a fraction of the stage's **shorter** side, and distances
-are compared with `aspectDist`, so a circle is a circle in both orientations.
+**The stage is the camera picture, and none of the camera is thrown away.** The
+video is rendered `object-fit: contain` and `layoutCanvas()` in `ARStage.jsx`
+sizes and positions the canvas to exactly the letterboxed picture, so stage space
+and video space are the same rectangle. `makeStageTransform` is then a mirror and
+a scale, which is why a fingertip drawn at the child's fingertip lands on the
+target they are reaching for. Radii are always a fraction of the stage's
+**shorter** side, and distances are compared with `aspectDist`, so a circle is a
+circle in both orientations.
+
+This used to be `object-fit: cover`, and the difference is not cosmetic. Cropping
+a 4:3 camera to a phone's portrait shape discarded **65 % of the horizontal field
+of view** (52 % on a tablet held upright, 17 % vertically on a laptop). A child
+reaching sideways left the picture while still being tracked, so their own hand
+vanished from the one thing the app is built around — and, worse, *Set Up My
+Space* measured their reach inside that crop and recorded an envelope shaped by
+the CSS rather than by the child.
+
+The camera request is also orientation-aware: `tracker.js` asks for a portrait
+frame when the window is taller than it is wide, because a phone will usually
+return a genuinely portrait stream from a rotated sensor, which fills far more of
+the screen than a landscape frame letterboxed into a tall window. The request is
+`ideal`, never `exact` — a device with only landscape modes must be free to hand
+back its full frame rather than crop its sensor to satisfy us. Whatever arrives,
+`contain` guarantees all of it is shown; the request only decides how much of the
+screen the picture fills.
+
+| viewport | camera returned | picture on screen | FOV kept |
+| --- | --- | --- | --- |
+| phone portrait 390×844 | 720×960 | 390×520 | 100 % |
+| phone landscape 844×390 | 960×720 | 520×390 | 100 % |
+| tablet portrait 820×1180 | 720×960 | 820×1093 | 100 % |
+| laptop 1440×900 | 960×720 | 1200×900 | 100 % |
+
+A reach calibration is stamped with the space it was measured in
+(`profile.reachSpace`, currently `contain-1`). One from the old cropped space is
+ignored rather than converted — converting would need the stage aspect it was
+captured at, which was never recorded — so the hub asks for *Set Up My Space*
+again, which takes under a minute.
 
 ### The game clock (`core/clock.js`)
 

@@ -22,7 +22,7 @@ import {
   FaInfoCircle, FaTrash, FaSync, FaRoute, FaExclamationTriangle,
 } from 'react-icons/fa'
 import { aggregateLocal, localSessions, clearLocalSessions, flushPendingSessions } from '../core/telemetry'
-import { loadProfile, CAPABILITIES } from '../core/profile'
+import { loadProfile, CAPABILITIES, REACH_SPACE } from '../core/profile'
 import { DOMAIN_LABELS, LIFE_SKILL_LABELS, GROUPS } from '../catalog/groups'
 import { GAMES, GAME_BY_ID } from '../catalog/games'
 import { LEVELS, journeySnapshot, tileProgress, hasJourney } from '../core/journey'
@@ -812,7 +812,10 @@ function Motor({ local, profile, sessions }) {
       </Card>
 
       <Card title="Reach envelope" note="The calibrated play space every game places targets inside.">
-        {profile.reach ? (
+        {/* A calibration from the old cropped camera space is not shown as a
+            current measurement — it is no longer used to place targets, and
+            drawing it here would suggest otherwise. */}
+        {profile.reach && profile.reachSpace === REACH_SPACE ? (
           <div className={styles.reachBox}>
             <div className={styles.reachFrame}>
               <div

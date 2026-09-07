@@ -9,10 +9,16 @@
  *                 Every target position and every hit test lives here.
  *   PIXEL space   stage space × stage size, for canvas drawing.
  *
- * The video is rendered with `object-fit: cover`, so part of the frame is
- * cropped. `makeStageTransform` builds the exact same crop MediaPipe never sees,
- * which is why a fingertip drawn at the child's fingertip actually lands on the
- * target they are reaching for.
+ * The video is rendered with `object-fit: contain` and the canvas is fitted to
+ * exactly the letterboxed picture, so STAGE space and VIDEO space cover the same
+ * rectangle and no part of the camera frame is ever discarded. `makeStageTransform`
+ * is then a mirror and a scale, which is why a fingertip drawn at the child's
+ * fingertip lands on the target they are reaching for.
+ *
+ * It still computes the general `cover` crop rather than assuming the two
+ * rectangles match. That is deliberate: it costs nothing when they do (the crop
+ * terms come out at zero), and it keeps hit-testing correct rather than subtly
+ * offset if anything ever renders the camera into a box of a different shape.
  */
 
 export const clamp = (v, lo = 0, hi = 1) => (v < lo ? lo : v > hi ? hi : v)

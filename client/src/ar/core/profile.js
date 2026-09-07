@@ -117,6 +117,21 @@ export function resetProfile() {
 }
 
 /**
+ * Which coordinate space a stored reach calibration was measured in.
+ *
+ * Reach is stored as a fraction of the stage, so what those fractions *mean*
+ * depends on how the camera is fitted to the screen. Boxes recorded while the
+ * video was `object-fit: cover` were measured inside a centre-crop that
+ * discarded up to two thirds of the camera's width; reusing those numbers now
+ * that the whole frame is shown would place targets far outside the arc the
+ * child actually swept. A calibration from the old space is therefore ignored
+ * rather than converted — the conversion would need the exact stage aspect it
+ * was captured at, which was never recorded, and *Set Up My Space* takes under
+ * a minute.
+ */
+export const REACH_SPACE = 'contain-1'
+
+/**
  * The reach envelope targets are placed inside.
  * Priority: calibrated box → seated/standing default from settings.
  * Always inset slightly so a target is never half off-screen.
@@ -125,7 +140,7 @@ export function reachBox() {
   const p = loadProfile()
   const s = getSettings()
   const base = baseReachBox(s)
-  if (!p.reach) return base
+  if (!p.reach || p.reachSpace !== REACH_SPACE) return base
   const r = p.reach
   const box = {
     minX: clamp(Math.min(r.minX, r.maxX), 0.03, 0.9),
@@ -164,6 +179,7 @@ export function scaledReachBox(eccentricity = 1) {
 export function saveReachCalibration(box, meta = {}) {
   const p = loadProfile()
   p.reach = box
+  p.reachSpace = REACH_SPACE
   p.reachCalibratedAt = new Date().toISOString()
   p.reachMeta = meta
   saveProfile(p)
@@ -171,7 +187,8 @@ export function saveReachCalibration(box, meta = {}) {
 }
 
 export function isCalibrated() {
-  return Boolean(loadProfile().reach)
+  const p = loadProfile()
+  return Boolean(p.reach && p.reachSpace === REACH_SPACE)
 }
 
 // ── capability updates ───────────────────────────────────────────────────────

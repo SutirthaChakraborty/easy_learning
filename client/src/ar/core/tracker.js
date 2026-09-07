@@ -152,11 +152,27 @@ export class ARTracker {
         throw new Error('CAMERA_UNSUPPORTED')
       }
 
+      // Ask for the orientation the screen is actually in. A phone held upright
+      // will usually hand back a genuinely portrait stream — its sensor is
+      // physically rotated — which fills far more of the screen than a
+      // landscape frame letterboxed into a tall window.
+      //
+      // These are `ideal`, never `exact`, on purpose: a device that has only
+      // landscape modes must be free to ignore the request and give us its full
+      // frame rather than crop its sensor to satisfy us. Whatever comes back,
+      // `object-fit: contain` and the canvas fitted to it mean the whole frame
+      // is shown and nothing is thrown away — this only decides how much of the
+      // screen the picture gets to fill.
+      const portrait =
+        typeof window !== 'undefined' && window.innerHeight > window.innerWidth
+      const longSide = Math.max(this.opts.width, this.opts.height)
+      const shortSide = Math.min(this.opts.width, this.opts.height)
+
       this.stream = await navigator.mediaDevices.getUserMedia({
         video: {
           facingMode: 'user',
-          width: { ideal: this.opts.width },
-          height: { ideal: this.opts.height },
+          width: { ideal: portrait ? shortSide : longSide },
+          height: { ideal: portrait ? longSide : shortSide },
           frameRate: { ideal: 30, max: 60 },
         },
         audio: false,

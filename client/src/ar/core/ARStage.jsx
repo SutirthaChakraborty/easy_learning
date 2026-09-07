@@ -126,36 +126,62 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
     }
   }, [])
 
-  // ── canvas sizing ──────────────────────────────────────────────────────────
-  useLayoutEffect(() => {
+  // ── canvas sizing: the stage IS the camera picture ─────────────────────────
+  //
+  // The video is `object-fit: contain`, so the whole camera frame is always
+  // visible and letterboxed rather than centre-cropped to fill the screen. That
+  // matters more here than it would in most apps: cropping to a phone's portrait
+  // shape threw away about two thirds of the horizontal field of view, so a
+  // child reaching sideways left the picture while still being tracked, and the
+  // reach calibration measured an envelope that was an artefact of the crop.
+  //
+  // The canvas is then sized and positioned to exactly the letterboxed picture,
+  // which is what makes the rest of the system fall out for free: "stage space"
+  // becomes the camera frame, every game's 0..1 layout lands where the child can
+  // actually be seen, and `aspectDist` gets the true camera aspect. The bars
+  // above and below are ordinary page background with the HUD over them.
+  const layoutCanvas = useCallback(() => {
     const canvas = canvasRef.current
     const wrap = wrapRef.current
     if (!canvas || !wrap) return
+    const rect = wrap.getBoundingClientRect()
+    const video = videoRef.current
+    const vw = video?.videoWidth || 0
+    const vh = video?.videoHeight || 0
 
-    const resize = () => {
-      const rect = wrap.getBoundingClientRect()
-      const dpr = Math.min(window.devicePixelRatio || 1, 2) // 2 is plenty; 3 halves fps
-      const w = Math.max(1, Math.round(rect.width))
-      const h = Math.max(1, Math.round(rect.height))
-      canvas.width = Math.round(w * dpr)
-      canvas.height = Math.round(h * dpr)
-      canvas.style.width = `${w}px`
-      canvas.style.height = `${h}px`
-      const ctx = canvas.getContext('2d')
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      viewRef.current = makeView(ctx, w, h, dpr)
-      trackerRef.current?.setStageSize(w, h)
-    }
+    // Before the camera reports its size there is nothing to letterbox against,
+    // so the canvas covers the wrap and the intro/countdown still draw.
+    const fit = vw && vh ? Math.min(rect.width / vw, rect.height / vh) : 0
+    const w = Math.max(1, Math.round(fit ? vw * fit : rect.width))
+    const h = Math.max(1, Math.round(fit ? vh * fit : rect.height))
+    const left = Math.round((rect.width - w) / 2)
+    const top = Math.round((rect.height - h) / 2)
 
-    resize()
-    const ro = new ResizeObserver(resize)
+    const dpr = Math.min(window.devicePixelRatio || 1, 2) // 2 is plenty; 3 halves fps
+    canvas.width = Math.round(w * dpr)
+    canvas.height = Math.round(h * dpr)
+    canvas.style.width = `${w}px`
+    canvas.style.height = `${h}px`
+    canvas.style.left = `${left}px`
+    canvas.style.top = `${top}px`
+    const ctx = canvas.getContext('2d')
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+    viewRef.current = makeView(ctx, w, h, dpr)
+    trackerRef.current?.setStageSize(w, h)
+  }, [])
+
+  useLayoutEffect(() => {
+    const wrap = wrapRef.current
+    if (!wrap) return
+    layoutCanvas()
+    const ro = new ResizeObserver(layoutCanvas)
     ro.observe(wrap)
-    window.addEventListener('orientationchange', resize)
+    window.addEventListener('orientationchange', layoutCanvas)
     return () => {
       ro.disconnect()
-      window.removeEventListener('orientationchange', resize)
+      window.removeEventListener('orientationchange', layoutCanvas)
     }
-  }, [])
+  }, [layoutCanvas])
 
   // ── round lifecycle ────────────────────────────────────────────────────────
   // Declared before `makeApi` because the api's `finish()` closes over it.
@@ -569,6 +595,11 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
         playsInline
         muted
         autoPlay
+        // The camera's own size is not known until it reports it, and it is what
+        // the whole stage is laid out against — so the canvas is re-fitted the
+        // moment it arrives, and again if the track ever changes resolution.
+        onLoadedMetadata={layoutCanvas}
+        onResize={layoutCanvas}
         style={{
           transform: settings.mirrorView ? 'scaleX(-1)' : 'none',
           opacity: phase === 'intro' || phase === 'error' ? 0.25 : 1,
