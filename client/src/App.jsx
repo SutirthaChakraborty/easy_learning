@@ -13,16 +13,12 @@ import Background3D from "./components/Background3D/Background3D";
 import Navbar from "./components/Navbar/Navbar";
 import RoleSelect from "./pages/RoleSelect";
 import Home from "./pages/Home";
-import Learn from "./pages/Learn";
 import SubjectPage from "./pages/SubjectPage";
-import GamesPage from "./pages/GamesPage";
 import ListenModule from "./pages/modules/ListenModule";
 import ReadModule from "./pages/modules/ReadModule";
 import WriteModule from "./pages/modules/WriteModule";
 import SpeakModule from "./pages/modules/SpeakModule";
-import SpellingGame from "./pages/games/SpellingGame";
-import MemoryGame from "./pages/games/MemoryGame";
-import PuzzleGame from "./pages/games/PuzzleGame";
+import GamesPage from "./pages/GamesPage";
 import ARHub from "./ar/pages/ARHub";
 import ARGame from "./ar/pages/ARGame";
 import ARInsights from "./ar/pages/ARInsights";
@@ -47,16 +43,12 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<RoleSelect />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/learn" element={<Learn />} />
         <Route path="/subject/:subject" element={<SubjectPage />} />
         <Route path="/module/listen/:subject" element={<ListenModule />} />
         <Route path="/module/read/:subject" element={<ReadModule />} />
         <Route path="/module/write/:subject" element={<WriteModule />} />
         <Route path="/module/speak/:subject" element={<SpeakModule />} />
         <Route path="/games" element={<GamesPage />} />
-        <Route path="/games/spelling" element={<SpellingGame />} />
-        <Route path="/games/memory" element={<MemoryGame />} />
-        <Route path="/games/puzzle" element={<PuzzleGame />} />
         {/* Camera (MediaPipe) games. `/games/ar/insights` is matched before the
             :gameId route so it cannot be swallowed as a game id. */}
         <Route path="/games/ar" element={<ARHub />} />
@@ -86,8 +78,14 @@ function AppLayout() {
   // is dropped too — no point burning GPU behind a full-screen camera feed.
   const isAR = location.pathname.startsWith("/games/ar");
   const hideNavbar = isAR || ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
-  // Home, About Us and Contact Us get their own full-viewport video background instead of the 3D brick scene
-  const hideBackground3D = isAR || ["/home", "/about-us", "/contact-us"].includes(location.pathname);
+  // Home, About Us, Contact Us, the question modules and the games pages all get the
+  // same full-viewport video background, and the role-select gate + every login page
+  // share the RoboticBackground instead of the 3D brick scene
+  const hideBackground3D = isAR || [
+    "/", "/home", "/about-us", "/contact-us",
+    "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login",
+  ].includes(location.pathname)
+    || location.pathname.startsWith("/module/");
 
   return (
     <>

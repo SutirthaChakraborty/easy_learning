@@ -1,35 +1,17 @@
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import * as FramerMotion from "framer-motion";
-import { fetchModuleStars } from "../store/slices/dashboardSlice";
 import styles from "./GamesPage.module.css";
 import { playSlide } from "../utils/sounds";
 import {
-  FaGamepad, FaPencilAlt, FaPuzzlePiece,
-  FaStar, FaRegStar, FaTrophy, FaMedal, FaAward, FaBullseye, FaArrowLeft,
+  FaGamepad, FaTrophy, FaMedal, FaAward, FaBullseye, FaArrowLeft,
   FaCamera, FaHandPaper,
 } from "react-icons/fa";
-import { GiCardPlay, GiPartyPopper } from "react-icons/gi";
-import { MdSportsEsports } from "react-icons/md";
-
-const gameStarKeys = { spelling: "spelling_english", memory: "memory", puzzle: "puzzle_english" };
-const gameIds = ["spelling", "memory", "puzzle"];
-const gameIcons = { spelling: FaPencilAlt, memory: GiCardPlay, puzzle: FaPuzzlePiece };
-const gameColors = { spelling: "blue", memory: "green", puzzle: "orange" };
-const gameDiffKeys = { spelling: "diffEasy", memory: "diffMedium", puzzle: "diffHard" };
-const gameRoutes = { spelling: "/games/spelling", memory: "/games/memory", puzzle: "/games/puzzle" };
+import { GiPartyPopper } from "react-icons/gi";
 
 const GamesPage = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { t } = useTranslation();
-  const moduleStarsData = useSelector((state) => state.dashboard.moduleStars);
-
-  useEffect(() => {
-    if (localStorage.getItem("jwt_token")) dispatch(fetchModuleStars());
-  }, [dispatch]);
 
   return (
     <FramerMotion.motion.div
@@ -49,60 +31,23 @@ const GamesPage = () => {
           whileTap={{ scale: 0.95 }}
         >
           <FaArrowLeft style={{ marginRight: 6, verticalAlign: "middle" }} />
-          {t("gamesPage.back")}
+          {t("gamesPage.back", { defaultValue: "Back" })}
         </FramerMotion.motion.button>
 
         <div className={styles.header}>
           <div className={styles.headerEmoji}><FaGamepad /></div>
-          <h1 className={styles.title}>{t("gamesPage.title")}</h1>
-          <p className={styles.subtitle}>{t("gamesPage.subtitle")}</p>
+          <h1 className={styles.title}>{t("gamesPage.title", { defaultValue: "Game Zone" })}</h1>
+          <p className={styles.subtitle}>
+            {t("gamesPage.subtitle", { defaultValue: "Step in front of the camera and start playing!" })}
+          </p>
         </div>
 
-        <div className={styles.grid}>
-          {gameIds.map((id, i) => {
-            const Icon = gameIcons[id];
-            return (
-              <FramerMotion.motion.div
-                key={id}
-                className={`${styles.card} ${styles[gameColors[id]]}`}
-                initial={{ opacity: 0, y: 60 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.15, duration: 0.4 }}
-                whileHover={{ scale: 1.06, y: -10 }}
-                whileTap={{ scale: 0.97 }}
-                onClick={() => { playSlide(); navigate(gameRoutes[id]); }}
-              >
-                <div className={styles.cardEmoji}><Icon style={{ color: "#ffffffa2" }} /></div>
-                <h2 className={styles.cardTitle}>{t(`gamesPage.${id}.title`)}</h2>
-                <p className={styles.cardDesc}>{t(`gamesPage.${id}.desc`)}</p>
-                <div className={styles.cardMeta}>
-                  <span className={styles.difficulty}>{t(`gamesPage.${gameDiffKeys[id]}`)}</span>
-                  <span className={styles.stars}>
-                    {[1, 2, 3].map((s) => {
-                      const count = moduleStarsData[gameStarKeys[id]] ?? 0;
-                      return s <= count
-                        ? <FaStar key={s} color="#FFD700" />
-                        : <FaRegStar key={s} color="rgba(255,255,255,0.4)" />;
-                    })}
-                  </span>
-                </div>
-                <div className={styles.playNow}>
-                  <MdSportsEsports style={{ marginRight: 6, verticalAlign: "middle", fontSize: 20 }} />
-                  {t("gamesPage.playNow")}
-                </div>
-              </FramerMotion.motion.div>
-            );
-          })}
-        </div>
-
-        {/* Camera games: a separate, full-viewport section, so it gets its own
-            banner rather than a fourth card in a grid sized for three. */}
         <FramerMotion.motion.button
           className={styles.arBanner}
           onClick={() => { playSlide(); navigate("/games/ar"); }}
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.45, duration: 0.4 }}
+          transition={{ delay: 0.15, duration: 0.4 }}
           whileHover={{ scale: 1.02, y: -3 }}
           whileTap={{ scale: 0.985 }}
         >

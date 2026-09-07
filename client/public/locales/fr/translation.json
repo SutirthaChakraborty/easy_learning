@@ -1,14 +1,10 @@
-﻿{
+{
   "navbar": {
     "home": "Accueil",
-    "games": "Jeux",
     "lessons": "Leçons",
     "dashboard": "Tableau de bord",
     "login": "Connexion",
     "logout": "Déconnexion",
-    "spellingBee": "Orthographe",
-    "memoryMatch": "Jeu de mémoire",
-    "wordPuzzle": "Puzzle de mots",
     "english": "Anglais",
     "mathematics": "Mathématiques",
     "science": "Sciences",
@@ -19,20 +15,18 @@
   "hero": {
     "greeting": "Bonjour {{name}}",
     "startLearning": "Commencer à apprendre",
-    "playGames": "Jouer aux jeux",
     "startAdventure": "Commence ton aventure",
-    "continueAdventure": "Continuer l\u0027aventure",
+    "continueAdventure": "Continuer l'aventure",
     "readyForAdventure": "Prêt pour ta prochaine aventure ?",
     "listen": "Écouter",
     "chooseWorld": "Choisis ton monde",
     "chooseWorldHint": "Choisis un monde ci-dessous pour commencer ta première aventure !",
-    "pickUpWhereLeftOff": "Reprends là où tu t\u0027es arrêté",
-    "keepGoing": "Continue comme ça !",
-    "stories": "Histoires"
+    "pickUpWhereLeftOff": "Reprends là où tu t'es arrêté",
+    "keepGoing": "Continue comme ça !"
   },
   "cards": {
     "english": {
-      "title": "Royaume de l\u0027Anglais",
+      "title": "Royaume de l'Anglais",
       "tagline": "Apprends avec des mots et des histoires"
     },
     "maths": {
@@ -57,19 +51,19 @@
     "passwordPlaceholder": "Mot de passe",
     "createAccountBtn": "Créer un compte",
     "signInBtn": "Se connecter",
-    "signUpBtn": "S\u0027inscrire",
+    "signUpBtn": "S'inscrire",
     "loading": "Chargement...",
     "alreadyAccount": "Vous avez déjà un compte ?",
     "noAccount": "Pas encore de compte ?",
-    "errorDefault": "Quelque chose s\u0027est mal passé. Veuillez réessayer.",
+    "errorDefault": "Quelque chose s'est mal passé. Veuillez réessayer.",
     "googleCancelled": "La connexion Google a été annulée.",
     "popupBlocked": "La pop-up a été bloquée. Veuillez autoriser les pop-ups pour ce site.",
     "networkError": "Erreur réseau. Vérifiez votre connexion.",
-    "operationNotAllowed": "La connexion Google n\u0027est pas activée."
+    "operationNotAllowed": "La connexion Google n'est pas activée."
   },
   "common": {
     "loading": "Chargement...",
-    "error": "Quelque chose s\u0027est mal passé."
+    "error": "Quelque chose s'est mal passé."
   },
   "dashboard": {
     "welcomeBack": "Bon retour, {{name}} ! 👋",
@@ -80,15 +74,15 @@
     "loadingDashboard": "Chargement de votre tableau de bord…",
     "loginPrompt": "Veuillez vous connecter pour voir votre tableau de bord.",
     "serverError": "Impossible de se connecter au serveur.",
-    "serverErrorHint": "Assurez-vous que le backend est en cours d\u0027exécution, puis rechargez la page.",
+    "serverErrorHint": "Assurez-vous que le backend est en cours d'exécution, puis rechargez la page.",
     "retry": "Réessayer",
     "stats": {
       "totalXP": "XP Total",
       "sessions": "Sessions",
       "lessonsCompleted": "leçons terminées",
-      "todayTime": "Temps aujourd\u0027hui",
+      "todayTime": "Temps aujourd'hui",
       "peakTime": "Pic : {{time}}",
-      "noSessions": "Aucune session pour l\u0027instant",
+      "noSessions": "Aucune session pour l'instant",
       "streak": "Série actuelle",
       "streakDays": "{{count}} jours",
       "onFire": "En feu ! 🔥",
@@ -101,11 +95,11 @@
       "empty": "Aucune activité encore — termine une leçon pour voir ta progression !"
     },
     "heatmap": {
-      "titleCurrent": "Carte d\u0027activité — {{year}} (jusqu\u0027à présent)",
-      "titlePast": "Carte d\u0027activité — {{year}}",
+      "titleCurrent": "Carte d'activité — {{year}} (jusqu'à présent)",
+      "titlePast": "Carte d'activité — {{year}}",
       "activeDays": "{{count}} jours actifs",
       "mostActive": "Plus actif {{time}}",
-      "today": "Aujourd\u0027hui : {{time}}",
+      "today": "Aujourd'hui : {{time}}",
       "less": "Moins",
       "more": "Plus"
     },
@@ -131,15 +125,15 @@
       },
       "sharp_ears": {
         "name": "Oreilles Fines",
-        "description": "Termine 5 leçons d\u0027écoute"
+        "description": "Termine 5 leçons d'écoute"
       },
       "penpal": {
         "name": "Correspondant",
-        "description": "Termine 5 leçons d\u0027écriture"
+        "description": "Termine 5 leçons d'écriture"
       },
       "public_speaker": {
         "name": "Orateur",
-        "description": "Termine 5 leçons d\u0027expression orale"
+        "description": "Termine 5 leçons d'expression orale"
       },
       "all_rounder": {
         "name": "Touche-à-tout",
@@ -147,11 +141,11 @@
       },
       "gamer": {
         "name": "Gamer",
-        "description": "Joue à n\u0027importe quel jeu"
+        "description": "Joue à n'importe quel jeu"
       },
       "spelling_bee": {
         "name": "Expert en Orthographe",
-        "description": "Termine le jeu d\u0027orthographe"
+        "description": "Termine le jeu d'orthographe"
       },
       "memory_master": {
         "name": "Maître de Mémoire",
@@ -235,27 +229,6 @@
       }
     }
   },
-  "gamesPage": {
-    "back": "Retour",
-    "title": "Zone de Jeux",
-    "subtitle": "Choisis un jeu et commence à jouer!",
-    "playNow": "Jouer maintenant",
-    "diffEasy": "Facile",
-    "diffMedium": "Moyen",
-    "diffHard": "Difficile",
-    "spelling": {
-      "title": "Orthographe",
-      "desc": "Épelle le mot à partir de l\u0027indice!"
-    },
-    "memory": {
-      "title": "Jeu de Mémoire",
-      "desc": "Trouve toutes les paires!"
-    },
-    "puzzle": {
-      "title": "Mots Mêlés",
-      "desc": "Remets les lettres dans l\u0027ordre!"
-    }
-  },
   "modules": {
     "back": "Retour",
     "next": "Suivant →",
@@ -265,8 +238,8 @@
     "loadingQ": "Chargement des questions…",
     "loadingP": "Chargement des invites…",
     "serverErr": "Impossible de charger. Le serveur est-il en marche?",
-    "noQuestions": "Aucune question pour l\u0027instant. Reviens plus tard !",
-    "noOrgQuestions": "Aucune question n\u0027a encore été mise en ligne par l\u0027établissement.",
+    "noQuestions": "Aucune question pour l'instant. Reviens plus tard !",
+    "noOrgQuestions": "Aucune question n'a encore été mise en ligne par l'établissement.",
     "listen": {
       "listen": "Écouter",
       "playing": "En cours…",
@@ -286,10 +259,6 @@
       "wrong": "La réponse était: {{answer}}",
       "celebration": "Correct!"
     },
-    "learn": {
-      "question": "Question {{current}} / {{total}}",
-      "finishRound": "Terminer le tour →"
-    },
     "write": {
       "whiteboard": "Ton Tableau Blanc",
       "pen": "Stylo",
@@ -304,13 +273,13 @@
     },
     "speak": {
       "title": "Parle!",
-      "howFeeling": "Comment te sens-tu aujourd\u0027hui?",
-      "youFeel": "Tu te sens {{mood}} aujourd\u0027hui!",
+      "howFeeling": "Comment te sens-tu aujourd'hui?",
+      "youFeel": "Tu te sens {{mood}} aujourd'hui!",
       "yourRecordings": "Tes enregistrements:",
       "recording": "Enregistrement…",
       "startSpeaking": "Commencer à parler",
       "doneSpeaking": "Finir de parler",
-      "tip": "Conseil: Il n\u0027y a pas de mauvaises réponses! Dis ce que tu penses.",
+      "tip": "Conseil: Il n'y a pas de mauvaises réponses! Dis ce que tu penses.",
       "moodHappy": "Heureux",
       "moodSad": "Triste",
       "moodExcited": "Excité",
@@ -320,13 +289,13 @@
       "enc2": "Ta voix compte!",
       "enc3": "Brillant! Tu es courageux!",
       "enc4": "Quelle réponse fantastique!",
-      "enc5": "C\u0027était merveilleux!",
+      "enc5": "C'était merveilleux!",
       "micError": "Microphone non disponible — vérifies les permissions!",
-      "micPermission": "Accès au microphone refusé — clique sur l\u0027icône de cadenas dans la barre d\u0027adresse et autorise le microphone.",
+      "micPermission": "Accès au microphone refusé — clique sur l'icône de cadenas dans la barre d'adresse et autorise le microphone.",
       "micNotFound": "Aucun microphone trouvé — branche-en un et réessaie.",
       "micBusy": "Le microphone est utilisé par une autre application — ferme-la et réessaie.",
-      "micUnsupported": "Ton navigateur ne prend pas en charge l\u0027enregistrement — utilise Chrome ou Firefox.",
-      "micInsecure": "Le microphone nécessite une connexion sécurisée (HTTPS). Ouvre l\u0027application via https:// ou utilise localhost."
+      "micUnsupported": "Ton navigateur ne prend pas en charge l'enregistrement — utilise Chrome ou Firefox.",
+      "micInsecure": "Le microphone nécessite une connexion sécurisée (HTTPS). Ouvre l'application via https:// ou utilise localhost."
     }
   }
 }

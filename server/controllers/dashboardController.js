@@ -11,10 +11,6 @@ const ACHIEVEMENTS = [
   { id: 'penpal',          name: 'Penpal',           icon: '✍️', description: 'Complete 5 writing lessons', category: 'learning', xp: 25 },
   { id: 'public_speaker',  name: 'Public Speaker',   icon: '🎤', description: 'Complete 5 speaking lessons', category: 'learning', xp: 25 },
   { id: 'all_rounder',     name: 'All-Rounder',      icon: '🌈', description: 'Try all 3 subjects', category: 'learning', xp: 40 },
-  { id: 'gamer',           name: 'Gamer',            icon: '🎮', description: 'Play any game', category: 'games', xp: 15 },
-  { id: 'spelling_bee',    name: 'Spelling Bee',     icon: '🐝', description: 'Complete the Spelling game', category: 'games', xp: 30 },
-  { id: 'memory_master',   name: 'Memory Master',    icon: '🧠', description: 'Complete the Memory Match game', category: 'games', xp: 30 },
-  { id: 'puzzle_whiz',     name: 'Puzzle Whiz',      icon: '🧩', description: 'Solve a Word Puzzle', category: 'games', xp: 30 },
   { id: 'three_day_streak', name: 'On Fire',         icon: '🔥', description: 'Active 3 days in a row', category: 'streak', xp: 50 },
   { id: 'week_warrior',    name: 'Week Warrior',     icon: '⚔️', description: 'Active 7 days in a row', category: 'streak', xp: 100 },
   { id: 'century',         name: 'Century',          icon: '💯', description: 'Earn 100 XP', category: 'xp', xp: 0 },
@@ -85,12 +81,6 @@ async function checkAndAwardAchievements(email) {
   if ((moduleCounts['write'] || 0) >= 5) await award('penpal')
   if ((moduleCounts['speak'] || 0) >= 5) await award('public_speaker')
   if (subjects.size >= 3)  await award('all_rounder')
-
-  const gameCount = (moduleCounts['spelling'] || 0) + (moduleCounts['memory'] || 0) + (moduleCounts['puzzle'] || 0)
-  if (gameCount >= 1)                     await award('gamer')
-  if ((moduleCounts['spelling'] || 0) >= 1) await award('spelling_bee')
-  if ((moduleCounts['memory']  || 0) >= 1) await award('memory_master')
-  if ((moduleCounts['puzzle']  || 0) >= 1) await award('puzzle_whiz')
 
   if (streak >= 3) await award('three_day_streak')
   if (streak >= 7) await award('week_warrior')

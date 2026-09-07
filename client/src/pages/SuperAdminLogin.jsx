@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaCrown } from "react-icons/fa";
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useAdminAuth } from "../context/AdminAuthContext";
+import RoboticBackground from "../components/RoboticBackground/RoboticBackground";
 import styles from "./Login.module.css";
 import saStyles from "./SuperAdminLogin.module.css";
 
@@ -37,7 +38,7 @@ const SuperAdminLogin = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
-      <div className={styles.overlay} />
+      <RoboticBackground />
       <div className={styles.content}>
         <div className={`${styles.card} ${saStyles.card}`}>
           <div className={saStyles.iconWrap}>

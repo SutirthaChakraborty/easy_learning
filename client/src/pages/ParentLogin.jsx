@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { MdFamilyRestroom } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
 import { useAdminAuth } from "../context/AdminAuthContext";
+import RoboticBackground from "../components/RoboticBackground/RoboticBackground";
 import styles from "./Login.module.css";
 import parentStyles from "./ParentLogin.module.css";
 
@@ -45,7 +46,7 @@ const ParentLogin = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
-      <div className={styles.overlay} />
+      <RoboticBackground />
       <div className={styles.content}>
         <div className={`${styles.card} ${parentStyles.card}`}>
           <div className={parentStyles.iconWrap}>

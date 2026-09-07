@@ -25,7 +25,7 @@ When you open the site, you land on a **role selection screen** with five cards:
 
 | Card | Who it's for | Where it sends you |
 |---|---|---|
-| **Student** | Kids using the lessons and games | Student sign-in page |
+| **Student** | Kids using the lessons | Student sign-in page |
 | **Parent** | A parent/guardian who wants to add their kids and watch their progress, with no organization involved | Parent sign-in page |
 | **Admin** | Anyone running or supervising a school or coaching centre | Admin sign-in page |
 | **Teacher** | Teachers/tutors an Admin has already added, who need to manage their own batches | Teacher sign-in page |
@@ -57,17 +57,17 @@ pages) gives you:
 
 - **Home** — back to the main screen
 - **About Us** — the Learningo story and mission
-- **Dashboard** — your personal progress page (see §2.6)
+- **Games** — the Game Zone, home to the Camera Games (see §2.4)
+- **Dashboard** — your personal progress page (see §2.5)
 - **Contact Us** — reach the Learningo team with a question or issue
 - A **language switcher** — change the app's language at any time (see §7)
 - **Logout**
 
 ### 2.3 Learning modules
 
-The Home page has two big buttons — **Start Learning** (a general, story-based reading quiz
-that mixes topics, not tied to one subject) and **Play Games** (see §2.4 and §2.5) — plus three
-**subject cards**: **English**, **Mathematics**, and **Science**. Picking a subject card
-opens that subject's page with four skill modules:
+The Home page has a **Start/Continue Adventure** button and three **subject cards**:
+**English**, **Mathematics**, and **Science**. Picking a subject card opens that
+subject's page with four skill modules:
 
 | Module | Skill | XP per round |
 |---|---|---|
@@ -90,21 +90,10 @@ it to your dashboard automatically.
 
 ### 2.4 Games
 
-From the **Game Zone** (`/games`) you can play three standalone games (English only, not
-tied to a specific subject module):
-
-- **Spelling Bee** (Easy) — spell the word from a clue
-- **Memory Match** (Medium) — find all the matching pairs
-- **Word Puzzle** (Hard) — unscramble jumbled letters
-
-Each game shows up to 3 stars based on your best performance, just like the subject
-modules.
-
-### 2.5 Camera Games
-
-The **Camera Games** banner on the Game Zone opens `/games/ar` — over sixty activities you
-play by moving. You see yourself on screen and reach out to touch, trace, sort, freeze and
-copy. They need a camera and nothing else; no controller, no touchscreen.
+The **Games** link in the navigation bar opens the **Game Zone** (`/games`), home to the
+**Camera Games** — over sixty activities you play by moving. You see yourself on screen and
+reach out to touch, trace, sort, freeze and copy. They need a camera and nothing else; no
+controller, no touchscreen.
 
 The games are grouped by what they practise rather than by theme:
 
@@ -146,7 +135,7 @@ Developers and therapists: see [docs/AR-GAMES.md](./docs/AR-GAMES.md) for the en
 architecture, the prompt-fading ladder, how levels and points are worked out, what is
 measured and the stated limits.
 
-### 2.6 Your Dashboard
+### 2.5 Your Dashboard
 
 The Dashboard is your personal progress hub. At the top, a **Level badge** shows your
 current level and an XP progress bar toward the next one, alongside two buttons:
@@ -165,13 +154,13 @@ Below that:
 - **Activity heatmap** — a calendar-style grid (like a contribution graph) showing which
   days you were active and how much you did, colored from light to dark by activity level.
   You can switch between years if you've been using the app for a while.
-- **Achievements** — a grid of badges (grouped as Learning, Games, Streak, XP Milestones,
+- **Achievements** — a grid of badges (grouped as Learning, Streak, XP Milestones,
   Special) you've earned or have yet to unlock, each showing the date earned or the XP
   reward needed.
 - **Round History** — a scrollable list of your completed rounds, each showing the
   module/subject, Practice or Passed/Failed (Warrior), and stars earned.
 
-Nothing needs to be logged manually — playing a module or game round automatically updates
+Nothing needs to be logged manually — playing a module round automatically updates
 your dashboard.
 
 ---
@@ -198,7 +187,7 @@ The **My Kids** section is where you manage your children:
 - **Performance** (chart icon) — opens that kid's progress:
   - If their email matches a student account with recorded activity, you see their full
     **Dashboard** (stats, heatmap, chart, achievements, round history — the same view
-    described in §2.6).
+    described in §2.5).
   - If not, you see a simple summary panel instead (Total XP, Sessions, Minutes, Average
     Score, Achievements), which reads as empty/zero until they've started learning under
     that email.
@@ -461,7 +450,7 @@ batch hasn't had any questions uploaded and approved yet for that module/subject
 see a message saying so instead of questions; check with their Teacher/Admin.
 
 **I don't see my progress/stars updating**
-Progress logs automatically when you complete a round of 10 questions in a module or game —
+Progress logs automatically when you complete a round of 10 questions in a module —
 make sure you reach the "Round Complete" screen rather than navigating away mid-round.
 
 **The page is in the wrong language**
