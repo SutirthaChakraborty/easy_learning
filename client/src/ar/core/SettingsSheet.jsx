@@ -300,7 +300,14 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                     // outside 1..5, and the slider hands its stored value straight
                     // to fmt without clamping it.
                     const meta = LEVEL_META[clampLevel(v) - 1]
-                    return `${meta.icon} ${meta.n} · ${meta.name}`
+                    const MetaIcon = meta.icon
+                    // `fmt`'s return value is rendered directly as a React child
+                    // (`{fmt(value)}`), so a fragment works exactly like a string.
+                    return (
+                      <>
+                        <MetaIcon /> {meta.n} · {meta.name}
+                      </>
+                    )
                   }}
                   onChange={(v) => set({ fixedLevel: v })}
                 />

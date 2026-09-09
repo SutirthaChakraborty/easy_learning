@@ -80,14 +80,20 @@ function AppLayout() {
   // site header and background like any other page.
   const isAR = location.pathname.startsWith("/games/ar/");
   const hideNavbar = isAR || ["/", "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login", "/admin-dashboard", "/superadmin-dashboard", "/teacher-dashboard", "/parent-dashboard"].includes(location.pathname);
-  // Home, About Us, Contact Us, the question modules and the games pages all get the
-  // same full-viewport video background, and the role-select gate + every login page
-  // share the RoboticBackground instead of the 3D brick scene
+  // Every page a logged-in student can reach — Home, About Us, Contact Us, the
+  // question modules, Subject page, the Games/Camera Games hubs and the Student
+  // Dashboard — shares the same full-viewport video background, so the app reads
+  // as one place rather than switching backdrops page to page. The role-select
+  // gate and every login page share the RoboticBackground instead, and an active
+  // camera session (gameplay or Insights) owns the whole viewport with its own
+  // background.
   const hideBackground3D = isAR || [
     "/", "/home", "/about-us", "/contact-us",
     "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login",
+    "/games", "/games/ar", "/dashboard",
   ].includes(location.pathname)
-    || location.pathname.startsWith("/module/");
+    || location.pathname.startsWith("/module/")
+    || location.pathname.startsWith("/subject/");
 
   return (
     <>

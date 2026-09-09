@@ -11,10 +11,18 @@
    part of a tile that tells a child where they are. */
 
 /* Sits below the site navbar like any other page (the shared .overlay dims
-   the animated Background3D behind it for legibility), rather than owning
+   the site's video background behind it for legibility), rather than owning
    the whole viewport the way an active camera session does. */
 .hub {
   position: relative;
+  /* Capped and centred so a 4K or ultra-wide monitor gets a well-proportioned
+     board instead of four tiles stretched edge-to-edge with their content
+     stranded in a corner — the same "centred card, not a full-bleed page"
+     treatment the rest of the site gives large screens (see GamesPage's
+     .arCard). Small and medium screens never reach the cap. */
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
   height: calc(100dvh - 80px);
   max-height: calc(100dvh - 80px);
   display: flex;
@@ -35,27 +43,55 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.48);
+  background: rgba(6, 8, 18, 0.56);
   pointer-events: none;
   z-index: 0;
 }
 
+/* A third, group-tinted glow layers over the two fixed ones so the whole
+   board carries a whisper of whichever domain is open — the page "belongs"
+   to the group without needing a solid colour wash. --groupAccent is set per
+   [data-group] below, from the same hue each group already uses for its ring
+   and tiles — named apart from the tile's own --accent (a gradient, not an
+   rgb triple) since custom properties inherit and the two would otherwise
+   collide on any element that sees both. */
 .glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(600px 300px at 85% 15%, rgba(255, 157, 59, 0.14), transparent 70%),
-    radial-gradient(500px 260px at 10% 85%, rgba(124, 92, 255, 0.14), transparent 70%);
+    radial-gradient(640px 320px at 88% 10%, rgba(255, 157, 59, 0.13), transparent 70%),
+    radial-gradient(560px 300px at 8% 90%, rgba(124, 92, 255, 0.13), transparent 70%),
+    radial-gradient(70% 60% at 50% 45%, rgba(var(--groupAccent, 124, 92, 255), 0.1), transparent 72%);
+  transition: background 0.5s ease;
 }
 
+.hub[data-group="body"] { --groupAccent: 38, 166, 154; }
+.hub[data-group="look"] { --groupAccent: 30, 136, 229; }
+.hub[data-group="stop"] { --groupAccent: 229, 57, 53; }
+.hub[data-group="remember"] { --groupAccent: 108, 92, 231; }
+.hub[data-group="learn"] { --groupAccent: 251, 140, 0; }
+.hub[data-group="move"] { --groupAccent: 236, 64, 122; }
+.hub[data-group="day"] { --groupAccent: 67, 160, 71; }
+.hub[data-group="together"] { --groupAccent: 210, 180, 30; }
+
 /* ── header ──────────────────────────────────────────────────────────────── */
+/* A single glass toolbar rather than icons floating loose on the background —
+   it reads as one control surface, and gives every button in it a shared
+   edge to align to. Padding is deliberately thin: this bar eats into the
+   same fixed vertical budget as everything else on a no-scroll page. */
 .head {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
   z-index: 1;
+  padding: clamp(3px, 0.6vh, 6px) clamp(6px, 1.2vw, 10px);
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .headTitle {
@@ -66,6 +102,7 @@
   gap: 8px;
   font-size: clamp(14px, 3vw, 22px);
   font-weight: 800;
+  letter-spacing: 0.2px;
   background: linear-gradient(to right, #ff6b6b, #a29bfe);
   -webkit-background-clip: text;
   background-clip: text;
@@ -76,27 +113,33 @@
   -webkit-text-fill-color: #ff9d3b;
   color: #ff9d3b;
   font-size: clamp(15px, 3vw, 22px);
+  filter: drop-shadow(0 0 6px rgba(255, 157, 59, 0.5));
 }
 
 .headRight { display: flex; align-items: center; gap: 6px; }
 
-/* Same frosted pill as the back button used on every other secondary page. */
+/* Same frosted pill as the back button used on every other secondary page,
+   with a bit more glass depth and a soft glow on hover instead of a flat
+   colour swap. */
 .iconBtn {
   width: clamp(32px, 6.5vw, 40px);
   height: clamp(32px, 6.5vw, 40px);
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06));
+  backdrop-filter: blur(6px);
   color: #fff;
   font-size: clamp(12px, 2.4vw, 16px);
   cursor: pointer;
-  transition: background 0.15s, transform 0.1s;
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
   flex-shrink: 0;
 }
-.iconBtn:hover { background: rgba(255, 255, 255, 0.25); }
+.iconBtn:hover {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
+}
 .iconBtn:active { transform: scale(0.92); }
 
 /* Points and rank. The thin bar underneath is progress to the next rank, so
@@ -108,17 +151,22 @@
   gap: 5px;
   padding: clamp(3px, 0.7vh, 6px) clamp(8px, 1.6vw, 12px);
   border-radius: 999px;
-  border: 1px solid rgba(255, 217, 61, 0.42);
-  background: linear-gradient(100deg, rgba(255, 217, 61, 0.2), rgba(255, 217, 61, 0.06));
+  border: 1px solid rgba(255, 217, 61, 0.45);
+  background: linear-gradient(100deg, rgba(255, 217, 61, 0.22), rgba(255, 217, 61, 0.05));
+  backdrop-filter: blur(6px);
   color: #ffe38a;
   font-family: inherit;
   font-weight: 800;
   cursor: pointer;
   overflow: hidden;
   flex-shrink: 0;
-  transition: background 0.15s, transform 0.1s;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
 }
-.pointsChip:hover { background: linear-gradient(100deg, rgba(255, 217, 61, 0.3), rgba(255, 217, 61, 0.12)); }
+.pointsChip:hover {
+  background: linear-gradient(100deg, rgba(255, 217, 61, 0.32), rgba(255, 217, 61, 0.1));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 0 0 4px rgba(255, 217, 61, 0.1);
+}
 .pointsChip:active { transform: scale(0.96); }
 
 .rankIcon { font-size: clamp(12px, 2.4vw, 17px); line-height: 1; }
@@ -142,27 +190,62 @@
 /* ── callout ─────────────────────────────────────────────────────────────── */
 .callout { flex-shrink: 0; z-index: 1; }
 
-/* Same skeuomorphic gradient pill as the Home hero's CTA button. */
+/* Same skeuomorphic gradient pill as the Home hero's CTA button, plus a slow
+   diagonal sheen so the one thing worth doing next keeps a quiet pull on the
+   eye without anything as busy as a bounce or pulse. */
 .calloutBtn {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 10px;
   padding: clamp(6px, 1.2vh, 11px) clamp(10px, 2vw, 16px);
-  border-radius: 16px;
-  border: none;
-  background: linear-gradient(180deg, #ff9d3b, #ef6c00);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(180deg, #ffad5c, #ef6c00);
   color: #fff;
   font-family: inherit;
   text-align: left;
   cursor: pointer;
-  box-shadow: 0 4px #c25400;
+  overflow: hidden;
+  box-shadow: 0 4px #c25400, 0 10px 22px rgba(239, 108, 0, 0.35);
   transition: transform 0.15s, box-shadow 0.15s;
+}
+.calloutBtn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.28) 38%,
+    transparent 56%
+  );
+  background-size: 220% 100%;
+  animation: calloutSheen 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes calloutSheen {
+  0%, 20% { background-position: 120% 0; }
+  70%, 100% { background-position: -60% 0; }
 }
 .calloutBtn:hover { transform: translateY(-1px); }
 .calloutBtn:active { transform: translateY(2px); box-shadow: 0 2px #c25400; }
 
-.calloutIcon { font-size: clamp(18px, 3.6vw, 26px); flex-shrink: 0; }
+.calloutIcon {
+  position: relative;
+  width: clamp(30px, 5.6vh, 44px);
+  height: clamp(30px, 5.6vh, 44px);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  font-size: clamp(15px, 2.8vw, 21px);
+}
+.calloutIcon svg { width: 56%; height: 56%; }
 
 .calloutText {
   flex: 1;
@@ -191,6 +274,7 @@
 
 /* A word next to the arrow: "Play" is unambiguous where a chevron is not. */
 .calloutGo {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -201,6 +285,7 @@
   color: #ef6c00;
   font-size: clamp(10px, 2vw, 14px);
   font-weight: 900;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
 /* ── the group trail ─────────────────────────────────────────────────────── */
@@ -213,16 +298,29 @@
   position: relative;
 }
 
-/* A dotted line behind the icons, so eight buttons read as one path rather
-   than eight unrelated choices. */
+/* A soft gradient line behind the icons, so eight buttons read as one path
+   rather than eight unrelated choices — a glowing thread instead of a plain
+   dashed rule. */
 .groups::before {
   content: "";
   position: absolute;
   left: 6%;
   right: 6%;
   top: clamp(16px, 2.4vh, 24px);
-  height: 0;
-  border-top: 2px dashed rgba(255, 255, 255, 0.13);
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(38, 166, 154, 0.35),
+    rgba(30, 136, 229, 0.35),
+    rgba(229, 57, 53, 0.35),
+    rgba(108, 92, 231, 0.35),
+    rgba(251, 140, 0, 0.35),
+    rgba(236, 64, 122, 0.35),
+    rgba(67, 160, 71, 0.35),
+    rgba(220, 190, 40, 0.35)
+  );
+  border-radius: 2px;
+  opacity: 0.6;
   pointer-events: none;
 }
 
@@ -247,26 +345,34 @@
 .groupPill:hover { background: rgba(255, 255, 255, 0.09); }
 .groupPill:active { transform: scale(0.95); }
 
-/* The ring is the group's completion: a conic sweep of cleared levels. */
+/* The ring is the group's completion: a conic sweep of cleared levels.
+   Bounded by vw as well as vh — on a narrow-but-tall display (a folded or
+   cover-screen aspect ratio) the eight columns get thin well before the
+   viewport gets short, and a purely vh-sized ring would spill into its
+   neighbours. */
 .ring {
   position: relative;
-  width: clamp(28px, 4.4vh, 40px);
-  height: clamp(28px, 4.4vh, 40px);
+  width: clamp(24px, min(4.4vh, 9vw), 40px);
+  height: clamp(24px, min(4.4vh, 9vw), 40px);
   border-radius: 50%;
   display: grid;
   place-items: center;
   background: conic-gradient(
     var(--ringC, #1e88e5) calc(var(--p, 0) * 1%),
-    rgba(255, 255, 255, 0.14) 0
+    rgba(255, 255, 255, 0.16) 0
   );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
   flex-shrink: 0;
+  transition: transform 0.15s ease;
 }
+.groupPill:hover .ring { transform: scale(1.06); }
 
 .ringIn {
   width: calc(100% - 5px);
   height: calc(100% - 5px);
   border-radius: 50%;
-  background: rgba(10, 14, 30, 0.55);
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.14), rgba(10, 14, 30, 0.62) 70%);
+  backdrop-filter: blur(2px);
   display: grid;
   place-items: center;
 }
@@ -299,6 +405,7 @@
   color: #fff;
   background: rgba(255, 255, 255, 0.13);
   border-color: currentColor;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
 /* Group accent colours — the same gradient family as the subject and module
@@ -327,22 +434,43 @@
   justify-content: center;
   gap: 8px;
   flex-shrink: 0;
+  padding: clamp(2px, 0.5vh, 5px) clamp(8px, 1.6vw, 14px);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   font-size: clamp(9px, 1.8vw, 12.5px);
   color: rgba(255, 255, 255, 0.8);
   z-index: 1;
-  white-space: nowrap;
   overflow: hidden;
 }
-.groupBlurb strong { color: #fff; font-size: clamp(11px, 2.2vw, 15px); }
+/* The group name and its level count are short and identify where the child
+   is — they never truncate. The describing sentence is the least essential
+   part (same "goes first" rule as a tile's own description), so it alone
+   shrinks and ellipsizes on a narrow phone instead of the whole row silently
+   losing text off both ends to `justify-content: center`. */
+.groupBlurb strong {
+  flex-shrink: 0;
+  color: #fff;
+  font-size: clamp(11px, 2.2vw, 15px);
+  white-space: nowrap;
+}
+
+.groupDesc {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 .groupCount {
+  flex-shrink: 0;
   padding: 1px 8px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.16);
   border: 1px solid rgba(255, 255, 255, 0.35);
   color: #fff;
   font-weight: 700;
-  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 /* ── board ───────────────────────────────────────────────────────────────── */
@@ -372,23 +500,40 @@
   }
 }
 
+/* Below 425px wide the board itself isn't tall enough for four stacked rows
+   to come out taller than wide (measured: 2×4 gave ~200×120px tiles — still
+   landscape). ARHub.jsx halves PAGE_SIZE to 4 at this width so the grid only
+   ever needs two rows here, which is what actually makes the cards portrait:
+   width per tile stays ~200px but each now gets roughly double the height. */
+@media (max-width: 425px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .pageBtn {
   align-self: center;
   width: clamp(26px, 4.5vw, 38px);
   height: clamp(42px, 9vh, 68px);
   display: grid;
   place-items: center;
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.06));
+  backdrop-filter: blur(6px);
   color: #fff;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
   font-size: clamp(12px, 2.4vw, 17px);
   flex-shrink: 0;
-  transition: background 0.15s;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.15s, box-shadow 0.15s, transform 0.1s;
 }
-.pageBtn:hover:not(:disabled) { background: rgba(255, 255, 255, 0.25); }
+.pageBtn:hover:not(:disabled) {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08);
+}
+.pageBtn:active:not(:disabled) { transform: scale(0.94); }
 .pageBtn:disabled { opacity: 0.25; cursor: default; }
 .pagePrev { margin-right: clamp(4px, 1vw, 8px); }
 .pageNext { margin-left: clamp(4px, 1vw, 8px); }
@@ -406,32 +551,64 @@
   min-height: 0;
   display: flex;
   flex-direction: column;
-  border-radius: clamp(12px, 2vw, 20px);
-  border: 3px solid rgba(255, 255, 255, 0.35);
-  background: var(--accent, linear-gradient(155deg, #1565c0, #1e88e5));
+  border-radius: clamp(14px, 2.4vw, 24px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: var(--accent, linear-gradient(160deg, #1565c0, #1e88e5));
   color: #fff;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.32), inset 0 2px 0 rgba(255, 255, 255, 0.25);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35),
+    0 2px 0 rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.tile.teal { --accent: linear-gradient(155deg, #00897b, #26a69a); }
-.tile.blue { --accent: linear-gradient(155deg, #1565c0, #1e88e5); }
-.tile.red { --accent: linear-gradient(155deg, #c62828, #e53935); }
-.tile.purple { --accent: linear-gradient(155deg, #4527a0, #6c5ce7); }
-.tile.orange { --accent: linear-gradient(155deg, #e65100, #fb8c00); }
-.tile.pink { --accent: linear-gradient(155deg, #ad1457, #ec407a); }
-.tile.green { --accent: linear-gradient(155deg, #2e7d32, #43a047); }
-.tile.yellow { --accent: linear-gradient(155deg, #f57f17, #fbc02d); }
+/* A soft diagonal sheen across the top third — the same "light hitting
+   glass" cue as the header/pageBtn/pointsChip surfaces — so the tiles read
+   as part of the same glass-and-gradient material rather than flat colour
+   swatches. Layered underneath the icon/text via z-index on .tilePlay. */
+.tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.22), transparent 45%);
+  pointer-events: none;
+}
+
+.tile:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 3px rgba(var(--glow, 255, 255, 255), 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* `--iconTint` is a light tint of the same hue rather than the gradient's own
+   stops, so the big tile icon reads as "belonging" to the tile's colour
+   instead of vanishing into whichever part of the gradient it sits over.
+   `--glow` is the same hue as an rgb triple, for the hover ring above. */
+.tile.teal { --accent: linear-gradient(160deg, #00897b, #1fae9f); --iconTint: #b2f5ea; --glow: 38, 200, 184; }
+.tile.blue { --accent: linear-gradient(160deg, #1565c0, #2f9bf0); --iconTint: #bbdefb; --glow: 47, 155, 240; }
+.tile.red { --accent: linear-gradient(160deg, #c62828, #ef4b41); --iconTint: #ffcdd2; --glow: 239, 75, 65; }
+.tile.purple { --accent: linear-gradient(160deg, #4527a0, #7d6cf5); --iconTint: #e1d5fa; --glow: 125, 108, 245; }
+.tile.orange { --accent: linear-gradient(160deg, #e65100, #ff9d1f); --iconTint: #ffe0b2; --glow: 255, 157, 31; }
+.tile.pink { --accent: linear-gradient(160deg, #ad1457, #f45c92); --iconTint: #ffd6e8; --glow: 244, 92, 146; }
+.tile.green { --accent: linear-gradient(160deg, #2e7d32, #52b856); --iconTint: #c8f7c5; --glow: 82, 184, 86; }
+.tile.yellow { --accent: linear-gradient(160deg, #f57f17, #ffce3d); --iconTint: #fff3b0; --glow: 255, 206, 61; }
 
 .tileBig {
-  border-color: rgba(255, 217, 61, 0.8);
-  box-shadow: 0 8px 26px rgba(255, 217, 61, 0.3);
+  border-color: rgba(255, 217, 61, 0.85);
+  box-shadow:
+    0 10px 28px rgba(255, 217, 61, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 /* A finished journey is worth showing on the tile itself. */
 .tileDone {
-  border-color: rgba(56, 212, 119, 0.75);
-  box-shadow: 0 8px 26px rgba(56, 212, 119, 0.28);
+  border-color: rgba(56, 212, 119, 0.8);
+  box-shadow:
+    0 10px 28px rgba(56, 212, 119, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
 
 /* The whole upper area is the play button, so the common case — "play the level
@@ -475,10 +652,28 @@
 }
 
 /* The picture leads, because a good proportion of these children cannot read
-   the title. On a tall tile it grows into the space rather than leaving a void. */
+   the title. On a tall tile it grows into the space rather than leaving a void.
+   Sat in its own glass roundel rather than floating loose on the gradient —
+   the same badge treatment as the header/nav icons — with the icon itself
+   tinted to the tile's colour family (react-icons fill with `currentColor`,
+   so `color` here is what tints the SVG) so it still reads as "belonging" to
+   the tile rather than as a generic white glyph. */
 .tileIcon {
-  font-size: clamp(18px, 4.6vh, 46px);
-  line-height: 1.05;
+  width: clamp(28px, 6vh, 58px);
+  height: clamp(28px, 6vh, 58px);
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 2px 6px rgba(0, 0, 0, 0.2);
+  color: var(--iconTint, #fff);
+}
+.tileIcon svg {
+  width: 56%;
+  height: 56%;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* Which level this child is on — the first thing to read on a played tile.
@@ -488,33 +683,36 @@
   flex-shrink: 0;
   padding: 1px 8px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.16));
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: #fff;
   font-size: clamp(8px, 1.4vh, 11px);
   font-weight: 800;
   white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
 }
 
 .doneFlag {
   flex-shrink: 0;
   padding: 2px 8px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: linear-gradient(160deg, rgba(255, 217, 61, 0.5), rgba(255, 217, 61, 0.22));
+  border: 1px solid rgba(255, 217, 61, 0.6);
   color: #fff;
   font-size: clamp(8px, 1.4vh, 11px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
 }
 
 .newBadge {
   flex-shrink: 0;
   padding: 1px 7px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.16));
+  border: 1px solid rgba(255, 255, 255, 0.5);
   color: #fff;
   font-size: clamp(7px, 1.3vh, 10px);
   font-weight: 800;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
 }
 
 /* flex-shrink: 0 — the game's name, unlike its description below, must never
@@ -528,6 +726,7 @@
   font-weight: 800;
   line-height: 1.15;
   color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -580,8 +779,8 @@
   /* A hairline and a slightly darker ground separate the path from the game's
      description, so the pips read as a distinct thing to look at and touch
      rather than as more of the same text block. */
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.26));
 }
 
 .speakBtn {
@@ -596,6 +795,7 @@
   color: #fff;
   font-size: clamp(9px, 1.5vh, 13px);
   cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
 }
 .speakBtn:hover { background: rgba(255, 255, 255, 0.32); color: #fff; }
 .speakBtn:active { transform: scale(0.9); }
@@ -621,9 +821,11 @@
   .groupBlurb { display: none; }
   .groupName { display: none; }
 }
-/* Two columns on a narrow phone leaves ~150px per tile: the speaker goes so the
-   five pips keep their full size. */
-@media (max-width: 380px) {
+/* Two columns on a narrow portrait phone, or four columns on a landscape phone
+   or small tablet (which never flips to portrait's two columns, however
+   short it gets), both leave ~150px per tile: the speaker goes so the five
+   pips — see LevelPips.module.css's matching breakpoints — keep their size. */
+@media (max-width: 380px), (max-width: 720px) and (min-aspect-ratio: 9/10) {
   .speakBtn { display: none; }
 }
 
@@ -651,10 +853,10 @@
   padding: 0;
   background: rgba(255, 255, 255, 0.24);
   cursor: pointer;
-  transition: background 0.15s, transform 0.15s;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
 }
 .dot:hover { background: rgba(255, 255, 255, 0.45); }
-.dotOn { background: #ffd93d; transform: scale(1.3); }
+.dotOn { background: #ffd93d; box-shadow: 0 0 8px rgba(255, 217, 61, 0.6); transform: scale(1.3); }
 
 .footNote {
   display: flex;
@@ -674,4 +876,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .dotOn { transform: none; }
+  .calloutBtn::before { animation: none; }
 }

@@ -15,7 +15,11 @@
   overflow: hidden;
   gap: clamp(4px, 0.9vh, 9px);
   padding: max(6px, env(safe-area-inset-top)) 10px max(6px, env(safe-area-inset-bottom));
-  background: radial-gradient(ellipse at 80% -10%, #1a2a56 0%, #0a1024 55%, #05070f 100%);
+  /* A translucent version of the old solid navy gradient: dark enough to keep
+     the charts and glass panels below readable, but sheer enough that the
+     site's video background (mounted behind, like every other student page)
+     still shows through instead of being fully hidden. */
+  background: radial-gradient(ellipse at 80% -10%, rgba(26, 42, 86, 0.82) 0%, rgba(10, 16, 36, 0.88) 55%, rgba(5, 7, 15, 0.92) 100%);
   color: #eaf3ff;
   font-family: "Fredoka", system-ui, sans-serif;
   z-index: 800;
@@ -261,7 +265,7 @@
 }
 .row:last-child { border-bottom: none; }
 
-.rowIcon { font-size: clamp(11px, 2vw, 15px); flex-shrink: 0; }
+.rowIcon { font-size: clamp(11px, 2vw, 15px); flex-shrink: 0; color: #eaf3ff; }
 
 .rowName {
   flex: 1;

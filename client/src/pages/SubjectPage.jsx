@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { AnimatePresence } from "framer-motion";
 import { fetchModuleStars } from "../store/slices/dashboardSlice";
 import * as FramerMotion from "framer-motion";
+import VideoBackground from "../components/VideoBackground/VideoBackground";
 import styles from "./SubjectPage.module.css";
 import { playSlide } from "../utils/sounds";
 import {
@@ -59,6 +60,7 @@ const SubjectPage = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.overlay} />
 
       <div className={styles.content}>
