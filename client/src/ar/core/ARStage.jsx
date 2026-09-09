@@ -14,8 +14,10 @@ import { useNavigate } from 'react-router-dom'
 import {
   FaArrowLeft, FaPause, FaPlay, FaRedo, FaCog, FaCamera, FaTimes,
   FaStar, FaRegStar, FaHandPaper, FaChartLine, FaLightbulb, FaForward,
-  FaChevronDown, FaChevronUp, FaUnlock, FaTrophy,
+  FaChevronDown, FaChevronUp, FaUnlock, FaTrophy, FaGamepad, FaCheck,
+  FaLockOpen, FaThumbsUp, FaCalendarAlt,
 } from 'react-icons/fa'
+import { GiPartyPopper } from 'react-icons/gi'
 import { ARTracker } from './tracker'
 import { GameClock } from './clock'
 import { makeView, clear, Particles, drawBanner, scrim, vignette } from './draw'
@@ -34,6 +36,19 @@ import { GAMES } from '../catalog/games'
 import LevelPips from './LevelPips'
 import SettingsSheet from './SettingsSheet'
 import styles from './ARStage.module.css'
+
+// `pointsFor` (journey.js) deliberately keeps its rows JSON-safe — that object
+// is written verbatim into the uploaded session as `pointsBreakdown`, and a
+// react-icons component is a function that JSON.stringify would silently drop.
+// So the icon lives here, keyed by the row, rather than in the data.
+const POINTS_ROW_ICONS = {
+  played: FaGamepad,
+  quality: FaCheck,
+  best: GiPartyPopper,
+  clear: FaLockOpen,
+  again: FaThumbsUp,
+  today: FaCalendarAlt,
+}
 
 const CAMERA_HELP = {
   CAMERA_DENIED: {
@@ -84,6 +99,10 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
   const pendingLevelRef = useRef(initialLevel)
   const [level, setLevel] = useState(initialLevel)
   const [progress, setProgress] = useState(() => (journeyOn ? tileProgress(game) : null))
+  // JSX tag names can be a dotted member expression but not a computed one
+  // (`LEVEL_META[level - 1].icon` isn't valid as `<.../>`), so the lookup is
+  // done here and the result rendered as `<LevelIcon />`.
+  const LevelIcon = LEVEL_META[level - 1].icon
 
   const trackerRef = useRef(null)
   const clockRef = useRef(null)
@@ -619,7 +638,7 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
               {game.title}
               {journeyOn && (
                 <span className={styles.levelTag} title={`Level ${level} of ${LEVELS}`}>
-                  {LEVEL_META[level - 1].icon} L{level}
+                  <LevelIcon /> L{level}
                 </span>
               )}
             </span>
@@ -685,7 +704,7 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
             <button className={styles.sheetClose} onClick={exit} aria-label="Back">
               <FaTimes />
             </button>
-            <div className={styles.introIcon}>{game.icon}</div>
+            <div className={styles.introIcon}><game.icon /></div>
             <h1 className={styles.introTitle}>{game.title}</h1>
             <p className={styles.introHow}>{game.how}</p>
 
@@ -913,18 +932,21 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
               <span className={styles.pointsWord}>points</span>
             </div>
             <ul className={styles.pointsRows}>
-              {pts.rows.map((r) => (
-                <li key={r.key} className={r.key === 'best' ? styles.pointsBest : undefined}>
-                  <span className={styles.pointsIcon} aria-hidden>
-                    {r.icon}
-                  </span>
-                  <span className={styles.pointsLabel}>{r.label}</span>
-                  <span className={styles.pointsVal}>+{r.points}</span>
-                </li>
-              ))}
+              {pts.rows.map((r) => {
+                const RowIcon = r.key === 'level' ? LEVEL_META[r.level - 1].icon : POINTS_ROW_ICONS[r.key]
+                return (
+                  <li key={r.key} className={r.key === 'best' ? styles.pointsBest : undefined}>
+                    <span className={styles.pointsIcon} aria-hidden>
+                      <RowIcon />
+                    </span>
+                    <span className={styles.pointsLabel}>{r.label}</span>
+                    <span className={styles.pointsVal}>+{r.points}</span>
+                  </li>
+                )
+              })}
             </ul>
             <p className={styles.pointsTally}>
-              {j.totalPoints} points in all · {j.rank.icon} {j.rank.name}
+              {j.totalPoints} points in all · <j.rank.icon /> {j.rank.name}
             </p>
           </div>
         )}
@@ -963,7 +985,7 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
           <div className={styles.badgeRow}>
             {j.newBadges.map((b) => (
               <span key={b.id} className={styles.badgeWon} title={b.how}>
-                <span aria-hidden>{b.icon}</span> {b.name}
+                <span aria-hidden><b.icon /></span> {b.name}
               </span>
             ))}
           </div>

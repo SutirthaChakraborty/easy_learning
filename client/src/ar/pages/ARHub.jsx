@@ -42,10 +42,16 @@ import { speak } from '../core/tts'
 import { haptic } from '../core/feedback'
 import LevelPips from '../core/LevelPips'
 import SettingsSheet from '../core/SettingsSheet'
+import VideoBackground from '../../components/VideoBackground/VideoBackground'
 import styles from './ARHub.module.css'
 
-/** Tiles per page. The grid is 4×2 in landscape and 2×4 in portrait. */
+/** Tiles per page. The grid is 4×2 in landscape and 2×4 in portrait — 8 tiles
+ *  either way. Below 425px wide there isn't enough board height left for four
+ *  stacked rows to read as portrait cards, so that width shows 4 at a time
+ *  (2×2) instead, matching the CSS breakpoint in ARHub.module.css. */
 const PAGE_SIZE = 8
+const NARROW_PAGE_SIZE = 4
+const NARROW_BREAKPOINT = 425
 
 export default function ARHub() {
   const navigate = useNavigate()
@@ -58,15 +64,35 @@ export default function ARHub() {
   })
   const [page, setPage] = useState(0)
   const [showSettings, setShowSettings] = useState(false)
+  const [narrowPhone, setNarrowPhone] = useState(
+    () => window.innerWidth <= NARROW_BREAKPOINT
+  )
   // Bumped when stored progress changes under us (a server merge), so the
   // journey figures below are recomputed rather than left stale.
   const [revision, setRevision] = useState(0)
   const wrapRef = useRef(null)
 
+  useEffect(() => {
+    const check = () => setNarrowPhone(window.innerWidth <= NARROW_BREAKPOINT)
+    window.addEventListener('resize', check)
+    window.addEventListener('orientationchange', check)
+    return () => {
+      window.removeEventListener('resize', check)
+      window.removeEventListener('orientationchange', check)
+    }
+  }, [])
+
   const group = GROUP_BY_ID[groupId] || GROUPS[0]
   const games = useMemo(() => gamesInGroup(group.id), [group.id])
-  const pages = Math.max(1, Math.ceil(games.length / PAGE_SIZE))
-  const pageGames = games.slice(page * PAGE_SIZE, page * PAGE_SIZE + PAGE_SIZE)
+  const pageSize = narrowPhone ? NARROW_PAGE_SIZE : PAGE_SIZE
+  const pages = Math.max(1, Math.ceil(games.length / pageSize))
+  const pageGames = games.slice(page * pageSize, page * pageSize + pageSize)
+
+  // A resize (or switching group) can leave `page` past the end of the new
+  // page count — clamp it back on instead of stranding the board empty.
+  useEffect(() => {
+    setPage((p) => Math.min(p, pages - 1))
+  }, [pages])
 
   const calibrated = isCalibrated()
 
@@ -161,6 +187,7 @@ export default function ARHub() {
 
   return (
     <div className={styles.hub} ref={wrapRef} data-group={group.id}>
+      <VideoBackground />
       <div className={styles.overlay} aria-hidden />
       <div className={styles.glow} aria-hidden />
 
@@ -183,7 +210,7 @@ export default function ARHub() {
             }`}
           >
             <span className={styles.rankIcon} aria-hidden>
-              {journey.rank.icon}
+              <journey.rank.icon />
             </span>
             <span className={styles.pointsNum}>{journey.points}</span>
             <span
@@ -226,7 +253,7 @@ export default function ARHub() {
             className={styles.calloutBtn}
             onClick={() => open(recommended.game.id, recommended.level)}
           >
-            <span className={styles.calloutIcon}>{recommended.game.icon}</span>
+            <span className={styles.calloutIcon}><recommended.game.icon /></span>
             <span className={styles.calloutText}>
               <strong>{recommended.reason}</strong>
               <em>
@@ -257,7 +284,7 @@ export default function ARHub() {
             >
               <span className={styles.ring} style={{ '--p': pct }}>
                 <span className={styles.ringIn}>
-                  <span className={styles.groupIcon}>{gr.icon}</span>
+                  <span className={styles.groupIcon}><gr.icon /></span>
                 </span>
                 {done && (
                   <span className={styles.ringDone} aria-hidden>
@@ -273,7 +300,7 @@ export default function ARHub() {
 
       <div className={styles.groupBlurb}>
         <strong>{group.title}</strong>
-        <span>{group.blurb}</span>
+        <span className={styles.groupDesc}>{group.blurb}</span>
         {groupStats?.possible ? (
           <span className={styles.groupCount}>
             {groupStats.levels}/{groupStats.possible} levels
@@ -369,6 +396,7 @@ function GameTile({ game, index, onOpen }) {
   const p = journeyOn ? tileProgress(game) : null
   const domains = (game.domains || []).slice(0, 2).map((d) => DOMAIN_LABELS[d] || d)
   const meta = p ? LEVEL_META[p.level - 1] : null
+  const MetaIcon = meta?.icon
 
   return (
     <FramerMotion.motion.div
@@ -391,7 +419,7 @@ function GameTile({ game, index, onOpen }) {
       >
         <span className={styles.tileTop}>
           <span className={styles.tileIcon} aria-hidden>
-            {game.icon}
+            <game.icon />
           </span>
           {p?.complete ? (
             <span className={styles.doneFlag} title="All five levels cleared">
@@ -399,7 +427,7 @@ function GameTile({ game, index, onOpen }) {
             </span>
           ) : p?.plays ? (
             <span className={styles.levelFlag} title={`Level ${p.level} of ${LEVELS}`}>
-              {meta.icon} L{p.level}
+              <MetaIcon /> L{p.level}
             </span>
           ) : (
             <span className={styles.newBadge}>New</span>

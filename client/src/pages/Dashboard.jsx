@@ -12,6 +12,7 @@ import {
 } from '../store/slices/dashboardSlice'
 import styles from './Dashboard.module.css'
 import DashboardView from './DashboardView'
+import VideoBackground from '../components/VideoBackground/VideoBackground'
 import { FaExclamationTriangle } from 'react-icons/fa'
 
 // ── Main Dashboard (Redux-connected wrapper for the logged-in student) ─────────
@@ -56,6 +57,7 @@ export default function Dashboard() {
   if (user === undefined) {
     return (
       <div className={styles.loadingWrap}>
+        <VideoBackground />
         <div className={styles.spinner} />
         <p>{t('dashboard.loading')}</p>
       </div>
@@ -66,28 +68,32 @@ export default function Dashboard() {
   if (user === null) {
     return (
       <div className={styles.loadingWrap}>
+        <VideoBackground />
         <p className={styles.errorMsg}><FaExclamationTriangle /> {t('dashboard.loginPrompt')}</p>
       </div>
     )
   }
 
   return (
-    <DashboardView
-      stats={stats}
-      activity={activity}
-      achievements={achievements}
-      performance={performance}
-      rounds={rounds}
-      answers={answers}
-      status={status}
-      error={error}
-      selectedYear={selectedYear}
-      yearOptions={yearOptions}
-      onYearChange={handleYearChange}
-      onRetry={handleRetry}
-      onOpenResults={handleOpenResults}
-      displayName={firstName}
-      avatarUrl={user?.photoURL}
-    />
+    <>
+      <VideoBackground />
+      <DashboardView
+        stats={stats}
+        activity={activity}
+        achievements={achievements}
+        performance={performance}
+        rounds={rounds}
+        answers={answers}
+        status={status}
+        error={error}
+        selectedYear={selectedYear}
+        yearOptions={yearOptions}
+        onYearChange={handleYearChange}
+        onRetry={handleRetry}
+        onOpenResults={handleOpenResults}
+        displayName={firstName}
+        avatarUrl={user?.photoURL}
+      />
+    </>
   )
 }

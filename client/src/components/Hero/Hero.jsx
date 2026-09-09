@@ -80,9 +80,8 @@ const Hero = () => {
       setTimeout(() => navigate(target), 400);
       return;
     }
-    // New students are already on Home, which shows the subject cards right
-    // below — just scroll to them instead of navigating anywhere.
-    cardsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+    // New students start their first adventure in Listen/English.
+    setTimeout(() => navigate("/module/listen/english"), 400);
   };
 
   const handleListen = () => {

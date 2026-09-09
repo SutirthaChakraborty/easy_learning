@@ -33,6 +33,12 @@
  * Points are the child's currency and are shown to the child. They are
  * deliberately absent from the clinical view, which is about independence.
  */
+import {
+  FaSeedling, FaLeaf, FaStar, FaDumbbell, FaTrophy, FaCompass, FaMap,
+  FaMountain, FaCrown, FaMedal, FaCalendarAlt, FaBullseye, FaSun,
+} from 'react-icons/fa'
+import { FaHands, FaMeteor } from 'react-icons/fa6'
+import { GiBalloons, GiButterfly } from 'react-icons/gi'
 import { DIMENSIONS } from './adaptive'
 import { clamp } from './geometry'
 import { loadProfile, saveProfile } from './profile'
@@ -46,11 +52,11 @@ export const LEVELS = 5
  * What actually changes at each level is derived from the game (see levelChange).
  */
 export const LEVEL_META = [
-  { n: 1, name: 'First Steps', icon: '🌱', color: '#6ee7a8' },
-  { n: 2, name: 'Warming Up', icon: '🌿', color: '#7fd8ff' },
-  { n: 3, name: 'Getting Good', icon: '🌟', color: '#ffd76a' },
-  { n: 4, name: 'Strong', icon: '💪', color: '#ffa06a' },
-  { n: 5, name: 'Champion', icon: '🏆', color: '#ff8ad4' },
+  { n: 1, name: 'First Steps', icon: FaSeedling, color: '#6ee7a8' },
+  { n: 2, name: 'Warming Up', icon: FaLeaf, color: '#7fd8ff' },
+  { n: 3, name: 'Getting Good', icon: FaStar, color: '#ffd76a' },
+  { n: 4, name: 'Strong', icon: FaDumbbell, color: '#ffa06a' },
+  { n: 5, name: 'Champion', icon: FaTrophy, color: '#ff8ad4' },
 ]
 
 /**
@@ -81,13 +87,13 @@ const EFFORT_MARGIN = 20
 
 /** Child-facing ranks. Cosmetic; never used clinically. */
 export const RANKS = [
-  { at: 0, name: 'Explorer', icon: '🧭' },
-  { at: 250, name: 'Pathfinder', icon: '🗺️' },
-  { at: 750, name: 'Trailblazer', icon: '⛰️' },
-  { at: 1750, name: 'Sky Walker', icon: '🎈' },
-  { at: 3500, name: 'Star Rider', icon: '🌠' },
-  { at: 6000, name: 'Legend', icon: '👑' },
-  { at: 10000, name: 'Grand Champion', icon: '🏅' },
+  { at: 0, name: 'Explorer', icon: FaCompass },
+  { at: 250, name: 'Pathfinder', icon: FaMap },
+  { at: 750, name: 'Trailblazer', icon: FaMountain },
+  { at: 1750, name: 'Sky Walker', icon: GiBalloons },
+  { at: 3500, name: 'Star Rider', icon: FaMeteor },
+  { at: 6000, name: 'Legend', icon: FaCrown },
+  { at: 10000, name: 'Grand Champion', icon: FaMedal },
 ]
 
 export function rankFor(points = 0) {
@@ -407,11 +413,16 @@ export function pointsFor(opts) {
   // Turning up and taking turns always pays something. This is the "play more"
   // half of the request, and it is the half that matters for a child who is
   // having a bad day.
+  // Rows carry a `key` rather than an icon: this whole object is written
+  // verbatim into the session as `pointsBreakdown` and uploaded as JSON (see
+  // telemetry.js), and a react-icons component is a function — JSON.stringify
+  // would just silently drop it. The renderer looks the icon up from `key`
+  // (POINTS_ROW_ICONS in ARStage.jsx) instead.
   const played = 10 + Math.min(trials, 24) * 2
-  rows.push({ key: 'played', label: `${trials} turn${trials === 1 ? '' : 's'} played`, points: played, icon: '🎮' })
+  rows.push({ key: 'played', label: `${trials} turn${trials === 1 ? '' : 's'} played`, points: played })
 
   const quality = Math.round(60 * (comprehension * 0.75 + independence * 0.25))
-  if (quality > 0) rows.push({ key: 'quality', label: 'Got it right', points: quality, icon: '✅' })
+  if (quality > 0) rows.push({ key: 'quality', label: 'Got it right', points: quality })
 
   const mult = journey ? 1 + (clampLevel(level) - 1) * 0.2 : 1
   let total = Math.round((played + quality) * mult)
@@ -420,25 +431,27 @@ export function pointsFor(opts) {
       key: 'level',
       label: `Level ${clampLevel(level)} bonus`,
       points: total - (played + quality),
-      icon: LEVEL_META[clampLevel(level) - 1].icon,
+      // The level bonus row's icon is the matching LEVEL_META entry, which the
+      // renderer resolves from this plain number rather than from a component.
+      level: clampLevel(level),
     })
   }
 
   // "Play the same game better and your points go up": beating your own best on
   // this game and level is the largest single bonus available.
   if (beatBest) {
-    rows.push({ key: 'best', label: 'Your best yet!', points: 30, icon: '🎉' })
+    rows.push({ key: 'best', label: 'Your best yet!', points: 30 })
     total += 30
   }
   if (cleared && firstClear) {
-    rows.push({ key: 'clear', label: 'Level cleared', points: 40, icon: '🔓' })
+    rows.push({ key: 'clear', label: 'Level cleared', points: 40 })
     total += 40
   } else if (cleared) {
-    rows.push({ key: 'again', label: 'Level passed again', points: 12, icon: '👍' })
+    rows.push({ key: 'again', label: 'Level passed again', points: 12 })
     total += 12
   }
   if (firstToday) {
-    rows.push({ key: 'today', label: 'First game today', points: 15, icon: '📅' })
+    rows.push({ key: 'today', label: 'First game today', points: 15 })
     total += 15
   }
 
@@ -452,16 +465,16 @@ export function pointsFor(opts) {
  * wrong lesson to a child who missed a week because they were unwell.
  */
 export const BADGES = [
-  { id: 'first-game', name: 'Started', icon: '🎈', how: 'Played your first camera game' },
-  { id: 'space-set', name: 'My Space', icon: '🎯', how: 'Set up your reach' },
-  { id: 'five-days', name: 'Kept Going', icon: '📅', how: 'Played on five different days' },
-  { id: 'level-3', name: 'Halfway', icon: '🌟', how: 'Cleared three levels of one game' },
-  { id: 'all-five', name: 'Full Journey', icon: '🏆', how: 'Cleared all five levels of a game' },
-  { id: 'ten-games', name: 'Explorer', icon: '🧭', how: 'Tried ten different games' },
-  { id: 'every-group', name: 'All Around', icon: '🗺️', how: 'Played a game from every group' },
-  { id: 'both-hands', name: 'Two Hands', icon: '🤲', how: 'Used both hands plenty' },
-  { id: 'on-my-own', name: 'On My Own', icon: '🦋', how: 'Answered without help in a game' },
-  { id: 'whole-day', name: 'Whole Day', icon: '🌞', how: 'Finished a whole-day mission' },
+  { id: 'first-game', name: 'Started', icon: GiBalloons, how: 'Played your first camera game' },
+  { id: 'space-set', name: 'My Space', icon: FaBullseye, how: 'Set up your reach' },
+  { id: 'five-days', name: 'Kept Going', icon: FaCalendarAlt, how: 'Played on five different days' },
+  { id: 'level-3', name: 'Halfway', icon: FaStar, how: 'Cleared three levels of one game' },
+  { id: 'all-five', name: 'Full Journey', icon: FaTrophy, how: 'Cleared all five levels of a game' },
+  { id: 'ten-games', name: 'Explorer', icon: FaCompass, how: 'Tried ten different games' },
+  { id: 'every-group', name: 'All Around', icon: FaMap, how: 'Played a game from every group' },
+  { id: 'both-hands', name: 'Two Hands', icon: FaHands, how: 'Used both hands plenty' },
+  { id: 'on-my-own', name: 'On My Own', icon: GiButterfly, how: 'Answered without help in a game' },
+  { id: 'whole-day', name: 'Whole Day', icon: FaSun, how: 'Finished a whole-day mission' },
 ]
 
 const BADGE_BY_ID = Object.fromEntries(BADGES.map((b) => [b.id, b]))

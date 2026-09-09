@@ -10,12 +10,15 @@
  * The hub shows one group at a time so that the tile grid always fits the
  * viewport without scrolling.
  */
+import { FaEye, FaHandPaper, FaBrain, FaFont, FaRunning, FaHome, FaComments } from 'react-icons/fa'
+import { FaHandsHolding } from 'react-icons/fa6'
+
 export const GROUPS = [
   {
     id: 'body',
     title: 'Body & Reach',
     short: 'Body',
-    icon: '🙌',
+    icon: FaHandsHolding,
     color: 'teal',
     blurb: 'Reaching, aiming, using two hands, crossing the middle',
     ladder: 'BODY',
@@ -25,7 +28,7 @@ export const GROUPS = [
     id: 'look',
     title: 'Look & Find',
     short: 'Look',
-    icon: '👀',
+    icon: FaEye,
     color: 'blue',
     blurb: 'Spotting the right one, listening, reading, space words',
     ladder: 'PERCEPTION',
@@ -35,7 +38,7 @@ export const GROUPS = [
     id: 'stop',
     title: 'Stop & Think',
     short: 'Stop',
-    icon: '🛑',
+    icon: FaHandPaper,
     color: 'red',
     blurb: 'Waiting, freezing, ignoring distractions, changing rules',
     ladder: 'COGNITION',
@@ -45,7 +48,7 @@ export const GROUPS = [
     id: 'remember',
     title: 'Remember',
     short: 'Memory',
-    icon: '🧠',
+    icon: FaBrain,
     color: 'purple',
     blurb: 'Holding things in mind, copying an order, missing items',
     ladder: 'COGNITION',
@@ -55,7 +58,7 @@ export const GROUPS = [
     id: 'learn',
     title: 'Letters & Numbers',
     short: 'ABC 123',
-    icon: '🔤',
+    icon: FaFont,
     color: 'orange',
     blurb: 'Sounds, spelling, writing, counting, money',
     ladder: 'ACADEMIC',
@@ -65,7 +68,7 @@ export const GROUPS = [
     id: 'move',
     title: 'Move & Copy',
     short: 'Move',
-    icon: '🕺',
+    icon: FaRunning,
     color: 'pink',
     blurb: 'Rhythm, imitation, tracing, drawing in the air',
     ladder: 'BODY',
@@ -75,7 +78,7 @@ export const GROUPS = [
     id: 'day',
     title: 'My Day',
     short: 'My Day',
-    icon: '🏠',
+    icon: FaHome,
     color: 'green',
     blurb: 'Washing, dressing, packing, sorting, staying safe',
     ladder: 'FUNCTION',
@@ -85,7 +88,7 @@ export const GROUPS = [
     id: 'together',
     title: 'Talk & Together',
     short: 'Together',
-    icon: '💬',
+    icon: FaComments,
     color: 'yellow',
     blurb: 'Following instructions, feelings, asking for help',
     ladder: 'COMMUNITY',

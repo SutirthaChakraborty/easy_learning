@@ -15,16 +15,36 @@
    between a two-column phone and a four-column laptop. It scales with the
    viewport rather than staying at its smallest everywhere, because on a tile
    these pips are not a decoration — they are the one part that tells the child
-   where they are, and they have to be a comfortable tap target. */
-@media (min-width: 900px) {
+   where they are, and they have to be a comfortable tap target. Pushed out to
+   1000px (rather than the tile grid's own 900px feel) so the jump to the
+   bigger size never lands on a width where four columns are still too narrow
+   for it. */
+@media (min-width: 1000px) {
   .sm { --pipSize: 27px; --trailW: 13px; }
 }
 
-/* Two tile columns on a narrow phone leaves about 150px of tile width, and five
-   pips plus their trails have to fit inside it without wrapping. */
+/* Two tile columns on a narrow *portrait* phone leave about 150px of tile
+   width, and five pips plus their trails have to fit inside it without
+   wrapping. */
 @media (max-width: 380px) {
   .sm { --pipSize: 17px; --trailW: 7px; }
   .lg { --pipSize: 38px; --trailW: 18px; }
+}
+
+/* A landscape phone or small tablet keeps ARHub's four-column grid — it is
+   never short enough to flip to portrait's two columns — but at these widths
+   a quarter of the screen is just as narrow as a portrait phone's half. Same
+   shrink, keyed off aspect ratio instead of the portrait breakpoint's width. */
+@media (max-width: 720px) and (min-aspect-ratio: 9/10) {
+  .sm { --pipSize: 17px; --trailW: 7px; }
+}
+
+/* Below ~500px a landscape quarter-column is narrower than even a portrait
+   phone's half, so it needs its own, smaller step (still bigger than it
+   sounds — a locked-phone-style feature phone browsed in landscape is the
+   only realistic case this reaches). */
+@media (max-width: 500px) and (min-aspect-ratio: 9/10) {
+  .sm { --pipSize: 13px; --trailW: 5px; }
 }
 
 .step {

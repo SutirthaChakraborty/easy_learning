@@ -19,7 +19,7 @@ import { useNavigate } from 'react-router-dom'
 import * as Recharts from 'recharts'
 import {
   FaArrowLeft, FaChartLine, FaHandPaper, FaBrain, FaHome, FaDownload,
-  FaInfoCircle, FaTrash, FaSync, FaRoute, FaExclamationTriangle,
+  FaInfoCircle, FaTrash, FaSync, FaRoute, FaExclamationTriangle, FaGamepad,
 } from 'react-icons/fa'
 import { aggregateLocal, localSessions, clearLocalSessions, flushPendingSessions } from '../core/telemetry'
 import { loadProfile, CAPABILITIES, REACH_SPACE } from '../core/profile'
@@ -29,6 +29,7 @@ import { LEVELS, journeySnapshot, tileProgress, hasJourney } from '../core/journ
 import { PROMPT_INFO, PROMPT_STAGES } from '../core/adaptive'
 import { authHeaders } from '../../utils/authHeaders'
 import LevelPips from '../core/LevelPips'
+import VideoBackground from '../../components/VideoBackground/VideoBackground'
 import styles from './ARInsights.module.css'
 
 const {
@@ -114,6 +115,7 @@ export default function ARInsights() {
 
   return (
     <div className={styles.page}>
+      <VideoBackground />
       <header className={styles.head}>
         <button className={styles.iconBtn} onClick={() => navigate('/games/ar')} aria-label="Back">
           <FaArrowLeft />
@@ -322,7 +324,7 @@ function Journey({ journey, server }) {
         return {
           ...g,
           title: game?.title || g.gameId,
-          icon: game?.icon || '🎮',
+          icon: game?.icon || FaGamepad,
           pips: game && hasJourney(game) ? tileProgress(game).pips : null,
           stuck: g.plays >= 3 && g.cleared === 0,
         }
@@ -378,7 +380,7 @@ function Journey({ journey, server }) {
           </span>
           <span className={styles.jStat}>
             <strong>
-              {journey.rank.icon} {journey.rank.name}
+              <journey.rank.icon /> {journey.rank.name}
             </strong>
             rank
           </span>
@@ -425,7 +427,7 @@ function Journey({ journey, server }) {
           <div className={styles.table}>
             {games.slice(0, 9).map((g) => (
               <div key={g.gameId} className={`${styles.row} ${g.stuck ? styles.rowWarn : ''}`}>
-                <span className={styles.rowIcon}>{g.icon}</span>
+                <span className={styles.rowIcon}><g.icon /></span>
                 <span className={styles.rowName}>
                   {g.stuck && <FaExclamationTriangle className={styles.warnIcon} title="Played several times, nothing cleared" />}
                   {g.title}
@@ -524,7 +526,7 @@ function Journey({ journey, server }) {
           <div className={styles.badges}>
             {journey.badges.map((b) => (
               <span key={b.id} className={styles.badgeChip} title={b.how}>
-                <span aria-hidden>{b.icon}</span> {b.name}
+                <span aria-hidden><b.icon /></span> {b.name}
               </span>
             ))}
           </div>
@@ -627,21 +629,24 @@ function Overview({ local, server, sessions }) {
 
       <Card title="Games played" note="Accuracy and independence per game, most-played first.">
         <div className={styles.table}>
-          {local.games.slice(0, 8).map((g) => (
-            <div key={g.gameId} className={styles.row}>
-              <span className={styles.rowIcon}>{GAME_BY_ID[g.gameId]?.icon || '🎮'}</span>
-              <span className={styles.rowName}>{g.title || g.gameId}</span>
-              <span className={styles.rowStat} title="Understood">
-                {pct(g.accuracyPct)}
-              </span>
-              <span className={styles.rowStat} title="Independent">
-                {pct(g.independentPct)}
-              </span>
-              <span className={styles.rowStat} title="Median thinking time">
-                {ms(g.medianLatencyMs)}
-              </span>
-            </div>
-          ))}
+          {local.games.slice(0, 8).map((g) => {
+            const Icon = GAME_BY_ID[g.gameId]?.icon || FaGamepad
+            return (
+              <div key={g.gameId} className={styles.row}>
+                <span className={styles.rowIcon}><Icon /></span>
+                <span className={styles.rowName}>{g.title || g.gameId}</span>
+                <span className={styles.rowStat} title="Understood">
+                  {pct(g.accuracyPct)}
+                </span>
+                <span className={styles.rowStat} title="Independent">
+                  {pct(g.independentPct)}
+                </span>
+                <span className={styles.rowStat} title="Median thinking time">
+                  {ms(g.medianLatencyMs)}
+                </span>
+              </div>
+            )
+          })}
           {server?.perGame?.length > local.games.length && (
             <div className={styles.rowNote}>
               {server.perGame.length} games recorded on the server across all devices
@@ -721,14 +726,17 @@ function Domains({ local, profile }) {
             .filter(([, g]) => g.trials > 0)
             .sort((a, b) => PROMPT_STAGES.indexOf(a[1].promptStage) - PROMPT_STAGES.indexOf(b[1].promptStage))
             .slice(0, 9)
-            .map(([id, g]) => (
-              <div key={id} className={styles.row}>
-                <span className={styles.rowIcon}>{GAME_BY_ID[id]?.icon || '🎮'}</span>
-                <span className={styles.rowName}>{GAME_BY_ID[id]?.title || id}</span>
-                <span className={styles.stageChip}>{g.promptStage}</span>
-                <span className={styles.rowStat}>{PROMPT_INFO[g.promptStage]?.name}</span>
-              </div>
-            ))}
+            .map(([id, g]) => {
+              const Icon = GAME_BY_ID[id]?.icon || FaGamepad
+              return (
+                <div key={id} className={styles.row}>
+                  <span className={styles.rowIcon}><Icon /></span>
+                  <span className={styles.rowName}>{GAME_BY_ID[id]?.title || id}</span>
+                  <span className={styles.stageChip}>{g.promptStage}</span>
+                  <span className={styles.rowStat}>{PROMPT_INFO[g.promptStage]?.name}</span>
+                </div>
+              )
+            })}
         </div>
       </Card>
     </div>

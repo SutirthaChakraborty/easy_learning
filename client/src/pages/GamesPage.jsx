@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import * as FramerMotion from "framer-motion";
+import VideoBackground from "../components/VideoBackground/VideoBackground";
 import styles from "./GamesPage.module.css";
 import { playSlide } from "../utils/sounds";
 import { FaGamepad, FaArrowLeft, FaCamera, FaHandPaper } from "react-icons/fa";
@@ -17,6 +18,7 @@ const GamesPage = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      <VideoBackground />
       <div className={styles.overlay} />
 
       <div className={styles.content}>
