@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import {
@@ -11,8 +12,10 @@ import {
   FaExclamationTriangle, FaChartBar, FaMap, FaBookOpen,
   FaClock, FaMedal, FaChartLine, FaSeedling, FaCalendarAlt,
   FaCheckCircle, FaTrophy, FaBullseye, FaTimes, FaStar, FaRegStar,
+  FaCamera, FaArrowRight, FaThumbsUp, FaHandsHelping, FaInfoCircle,
 } from 'react-icons/fa'
 import { GiCrossedSwords } from 'react-icons/gi'
+import { gameStrengthsAndGrowth, suggestNextGames } from '../ar/core/recommend'
 
 
 // ── Helpers ────────────────────────────────────────────────────────────────────
@@ -25,6 +28,11 @@ function fmtMinutes(mins) {
 
 function fmtDate(dateStr) {
   return new Date(dateStr).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })
+}
+
+function fmtMs(v) {
+  if (v == null) return '—'
+  return v >= 1000 ? `${(v / 1000).toFixed(1)}s` : `${Math.round(v)}ms`
 }
 
 // ── Heatmap component ──────────────────────────────────────────────────────────
@@ -195,9 +203,120 @@ function ChartTooltip({ active, payload, label }) {
   )
 }
 
+// ── Camera Games (AR) report card ───────────────────────────────────────────────
+/**
+ * A condensed, linked view of the camera-games accuracy/time report. The full
+ * breakdown (per-domain, per-hand, journey) lives at /games/ar/insights; this
+ * card exists so a parent lands on the one number that matters from the main
+ * dashboard — which tasks are going well, which need more practice, and what
+ * to try next — without having to know the AR section exists.
+ *
+ * Accuracy and time are shown side by side, never combined into one score,
+ * matching how the camera games themselves report (docs/AR-GAMES.md §1).
+ */
+function GameRow({ g }) {
+  return (
+    <div key={g.gameId} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <span style={{ flex: 1, minWidth: 0, color: 'rgba(255,255,255,0.85)', fontSize: '0.88rem', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+        {g.title || g.gameId}
+      </span>
+      <span style={{ color: '#43c0a0', fontWeight: 700, fontSize: '0.85rem', whiteSpace: 'nowrap' }}>
+        {g.accuracyPct}%
+      </span>
+      <span style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.78rem', whiteSpace: 'nowrap' }} title="Median thinking time">
+        {fmtMs(g.medianLatencyMs)}
+      </span>
+    </div>
+  )
+}
+
+function ArGamesReport({ arInsights }) {
+  const overall = arInsights?.overall
+  const hasData = Boolean(overall?.trials)
+
+  const { strengths, growth } = useMemo(() => gameStrengthsAndGrowth(arInsights), [arInsights])
+  const suggestions = useMemo(() => suggestNextGames(arInsights, 4), [arInsights])
+
+  return (
+    <div className={styles.section}>
+      <div className={styles.sectionHeader}>
+        <h2 className={styles.sectionTitle}><FaCamera /> Camera Games Report</h2>
+        <Link to="/games/ar/insights" style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#7ee8ff', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+          Full report <FaArrowRight />
+        </Link>
+      </div>
+
+      {!hasData ? (
+        <div className={styles.emptyChart}>
+          <span><FaCamera /></span>
+          <p>No camera games played yet. Accuracy and time for each task will show up here once one is played.</p>
+          <Link to="/games/ar" className={styles.retryBtn} style={{ display: 'inline-block', textDecoration: 'none', marginTop: 10 }}>
+            Go to Camera Games
+          </Link>
+        </div>
+      ) : (
+        <>
+          <div className={styles.statsRow} style={{ marginBottom: 18 }}>
+            <StatCard icon={<FaChartLine />} label="Understanding" value={`${overall.comprehensionPct ?? '—'}%`} sub={`${overall.trials} turns`} color="#7ee8ff" />
+            <StatCard icon={<FaClock />} label="Thinking time" value={fmtMs(overall.medianLatencyMs)} sub="Median, per turn" color="#f7971e" />
+            <StatCard icon={<FaGamepad />} label="Games played" value={arInsights.perGame?.length ?? 0} sub={`${overall.minutesPlayed} min`} color="#6c63ff" />
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 18 }}>
+            <div>
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.95rem', color: '#43c0a0', margin: '0 0 6px' }}>
+                <FaThumbsUp /> Doing well
+              </h3>
+              {strengths.length ? strengths.map((g) => <GameRow key={g.gameId} g={g} />) : (
+                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Play a task a few more times to see this.</p>
+              )}
+            </div>
+            <div>
+              <h3 style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.95rem', color: '#f39c12', margin: '0 0 6px' }}>
+                <FaHandsHelping /> Needs more practice
+              </h3>
+              {growth.length ? growth.map((g) => <GameRow key={g.gameId} g={g} />) : (
+                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.85rem' }}>Play a task a few more times to see this.</p>
+              )}
+            </div>
+          </div>
+
+          {suggestions.length > 0 && (
+            <div style={{ marginTop: 20 }}>
+              <h3 style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.75)', margin: '0 0 10px' }}>Try next</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
+                {suggestions.map((s) => (
+                  <Link
+                    key={s.gameId}
+                    to={`/games/ar/${s.gameId}`}
+                    title={s.reason}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none',
+                      background: 'rgba(108,99,255,0.12)', border: '1px solid rgba(108,99,255,0.3)',
+                      borderRadius: 12, padding: '8px 14px', color: '#e6edf3',
+                    }}
+                  >
+                    {s.icon && <s.icon style={{ color: '#a29bfe' }} />}
+                    <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>{s.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <p style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginTop: 18, color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem' }}>
+            <FaInfoCircle style={{ marginTop: 2, flexShrink: 0 }} />
+            Descriptions of in-game behaviour over the last 30 days, not a diagnosis. "Needs more practice" is where the next session is worth spending, kept separate from how fast a turn was taken.
+          </p>
+        </>
+      )}
+    </div>
+  )
+}
+
 // ── Main Dashboard (presentational) ─────────────────────────────────────────────
 export default function DashboardView({
-  stats, activity, achievements, performance, rounds, answers,
+  stats, activity, achievements, performance, rounds, answers, arInsights,
   status, error,
   selectedYear, yearOptions, onYearChange, onRetry, onOpenResults,
   displayName, avatarUrl,
@@ -514,6 +633,9 @@ export default function DashboardView({
           </div>
         )}
       </div>
+
+      {/* ── Camera Games (AR) Report ── */}
+      <ArGamesReport arInsights={arInsights} />
 
       {/* ── Results modal ── */}
       <AnimatePresence>

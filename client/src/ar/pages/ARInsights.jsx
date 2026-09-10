@@ -15,11 +15,12 @@
  * server when the child is signed in.
  */
 import { useEffect, useMemo, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import * as Recharts from 'recharts'
 import {
   FaArrowLeft, FaChartLine, FaHandPaper, FaBrain, FaHome, FaDownload,
   FaInfoCircle, FaTrash, FaSync, FaRoute, FaExclamationTriangle, FaGamepad,
+  FaChartBar,
 } from 'react-icons/fa'
 import { aggregateLocal, localSessions, clearLocalSessions, flushPendingSessions } from '../core/telemetry'
 import { loadProfile, CAPABILITIES, REACH_SPACE } from '../core/profile'
@@ -122,6 +123,14 @@ export default function ARInsights() {
         </button>
         <h1 className={styles.title}>Progress &amp; analysis</h1>
         <div className={styles.headRight}>
+          <Link
+            to="/dashboard"
+            className={styles.iconBtn}
+            aria-label="Learning dashboard"
+            title="This child's full learning dashboard, with a summary of this report linked in"
+          >
+            <FaChartBar />
+          </Link>
           <button
             className={styles.iconBtn}
             onClick={() => setRefreshKey((k) => k + 1)}

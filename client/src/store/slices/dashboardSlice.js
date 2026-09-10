@@ -132,6 +132,20 @@ export const fetchRounds = createAsyncThunk(
   }
 )
 
+// AR (camera games) accuracy/time report, for the dashboard's linked summary
+// card. Failures here must not blow up the rest of the dashboard — a child who
+// has never played a camera game is the common case, not an error — so this
+// never touches the shared status/error fields, matching moduleStars/answers/rounds.
+export const fetchArInsights = createAsyncThunk(
+  'dashboard/fetchArInsights',
+  async (days = 30, { rejectWithValue }) => {
+    try {
+      const json = await apiFetch(`${BASE}/ar/insights?days=${days}`)
+      return json.data
+    } catch (e) { return rejectWithValue(e.message) }
+  }
+)
+
 const dashboardSlice = createSlice({
   name: 'dashboard',
   initialState: {
@@ -142,6 +156,7 @@ const dashboardSlice = createSlice({
     moduleStars: {},
     answers: [],
     rounds: [],
+    arInsights: null,
     status: 'idle',
     error: null,
   },
@@ -163,6 +178,7 @@ const dashboardSlice = createSlice({
       .addCase(fetchModuleStars.fulfilled,           (state, { payload }) => { state.moduleStars = payload || {} })
       .addCase(fetchDashboardAnswers.fulfilled,      (state, { payload }) => { state.answers = payload || [] })
       .addCase(fetchRounds.fulfilled,               (state, { payload }) => { state.rounds = payload || [] })
+      .addCase(fetchArInsights.fulfilled,           (state, { payload }) => { state.arInsights = payload || null })
   },
 })
 

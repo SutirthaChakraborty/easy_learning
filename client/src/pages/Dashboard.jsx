@@ -9,6 +9,7 @@ import {
   fetchDashboardPerformance,
   fetchDashboardAnswers,
   fetchRounds,
+  fetchArInsights,
 } from '../store/slices/dashboardSlice'
 import styles from './Dashboard.module.css'
 import DashboardView from './DashboardView'
@@ -20,7 +21,7 @@ export default function Dashboard() {
   const dispatch  = useDispatch()
   const { user }  = useAuth()
   const { t }     = useTranslation()
-  const { stats, activity, achievements, performance, answers, rounds, status, error } = useSelector(s => s.dashboard)
+  const { stats, activity, achievements, performance, answers, rounds, arInsights, status, error } = useSelector(s => s.dashboard)
 
   const thisYear = new Date().getFullYear()
   const [selectedYear, setSelectedYear] = useState(thisYear)
@@ -33,6 +34,7 @@ export default function Dashboard() {
     dispatch(fetchDashboardAchievements())
     dispatch(fetchDashboardPerformance(30))
     dispatch(fetchRounds(30))
+    dispatch(fetchArInsights(30))
   }, [dispatch, user])
 
   function handleYearChange(year) {
@@ -84,6 +86,7 @@ export default function Dashboard() {
         performance={performance}
         rounds={rounds}
         answers={answers}
+        arInsights={arInsights}
         status={status}
         error={error}
         selectedYear={selectedYear}
