@@ -587,6 +587,16 @@ offset, and part of it is us.
 Rounds are also mirrored into `StudentRound` and `StudentActivity` so camera
 games show up in the child's normal progress alongside the other modules.
 
+The main student dashboard (`/dashboard`) carries a condensed, linked copy of
+this report — `client/src/ar/core/recommend.js` turns the same
+`GET /api/ar/insights` payload into a "doing well" / "needs more practice"
+split per game (accuracy and median thinking time shown side by side, never
+combined, per §1) plus a short "try next" list of catalogue games chosen from
+the domains the child is finding hardest. The Dashboard's "Camera Games
+Report" card links out to the full `/games/ar/insights` screen, and that
+screen's header links back to `/dashboard`, so a parent can move between the
+one-number summary and the full breakdown either way.
+
 ---
 
 ## 8. No scrolling. Anywhere.
