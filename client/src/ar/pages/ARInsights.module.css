@@ -55,7 +55,7 @@
   place-items: center;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.07);
+  background: #272626;
   color: #cfe3ff;
   font-size: clamp(11px, 2.2vw, 15px);
   cursor: pointer;
@@ -88,7 +88,7 @@
   padding: clamp(5px, 1vh, 10px) 4px;
   border-radius: 13px;
   border: 1px solid rgba(255, 255, 255, 0.11);
-  background: rgba(4, 8, 20, 0.45);
+  background: #272727;
   min-width: 0;
   cursor: help;
 }
@@ -132,7 +132,7 @@
   padding: clamp(4px, 0.9vh, 8px) 4px;
   border-radius: 11px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(4, 8, 20, 0.4);
+  background: #292929;
   color: rgba(196, 214, 238, 0.85);
   font-family: inherit;
   font-size: clamp(9px, 1.8vw, 12.5px);
@@ -141,11 +141,11 @@
   min-width: 0;
   transition: background 0.15s, color 0.15s;
 }
-.tab:hover { background: rgba(4, 8, 20, 0.6); }
+.tab:hover { background: #383838; }
 .tab span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 .tabOn {
-  background: rgba(61, 155, 255, 0.22);
+  background: #15334f;
   border-color: rgba(126, 232, 255, 0.5);
   color: #7ee8ff;
 }
@@ -190,7 +190,7 @@
   padding: clamp(6px, 1.2vh, 12px) clamp(8px, 1.2vw, 14px);
   border-radius: clamp(12px, 2vw, 18px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: linear-gradient(160deg, rgba(4, 8, 20, 0.55), rgba(4, 8, 20, 0.35));
+  background: linear-gradient(160deg, #0c1224, #070a16);
   overflow: hidden;
 }
 
@@ -339,7 +339,7 @@
   max-height: 100%;
   border-radius: 8px;
   border: 1px dashed rgba(255, 255, 255, 0.22);
-  background: rgba(4, 8, 20, 0.3);
+  background: #131a34;
   flex-shrink: 0;
 }
 
@@ -437,8 +437,9 @@
   flex: 1;
   min-width: 0;
   font-size: clamp(7.5px, 1.5vw, 10.5px);
+  font-weight: 600;
   line-height: 1.3;
-  color: rgba(150, 172, 202, 0.8);
+  color: rgba(15, 15, 15, 0.984);
 }
 .disclaimer svg { flex-shrink: 0; }
 
@@ -453,8 +454,8 @@
   padding: 5px 12px;
   border-radius: 999px;
   border: 1px solid rgba(255, 92, 114, 0.45);
-  background: rgba(255, 92, 114, 0.1);
-  color: #ff9aa8;
+  background: rgba(250, 1, 35, 0.978);
+  color: #fbfbfb;
   font-family: inherit;
   font-size: clamp(8.5px, 1.6vw, 11px);
   font-weight: 700;
@@ -508,7 +509,7 @@
   padding: 3px 8px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(4, 8, 20, 0.4);
+  background: #131a34;
   font-size: clamp(7.5px, 1.4vw, 10px);
   color: rgba(178, 199, 228, 0.9);
   line-height: 1.25;
@@ -565,7 +566,7 @@
   gap: 8px;
   padding: 5px 8px;
   border-radius: 10px;
-  background: rgba(4, 8, 20, 0.4);
+  background: #131a34;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
