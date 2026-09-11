@@ -1014,14 +1014,14 @@ function Placeholder({ children }) {
   return <div className={styles.placeholder}>{children}</div>
 }
 
-const AXIS = { fill: 'rgba(190,210,238,0.8)', fontSize: 10, fontFamily: 'Fredoka, system-ui, sans-serif' }
+const AXIS = { fill: 'rgba(20,26,43,0.85)', fontSize: 10, fontFamily: 'Fredoka, system-ui, sans-serif' }
 const TOOLTIP = {
   background: 'rgba(9,14,32,0.96)',
   border: '1px solid rgba(126,232,255,0.3)',
   borderRadius: 10,
   fontSize: 11,
   fontFamily: 'Fredoka, system-ui, sans-serif',
-  color: '#eaf3ff',
+  color: '#131a2b',
 }
 const LEGEND = { fontSize: 10, fontFamily: 'Fredoka, system-ui, sans-serif' }
 
