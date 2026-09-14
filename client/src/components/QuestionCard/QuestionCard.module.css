@@ -8,15 +8,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-}
-
-.cardOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(160deg, rgba(108,92,231,0.15), rgba(255,107,107,0.1));
-  pointer-events: none;
-  border-radius: inherit;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.28);
 }
 
 .stimulus { position: relative; z-index: 1; }

@@ -6,7 +6,7 @@
 .bgOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.52);
+  background: rgba(0, 0, 0, 0.75);
   pointer-events: none;
   z-index: 0;
 }
@@ -61,9 +61,7 @@
 .moduleTitle {
   font-size: 26px;
   font-weight: bold;
-  background: linear-gradient(to right, #ff6b6b, #a29bfe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #dedc5c;
   margin: 0;
 }
 
