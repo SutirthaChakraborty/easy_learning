@@ -42,7 +42,6 @@ function LegacyCard({ question, onAnswered }) {
 
   return (
     <div className={styles.card}>
-      <div className={styles.cardOverlay} />
       <div className={styles.stimulus}>
         {question.emoji && <div className={styles.emoji}>{question.emoji}</div>}
         {question.question && <p className={styles.instruction}>{question.question}</p>}
@@ -113,7 +112,6 @@ export default function QuestionCard({ question, subject, onAnswered }) {
 
   return (
     <div className={styles.card}>
-      <div className={styles.cardOverlay} />
       <div className={styles.stimulus}>
         <p className={styles.instruction}>{question.instruction}</p>
         {question.image?.emoji && <div className={styles.emoji}>{question.image.emoji}</div>}
