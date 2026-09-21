@@ -70,7 +70,7 @@ const Hero = () => {
   const isReturningStudent = roundsLoaded && !!user && !!lastRound;
 
   const ctaLabel = isReturningStudent
-    ? t("hero.continueAdventure", { defaultValue: "Continue Adventure" })
+    ? t("hero.continueAdventure", { defaultValue: "Start where you left off" })
     : t("hero.startAdventure", { defaultValue: "Start Your Adventure" });
 
   const handleCTA = () => {
@@ -138,7 +138,7 @@ const Hero = () => {
                     : moduleLabel || t("hero.keepGoing", { defaultValue: "Keep going!" })}
                 </span>
                 <span className={styles.resumeSubtitle}>
-                  {t("hero.pickUpWhereLeftOff", { defaultValue: "Pick up right where you left off" })}
+                  {t("hero.pickUpWhereLeftOff", { defaultValue: "Resume Your Adventure" })}
                 </span>
               </div>
             </div>

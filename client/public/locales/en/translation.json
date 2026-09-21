@@ -16,12 +16,12 @@
     "greeting": "Hi, {{name}}!",
     "startLearning": "Start Learning",
     "startAdventure": "Start Your Adventure",
-    "continueAdventure": "Continue Adventure",
+    "continueAdventure": "Start where you left off",
     "readyForAdventure": "Ready for your next adventure?",
     "listen": "Listen",
     "chooseWorld": "Choose Your World",
     "chooseWorldHint": "Choose a world below to begin your first adventure!",
-    "pickUpWhereLeftOff": "Pick up right where you left off",
+    "pickUpWhereLeftOff": "Resume Your Adventure",
     "keepGoing": "Keep going!"
   },
   "cards": {
