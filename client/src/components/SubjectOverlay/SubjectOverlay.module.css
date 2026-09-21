@@ -2,22 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: 2000;
-  background:
-    radial-gradient(1.5px 1.5px at 10% 15%, rgba(255,255,255,0.9), transparent),
-    radial-gradient(1.5px 1.5px at 80% 25%, rgba(255,255,255,0.75), transparent),
-    radial-gradient(1px 1px at 40% 70%, rgba(255,255,255,0.85), transparent),
-    radial-gradient(1.5px 1.5px at 62% 88%, rgba(255,255,255,0.6), transparent),
-    radial-gradient(1px 1px at 92% 60%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1.5px 1.5px at 25% 45%, rgba(255,255,255,0.55), transparent),
-    radial-gradient(1px 1px at 70% 8%, rgba(255,255,255,0.65), transparent),
-    radial-gradient(1.5px 1.5px at 15% 92%, rgba(255,255,255,0.7), transparent),
-    radial-gradient(1px 1px at 50% 30%, rgba(255,255,255,0.5), transparent),
-    linear-gradient(160deg, #1b0e42 0%, #170b38 45%, #0d0620 100%);
-  background-size:
-    220px 220px, 240px 240px, 180px 180px, 200px 200px,
-    190px 190px, 210px 210px, 170px 170px, 230px 230px,
-    160px 160px, cover;
-  background-repeat: repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, repeat, no-repeat;
+  background: transparent;
   backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
@@ -108,10 +93,7 @@
   font-size: 42px;
   font-weight: 800;
   margin: 0 0 6px;
-  background: linear-gradient(90deg, #ff6bcb 0%, #c86ef0 35%, #8b7bff 65%, #5ec8ff 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #1dfd82;
   filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));
 }
 
