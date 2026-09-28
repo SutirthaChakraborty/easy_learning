@@ -1,6 +1,6 @@
 # Easy Learn — Hostinger VPS Deployment Guide
 
-**Domain:** `quizify.cloud`  
+**Domain:** `www.learnigo.eu` (canonical) — `learnigo.eu` and `quizify.cloud` 301-redirect here  
 **Stack:** React 19 (Vite) + Express.js + MongoDB Atlas (MERN)  
 **Node version:** `22.18.0` (matches local dev machine)  
 **Strategy:** Nginx serves the built React SPA; PM2 keeps the Express API alive; MongoDB Atlas as the database.
@@ -14,19 +14,19 @@ Do these two things **before touching the server**, or the app will fail to conn
 ### MongoDB Atlas — Whitelist the VPS IP
 1. Log in to [MongoDB Atlas](https://cloud.mongodb.com)
 2. Go to **Network Access → Add IP Address**
-3. Add `quizify.cloud` → Save
+3. Add the VPS IP (`31.97.224.109`) → Save — Atlas needs the IP, not a domain name
 
 ### Firebase — Authorize the Domain
 1. Open [Firebase Console](https://console.firebase.google.com) → project **learningo-c9ac4**
 2. Go to **Authentication → Settings → Authorized Domains**
-3. Add `quizify.cloud` → Save
+3. Add `www.learnigo.eu` and `learnigo.eu` → Save
 
 ---
 
 ## 1. Connect to the Server
 
 ```bash
-ssh root@quizify.cloud
+ssh root@www.learnigo.eu
 ```
 
 ---
@@ -104,10 +104,10 @@ SUPERADMIN_JWT_SECRET=<replace-with-a-long-random-string>
 TEACHER_JWT_SECRET=<replace-with-a-long-random-string>
 TEACHER_JWT_EXPIRES_IN=7d
 
-CLIENT_URL=https://quizify.cloud
+CLIENT_URL=https://www.learnigo.eu
 ```
 
-> **`CLIENT_URL`** must be exactly `https://quizify.cloud` — this is what Express uses for CORS.  
+> **`CLIENT_URL`** must be exactly `https://www.learnigo.eu` — this is what Express uses for CORS.  
 > **`MONGODB_URI` / `ADMIN_MONGODB_URI` / `SUPERADMIN_MONGODB_URI`** — copy the full URIs from your local `server/.env`; each points to a different Atlas cluster (`wqthdik`, `r9mcewc`, `xszbqqt` respectively).  
 > **Every `*_JWT_SECRET`** — generate a strong secret per key: `node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"`. It's fine to reuse your local `.env` values instead of regenerating.  
 > **MongoDB Atlas Network Access** — remember all three clusters need the VPS IP whitelisted (see "Before You Start"), not just the one `mydb` cluster.
@@ -123,7 +123,7 @@ nano .env
 
 ```env
 VITE_FIREBASE_API_KEY=<your-firebase-api-key>
-VITE_API_BASE_URL=https://quizify.cloud/api
+VITE_API_BASE_URL=https://www.learnigo.eu/api
 ```
 
 > **`VITE_FIREBASE_API_KEY`** — copy from your local `client/.env`.  
@@ -164,7 +164,7 @@ Skip this on subsequent deploys.
 
 ```bash
 cd /var/www/easy_learning/server
-pm2 start server.js --name easy-learn-api
+pm2 start server.js --name easy-learn
 pm2 save
 
 # Make PM2 auto-start on server reboot
@@ -176,7 +176,7 @@ Check it is running:
 
 ```bash
 pm2 status
-pm2 logs easy-learn-api --lines 30
+pm2 logs easy-learn --lines 30
 ```
 
 ---
@@ -190,9 +190,10 @@ nano /etc/nginx/sites-available/easy-learn
 Paste:
 
 ```nginx
+# Canonical app — www.learnigo.eu
 server {
     listen 80;
-    server_name quizify.cloud;
+    server_name www.learnigo.eu;
 
     # Serve the React build
     root /var/www/easy_learning/client/dist;
@@ -214,7 +215,23 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
+
+# Bare apex redirects to the canonical www host
+server {
+    listen 80;
+    server_name learnigo.eu;
+    return 301 https://www.learnigo.eu$request_uri;
+}
+
+# Old domain redirects to the canonical host
+server {
+    listen 80;
+    server_name quizify.cloud www.quizify.cloud;
+    return 301 https://www.learnigo.eu$request_uri;
+}
 ```
+
+Run `certbot --nginx -d www.learnigo.eu -d learnigo.eu -d quizify.cloud -d www.quizify.cloud` afterward — it detects these server blocks by `server_name`, issues/reuses certificates, and rewrites each block in place to add the `listen 443 ssl` and HTTP→HTTPS redirect directives automatically. Say yes when it offers to redirect HTTP to HTTPS.
 
 Enable and reload:
 
@@ -242,14 +259,23 @@ ufw status
 Open in your browser:
 
 ```
-https://quizify.cloud
+https://www.learnigo.eu
 ```
 
 Test the API directly from your machine:
 
 ```bash
-curl https://quizify.cloud/api/learn
+curl https://www.learnigo.eu/api/learn
 ```
+
+Also confirm the old hosts redirect correctly:
+
+```bash
+curl -I https://learnigo.eu/
+curl -I https://quizify.cloud/
+```
+
+Both should return `301` with `Location: https://www.learnigo.eu/`.
 
 ---
 
@@ -265,7 +291,7 @@ git pull origin main
 cd client && npm install && npm run build
 
 # If server code changed — restart API
-cd ../server && npm install && pm2 restart easy-learn-api
+cd ../server && npm install && pm2 restart easy-learn
 ```
 
 ---
@@ -275,11 +301,11 @@ cd ../server && npm install && pm2 restart easy-learn-api
 | What | Location |
 |------|----------|
 | React build output | `/var/www/easy_learning/client/dist/` |
-| Express API | `localhost:5000` (PM2 process: `easy-learn-api`) |
+| Express API | `localhost:5000` (PM2 process: `easy-learn`) |
 | Nginx config | `/etc/nginx/sites-available/easy-learn` |
 | Server env file | `/var/www/easy_learning/server/.env` |
 | Client env file | `/var/www/easy_learning/client/.env` |
-| PM2 logs | `pm2 logs easy-learn-api` |
+| PM2 logs | `pm2 logs easy-learn` |
 | Nginx error log | `/var/log/nginx/error.log` |
 
 ---
@@ -289,8 +315,8 @@ cd ../server && npm install && pm2 restart easy-learn-api
 | Symptom | Fix |
 |---------|-----|
 | Blank page / 404 | Check `client/dist/` exists; confirm `try_files` line in Nginx config |
-| API returns 502 Bad Gateway | PM2 is down → `pm2 restart easy-learn-api` |
-| CORS error in browser | `CLIENT_URL` in `server/.env` must exactly match the browser origin (`https://quizify.cloud`) |
-| Google sign-in fails | Add `quizify.cloud` to Firebase Console → Authentication → Authorized Domains |
-| MongoDB connection refused | Add `quizify.cloud` to MongoDB Atlas → Network Access → IP Allowlist |
+| API returns 502 Bad Gateway | PM2 is down → `pm2 restart easy-learn` |
+| CORS error in browser | `CLIENT_URL` in `server/.env` must exactly match the browser origin (`https://www.learnigo.eu`) |
+| Google sign-in fails | Add `www.learnigo.eu` to Firebase Console → Authentication → Authorized Domains |
+| MongoDB connection refused | Add the VPS IP (`31.97.224.109`) to MongoDB Atlas → Network Access → IP Allowlist |
 | `npm run build` fails | Confirm `client/.env` has `VITE_FIREBASE_API_KEY` set |
