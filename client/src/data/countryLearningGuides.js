@@ -39,6 +39,22 @@ export const countryLearningGuides = [
     context: "Short, accessible game-based activities can make home practice easier to repeat and observe, while families continue to follow advice from their school and health professionals.",
     approach: ["Plan screen time around the child's energy", "Use movement and voice activities when reading feels tiring", "Celebrate effort and progress rather than speed"],
   },
+  {
+    slug: "germany",
+    name: "Germany",
+    code: "DE",
+    issue: "Special-education support (Förderung) is organised at the state (Bundesland) level, so what's available and how it's arranged can differ depending on where a family lives.",
+    context: "A flexible, game-based tool can give a child extra practice in German or another language alongside their regular schoolwork, while a Förderschullehrkraft or the school's own support team guides any formal Förderplan or classroom accommodation.",
+    approach: ["Keep sessions short and low-pressure", "Practice in whichever language builds confidence fastest", "Bring specific, concrete examples of progress to school meetings"],
+  },
+  {
+    slug: "france",
+    name: "France",
+    code: "FR",
+    issue: "Families working through a formal support plan, such as a PPS arranged via the MDPH, often also want everyday practice that doesn't have to wait on paperwork to be useful.",
+    context: "Learningo can offer accessible, playful practice in the meantime, while an MDPH assessment, a PPS, AESH support at school, or a qualified professional's advice remain the source of truth for formal accommodations.",
+    approach: ["Use short sessions that fit around school and therapy schedules", "Let the child choose the language and subject that feels easiest that day", "Share concrete wins with teachers and support staff"],
+  },
 ];
 
 export const countryGuideBySlug = Object.fromEntries(countryLearningGuides.map((guide) => [guide.slug, guide]));
