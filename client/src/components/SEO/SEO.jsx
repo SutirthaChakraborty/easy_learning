@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
 const SITE_URL = (import.meta.env.VITE_SITE_URL || "https://www.learnigo.eu").replace(/\/$/, "");
-const DEFAULT_TITLE = "Learningo | Gamified Learning for Children Who Learn Differently";
-const DEFAULT_DESCRIPTION = "Learningo is an AI-based, gamified learning platform for children who learn differently, with accessible reading, writing, listening, speaking, maths and science practice.";
+const DEFAULT_TITLE = "Learningo | Dyslexia-Friendly Learning Games for Kids";
+const DEFAULT_DESCRIPTION = "Learningo is a gamified learning platform for children with dyslexia and neurodivergent learners, covering reading, writing, maths and science practice in 14 languages.";
 const DEFAULT_ROBOTS = "index, follow, max-image-preview:large";
 
 function upsertMeta(attribute, value, content) {

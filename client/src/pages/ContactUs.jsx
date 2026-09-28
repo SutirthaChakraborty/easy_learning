@@ -44,7 +44,8 @@ const ContactUs = () => {
         <h1 className={styles.heroTitle}>Let's Talk!</h1>
         <p className={styles.heroSubtitle}>
           Have a question, an idea, or ran into a hiccup? Drop us a message and the
-          Learningo team will get back to you soon.
+          Learningo team will get back to you soon. Looking for a quick answer? Check our{" "}
+          <a href="/faq" className={styles.faqLink}>FAQ</a>.
         </p>
       </motion.section>
 
