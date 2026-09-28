@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FaUserGraduate, FaCrown, FaChalkboardTeacher } from "react-icons/fa";
 import { MdAdminPanelSettings, MdFamilyRestroom } from "react-icons/md";
 import RoboticBackground from "../components/RoboticBackground/RoboticBackground";
+import SEO from "../components/SEO/SEO";
 import styles from "./RoleSelect.module.css";
 import logo from "/logo.png";
 
@@ -69,16 +70,21 @@ const RoleSelect = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
+      <SEO
+        title="Learningo | Gamified Learning for Children Who Learn Differently"
+        description="Sign in to Learningo as a student, parent, teacher or admin and start accessible, game-based practice in reading, writing, maths and science."
+        path="/"
+      />
       <RoboticBackground />
 
       <div className={styles.content}>
         <div className={styles.header}>
-          <img src={logo} alt="Easy Learning" className={styles.logo} />
-          <h1 className={styles.title}>Welcome to Easy Learning</h1>
+          <img src={logo} alt="Learningo" className={styles.logo} />
+          <h1 className={styles.title}>Welcome to Learningo</h1>
           <p className={styles.subtitle}>Choose how you want to sign in</p>
         </div>
 
-        <h1 className={styles.loginAs}>Sign in As...</h1>
+        <h2 className={styles.loginAs}>Sign in As...</h2>
         <div className={styles.cards}>
           {roles.map((role, i) => (
             <FramerMotion.motion.div
@@ -107,7 +113,7 @@ const RoleSelect = () => {
             </FramerMotion.motion.div>
           ))}
         </div>
-        <p className={styles.copyright}>A product by ©ABC Company</p>
+        <p className={styles.copyright}>&copy; {new Date().getFullYear()} Futuresight Analytics Limited</p>
       </div>
     </FramerMotion.motion.div>
   );

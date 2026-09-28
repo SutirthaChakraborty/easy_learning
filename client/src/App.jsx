@@ -34,6 +34,8 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import SuperAdminDashboard from "./pages/superadmin/SuperAdminDashboard";
 import TeacherDashboard from "./pages/teacher/TeacherDashboard";
 import ParentDashboard from "./pages/parent/ParentDashboard";
+import LearningSupportByCountry from "./pages/LearningSupportByCountry";
+import NotFound from "./pages/NotFound";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -57,6 +59,8 @@ function AnimatedRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/learning-support-by-country" element={<LearningSupportByCountry />} />
+        <Route path="/learning-support-by-country/:country" element={<LearningSupportByCountry />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />
         <Route path="/teacher-login" element={<TeacherLogin />} />
@@ -66,6 +70,7 @@ function AnimatedRoutes() {
         <Route path="/superadmin-dashboard" element={<SuperAdminDashboard />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
         <Route path="/parent-dashboard" element={<ParentDashboard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );

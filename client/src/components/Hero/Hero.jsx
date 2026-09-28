@@ -106,6 +106,7 @@ const Hero = () => {
   return (
     <section className={styles.hero}>
       <div className={styles.panel}>
+        <h1 className={styles.srOnly}>Learningo — Gamified English, Maths and Science Practice</h1>
         {user && (
           <p className={styles.greeting}>
             <span className={styles.greetingText}>{t("hero.greeting", { name: firstName })}</span>
