@@ -55,6 +55,22 @@ export const countryLearningGuides = [
     context: "Learningo can offer accessible, playful practice in the meantime, while an MDPH assessment, a PPS, AESH support at school, or a qualified professional's advice remain the source of truth for formal accommodations.",
     approach: ["Use short sessions that fit around school and therapy schedules", "Let the child choose the language and subject that feels easiest that day", "Share concrete wins with teachers and support staff"],
   },
+  {
+    slug: "spain",
+    name: "Spain",
+    code: "ES",
+    issue: "Support for children with learning differences (dificultades del aprendizaje) can vary by region (comunidad autónoma), so families often piece together school support and home practice themselves.",
+    context: "Learningo can offer bite-sized, gamified practice in Spanish or another language alongside a child's regular classes, while the school's guidance team (equipo de orientación) and a qualified professional guide any formal support plan.",
+    approach: ["Keep sessions short and encouraging", "Let the child pick the language that feels most comfortable", "Share specific progress notes with teachers"],
+  },
+  {
+    slug: "italy",
+    name: "Italy",
+    code: "IT",
+    issue: "Italian schools follow a national framework for specific learning disorders (DSA — disturbi specifici dell'apprendimento), but day-to-day support still depends heavily on the individual school and family.",
+    context: "A flexible, game-based tool can give a child extra practice at home alongside a school's own Piano Didattico Personalizzato (PDP) and a qualified professional's guidance.",
+    approach: ["Keep practice short and low-pressure", "Use audio support to ease reading load", "Bring concrete examples of progress to school check-ins"],
+  },
 ];
 
 export const countryGuideBySlug = Object.fromEntries(countryLearningGuides.map((guide) => [guide.slug, guide]));

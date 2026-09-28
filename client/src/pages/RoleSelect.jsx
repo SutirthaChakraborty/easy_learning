@@ -71,8 +71,8 @@ const RoleSelect = () => {
       transition={{ duration: 0.4 }}
     >
       <SEO
-        title="Learningo | Gamified Learning for Children Who Learn Differently"
-        description="Sign in to Learningo as a student, parent, teacher or admin and start accessible, game-based practice in reading, writing, maths and science."
+        title="Learningo | Dyslexia-Friendly Learning Games for Kids"
+        description="Sign in to Learningo as a student, parent, teacher or admin and start accessible, dyslexia-friendly game-based practice in reading, writing, maths and science."
         path="/"
       />
       <RoboticBackground />

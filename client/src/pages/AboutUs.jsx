@@ -120,8 +120,11 @@ const AboutUs = () => {
           <button type="button" className={styles.ctaBtn} onClick={handleStart}>
             Start Your Adventure <FaArrowRight className={styles.ctaIcon} />
           </button>
+          <a href="/faq" className={styles.contactLink}>
+            <FaEnvelope /> Have a question? Check our FAQ
+          </a>
           <a href="/contact-us" className={styles.contactLink}>
-            <FaEnvelope /> Have a question? Get in touch
+            <FaEnvelope /> Get in touch
           </a>
         </div>
       </motion.div>

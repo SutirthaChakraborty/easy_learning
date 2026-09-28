@@ -6,6 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import { fetchModuleStars } from "../store/slices/dashboardSlice";
 import * as FramerMotion from "framer-motion";
 import VideoBackground from "../components/VideoBackground/VideoBackground";
+import SEO from "../components/SEO/SEO";
 import styles from "./SubjectPage.module.css";
 import { playSlide } from "../utils/sounds";
 import {
@@ -25,6 +26,21 @@ const moduleColors = { listen: "blue", read: "green", write: "orange", speak: "p
 const moduleXP     = { listen: "30 XP", read: "20 XP", write: "15 XP", speak: "10 XP" };
 
 const subjectIcons = { english: FaBook, maths: FaCalculator, science: FaMicroscope };
+
+const subjectSEO = {
+  english: {
+    title: "English Kingdom | Reading, Listening & Speaking Practice | Learningo",
+    description: "Practice English listening, reading, writing and speaking through short, gamified rounds — stories and dyslexia-friendly reading activities for kids.",
+  },
+  maths: {
+    title: "Maths Galaxy | Gamified Number Practice | Learningo",
+    description: "Build number confidence with short, gamified maths rounds that turn tricky problems into fun, pressure-free wins for children who learn differently.",
+  },
+  science: {
+    title: "Science Lab | Curiosity-Driven Learning | Learningo",
+    description: "Explore science through short, encouraging, gamified rounds — listening, reading, writing and speaking practice that makes discovery exciting.",
+  },
+};
 
 const StarRow = ({ count }) => (
   <>
@@ -60,6 +76,13 @@ const SubjectPage = () => {
       exit={{ opacity: 0, x: 80 }}
       transition={{ duration: 0.4 }}
     >
+      {subjectKey && (
+        <SEO
+          title={subjectSEO[subjectKey].title}
+          description={subjectSEO[subjectKey].description}
+          path={`/subject/${subjectKey}`}
+        />
+      )}
       <VideoBackground />
       <div className={styles.overlay} />
 
