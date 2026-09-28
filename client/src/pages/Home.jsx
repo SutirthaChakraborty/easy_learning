@@ -2,6 +2,7 @@ import * as FramerMotion from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Hero from "../components/Hero/Hero";
 import VideoBackground from "../components/VideoBackground/VideoBackground";
+import SEO from "../components/SEO/SEO";
 import { useAuth } from "../context/AuthContext";
 
 const Home = () => {
@@ -18,6 +19,11 @@ const Home = () => {
 
   return (
     <>
+      <SEO
+        title="Learningo Home | Continue Your Learning Adventure"
+        description="Jump back into gamified English, Maths and Science practice on Learningo — pick up where you left off or start a new adventure."
+        path="/home"
+      />
       <VideoBackground />
       <FramerMotion.motion.div
         initial={{ opacity: 0, x: -80 }}

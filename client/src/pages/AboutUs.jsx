@@ -5,6 +5,7 @@ import {
   FaShieldAlt, FaGlobeAmericas, FaChartLine, FaArrowRight, FaEnvelope,
 } from "react-icons/fa";
 import VideoBackground from "../components/VideoBackground/VideoBackground";
+import SEO from "../components/SEO/SEO";
 import { playSlide } from "../utils/sounds";
 import styles from "./AboutUs.module.css";
 
@@ -49,6 +50,19 @@ const AboutUs = () => {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="About Learningo | Learning, Reimagined for Every Kind of Mind"
+        description="Learningo is a play-first learning platform built for dyslexic and neurodivergent learners, turning reading, writing, speaking, maths and science into a short, encouraging adventure."
+        path="/about-us"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Learningo",
+          description: "Learningo is a play-first learning platform built for dyslexic and neurodivergent learners.",
+          url: "https://www.learnigo.eu/about-us",
+          isPartOf: { "@type": "WebSite", name: "Learningo", url: "https://www.learnigo.eu" },
+        }}
+      />
       <VideoBackground />
 
       <motion.section
