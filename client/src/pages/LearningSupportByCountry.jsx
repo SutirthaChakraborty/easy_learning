@@ -97,6 +97,13 @@ export default function LearningSupportByCountry() {
           Alongside country context, we also cover common learning differences directly —{" "}
           <Link to="/learning-differences" className={styles.link}>explore dyslexia, ADHD, dyscalculia, dysgraphia and autism spectrum guides <span aria-hidden="true">-&gt;</span></Link>
         </p>
+        <p>
+          Not a parent? See how Learningo helps{" "}
+          <Link to="/who-we-help/schools" className={styles.link}>schools and tutors</Link>,{" "}
+          <Link to="/who-we-help/ngos" className={styles.link}>NGOs and nonprofits</Link>, and{" "}
+          <Link to="/who-we-help/therapists" className={styles.link}>therapists and healthcare professionals</Link>. There's also{" "}
+          <Link to="/ar-learning-games" className={styles.link}>camera-powered AR learning games <span aria-hidden="true">-&gt;</span></Link>
+        </p>
       </section>
     </main>
   );

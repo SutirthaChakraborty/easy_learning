@@ -36,6 +36,8 @@ import TeacherDashboard from "./pages/teacher/TeacherDashboard";
 import ParentDashboard from "./pages/parent/ParentDashboard";
 import LearningSupportByCountry from "./pages/LearningSupportByCountry";
 import LearningDifferences from "./pages/LearningDifferences";
+import WhoWeHelp from "./pages/WhoWeHelp";
+import ArLearningGames from "./pages/ArLearningGames";
 import Faq from "./pages/Faq";
 import NotFound from "./pages/NotFound";
 
@@ -65,6 +67,9 @@ function AnimatedRoutes() {
         <Route path="/learning-support-by-country/:country" element={<LearningSupportByCountry />} />
         <Route path="/learning-differences" element={<LearningDifferences />} />
         <Route path="/learning-differences/:difference" element={<LearningDifferences />} />
+        <Route path="/who-we-help" element={<WhoWeHelp />} />
+        <Route path="/who-we-help/:audience" element={<WhoWeHelp />} />
+        <Route path="/ar-learning-games" element={<ArLearningGames />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />
