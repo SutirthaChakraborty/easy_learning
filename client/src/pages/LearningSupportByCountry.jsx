@@ -57,6 +57,7 @@ export default function LearningSupportByCountry() {
             <strong>A note for families and educators</strong>
             <p>Learningo is an educational practice platform, not a diagnostic or medical service. A qualified local professional should guide assessment, accommodations and individual support.</p>
           </aside>
+          <Link to="/learning-differences" className={styles.cta} style={{ display: "block", marginTop: 8 }}>Explore guides by learning difference <span aria-hidden="true">-&gt;</span></Link>
           <Link to="/about-us" className={styles.cta}>See how Learningo turns practice into play <span aria-hidden="true">-&gt;</span></Link>
         </section>
       </main>
@@ -89,6 +90,13 @@ export default function LearningSupportByCountry() {
       </section>
       <section className={styles.grid} aria-label="Country learning support guides">
         {countryLearningGuides.map((item) => <GuideCard key={item.slug} guide={item} />)}
+      </section>
+      <section className={styles.intro} style={{ marginTop: 28 }}>
+        <h2>Looking for a specific learning difference?</h2>
+        <p>
+          Alongside country context, we also cover common learning differences directly —{" "}
+          <Link to="/learning-differences" className={styles.link}>explore dyslexia, ADHD, dyscalculia, dysgraphia and autism spectrum guides <span aria-hidden="true">-&gt;</span></Link>
+        </p>
       </section>
     </main>
   );

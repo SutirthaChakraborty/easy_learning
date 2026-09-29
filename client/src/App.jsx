@@ -35,6 +35,7 @@ import SuperAdminDashboard from "./pages/superadmin/SuperAdminDashboard";
 import TeacherDashboard from "./pages/teacher/TeacherDashboard";
 import ParentDashboard from "./pages/parent/ParentDashboard";
 import LearningSupportByCountry from "./pages/LearningSupportByCountry";
+import LearningDifferences from "./pages/LearningDifferences";
 import Faq from "./pages/Faq";
 import NotFound from "./pages/NotFound";
 
@@ -62,6 +63,8 @@ function AnimatedRoutes() {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/learning-support-by-country" element={<LearningSupportByCountry />} />
         <Route path="/learning-support-by-country/:country" element={<LearningSupportByCountry />} />
+        <Route path="/learning-differences" element={<LearningDifferences />} />
+        <Route path="/learning-differences/:difference" element={<LearningDifferences />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />

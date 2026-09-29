@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import * as FramerMotion from "framer-motion";
 import {
   FaBook, FaCalculator, FaMicroscope, FaHeart, FaStar,
-  FaShieldAlt, FaGlobeAmericas, FaChartLine, FaArrowRight, FaEnvelope,
+  FaShieldAlt, FaGlobeAmericas, FaChartLine, FaArrowRight, FaEnvelope, FaLightbulb,
 } from "react-icons/fa";
 import VideoBackground from "../components/VideoBackground/VideoBackground";
 import SEO from "../components/SEO/SEO";
@@ -120,6 +120,9 @@ const AboutUs = () => {
           <button type="button" className={styles.ctaBtn} onClick={handleStart}>
             Start Your Adventure <FaArrowRight className={styles.ctaIcon} />
           </button>
+          <a href="/learning-differences" className={styles.contactLink}>
+            <FaLightbulb /> Learn about dyslexia, ADHD and other learning differences
+          </a>
           <a href="/faq" className={styles.contactLink}>
             <FaEnvelope /> Have a question? Check our FAQ
           </a>
