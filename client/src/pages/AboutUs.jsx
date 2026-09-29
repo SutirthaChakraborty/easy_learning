@@ -123,6 +123,9 @@ const AboutUs = () => {
           <a href="/learning-differences" className={styles.contactLink}>
             <FaLightbulb /> Learn about dyslexia, ADHD and other learning differences
           </a>
+          <a href="/who-we-help" className={styles.contactLink}>
+            <FaGlobeAmericas /> See who Learningo helps — parents, schools, NGOs & therapists
+          </a>
           <a href="/faq" className={styles.contactLink}>
             <FaEnvelope /> Have a question? Check our FAQ
           </a>
