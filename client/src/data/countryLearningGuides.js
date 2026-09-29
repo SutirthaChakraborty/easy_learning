@@ -71,6 +71,22 @@ export const countryLearningGuides = [
     context: "A flexible, game-based tool can give a child extra practice at home alongside a school's own Piano Didattico Personalizzato (PDP) and a qualified professional's guidance.",
     approach: ["Keep practice short and low-pressure", "Use audio support to ease reading load", "Bring concrete examples of progress to school check-ins"],
   },
+  {
+    slug: "netherlands",
+    name: "Netherlands",
+    code: "NL",
+    issue: "Dutch schools work within a passend onderwijs (appropriate education) framework for extra support, but exactly what's offered can still vary between schools.",
+    context: "A flexible, game-based tool can give a child extra practice in Dutch or another language alongside their regular schoolwork, while the school's own support coordinator guides any formal accommodation.",
+    approach: ["Keep sessions short and low-pressure", "Practice in whichever language builds confidence fastest", "Share concrete examples of progress with the school's support coordinator"],
+  },
+  {
+    slug: "brazil",
+    name: "Brazil",
+    code: "BR",
+    issue: "Brazilian law guarantees inclusive education (educação inclusiva) for children with learning differences, though how it's implemented can vary widely between schools and states.",
+    context: "Learningo can offer accessible, playful practice in Portuguese or another language at home, alongside a school's own AEE (Atendimento Educacional Especializado) support and a qualified professional's guidance.",
+    approach: ["Keep sessions short and encouraging", "Let the child choose the language that feels most natural", "Bring specific progress examples to school meetings"],
+  },
 ];
 
 export const countryGuideBySlug = Object.fromEntries(countryLearningGuides.map((guide) => [guide.slug, guide]));
