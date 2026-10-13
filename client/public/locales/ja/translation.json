@@ -297,5 +297,150 @@
       "micUnsupported": "お使いのブラウザは録音に対応していません — Chrome または Firefox をご利用ください。",
       "micInsecure": "マイクには安全な接続（HTTPS）が必要です。https:// または localhost でアプリを開いてください。"
     }
+  },
+  "questionCard": {
+    "listen": "聞く",
+    "playing": "再生中…",
+    "hint": "ヒント",
+    "tryAgain": "もう一度",
+    "correctAnswer": "正解：{{answer}}",
+    "check": "チェック",
+    "undo": "元に戻す",
+    "record": "🎤 録音",
+    "stop": "⏹ 停止",
+    "markComplete": "完了にする",
+    "finishRound": "ラウンドを終える",
+    "micInsecure": "マイクには安全な接続が必要です。",
+    "micUnsupported": "このブラウザはマイクに対応していません。",
+    "micError": "マイクのエラーです。もう一度お試しください。",
+    "micPermission": "マイクの使用が許可されませんでした。",
+    "micNotFound": "マイクが見つかりません。",
+    "micBusy": "マイクは他のアプリで使用中です。"
+  },
+  "roundComplete": {
+    "warriorPassed": "勇者クリア！",
+    "warriorFailed": "勇者失敗",
+    "conquered": "チャレンジをクリアしたよ！",
+    "neededToPass": "合格には{{count}}問正解する必要があったよ。",
+    "title": "ラウンドクリア！",
+    "correctAnswers": "正解した数",
+    "passingMark": "合格ライン：{{count}}問正解",
+    "speedBonusStars": "+{{count}} スピードボーナススター！",
+    "earnedQuickly": "はやく答えてもらったよ",
+    "totalStars": "合計：{{count}} スター",
+    "back": "もどる",
+    "playAgain": "もう一度あそぶ"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Easy Learningへようこそ",
+    "welcomeSubtitle": "ログイン方法を選んでください",
+    "signInAs": "ログインする立場を選択...",
+    "roles": {
+      "student": "生徒",
+      "parent": "保護者",
+      "admin": "管理者",
+      "teacher": "先生",
+      "superadmin": "スーパー管理者"
+    },
+    "copyright": "©ABC Company の提供する製品です"
+  },
+  "aboutUs": {
+    "badge": "私たちの物語",
+    "heroTitle": "すべての個性に合わせて、学びを再発明",
+    "heroSubtitle": "Learningoは、読字障害（ディスレクシア）や神経多様性のある子どもたちのために作られた、遊び中心の学習プラットフォームです。読むこと、書くこと、話すことが、苦労ではなく冒険のように感じられます。",
+    "paragraph": "私たちは、すべての子どもが異なる方法で学ぶと信じています。その違いは、直すべきものではなく、祝うべきものです。Learningoは、音声サポート、楽しいビジュアル、即時のポジティブなフィードバックを備えた短く励みになるラウンドにレッスンを変え、子どもたちが一つ星ずつ本当の自信を築けるようにします。",
+    "worldsTitle": "あなたの世界を選ぼう",
+    "worlds": {
+      "english": {
+        "title": "英語の王国",
+        "text": "ディスレクシアに優しい読解のために作られた、物語とリスニング・スピーキングの練習。"
+      },
+      "maths": {
+        "title": "数学の銀河",
+        "text": "難しい問題を楽しい小さな成功に変える、少しずつの数の練習。"
+      },
+      "science": {
+        "title": "理科の実験室",
+        "text": "好奇心に導かれた活動で、一つずつの実験を通して発見をワクワクするものにします。"
+      }
+    },
+    "valuesTitle": "家族がLearningoを愛する理由",
+    "values": {
+      "care": {
+        "title": "心を込めて作られた",
+        "text": "ディスレクシアや神経多様性のある学習者のために、教育者と共に開発されました。"
+      },
+      "playful": {
+        "title": "楽しくポジティブ",
+        "text": "どのラウンドも短く、励みになり、進歩をすぐに祝います。"
+      },
+      "safe": {
+        "title": "安心して学べる場所",
+        "text": "赤いバツも、プレッシャーもありません — あるのはやさしい促しと明るいフィードバックだけです。"
+      },
+      "language": {
+        "title": "子どもたちの言葉で話す",
+        "text": "14言語に対応しているので、どの子どもも安心して学べます。"
+      },
+      "progress": {
+        "title": "見える成長",
+        "text": "星、連続記録、そしてフレンドリーなダッシュボードが、家族全員の様子を共有します。"
+      }
+    },
+    "startAdventure": "冒険を始めよう",
+    "getInTouch": "質問がありますか？お問い合わせください"
+  },
+  "contactUs": {
+    "badge": "お手伝いします",
+    "heroTitle": "お話ししましょう！",
+    "heroSubtitle": "質問やアイデア、ちょっとした困りごとはありますか？メッセージを送ってください。Learningoチームがすぐにご連絡します。",
+    "reassurances": {
+      "support": {
+        "title": "親切なサポート",
+        "text": "私たちのチームの実際のスタッフが、すべてのメッセージを読んでいます。"
+      },
+      "quick": {
+        "title": "迅速な返信",
+        "text": "通常24時間以内にご返信いたします。"
+      },
+      "noQuestion": {
+        "title": "どんな質問でも大歓迎",
+        "text": "ご意見、不具合の報告、ただのご挨拶でも — ぜひお声をお聞かせください。"
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "生徒",
+      "parent": "保護者",
+      "admin": "団体管理者",
+      "teacher": "先生 / チューター",
+      "other": "その他"
+    },
+    "iAmA": "私は",
+    "yourName": "お名前",
+    "namePlaceholder": "フルネーム",
+    "yourEmail": "メールアドレス",
+    "emailPlaceholder": "you@example.com",
+    "organization": "団体（任意）",
+    "orgPlaceholder": "学校 / 団体名",
+    "subject": "件名",
+    "subjectPlaceholder": "ご用件は何ですか？",
+    "message": "メッセージ",
+    "messagePlaceholder": "ご質問や問題について記入してください…",
+    "attachFile": "ファイルを添付（任意）",
+    "sending": "送信中…",
+    "sendMessage": "メッセージを送信",
+    "successTitle": "メッセージを送信しました！",
+    "successText": "Learningoチームがすぐにご連絡いたします。",
+    "sendAnother": "別のメッセージを送る",
+    "errors": {
+      "name": "フルネームを入力してください",
+      "email": "有効なメールアドレスを入力してください",
+      "subject": "件名は3文字以上で入力してください",
+      "message": "メッセージは10文字以上で入力してください"
+    },
+    "errorServer": "問題が発生しました。もう一度お試しください。",
+    "errorNetwork": "サーバーに接続できませんでした。もう一度お試しください。"
   }
 }

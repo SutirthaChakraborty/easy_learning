@@ -297,5 +297,150 @@
       "micUnsupported": "Je browser ondersteunt geen opname — gebruik Chrome of Firefox.",
       "micInsecure": "De microfoon vereist een beveiligde verbinding (HTTPS). Open de app via https:// of gebruik localhost."
     }
+  },
+  "questionCard": {
+    "listen": "Luisteren",
+    "playing": "Wordt afgespeeld…",
+    "hint": "Hint",
+    "tryAgain": "Probeer opnieuw",
+    "correctAnswer": "Juiste antwoord: {{answer}}",
+    "check": "Controleren",
+    "undo": "Ongedaan maken",
+    "record": "🎤 Opnemen",
+    "stop": "⏹ Stoppen",
+    "markComplete": "Markeer als voltooid",
+    "finishRound": "Ronde beëindigen",
+    "micInsecure": "De microfoon heeft een beveiligde verbinding nodig.",
+    "micUnsupported": "De microfoon wordt niet ondersteund in deze browser.",
+    "micError": "Microfoonfout. Probeer het opnieuw.",
+    "micPermission": "Microfoontoegang is geweigerd.",
+    "micNotFound": "Geen microfoon gevonden.",
+    "micBusy": "De microfoon wordt gebruikt door een andere app."
+  },
+  "roundComplete": {
+    "warriorPassed": "Strijder geslaagd!",
+    "warriorFailed": "Strijder gezakt",
+    "conquered": "Je hebt de uitdaging overwonnen!",
+    "neededToPass": "Je had {{count}} goede antwoorden nodig om te slagen.",
+    "title": "Ronde voltooid!",
+    "correctAnswers": "Goede antwoorden",
+    "passingMark": "Slagingsgrens: {{count}} goede antwoorden",
+    "speedBonusStars": "+{{count}} snelheidsbonussterren!",
+    "earnedQuickly": "Verdiend door snel te antwoorden",
+    "totalStars": "Totaal: {{count}} sterren",
+    "back": "Terug",
+    "playAgain": "Opnieuw spelen"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Welkom bij Easy Learning",
+    "welcomeSubtitle": "Kies hoe je wilt inloggen",
+    "signInAs": "Inloggen als...",
+    "roles": {
+      "student": "Leerling",
+      "parent": "Ouder",
+      "admin": "Beheerder",
+      "teacher": "Leraar",
+      "superadmin": "Hoofdbeheerder"
+    },
+    "copyright": "Een product van ©ABC Company"
+  },
+  "aboutUs": {
+    "badge": "Ons verhaal",
+    "heroTitle": "Leren, opnieuw uitgevonden voor elk soort brein",
+    "heroSubtitle": "Learningo is een spelgericht leerplatform gemaakt voor kinderen met dyslexie en neurodivergentie — waar lezen, schrijven en spreken aanvoelen als een avontuur, niet als een strijd.",
+    "paragraph": "Wij geloven dat elk kind anders leert, en dat dat verschil iets is om te vieren, niet om te verbeteren. Learningo verandert lessen in korte, aanmoedigende rondes met audio-ondersteuning, speelse visuals en direct positieve feedback — zodat kinderen stap voor stap echt vertrouwen opbouwen.",
+    "worldsTitle": "Kies jouw wereld",
+    "worlds": {
+      "english": {
+        "title": "Engels Koninkrijk",
+        "text": "Verhalen en luister- en spreekoefeningen ontworpen voor dyslexie-vriendelijk lezen."
+      },
+      "maths": {
+        "title": "Reken Melkweg",
+        "text": "Rekenoefeningen in kleine hapjes die lastige sommen omzetten in leuke kleine overwinningen."
+      },
+      "science": {
+        "title": "Wetenschapslab",
+        "text": "Door nieuwsgierigheid gedreven activiteiten die ontdekken spannend maken, één experiment per keer."
+      }
+    },
+    "valuesTitle": "Waarom gezinnen Learningo geweldig vinden",
+    "values": {
+      "care": {
+        "title": "Met zorg gemaakt",
+        "text": "Samen met opvoeders ontwikkeld voor leerlingen met dyslexie en neurodivergentie."
+      },
+      "playful": {
+        "title": "Speels & positief",
+        "text": "Elke ronde is kort, aanmoedigend en viert vooruitgang meteen."
+      },
+      "safe": {
+        "title": "Een veilige plek om te leren",
+        "text": "Geen rode strepen, geen druk — alleen zachte zetjes en vrolijke feedback."
+      },
+      "language": {
+        "title": "Spreekt hun taal",
+        "text": "Beschikbaar in 14 talen, zodat elk kind zich thuis voelt."
+      },
+      "progress": {
+        "title": "Vooruitgang die zichtbaar is",
+        "text": "Sterren, reeksen en een vriendelijk dashboard houden het hele gezin op de hoogte."
+      }
+    },
+    "startAdventure": "Begin je avontuur",
+    "getInTouch": "Heb je een vraag? Neem contact op"
+  },
+  "contactUs": {
+    "badge": "We staan klaar om te helpen",
+    "heroTitle": "Laten we praten!",
+    "heroSubtitle": "Heb je een vraag, een idee, of liep je tegen iets aan? Stuur ons een bericht en het Learningo-team neemt snel contact met je op.",
+    "reassurances": {
+      "support": {
+        "title": "Vriendelijke ondersteuning",
+        "text": "Een echte persoon van ons team leest elk bericht."
+      },
+      "quick": {
+        "title": "Snelle reacties",
+        "text": "We reageren meestal binnen 24 uur."
+      },
+      "noQuestion": {
+        "title": "Geen vraag is te klein",
+        "text": "Feedback, bugs, of gewoon even gedag zeggen — we horen graag van je."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Leerling",
+      "parent": "Ouder / Voogd",
+      "admin": "Organisatiebeheerder",
+      "teacher": "Leraar / Tutor",
+      "other": "Anders"
+    },
+    "iAmA": "Ik ben",
+    "yourName": "Jouw naam",
+    "namePlaceholder": "Volledige naam",
+    "yourEmail": "Jouw e-mail",
+    "emailPlaceholder": "jij@voorbeeld.com",
+    "organization": "Organisatie (optioneel)",
+    "orgPlaceholder": "Jouw school / organisatie",
+    "subject": "Onderwerp",
+    "subjectPlaceholder": "Waar gaat het over?",
+    "message": "Bericht",
+    "messagePlaceholder": "Beschrijf je vraag of probleem…",
+    "attachFile": "Bestand toevoegen (optioneel)",
+    "sending": "Verzenden…",
+    "sendMessage": "Bericht versturen",
+    "successTitle": "Bericht verzonden!",
+    "successText": "Het Learningo-team neemt snel contact met je op.",
+    "sendAnother": "Nog een bericht versturen",
+    "errors": {
+      "name": "Vul je volledige naam in",
+      "email": "Vul een geldig e-mailadres in",
+      "subject": "Onderwerp moet minstens 3 tekens hebben",
+      "message": "Bericht moet minstens 10 tekens hebben"
+    },
+    "errorServer": "Er ging iets mis. Probeer het opnieuw.",
+    "errorNetwork": "Kon de server niet bereiken. Probeer het opnieuw."
   }
 }

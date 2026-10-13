@@ -27,6 +27,9 @@ coverage/
 # Uploaded files (multer)
 server/uploads/
 
+# In-progress question-content translation work files (not final data)
+server/data/_translations_wip/
+
 # Editor & OS
 .DS_Store
 Thumbs.db

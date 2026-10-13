@@ -297,5 +297,150 @@
       "micUnsupported": "Seu navegador não suporta gravação — use o Chrome ou o Firefox.",
       "micInsecure": "O microfone requer uma conexão segura (HTTPS). Abra o aplicativo via https:// ou use localhost."
     }
+  },
+  "questionCard": {
+    "listen": "Ouvir",
+    "playing": "Reproduzindo…",
+    "hint": "Dica",
+    "tryAgain": "Tentar novamente",
+    "correctAnswer": "Resposta correta: {{answer}}",
+    "check": "Verificar",
+    "undo": "Desfazer",
+    "record": "🎤 Gravar",
+    "stop": "⏹ Parar",
+    "markComplete": "Marcar como concluído",
+    "finishRound": "Terminar rodada",
+    "micInsecure": "O microfone precisa de uma conexão segura.",
+    "micUnsupported": "O microfone não é compatível com este navegador.",
+    "micError": "Erro no microfone. Tente novamente.",
+    "micPermission": "A permissão do microfone foi negada.",
+    "micNotFound": "Nenhum microfone encontrado.",
+    "micBusy": "O microfone está sendo usado por outro aplicativo."
+  },
+  "roundComplete": {
+    "warriorPassed": "Guerreiro aprovado!",
+    "warriorFailed": "Guerreiro reprovado",
+    "conquered": "Você venceu o desafio!",
+    "neededToPass": "Você precisava de {{count}} respostas certas para passar.",
+    "title": "Rodada concluída!",
+    "correctAnswers": "Respostas corretas",
+    "passingMark": "Nota mínima: {{count}} respostas corretas",
+    "speedBonusStars": "+{{count}} estrelas de bônus de velocidade!",
+    "earnedQuickly": "Ganhas por responder rápido",
+    "totalStars": "Total: {{count}} estrelas",
+    "back": "Voltar",
+    "playAgain": "Jogar novamente"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Bem-vindo ao Easy Learning",
+    "welcomeSubtitle": "Escolha como deseja entrar",
+    "signInAs": "Entrar como...",
+    "roles": {
+      "student": "Estudante",
+      "parent": "Responsável",
+      "admin": "Administrador",
+      "teacher": "Professor",
+      "superadmin": "Superadministrador"
+    },
+    "copyright": "Um produto da ©ABC Company"
+  },
+  "aboutUs": {
+    "badge": "Nossa história",
+    "heroTitle": "Aprendizagem, reinventada para cada tipo de mente",
+    "heroSubtitle": "O Learningo é uma plataforma de aprendizagem baseada em jogos, criada para crianças disléxicas e neurodivergentes — onde ler, escrever e falar parecem uma aventura, não uma luta.",
+    "paragraph": "Acreditamos que cada criança aprende de forma diferente, e essa diferença é algo a celebrar, não a corrigir. O Learningo transforma as lições em rodadas curtas e encorajadoras com suporte de áudio, visuais divertidos e feedback positivo instantâneo — para que as crianças construam confiança real, uma estrela por vez.",
+    "worldsTitle": "Escolha o Seu Mundo",
+    "worlds": {
+      "english": {
+        "title": "Reino do Inglês",
+        "text": "Histórias e prática de escuta e fala pensadas para uma leitura amiga da dislexia."
+      },
+      "maths": {
+        "title": "Galáxia da Matemática",
+        "text": "Prática de números em pequenas doses que transforma problemas difíceis em pequenas vitórias divertidas."
+      },
+      "science": {
+        "title": "Laboratório de Ciências",
+        "text": "Atividades guiadas pela curiosidade que tornam a descoberta empolgante, um experimento por vez."
+      }
+    },
+    "valuesTitle": "Por Que as Famílias Amam o Learningo",
+    "values": {
+      "care": {
+        "title": "Feito com Cuidado",
+        "text": "Desenvolvido junto a educadores para alunos disléxicos e neurodivergentes."
+      },
+      "playful": {
+        "title": "Divertido & Positivo",
+        "text": "Cada rodada é curta, encorajadora e celebra o progresso instantaneamente."
+      },
+      "safe": {
+        "title": "Um Espaço Seguro para Aprender",
+        "text": "Sem marcas vermelhas, sem pressão — apenas incentivos gentis e feedback alegre."
+      },
+      "language": {
+        "title": "Fala a Língua Delas",
+        "text": "Disponível em 14 idiomas para que toda criança se sinta em casa."
+      },
+      "progress": {
+        "title": "Progresso que Aparece",
+        "text": "Estrelas, sequências e um painel amigável mantêm toda a família informada."
+      }
+    },
+    "startAdventure": "Comece Sua Aventura",
+    "getInTouch": "Tem alguma pergunta? Entre em contato"
+  },
+  "contactUs": {
+    "badge": "Estamos Aqui para Ajudar",
+    "heroTitle": "Vamos Conversar!",
+    "heroSubtitle": "Tem uma pergunta, uma ideia ou um pequeno problema? Envie-nos uma mensagem e a equipe do Learningo retornará em breve.",
+    "reassurances": {
+      "support": {
+        "title": "Suporte Amigável",
+        "text": "Uma pessoa real da nossa equipe lê cada mensagem."
+      },
+      "quick": {
+        "title": "Respostas Rápidas",
+        "text": "Normalmente respondemos em até 24 horas."
+      },
+      "noQuestion": {
+        "title": "Nenhuma Pergunta é Pequena Demais",
+        "text": "Feedback, bugs ou apenas um oi — adoramos ouvir de você."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Estudante",
+      "parent": "Responsável",
+      "admin": "Administrador da Organização",
+      "teacher": "Professor / Tutor",
+      "other": "Outro"
+    },
+    "iAmA": "Eu sou",
+    "yourName": "Seu Nome",
+    "namePlaceholder": "Nome completo",
+    "yourEmail": "Seu E-mail",
+    "emailPlaceholder": "voce@exemplo.com",
+    "organization": "Organização (opcional)",
+    "orgPlaceholder": "Sua escola / organização",
+    "subject": "Assunto",
+    "subjectPlaceholder": "Sobre o que é isso?",
+    "message": "Mensagem",
+    "messagePlaceholder": "Descreva sua pergunta ou problema…",
+    "attachFile": "Anexar um arquivo (opcional)",
+    "sending": "Enviando…",
+    "sendMessage": "Enviar Mensagem",
+    "successTitle": "Mensagem enviada!",
+    "successText": "A equipe do Learningo retornará em breve.",
+    "sendAnother": "Enviar outra mensagem",
+    "errors": {
+      "name": "Digite seu nome completo",
+      "email": "Digite um endereço de e-mail válido",
+      "subject": "O assunto deve ter pelo menos 3 caracteres",
+      "message": "A mensagem deve ter pelo menos 10 caracteres"
+    },
+    "errorServer": "Algo deu errado. Por favor, tente novamente.",
+    "errorNetwork": "Não foi possível conectar ao servidor. Por favor, tente novamente."
   }
 }

@@ -297,5 +297,150 @@
       "micUnsupported": "Browser Anda tidak mendukung perekaman — silakan gunakan Chrome atau Firefox.",
       "micInsecure": "Mikrofon memerlukan koneksi aman (HTTPS). Buka aplikasi melalui https:// atau gunakan localhost."
     }
+  },
+  "questionCard": {
+    "listen": "Dengarkan",
+    "playing": "Memutar…",
+    "hint": "Petunjuk",
+    "tryAgain": "Coba Lagi",
+    "correctAnswer": "Jawaban benar: {{answer}}",
+    "check": "Periksa",
+    "undo": "Batalkan",
+    "record": "🎤 Rekam",
+    "stop": "⏹ Berhenti",
+    "markComplete": "Tandai Selesai",
+    "finishRound": "Selesaikan Ronde",
+    "micInsecure": "Mikrofon memerlukan koneksi yang aman.",
+    "micUnsupported": "Mikrofon tidak didukung di browser ini.",
+    "micError": "Kesalahan mikrofon. Silakan coba lagi.",
+    "micPermission": "Izin mikrofon ditolak.",
+    "micNotFound": "Mikrofon tidak ditemukan.",
+    "micBusy": "Mikrofon sedang digunakan aplikasi lain."
+  },
+  "roundComplete": {
+    "warriorPassed": "Ksatria Lulus!",
+    "warriorFailed": "Ksatria Gagal",
+    "conquered": "Kamu berhasil menaklukkan tantangan ini!",
+    "neededToPass": "Kamu butuh {{count}} jawaban benar untuk lulus.",
+    "title": "Ronde Selesai!",
+    "correctAnswers": "Jawaban Benar",
+    "passingMark": "Batas lulus: {{count}} jawaban benar",
+    "speedBonusStars": "+{{count}} Bintang Bonus Kecepatan!",
+    "earnedQuickly": "Didapat karena menjawab dengan cepat",
+    "totalStars": "Total: {{count}} Bintang",
+    "back": "Kembali",
+    "playAgain": "Main Lagi"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Selamat datang di Easy Learning",
+    "welcomeSubtitle": "Pilih cara kamu ingin masuk",
+    "signInAs": "Masuk sebagai...",
+    "roles": {
+      "student": "Siswa",
+      "parent": "Orang Tua",
+      "admin": "Admin",
+      "teacher": "Guru",
+      "superadmin": "Super Admin"
+    },
+    "copyright": "Sebuah produk dari ©ABC Company"
+  },
+  "aboutUs": {
+    "badge": "Kisah Kami",
+    "heroTitle": "Belajar, dirancang ulang untuk setiap jenis pikiran",
+    "heroSubtitle": "Learningo adalah platform belajar berbasis permainan yang dibuat untuk anak-anak disleksia dan neurodivergen — di mana membaca, menulis, dan berbicara terasa seperti petualangan, bukan perjuangan.",
+    "paragraph": "Kami percaya setiap anak belajar dengan cara berbeda, dan perbedaan itu patut dirayakan, bukan diperbaiki. Learningo mengubah pelajaran menjadi sesi singkat yang menyemangati dengan dukungan audio, visual yang menyenangkan, dan umpan balik positif instan — agar anak-anak membangun kepercayaan diri yang nyata, satu bintang pada satu waktu.",
+    "worldsTitle": "Pilih Duniamu",
+    "worlds": {
+      "english": {
+        "title": "Kerajaan Bahasa Inggris",
+        "text": "Cerita serta latihan mendengar dan berbicara yang dirancang untuk membaca yang ramah disleksia."
+      },
+      "maths": {
+        "title": "Galaksi Matematika",
+        "text": "Latihan berhitung dalam porsi kecil yang mengubah soal sulit menjadi kemenangan kecil yang menyenangkan."
+      },
+      "science": {
+        "title": "Laboratorium Sains",
+        "text": "Aktivitas berbasis rasa ingin tahu yang membuat penemuan menjadi mengasyikkan, satu eksperimen pada satu waktu."
+      }
+    },
+    "valuesTitle": "Mengapa Keluarga Menyukai Learningo",
+    "values": {
+      "care": {
+        "title": "Dibuat dengan Peduli",
+        "text": "Dibangun bersama para pendidik untuk pelajar disleksia dan neurodivergen."
+      },
+      "playful": {
+        "title": "Menyenangkan & Positif",
+        "text": "Setiap sesi singkat, menyemangati, dan langsung merayakan kemajuan."
+      },
+      "safe": {
+        "title": "Tempat Aman untuk Belajar",
+        "text": "Tanpa tanda merah, tanpa tekanan — hanya dorongan lembut dan umpan balik yang ceria."
+      },
+      "language": {
+        "title": "Berbicara dalam Bahasa Mereka",
+        "text": "Tersedia dalam 14 bahasa agar setiap anak merasa seperti di rumah."
+      },
+      "progress": {
+        "title": "Kemajuan yang Terlihat",
+        "text": "Bintang, rangkaian, dan dasbor yang ramah membuat seluruh keluarga tetap mengetahui perkembangan."
+      }
+    },
+    "startAdventure": "Mulai Petualanganmu",
+    "getInTouch": "Ada pertanyaan? Hubungi kami"
+  },
+  "contactUs": {
+    "badge": "Kami Siap Membantu",
+    "heroTitle": "Ayo Bicara!",
+    "heroSubtitle": "Punya pertanyaan, ide, atau mengalami masalah kecil? Kirimkan pesan dan tim Learningo akan segera menghubungimu kembali.",
+    "reassurances": {
+      "support": {
+        "title": "Dukungan Ramah",
+        "text": "Seseorang yang sesungguhnya dari tim kami membaca setiap pesan."
+      },
+      "quick": {
+        "title": "Balasan Cepat",
+        "text": "Kami biasanya membalas dalam 24 jam."
+      },
+      "noQuestion": {
+        "title": "Tidak Ada Pertanyaan yang Terlalu Kecil",
+        "text": "Masukan, bug, atau sekadar menyapa — kami senang mendengar darimu."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Siswa",
+      "parent": "Orang Tua / Wali",
+      "admin": "Admin Organisasi",
+      "teacher": "Guru / Tutor",
+      "other": "Lainnya"
+    },
+    "iAmA": "Saya adalah",
+    "yourName": "Namamu",
+    "namePlaceholder": "Nama lengkap",
+    "yourEmail": "Emailmu",
+    "emailPlaceholder": "kamu@contoh.com",
+    "organization": "Organisasi (opsional)",
+    "orgPlaceholder": "Sekolah / organisasimu",
+    "subject": "Subjek",
+    "subjectPlaceholder": "Ini tentang apa?",
+    "message": "Pesan",
+    "messagePlaceholder": "Jelaskan pertanyaan atau masalahmu…",
+    "attachFile": "Lampirkan file (opsional)",
+    "sending": "Mengirim…",
+    "sendMessage": "Kirim Pesan",
+    "successTitle": "Pesan terkirim!",
+    "successText": "Tim Learningo akan segera menghubungimu kembali.",
+    "sendAnother": "Kirim pesan lain",
+    "errors": {
+      "name": "Masukkan nama lengkapmu",
+      "email": "Masukkan alamat email yang valid",
+      "subject": "Subjek harus minimal 3 karakter",
+      "message": "Pesan harus minimal 10 karakter"
+    },
+    "errorServer": "Terjadi kesalahan. Silakan coba lagi.",
+    "errorNetwork": "Tidak dapat menghubungi server. Silakan coba lagi."
   }
 }

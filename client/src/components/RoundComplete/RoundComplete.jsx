@@ -1,4 +1,5 @@
 import * as FramerMotion from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { FaStar, FaRegStar, FaTrophy, FaRedo, FaArrowLeft, FaBolt } from "react-icons/fa";
 import { GiCrossedSwords, GiPartyPopper } from "react-icons/gi";
 
@@ -6,6 +7,7 @@ const TOTAL = 10;
 const WARRIOR_PASS = 6;
 
 export default function RoundComplete({ module: mod, subject, mode, stars, bonusStars, onPlayAgain, onBack }) {
+  const { t } = useTranslation();
   const isPractice = mode !== "warrior";
   const passed = !isPractice ? stars >= WARRIOR_PASS : null;
   const totalStars = stars + bonusStars;
@@ -46,22 +48,22 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
               color: passed ? "#FFD700" : "#e74c3c",
               fontSize: "clamp(1.35rem, 6vw, 1.7rem)", fontWeight: 800, margin: "10px 0 4px",
             }}>
-              {passed ? "Warrior Passed!" : "Warrior Failed"}
+              {passed ? t("roundComplete.warriorPassed") : t("roundComplete.warriorFailed")}
             </h1>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", margin: 0 }}>
               {passed
-                ? "You conquered the challenge!"
-                : `You needed ${WARRIOR_PASS} correct answers to pass.`}
+                ? t("roundComplete.conquered")
+                : t("roundComplete.neededToPass", { count: WARRIOR_PASS })}
             </p>
           </div>
         ) : (
           <div style={{ marginBottom: 8 }}>
             <GiPartyPopper style={{ fontSize: "clamp(2rem, 8vw, 2.5rem)", color: "#6c63ff" }} />
             <h1 style={{ color: "#fff", fontSize: "clamp(1.35rem, 6vw, 1.7rem)", fontWeight: 800, margin: "10px 0 4px" }}>
-              Round Complete!
+              {t("roundComplete.title")}
             </h1>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: "0.9rem", margin: 0 }}>
-              {mod} · {subject}
+              {t(`subjectPage.modules.${mod}.label`, { defaultValue: mod })} · {t(`subjectPage.${subject}.label`, { defaultValue: subject })}
             </p>
           </div>
         )}
@@ -69,7 +71,7 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
         {/* Base stars */}
         <div style={{ margin: "24px 0 8px" }}>
           <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.8rem", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-            Correct Answers
+            {t("roundComplete.correctAnswers")}
           </p>
           <div style={{ display: "flex", justifyContent: "center", gap: 4, flexWrap: "wrap", marginBottom: 8 }}>
             {Array.from({ length: TOTAL }).map((_, i) => (
@@ -99,7 +101,7 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
             borderBottom: "1px solid rgba(255,255,255,0.08)",
             paddingBottom: 16,
           }}>
-            Passing mark: {WARRIOR_PASS} correct answers
+            {t("roundComplete.passingMark", { count: WARRIOR_PASS })}
           </p>
         )}
 
@@ -120,11 +122,11 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
               <FaBolt color="#FFD700" />
               <span style={{ color: "#FFD700", fontWeight: 700, fontSize: "1.1rem" }}>
-                +{bonusStars} Speed Bonus Stars!
+                {t("roundComplete.speedBonusStars", { count: bonusStars })}
               </span>
             </div>
             <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "0.78rem", margin: "4px 0 0" }}>
-              Earned by answering quickly
+              {t("roundComplete.earnedQuickly")}
             </p>
           </FramerMotion.motion.div>
         )}
@@ -141,7 +143,7 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
             <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8 }}>
               <FaTrophy color="#FFD700" />
               <span style={{ color: "#fff", fontWeight: 700, fontSize: "1.1rem" }}>
-                Total: {totalStars} Stars
+                {t("roundComplete.totalStars", { count: totalStars })}
               </span>
             </div>
           </div>
@@ -164,7 +166,7 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
             whileHover={{ scale: 1.03, background: "rgba(255,255,255,0.11)" }}
             whileTap={{ scale: 0.97 }}
           >
-            <FaArrowLeft /> Back
+            <FaArrowLeft /> {t("roundComplete.back")}
           </FramerMotion.motion.button>
           <FramerMotion.motion.button
             onClick={onPlayAgain}
@@ -183,7 +185,7 @@ export default function RoundComplete({ module: mod, subject, mode, stars, bonus
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.96 }}
           >
-            <FaRedo /> Play Again
+            <FaRedo /> {t("roundComplete.playAgain")}
           </FramerMotion.motion.button>
         </div>
       </FramerMotion.motion.div>

@@ -297,5 +297,150 @@
       "micUnsupported": "Ton navigateur ne prend pas en charge l'enregistrement — utilise Chrome ou Firefox.",
       "micInsecure": "Le microphone nécessite une connexion sécurisée (HTTPS). Ouvre l'application via https:// ou utilise localhost."
     }
+  },
+  "questionCard": {
+    "listen": "Écouter",
+    "playing": "Lecture en cours…",
+    "hint": "Indice",
+    "tryAgain": "Réessayer",
+    "correctAnswer": "Bonne réponse : {{answer}}",
+    "check": "Vérifier",
+    "undo": "Annuler",
+    "record": "🎤 Enregistrer",
+    "stop": "⏹ Arrêter",
+    "markComplete": "Marquer comme terminé",
+    "finishRound": "Terminer la manche",
+    "micInsecure": "Le microphone nécessite une connexion sécurisée.",
+    "micUnsupported": "Le microphone n'est pas pris en charge par ce navigateur.",
+    "micError": "Erreur du microphone. Veuillez réessayer.",
+    "micPermission": "L'accès au microphone a été refusé.",
+    "micNotFound": "Aucun microphone trouvé.",
+    "micBusy": "Le microphone est utilisé par une autre application."
+  },
+  "roundComplete": {
+    "warriorPassed": "Guerrier réussi !",
+    "warriorFailed": "Guerrier échoué",
+    "conquered": "Tu as relevé le défi !",
+    "neededToPass": "Il te fallait {{count}} bonnes réponses pour réussir.",
+    "title": "Manche terminée !",
+    "correctAnswers": "Bonnes réponses",
+    "passingMark": "Seuil de réussite : {{count}} bonnes réponses",
+    "speedBonusStars": "+{{count}} étoiles bonus de rapidité !",
+    "earnedQuickly": "Gagnées en répondant vite",
+    "totalStars": "Total : {{count}} étoiles",
+    "back": "Retour",
+    "playAgain": "Rejouer"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Bienvenue sur Easy Learning",
+    "welcomeSubtitle": "Choisis comment tu veux te connecter",
+    "signInAs": "Se connecter en tant que...",
+    "roles": {
+      "student": "Élève",
+      "parent": "Parent",
+      "admin": "Administrateur",
+      "teacher": "Enseignant",
+      "superadmin": "Super administrateur"
+    },
+    "copyright": "Un produit de ©ABC Company"
+  },
+  "aboutUs": {
+    "badge": "Notre histoire",
+    "heroTitle": "Apprendre, réinventé pour chaque type d'esprit",
+    "heroSubtitle": "Learningo est une plateforme d'apprentissage ludique conçue pour les enfants dyslexiques et neuroatypiques — où lire, écrire et parler ressemblent à une aventure, pas à une lutte.",
+    "paragraph": "Nous croyons que chaque enfant apprend différemment, et que cette différence est à célébrer, pas à corriger. Learningo transforme les leçons en courtes séances motivantes avec un support audio, des visuels ludiques et un retour positif instantané — pour que les enfants développent une vraie confiance, étoile après étoile.",
+    "worldsTitle": "Choisis ton monde",
+    "worlds": {
+      "english": {
+        "title": "Royaume de l'anglais",
+        "text": "Histoires et exercices d'écoute et d'expression conçus pour une lecture adaptée à la dyslexie."
+      },
+      "maths": {
+        "title": "Galaxie des maths",
+        "text": "Des exercices de calcul en petites doses qui transforment les problèmes difficiles en petites victoires amusantes."
+      },
+      "science": {
+        "title": "Laboratoire de sciences",
+        "text": "Des activités guidées par la curiosité qui rendent la découverte passionnante, une expérience à la fois."
+      }
+    },
+    "valuesTitle": "Pourquoi les familles aiment Learningo",
+    "values": {
+      "care": {
+        "title": "Conçu avec soin",
+        "text": "Créé avec des éducateurs pour les apprenants dyslexiques et neuroatypiques."
+      },
+      "playful": {
+        "title": "Ludique et positif",
+        "text": "Chaque séance est courte, encourageante, et célèbre les progrès instantanément."
+      },
+      "safe": {
+        "title": "Un espace sûr pour apprendre",
+        "text": "Pas de marques rouges, pas de pression — juste des encouragements doux et des retours joyeux."
+      },
+      "language": {
+        "title": "Parle leur langue",
+        "text": "Disponible en 14 langues pour que chaque enfant se sente chez lui."
+      },
+      "progress": {
+        "title": "Des progrès visibles",
+        "text": "Étoiles, séries et un tableau de bord convivial tiennent toute la famille informée."
+      }
+    },
+    "startAdventure": "Commence ton aventure",
+    "getInTouch": "Une question ? Contacte-nous"
+  },
+  "contactUs": {
+    "badge": "Nous sommes là pour t'aider",
+    "heroTitle": "Parlons-en !",
+    "heroSubtitle": "Une question, une idée ou un petit souci ? Envoie-nous un message et l'équipe Learningo te répondra bientôt.",
+    "reassurances": {
+      "support": {
+        "title": "Support amical",
+        "text": "Une vraie personne de notre équipe lit chaque message."
+      },
+      "quick": {
+        "title": "Réponses rapides",
+        "text": "Nous répondons généralement dans les 24 heures."
+      },
+      "noQuestion": {
+        "title": "Aucune question n'est trop petite",
+        "text": "Retours, bugs, ou juste pour dire bonjour — on adore avoir de tes nouvelles."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Élève",
+      "parent": "Parent / Tuteur",
+      "admin": "Administrateur d'organisation",
+      "teacher": "Enseignant / Tuteur",
+      "other": "Autre"
+    },
+    "iAmA": "Je suis",
+    "yourName": "Ton nom",
+    "namePlaceholder": "Nom complet",
+    "yourEmail": "Ton e-mail",
+    "emailPlaceholder": "toi@exemple.com",
+    "organization": "Organisation (facultatif)",
+    "orgPlaceholder": "Ton école / organisation",
+    "subject": "Sujet",
+    "subjectPlaceholder": "De quoi s'agit-il ?",
+    "message": "Message",
+    "messagePlaceholder": "Décris ta question ou ton problème…",
+    "attachFile": "Joindre un fichier (facultatif)",
+    "sending": "Envoi en cours…",
+    "sendMessage": "Envoyer le message",
+    "successTitle": "Message envoyé !",
+    "successText": "L'équipe Learningo te répondra bientôt.",
+    "sendAnother": "Envoyer un autre message",
+    "errors": {
+      "name": "Saisis ton nom complet",
+      "email": "Saisis une adresse e-mail valide",
+      "subject": "Le sujet doit contenir au moins 3 caractères",
+      "message": "Le message doit contenir au moins 10 caractères"
+    },
+    "errorServer": "Une erreur s'est produite. Merci de réessayer.",
+    "errorNetwork": "Impossible de contacter le serveur. Merci de réessayer."
   }
 }

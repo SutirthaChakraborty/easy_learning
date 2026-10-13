@@ -297,5 +297,150 @@
       "micUnsupported": "Dein Browser unterstützt keine Aufnahme — bitte verwende Chrome oder Firefox.",
       "micInsecure": "Das Mikrofon benötigt eine sichere Verbindung (HTTPS). Bitte öffne die App über https:// oder verwende localhost."
     }
+  },
+  "questionCard": {
+    "listen": "Anhören",
+    "playing": "Wird abgespielt…",
+    "hint": "Hinweis",
+    "tryAgain": "Nochmal versuchen",
+    "correctAnswer": "Richtige Antwort: {{answer}}",
+    "check": "Prüfen",
+    "undo": "Rückgängig",
+    "record": "🎤 Aufnehmen",
+    "stop": "⏹ Stopp",
+    "markComplete": "Als erledigt markieren",
+    "finishRound": "Runde beenden",
+    "micInsecure": "Das Mikrofon benötigt eine sichere Verbindung.",
+    "micUnsupported": "Das Mikrofon wird von diesem Browser nicht unterstützt.",
+    "micError": "Mikrofonfehler. Bitte erneut versuchen.",
+    "micPermission": "Mikrofonzugriff wurde verweigert.",
+    "micNotFound": "Kein Mikrofon gefunden.",
+    "micBusy": "Das Mikrofon wird von einer anderen App verwendet."
+  },
+  "roundComplete": {
+    "warriorPassed": "Krieger bestanden!",
+    "warriorFailed": "Krieger gescheitert",
+    "conquered": "Du hast die Herausforderung gemeistert!",
+    "neededToPass": "Du brauchtest {{count}} richtige Antworten zum Bestehen.",
+    "title": "Runde geschafft!",
+    "correctAnswers": "Richtige Antworten",
+    "passingMark": "Bestehensgrenze: {{count}} richtige Antworten",
+    "speedBonusStars": "+{{count}} Tempo-Bonussterne!",
+    "earnedQuickly": "Verdient durch schnelles Antworten",
+    "totalStars": "Gesamt: {{count}} Sterne",
+    "back": "Zurück",
+    "playAgain": "Nochmal spielen"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Willkommen bei Easy Learning",
+    "welcomeSubtitle": "Wähle, wie du dich anmelden möchtest",
+    "signInAs": "Anmelden als...",
+    "roles": {
+      "student": "Schüler",
+      "parent": "Eltern",
+      "admin": "Admin",
+      "teacher": "Lehrer",
+      "superadmin": "Super-Admin"
+    },
+    "copyright": "Ein Produkt von ©ABC Company"
+  },
+  "aboutUs": {
+    "badge": "Unsere Geschichte",
+    "heroTitle": "Lernen, neu gedacht für jede Art von Verstand",
+    "heroSubtitle": "Learningo ist eine spielerische Lernplattform für legasthene und neurodivergente Kinder — bei der Lesen, Schreiben und Sprechen sich wie ein Abenteuer anfühlen, nicht wie ein Kampf.",
+    "paragraph": "Wir glauben, dass jedes Kind anders lernt, und dieser Unterschied ist etwas, das man feiern sollte, nicht beheben. Learningo verwandelt Lektionen in kurze, ermutigende Runden mit Audio-Unterstützung, verspielten Visuals und sofortigem positivem Feedback — damit Kinder echtes Selbstvertrauen aufbauen, Stern für Stern.",
+    "worldsTitle": "Wähle deine Welt",
+    "worlds": {
+      "english": {
+        "title": "Königreich Englisch",
+        "text": "Geschichten, Hör- und Sprechübungen, entwickelt für legasthenie-freundliches Lesen."
+      },
+      "maths": {
+        "title": "Mathe-Galaxie",
+        "text": "Häppchenweise Zahlenübungen, die knifflige Aufgaben in kleine, lustige Erfolge verwandeln."
+      },
+      "science": {
+        "title": "Wissenschaftslabor",
+        "text": "Neugier-getriebene Aktivitäten, die Entdeckungen spannend machen, ein Experiment nach dem anderen."
+      }
+    },
+    "valuesTitle": "Warum Familien Learningo lieben",
+    "values": {
+      "care": {
+        "title": "Mit Sorgfalt gemacht",
+        "text": "Gemeinsam mit Pädagogen für legasthene und neurodivergente Lernende entwickelt."
+      },
+      "playful": {
+        "title": "Verspielt & positiv",
+        "text": "Jede Runde ist kurz, ermutigend und feiert den Fortschritt sofort."
+      },
+      "safe": {
+        "title": "Ein sicherer Ort zum Lernen",
+        "text": "Keine roten Striche, kein Druck — nur sanfte Hinweise und fröhliches Feedback."
+      },
+      "language": {
+        "title": "Spricht ihre Sprache",
+        "text": "Verfügbar in 14 Sprachen, damit sich jedes Kind zu Hause fühlt."
+      },
+      "progress": {
+        "title": "Fortschritt, der sich zeigt",
+        "text": "Sterne, Serien und ein freundliches Dashboard halten die ganze Familie auf dem Laufenden."
+      }
+    },
+    "startAdventure": "Starte dein Abenteuer",
+    "getInTouch": "Hast du eine Frage? Nimm Kontakt auf"
+  },
+  "contactUs": {
+    "badge": "Wir sind hier, um zu helfen",
+    "heroTitle": "Lass uns reden!",
+    "heroSubtitle": "Hast du eine Frage, eine Idee oder ein kleines Problem? Schick uns eine Nachricht und das Learningo-Team meldet sich bald bei dir.",
+    "reassurances": {
+      "support": {
+        "title": "Freundlicher Support",
+        "text": "Eine echte Person aus unserem Team liest jede Nachricht."
+      },
+      "quick": {
+        "title": "Schnelle Antworten",
+        "text": "Wir melden uns normalerweise innerhalb von 24 Stunden."
+      },
+      "noQuestion": {
+        "title": "Keine Frage ist zu klein",
+        "text": "Feedback, Fehler oder einfach Hallo sagen — wir freuen uns, von dir zu hören."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Schüler",
+      "parent": "Eltern / Erziehungsberechtigte",
+      "admin": "Organisations-Admin",
+      "teacher": "Lehrer / Tutor",
+      "other": "Andere"
+    },
+    "iAmA": "Ich bin",
+    "yourName": "Dein Name",
+    "namePlaceholder": "Vollständiger Name",
+    "yourEmail": "Deine E-Mail",
+    "emailPlaceholder": "du@beispiel.de",
+    "organization": "Organisation (optional)",
+    "orgPlaceholder": "Deine Schule / Organisation",
+    "subject": "Betreff",
+    "subjectPlaceholder": "Worum geht es?",
+    "message": "Nachricht",
+    "messagePlaceholder": "Beschreibe deine Frage oder dein Problem…",
+    "attachFile": "Datei anhängen (optional)",
+    "sending": "Wird gesendet…",
+    "sendMessage": "Nachricht senden",
+    "successTitle": "Nachricht gesendet!",
+    "successText": "Das Learningo-Team meldet sich bald bei dir.",
+    "sendAnother": "Weitere Nachricht senden",
+    "errors": {
+      "name": "Gib deinen vollständigen Namen ein",
+      "email": "Gib eine gültige E-Mail-Adresse ein",
+      "subject": "Der Betreff muss mindestens 3 Zeichen haben",
+      "message": "Die Nachricht muss mindestens 10 Zeichen haben"
+    },
+    "errorServer": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "errorNetwork": "Der Server konnte nicht erreicht werden. Bitte versuche es erneut."
   }
 }

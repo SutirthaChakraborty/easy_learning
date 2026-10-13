@@ -131,7 +131,7 @@ const SpeakModule = () => {
 
             {answered && (
               <FramerMotion.motion.button className={styles.nextBtn} onClick={advance} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ marginTop: 16 }}>
-                {idx === data.length - 1 ? "Finish Round" : t("modules.next")}
+                {idx === data.length - 1 ? t("questionCard.finishRound") : t("modules.next")}
               </FramerMotion.motion.button>
             )}
           </div>

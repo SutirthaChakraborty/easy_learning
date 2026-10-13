@@ -297,5 +297,150 @@
       "micUnsupported": "Tarayıcın kayıt özelliğini desteklemiyor — lütfen Chrome veya Firefox kullan.",
       "micInsecure": "Mikrofon güvenli bir bağlantı (HTTPS) gerektirir. Uygulamayı https:// üzerinden veya localhost ile aç."
     }
+  },
+  "questionCard": {
+    "listen": "Dinle",
+    "playing": "Oynatılıyor…",
+    "hint": "İpucu",
+    "tryAgain": "Tekrar Dene",
+    "correctAnswer": "Doğru cevap: {{answer}}",
+    "check": "Kontrol Et",
+    "undo": "Geri Al",
+    "record": "🎤 Kaydet",
+    "stop": "⏹ Durdur",
+    "markComplete": "Tamamlandı Olarak İşaretle",
+    "finishRound": "Turu Bitir",
+    "micInsecure": "Mikrofon güvenli bir bağlantı gerektiriyor.",
+    "micUnsupported": "Mikrofon bu tarayıcıda desteklenmiyor.",
+    "micError": "Mikrofon hatası. Lütfen tekrar deneyin.",
+    "micPermission": "Mikrofon izni reddedildi.",
+    "micNotFound": "Mikrofon bulunamadı.",
+    "micBusy": "Mikrofon başka bir uygulama tarafından kullanılıyor."
+  },
+  "roundComplete": {
+    "warriorPassed": "Savaşçı Başardı!",
+    "warriorFailed": "Savaşçı Başaramadı",
+    "conquered": "Zorluğu fethettin!",
+    "neededToPass": "Geçmek için {{count}} doğru cevaba ihtiyacın vardı.",
+    "title": "Tur Tamamlandı!",
+    "correctAnswers": "Doğru Cevaplar",
+    "passingMark": "Geçme sınırı: {{count}} doğru cevap",
+    "speedBonusStars": "+{{count}} Hız Bonus Yıldızı!",
+    "earnedQuickly": "Hızlı cevap vererek kazanıldı",
+    "totalStars": "Toplam: {{count}} Yıldız",
+    "back": "Geri",
+    "playAgain": "Tekrar Oyna"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Easy Learning'e hoş geldiniz",
+    "welcomeSubtitle": "Nasıl giriş yapmak istediğinizi seçin",
+    "signInAs": "Şu olarak giriş yap...",
+    "roles": {
+      "student": "Öğrenci",
+      "parent": "Veli",
+      "admin": "Yönetici",
+      "teacher": "Öğretmen",
+      "superadmin": "Süper Yönetici"
+    },
+    "copyright": "Bir ©ABC Company ürünü"
+  },
+  "aboutUs": {
+    "badge": "Hikayemiz",
+    "heroTitle": "Her türlü zihin için yeniden tasarlanmış öğrenme",
+    "heroSubtitle": "Learningo, disleksi ve nörofarklı çocuklar için tasarlanmış, oyun odaklı bir öğrenme platformudur — burada okumak, yazmak ve konuşmak bir mücadele değil, bir macera gibi hissettirir.",
+    "paragraph": "Her çocuğun farklı öğrendiğine inanıyoruz ve bu fark düzeltilmesi gereken bir şey değil, kutlanması gereken bir şeydir. Learningo, dersleri sesli destek, eğlenceli görseller ve anında olumlu geri bildirimle dolu kısa, cesaretlendirici turlara dönüştürür — böylece çocuklar her yıldızda gerçek bir özgüven kazanır.",
+    "worldsTitle": "Dünyanı Seç",
+    "worlds": {
+      "english": {
+        "title": "İngilizce Krallığı",
+        "text": "Disleksiye uygun okuma için tasarlanmış hikayeler, dinleme ve konuşma pratiği."
+      },
+      "maths": {
+        "title": "Matematik Galaksisi",
+        "text": "Zor problemleri küçük ve eğlenceli kazanımlara dönüştüren, ufak parçalar halinde sayı pratiği."
+      },
+      "science": {
+        "title": "Bilim Laboratuvarı",
+        "text": "Merakla yönlendirilen, keşfi her deneyde heyecanlı kılan etkinlikler."
+      }
+    },
+    "valuesTitle": "Ailelerin Learningo'yu Neden Sevdiği",
+    "values": {
+      "care": {
+        "title": "Özenle Hazırlandı",
+        "text": "Disleksi ve nörofarklı öğrenciler için eğitimcilerle birlikte geliştirildi."
+      },
+      "playful": {
+        "title": "Eğlenceli ve Pozitif",
+        "text": "Her tur kısa, cesaretlendirici ve ilerlemeyi anında kutlar."
+      },
+      "safe": {
+        "title": "Öğrenmek İçin Güvenli Bir Alan",
+        "text": "Kırmızı işaretler yok, baskı yok — sadece nazik yönlendirmeler ve keyifli geri bildirim."
+      },
+      "language": {
+        "title": "Onların Dilinde Konuşur",
+        "text": "14 dilde sunulur, böylece her çocuk kendini evinde hisseder."
+      },
+      "progress": {
+        "title": "Görünen İlerleme",
+        "text": "Yıldızlar, seriler ve dostça bir pano tüm aileyi haberdar eder."
+      }
+    },
+    "startAdventure": "Maceranı Başlat",
+    "getInTouch": "Bir sorunuz mu var? Bize ulaşın"
+  },
+  "contactUs": {
+    "badge": "Yardım İçin Buradayız",
+    "heroTitle": "Haydi Konuşalım!",
+    "heroSubtitle": "Bir sorunuz, fikriniz var mı veya küçük bir sorunla mı karşılaştınız? Bize bir mesaj gönderin, Learningo ekibi size kısa süre içinde geri dönecek.",
+    "reassurances": {
+      "support": {
+        "title": "Samimi Destek",
+        "text": "Ekibimizden gerçek bir kişi her mesajı okur."
+      },
+      "quick": {
+        "title": "Hızlı Yanıtlar",
+        "text": "Genellikle 24 saat içinde size geri döneriz."
+      },
+      "noQuestion": {
+        "title": "Çok Küçük Bir Soru Yoktur",
+        "text": "Geri bildirim, hata bildirimi ya da sadece selam vermek — sizden haber almayı çok severiz."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Öğrenci",
+      "parent": "Veli / Vasi",
+      "admin": "Kurum Yöneticisi",
+      "teacher": "Öğretmen / Eğitmen",
+      "other": "Diğer"
+    },
+    "iAmA": "Ben bir",
+    "yourName": "Adınız",
+    "namePlaceholder": "Tam ad",
+    "yourEmail": "E-posta Adresiniz",
+    "emailPlaceholder": "siz@ornek.com",
+    "organization": "Kurum (isteğe bağlı)",
+    "orgPlaceholder": "Okulunuz / kurumunuz",
+    "subject": "Konu",
+    "subjectPlaceholder": "Bu ne ile ilgili?",
+    "message": "Mesaj",
+    "messagePlaceholder": "Sorununuzu veya sorunuzu açıklayın…",
+    "attachFile": "Dosya ekle (isteğe bağlı)",
+    "sending": "Gönderiliyor…",
+    "sendMessage": "Mesaj Gönder",
+    "successTitle": "Mesaj gönderildi!",
+    "successText": "Learningo ekibi kısa süre içinde size geri dönecek.",
+    "sendAnother": "Başka bir mesaj gönder",
+    "errors": {
+      "name": "Lütfen tam adınızı girin",
+      "email": "Lütfen geçerli bir e-posta adresi girin",
+      "subject": "Konu en az 3 karakter olmalıdır",
+      "message": "Mesaj en az 10 karakter olmalıdır"
+    },
+    "errorServer": "Bir şeyler ters gitti. Lütfen tekrar deneyin.",
+    "errorNetwork": "Sunucuya bağlanılamadı. Lütfen tekrar deneyin."
   }
 }

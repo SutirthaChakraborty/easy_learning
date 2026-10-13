@@ -1,5 +1,6 @@
 const path = require('path')
 const { buildQuestionVisibilityFilter } = require('./questionVisibility')
+const { applyQuestionTranslation } = require('./applyQuestionTranslation')
 
 // Shared CRUD/seed behavior for all 12 Listen/Read/Write/Speak x
 // English/Maths/Science question collections — they only ever differed by
@@ -21,7 +22,9 @@ function createQuestionController(Model, seedFileName, module, subject) {
         ...(req.query.level ? { level: Number(req.query.level) } : {}),
       }
       const questions = await Model.find(filter).sort({ id: 1 })
-      res.json({ success: true, count: questions.length, data: questions, noOrgQuestions })
+      const lang = String(req.query.lang || '').toLowerCase()
+      const data = questions.map((q) => applyQuestionTranslation(q, lang))
+      res.json({ success: true, count: data.length, data, noOrgQuestions })
     } catch (err) {
       res.status(500).json({ success: false, message: err.message })
     }
@@ -34,7 +37,8 @@ function createQuestionController(Model, seedFileName, module, subject) {
       )
       const question = await Model.findOne({ id: req.params.id, status: 'approved', ...visibility })
       if (!question) return res.status(404).json({ success: false, message: 'Question not found' })
-      res.json({ success: true, data: question })
+      const lang = String(req.query.lang || '').toLowerCase()
+      res.json({ success: true, data: applyQuestionTranslation(question, lang) })
     } catch (err) {
       res.status(500).json({ success: false, message: err.message })
     }

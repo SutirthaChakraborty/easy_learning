@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import * as FramerMotion from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { FaVolumeUp, FaLightbulb } from "react-icons/fa";
 import { WIDGETS } from "../QuestionWidgets/QuestionWidgets";
 import { isCorrect } from "../../utils/scoreAnswer";
@@ -24,6 +25,7 @@ function formatAnswer(correct_answer) {
 // `interaction` field means we can't know which rich widget to render, so we
 // degrade to a simple tap-to-select or self-report card instead of crashing.
 function LegacyCard({ question, onAnswered }) {
+  const { t } = useTranslation();
   const text = question.sentence || question.text || question.content || question.character || question.title || "";
   const hasMcq = Array.isArray(question.options) && question.answer;
   const [answered, setAnswered] = useState(false);
@@ -53,7 +55,7 @@ function LegacyCard({ question, onAnswered }) {
             ))}
           </div>
         ) : !answered ? (
-          <button className={styles.nextBtn} onClick={markDone}>Mark Complete</button>
+          <button className={styles.nextBtn} onClick={markDone}>{t("questionCard.markComplete")}</button>
         ) : null}
       </div>
     </div>
@@ -66,6 +68,7 @@ function LegacyCard({ question, onAnswered }) {
 // onAnswered(correct, timeTakenSeconds) exactly once the question is
 // resolved (correct, or revealed after a second wrong attempt).
 export default function QuestionCard({ question, subject, onAnswered }) {
+  const { t } = useTranslation();
   const speech = useSpeech(subject);
   const [attempt, setAttempt] = useState(0);
   const [result, setResult] = useState(null); // null | 'correct' | 'wrong'
@@ -121,13 +124,13 @@ export default function QuestionCard({ question, subject, onAnswered }) {
           {question.audio_text && (
             <button className={styles.toolBtn} disabled={isPlaying} onClick={playAudio}>
               <FaVolumeUp style={{ marginRight: 6, verticalAlign: "middle" }} />
-              {isPlaying ? "Playing…" : "Listen"}
+              {isPlaying ? t("questionCard.playing") : t("questionCard.listen")}
             </button>
           )}
           {question.hints?.length > 0 && !disabled && (
             <button className={styles.toolBtn} onClick={() => { playBtn(); setShowHint((h) => !h); }}>
               <FaLightbulb style={{ marginRight: 6, verticalAlign: "middle" }} />
-              Hint
+              {t("questionCard.hint")}
             </button>
           )}
         </div>
@@ -148,14 +151,14 @@ export default function QuestionCard({ question, subject, onAnswered }) {
         {result === "wrong" && !revealed && (
           <FramerMotion.motion.div className={styles.feedback} initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }}>
             <p className={styles.wrongText}>{question.feedback?.incorrect}</p>
-            <button className={styles.retryBtn} onClick={handleRetry}>Try Again</button>
+            <button className={styles.retryBtn} onClick={handleRetry}>{t("questionCard.tryAgain")}</button>
           </FramerMotion.motion.div>
         )}
         {revealed && (
           <FramerMotion.motion.div className={styles.feedback} initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }}>
             <p className={styles.wrongText}>{question.feedback?.second_try}</p>
             {question.worked_example && <p className={styles.workedExample}>{question.worked_example}</p>}
-            <p className={styles.revealText}>Correct answer: {formatAnswer(question.correct_answer)}</p>
+            <p className={styles.revealText}>{t("questionCard.correctAnswer", { answer: formatAnswer(question.correct_answer) })}</p>
           </FramerMotion.motion.div>
         )}
       </AnimatePresence>
