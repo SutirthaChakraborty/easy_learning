@@ -297,5 +297,150 @@
       "micUnsupported": "Your browser does not support recording — please use Chrome or Firefox.",
       "micInsecure": "Microphone requires a secure connection (HTTPS). Please open the app via https:// or use localhost."
     }
+  },
+  "questionCard": {
+    "listen": "Listen",
+    "playing": "Playing…",
+    "hint": "Hint",
+    "tryAgain": "Try Again",
+    "correctAnswer": "Correct answer: {{answer}}",
+    "check": "Check",
+    "undo": "Undo",
+    "record": "🎤 Record",
+    "stop": "⏹ Stop",
+    "markComplete": "Mark Complete",
+    "finishRound": "Finish Round",
+    "micInsecure": "Microphone needs a secure connection.",
+    "micUnsupported": "Microphone not supported in this browser.",
+    "micError": "Microphone error. Please try again.",
+    "micPermission": "Microphone permission was denied.",
+    "micNotFound": "No microphone found.",
+    "micBusy": "Microphone is busy in another app."
+  },
+  "roundComplete": {
+    "warriorPassed": "Warrior Passed!",
+    "warriorFailed": "Warrior Failed",
+    "conquered": "You conquered the challenge!",
+    "neededToPass": "You needed {{count}} correct answers to pass.",
+    "title": "Round Complete!",
+    "correctAnswers": "Correct Answers",
+    "passingMark": "Passing mark: {{count}} correct answers",
+    "speedBonusStars": "+{{count}} Speed Bonus Stars!",
+    "earnedQuickly": "Earned by answering quickly",
+    "totalStars": "Total: {{count}} Stars",
+    "back": "Back",
+    "playAgain": "Play Again"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Welcome to Learningo",
+    "welcomeSubtitle": "Choose how you want to sign in",
+    "signInAs": "Sign in As...",
+    "roles": {
+      "student": "Student",
+      "parent": "Parent",
+      "admin": "Admin",
+      "teacher": "Teacher",
+      "superadmin": "Super Admin"
+    },
+    "copyright": "A product by © {{year}} Futuresight Analytics Limited"
+  },
+  "aboutUs": {
+    "badge": "Our Story",
+    "heroTitle": "Learning, reimagined for every kind of mind",
+    "heroSubtitle": "Learningo is a play first learning platform built for dyslexic and neurodivergent learners — where reading, writing and speaking feel like an adventure, not a struggle.",
+    "paragraph": "We believe every child learns differently, and that difference is something to celebrate, not fix. Learningo turns lessons into short, encouraging rounds with audio support, playful visuals and instant positive feedback — so kids build real confidence, one star at a time.",
+    "worldsTitle": "Choose Your World",
+    "worlds": {
+      "english": {
+        "title": "English Kingdom",
+        "text": "Stories, listening and speaking practice designed for dyslexia friendly reading."
+      },
+      "maths": {
+        "title": "Maths Galaxy",
+        "text": "Bite sized number practice that turns tricky problems into fun little wins."
+      },
+      "science": {
+        "title": "Science Lab",
+        "text": "Curiosity driven activities that make discovery exciting, one experiment at a time."
+      }
+    },
+    "valuesTitle": "Why Families Love Learningo",
+    "values": {
+      "care": {
+        "title": "Made With Care",
+        "text": "Built alongside educators for dyslexic and neurodivergent learners."
+      },
+      "playful": {
+        "title": "Playful & Positive",
+        "text": "Every round is short, encouraging, and celebrates progress instantly."
+      },
+      "safe": {
+        "title": "Safe Space to Learn",
+        "text": "No red marks, no pressure — just gentle nudges and cheerful feedback."
+      },
+      "language": {
+        "title": "Speaks Their Language",
+        "text": "Available in 14 languages so every child feels at home."
+      },
+      "progress": {
+        "title": "Progress That Shows",
+        "text": "Stars, streaks and a friendly dashboard keep the whole family in the loop."
+      }
+    },
+    "startAdventure": "Start Your Adventure",
+    "getInTouch": "Have a question? Get in touch"
+  },
+  "contactUs": {
+    "badge": "We're Here to Help",
+    "heroTitle": "Let's Talk!",
+    "heroSubtitle": "Have a question, an idea, or ran into a hiccup? Drop us a message and the Learningo team will get back to you soon.",
+    "reassurances": {
+      "support": {
+        "title": "Friendly Support",
+        "text": "A real person from our team reads every message."
+      },
+      "quick": {
+        "title": "Quick Replies",
+        "text": "We usually get back to you within 24 hours."
+      },
+      "noQuestion": {
+        "title": "No Question Too Small",
+        "text": "Feedback, bugs, or just saying hi — we love hearing from you."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Student",
+      "parent": "Parent / Guardian",
+      "admin": "Organization Admin",
+      "teacher": "Teacher / Tutor",
+      "other": "Other"
+    },
+    "iAmA": "I am a",
+    "yourName": "Your Name",
+    "namePlaceholder": "Full name",
+    "yourEmail": "Your Email",
+    "emailPlaceholder": "you@example.com",
+    "organization": "Organization (optional)",
+    "orgPlaceholder": "Your school / organization",
+    "subject": "Subject",
+    "subjectPlaceholder": "What is this about?",
+    "message": "Message",
+    "messagePlaceholder": "Describe your question or issue…",
+    "attachFile": "Attach a file (optional)",
+    "sending": "Sending…",
+    "sendMessage": "Send Message",
+    "successTitle": "Message sent!",
+    "successText": "The Learningo team will get back to you soon.",
+    "sendAnother": "Send another message",
+    "errors": {
+      "name": "Enter your full name",
+      "email": "Enter a valid email address",
+      "subject": "Subject must be at least 3 characters",
+      "message": "Message must be at least 10 characters"
+    },
+    "errorServer": "Something went wrong. Please try again.",
+    "errorNetwork": "Could not reach the server. Please try again."
   }
 }

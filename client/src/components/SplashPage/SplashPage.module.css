@@ -1,0 +1,92 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background: #060912;
+}
+
+.video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 9, 18, 0.55) 0%,
+    rgba(6, 9, 18, 0.35) 45%,
+    rgba(6, 9, 18, 0.75) 100%
+  );
+}
+
+.logoArea {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+.logo {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.5));
+}
+
+.loaderArea {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 640px;
+  padding: 0 1.5rem;
+}
+
+.loaderTrack {
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.loaderFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #4f8ef7 0%, #22c55e 100%);
+  transition: width 0.08s linear;
+}
+
+.percent {
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 90%;
+  }
+}

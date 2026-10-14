@@ -1,5 +1,6 @@
 import * as FramerMotion from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { FaUserGraduate, FaCrown, FaChalkboardTeacher } from "react-icons/fa";
 import { MdAdminPanelSettings, MdFamilyRestroom } from "react-icons/md";
 import RoboticBackground from "../components/RoboticBackground/RoboticBackground";
@@ -11,7 +12,6 @@ const roles = [
   {
     key: "student",
     icon: <FaUserGraduate />,
-    title: "Student",
     color: "#4f8ef7",
     gradient: "linear-gradient(135deg, #1a3a6e 0%, #1e5799 100%)",
     route: "/login",
@@ -19,7 +19,6 @@ const roles = [
   {
     key: "parent",
     icon: <MdFamilyRestroom />,
-    title: "Parent",
     color: "#ec4899",
     gradient: "linear-gradient(135deg, #6e1a3f 0%, #991e5c 100%)",
     route: "/parent-login",
@@ -27,7 +26,6 @@ const roles = [
   {
     key: "admin",
     icon: <MdAdminPanelSettings />,
-    title: "Admin",
     color: "#a259f7",
     gradient: "linear-gradient(135deg, #3b1a6e 0%, #6a1e99 100%)",
     route: "/admin-login",
@@ -35,7 +33,6 @@ const roles = [
   {
     key: "teacher",
     icon: <FaChalkboardTeacher />,
-    title: "Teacher",
     color: "#22c55e",
     gradient: "linear-gradient(135deg, #14532d 0%, #15803d 100%)",
     route: "/teacher-login",
@@ -43,7 +40,6 @@ const roles = [
   {
     key: "superadmin",
     icon: <FaCrown />,
-    title: "Super Admin",
     color: "#f7a825",
     gradient: "linear-gradient(135deg, #6e4a1a 0%, #99701e 100%)",
     route: "/superadmin-login",
@@ -61,6 +57,7 @@ const cardVariants = {
 
 const RoleSelect = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <FramerMotion.motion.div
@@ -80,11 +77,11 @@ const RoleSelect = () => {
       <div className={styles.content}>
         <div className={styles.header}>
           <img src={logo} alt="Learningo" className={styles.logo} />
-          <h1 className={styles.title}>Welcome to Learningo</h1>
-          <p className={styles.subtitle}>Choose how you want to sign in</p>
+          <h1 className={styles.title}>{t("roleSelect.welcomeTitle")}</h1>
+          <p className={styles.subtitle}>{t("roleSelect.welcomeSubtitle")}</p>
         </div>
 
-        <h2 className={styles.loginAs}>Sign in As...</h2>
+        <h2 className={styles.loginAs}>{t("roleSelect.signInAs")}</h2>
         <div className={styles.cards}>
           {roles.map((role, i) => (
             <FramerMotion.motion.div
@@ -109,11 +106,13 @@ const RoleSelect = () => {
               >
                 {role.icon}
               </div>
-              <h2 className={styles.roleTitle}>{role.title}</h2>
+              <h2 className={styles.roleTitle}>{t(`roleSelect.roles.${role.key}`)}</h2>
             </FramerMotion.motion.div>
           ))}
         </div>
-        <p className={styles.copyright}>&copy; {new Date().getFullYear()} Futuresight Analytics Limited</p>
+        <p className={styles.copyright}>
+          {t("roleSelect.copyright", { year: new Date().getFullYear() })}
+        </p>
       </div>
     </FramerMotion.motion.div>
   );

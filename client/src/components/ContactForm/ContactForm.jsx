@@ -1,20 +1,16 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { MdAttachFile, MdCheckCircle, MdSend } from "react-icons/md";
 import styles from "./ContactForm.module.css";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
 
-const ROLE_OPTIONS = [
-  { value: "student", label: "Student" },
-  { value: "parent", label: "Parent / Guardian" },
-  { value: "admin", label: "Organization Admin" },
-  { value: "teacher", label: "Teacher / Tutor" },
-  { value: "other", label: "Other" },
-];
+const ROLE_OPTIONS = ["student", "parent", "admin", "teacher", "other"];
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function ContactForm({ fixedRole, defaultName = "", defaultEmail = "", defaultOrgName = "", onSuccess, compact = false }) {
+  const { t } = useTranslation();
   const [name, setName] = useState(defaultName);
   const [email, setEmail] = useState(defaultEmail);
   const [role, setRole] = useState(fixedRole || "student");
@@ -29,10 +25,10 @@ function ContactForm({ fixedRole, defaultName = "", defaultEmail = "", defaultOr
 
   const validate = () => {
     const e = {};
-    if (!name.trim() || name.trim().length < 2) e.name = "Enter your full name";
-    if (!EMAIL_RE.test(email.trim())) e.email = "Enter a valid email address";
-    if (!subject.trim() || subject.trim().length < 3) e.subject = "Subject must be at least 3 characters";
-    if (!message.trim() || message.trim().length < 10) e.message = "Message must be at least 10 characters";
+    if (!name.trim() || name.trim().length < 2) e.name = t("contactForm.errors.name");
+    if (!EMAIL_RE.test(email.trim())) e.email = t("contactForm.errors.email");
+    if (!subject.trim() || subject.trim().length < 3) e.subject = t("contactForm.errors.subject");
+    if (!message.trim() || message.trim().length < 10) e.message = t("contactForm.errors.message");
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -56,7 +52,7 @@ function ContactForm({ fixedRole, defaultName = "", defaultEmail = "", defaultOr
       const r = await fetch(`${API}/api/contact`, { method: "POST", body: form });
       const data = await r.json();
       if (!data.success) {
-        setServerError(data.message || "Something went wrong. Please try again.");
+        setServerError(data.message || t("contactForm.errorServer"));
         return;
       }
       setSent(true);
@@ -65,7 +61,7 @@ function ContactForm({ fixedRole, defaultName = "", defaultEmail = "", defaultOr
       setAttachment(null);
       onSuccess?.();
     } catch {
-      setServerError("Could not reach the server. Please try again.");
+      setServerError(t("contactForm.errorNetwork"));
     } finally {
       setSubmitting(false);
     }
@@ -75,9 +71,9 @@ function ContactForm({ fixedRole, defaultName = "", defaultEmail = "", defaultOr
     return (
       <div className={styles.success}>
         <MdCheckCircle className={styles.successIcon} />
-        <h3>Message sent!</h3>
-        <p>The Learningo team will get back to you soon.</p>
-        <button className={styles.submitBtn} onClick={() => setSent(false)}>Send another message</button>
+        <h3>{t("contactForm.successTitle")}</h3>
+        <p>{t("contactForm.successText")}</p>
+        <button className={styles.submitBtn} onClick={() => setSent(false)}>{t("contactForm.sendAnother")}</button>
       </div>
     );
   }
@@ -86,41 +82,41 @@ function ContactForm({ fixedRole, defaultName = "", defaultEmail = "", defaultOr
     <form className={`${styles.form} ${compact ? styles.compact : ""}`} onSubmit={handleSubmit}>
       {!fixedRole && (
         <div className={styles.field}>
-          <label>I am a</label>
+          <label>{t("contactForm.iAmA")}</label>
           <select value={role} onChange={(e) => setRole(e.target.value)}>
-            {ROLE_OPTIONS.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+            {ROLE_OPTIONS.map((o) => <option key={o} value={o}>{t(`contactForm.roles.${o}`)}</option>)}
           </select>
         </div>
       )}
       <div className={styles.row}>
         <div className={styles.field}>
-          <label>Your Name</label>
-          <input value={name} onChange={(e) => setName(e.target.value)} placeholder="Full name" />
+          <label>{t("contactForm.yourName")}</label>
+          <input value={name} onChange={(e) => setName(e.target.value)} placeholder={t("contactForm.namePlaceholder")} />
           {errors.name && <span className={styles.error}>{errors.name}</span>}
         </div>
         <div className={styles.field}>
-          <label>Your Email</label>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@example.com" />
+          <label>{t("contactForm.yourEmail")}</label>
+          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder={t("contactForm.emailPlaceholder")} />
           {errors.email && <span className={styles.error}>{errors.email}</span>}
         </div>
       </div>
       <div className={styles.field}>
-        <label>Organization (optional)</label>
-        <input value={orgName} onChange={(e) => setOrgName(e.target.value)} placeholder="Your school / organization" />
+        <label>{t("contactForm.organization")}</label>
+        <input value={orgName} onChange={(e) => setOrgName(e.target.value)} placeholder={t("contactForm.orgPlaceholder")} />
       </div>
       <div className={styles.field}>
-        <label>Subject</label>
-        <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="What is this about?" />
+        <label>{t("contactForm.subject")}</label>
+        <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder={t("contactForm.subjectPlaceholder")} />
         {errors.subject && <span className={styles.error}>{errors.subject}</span>}
       </div>
       <div className={styles.field}>
-        <label>Message</label>
-        <textarea rows={compact ? 3 : 5} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Describe your question or issue…" />
+        <label>{t("contactForm.message")}</label>
+        <textarea rows={compact ? 3 : 5} value={message} onChange={(e) => setMessage(e.target.value)} placeholder={t("contactForm.messagePlaceholder")} />
         {errors.message && <span className={styles.error}>{errors.message}</span>}
       </div>
       <div className={styles.field}>
         <label className={styles.fileLabel}>
-          <MdAttachFile /> {attachment ? attachment.name : "Attach a file (optional)"}
+          <MdAttachFile /> {attachment ? attachment.name : t("contactForm.attachFile")}
           <input
             type="file"
             accept="image/jpeg,image/png,image/webp,image/gif,application/pdf"
@@ -131,7 +127,7 @@ function ContactForm({ fixedRole, defaultName = "", defaultEmail = "", defaultOr
       </div>
       {serverError && <p className={styles.serverError}>{serverError}</p>}
       <button type="submit" className={styles.submitBtn} disabled={submitting}>
-        <MdSend /> {submitting ? "Sending…" : "Send Message"}
+        <MdSend /> {submitting ? t("contactForm.sending") : t("contactForm.sendMessage")}
       </button>
     </form>
   );

@@ -96,7 +96,7 @@ const ReadModule = () => {
 
         {answered && (
           <FramerMotion.motion.button className={styles.nextBtn} onClick={advance} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ marginTop: 16 }}>
-            {idx === data.length - 1 ? "Finish Round" : t("modules.continue")}
+            {idx === data.length - 1 ? t("questionCard.finishRound") : t("modules.continue")}
           </FramerMotion.motion.button>
         )}
       </div>

@@ -297,5 +297,150 @@
       "micUnsupported": "Trình duyệt của bạn không hỗ trợ ghi âm — vui lòng sử dụng Chrome hoặc Firefox.",
       "micInsecure": "Micro yêu cầu kết nối an toàn (HTTPS). Vui lòng mở ứng dụng qua https:// hoặc sử dụng localhost."
     }
+  },
+  "questionCard": {
+    "listen": "Nghe",
+    "playing": "Đang phát…",
+    "hint": "Gợi ý",
+    "tryAgain": "Thử Lại",
+    "correctAnswer": "Đáp án đúng: {{answer}}",
+    "check": "Kiểm Tra",
+    "undo": "Hoàn Tác",
+    "record": "🎤 Ghi Âm",
+    "stop": "⏹ Dừng",
+    "markComplete": "Đánh Dấu Hoàn Thành",
+    "finishRound": "Kết Thúc Vòng",
+    "micInsecure": "Micro cần kết nối an toàn.",
+    "micUnsupported": "Trình duyệt này không hỗ trợ micro.",
+    "micError": "Lỗi micro. Vui lòng thử lại.",
+    "micPermission": "Quyền truy cập micro bị từ chối.",
+    "micNotFound": "Không tìm thấy micro.",
+    "micBusy": "Micro đang được ứng dụng khác sử dụng."
+  },
+  "roundComplete": {
+    "warriorPassed": "Chiến Binh Đã Vượt Qua!",
+    "warriorFailed": "Chiến Binh Chưa Vượt Qua",
+    "conquered": "Bạn đã chinh phục thử thách!",
+    "neededToPass": "Bạn cần {{count}} câu đúng để vượt qua.",
+    "title": "Hoàn Thành Vòng Chơi!",
+    "correctAnswers": "Câu Trả Lời Đúng",
+    "passingMark": "Mức đạt: {{count}} câu đúng",
+    "speedBonusStars": "+{{count}} Sao Thưởng Tốc Độ!",
+    "earnedQuickly": "Đạt được nhờ trả lời nhanh",
+    "totalStars": "Tổng cộng: {{count}} Sao",
+    "back": "Quay Lại",
+    "playAgain": "Chơi Lại"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Chào mừng đến với Learningo",
+    "welcomeSubtitle": "Chọn cách bạn muốn đăng nhập",
+    "signInAs": "Đăng nhập với vai trò...",
+    "roles": {
+      "student": "Học sinh",
+      "parent": "Phụ huynh",
+      "admin": "Quản trị viên",
+      "teacher": "Giáo viên",
+      "superadmin": "Quản trị viên cấp cao"
+    },
+    "copyright": "Một sản phẩm của © {{year}} Futuresight Analytics Limited"
+  },
+  "aboutUs": {
+    "badge": "Câu chuyện của chúng tôi",
+    "heroTitle": "Học tập, được tái hiện cho mọi kiểu tư duy",
+    "heroSubtitle": "Learningo là một nền tảng học tập dựa trên trò chơi, được xây dựng cho trẻ em mắc chứng khó đọc và thần kinh đa dạng — nơi đọc, viết và nói giống như một cuộc phiêu lưu, không phải một cuộc chiến.",
+    "paragraph": "Chúng tôi tin rằng mỗi trẻ học theo cách khác nhau, và sự khác biệt đó là điều nên được tôn vinh, không phải sửa chữa. Learningo biến các bài học thành những vòng chơi ngắn, khuyến khích với hỗ trợ âm thanh, hình ảnh vui nhộn và phản hồi tích cực ngay lập tức — để trẻ xây dựng sự tự tin thật sự, từng ngôi sao một.",
+    "worldsTitle": "Chọn Thế Giới Của Bạn",
+    "worlds": {
+      "english": {
+        "title": "Vương Quốc Tiếng Anh",
+        "text": "Những câu chuyện và luyện nghe, nói được thiết kế để việc đọc trở nên thân thiện với chứng khó đọc."
+      },
+      "maths": {
+        "title": "Thiên Hà Toán Học",
+        "text": "Luyện số từng chút một, biến những bài toán khó thành những chiến thắng nhỏ đầy vui vẻ."
+      },
+      "science": {
+        "title": "Phòng Thí Nghiệm Khoa Học",
+        "text": "Những hoạt động dựa trên sự tò mò khiến việc khám phá trở nên thú vị, từng thí nghiệm một."
+      }
+    },
+    "valuesTitle": "Vì Sao Các Gia Đình Yêu Thích Learningo",
+    "values": {
+      "care": {
+        "title": "Được Tạo Ra Với Sự Quan Tâm",
+        "text": "Được phát triển cùng các nhà giáo dục cho người học mắc chứng khó đọc và thần kinh đa dạng."
+      },
+      "playful": {
+        "title": "Vui Nhộn & Tích Cực",
+        "text": "Mỗi vòng chơi ngắn, khuyến khích và ăn mừng sự tiến bộ ngay lập tức."
+      },
+      "safe": {
+        "title": "Không Gian An Toàn Để Học",
+        "text": "Không có dấu đỏ, không áp lực — chỉ có những gợi ý nhẹ nhàng và phản hồi vui vẻ."
+      },
+      "language": {
+        "title": "Nói Bằng Ngôn Ngữ Của Trẻ",
+        "text": "Có sẵn bằng 14 ngôn ngữ để mọi trẻ em đều cảm thấy như ở nhà."
+      },
+      "progress": {
+        "title": "Sự Tiến Bộ Hiện Rõ",
+        "text": "Ngôi sao, chuỗi thành tích và một bảng điều khiển thân thiện giúp cả gia đình luôn được cập nhật."
+      }
+    },
+    "startAdventure": "Bắt Đầu Cuộc Phiêu Lưu Của Bạn",
+    "getInTouch": "Có câu hỏi? Hãy liên hệ với chúng tôi"
+  },
+  "contactUs": {
+    "badge": "Chúng Tôi Luôn Sẵn Sàng Giúp Đỡ",
+    "heroTitle": "Hãy Cùng Trò Chuyện!",
+    "heroSubtitle": "Bạn có câu hỏi, ý tưởng hay gặp một trục trặc nhỏ? Gửi cho chúng tôi một tin nhắn và nhóm Learningo sẽ liên hệ lại với bạn sớm.",
+    "reassurances": {
+      "support": {
+        "title": "Hỗ Trợ Thân Thiện",
+        "text": "Một người thật từ nhóm của chúng tôi đọc từng tin nhắn."
+      },
+      "quick": {
+        "title": "Phản Hồi Nhanh",
+        "text": "Chúng tôi thường phản hồi trong vòng 24 giờ."
+      },
+      "noQuestion": {
+        "title": "Không Có Câu Hỏi Nào Là Quá Nhỏ",
+        "text": "Phản hồi, lỗi, hoặc chỉ đơn giản là lời chào — chúng tôi rất thích nghe từ bạn."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Học sinh",
+      "parent": "Phụ huynh / Người giám hộ",
+      "admin": "Quản trị viên tổ chức",
+      "teacher": "Giáo viên / Gia sư",
+      "other": "Khác"
+    },
+    "iAmA": "Tôi là",
+    "yourName": "Tên của bạn",
+    "namePlaceholder": "Họ và tên",
+    "yourEmail": "Email của bạn",
+    "emailPlaceholder": "ban@example.com",
+    "organization": "Tổ chức (không bắt buộc)",
+    "orgPlaceholder": "Trường / tổ chức của bạn",
+    "subject": "Chủ đề",
+    "subjectPlaceholder": "Đây là về điều gì?",
+    "message": "Tin nhắn",
+    "messagePlaceholder": "Mô tả câu hỏi hoặc vấn đề của bạn…",
+    "attachFile": "Đính kèm tệp (không bắt buộc)",
+    "sending": "Đang gửi…",
+    "sendMessage": "Gửi Tin Nhắn",
+    "successTitle": "Đã gửi tin nhắn!",
+    "successText": "Nhóm Learningo sẽ liên hệ lại với bạn sớm.",
+    "sendAnother": "Gửi tin nhắn khác",
+    "errors": {
+      "name": "Vui lòng nhập họ và tên đầy đủ",
+      "email": "Vui lòng nhập địa chỉ email hợp lệ",
+      "subject": "Chủ đề phải có ít nhất 3 ký tự",
+      "message": "Tin nhắn phải có ít nhất 10 ký tự"
+    },
+    "errorServer": "Đã có lỗi xảy ra. Vui lòng thử lại.",
+    "errorNetwork": "Không thể kết nối đến máy chủ. Vui lòng thử lại."
   }
 }

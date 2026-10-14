@@ -1,4 +1,5 @@
 import { useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./QuestionWidgets.module.css";
 
 // One component per interaction "family" (several new-schema interaction
@@ -34,6 +35,7 @@ export function SingleChoice({ question, onSubmit, disabled }) {
 
 // multi_select — toggle several options, then submit; compared as a set.
 export function MultiSelect({ question, onSubmit, disabled }) {
+  const { t } = useTranslation();
   const options = question.options || [];
   const order = useMemo(() => shuffledIndices(options.length), [question.id]); // eslint-disable-line react-hooks/exhaustive-deps
   const [selected, setSelected] = useState([]);
@@ -53,7 +55,7 @@ export function MultiSelect({ question, onSubmit, disabled }) {
         ))}
       </div>
       <button className={styles.submitBtn} disabled={disabled || selected.length === 0} onClick={() => onSubmit(selected)}>
-        Check
+        {t("questionCard.check")}
       </button>
     </>
   );
@@ -63,6 +65,7 @@ export function MultiSelect({ question, onSubmit, disabled }) {
 // scoreAnswer.js compares the array directly (drag_order/tap_sequence) or
 // joins it into a string (letter_bank), so this one component covers all three.
 export function SequenceBuilder({ question, onSubmit, disabled }) {
+  const { t } = useTranslation();
   const options = question.options || [];
   const order = useMemo(() => shuffledIndices(options.length), [question.id]); // eslint-disable-line react-hooks/exhaustive-deps
   const [picked, setPicked] = useState([]);
@@ -83,7 +86,7 @@ export function SequenceBuilder({ question, onSubmit, disabled }) {
           <span key={pos} className={styles.builtChip}>{options[i]}</span>
         ))}
         {picked.length > 0 && !disabled && (
-          <button className={styles.undoBtn} onClick={() => setPicked((p) => p.slice(0, -1))}>Undo</button>
+          <button className={styles.undoBtn} onClick={() => setPicked((p) => p.slice(0, -1))}>{t("questionCard.undo")}</button>
         )}
       </div>
       <div className={styles.options}>
@@ -220,6 +223,7 @@ export function SortBins({ question, onSubmit, disabled }) {
 
 // typed_short, typed_long — free text compared against accepted_answers.
 export function TypedAnswer({ question, onSubmit, disabled }) {
+  const { t } = useTranslation();
   const multiline = question.interaction === "typed_long";
   const [value, setValue] = useState("");
   const submit = () => { if (value.trim()) onSubmit(value.trim()); };
@@ -243,7 +247,7 @@ export function TypedAnswer({ question, onSubmit, disabled }) {
           onKeyDown={(e) => { if (e.key === "Enter") submit(); }}
         />
       )}
-      <button className={styles.submitBtn} disabled={disabled || !value.trim()} onClick={submit}>Check</button>
+      <button className={styles.submitBtn} disabled={disabled || !value.trim()} onClick={submit}>{t("questionCard.check")}</button>
     </div>
   );
 }
@@ -251,6 +255,7 @@ export function TypedAnswer({ question, onSubmit, disabled }) {
 // mic_record — record + transcribe via the shared speech hook, scored by
 // scoreAnswer.js against speech_scoring.expected_keywords.
 export function MicRecord({ onSubmit, disabled, speech }) {
+  const { t } = useTranslation();
   const [isRecording, setIsRecording] = useState(false);
   const [audioUrl, setAudioUrl] = useState(null);
   const [micError, setMicError] = useState(null);
@@ -263,8 +268,8 @@ export function MicRecord({ onSubmit, disabled, speech }) {
   };
 
   const startRecording = async () => {
-    if (!window.isSecureContext) { setMicError("Microphone needs a secure connection."); return; }
-    if (!navigator.mediaDevices?.getUserMedia) { setMicError("Microphone not supported in this browser."); return; }
+    if (!window.isSecureContext) { setMicError(t("questionCard.micInsecure")); return; }
+    if (!navigator.mediaDevices?.getUserMedia) { setMicError(t("questionCard.micUnsupported")); return; }
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       chunks.current = [];
@@ -286,10 +291,10 @@ export function MicRecord({ onSubmit, disabled, speech }) {
       stopRecording();
       onSubmit(result);
     } catch (err) {
-      let msg = "Microphone error. Please try again.";
-      if (err.name === "NotAllowedError" || err.name === "PermissionDeniedError") msg = "Microphone permission was denied.";
-      else if (err.name === "NotFoundError" || err.name === "DevicesNotFoundError") msg = "No microphone found.";
-      else if (err.name === "NotReadableError") msg = "Microphone is busy in another app.";
+      let msg = t("questionCard.micError");
+      if (err.name === "NotAllowedError" || err.name === "PermissionDeniedError") msg = t("questionCard.micPermission");
+      else if (err.name === "NotFoundError" || err.name === "DevicesNotFoundError") msg = t("questionCard.micNotFound");
+      else if (err.name === "NotReadableError") msg = t("questionCard.micBusy");
       setMicError(msg);
     }
   };
@@ -297,9 +302,9 @@ export function MicRecord({ onSubmit, disabled, speech }) {
   return (
     <div className={styles.micWrap}>
       {!isRecording ? (
-        <button className={styles.recordBtn} disabled={disabled} onClick={startRecording}>🎤 Record</button>
+        <button className={styles.recordBtn} disabled={disabled} onClick={startRecording}>{t("questionCard.record")}</button>
       ) : (
-        <button className={styles.stopBtn} onClick={stopRecording}>⏹ Stop</button>
+        <button className={styles.stopBtn} onClick={stopRecording}>{t("questionCard.stop")}</button>
       )}
       {micError && <p className={styles.voiceWarning}>{micError}</p>}
       {audioUrl && <audio src={audioUrl} controls className={styles.audioPlayer} />}

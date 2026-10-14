@@ -297,5 +297,150 @@
       "micUnsupported": "你的浏览器不支持录音 — 请使用 Chrome 或 Firefox。",
       "micInsecure": "麦克风需要安全连接（HTTPS）。请通过 https:// 或使用 localhost 打开应用。"
     }
+  },
+  "questionCard": {
+    "listen": "听",
+    "playing": "播放中…",
+    "hint": "提示",
+    "tryAgain": "重试",
+    "correctAnswer": "正确答案：{{answer}}",
+    "check": "检查",
+    "undo": "撤销",
+    "record": "🎤 录音",
+    "stop": "⏹ 停止",
+    "markComplete": "标记为完成",
+    "finishRound": "结束回合",
+    "micInsecure": "麦克风需要安全连接。",
+    "micUnsupported": "此浏览器不支持麦克风。",
+    "micError": "麦克风出错，请重试。",
+    "micPermission": "麦克风权限被拒绝。",
+    "micNotFound": "未找到麦克风。",
+    "micBusy": "麦克风正被其他应用占用。"
+  },
+  "roundComplete": {
+    "warriorPassed": "勇士挑战成功！",
+    "warriorFailed": "勇士挑战失败",
+    "conquered": "你成功完成了挑战！",
+    "neededToPass": "你需要答对 {{count}} 题才能通过。",
+    "title": "回合完成！",
+    "correctAnswers": "正确答案数",
+    "passingMark": "及格标准：答对 {{count}} 题",
+    "speedBonusStars": "+{{count}} 颗速度奖励星！",
+    "earnedQuickly": "因快速作答获得",
+    "totalStars": "总计：{{count}} 颗星",
+    "back": "返回",
+    "playAgain": "再玩一次"
+  },
+  "roleSelect": {
+    "welcomeTitle": "欢迎使用 Learningo",
+    "welcomeSubtitle": "选择你想要的登录方式",
+    "signInAs": "以此身份登录...",
+    "roles": {
+      "student": "学生",
+      "parent": "家长",
+      "admin": "管理员",
+      "teacher": "教师",
+      "superadmin": "超级管理员"
+    },
+    "copyright": "© {{year}} Futuresight Analytics Limited 出品"
+  },
+  "aboutUs": {
+    "badge": "我们的故事",
+    "heroTitle": "为每一种思维方式重新设计的学习",
+    "heroSubtitle": "Learningo 是一个以游戏为先的学习平台，专为阅读障碍（诵读困难）和神经多样性儿童打造——在这里，阅读、写作和表达感觉像是一场冒险，而不是一场挣扎。",
+    "paragraph": "我们相信每个孩子的学习方式都不同，而这种不同值得庆祝，而不是被纠正。Learningo 将课程变成简短而鼓励人心的回合，配有语音支持、趣味视觉效果和即时正向反馈——让孩子们一颗星一颗星地建立起真正的自信。",
+    "worldsTitle": "选择你的世界",
+    "worlds": {
+      "english": {
+        "title": "英语王国",
+        "text": "专为阅读障碍友好型阅读设计的故事，以及听力和口语练习。"
+      },
+      "maths": {
+        "title": "数学星系",
+        "text": "循序渐进的数字练习，把棘手的难题变成有趣的小胜利。"
+      },
+      "science": {
+        "title": "科学实验室",
+        "text": "由好奇心驱动的活动，让探索变得精彩——每次一个实验。"
+      }
+    },
+    "valuesTitle": "为什么家庭喜爱 Learningo",
+    "values": {
+      "care": {
+        "title": "用心打造",
+        "text": "与教育工作者共同为阅读障碍和神经多样性学习者开发。"
+      },
+      "playful": {
+        "title": "趣味且积极",
+        "text": "每个回合都简短、鼓励人心，并立即庆祝进步。"
+      },
+      "safe": {
+        "title": "安心学习的空间",
+        "text": "没有红色的叉号，没有压力——只有温和的提示和欢快的反馈。"
+      },
+      "language": {
+        "title": "说孩子的语言",
+        "text": "支持14种语言，让每个孩子都感觉宾至如归。"
+      },
+      "progress": {
+        "title": "看得见的进步",
+        "text": "星星、连续记录和友好的仪表盘让全家随时了解情况。"
+      }
+    },
+    "startAdventure": "开始你的冒险",
+    "getInTouch": "有问题吗？联系我们"
+  },
+  "contactUs": {
+    "badge": "我们随时为你提供帮助",
+    "heroTitle": "让我们聊聊！",
+    "heroSubtitle": "有问题、有想法，或者遇到了小麻烦？给我们留言吧，Learningo 团队会很快回复你。",
+    "reassurances": {
+      "support": {
+        "title": "亲切的支持",
+        "text": "我们团队中的真人会阅读每一条消息。"
+      },
+      "quick": {
+        "title": "快速回复",
+        "text": "我们通常会在24小时内回复。"
+      },
+      "noQuestion": {
+        "title": "没有问题太小",
+        "text": "反馈、报告错误，或只是打个招呼——我们都很乐意听到你的声音。"
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "学生",
+      "parent": "家长 / 监护人",
+      "admin": "机构管理员",
+      "teacher": "教师 / 辅导老师",
+      "other": "其他"
+    },
+    "iAmA": "我的身份是",
+    "yourName": "你的姓名",
+    "namePlaceholder": "全名",
+    "yourEmail": "你的邮箱",
+    "emailPlaceholder": "you@example.com",
+    "organization": "机构（可选）",
+    "orgPlaceholder": "你的学校 / 机构",
+    "subject": "主题",
+    "subjectPlaceholder": "这是关于什么的？",
+    "message": "消息",
+    "messagePlaceholder": "描述你的问题或疑问…",
+    "attachFile": "附加文件（可选）",
+    "sending": "发送中…",
+    "sendMessage": "发送消息",
+    "successTitle": "消息已发送！",
+    "successText": "Learningo 团队会很快回复你。",
+    "sendAnother": "发送另一条消息",
+    "errors": {
+      "name": "请输入你的全名",
+      "email": "请输入有效的邮箱地址",
+      "subject": "主题必须至少3个字符",
+      "message": "消息必须至少10个字符"
+    },
+    "errorServer": "出错了，请重试。",
+    "errorNetwork": "无法连接到服务器，请重试。"
   }
 }

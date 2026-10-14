@@ -297,5 +297,150 @@
       "micUnsupported": "Il tuo browser non supporta la registrazione — usa Chrome o Firefox.",
       "micInsecure": "Il microfono richiede una connessione sicura (HTTPS). Apri l'app tramite https:// oppure usa localhost."
     }
+  },
+  "questionCard": {
+    "listen": "Ascolta",
+    "playing": "In riproduzione…",
+    "hint": "Suggerimento",
+    "tryAgain": "Riprova",
+    "correctAnswer": "Risposta corretta: {{answer}}",
+    "check": "Controlla",
+    "undo": "Annulla",
+    "record": "🎤 Registra",
+    "stop": "⏹ Ferma",
+    "markComplete": "Segna come completato",
+    "finishRound": "Termina round",
+    "micInsecure": "Il microfono richiede una connessione sicura.",
+    "micUnsupported": "Il microfono non è supportato in questo browser.",
+    "micError": "Errore del microfono. Riprova.",
+    "micPermission": "Autorizzazione al microfono negata.",
+    "micNotFound": "Nessun microfono trovato.",
+    "micBusy": "Il microfono è in uso da un'altra app."
+  },
+  "roundComplete": {
+    "warriorPassed": "Guerriero promosso!",
+    "warriorFailed": "Guerriero bocciato",
+    "conquered": "Hai conquistato la sfida!",
+    "neededToPass": "Ti servivano {{count}} risposte corrette per superarla.",
+    "title": "Round completato!",
+    "correctAnswers": "Risposte corrette",
+    "passingMark": "Soglia di superamento: {{count}} risposte corrette",
+    "speedBonusStars": "+{{count}} stelle bonus velocità!",
+    "earnedQuickly": "Guadagnate rispondendo in fretta",
+    "totalStars": "Totale: {{count}} stelle",
+    "back": "Indietro",
+    "playAgain": "Gioca ancora"
+  },
+  "roleSelect": {
+    "welcomeTitle": "Benvenuto su Learningo",
+    "welcomeSubtitle": "Scegli come vuoi accedere",
+    "signInAs": "Accedi come...",
+    "roles": {
+      "student": "Studente",
+      "parent": "Genitore",
+      "admin": "Amministratore",
+      "teacher": "Insegnante",
+      "superadmin": "Super amministratore"
+    },
+    "copyright": "Un prodotto di © {{year}} Futuresight Analytics Limited"
+  },
+  "aboutUs": {
+    "badge": "La nostra storia",
+    "heroTitle": "L'apprendimento, reinventato per ogni tipo di mente",
+    "heroSubtitle": "Learningo è una piattaforma di apprendimento basata sul gioco, pensata per bambini dislessici e neurodivergenti — dove leggere, scrivere e parlare sembrano un'avventura, non una lotta.",
+    "paragraph": "Crediamo che ogni bambino impari in modo diverso, e che questa differenza sia qualcosa da celebrare, non da correggere. Learningo trasforma le lezioni in brevi sessioni incoraggianti con supporto audio, immagini giocose e feedback positivo immediato — così i bambini costruiscono una fiducia autentica, una stella alla volta.",
+    "worldsTitle": "Scegli il tuo mondo",
+    "worlds": {
+      "english": {
+        "title": "Regno dell'inglese",
+        "text": "Storie ed esercizi di ascolto e di produzione orale pensati per una lettura amica della dislessia."
+      },
+      "maths": {
+        "title": "Galassia della matematica",
+        "text": "Esercizi di calcolo in piccole dosi che trasformano i problemi difficili in piccole vittorie divertenti."
+      },
+      "science": {
+        "title": "Laboratorio di scienze",
+        "text": "Attività guidate dalla curiosità che rendono la scoperta entusiasmante, un esperimento alla volta."
+      }
+    },
+    "valuesTitle": "Perché le famiglie amano Learningo",
+    "values": {
+      "care": {
+        "title": "Creato con cura",
+        "text": "Sviluppato insieme a educatori per studenti dislessici e neurodivergenti."
+      },
+      "playful": {
+        "title": "Giocoso e positivo",
+        "text": "Ogni sessione è breve, incoraggiante e celebra i progressi all'istante."
+      },
+      "safe": {
+        "title": "Uno spazio sicuro per imparare",
+        "text": "Niente segni rossi, niente pressione — solo piccoli incoraggiamenti e feedback allegri."
+      },
+      "language": {
+        "title": "Parla la loro lingua",
+        "text": "Disponibile in 14 lingue, così ogni bambino si sente a casa."
+      },
+      "progress": {
+        "title": "Progressi visibili",
+        "text": "Stelle, serie di successi e una dashboard amichevole tengono aggiornata tutta la famiglia."
+      }
+    },
+    "startAdventure": "Inizia la tua avventura",
+    "getInTouch": "Hai una domanda? Contattaci"
+  },
+  "contactUs": {
+    "badge": "Siamo qui per aiutarti",
+    "heroTitle": "Parliamone!",
+    "heroSubtitle": "Hai una domanda, un'idea o un piccolo problema? Scrivici un messaggio e il team di Learningo ti risponderà presto.",
+    "reassurances": {
+      "support": {
+        "title": "Assistenza cordiale",
+        "text": "Una persona vera del nostro team legge ogni messaggio."
+      },
+      "quick": {
+        "title": "Risposte rapide",
+        "text": "Di solito rispondiamo entro 24 ore."
+      },
+      "noQuestion": {
+        "title": "Nessuna domanda è troppo piccola",
+        "text": "Feedback, bug, o solo un saluto — ci fa piacere sentirti."
+      }
+    }
+  },
+  "contactForm": {
+    "roles": {
+      "student": "Studente",
+      "parent": "Genitore / Tutore",
+      "admin": "Amministratore dell'organizzazione",
+      "teacher": "Insegnante / Tutor",
+      "other": "Altro"
+    },
+    "iAmA": "Sono",
+    "yourName": "Il tuo nome",
+    "namePlaceholder": "Nome completo",
+    "yourEmail": "La tua email",
+    "emailPlaceholder": "tu@esempio.com",
+    "organization": "Organizzazione (opzionale)",
+    "orgPlaceholder": "La tua scuola / organizzazione",
+    "subject": "Oggetto",
+    "subjectPlaceholder": "Di cosa si tratta?",
+    "message": "Messaggio",
+    "messagePlaceholder": "Descrivi la tua domanda o il problema…",
+    "attachFile": "Allega un file (opzionale)",
+    "sending": "Invio in corso…",
+    "sendMessage": "Invia messaggio",
+    "successTitle": "Messaggio inviato!",
+    "successText": "Il team di Learningo ti risponderà presto.",
+    "sendAnother": "Invia un altro messaggio",
+    "errors": {
+      "name": "Inserisci il tuo nome completo",
+      "email": "Inserisci un indirizzo email valido",
+      "subject": "L'oggetto deve contenere almeno 3 caratteri",
+      "message": "Il messaggio deve contenere almeno 10 caratteri"
+    },
+    "errorServer": "Qualcosa è andato storto. Riprova.",
+    "errorNetwork": "Impossibile contattare il server. Riprova."
   }
 }

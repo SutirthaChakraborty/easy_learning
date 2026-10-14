@@ -1,4 +1,5 @@
 import * as FramerMotion from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { MdSupportAgent } from "react-icons/md";
 import { FaClock, FaSmileBeam, FaHeadset } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
@@ -10,13 +11,14 @@ import styles from "./ContactUs.module.css";
 const { motion } = FramerMotion;
 
 const reassurances = [
-  { color: "purple", icon: FaHeadset, title: "Friendly Support", text: "A real person from our team reads every message." },
-  { color: "blue", icon: FaClock, title: "Quick Replies", text: "We usually get back to you within 24 hours." },
-  { color: "green", icon: FaSmileBeam, title: "No Question Too Small", text: "Feedback, bugs, or just saying hi — we love hearing from you." },
+  { key: "support", color: "purple", icon: FaHeadset },
+  { key: "quick", color: "blue", icon: FaClock },
+  { key: "noQuestion", color: "green", icon: FaSmileBeam },
 ];
 
 const ContactUs = () => {
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   return (
     <div className={styles.page}>
@@ -40,11 +42,10 @@ const ContactUs = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <span className={styles.badge}><MdSupportAgent /> We're Here to Help</span>
-        <h1 className={styles.heroTitle}>Let's Talk!</h1>
+        <span className={styles.badge}><MdSupportAgent /> {t("contactUs.badge")}</span>
+        <h1 className={styles.heroTitle}>{t("contactUs.heroTitle")}</h1>
         <p className={styles.heroSubtitle}>
-          Have a question, an idea, or ran into a hiccup? Drop us a message and the
-          Learningo team will get back to you soon. Looking for a quick answer? Check our{" "}
+          {t("contactUs.heroSubtitle")} Looking for a quick answer? Check our{" "}
           <a href="/faq" className={styles.faqLink}>FAQ</a>.
         </p>
       </motion.section>
@@ -56,11 +57,11 @@ const ContactUs = () => {
         transition={{ duration: 0.4, delay: 0.08 }}
       >
         {reassurances.map((r) => (
-          <div key={r.title} className={`${styles.reassureCard} ${styles[r.color]}`}>
+          <div key={r.key} className={`${styles.reassureCard} ${styles[r.color]}`}>
             <span className={styles.reassureIconWrap}><r.icon className={styles.reassureIcon} /></span>
             <div>
-              <h3>{r.title}</h3>
-              <p>{r.text}</p>
+              <h3>{t(`contactUs.reassurances.${r.key}.title`)}</h3>
+              <p>{t(`contactUs.reassurances.${r.key}.text`)}</p>
             </div>
           </div>
         ))}
