@@ -39,7 +39,9 @@ export default function TeacherQuestionUpload({ get, post, postForm, token }) {
     if (d.success) setMyBatches(d.batches);
   }, [get]);
 
-  useEffect(() => { loadUploads(); loadBatches(); }, [loadUploads, loadBatches]);
+  useEffect(() => {
+    (async () => { await Promise.all([loadUploads(), loadBatches()]); })();
+  }, [loadUploads, loadBatches]);
 
   const batchNameById = (id) => myBatches.find((b) => b._id === id)?.name || id;
 

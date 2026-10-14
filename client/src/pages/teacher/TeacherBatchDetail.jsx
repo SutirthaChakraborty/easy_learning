@@ -38,10 +38,13 @@ export default function TeacherBatchDetail({ batchId, teacherId, get, post, del,
   }, [get, batchId]);
 
   useEffect(() => {
-    Promise.all([
-      loadBatch(),
-      get("/students").then((d) => { if (d.success) setAllStudents(d.students); }),
-    ]).finally(() => setLoading(false));
+    (async () => {
+      await Promise.all([
+        loadBatch(),
+        get("/students").then((d) => { if (d.success) setAllStudents(d.students); }),
+      ]);
+      setLoading(false);
+    })();
   }, [loadBatch, get]);
 
   const refreshAfterChange = async () => {

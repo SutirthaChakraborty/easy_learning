@@ -103,10 +103,15 @@ export function SequenceBuilder({ question, onSubmit, disabled }) {
 // match_pairs — tap a left item then a right item to attempt a pair.
 export function MatchPairs({ question, onSubmit, disabled }) {
   const pairs = question.correct_answer || [];
+  // Shuffle order is intentionally randomized per mount (this remounts once
+  // per question via the parent's key={question.id}) and re-randomizing on
+  // every retry is the point, so a deterministic/pure shuffle isn't used here.
   const leftItems = useMemo(() => {
     const items = pairs.map((p) => p[0]);
+    // eslint-disable-next-line react-hooks/purity
     return [...items].sort(() => Math.random() - 0.5);
   }, [question.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/purity
   const rightItems = useMemo(() => [...(question.options || [])].sort(() => Math.random() - 0.5), [question.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [selectedLeft, setSelectedLeft] = useState(null);
@@ -165,6 +170,9 @@ export function MatchPairs({ question, onSubmit, disabled }) {
 // sort_bins — tap an item, then tap the bin it belongs in.
 export function SortBins({ question, onSubmit, disabled }) {
   const bins = useMemo(() => Object.keys(question.correct_answer || {}), [question.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  // Shuffle order is intentionally randomized per mount (this remounts once
+  // per question via the parent's key={question.id}); see MatchPairs above.
+  // eslint-disable-next-line react-hooks/purity
   const items = useMemo(() => [...(question.options || [])].sort(() => Math.random() - 0.5), [question.id]); // eslint-disable-line react-hooks/exhaustive-deps
   const [placed, setPlaced] = useState({});
   const [selectedItem, setSelectedItem] = useState(null);
@@ -311,18 +319,3 @@ export function MicRecord({ onSubmit, disabled, speech }) {
     </div>
   );
 }
-
-export const WIDGETS = {
-  tap_mcq: SingleChoice,
-  true_false: SingleChoice,
-  drag_to_blank: SingleChoice,
-  multi_select: MultiSelect,
-  drag_order: SequenceBuilder,
-  tap_sequence: SequenceBuilder,
-  letter_bank: SequenceBuilder,
-  match_pairs: MatchPairs,
-  sort_bins: SortBins,
-  typed_short: TypedAnswer,
-  typed_long: TypedAnswer,
-  mic_record: MicRecord,
-};

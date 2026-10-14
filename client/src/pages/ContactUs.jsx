@@ -8,6 +8,7 @@ import ContactForm from "../components/ContactForm/ContactForm";
 import SEO from "../components/SEO/SEO";
 import styles from "./ContactUs.module.css";
 
+// eslint-disable-next-line no-unused-vars -- used via <motion.*> JSX tags, which no-unused-vars doesn't track
 const { motion } = FramerMotion;
 
 const reassurances = [

@@ -27,6 +27,9 @@ export default function Dashboard() {
   const [selectedYear, setSelectedYear] = useState(thisYear)
   const yearOptions = Array.from({ length: 5 }, (_, i) => thisYear - i)
 
+  // Runs once user is available; `handleYearChange` below already handles
+  // later year switches with its own dispatch, so `selectedYear` is
+  // deliberately not a dependency here.
   useEffect(() => {
     if (!user) return
     dispatch(fetchDashboardStats())
@@ -35,6 +38,7 @@ export default function Dashboard() {
     dispatch(fetchDashboardPerformance(30))
     dispatch(fetchRounds(30))
     dispatch(fetchArInsights(30))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, user])
 
   function handleYearChange(year) {

@@ -194,7 +194,10 @@ const AdminDashboard = () => {
   }, [get]);
 
   useEffect(() => {
-    Promise.all([loadStats(), loadProfile()]).finally(() => setLoading(false));
+    (async () => {
+      await Promise.all([loadStats(), loadProfile()]);
+      setLoading(false);
+    })();
   }, [loadStats, loadProfile]);
 
   const pollChatUnread = useCallback(async () => {
@@ -203,7 +206,7 @@ const AdminDashboard = () => {
   }, [get]);
 
   useEffect(() => {
-    pollChatUnread();
+    (async () => { await pollChatUnread(); })();
     const iv = setInterval(pollChatUnread, 25000);
     return () => clearInterval(iv);
   }, [pollChatUnread]);
@@ -235,7 +238,7 @@ const AdminDashboard = () => {
   }, [get]);
 
   useEffect(() => {
-    loadQuestionStats();
+    (async () => { await loadQuestionStats(); })();
   }, [loadQuestionStats]);
 
   const loadSection = useCallback(async (sec) => {

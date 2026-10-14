@@ -72,7 +72,10 @@ const TeacherDashboard = () => {
   }, [get]);
 
   useEffect(() => {
-    loadBatches().finally(() => setLoading(false));
+    (async () => {
+      await loadBatches();
+      setLoading(false);
+    })();
   }, [loadBatches]);
 
   const handleLogout = () => { teacherLogout(); navigate("/"); };

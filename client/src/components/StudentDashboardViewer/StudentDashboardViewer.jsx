@@ -38,7 +38,10 @@ export default function StudentDashboardViewer({ apiBase, token, displayName, on
     }
   }, [fetchJSON])
 
-  useEffect(() => { loadAll(selectedYear) }, [loadAll])
+  // Runs once on mount with the current year; `handleYearChange` below
+  // already handles later year switches with its own targeted fetch, so
+  // `selectedYear` is deliberately not a dependency here.
+  useEffect(() => { loadAll(selectedYear) }, [loadAll]) // eslint-disable-line react-hooks/exhaustive-deps
 
   async function handleYearChange(year) {
     setSelectedYear(year)

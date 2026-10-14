@@ -45,11 +45,18 @@ export function useQuestionRound({ module, subject, warriorSeconds = 30 }) {
 
   const current = data[idx];
 
-  useEffect(() => {
-    questionStartRef.current = new Date().toISOString();
+  // Reset per-question state when `idx` changes. Done during render (React's
+  // recommended "adjusting state when a prop changes" pattern) rather than in
+  // an effect, so there's no stale-state frame between questions.
+  const [prevIdx, setPrevIdx] = useState(idx);
+  if (idx !== prevIdx) {
+    setPrevIdx(idx);
     setAnswered(false);
     setTimeLeft(warriorSeconds);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }
+
+  useEffect(() => {
+    questionStartRef.current = new Date().toISOString();
   }, [idx]);
 
   const finishRound = () => {
@@ -108,8 +115,10 @@ export function useQuestionRound({ module, subject, warriorSeconds = 30 }) {
   // Warrior countdown — auto-advances once time runs out, unless already answered.
   useEffect(() => {
     if (mode !== "warrior" || answered || !current || roundDone) return;
-    if (timeLeft <= 0) { advance(); return; }
-    const t = setTimeout(() => setTimeLeft((p) => p - 1), 1000);
+    const t = setTimeout(() => {
+      if (timeLeft <= 0) advance();
+      else setTimeLeft((p) => p - 1);
+    }, timeLeft <= 0 ? 0 : 1000);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mode, timeLeft, answered, current, roundDone]);

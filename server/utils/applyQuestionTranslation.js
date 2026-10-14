@@ -6,10 +6,11 @@
 // client, which only sends ?lang= for non-english subjects).
 function applyQuestionTranslation(questionDoc, lang) {
   const question = typeof questionDoc.toObject === 'function' ? questionDoc.toObject() : questionDoc
-  if (!lang || lang === 'en') return question
-
-  const translation = question.translations && question.translations[lang]
-  if (!translation) return question
+  const translation = lang && lang !== 'en' && question.translations && question.translations[lang]
+  if (!translation) {
+    delete question.translations
+    return question
+  }
 
   const merged = { ...question }
   for (const field of ['instruction', 'prompt', 'audio_text', 'options', 'correct_answer', 'accepted_answers', 'hints', 'worked_example']) {
@@ -21,6 +22,7 @@ function applyQuestionTranslation(questionDoc, lang) {
   if (translation.speech_scoring) {
     merged.speech_scoring = { ...question.speech_scoring, ...translation.speech_scoring }
   }
+  delete merged.translations
   return merged
 }
 

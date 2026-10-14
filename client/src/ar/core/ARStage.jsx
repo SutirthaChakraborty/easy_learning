@@ -30,7 +30,7 @@ import { makeRng } from './geometry'
 import { nextTargetFor, PROMPT_INFO } from './adaptive'
 import {
   beginRound, resolveLevel, recordRound, tileProgress, hasJourney,
-  levelChange, LEVEL_META, LEVELS,
+  LEVEL_META, LEVELS,
 } from './journey'
 import { GAMES } from '../catalog/games'
 import LevelPips from './LevelPips'

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+// eslint-disable-next-line no-unused-vars -- `motion` is used via <motion.div> JSX tags, which no-unused-vars doesn't track
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import {
@@ -81,10 +82,13 @@ function ActivityHeatmap({ activity, selectedYear }) {
     return 'var(--heat-4)'
   }
 
-  const weeks = []
-  for (let i = 0; i < cellData.length; i += 7) {
-    weeks.push(cellData.slice(i, i + 7))
-  }
+  const weeks = useMemo(() => {
+    const result = []
+    for (let i = 0; i < cellData.length; i += 7) {
+      result.push(cellData.slice(i, i + 7))
+    }
+    return result
+  }, [cellData])
 
   const monthLabels = useMemo(() => {
     const labels = []

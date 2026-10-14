@@ -12,7 +12,7 @@ async function apiFetch(url, options = {}) {
   if (!res.ok) {
     const text = await res.text()
     let msg = `HTTP ${res.status}`
-    try { msg = JSON.parse(text).message || msg } catch (_) {}
+    try { msg = JSON.parse(text).message || msg } catch { /* response body wasn't JSON; keep the HTTP status message */ }
     throw new Error(msg)
   }
   return res.json()
