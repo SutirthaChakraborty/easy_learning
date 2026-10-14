@@ -332,7 +332,7 @@
     "playAgain": "Main Lagi"
   },
   "roleSelect": {
-    "welcomeTitle": "Selamat datang di Easy Learning",
+    "welcomeTitle": "Selamat datang di Learningo",
     "welcomeSubtitle": "Pilih cara kamu ingin masuk",
     "signInAs": "Masuk sebagai...",
     "roles": {
@@ -342,7 +342,7 @@
       "teacher": "Guru",
       "superadmin": "Super Admin"
     },
-    "copyright": "Sebuah produk dari ©ABC Company"
+    "copyright": "Sebuah produk dari © {{year}} Futuresight Analytics Limited"
   },
   "aboutUs": {
     "badge": "Kisah Kami",

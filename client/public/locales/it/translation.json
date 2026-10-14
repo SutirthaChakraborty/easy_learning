@@ -332,7 +332,7 @@
     "playAgain": "Gioca ancora"
   },
   "roleSelect": {
-    "welcomeTitle": "Benvenuto su Easy Learning",
+    "welcomeTitle": "Benvenuto su Learningo",
     "welcomeSubtitle": "Scegli come vuoi accedere",
     "signInAs": "Accedi come...",
     "roles": {
@@ -342,7 +342,7 @@
       "teacher": "Insegnante",
       "superadmin": "Super amministratore"
     },
-    "copyright": "Un prodotto di ©ABC Company"
+    "copyright": "Un prodotto di © {{year}} Futuresight Analytics Limited"
   },
   "aboutUs": {
     "badge": "La nostra storia",

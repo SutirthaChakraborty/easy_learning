@@ -34,6 +34,12 @@ import AdminDashboard from "./pages/admin/AdminDashboard";
 import SuperAdminDashboard from "./pages/superadmin/SuperAdminDashboard";
 import TeacherDashboard from "./pages/teacher/TeacherDashboard";
 import ParentDashboard from "./pages/parent/ParentDashboard";
+import LearningSupportByCountry from "./pages/LearningSupportByCountry";
+import LearningDifferences from "./pages/LearningDifferences";
+import WhoWeHelp from "./pages/WhoWeHelp";
+import ArLearningGames from "./pages/ArLearningGames";
+import Faq from "./pages/Faq";
+import NotFound from "./pages/NotFound";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -57,6 +63,14 @@ function AnimatedRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/learning-support-by-country" element={<LearningSupportByCountry />} />
+        <Route path="/learning-support-by-country/:country" element={<LearningSupportByCountry />} />
+        <Route path="/learning-differences" element={<LearningDifferences />} />
+        <Route path="/learning-differences/:difference" element={<LearningDifferences />} />
+        <Route path="/who-we-help" element={<WhoWeHelp />} />
+        <Route path="/who-we-help/:audience" element={<WhoWeHelp />} />
+        <Route path="/ar-learning-games" element={<ArLearningGames />} />
+        <Route path="/faq" element={<Faq />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />
         <Route path="/teacher-login" element={<TeacherLogin />} />
@@ -66,6 +80,7 @@ function AnimatedRoutes() {
         <Route path="/superadmin-dashboard" element={<SuperAdminDashboard />} />
         <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
         <Route path="/parent-dashboard" element={<ParentDashboard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>
   );
@@ -88,7 +103,7 @@ function AppLayout() {
   // camera session (gameplay or Insights) owns the whole viewport with its own
   // background.
   const hideBackground3D = isAR || [
-    "/", "/home", "/about-us", "/contact-us",
+    "/", "/home", "/about-us", "/contact-us", "/faq",
     "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login",
     "/games", "/games/ar", "/dashboard",
   ].includes(location.pathname)

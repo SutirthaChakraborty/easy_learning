@@ -1,0 +1,97 @@
+.page {
+  min-height: calc(100vh - 80px);
+  padding: 48px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero {
+  max-width: 720px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-family: "Fredoka", sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  margin: 0 0 12px;
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.panel {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.item {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 22px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.question {
+  font-family: "Fredoka", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #1e293b;
+  cursor: pointer;
+  list-style: none;
+}
+
+.question::-webkit-details-marker {
+  display: none;
+}
+
+.question::before {
+  content: "+";
+  display: inline-block;
+  width: 20px;
+  color: #4f8ef7;
+  font-weight: 800;
+}
+
+.item[open] .question::before {
+  content: "\2212";
+}
+
+.answer {
+  margin: 12px 0 0 20px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.footerNote {
+  margin-top: 32px;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+}
+
+.link {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: underline;
+}

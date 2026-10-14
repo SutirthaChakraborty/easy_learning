@@ -332,7 +332,7 @@
     "playAgain": "再玩一次"
   },
   "roleSelect": {
-    "welcomeTitle": "欢迎使用 Easy Learning",
+    "welcomeTitle": "欢迎使用 Learningo",
     "welcomeSubtitle": "选择你想要的登录方式",
     "signInAs": "以此身份登录...",
     "roles": {
@@ -342,7 +342,7 @@
       "teacher": "教师",
       "superadmin": "超级管理员"
     },
-    "copyright": "©ABC Company 出品"
+    "copyright": "© {{year}} Futuresight Analytics Limited 出品"
   },
   "aboutUs": {
     "badge": "我们的故事",

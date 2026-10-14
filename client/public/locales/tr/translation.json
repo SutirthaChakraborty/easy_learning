@@ -332,7 +332,7 @@
     "playAgain": "Tekrar Oyna"
   },
   "roleSelect": {
-    "welcomeTitle": "Easy Learning'e hoş geldiniz",
+    "welcomeTitle": "Learningo'e hoş geldiniz",
     "welcomeSubtitle": "Nasıl giriş yapmak istediğinizi seçin",
     "signInAs": "Şu olarak giriş yap...",
     "roles": {
@@ -342,7 +342,7 @@
       "teacher": "Öğretmen",
       "superadmin": "Süper Yönetici"
     },
-    "copyright": "Bir ©ABC Company ürünü"
+    "copyright": "Bir © {{year}} Futuresight Analytics Limited ürünü"
   },
   "aboutUs": {
     "badge": "Hikayemiz",

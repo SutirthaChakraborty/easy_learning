@@ -3,9 +3,10 @@ import * as FramerMotion from "framer-motion";
 import { useTranslation } from "react-i18next";
 import {
   FaBook, FaCalculator, FaMicroscope, FaHeart, FaStar,
-  FaShieldAlt, FaGlobeAmericas, FaChartLine, FaArrowRight, FaEnvelope,
+  FaShieldAlt, FaGlobeAmericas, FaChartLine, FaArrowRight, FaEnvelope, FaLightbulb,
 } from "react-icons/fa";
 import VideoBackground from "../components/VideoBackground/VideoBackground";
+import SEO from "../components/SEO/SEO";
 import { playSlide } from "../utils/sounds";
 import styles from "./AboutUs.module.css";
 
@@ -36,6 +37,19 @@ const AboutUs = () => {
 
   return (
     <div className={styles.page}>
+      <SEO
+        title="About Learningo | Learning, Reimagined for Every Kind of Mind"
+        description="Learningo is a play-first learning platform built for dyslexic and neurodivergent learners, turning reading, writing, speaking, maths and science into a short, encouraging adventure."
+        path="/about-us"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          name: "About Learningo",
+          description: "Learningo is a play-first learning platform built for dyslexic and neurodivergent learners.",
+          url: "https://www.learnigo.eu/about-us",
+          isPartOf: { "@type": "WebSite", name: "Learningo", url: "https://www.learnigo.eu" },
+        }}
+      />
       <VideoBackground />
 
       <motion.section
@@ -85,6 +99,15 @@ const AboutUs = () => {
           <button type="button" className={styles.ctaBtn} onClick={handleStart}>
             {t("aboutUs.startAdventure")} <FaArrowRight className={styles.ctaIcon} />
           </button>
+          <a href="/learning-differences" className={styles.contactLink}>
+            <FaLightbulb /> Learn about dyslexia, ADHD and other learning differences
+          </a>
+          <a href="/who-we-help" className={styles.contactLink}>
+            <FaGlobeAmericas /> See who Learningo helps — parents, schools, NGOs & therapists
+          </a>
+          <a href="/faq" className={styles.contactLink}>
+            <FaEnvelope /> Have a question? Check our FAQ
+          </a>
           <a href="/contact-us" className={styles.contactLink}>
             <FaEnvelope /> {t("aboutUs.getInTouch")}
           </a>

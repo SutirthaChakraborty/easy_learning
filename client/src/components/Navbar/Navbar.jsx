@@ -6,7 +6,7 @@ import logo from "/logo.png";
 import { playSlide } from "../../utils/sounds";
 import {
   FaHome, FaInfoCircle, FaEnvelope, FaSignOutAlt,
-  FaHandPaper, FaLayerGroup, FaGamepad,
+  FaHandPaper, FaLayerGroup, FaGamepad, FaGlobe,
 } from "react-icons/fa";
 import { RiBarChart2Fill } from "react-icons/ri";
 import { useAuth } from "../../context/AuthContext";
@@ -35,7 +35,7 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.bar}>
         <Link to="/home" className={styles.logo} onClick={close}>
-          <img src={logo} alt="logo" />
+          <img src={logo} alt="Learningo" />
         </Link>
 
         <div className={`${styles.menu} ${mobileOpen ? styles.menuOpen : ""}`}>
@@ -48,6 +48,11 @@ const Navbar = () => {
             <NavLink to="/about-us" className={pillClass("navAbout")} onClick={close}>
               <span className={styles.navIconWrap}><FaInfoCircle className={styles.navIcon} /></span>
               {t("navbar.about", { defaultValue: "About Us" })}
+            </NavLink>
+
+            <NavLink to="/learning-support-by-country" className={pillClass("navAbout")} onClick={close}>
+              <span className={styles.navIconWrap}><FaGlobe className={styles.navIcon} /></span>
+              Learning Support
             </NavLink>
 
             <NavLink to="/games" className={pillClass("navGames")} onClick={close}>
