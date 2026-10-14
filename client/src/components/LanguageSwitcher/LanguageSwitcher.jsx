@@ -5,7 +5,7 @@ import styles from "./LanguageSwitcher.module.css";
 
 // Central registry of all supported languages.
 // Add a new entry here to expose a new language across the entire app.
-export const LANGUAGES = [
+const LANGUAGES = [
   { code: "en", name: "English",    flag: "🇺🇸", native: "English"    },
   { code: "es", name: "Spanish",    flag: "🇪🇸", native: "Español"    },
   { code: "pt", name: "Portuguese", flag: "🇧🇷", native: "Português"  },

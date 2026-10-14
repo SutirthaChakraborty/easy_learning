@@ -50,24 +50,24 @@ function isTokenExpired(token) {
   return payload.exp * 1000 < Date.now();
 }
 
+function readStoredJWTUser() {
+  const token = localStorage.getItem(JWT_KEY);
+  if (!token || isTokenExpired(token)) return undefined;
+  const payload = decodeJWT(token);
+  return {
+    uid: payload.id,
+    email: payload.email,
+    name: payload.name,
+    photoURL: "",
+    authType: "jwt",
+  };
+}
+
 export const AuthProvider = ({ children }) => {
   // user shape: { uid, email, name, photoURL, authType: 'firebase' | 'jwt' }
-  const [user, setUser] = useState(undefined);
+  const [user, setUser] = useState(readStoredJWTUser);
 
   useEffect(() => {
-    // Check for a stored JWT first
-    const token = localStorage.getItem(JWT_KEY);
-    if (token && !isTokenExpired(token)) {
-      const payload = decodeJWT(token);
-      setUser({
-        uid: payload.id,
-        email: payload.email,
-        name: payload.name,
-        photoURL: "",
-        authType: "jwt",
-      });
-    }
-
     // Firebase listener (handles Google sign-in)
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
       const storedJWT = localStorage.getItem(JWT_KEY);
@@ -77,7 +77,9 @@ export const AuthProvider = ({ children }) => {
 
       try {
         await syncSessionCookie(firebaseUser);
-      } catch (_) {}
+      } catch {
+        // non-fatal: session cookie sync failing shouldn't block the firebase auth state update below
+      }
       if (firebaseUser) {
         setUser({
           uid: firebaseUser.uid,
@@ -149,4 +151,5 @@ export const AuthProvider = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components -- hook is co-located with its provider; many call sites import it from this path
 export const useAuth = () => useContext(AuthContext);

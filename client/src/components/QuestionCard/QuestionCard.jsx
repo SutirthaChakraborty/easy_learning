@@ -1,9 +1,9 @@
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import * as FramerMotion from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FaVolumeUp, FaLightbulb } from "react-icons/fa";
-import { WIDGETS } from "../QuestionWidgets/QuestionWidgets";
+import { WIDGETS } from "../QuestionWidgets/widgetRegistry";
 import { isCorrect } from "../../utils/scoreAnswer";
 import { useSpeech } from "../../hooks/useSpeech";
 import { playCorrect, playWrong, playBtn } from "../../utils/sounds";
@@ -75,7 +75,10 @@ export default function QuestionCard({ question, subject, onAnswered }) {
   const [revealed, setRevealed] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const startRef = useRef(performance.now());
+  // Parent keys this component by question id, so this remounts (and the
+  // timer resets) once per question.
+  const startRef = useRef(0);
+  useEffect(() => { startRef.current = performance.now(); }, []);
 
   if (!question.interaction) {
     return <LegacyCard question={question} onAnswered={onAnswered} />;

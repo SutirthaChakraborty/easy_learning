@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, useCallback } from 'react'
+// eslint-disable-next-line no-unused-vars -- used via <motion.div> JSX tags, which no-unused-vars doesn't track
 import { motion } from 'framer-motion'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../context/AuthContext'
@@ -140,8 +141,11 @@ export default function ProgressMap({ achievements, stats, onClose, disablePersi
     } catch { return null }
   })
 
-  const liveAchievements = achievements?.length ? achievements : (saved?.achievements ?? [])
-  const liveStats = stats ?? saved?.stats ?? {}
+  const liveAchievements = useMemo(
+    () => (achievements?.length ? achievements : (saved?.achievements ?? [])),
+    [achievements, saved]
+  )
+  const liveStats = useMemo(() => stats ?? saved?.stats ?? {}, [stats, saved])
 
   // ── Derived status ────────────────────────────────────────────────────────────
 

@@ -12,7 +12,7 @@ export default function ScheduleEditor({ schedule, teacherIds, post, del, addPat
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
-    if (!startTime || !endTime || teacherIds.length === 0) { setWarning(""); return; }
+    if (!startTime || !endTime || teacherIds.length === 0) return;
     let cancelled = false;
     (async () => {
       const found = [];
@@ -74,7 +74,9 @@ export default function ScheduleEditor({ schedule, teacherIds, post, del, addPat
           <MdAdd />
         </button>
       </div>
-      {warning && <p className={styles.scheduleWarning}><MdWarning /> {warning}</p>}
+      {warning && startTime && endTime && teacherIds.length > 0 && (
+        <p className={styles.scheduleWarning}><MdWarning /> {warning}</p>
+      )}
       {error && <p className={styles.serverError}>{error}</p>}
     </div>
   );

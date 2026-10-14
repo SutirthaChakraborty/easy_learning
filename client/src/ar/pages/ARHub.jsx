@@ -89,10 +89,14 @@ export default function ARHub() {
   const pageGames = games.slice(page * pageSize, page * pageSize + pageSize)
 
   // A resize (or switching group) can leave `page` past the end of the new
-  // page count — clamp it back on instead of stranding the board empty.
-  useEffect(() => {
-    setPage((p) => Math.min(p, pages - 1))
-  }, [pages])
+  // page count — clamp it during render rather than in an effect, so the
+  // board is never stranded empty even for a frame. See
+  // https://react.dev/learn/you-might-not-need-an-effect#adjusting-some-state-when-a-prop-changes
+  const [prevPages, setPrevPages] = useState(pages)
+  if (pages !== prevPages) {
+    setPrevPages(pages)
+    if (page > pages - 1) setPage(pages - 1)
+  }
 
   const calibrated = isCalibrated()
 

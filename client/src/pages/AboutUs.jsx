@@ -10,6 +10,7 @@ import SEO from "../components/SEO/SEO";
 import { playSlide } from "../utils/sounds";
 import styles from "./AboutUs.module.css";
 
+// eslint-disable-next-line no-unused-vars -- used via <motion.section>/<motion.div> JSX tags, which no-unused-vars doesn't track
 const { motion } = FramerMotion;
 
 const worlds = [

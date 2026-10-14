@@ -23,12 +23,15 @@ export default function BatchDetail({ batchId, get, post, del, onClose, onChange
   }, [get, batchId]);
 
   useEffect(() => {
-    Promise.all([
-      loadBatch(),
-      get("/students").then((d) => { if (d.success) setAllStudents(d.students); }),
-      get("/tutors").then((d) => { if (d.success) setAllTutors(d.tutors); }),
-      get("/subjects").then((d) => { if (d.success) setAllSubjects(d.subjects); }),
-    ]).finally(() => setLoading(false));
+    (async () => {
+      await Promise.all([
+        loadBatch(),
+        get("/students").then((d) => { if (d.success) setAllStudents(d.students); }),
+        get("/tutors").then((d) => { if (d.success) setAllTutors(d.tutors); }),
+        get("/subjects").then((d) => { if (d.success) setAllSubjects(d.subjects); }),
+      ]);
+      setLoading(false);
+    })();
   }, [loadBatch, get]);
 
   const refreshAfterChange = async () => {

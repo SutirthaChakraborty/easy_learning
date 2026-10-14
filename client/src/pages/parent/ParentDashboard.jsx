@@ -131,7 +131,10 @@ const ParentDashboard = () => {
   }, [get]);
 
   useEffect(() => {
-    loadChildren().finally(() => setLoading(false));
+    (async () => {
+      await loadChildren();
+      setLoading(false);
+    })();
   }, [loadChildren]);
 
   const pollChatUnread = useCallback(async () => {
@@ -140,7 +143,7 @@ const ParentDashboard = () => {
   }, [get]);
 
   useEffect(() => {
-    pollChatUnread();
+    (async () => { await pollChatUnread(); })();
     const iv = setInterval(pollChatUnread, 25000);
     return () => clearInterval(iv);
   }, [pollChatUnread]);

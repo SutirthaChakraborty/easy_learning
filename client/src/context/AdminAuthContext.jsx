@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 
 const API = (import.meta.env.VITE_API_BASE_URL || "http://localhost:5000/api").replace(/\/api\/?$/, "");
 
@@ -23,45 +23,25 @@ function isExpired(token) {
   return p.exp * 1000 < Date.now();
 }
 
+function readStoredUser(tokenKey, mapPayload) {
+  const token = localStorage.getItem(tokenKey);
+  if (!token || isExpired(token)) return null;
+  return mapPayload(decodeJWT(token));
+}
+
 export const AdminAuthProvider = ({ children }) => {
-  const [adminUser, setAdminUser] = useState(undefined);
-  const [superAdminUser, setSuperAdminUser] = useState(undefined);
-  const [teacherUser, setTeacherUser] = useState(undefined);
-  const [parentUser, setParentUser] = useState(undefined);
-
-  useEffect(() => {
-    const adminToken = localStorage.getItem(ADMIN_JWT_KEY);
-    if (adminToken && !isExpired(adminToken)) {
-      const p = decodeJWT(adminToken);
-      setAdminUser({ id: p.id, uid: p.uid, email: p.email, name: p.name, orgId: p.orgId, role: "org_admin" });
-    } else {
-      setAdminUser(null);
-    }
-
-    const saToken = localStorage.getItem(SUPERADMIN_JWT_KEY);
-    if (saToken && !isExpired(saToken)) {
-      const p = decodeJWT(saToken);
-      setSuperAdminUser({ email: p.email, name: p.name, role: "superadmin" });
-    } else {
-      setSuperAdminUser(null);
-    }
-
-    const teacherToken = localStorage.getItem(TEACHER_JWT_KEY);
-    if (teacherToken && !isExpired(teacherToken)) {
-      const p = decodeJWT(teacherToken);
-      setTeacherUser({ id: p.id, uid: p.uid, email: p.email, name: p.name, orgId: p.orgId, role: "teacher" });
-    } else {
-      setTeacherUser(null);
-    }
-
-    const parentToken = localStorage.getItem(PARENT_JWT_KEY);
-    if (parentToken && !isExpired(parentToken)) {
-      const p = decodeJWT(parentToken);
-      setParentUser({ id: p.id, uid: p.uid, email: p.email, name: p.name, role: "parent" });
-    } else {
-      setParentUser(null);
-    }
-  }, []);
+  const [adminUser, setAdminUser] = useState(() => readStoredUser(ADMIN_JWT_KEY, (p) => (
+    { id: p.id, uid: p.uid, email: p.email, name: p.name, orgId: p.orgId, role: "org_admin" }
+  )));
+  const [superAdminUser, setSuperAdminUser] = useState(() => readStoredUser(SUPERADMIN_JWT_KEY, (p) => (
+    { email: p.email, name: p.name, role: "superadmin" }
+  )));
+  const [teacherUser, setTeacherUser] = useState(() => readStoredUser(TEACHER_JWT_KEY, (p) => (
+    { id: p.id, uid: p.uid, email: p.email, name: p.name, orgId: p.orgId, role: "teacher" }
+  )));
+  const [parentUser, setParentUser] = useState(() => readStoredUser(PARENT_JWT_KEY, (p) => (
+    { id: p.id, uid: p.uid, email: p.email, name: p.name, role: "parent" }
+  )));
 
   const adminGoogleSignIn = async (uid, email, name, photoURL) => {
     const res = await fetch(`${API}/api/admin/auth/google`, {
@@ -161,4 +141,5 @@ export const AdminAuthProvider = ({ children }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components -- hook is co-located with its provider; 10+ call sites import it from this path
 export const useAdminAuth = () => useContext(AdminAuthContext);

@@ -497,17 +497,20 @@ const SuperAdminDashboard = () => {
   }, [get]);
 
   useEffect(() => {
-    loadStats().finally(() => setLoading(false));
+    (async () => {
+      await loadStats();
+      setLoading(false);
+    })();
   }, [loadStats]);
 
   useEffect(() => {
-    pollChatUnread();
+    (async () => { await pollChatUnread(); })();
     const iv = setInterval(pollChatUnread, 25000);
     return () => clearInterval(iv);
   }, [pollChatUnread]);
 
   useEffect(() => {
-    pollParentChatUnread();
+    (async () => { await pollParentChatUnread(); })();
     const iv = setInterval(pollParentChatUnread, 25000);
     return () => clearInterval(iv);
   }, [pollParentChatUnread]);
