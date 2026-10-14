@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,6 +10,7 @@ import { AnimatePresence } from "framer-motion";
 
 import { AuthProvider } from "./context/AuthContext";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
+import SplashPage from "./components/SplashPage/SplashPage";
 import Background3D from "./components/Background3D/Background3D";
 import Navbar from "./components/Navbar/Navbar";
 import RoleSelect from "./pages/RoleSelect";
@@ -107,9 +109,16 @@ function AppLayout() {
 }
 
 function App() {
+  const [showSplash, setShowSplash] = useState(true);
+
   return (
     <AuthProvider>
       <AdminAuthProvider>
+        <AnimatePresence>
+          {showSplash && (
+            <SplashPage onFinish={() => setShowSplash(false)} />
+          )}
+        </AnimatePresence>
         <Router>
           <AppLayout />
         </Router>

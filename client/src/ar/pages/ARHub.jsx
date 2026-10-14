@@ -183,8 +183,6 @@ export default function ARHub() {
     return () => window.removeEventListener('keydown', onKey)
   }, [pages, navigate, groupId, chooseGroup])
 
-  const groupStats = journey.byGroup[group.id]
-
   return (
     <div className={styles.hub} ref={wrapRef} data-group={group.id}>
       <VideoBackground />
@@ -297,16 +295,6 @@ export default function ARHub() {
           )
         })}
       </nav>
-
-      <div className={styles.groupBlurb}>
-        <strong>{group.title}</strong>
-        <span className={styles.groupDesc}>{group.blurb}</span>
-        {groupStats?.possible ? (
-          <span className={styles.groupCount}>
-            {groupStats.levels}/{groupStats.possible} levels
-          </span>
-        ) : null}
-      </div>
 
       {/* ── tiles ── */}
       <div className={styles.board}>

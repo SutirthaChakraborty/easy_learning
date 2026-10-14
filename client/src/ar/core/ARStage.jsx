@@ -13,7 +13,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { useNavigate } from 'react-router-dom'
 import {
   FaArrowLeft, FaPause, FaPlay, FaRedo, FaCog, FaCamera, FaTimes,
-  FaStar, FaRegStar, FaHandPaper, FaChartLine, FaLightbulb, FaForward,
+  FaStar, FaRegStar, FaChartLine, FaLightbulb, FaForward,
   FaChevronDown, FaChevronUp, FaUnlock, FaTrophy, FaGamepad, FaCheck,
   FaLockOpen, FaThumbsUp, FaCalendarAlt,
 } from 'react-icons/fa'
@@ -25,7 +25,7 @@ import { getSettings, onSettingsChange } from './settings'
 import { startSession, starsFor, xpFor } from './telemetry'
 import { unlockAudio, sfx, haptic, cueFinish } from './feedback'
 import { unlockSpeech, speak, cancelSpeech } from './tts'
-import { scaledReachBox, isCalibrated } from './profile'
+import { scaledReachBox } from './profile'
 import { makeRng } from './geometry'
 import { nextTargetFor, PROMPT_INFO } from './adaptive'
 import {
@@ -603,7 +603,6 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
   )
 
   const domainLabels = useMemo(() => (game.domains || []).map(prettyDomain), [game.domains])
-  const calibrated = isCalibrated()
 
   return (
     <div className={styles.stage} ref={wrapRef} data-phase={phase}>
@@ -730,15 +729,6 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
                         }
                   }
                 />
-                <p className={styles.introLevelWhat}>
-                  <strong>
-                    Level {level} · {LEVEL_META[level - 1].name}
-                  </strong>
-                  <span>
-                    {pinned ? 'Set in settings · ' : ''}
-                    {levelChange(game, level)}
-                  </span>
-                </p>
               </div>
             )}
 
@@ -752,13 +742,6 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
                 <span className={`${styles.tag} ${styles.tagLife}`}>{game.lifeSkillLabel}</span>
               )}
             </div>
-
-            {!calibrated && game.usesReach !== false && (
-              <p className={styles.calibNote}>
-                <FaHandPaper /> Tip: run <strong>Set Up My Space</strong> once so targets land
-                where this child can actually reach.
-              </p>
-            )}
 
             <button className={styles.playBtn} onClick={startGame}>
               <FaCamera /> Start — turn on camera
