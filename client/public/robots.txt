@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin-dashboard
+Disallow: /superadmin-dashboard
+Disallow: /teacher-dashboard
+Disallow: /parent-dashboard
+Disallow: /dashboard
+Disallow: /admin-login
+Disallow: /superadmin-login
+Disallow: /teacher-login
+Disallow: /parent-login
+
+Sitemap: https://www.learnigo.eu/sitemap.xml

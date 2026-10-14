@@ -332,7 +332,7 @@
     "playAgain": "もう一度あそぶ"
   },
   "roleSelect": {
-    "welcomeTitle": "Easy Learningへようこそ",
+    "welcomeTitle": "Learningoへようこそ",
     "welcomeSubtitle": "ログイン方法を選んでください",
     "signInAs": "ログインする立場を選択...",
     "roles": {
@@ -342,7 +342,7 @@
       "teacher": "先生",
       "superadmin": "スーパー管理者"
     },
-    "copyright": "©ABC Company の提供する製品です"
+    "copyright": "© {{year}} Futuresight Analytics Limited の提供する製品です"
   },
   "aboutUs": {
     "badge": "私たちの物語",

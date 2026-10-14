@@ -332,7 +332,7 @@
     "playAgain": "Opnieuw spelen"
   },
   "roleSelect": {
-    "welcomeTitle": "Welkom bij Easy Learning",
+    "welcomeTitle": "Welkom bij Learningo",
     "welcomeSubtitle": "Kies hoe je wilt inloggen",
     "signInAs": "Inloggen als...",
     "roles": {
@@ -342,7 +342,7 @@
       "teacher": "Leraar",
       "superadmin": "Hoofdbeheerder"
     },
-    "copyright": "Een product van ©ABC Company"
+    "copyright": "Een product van © {{year}} Futuresight Analytics Limited"
   },
   "aboutUs": {
     "badge": "Ons verhaal",

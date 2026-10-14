@@ -332,7 +332,7 @@
     "playAgain": "Chơi Lại"
   },
   "roleSelect": {
-    "welcomeTitle": "Chào mừng đến với Easy Learning",
+    "welcomeTitle": "Chào mừng đến với Learningo",
     "welcomeSubtitle": "Chọn cách bạn muốn đăng nhập",
     "signInAs": "Đăng nhập với vai trò...",
     "roles": {
@@ -342,7 +342,7 @@
       "teacher": "Giáo viên",
       "superadmin": "Quản trị viên cấp cao"
     },
-    "copyright": "Một sản phẩm của ©ABC Company"
+    "copyright": "Một sản phẩm của © {{year}} Futuresight Analytics Limited"
   },
   "aboutUs": {
     "badge": "Câu chuyện của chúng tôi",

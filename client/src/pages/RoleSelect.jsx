@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { FaUserGraduate, FaCrown, FaChalkboardTeacher } from "react-icons/fa";
 import { MdAdminPanelSettings, MdFamilyRestroom } from "react-icons/md";
 import RoboticBackground from "../components/RoboticBackground/RoboticBackground";
+import SEO from "../components/SEO/SEO";
 import styles from "./RoleSelect.module.css";
 import logo from "/logo.png";
 
@@ -66,16 +67,21 @@ const RoleSelect = () => {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
     >
+      <SEO
+        title="Learningo | Dyslexia-Friendly Learning Games for Kids"
+        description="Sign in to Learningo as a student, parent, teacher or admin and start accessible, dyslexia-friendly game-based practice in reading, writing, maths and science."
+        path="/"
+      />
       <RoboticBackground />
 
       <div className={styles.content}>
         <div className={styles.header}>
-          <img src={logo} alt="Easy Learning" className={styles.logo} />
+          <img src={logo} alt="Learningo" className={styles.logo} />
           <h1 className={styles.title}>{t("roleSelect.welcomeTitle")}</h1>
           <p className={styles.subtitle}>{t("roleSelect.welcomeSubtitle")}</p>
         </div>
 
-        <h1 className={styles.loginAs}>{t("roleSelect.signInAs")}</h1>
+        <h2 className={styles.loginAs}>{t("roleSelect.signInAs")}</h2>
         <div className={styles.cards}>
           {roles.map((role, i) => (
             <FramerMotion.motion.div
@@ -104,7 +110,9 @@ const RoleSelect = () => {
             </FramerMotion.motion.div>
           ))}
         </div>
-        <p className={styles.copyright}>{t("roleSelect.copyright")}</p>
+        <p className={styles.copyright}>
+          {t("roleSelect.copyright", { year: new Date().getFullYear() })}
+        </p>
       </div>
     </FramerMotion.motion.div>
   );
