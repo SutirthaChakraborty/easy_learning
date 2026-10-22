@@ -68,15 +68,15 @@ const RoleSelect = () => {
       transition={{ duration: 0.4 }}
     >
       <SEO
-        title="Learningo | Dyslexia-Friendly Learning Games for Kids"
-        description="Sign in to Learningo as a student, parent, teacher or admin and start accessible, dyslexia-friendly game-based practice in reading, writing, maths and science."
+        title="Learnigo | Dyslexia-Friendly Learning Games for Kids"
+        description="Sign in to Learnigo as a student, parent, teacher or admin and start accessible, dyslexia-friendly game-based practice in reading, writing, maths and science."
         path="/"
       />
       <RoboticBackground />
 
       <div className={styles.content}>
         <div className={styles.header}>
-          <img src={logo} alt="Learningo" className={styles.logo} />
+          <img src={logo} alt="Learnigo" className={styles.logo} />
           <h1 className={styles.title}>{t("roleSelect.welcomeTitle")}</h1>
           <p className={styles.subtitle}>{t("roleSelect.welcomeSubtitle")}</p>
         </div>

@@ -40,7 +40,7 @@
     "enterWorld": "世界に入る"
   },
   "login": {
-    "joinTitle": "Learningo に参加！",
+    "joinTitle": "Learnigo に参加！",
     "welcomeBack": "おかえりなさい！",
     "createAccountSubtitle": "学習を始めるためにアカウントを作成してください",
     "continueJourneySubtitle": "旅を続けるにはサインインしてください",
@@ -332,7 +332,7 @@
     "playAgain": "もう一度あそぶ"
   },
   "roleSelect": {
-    "welcomeTitle": "Learningoへようこそ",
+    "welcomeTitle": "Learnigoへようこそ",
     "welcomeSubtitle": "ログイン方法を選んでください",
     "signInAs": "ログインする立場を選択...",
     "roles": {
@@ -347,8 +347,8 @@
   "aboutUs": {
     "badge": "私たちの物語",
     "heroTitle": "すべての個性に合わせて、学びを再発明",
-    "heroSubtitle": "Learningoは、読字障害（ディスレクシア）や神経多様性のある子どもたちのために作られた、遊び中心の学習プラットフォームです。読むこと、書くこと、話すことが、苦労ではなく冒険のように感じられます。",
-    "paragraph": "私たちは、すべての子どもが異なる方法で学ぶと信じています。その違いは、直すべきものではなく、祝うべきものです。Learningoは、音声サポート、楽しいビジュアル、即時のポジティブなフィードバックを備えた短く励みになるラウンドにレッスンを変え、子どもたちが一つ星ずつ本当の自信を築けるようにします。",
+    "heroSubtitle": "Learnigoは、読字障害（ディスレクシア）や神経多様性のある子どもたちのために作られた、遊び中心の学習プラットフォームです。読むこと、書くこと、話すことが、苦労ではなく冒険のように感じられます。",
+    "paragraph": "私たちは、すべての子どもが異なる方法で学ぶと信じています。その違いは、直すべきものではなく、祝うべきものです。Learnigoは、音声サポート、楽しいビジュアル、即時のポジティブなフィードバックを備えた短く励みになるラウンドにレッスンを変え、子どもたちが一つ星ずつ本当の自信を築けるようにします。",
     "worldsTitle": "あなたの世界を選ぼう",
     "worlds": {
       "english": {
@@ -364,7 +364,7 @@
         "text": "好奇心に導かれた活動で、一つずつの実験を通して発見をワクワクするものにします。"
       }
     },
-    "valuesTitle": "家族がLearningoを愛する理由",
+    "valuesTitle": "家族がLearnigoを愛する理由",
     "values": {
       "care": {
         "title": "心を込めて作られた",
@@ -393,7 +393,7 @@
   "contactUs": {
     "badge": "お手伝いします",
     "heroTitle": "お話ししましょう！",
-    "heroSubtitle": "質問やアイデア、ちょっとした困りごとはありますか？メッセージを送ってください。Learningoチームがすぐにご連絡します。",
+    "heroSubtitle": "質問やアイデア、ちょっとした困りごとはありますか？メッセージを送ってください。Learnigoチームがすぐにご連絡します。",
     "reassurances": {
       "support": {
         "title": "親切なサポート",
@@ -432,7 +432,7 @@
     "sending": "送信中…",
     "sendMessage": "メッセージを送信",
     "successTitle": "メッセージを送信しました！",
-    "successText": "Learningoチームがすぐにご連絡いたします。",
+    "successText": "Learnigoチームがすぐにご連絡いたします。",
     "sendAnother": "別のメッセージを送る",
     "errors": {
       "name": "フルネームを入力してください",
@@ -442,5 +442,1004 @@
     },
     "errorServer": "問題が発生しました。もう一度お試しください。",
     "errorNetwork": "サーバーに接続できませんでした。もう一度お試しください。"
+  },
+  "ar": {
+    "common": {
+      "back": "戻る",
+      "settings": "設定",
+      "closeSettings": "設定を閉じる",
+      "done": "完了",
+      "reset": "リセット",
+      "keep": "残す",
+      "erase": "消去",
+      "games": "ゲーム",
+      "pause": "一時停止",
+      "play": "プレイ",
+      "tryAgain": "もう一度試す",
+      "playAgain": "もう一度プレイ",
+      "progress": "進捗",
+      "harderArrow": "{{label}} → むずかしく",
+      "easierArrow": "{{label}} → やさしく"
+    },
+    "hub": {
+      "title": "カメラゲーム",
+      "back": "戻る",
+      "progress": "進捗",
+      "progressTitle": "進捗と分析",
+      "settingsLabel": "設定",
+      "pointsTitle": "{{points}} ポイント · {{rank}}",
+      "pointsTitleWithNext": "{{points}} ポイント · {{rank}} · あと{{toNext}}で{{next}}",
+      "setupTitle": "ここからスタート — じぶんのスペースをせっていする",
+      "setupSubtitle": "この子が手の届くところにゲームが来るように、5つの簡単なストレッチをしましょう",
+      "calloutPlay": "プレイ",
+      "levelOf": "レベル {{n}} / {{total}}",
+      "groupTooltip": "{{title}} — {{blurb}}",
+      "groupTooltipWithStats": "{{title}} — {{blurb}} · {{possible}}レベル中{{levels}}レベル",
+      "footRunsOnDevice": "この端末だけで動きます · ビデオは録画されません",
+      "footCountSingular": "{{count}} ゲーム",
+      "footCountPlural": "{{count}} ゲーム",
+      "footLevelsCleared": "{{count}} レベルクリア",
+      "footGamesInAll": "合計 {{count}} ゲーム",
+      "pageLabel": "ページ {{n}}",
+      "previousPage": "前のページ",
+      "nextPage": "次のページ",
+      "groupsAriaLabel": "ゲームのグループ",
+      "newBadge": "新着",
+      "setupNote": "セットアップ · レベルなし",
+      "readOutTitle": "{{title}} — レベル {{level}} / {{total}}：{{change}}",
+      "allFiveCleared": "5レベル全部クリア",
+      "readOutAriaLabel": "{{title}}を読む",
+      "readThisOut": "これを読み上げる",
+      "recommend": {
+        "carryOn": "冒険を続けよう",
+        "practising": "{{domain}}を練習中",
+        "tryNew": "新しいことを試そう",
+        "champion": "チャンピオンレベルをプレイ"
+      }
+    },
+    "game": {
+      "notFoundTitle": "このゲームはここにありません",
+      "notFoundBody": "リンクが示す{{id}}はカタログにありません。",
+      "backToGames": "カメラゲームに戻る"
+    },
+    "stage": {
+      "cameraHelp": {
+        "cameraDenied": {
+          "title": "カメラがブロックされています",
+          "body": "これらのゲームは、自分の姿を見たり物に手を伸ばしたりするためにカメラが必要です。ブラウザでカメラへのアクセスを許可し、「もう一度試す」を押してください。"
+        },
+        "cameraMissing": {
+          "title": "カメラが見つかりません",
+          "body": "この端末にカメラが見つかりませんでした。カメラを接続するか、スマートフォンやタブレットでゲームを開いてください。"
+        },
+        "cameraUnsupported": {
+          "title": "このブラウザではカメラゲームを実行できません",
+          "body": "https経由でChrome、Edge、Safariでゲームを開いてください。スマートフォンでは標準搭載のブラウザを使ってください。"
+        },
+        "modelFailed": {
+          "title": "ハンドトラッキングを開始できませんでした",
+          "body": "トラッキングモデルの読み込みに失敗しました。接続を確認して「もう一度試す」を押してください。"
+        }
+      },
+      "backAriaLabel": "ゲームに戻る",
+      "settingsAriaLabel": "設定",
+      "pauseAriaLabel": "一時停止",
+      "playAriaLabel": "プレイ",
+      "levelOfShort": "レベル {{level}} / {{total}}",
+      "levelTag": "L{{level}}",
+      "getReady": "準備して！",
+      "showMeYourHand": "手を見せてね",
+      "turningOnCamera": "カメラを起動し、ハンドトラッキングを読み込んでいます…",
+      "gettingReady": "準備しています…",
+      "start": "スタート — カメラをオンにする",
+      "privacyNote": "カメラはこの端末だけで動きます。ビデオは録画・保存・送信されることはありません。",
+      "sensoryMotorSettings": "感覚・運動の設定",
+      "tryAgain": "もう一度試す",
+      "backToGames": "ゲームに戻る",
+      "paused": "一時停止中",
+      "pausedSub": "時間はたっぷりあるから、ゆっくりで大丈夫。",
+      "keepPlaying": "プレイを続ける",
+      "startAgain": "はじめからやり直す",
+      "settings": "設定",
+      "games": "ゲーム",
+      "handsCountSingular": "{{count}} 本の手",
+      "handsCountPlural": "{{count}} 本の手",
+      "bodyOk": "体 ✓",
+      "headline": {
+        "levelCleared": "レベル{{n}}クリア！",
+        "passedAgain": "また合格！",
+        "brilliant": "すばらしい！",
+        "greatWork": "よくできました！",
+        "goodTry": "いいチャレンジ！"
+      },
+      "rows": {
+        "gotIdea": {
+          "label": "意味を理解した",
+          "hint": "正解、または正しい答えに不正確にたどりついた場合を含む"
+        },
+        "onTheirOwn": {
+          "label": "一人でできた",
+          "hint": "まったく助けなしでの正解"
+        },
+        "thinkingTime": {
+          "label": "考える時間",
+          "hint": "指示 → 動き始めるまで"
+        },
+        "movingTime": {
+          "label": "動く時間",
+          "hint": "動き始め → タッチするまで"
+        },
+        "reachDirectness": {
+          "label": "リーチの正確さ",
+          "hint": "100%＝目標まで一直線"
+        },
+        "stoppedWhenTold": {
+          "label": "指示で止まれた",
+          "hint": "やってはいけない試行を抑えられた"
+        },
+        "timingSteadiness": {
+          "label": "リズムの安定性",
+          "hint": "低いほど安定している"
+        }
+      },
+      "pointsWord": "ポイント",
+      "pointsTally": "合計 {{total}} ポイント",
+      "unlockLine": "レベル{{n}}が開放されました",
+      "unlockEffortSuffix": " — がんばり続けたから開放されました",
+      "allFiveDone": "5レベルすべて完了 — この冒険をやり遂げました",
+      "forGrownUps": "大人向けの詳細",
+      "nextUpLabel": "次は：",
+      "workingOnSuffix": " · {{focus}}を練習中",
+      "playLevel": "レベル{{n}}をプレイ",
+      "playAgain": "もう一度プレイ",
+      "levelAgain": "レベル{{n}}をもう一度",
+      "nextGame": "次のゲーム",
+      "progress": "進捗"
+    },
+    "settings": {
+      "dialogAriaLabel": "カメラゲームの設定",
+      "title": "プレイ設定",
+      "closeAriaLabel": "設定を閉じる",
+      "tabs": {
+        "sound": "サウンド",
+        "vision": "視覚",
+        "body": "身体",
+        "help": "ヘルプ",
+        "data": "データ"
+      },
+      "sound": {
+        "volume": "サウンド",
+        "speech": "音声による指示",
+        "speechHint": "すべての指示を読み上げます",
+        "speechTestHello": "こんにちは",
+        "speechRate": "話す速さ",
+        "speechRateTest": "赤い丸にタッチしてください",
+        "instruction": "指示を伝える方法",
+        "instructionBoth": "音声＋文字",
+        "instructionAudio": "音声のみ",
+        "instructionVisual": "文字のみ",
+        "haptics": "バイブレーション",
+        "hapticsHintVibrate": "この端末には振動モーターがあります",
+        "hapticsHintGamepad": "接続中のコントローラーを使用しています",
+        "hapticsHintNone": "モーターが見つかりません — 代わりに低い音のパルスを使用します",
+        "hapticIntensity": "振動の強さ"
+      },
+      "vision": {
+        "reducedMotion": "落ち着いた見た目",
+        "reducedMotionHint": "パーティクルなし、点滅なし、画面フラッシュなし",
+        "highContrast": "高コントラスト",
+        "highContrastHint": "輪郭を強くし、目標の背景を暗くします",
+        "visualClutter": "画面の情報量",
+        "visualClutterNormal": "通常",
+        "visualClutterMinimal": "最小限",
+        "captions": "常に文字を表示",
+        "captionsHint": "音声と一緒に書かれた指示を画面に残します",
+        "mirrorView": "映像を反転する",
+        "mirrorViewHint": "オン＝鏡のように映ります。ほとんどの子どもが想定している見え方です",
+        "showSkeleton": "スケルトンを表示",
+        "showSkeletonHint": "追跡している手と体の輪郭を描きます"
+      },
+      "body": {
+        "seated": "座ってプレイ",
+        "seatedHint": "すべての目標を座った状態で届く範囲に保ちます",
+        "singleHand": "使う手",
+        "singleHandBoth": "どちらでも／両手",
+        "singleHandLeft": "左手だけ",
+        "singleHandRight": "右手だけ",
+        "largeTargets": "大きな目標",
+        "largeTargetsHint": "すべてを45%大きくします",
+        "extraTime": "追加の時間",
+        "extraTimeHint": "すべての応答ウィンドウを長くします。スピードが目的になることはありません。",
+        "extraTimeStandard": "標準",
+        "dwellMs": "タッチする時間",
+        "dwellMsHint": "目標を選ぶために指を置いておく時間です。長くすると手が震える子の助けになります。",
+        "handSwap": "左右の手を入れ替える",
+        "handSwapHintWithDate": "リーチは{{date}}に設定されました。ゲームが手を間違って呼んでいる場合はこれをオンにしてください。",
+        "handSwapHintNoDate": "ゲームが手を間違って呼んでいる場合はこれをオンにしてください。確認のため、子どもに右手を上げてもらいましょう。"
+      },
+      "help": {
+        "promptMode": "ヒントのレベル",
+        "promptModeHint": "ゲームがどれだけ助けを与えるかです。アダプティブは子どもが助けなしで成功するにつれて減っていきます。",
+        "promptModeAdaptive": "アダプティブ",
+        "adaptiveStageHelpTitle": "アダプティブ。",
+        "adaptiveStageHelpBody": "デモンストレーションから始まり、ヒントなしで6回中5回正解すると1段階減ります。2回のミスで1段階戻ります。",
+        "difficultyMode": "難易度",
+        "difficultyModeHint": "アダプティブは一度に1つの要素だけを変えます — まず目標の大きさ、次に選択肢の数、次におとり選択肢の似ている度合い。固定は冒険の1つのレベルだけを保持します。",
+        "difficultyModeAdaptive": "アダプティブ",
+        "difficultyModeFixed": "固定",
+        "fixedLevel": "冒険レベルを固定",
+        "fixedLevelHint": "子どもが選んだレベルに関わらず、毎ラウンドこのレベルでプレイし採点します。合格は本当のクリアとして記録されます。",
+        "unlockAll": "すべてのレベルを解放（大人向け）",
+        "unlockAllHint": "レベル1を既に超えている子ども向け、またはあるレベルを試すためです。クリアはそれでも自分で獲得する必要があります。",
+        "stageGTitle": "ステージG — 実世界への転移。",
+        "stageGSuffix": "ここで高いスコアが出ても、そのスキルが一般化した証拠にはなりません。それは画面の外で確認する必要があります。"
+      },
+      "data": {
+        "telemetry": "分析データを記録する",
+        "telemetryHint": "試行ごとの正確さ、考える時間、動く時間、リーチの質。数値のみ — ビデオや画像は決して記録しません。",
+        "showMetrics": "ライブトラッキングの数値を表示",
+        "showMetricsHint": "フレームレート、検出時間、カメラの遅延。セッションの準備用です",
+        "cameraNote": "カメラの映像はこの端末だけで処理されます。どのフレームも私たちや他の誰かによって保存・アップロードされることはありません。",
+        "recordingOnSince": "データ記録は{{date}}に有効化されました",
+        "eraseProfile": "この子のプロフィールと履歴を消去する",
+        "eraseConfirm": "リーチのキャリブレーション、能力プロフィール、レベルの進捗、ポイント、保存されたすべてのラウンドを消去しますか？",
+        "erase": "消去",
+        "keep": "残す"
+      },
+      "resetTitle": "デフォルトの設定に戻す",
+      "reset": "リセット",
+      "footNoteInGame": "変更は次のターンから適用されます",
+      "footNoteSaved": "この端末に保存されています",
+      "done": "完了"
+    },
+    "levelPips": {
+      "chooseLevel": "レベルを選ぶ",
+      "levelProgress": "レベルの進捗",
+      "levelUnlocked": "レベル {{n}} — {{name}}",
+      "clearedSuffix": " · クリア済み",
+      "levelLocked": "レベル {{n}} — レベル{{prev}}をクリアすると開放されます"
+    },
+    "insights": {
+      "title": "進捗と分析",
+      "dashboardAriaLabel": "学習ダッシュボード",
+      "dashboardTitle": "この子の学習ダッシュボード全体。このレポートの要約へのリンク付き",
+      "refreshAriaLabel": "更新",
+      "exportAriaLabel": "書き出し",
+      "exportTitle": "試行ごとのデータをCSVでダウンロード",
+      "backAriaLabel": "戻る",
+      "empty": {
+        "title": "まだ何も記録されていません",
+        "body": "カメラゲームをプレイすると、すべてのターンがここで測定されます — 理解できたこと、どれだけ助けが必要だったか、考えるのにどれだけ時間がかかったか、動くのにどれだけ時間がかかったか、それぞれ別々に記録されます。",
+        "cta": "ゲームへ行く"
+      },
+      "kpis": {
+        "gotIdea": {
+          "label": "意味を理解した",
+          "hint": "正解、または不正確か遅れて正しい答えにたどりついた場合を加えたもの。これは理解度の数値です。"
+        },
+        "onTheirOwn": {
+          "label": "一人でできた",
+          "hint": "ハイライトもデモンストレーションもなしの正解。これは自立度の数値です。"
+        },
+        "thinkingTime": {
+          "label": "考える時間",
+          "hint": "指示から最初の意図的な動きまでの中央値の時間。運動ではなく、判断を測る指標です。"
+        },
+        "movingTime": {
+          "label": "動く時間",
+          "hint": "動き始めてから目標にタッチするまでの中央値の時間。正確さとは完全に分けて保たれる運動指標です。"
+        },
+        "reachDirectness": {
+          "label": "リーチの正確さ",
+          "hint": "直線距離 ÷ 手が実際にたどった経路。100%は完全に一直線であることを意味します。"
+        },
+        "turnsPlayed": {
+          "label": "プレイしたターン",
+          "hintSingular": "{{sessions}} ラウンド · {{minutes}} 分",
+          "hintPlural": "{{sessions}} ラウンド · {{minutes}} 分"
+        }
+      },
+      "tabs": {
+        "journey": "冒険",
+        "overview": "概要",
+        "domains": "スキル",
+        "motor": "動き",
+        "life": "生活"
+      },
+      "noRounds": {
+        "title": "記録されたラウンドがありません",
+        "note": "上の冒険の記録はそのまま残っています。",
+        "body": "試行ごとのデータは消去されたため、ここで分析できるものはありません。レベルとポイントは別々に保存されており、まだ「冒険」タブに残っています。ラウンドをプレイすると、これらのタブは再び埋まります。"
+      },
+      "journeyTab": {
+        "whereTheyAre": {
+          "title": "今どこにいるか",
+          "note": "グループ別のクリアしたレベル。子どもが進んでいるグループは、実際に取り組んでいる発達領域であり、合計よりも役に立ちます。"
+        },
+        "stats": {
+          "levelsCleared": "レベルクリア",
+          "gamesPlayed": "ゲームをプレイ",
+          "daysPlayed": "日プレイ",
+          "points": "ポイント",
+          "rank": "ランク"
+        },
+        "chartTooltip": "{{possible}}レベル中{{levels}}レベル · {{games}}ゲーム中{{played}}ゲームを試行",
+        "noJourneys": "まだ始まった冒険がありません。",
+        "levelPerGame": {
+          "title": "ゲームごとの到達レベル",
+          "noteStuckSingular": "{{count}}個のゲームが何度もプレイされてもクリアされていません — 最初に表示されています。そのレベルはこの子がまだできないことを求めています。",
+          "noteStuckPlural": "{{count}}個のゲームが何度もプレイされてもクリアされていません — 最初に表示されています。これらのレベルはこの子がまだできないことを求めています。",
+          "noteOk": "プレイしたゲーム、最も進んでいるものから先に表示されます。何度もプレイされてもクリアされないゲームは上に表示されます。"
+        },
+        "stuckIconTitle": "何度もプレイされてもクリアされていません",
+        "noLevels": "レベルなし",
+        "levelsClearedTitle": "レベルクリア",
+        "roundsPlayedTitle": "プレイしたラウンド",
+        "playedSuffix": "回プレイ",
+        "noGamesPlayed": "まだプレイしたゲームがありません。",
+        "serverRowNote": "この子のすべての端末を合わせて、サーバー上に冒険データがあるゲームが{{count}}個あります",
+        "howEarned": {
+          "title": "この進捗はどのように得られたか",
+          "note": "3つの異なる主張で、意図的に合算していません。",
+          "demonstrated": {
+            "name": "実証済み",
+            "text": "子どもはそのレベルの理解の基準に到達しました。これは証拠です。"
+          },
+          "effort": {
+            "name": "努力による付与",
+            "text": "基準に近づいた3回の試行です。レベルはそれでも開放されるため、1つの合っていないレベルが子どものアプリの利用を終わらせることはありません — ですが、基準に到達した証拠ではありません。"
+          },
+          "implied": {
+            "name": "推測",
+            "text": "より難しいレベルがクリアされたために加算されたもので、どのレベルも下のレベルと同じかそれ以上の難しさがあります。直接観察されたことは一度もありません。"
+          },
+          "remote": {
+            "name": "別の端末から復元",
+            "tooltip": "この子の別の端末から復元されました。データはどのレベルがクリアされたかを示しますが、どのように達成したかは示さないため、この端末にはその証拠がありません。",
+            "text": "サーバーから届いたもので、どのレベルがクリアされたかは記録していますが、どのようにかは記録していません。この端末には証拠がありません。"
+          },
+          "footer": "この3つのどれも、実世界への転移の証拠ではありません。レベルをクリアしたということは、子どもがその課題を画面上でやり遂げたという意味です。"
+        }
+      },
+      "overviewTab": {
+        "trend": {
+          "title": "時間とともに変化する理解度と自立度",
+          "note": "2本の線は、それぞれ別々に変化するためです。子どもは同じだけの助けを必要としながらも、より多くを理解できるようになることがあります。"
+        },
+        "understood": "理解度",
+        "independent": "自立度",
+        "trendPlaceholder": "2日目にプレイすると、ここで傾向が見られます。",
+        "promptMix": {
+          "title": "どれだけ助けが必要だったか",
+          "note": "各ヒントステージでのターンの割合です。AからDへ減らしていくことが目標であり、ステージGは大人が画面の外で確認するもので、ゲームが与えることは決してありません。"
+        },
+        "turns": "ターン",
+        "promptPlaceholder": "まだヒントのデータがありません。",
+        "gamesPlayed": {
+          "title": "プレイしたゲーム",
+          "note": "ゲームごとの正確さと自立度。最もプレイされたものから先に表示されます。"
+        },
+        "understoodTitle": "理解度",
+        "independentTitle": "自立度",
+        "medianThinkingTitle": "考える時間の中央値",
+        "serverRowNote": "すべての端末を合わせてサーバーに記録されたゲームが{{count}}個あります"
+      },
+      "domainsTab": {
+        "profile": {
+          "title": "能力プロフィール",
+          "note": "ゲーム内の行動だけに基づいた、機能領域ごとの継続的な推定値です。3ターン未満の領域は、推定値がノイズになるため非表示になります。"
+        },
+        "estimate": "推定値",
+        "profilePlaceholder": "もう少しゲームをプレイしてみましょう — プロフィールが意味を持つには、少なくとも3つの領域でデータが必要です。",
+        "weakest": {
+          "title": "最も弱い領域から表示",
+          "note": "各領域に関連付けられたターンの正確さです。最も低い棒グラフが、次のセッションで最も時間をかける価値のある部分です。"
+        },
+        "accuracy": "正確さ",
+        "accuracyTooltip": "{{trials}}ターン中{{pct}}%",
+        "weakestPlaceholder": "まだ領域データがありません。",
+        "promptPerGame": {
+          "title": "ゲームごとのヒントステージ",
+          "note": "各アクティビティで子どもが現在ヘルプの段階のどこにいるかです。"
+        }
+      },
+      "motorTab": {
+        "leftHand": "左手",
+        "rightHand": "右手",
+        "leftRight": {
+          "title": "左手と右手",
+          "note": "同じ課題を、それぞれの手で行います。正確さや直線性に一貫した差があれば大人が注目する価値がありますが、スピードだけの差はそうでないことが多いです。"
+        },
+        "accuracyTitle": "正確さ",
+        "medianThinkingTitle": "考える時間の中央値",
+        "reachDirectnessTitle": "リーチの正確さ",
+        "turnsCountSingular": "{{count}} ターン",
+        "turnsCountPlural": "{{count}} ターン",
+        "dominantHandNote": "自然に好まれる手：{{hand}}（左{{left}}回／右{{right}}回のリーチ）",
+        "leftRightPlaceholder": "まだ手ごとのデータがありません。",
+        "rhythm": {
+          "title": "リズムとタイミング",
+          "note": "安定性はタイミング誤差の標準偏差であり、重要な数値です — 一定のずれは単なるずれであり、その一部はカメラの遅延で、各セッションで測定して差し引かれます。"
+        },
+        "steadiness": "安定性",
+        "offset": "ずれ",
+        "rhythmPlaceholder": "「リズムリーチ」を数回プレイすると、ここでタイミングを確認できます。",
+        "reachEnvelope": {
+          "title": "リーチの範囲",
+          "note": "各ゲームが目標を配置するキャリブレーション済みのプレイ空間です。"
+        },
+        "width": "幅",
+        "height": "高さ",
+        "leftRightDifference": "左右の差",
+        "setDate": "{{date}}に設定",
+        "ofFrame": "画面幅のうち",
+        "reachPlaceholderPrefix": "キャリブレーションされていません。「",
+        "reachPlaceholderSuffix": "」を実行してください — それまでは目標が汎用の範囲を使用するため、リーチが制限されている場合は正確さが低く見えます。"
+      },
+      "lifeTab": {
+        "practised": {
+          "title": "練習した生活スキル",
+          "note": "各ゲームが転移する実生活のスキルごとにグループ化しています。ゲームごとではありません。"
+        },
+        "alonePct": "{{pct}}% 自分だけで",
+        "roundsSingular": "{{count}} ラウンド",
+        "roundsPlural": "{{count}} ラウンド",
+        "practisedPlaceholder": "まだ生活スキルのゲームがプレイされていません。",
+        "routine": {
+          "title": "助けなしでできた日常の手順",
+          "note": "手洗いのような順序を伴うゲームの場合：リマインドなしで正しい順序で進んだ手順の数です。3/7 → 5/7 → 6/7というのが本当の進歩の姿です。"
+        },
+        "routinePlaceholder": "日常のゲーム（手洗い、着替え、道路を渡るなど）をプレイすると、これが表示されます。",
+        "transfer": {
+          "title": "実世界への転移",
+          "note": "ゲームが与えることのできない段階です。"
+        },
+        "transferP1Bold": "ステージGは、人が画面の外で確認します。",
+        "transferP1Rest": "5枚の写真から歯ブラシを選べる子どもは、実際の浴室で実際の歯ブラシを手に取れることをまだ示していません。",
+        "transferP2": "上の日常スキルのスコアを使って、あるスキルを本当に試してみる価値があるタイミングを判断し、起きたことを自分のメモに記録してください — このアプリは意図的に、それを測定したとは主張していません。"
+      },
+      "footer": {
+        "disclaimer": "これらはゲーム内で起きたことの説明であり、臨床的な測定ではありません。高いスコアは、スキルが画面の外に転移する証拠ではありません — それは実生活で確認する必要があります。",
+        "erase": "消去",
+        "confirmText": "記録されたすべてのラウンドを消去しますか？",
+        "confirmYes": "はい、消去します",
+        "confirmKeep": "残す"
+      }
+    },
+    "groups": {
+      "body": {
+        "title": "身体とリーチ",
+        "short": "身体",
+        "blurb": "手を伸ばす、狙う、両手を使う、身体の中心をまたぐ"
+      },
+      "look": {
+        "title": "見て見つける",
+        "short": "見る",
+        "blurb": "正しいものを見つける、聴く、読む、空間を表す言葉"
+      },
+      "stop": {
+        "title": "止まって考える",
+        "short": "止まる",
+        "blurb": "待つ、固まる、気を散らすものを無視する、ルールを変える"
+      },
+      "remember": {
+        "title": "覚える",
+        "short": "記憶",
+        "blurb": "物事を覚えておく、順番をコピーする、なくなったものを見つける"
+      },
+      "learn": {
+        "title": "文字と数字",
+        "short": "文字と数字",
+        "blurb": "音、スペル、書くこと、数えること、お金"
+      },
+      "move": {
+        "title": "動いてコピーする",
+        "short": "動く",
+        "blurb": "リズム、模倣、なぞる、空中に描く"
+      },
+      "day": {
+        "title": "わたしの1日",
+        "short": "わたしの1日",
+        "blurb": "洗う、着替える、荷物をまとめる、整理する、安全を守る"
+      },
+      "together": {
+        "title": "話して一緒に",
+        "short": "一緒に",
+        "blurb": "指示に従う、気持ち、助けを求める"
+      }
+    },
+    "domains": {
+      "visualDiscrimination": "視覚的な注意",
+      "auditoryComprehension": "聞く力",
+      "readingSymbol": "読む力",
+      "reactionSpeed": "反応",
+      "reachAccuracy": "リーチの正確さ",
+      "sustainedAttention": "注意力",
+      "workingMemory": "ワーキングメモリー",
+      "sequencing": "順序づけ",
+      "inhibition": "止まる・待つ",
+      "cognitiveFlexibility": "ルールの切り替え",
+      "bilateralCoordination": "両手の協調",
+      "motorPlanning": "運動の計画",
+      "spatialConcepts": "空間を表す言葉",
+      "socialReasoning": "社会的な思考",
+      "independence": "自立"
+    },
+    "lifeSkills": {
+      "hygiene": "衛生",
+      "dressing": "着替え",
+      "school": "学校の準備",
+      "kitchen": "キッチン",
+      "shopping": "買い物",
+      "money": "お金",
+      "roadSafety": "交通安全",
+      "homeSafety": "家の中の安全",
+      "chores": "家事",
+      "routines": "毎日の習慣",
+      "communication": "コミュニケーション",
+      "help": "助けを求める",
+      "socialPlay": "ソーシャルプレイ",
+      "literacy": "初期の読み書き",
+      "numeracy": "数の力",
+      "navigation": "道を見つける",
+      "selfRegulation": "セルフコントロール",
+      "bodyAwareness": "身体の意識",
+      "instructions": "指示に従う",
+      "independence": "自立"
+    },
+    "levels": {
+      "1": "はじめの一歩",
+      "2": "ウォームアップ",
+      "3": "じょうずになってきた",
+      "4": "強い",
+      "5": "チャンピオン"
+    },
+    "ranks": {
+      "explorer": "探検者",
+      "pathfinder": "道を見つける人",
+      "trailblazer": "パイオニア",
+      "skyWalker": "空を歩く人",
+      "starRider": "星の騎士",
+      "legend": "レジェンド",
+      "grandChampion": "グランドチャンピオン"
+    },
+    "badges": {
+      "first-game": {
+        "name": "スタート",
+        "how": "最初のカメラゲームをプレイした"
+      },
+      "space-set": {
+        "name": "わたしのスペース",
+        "how": "リーチを設定した"
+      },
+      "five-days": {
+        "name": "続けた",
+        "how": "5日間、違う日にプレイした"
+      },
+      "level-3": {
+        "name": "半分まで",
+        "how": "1つのゲームの3レベルをクリアした"
+      },
+      "all-five": {
+        "name": "完全な冒険",
+        "how": "1つのゲームの5レベルすべてをクリアした"
+      },
+      "ten-games": {
+        "name": "探検者",
+        "how": "10個の違うゲームを試した"
+      },
+      "every-group": {
+        "name": "いろいろ試した",
+        "how": "すべてのグループからゲームをプレイした"
+      },
+      "both-hands": {
+        "name": "両手",
+        "how": "両手をたくさん使った"
+      },
+      "on-my-own": {
+        "name": "ひとりでできた",
+        "how": "ゲームの中で助けなしに答えた"
+      },
+      "whole-day": {
+        "name": "1日全部",
+        "how": "1日全体のミッションを終えた"
+      }
+    },
+    "promptStages": {
+      "A": {
+        "name": "デモンストレーション",
+        "help": "答えが点滅し、アニメーションの手がリーチの仕方を見せます。"
+      },
+      "B": {
+        "name": "ガイド付き練習",
+        "help": "音声の指示と答えへのハイライト。デモンストレーションはありません。"
+      },
+      "C": {
+        "name": "減らしたヒント",
+        "help": "音声の指示。答えは最初に短時間だけハイライトされます。"
+      },
+      "D": {
+        "name": "自立",
+        "help": "指示だけです。ハイライトはありません。"
+      },
+      "E": {
+        "name": "おとり選択肢あり",
+        "help": "自立した状態に、よく似た間違った答えが画面に加わります。"
+      },
+      "F": {
+        "name": "実生活の設定",
+        "help": "指示はラベルではなく状況です：「もう寝る時間だよ — 何が必要？」"
+      },
+      "G": {
+        "name": "実世界への転移",
+        "help": "大人が画面の外で確認します。ゲームがこれを与えることは決してありません。"
+      }
+    },
+    "dimensions": {
+      "targetSize": "目標の大きさ",
+      "choices": "選択肢の数",
+      "distractors": "おとり選択肢の似ている度合い",
+      "eccentricity": "リーチの距離",
+      "steps": "指示のステップ数",
+      "memorySpan": "記憶の範囲",
+      "showMs": "表示時間",
+      "window": "応答ウィンドウ",
+      "ruleSwitch": "ルールの切り替え",
+      "hands": "手の要求",
+      "midline": "正中線をまたぐこと",
+      "pace": "ペース",
+      "noGoRate": "やってはいけない頻度",
+      "tolerance": "経路の許容度",
+      "holdMs": "保持する時間"
+    },
+    "levelChange": {
+      "first": "すべて大きく、ゆっくり、助けあり",
+      "none": "これをもう少し練習しよう",
+      "moreSuffix": " · そしてもっと",
+      "harderWords": {
+        "targetSize": "より小さい目標",
+        "choices": "より多くの選択肢",
+        "distractors": "より紛らわしい間違った答え",
+        "eccentricity": "もっと遠くへのリーチ",
+        "steps": "覚えるステップがもっと増える",
+        "memorySpan": "心に留めることがもっと増える",
+        "showMs": "より短い表示時間",
+        "window": "待つ時間がより少なくなる",
+        "ruleSwitch": "ルールが変わる",
+        "hands": "両手",
+        "midline": "反対側へリーチする",
+        "pace": "より速いペース",
+        "noGoRate": "止まる回数が増える",
+        "tolerance": "より狭い経路",
+        "holdMs": "より長い保持時間"
+      }
+    },
+    "points": {
+      "playedSingular": "{{count}} ターンプレイ",
+      "playedPlural": "{{count}} ターンプレイ",
+      "gotItRight": "正解できた",
+      "levelBonus": "レベル{{n}}ボーナス",
+      "bestYet": "これまでのベスト！",
+      "levelClearedRow": "レベルクリア",
+      "levelPassedAgain": "レベルを再びクリア",
+      "firstGameToday": "今日最初のゲーム"
+    },
+    "advice": {
+      "moreTurns": "もう少しターンをプレイして、このレベルを終わらせよう",
+      "getBar": "次のレベルを開放するには、ターンの{{bar}}%を正解しよう"
+    },
+    "games": {
+      "setup-space": {
+        "title": "じぶんのスペースをせっていする",
+        "how": "手が届くところにゲームがちょうど来るように、5つの簡単なストレッチをします。最初に一度だけ行いましょう。"
+      },
+      "ball-pop": {
+        "title": "バルーンポップ",
+        "how": "手の届く範囲に風船が現れます — 飛んでいく前にそれぞれをパンクさせましょう。"
+      },
+      "number-hunt": {
+        "title": "全身をつかった数字ハント",
+        "how": "数字が上、下、左、右に現れます。全身を使って手を伸ばしましょう。"
+      },
+      "two-hand-catch": {
+        "title": "両手でキャッチ",
+        "how": "2つの形があり、それぞれの手に1つずつです。同時に両方にタッチしましょう。"
+      },
+      "cross-the-middle": {
+        "title": "真ん中をまたぐ",
+        "how": "左手が右側のものを取りに行き、右手が左側のものを取りに行きます。"
+      },
+      "left-or-right": {
+        "title": "左？それとも右？",
+        "how": "「左手でそれにタッチして。」どちらがどちらかを知りましょう。"
+      },
+      "reach-near-far": {
+        "title": "近くと遠くへリーチ",
+        "how": "近いものもあれば、リーチのぎりぎり端にあるものもあります。"
+      },
+      "find-touch-colour": {
+        "title": "見つけてタッチ",
+        "how": "「青いものにタッチして。」まず色、それから形と数字です。"
+      },
+      "find-shape": {
+        "title": "形を見つける",
+        "how": "「三角にタッチして。」10種類の形で、いくつかは混同しやすいです。"
+      },
+      "read-and-find": {
+        "title": "読んで見つける",
+        "how": "「CIRCLE（円）」という単語が現れます。円にタッチしましょう。何も読み上げられません。"
+      },
+      "listen-and-find": {
+        "title": "聞いて見つける",
+        "how": "声が単語を言います。何も書かれていません。聞いたものを見つけましょう。"
+      },
+      "search-the-room": {
+        "title": "部屋の中を探す",
+        "how": "とてもよく似たたくさんのものの中に1つだけの正解が隠れています。"
+      },
+      "big-or-small": {
+        "title": "大きい？それとも小さい？",
+        "how": "もっと大きい、もっと小さい、もっと多い、もっと少ない — 比較の言葉です。"
+      },
+      "above-or-below": {
+        "title": "上？それとも下？",
+        "how": "「箱の上にいる猫にタッチして。」空間の中で空間を表す言葉を学びます。"
+      },
+      "which-animal": {
+        "title": "どのグループ？",
+        "how": "「農場の動物にタッチして。」世界を種類ごとに分けます。"
+      },
+      "go-no-go-animals": {
+        "title": "ペットだけ！",
+        "how": "ペットにタッチしましょう。野生動物にはまったく触らないでください。"
+      },
+      "rule-switch": {
+        "title": "ルールの切り替え",
+        "how": "動物にタッチ……すると突然ルールが乗り物に変わります。"
+      },
+      "safe-or-not": {
+        "title": "安全な手",
+        "how": "持っても安全なものにタッチしましょう。安全でないものには絶対に触らないでください。"
+      },
+      "red-light-green-light": {
+        "title": "赤信号、青信号",
+        "how": "青のときは動きましょう。赤になったら完全に止まりましょう。"
+      },
+      "traffic-light-body": {
+        "title": "信号機ゲーム",
+        "how": "青は歩く、黄色は準備、赤は止まる — 本物の横断歩道のようにです。"
+      },
+      "wait-for-it": {
+        "title": "待ってみよう",
+        "how": "星はそこにあります — でも緑になるまでタッチしないでください。"
+      },
+      "calm-movement": {
+        "title": "おだやかな動き",
+        "how": "動き続けますが、やさしく。止まりすぎず、はげしすぎずです。"
+      },
+      "fast-vs-slow": {
+        "title": "速くゆっくり",
+        "how": "腕を速く動かし、それからとてもゆっくり動かします。自分の速さを選びましょう。"
+      },
+      "vanishing-target": {
+        "title": "消える目標",
+        "how": "文字がぱっと現れて、すぐに消えます。どの文字でしたか？"
+      },
+      "simon-reach": {
+        "title": "サイモン・リーチ",
+        "how": "形が光る順番を見て、それをそっくりコピーしましょう。"
+      },
+      "copy-the-pattern": {
+        "title": "パターンをコピー",
+        "how": "赤、青、黄、赤 — 色のパターンを見て、それを繰り返しましょう。"
+      },
+      "repair-the-sequence": {
+        "title": "数列を直す",
+        "how": "1、2、？、4 — 足りないのはどれ？"
+      },
+      "repair-the-alphabet": {
+        "title": "アルファベットを直す",
+        "how": "A、B、？、D — 落ちてしまった文字を見つけましょう。"
+      },
+      "whats-missing": {
+        "title": "何がなくなった？",
+        "how": "ランドセルの中を見て、何がなくなったか言いましょう。"
+      },
+      "grocery-mission": {
+        "title": "お買い物ミッション",
+        "how": "「牛乳、りんご1つ、パンを持ってきて。」リストを頭に入れて、それらを取りに行きましょう。"
+      },
+      "phonics-reach": {
+        "title": "音のリーチ",
+        "how": "/b/という音が聞こえます。その音を出す文字にリーチしましょう。"
+      },
+      "beginning-sound": {
+        "title": "最初の音",
+        "how": "「/k/で始まるのはどれ？」猫にリーチしましょう。"
+      },
+      "word-builder": {
+        "title": "単語づくり",
+        "how": "文字を順番にタッチして、C-A-T（猫）を作りましょう。"
+      },
+      "word-and-picture": {
+        "title": "単語と絵",
+        "how": "「SUN（太陽）」という単語が現れます。合う絵にタッチしましょう。"
+      },
+      "air-writing": {
+        "title": "空中に書く",
+        "how": "指で空中に文字と数字を書きましょう。"
+      },
+      "number-match": {
+        "title": "いくつある？",
+        "how": "数字の5が現れます。5つのものがあるグループにタッチしましょう。"
+      },
+      "count-and-collect": {
+        "title": "数えて集める",
+        "how": "「りんごを4つ集めて。」動きながら数えます。"
+      },
+      "money-shop": {
+        "title": "お金のお店",
+        "how": "りんごは30セントです。それを支払えるコインを選びましょう。"
+      },
+      "sentence-order": {
+        "title": "文の順番",
+        "how": "わたし／ほしい／水 — 単語を正しい順番にしましょう。"
+      },
+      "rhythm-reach": {
+        "title": "リズムリーチ",
+        "how": "拍ごとにぴったり形にタッチしましょう。完璧、すごくいい、近い — すべてカウントされます。"
+      },
+      "mirror-me": {
+        "title": "わたしをコピー",
+        "how": "小さなキャラクターが取っているポーズをコピーしましょう。"
+      },
+      "copy-my-gesture": {
+        "title": "わたしのジェスチャーをコピー",
+        "how": "手を振る、サムズアップ、指さす、手を開く — 人が使うジェスチャーです。"
+      },
+      "personal-space": {
+        "title": "わたしのスペースバブル",
+        "how": "自分の体をバブルの中に保ち — それからバブルの外に出ましょう。"
+      },
+      "trace-the-road": {
+        "title": "道をなぞる",
+        "how": "くねくね道を外れずに指でたどりましょう。"
+      },
+      "shape-drawing": {
+        "title": "形をかく",
+        "how": "円、四角、星を — 空中に描きましょう。"
+      },
+      "ar-maze": {
+        "title": "指で迷路",
+        "how": "壁に触れずに迷路を抜ける道を見つけましょう。"
+      },
+      "pinch-and-write": {
+        "title": "つまんで書く",
+        "how": "指と親指でつまんでペンを持ち、書きましょう。本物の鉛筆の持ち方のようにです。"
+      },
+      "handwashing": {
+        "title": "手を洗う",
+        "how": "開始、濡らす、せっけん、こする、すすぐ、乾かす — すべて正しい順番でです。"
+      },
+      "toothbrushing": {
+        "title": "歯をみがく",
+        "how": "歯みがきのすべての手順を、順番にです。"
+      },
+      "getting-dressed": {
+        "title": "着替え",
+        "how": "下着、トップス、ズボン、靴下、靴 — 順番が大切です。"
+      },
+      "morning-routine": {
+        "title": "朝のルーティン",
+        "how": "起きる、トイレ、洗う、着替える、朝ごはん、ランドセル。"
+      },
+      "pack-my-bag": {
+        "title": "ランドセルをつめる",
+        "how": "学校に必要なものを持ちましょう。残りは置いていきましょう。"
+      },
+      "sort-the-groceries": {
+        "title": "買ったものを仕分ける",
+        "how": "つまんで持ち上げ、それから冷蔵庫、冷凍庫、戸棚に入れましょう。"
+      },
+      "laundry-sort": {
+        "title": "洗濯物を仕分ける",
+        "how": "明るい色を1つのカゴに、暗い色を別のカゴに。"
+      },
+      "tidy-the-room": {
+        "title": "部屋をかたづける",
+        "how": "すべてのものが、それが属する部屋に戻ります。"
+      },
+      "where-does-it-go": {
+        "title": "これはどこに入れる？",
+        "how": "牛乳 — 冷蔵庫、冷凍庫、それとも戸棚？正しいものにタッチしましょう。"
+      },
+      "hot-sharp-safe": {
+        "title": "熱い、とがっている、それとも安全",
+        "how": "どれが熱くなる？どれがとがっている？どれが安全？"
+      },
+      "safe-or-unsafe": {
+        "title": "安全？それとも危険？",
+        "how": "時には安全なものにタッチし、時には危険なものを指し示しましょう。"
+      },
+      "crossing-the-road": {
+        "title": "道路を渡る",
+        "how": "止まる、見る、聞く、待つ、渡る — あなたを安全にする順番です。"
+      },
+      "clean-or-dirty": {
+        "title": "洗う必要がある？",
+        "how": "靴下は洗濯に行きます。本は行きません。どれを洗う必要がありますか？"
+      },
+      "my-day": {
+        "title": "わたしの一日ぜんぶ",
+        "how": "洗う、着替える、荷物をまとめる、支払う、道を渡る、先生の話を聞く、助けを求める。一日ぜんぶを、一度に。",
+        "opening": "おはよう！一緒に一日を過ごしましょう。",
+        "openingSay": "おはよう。一緒に一日を過ごしましょう。",
+        "chain": {
+          "wash": {
+            "title": "手を洗う",
+            "say": "まず、手を洗いましょう。"
+          },
+          "dress": {
+            "title": "着替える",
+            "say": "さあ着替えましょう。最初に何を着る？"
+          },
+          "pack": {
+            "title": "かばんをつめる",
+            "say": "学校に必要なものをつめましょう。"
+          },
+          "pay": {
+            "title": "お昼ごはんを支払う",
+            "say": "お昼ごはん用のコインが必要だよ。"
+          },
+          "road": {
+            "title": "道路を渡る",
+            "say": "道路を渡る時間です。緑は歩く、赤は止まるという意味です。"
+          },
+          "classroom": {
+            "title": "先生の話を聞く",
+            "say": "先生がやってほしいことが3つあります。"
+          },
+          "help": {
+            "title": "助けを求める",
+            "say": "鉛筆が見つからないね。どうしたらいい？"
+          }
+        }
+      },
+      "follow-two": {
+        "title": "2つのことに従う",
+        "how": "「星にタッチして、それから手をたたいて。」2つのことを、順番にです。"
+      },
+      "follow-three": {
+        "title": "3つのことに従う",
+        "how": "「3にタッチして、手をたたいて、それから青にタッチして。」3つを、順番にです。"
+      },
+      "emotion-match": {
+        "title": "どんな気持ちになるかな？",
+        "how": "お話の中で何かが起こります。どの気持ちが合いますか？"
+      },
+      "what-should-i-do": {
+        "title": "わたしはどうすればいい？",
+        "how": "「だれかが鉛筆を落としました。」やさしい行動は何でしょう？"
+      },
+      "ask-for-help": {
+        "title": "助けを求める",
+        "how": "びんのふたが開きません。助けを求めることを選ぶのが答えです。"
+      },
+      "stay-safe-choices": {
+        "title": "止まって、考えて、行動する",
+        "how": "何か問題が起こりました。止まって、考えて、それから何をするか選びましょう。"
+      },
+      "time-of-day": {
+        "title": "いつそれをする？",
+        "how": "歯ブラシ — 朝？それとも夜？物事を一日の時間に結びつけます。"
+      },
+      "coin-names": {
+        "title": "どのコイン？",
+        "how": "「50セントはどれ？」お金の名前を知って見つけます。"
+      }
+    },
+    "recommend": {
+      "helpsWith": "{{domain}}の助けになります"
+    }
   }
 }

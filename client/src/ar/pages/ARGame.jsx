@@ -6,12 +6,14 @@
  */
 import { useCallback, useMemo } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { FaArrowLeft } from 'react-icons/fa'
 import ARStage from '../core/ARStage'
 import { getGame, gamesInGroup } from '../catalog/games'
 import styles from './ARGame.module.css'
 
 export default function ARGame() {
+  const { t } = useTranslation()
   const { gameId } = useParams()
   const [search] = useSearchParams()
   const navigate = useNavigate()
@@ -40,12 +42,14 @@ export default function ARGame() {
     return (
       <div className={styles.missing}>
         <span className={styles.missingIcon}>🎮</span>
-        <h1>That game is not here</h1>
+        <h1>{t('ar.game.notFoundTitle', 'That game is not here')}</h1>
         <p>
-          The link points at <code>{gameId}</code>, which is not in the catalogue.
+          {t('ar.game.notFoundBody', 'The link points at {{id}}, which is not in the catalogue.', {
+            id: gameId,
+          })}
         </p>
         <button onClick={exit}>
-          <FaArrowLeft /> Back to camera games
+          <FaArrowLeft /> {t('ar.game.backToGames', 'Back to camera games')}
         </button>
       </div>
     )

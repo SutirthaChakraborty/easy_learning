@@ -20,8 +20,8 @@ const Home = () => {
   return (
     <>
       <SEO
-        title="Learningo Home | Continue Your Learning Adventure"
-        description="Jump back into gamified English, Maths and Science practice on Learningo — pick up where you left off or start a new adventure."
+        title="Learnigo Home | Continue Your Learning Adventure"
+        description="Jump back into gamified English, Maths and Science practice on Learnigo — pick up where you left off or start a new adventure."
         path="/home"
       />
       <VideoBackground />

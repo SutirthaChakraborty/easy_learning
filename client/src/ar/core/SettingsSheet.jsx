@@ -9,6 +9,7 @@
  * scroll on a phone in landscape.
  */
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   FaTimes, FaVolumeUp, FaHandPaper, FaEye, FaChartLine, FaUndo,
   FaCheck, FaMobileAlt, FaExclamationTriangle,
@@ -16,22 +17,26 @@ import {
 import { getSettings, updateSettings, resetSettings, DEFAULT_SETTINGS } from './settings'
 import { hapticCapabilities, haptic, sfx, unlockAudio } from './feedback'
 import { speak } from './tts'
-import { PROMPT_STAGES, PROMPT_INFO } from './adaptive'
+import { PROMPT_STAGES, promptName, promptHelp } from './adaptive'
 import { LEVELS, LEVEL_META, clampLevel, resetJourney } from './journey'
 import { resetProfile, loadProfile } from './profile'
+import { tLevelName } from './arText'
 import styles from './SettingsSheet.module.css'
 
 /* Five small tabs rather than one long list: each pane has to fit a phone in
    landscape without scrolling, so no pane may hold more than six rows. */
-const TABS = [
-  { id: 'sound', label: 'Sound', icon: <FaVolumeUp /> },
-  { id: 'vision', label: 'Vision', icon: <FaEye /> },
-  { id: 'body', label: 'Body', icon: <FaHandPaper /> },
-  { id: 'help', label: 'Help', icon: <FaCheck /> },
-  { id: 'data', label: 'Data', icon: <FaChartLine /> },
-]
+const TAB_IDS = ['sound', 'vision', 'body', 'help', 'data']
+const TAB_ICONS = {
+  sound: <FaVolumeUp />,
+  vision: <FaEye />,
+  body: <FaHandPaper />,
+  help: <FaCheck />,
+  data: <FaChartLine />,
+}
+const TAB_FALLBACKS = { sound: 'Sound', vision: 'Vision', body: 'Body', help: 'Help', data: 'Data' }
 
 export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
+  const { t } = useTranslation()
   const [s, setS] = useState(getSettings())
   const [tab, setTab] = useState('sound')
   const [confirmWipe, setConfirmWipe] = useState(false)
@@ -41,23 +46,23 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
 
   return (
     <div className={styles.backdrop} onClick={onClose}>
-      <div className={styles.sheet} onClick={(e) => e.stopPropagation()} role="dialog" aria-label="AR game settings">
+      <div className={styles.sheet} onClick={(e) => e.stopPropagation()} role="dialog" aria-label={t('ar.settings.dialogAriaLabel', 'AR game settings')}>
         <header className={styles.head}>
-          <h2>Play settings</h2>
-          <button className={styles.close} onClick={onClose} aria-label="Close settings">
+          <h2>{t('ar.settings.title', 'Play settings')}</h2>
+          <button className={styles.close} onClick={onClose} aria-label={t('ar.settings.closeAriaLabel', 'Close settings')}>
             <FaTimes />
           </button>
         </header>
 
         <nav className={styles.tabs}>
-          {TABS.map((t) => (
+          {TAB_IDS.map((id) => (
             <button
-              key={t.id}
-              className={`${styles.tab} ${tab === t.id ? styles.tabOn : ''}`}
-              onClick={() => setTab(t.id)}
+              key={id}
+              className={`${styles.tab} ${tab === id ? styles.tabOn : ''}`}
+              onClick={() => setTab(id)}
             >
-              {t.icon}
-              <span>{t.label}</span>
+              {TAB_ICONS[id]}
+              <span>{t(`ar.settings.tabs.${id}`, TAB_FALLBACKS[id])}</span>
             </button>
           ))}
         </nav>
@@ -66,7 +71,7 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
           {tab === 'sound' && (
             <>
               <Slider
-                label="Sound"
+                label={t('ar.settings.sound.volume', 'Sound')}
                 value={s.volume}
                 min={0}
                 max={1}
@@ -79,16 +84,16 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                 }}
               />
               <Toggle
-                label="Spoken instructions"
-                hint="Reads every prompt aloud"
+                label={t('ar.settings.sound.speech', 'Spoken instructions')}
+                hint={t('ar.settings.sound.speechHint', 'Reads every prompt aloud')}
                 on={s.speech}
                 onChange={(v) => {
                   set({ speech: v })
-                  if (v) speak('Hello')
+                  if (v) speak(t('ar.settings.sound.speechTestHello', 'Hello'))
                 }}
               />
               <Slider
-                label="Speaking speed"
+                label={t('ar.settings.sound.speechRate', 'Speaking speed')}
                 value={s.speechRate}
                 min={0.5}
                 max={1.2}
@@ -97,27 +102,27 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                 disabled={!s.speech}
                 onChange={(v) => {
                   set({ speechRate: v })
-                  speak('Touch the red circle')
+                  speak(t('ar.settings.sound.speechRateTest', 'Touch the red circle'))
                 }}
               />
               <Choice
-                label="Instructions given by"
+                label={t('ar.settings.sound.instruction', 'Instructions given by')}
                 value={s.instruction}
                 options={[
-                  { v: 'both', l: 'Voice + text' },
-                  { v: 'audio', l: 'Voice only' },
-                  { v: 'visual', l: 'Text only' },
+                  { v: 'both', l: t('ar.settings.sound.instructionBoth', 'Voice + text') },
+                  { v: 'audio', l: t('ar.settings.sound.instructionAudio', 'Voice only') },
+                  { v: 'visual', l: t('ar.settings.sound.instructionVisual', 'Text only') },
                 ]}
                 onChange={(v) => set({ instruction: v })}
               />
               <Toggle
-                label="Vibration"
+                label={t('ar.settings.sound.haptics', 'Vibration')}
                 hint={
                   caps.vibrate
-                    ? 'This device has a vibration motor'
+                    ? t('ar.settings.sound.hapticsHintVibrate', 'This device has a vibration motor')
                     : caps.gamepad
-                      ? 'Using the connected controller'
-                      : 'No motor found — a deep sound pulse is used instead'
+                      ? t('ar.settings.sound.hapticsHintGamepad', 'Using the connected controller')
+                      : t('ar.settings.sound.hapticsHintNone', 'No motor found — a deep sound pulse is used instead')
                 }
                 on={s.haptics}
                 onChange={(v) => {
@@ -126,7 +131,7 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                 }}
               />
               <Slider
-                label="Vibration strength"
+                label={t('ar.settings.sound.hapticIntensity', 'Vibration strength')}
                 value={s.hapticIntensity}
                 min={0.3}
                 max={2}
@@ -144,41 +149,41 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
           {tab === 'vision' && (
             <>
               <Toggle
-                label="Calm visuals"
-                hint="No particles, no pulsing, no screen flashes"
+                label={t('ar.settings.vision.reducedMotion', 'Calm visuals')}
+                hint={t('ar.settings.vision.reducedMotionHint', 'No particles, no pulsing, no screen flashes')}
                 on={s.reducedMotion}
                 onChange={(v) => set({ reducedMotion: v })}
               />
               <Toggle
-                label="High contrast"
-                hint="Stronger outlines and a darker background behind targets"
+                label={t('ar.settings.vision.highContrast', 'High contrast')}
+                hint={t('ar.settings.vision.highContrastHint', 'Stronger outlines and a darker background behind targets')}
                 on={s.highContrast}
                 onChange={(v) => set({ highContrast: v })}
               />
               <Choice
-                label="On-screen detail"
+                label={t('ar.settings.vision.visualClutter', 'On-screen detail')}
                 value={s.visualClutter}
                 options={[
-                  { v: 'normal', l: 'Normal' },
-                  { v: 'minimal', l: 'Minimal' },
+                  { v: 'normal', l: t('ar.settings.vision.visualClutterNormal', 'Normal') },
+                  { v: 'minimal', l: t('ar.settings.vision.visualClutterMinimal', 'Minimal') },
                 ]}
                 onChange={(v) => set({ visualClutter: v })}
               />
               <Toggle
-                label="Always show text"
-                hint="Keeps the written prompt on screen alongside the voice"
+                label={t('ar.settings.vision.captions', 'Always show text')}
+                hint={t('ar.settings.vision.captionsHint', 'Keeps the written prompt on screen alongside the voice')}
                 on={s.captions}
                 onChange={(v) => set({ captions: v })}
               />
               <Toggle
-                label="Mirror the picture"
-                hint="On = like a mirror, which is what almost every child expects"
+                label={t('ar.settings.vision.mirrorView', 'Mirror the picture')}
+                hint={t('ar.settings.vision.mirrorViewHint', 'On = like a mirror, which is what almost every child expects')}
                 on={s.mirrorView}
                 onChange={(v) => set({ mirrorView: v })}
               />
               <Toggle
-                label="Show skeleton"
-                hint="Draws the tracked hand and body outline"
+                label={t('ar.settings.vision.showSkeleton', 'Show skeleton')}
+                hint={t('ar.settings.vision.showSkeletonHint', 'Draws the tracked hand and body outline')}
                 on={s.showSkeleton}
                 onChange={(v) => set({ showSkeleton: v })}
               />
@@ -188,40 +193,40 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
           {tab === 'body' && (
             <>
               <Toggle
-                label="Seated play"
-                hint="Keeps every target inside a seated reach"
+                label={t('ar.settings.body.seated', 'Seated play')}
+                hint={t('ar.settings.body.seatedHint', 'Keeps every target inside a seated reach')}
                 on={s.seated}
                 onChange={(v) => set({ seated: v })}
               />
               <Choice
-                label="Hands to use"
+                label={t('ar.settings.body.singleHand', 'Hands to use')}
                 value={s.singleHand}
                 options={[
-                  { v: 'both', l: 'Either / both' },
-                  { v: 'left', l: 'Left only' },
-                  { v: 'right', l: 'Right only' },
+                  { v: 'both', l: t('ar.settings.body.singleHandBoth', 'Either / both') },
+                  { v: 'left', l: t('ar.settings.body.singleHandLeft', 'Left only') },
+                  { v: 'right', l: t('ar.settings.body.singleHandRight', 'Right only') },
                 ]}
                 onChange={(v) => set({ singleHand: v })}
               />
               <Toggle
-                label="Big targets"
-                hint="Makes everything 45% larger"
+                label={t('ar.settings.body.largeTargets', 'Big targets')}
+                hint={t('ar.settings.body.largeTargetsHint', 'Makes everything 45% larger')}
                 on={s.largeTargets}
                 onChange={(v) => set({ largeTargets: v })}
               />
               <Slider
-                label="Extra time"
-                hint="Multiplies every response window. Speed is never the point."
+                label={t('ar.settings.body.extraTime', 'Extra time')}
+                hint={t('ar.settings.body.extraTimeHint', 'Multiplies every response window. Speed is never the point.')}
                 value={s.extraTimeX}
                 min={1}
                 max={4}
                 step={0.25}
-                fmt={(v) => (v === 1 ? 'Standard' : `${v.toFixed(2)}×`)}
+                fmt={(v) => (v === 1 ? t('ar.settings.body.extraTimeStandard', 'Standard') : `${v.toFixed(2)}×`)}
                 onChange={(v) => set({ extraTimeX: v })}
               />
               <Slider
-                label="Touch hold time"
-                hint="How long a fingertip rests on a target to choose it. Longer helps a shaky hand."
+                label={t('ar.settings.body.dwellMs', 'Touch hold time')}
+                hint={t('ar.settings.body.dwellMsHint', 'How long a fingertip rests on a target to choose it. Longer helps a shaky hand.')}
                 value={s.dwellMs}
                 min={80}
                 max={900}
@@ -230,11 +235,16 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                 onChange={(v) => set({ dwellMs: v })}
               />
               <Toggle
-                label="Swap left / right hand"
+                label={t('ar.settings.body.handSwap', 'Swap left / right hand')}
                 hint={
                   loadProfile().reach
-                    ? `Reach set up ${new Date(loadProfile().reachCalibratedAt).toLocaleDateString()}. Turn this on if the game names the wrong hand.`
-                    : 'Turn this on if the game names the wrong hand. Ask the child to raise their right hand to check.'
+                    ? t('ar.settings.body.handSwapHintWithDate', 'Reach set up {{date}}. Turn this on if the game names the wrong hand.', {
+                        date: new Date(loadProfile().reachCalibratedAt).toLocaleDateString(),
+                      })
+                    : t(
+                        'ar.settings.body.handSwapHintNoDate',
+                        'Turn this on if the game names the wrong hand. Ask the child to raise their right hand to check.'
+                      )
                 }
                 on={s.handSwap}
                 onChange={(v) => {
@@ -248,11 +258,11 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
           {tab === 'help' && (
             <>
               <Choice
-                label="Prompt level"
-                hint="How much help the game gives. Adaptive fades it as the child succeeds without it."
+                label={t('ar.settings.help.promptMode', 'Prompt level')}
+                hint={t('ar.settings.help.promptModeHint', 'How much help the game gives. Adaptive fades it as the child succeeds without it.')}
                 value={s.promptMode}
                 options={[
-                  { v: 'adaptive', l: 'Adaptive' },
+                  { v: 'adaptive', l: t('ar.settings.help.promptModeAdaptive', 'Adaptive') },
                   ...PROMPT_STAGES.filter((p) => p !== 'G').map((p) => ({ v: p, l: p })),
                 ]}
                 onChange={(v) => set({ promptMode: v })}
@@ -260,37 +270,42 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
               <div className={styles.stageHelp}>
                 {s.promptMode === 'adaptive' ? (
                   <>
-                    <strong>Adaptive.</strong> Starts at demonstration and fades one stage
-                    after five of six correct answers given without the prompt. Steps back
-                    after two errors.
+                    <strong>{t('ar.settings.help.adaptiveStageHelpTitle', 'Adaptive.')}</strong>{' '}
+                    {t(
+                      'ar.settings.help.adaptiveStageHelpBody',
+                      'Starts at demonstration and fades one stage after five of six correct answers given without the prompt. Steps back after two errors.'
+                    )}
                   </>
                 ) : (
                   <>
                     <strong>
-                      {s.promptMode} — {PROMPT_INFO[s.promptMode]?.name}.
+                      {s.promptMode} — {promptName(s.promptMode)}.
                     </strong>{' '}
-                    {PROMPT_INFO[s.promptMode]?.help}
+                    {promptHelp(s.promptMode)}
                   </>
                 )}
               </div>
               <Choice
-                label="Difficulty"
-                hint="Adaptive moves one demand at a time — target size, then number of choices, then distractor similarity. Fixed holds one journey level instead."
+                label={t('ar.settings.help.difficultyMode', 'Difficulty')}
+                hint={t(
+                  'ar.settings.help.difficultyModeHint',
+                  'Adaptive moves one demand at a time — target size, then number of choices, then distractor similarity. Fixed holds one journey level instead.'
+                )}
                 value={s.difficultyMode}
                 options={[
-                  { v: 'adaptive', l: 'Adaptive' },
-                  { v: 'fixed', l: 'Fixed' },
+                  { v: 'adaptive', l: t('ar.settings.help.difficultyModeAdaptive', 'Adaptive') },
+                  { v: 'fixed', l: t('ar.settings.help.difficultyModeFixed', 'Fixed') },
                 ]}
                 onChange={(v) => set({ difficultyMode: v })}
               />
               {s.difficultyMode === 'fixed' && (
                 <Slider
-                  label="Held at journey level"
+                  label={t('ar.settings.help.fixedLevel', 'Held at journey level')}
                   // The round is played AND judged at this level — the level
                   // picker in the game is overridden while this is on. Saying
                   // so matters: a clear earned here is written to the child's
                   // journey exactly like one they chose for themselves.
-                  hint="Plays and scores every round at this level, whichever the child picks. A pass is recorded as a real clear."
+                  hint={t('ar.settings.help.fixedLevelHint', 'Plays and scores every round at this level, whichever the child picks. A pass is recorded as a real clear.')}
                   value={s.fixedLevel}
                   min={1}
                   max={LEVELS}
@@ -305,7 +320,7 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                     // (`{fmt(value)}`), so a fragment works exactly like a string.
                     return (
                       <>
-                        <MetaIcon /> {meta.n} · {meta.name}
+                        <MetaIcon /> {meta.n} · {tLevelName(meta.n, meta.name)}
                       </>
                     )
                   }}
@@ -317,15 +332,14 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                 // hint is hidden and the label is all that survives, and
                 // "open all levels" alone reads like a feature for the child
                 // rather than an override of their reward.
-                label="Unlock all levels (adult)"
-                hint="For a child already past level 1, or to probe one level. Clearing still has to be earned."
+                label={t('ar.settings.help.unlockAll', 'Unlock all levels (adult)')}
+                hint={t('ar.settings.help.unlockAllHint', 'For a child already past level 1, or to probe one level. Clearing still has to be earned.')}
                 on={s.journeyUnlockAll}
                 onChange={(v) => set({ journeyUnlockAll: v })}
               />
               <div className={`${styles.stageHelp} ${styles.optional}`}>
-                <strong>Stage G — real-world transfer.</strong>{' '}
-                {PROMPT_INFO.G.help} A high score here is not evidence the skill
-                generalised; that has to be checked away from the screen.
+                <strong>{t('ar.settings.help.stageGTitle', 'Stage G — real-world transfer.')}</strong>{' '}
+                {promptHelp('G')} {t('ar.settings.help.stageGSuffix', 'A high score here is not evidence the skill generalised; that has to be checked away from the screen.')}
               </div>
             </>
           )}
@@ -333,41 +347,48 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
           {tab === 'data' && (
             <>
               <Toggle
-                label="Record analysis data"
-                hint="Trial-by-trial accuracy, thinking time, movement time and reach quality. Only numbers — never any video or image."
+                label={t('ar.settings.data.telemetry', 'Record analysis data')}
+                hint={t(
+                  'ar.settings.data.telemetryHint',
+                  'Trial-by-trial accuracy, thinking time, movement time and reach quality. Only numbers — never any video or image.'
+                )}
                 on={s.telemetry}
                 onChange={(v) =>
                   set({ telemetry: v, consentAt: v ? new Date().toISOString() : null })
                 }
               />
               <Toggle
-                label="Show live tracking numbers"
-                hint="Frame rate, detection time and camera lag, for setting up a session"
+                label={t('ar.settings.data.showMetrics', 'Show live tracking numbers')}
+                hint={t('ar.settings.data.showMetricsHint', 'Frame rate, detection time and camera lag, for setting up a session')}
                 on={s.showMetrics}
                 onChange={(v) => set({ showMetrics: v })}
               />
               <div className={styles.note}>
                 <FaCheck />
                 <span>
-                  Camera frames are processed on this device only. No frame is stored or
-                  uploaded, by us or by anyone else.
+                  {t(
+                    'ar.settings.data.cameraNote',
+                    'Camera frames are processed on this device only. No frame is stored or uploaded, by us or by anyone else.'
+                  )}
                 </span>
               </div>
               {s.consentAt && (
                 <div className={styles.note}>
                   <FaCheck />
-                  <span>Data recording turned on {new Date(s.consentAt).toLocaleString()}</span>
+                  <span>{t('ar.settings.data.recordingOnSince', 'Data recording turned on {{date}}', { date: new Date(s.consentAt).toLocaleString() })}</span>
                 </div>
               )}
               {!confirmWipe ? (
                 <button className={styles.danger} onClick={() => setConfirmWipe(true)}>
-                  <FaExclamationTriangle /> Erase this child's profile and history
+                  <FaExclamationTriangle /> {t('ar.settings.data.eraseProfile', "Erase this child's profile and history")}
                 </button>
               ) : (
                 <div className={styles.confirmRow}>
                   <span>
-                    Erase the reach calibration, capability profile, level progress, points
-                    and every stored round?
+                    {t(
+                      'ar.settings.data.eraseConfirm',
+                      'Erase the reach calibration, capability profile, level progress, points and every stored round?'
+                    )}
                   </span>
                   <div>
                     <button
@@ -389,10 +410,10 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
                         setConfirmWipe(false)
                       }}
                     >
-                      Erase
+                      {t('ar.settings.data.erase', 'Erase')}
                     </button>
                     <button className={styles.cancel} onClick={() => setConfirmWipe(false)}>
-                      Keep
+                      {t('ar.settings.data.keep', 'Keep')}
                     </button>
                   </div>
                 </div>
@@ -405,15 +426,15 @@ export default function SettingsSheet({ onClose, getTracker, inGame = false }) {
           <button
             className={styles.reset}
             onClick={() => setS(resetSettings())}
-            title="Back to the defaults"
+            title={t('ar.settings.resetTitle', 'Back to the defaults')}
           >
-            <FaUndo /> Reset
+            <FaUndo /> {t('ar.settings.reset', 'Reset')}
           </button>
           <span className={styles.footNote}>
-            {inGame ? 'Changes apply to the next turn' : 'Saved on this device'}
+            {inGame ? t('ar.settings.footNoteInGame', 'Changes apply to the next turn') : t('ar.settings.footNoteSaved', 'Saved on this device')}
           </span>
           <button className={styles.done} onClick={onClose}>
-            Done
+            {t('ar.settings.done', 'Done')}
           </button>
         </footer>
       </div>

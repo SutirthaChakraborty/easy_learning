@@ -23,13 +23,14 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { AnimatePresence } from 'framer-motion'
 import * as FramerMotion from 'framer-motion'
 import {
   FaArrowLeft, FaChevronLeft, FaChevronRight, FaCog, FaChartLine,
   FaCamera, FaGamepad, FaPlay, FaVolumeUp, FaCheck, FaTrophy,
 } from 'react-icons/fa'
-import { GROUPS, GROUP_BY_ID, DOMAIN_LABELS } from '../catalog/groups'
+import { GROUPS, GROUP_BY_ID, DOMAIN_LABELS, LIFE_SKILL_LABELS } from '../catalog/groups'
 import { GAMES, gamesInGroup } from '../catalog/games'
 import { prewarmVision } from '../core/vision'
 import { flushPendingSessions, fetchRemoteJourney } from '../core/telemetry'
@@ -40,8 +41,10 @@ import {
 } from '../core/journey'
 import { speak } from '../core/tts'
 import { haptic } from '../core/feedback'
+import { tGame, tGroup, tDomain, tLifeSkill, tRecommend } from '../core/arText'
 import LevelPips from '../core/LevelPips'
 import SettingsSheet from '../core/SettingsSheet'
+import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher'
 import VideoBackground from '../../components/VideoBackground/VideoBackground'
 import styles from './ARHub.module.css'
 
@@ -54,6 +57,7 @@ const NARROW_PAGE_SIZE = 4
 const NARROW_BREAKPOINT = 425
 
 export default function ARHub() {
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const [groupId, setGroupId] = useState(() => {
     try {
@@ -103,9 +107,12 @@ export default function ARHub() {
   // These read localStorage, which the linter cannot see, so `revision` is a
   // deliberate cache-buster rather than a real dependency: it is bumped when
   // stored progress changes and is the only thing that should invalidate them.
+  // `i18n.language` IS a real dependency: both snapshots carry translated
+  // labels (badges, rank, recommendation reason), which must recompute on
+  // a language switch rather than stay stale from the last render.
   /* eslint-disable react-hooks/exhaustive-deps */
-  const journey = useMemo(() => journeySnapshot(GAMES), [revision])
-  const recommended = useMemo(() => pickRecommended(), [revision])
+  const journey = useMemo(() => journeySnapshot(GAMES), [revision, i18n.language])
+  const recommended = useMemo(() => pickRecommended(), [revision, i18n.language])
   /* eslint-enable react-hooks/exhaustive-deps */
 
   const open = useCallback(
@@ -194,22 +201,33 @@ export default function ARHub() {
       <div className={styles.glow} aria-hidden />
 
       <header className={styles.head}>
-        <button className={styles.iconBtn} onClick={() => navigate('/games')} aria-label="Back">
+        <button className={styles.iconBtn} onClick={() => navigate('/games')} aria-label={t('ar.hub.back', 'Back')}>
           <FaArrowLeft />
         </button>
         <div className={styles.headTitle}>
           <FaGamepad className={styles.headIcon} />
-          <span>Camera Games</span>
+          <span>{t('ar.hub.title', 'Camera Games')}</span>
         </div>
         <div className={styles.headRight}>
+          <LanguageSwitcher />
           {/* Points and rank: the one number that is the child's alone, and a
               door into their own progress screen. */}
           <button
             className={styles.pointsChip}
             onClick={() => navigate('/games/ar/insights')}
-            title={`${journey.points} points · ${journey.rank.name}${
-              journey.rank.next ? ` · ${journey.rank.toNext} to ${journey.rank.next.name}` : ''
-            }`}
+            title={
+              journey.rank.next
+                ? t('ar.hub.pointsTitleWithNext', '{{points}} points · {{rank}} · {{toNext}} to {{next}}', {
+                    points: journey.points,
+                    rank: journey.rank.name,
+                    toNext: journey.rank.toNext,
+                    next: journey.rank.next.name,
+                  })
+                : t('ar.hub.pointsTitle', '{{points}} points · {{rank}}', {
+                    points: journey.points,
+                    rank: journey.rank.name,
+                  })
+            }
           >
             <span className={styles.rankIcon} aria-hidden>
               <journey.rank.icon />
@@ -224,15 +242,15 @@ export default function ARHub() {
           <button
             className={styles.iconBtn}
             onClick={() => navigate('/games/ar/insights')}
-            aria-label="Progress"
-            title="Progress and analysis"
+            aria-label={t('ar.hub.progress', 'Progress')}
+            title={t('ar.hub.progressTitle', 'Progress and analysis')}
           >
             <FaChartLine />
           </button>
           <button
             className={styles.iconBtn}
             onClick={() => setShowSettings(true)}
-            aria-label="Settings"
+            aria-label={t('ar.hub.settingsLabel', 'Settings')}
           >
             <FaCog />
           </button>
@@ -245,8 +263,8 @@ export default function ARHub() {
           <button className={styles.calloutBtn} onClick={() => open('setup-space')}>
             <span className={styles.calloutIcon}>🎯</span>
             <span className={styles.calloutText}>
-              <strong>Start here — Set Up My Space</strong>
-              <em>Five stretches so every game lands where this child can reach</em>
+              <strong>{t('ar.hub.setupTitle', 'Start here — Set Up My Space')}</strong>
+              <em>{t('ar.hub.setupSubtitle', 'Five stretches so every game lands where this child can reach')}</em>
             </span>
             <FaChevronRight />
           </button>
@@ -259,29 +277,40 @@ export default function ARHub() {
             <span className={styles.calloutText}>
               <strong>{recommended.reason}</strong>
               <em>
-                {recommended.game.title}
-                {recommended.level ? ` · Level ${recommended.level} of ${LEVELS}` : ''}
+                {tGame(recommended.game.id, 'title', recommended.game.title)}
+                {recommended.level ? ` · ${t('ar.hub.levelOf', 'Level {{n}} of {{total}}', { n: recommended.level, total: LEVELS })}` : ''}
               </em>
             </span>
             <span className={styles.calloutGo}>
-              <FaPlay /> Play
+              <FaPlay /> {t('ar.hub.calloutPlay', 'Play')}
             </span>
           </button>
         ) : null}
       </div>
 
       {/* ── the trail of groups, each a ring of how far along it is ── */}
-      <nav className={styles.groups} aria-label="Game groups">
+      <nav className={styles.groups} aria-label={t('ar.hub.groupsAriaLabel', 'Game groups')}>
         {GROUPS.map((gr) => {
           const st = journey.byGroup[gr.id]
           const pct = st?.possible ? Math.round((st.levels / st.possible) * 100) : 0
           const done = Boolean(st?.possible && st.levels >= st.possible)
+          const grTitle = tGroup(gr.id, 'title', gr.title)
+          const grBlurb = tGroup(gr.id, 'blurb', gr.blurb)
           return (
             <button
               key={gr.id}
               className={`${styles.groupPill} ${styles[gr.color]} ${gr.id === group.id ? styles.groupOn : ''}`}
               onClick={() => chooseGroup(gr.id)}
-              title={`${gr.title} — ${gr.blurb}${st ? ` · ${st.levels} of ${st.possible} levels` : ''}`}
+              title={
+                st
+                  ? t('ar.hub.groupTooltipWithStats', '{{title}} — {{blurb}} · {{levels}} of {{possible}} levels', {
+                      title: grTitle,
+                      blurb: grBlurb,
+                      levels: st.levels,
+                      possible: st.possible,
+                    })
+                  : t('ar.hub.groupTooltip', '{{title}} — {{blurb}}', { title: grTitle, blurb: grBlurb })
+              }
               aria-current={gr.id === group.id ? 'true' : undefined}
             >
               <span className={styles.ring} style={{ '--p': pct }}>
@@ -294,7 +323,7 @@ export default function ARHub() {
                   </span>
                 )}
               </span>
-              <span className={styles.groupName}>{gr.short}</span>
+              <span className={styles.groupName}>{tGroup(gr.id, 'short', gr.short)}</span>
             </button>
           )
         })}
@@ -307,7 +336,7 @@ export default function ARHub() {
             className={`${styles.pageBtn} ${styles.pagePrev}`}
             onClick={() => setPage((p) => Math.max(0, p - 1))}
             disabled={page === 0}
-            aria-label="Previous page"
+            aria-label={t('ar.hub.previousPage', 'Previous page')}
           >
             <FaChevronLeft />
           </button>
@@ -333,7 +362,7 @@ export default function ARHub() {
             className={`${styles.pageBtn} ${styles.pageNext}`}
             onClick={() => setPage((p) => Math.min(pages - 1, p + 1))}
             disabled={page >= pages - 1}
-            aria-label="Next page"
+            aria-label={t('ar.hub.nextPage', 'Next page')}
           >
             <FaChevronRight />
           </button>
@@ -348,22 +377,24 @@ export default function ARHub() {
                 key={i}
                 className={`${styles.dot} ${i === page ? styles.dotOn : ''}`}
                 onClick={() => setPage(i)}
-                aria-label={`Page ${i + 1}`}
+                aria-label={t('ar.hub.pageLabel', 'Page {{n}}', { n: i + 1 })}
               />
             ))}
           </div>
         ) : (
           <span className={styles.footCount}>
-            {games.length} game{games.length === 1 ? '' : 's'}
+            {games.length === 1
+              ? t('ar.hub.footCountSingular', '{{count}} game', { count: games.length })
+              : t('ar.hub.footCountPlural', '{{count}} games', { count: games.length })}
           </span>
         )}
         <span className={styles.footNote}>
-          <FaCamera /> Runs on this device · no video is recorded
+          <FaCamera /> {t('ar.hub.footRunsOnDevice', 'Runs on this device · no video is recorded')}
         </span>
         <span className={styles.footTotal}>
           {journey.levelsCleared > 0
-            ? `${journey.levelsCleared} levels cleared`
-            : `${GAMES.length} games in all`}
+            ? t('ar.hub.footLevelsCleared', '{{count}} levels cleared', { count: journey.levelsCleared })
+            : t('ar.hub.footGamesInAll', '{{count}} games in all', { count: GAMES.length })}
         </span>
       </footer>
 
@@ -384,11 +415,15 @@ export default function ARHub() {
  * inside a button is invalid, and browsers resolve the click unpredictably.
  */
 function GameTile({ game, index, onOpen }) {
+  const { t } = useTranslation()
   const journeyOn = hasJourney(game)
   const p = journeyOn ? tileProgress(game) : null
-  const domains = (game.domains || []).slice(0, 2).map((d) => DOMAIN_LABELS[d] || d)
+  const domains = (game.domains || []).slice(0, 2).map((d) => tDomain(d, DOMAIN_LABELS[d] || d))
   const meta = p ? LEVEL_META[p.level - 1] : null
   const MetaIcon = meta?.icon
+  const title = tGame(game.id, 'title', game.title)
+  const how = tGame(game.id, 'how', game.how)
+  const lifeSkillLabel = game.lifeSkill ? tLifeSkill(game.lifeSkill, LIFE_SKILL_LABELS[game.lifeSkill]) : null
 
   return (
     <FramerMotion.motion.div
@@ -405,8 +440,13 @@ function GameTile({ game, index, onOpen }) {
         onClick={() => onOpen(game.id, p?.level)}
         title={
           journeyOn
-            ? `${game.title} — level ${p.level} of ${LEVELS}: ${levelChange(game, p.level)}`
-            : game.how
+            ? t('ar.hub.readOutTitle', '{{title}} — level {{level}} of {{total}}: {{change}}', {
+                title,
+                level: p.level,
+                total: LEVELS,
+                change: levelChange(game, p.level),
+              })
+            : how
         }
       >
         <span className={styles.tileTop}>
@@ -414,20 +454,20 @@ function GameTile({ game, index, onOpen }) {
             <game.icon />
           </span>
           {p?.complete ? (
-            <span className={styles.doneFlag} title="All five levels cleared">
+            <span className={styles.doneFlag} title={t('ar.hub.allFiveCleared', 'All five levels cleared')}>
               <FaTrophy />
             </span>
           ) : p?.plays ? (
-            <span className={styles.levelFlag} title={`Level ${p.level} of ${LEVELS}`}>
+            <span className={styles.levelFlag} title={t('ar.hub.levelOf', 'Level {{n}} of {{total}}', { n: p.level, total: LEVELS })}>
               <MetaIcon /> L{p.level}
             </span>
           ) : (
-            <span className={styles.newBadge}>New</span>
+            <span className={styles.newBadge}>{t('ar.hub.newBadge', 'New')}</span>
           )}
         </span>
 
-        <span className={styles.tileTitle}>{game.title}</span>
-        <span className={styles.tileHow}>{game.how}</span>
+        <span className={styles.tileTitle}>{title}</span>
+        <span className={styles.tileHow}>{how}</span>
 
         <span className={styles.tileMeta}>
           {domains.map((d) => (
@@ -435,7 +475,7 @@ function GameTile({ game, index, onOpen }) {
               {d}
             </span>
           ))}
-          {game.lifeSkillLabel && <span className={styles.life}>{game.lifeSkillLabel}</span>}
+          {lifeSkillLabel && <span className={styles.life}>{lifeSkillLabel}</span>}
         </span>
       </button>
 
@@ -443,13 +483,13 @@ function GameTile({ game, index, onOpen }) {
         {journeyOn ? (
           <LevelPips pips={p.pips} size="sm" onPick={(n) => onOpen(game.id, n)} />
         ) : (
-          <span className={styles.setupNote}>Set-up · no levels</span>
+          <span className={styles.setupNote}>{t('ar.hub.setupNote', 'Set-up · no levels')}</span>
         )}
         <button
           className={styles.speakBtn}
-          onClick={() => speak(`${game.title}. ${game.how}`)}
-          aria-label={`Read out ${game.title}`}
-          title="Read this out"
+          onClick={() => speak(`${title}. ${how}`)}
+          aria-label={t('ar.hub.readOutAriaLabel', 'Read out {{title}}', { title })}
+          title={t('ar.hub.readThisOut', 'Read this out')}
         >
           <FaVolumeUp />
         </button>
@@ -480,7 +520,7 @@ function pickRecommended() {
   })
   if (inProgress.length) {
     const g = inProgress[inProgress.length - 1]
-    return { game: g, level: levelOf(g.id), reason: 'Carry on your journey' }
+    return { game: g, level: levelOf(g.id), reason: tRecommend('carryOn', 'Carry on your journey') }
   }
 
   // 2. The weakest capability estimate with at least a little evidence, matched
@@ -494,19 +534,21 @@ function pickRecommended() {
       return {
         game: candidate,
         level: levelOf(candidate.id),
-        reason: `Practising ${(DOMAIN_LABELS[domain] || domain).toLowerCase()}`,
+        reason: tRecommend('practising', 'Practising {{domain}}', {
+          domain: tDomain(domain, DOMAIN_LABELS[domain] || domain).toLowerCase(),
+        }),
       }
     }
   }
 
   // 3. Nothing played yet — start with something that always works.
   const unplayed = GAMES.filter((g) => g.featured && !played(g.id))
-  if (unplayed.length) return { game: unplayed[0], level: 1, reason: 'Try something new' }
+  if (unplayed.length) return { game: unplayed[0], level: 1, reason: tRecommend('tryNew', 'Try something new') }
 
   // 4. Every journey finished. Offer the hardest level of a favourite rather
   //    than nothing at all.
   const most = GAMES.filter((g) => played(g.id)).sort(
     (a, b) => (played(b.id).plays || 0) - (played(a.id).plays || 0)
   )[0]
-  return most ? { game: most, level: LEVELS, reason: 'Play a champion level' } : null
+  return most ? { game: most, level: LEVELS, reason: tRecommend('champion', 'Play a champion level') } : null
 }

@@ -40,7 +40,7 @@
     "enterWorld": "Ga de wereld in"
   },
   "login": {
-    "joinTitle": "Doe mee met Learningo!",
+    "joinTitle": "Doe mee met Learnigo!",
     "welcomeBack": "Welkom terug!",
     "createAccountSubtitle": "Maak een account aan om te beginnen met leren",
     "continueJourneySubtitle": "Log in om je reis voort te zetten",
@@ -332,7 +332,7 @@
     "playAgain": "Opnieuw spelen"
   },
   "roleSelect": {
-    "welcomeTitle": "Welkom bij Learningo",
+    "welcomeTitle": "Welkom bij Learnigo",
     "welcomeSubtitle": "Kies hoe je wilt inloggen",
     "signInAs": "Inloggen als...",
     "roles": {
@@ -347,8 +347,8 @@
   "aboutUs": {
     "badge": "Ons verhaal",
     "heroTitle": "Leren, opnieuw uitgevonden voor elk soort brein",
-    "heroSubtitle": "Learningo is een spelgericht leerplatform gemaakt voor kinderen met dyslexie en neurodivergentie — waar lezen, schrijven en spreken aanvoelen als een avontuur, niet als een strijd.",
-    "paragraph": "Wij geloven dat elk kind anders leert, en dat dat verschil iets is om te vieren, niet om te verbeteren. Learningo verandert lessen in korte, aanmoedigende rondes met audio-ondersteuning, speelse visuals en direct positieve feedback — zodat kinderen stap voor stap echt vertrouwen opbouwen.",
+    "heroSubtitle": "Learnigo is een spelgericht leerplatform gemaakt voor kinderen met dyslexie en neurodivergentie — waar lezen, schrijven en spreken aanvoelen als een avontuur, niet als een strijd.",
+    "paragraph": "Wij geloven dat elk kind anders leert, en dat dat verschil iets is om te vieren, niet om te verbeteren. Learnigo verandert lessen in korte, aanmoedigende rondes met audio-ondersteuning, speelse visuals en direct positieve feedback — zodat kinderen stap voor stap echt vertrouwen opbouwen.",
     "worldsTitle": "Kies jouw wereld",
     "worlds": {
       "english": {
@@ -364,7 +364,7 @@
         "text": "Door nieuwsgierigheid gedreven activiteiten die ontdekken spannend maken, één experiment per keer."
       }
     },
-    "valuesTitle": "Waarom gezinnen Learningo geweldig vinden",
+    "valuesTitle": "Waarom gezinnen Learnigo geweldig vinden",
     "values": {
       "care": {
         "title": "Met zorg gemaakt",
@@ -393,7 +393,7 @@
   "contactUs": {
     "badge": "We staan klaar om te helpen",
     "heroTitle": "Laten we praten!",
-    "heroSubtitle": "Heb je een vraag, een idee, of liep je tegen iets aan? Stuur ons een bericht en het Learningo-team neemt snel contact met je op.",
+    "heroSubtitle": "Heb je een vraag, een idee, of liep je tegen iets aan? Stuur ons een bericht en het Learnigo-team neemt snel contact met je op.",
     "reassurances": {
       "support": {
         "title": "Vriendelijke ondersteuning",
@@ -432,7 +432,7 @@
     "sending": "Verzenden…",
     "sendMessage": "Bericht versturen",
     "successTitle": "Bericht verzonden!",
-    "successText": "Het Learningo-team neemt snel contact met je op.",
+    "successText": "Het Learnigo-team neemt snel contact met je op.",
     "sendAnother": "Nog een bericht versturen",
     "errors": {
       "name": "Vul je volledige naam in",
@@ -442,5 +442,1004 @@
     },
     "errorServer": "Er ging iets mis. Probeer het opnieuw.",
     "errorNetwork": "Kon de server niet bereiken. Probeer het opnieuw."
+  },
+  "ar": {
+    "common": {
+      "back": "Terug",
+      "settings": "Instellingen",
+      "closeSettings": "Instellingen sluiten",
+      "done": "Klaar",
+      "reset": "Terugzetten",
+      "keep": "Bewaren",
+      "erase": "Wissen",
+      "games": "Spellen",
+      "pause": "Pauze",
+      "play": "Spelen",
+      "tryAgain": "Opnieuw proberen",
+      "playAgain": "Nog eens spelen",
+      "progress": "Voortgang",
+      "harderArrow": "{{label}} → moeilijker",
+      "easierArrow": "{{label}} → makkelijker"
+    },
+    "hub": {
+      "title": "Camera-Spellen",
+      "back": "Terug",
+      "progress": "Voortgang",
+      "progressTitle": "Voortgang en analyse",
+      "settingsLabel": "Instellingen",
+      "pointsTitle": "{{points}} punten · {{rank}}",
+      "pointsTitleWithNext": "{{points}} punten · {{rank}} · {{toNext}} tot {{next}}",
+      "setupTitle": "Begin hier — Mijn Plek Instellen",
+      "setupSubtitle": "Vijf rekoefeningen zodat elk spel precies landt waar dit kind kan reiken",
+      "calloutPlay": "Spelen",
+      "levelOf": "Level {{n}} van {{total}}",
+      "groupTooltip": "{{title}} — {{blurb}}",
+      "groupTooltipWithStats": "{{title}} — {{blurb}} · {{levels}} van {{possible}} levels",
+      "footRunsOnDevice": "Werkt op dit apparaat · geen video wordt opgenomen",
+      "footCountSingular": "{{count}} spel",
+      "footCountPlural": "{{count}} spellen",
+      "footLevelsCleared": "{{count}} levels gehaald",
+      "footGamesInAll": "{{count}} spellen in totaal",
+      "pageLabel": "Pagina {{n}}",
+      "previousPage": "Vorige pagina",
+      "nextPage": "Volgende pagina",
+      "groupsAriaLabel": "Spelgroepen",
+      "newBadge": "Nieuw",
+      "setupNote": "Instellen · zonder levels",
+      "readOutTitle": "{{title}} — level {{level}} van {{total}}: {{change}}",
+      "allFiveCleared": "Alle vijf levels gehaald",
+      "readOutAriaLabel": "{{title}} voorlezen",
+      "readThisOut": "Dit voorlezen",
+      "recommend": {
+        "carryOn": "Ga door met je route",
+        "practising": "Oefent {{domain}}",
+        "tryNew": "Probeer iets nieuws",
+        "champion": "Speel een kampioensniveau"
+      }
+    },
+    "game": {
+      "notFoundTitle": "Dit spel bestaat hier niet",
+      "notFoundBody": "De link verwijst naar {{id}}, dat niet in de catalogus staat.",
+      "backToGames": "Terug naar de camera-spellen"
+    },
+    "stage": {
+      "cameraHelp": {
+        "cameraDenied": {
+          "title": "De camera is geblokkeerd",
+          "body": "Deze spellen hebben de camera nodig zodat je jezelf kunt zien en naar dingen kunt reiken. Sta cameratoegang toe in je browser en druk dan op Opnieuw proberen."
+        },
+        "cameraMissing": {
+          "title": "Geen camera gevonden",
+          "body": "We konden geen camera vinden op dit apparaat. Sluit er een aan, of open de spellen op een telefoon of tablet."
+        },
+        "cameraUnsupported": {
+          "title": "Deze browser kan de camera-spellen niet uitvoeren",
+          "body": "Open de spellen in Chrome, Edge of Safari via https. Gebruik op een telefoon de ingebouwde browser."
+        },
+        "modelFailed": {
+          "title": "Handtracking kon niet starten",
+          "body": "Het trackingmodel kon niet laden. Controleer je verbinding en druk op Opnieuw proberen."
+        }
+      },
+      "backAriaLabel": "Terug naar de spellen",
+      "settingsAriaLabel": "Instellingen",
+      "pauseAriaLabel": "Pauze",
+      "playAriaLabel": "Spelen",
+      "levelOfShort": "Level {{level}} van {{total}}",
+      "levelTag": "L{{level}}",
+      "getReady": "Maak je klaar!",
+      "showMeYourHand": "Laat me je hand zien",
+      "turningOnCamera": "Camera inschakelen en handtracking laden…",
+      "gettingReady": "Klaarmaken…",
+      "start": "Starten — camera inschakelen",
+      "privacyNote": "De camera werkt alleen op dit apparaat. Geen video wordt opgenomen, opgeslagen of ergens naartoe gestuurd.",
+      "sensoryMotorSettings": "Sensorische & motorische instellingen",
+      "tryAgain": "Opnieuw proberen",
+      "backToGames": "Terug naar de spellen",
+      "paused": "Gepauzeerd",
+      "pausedSub": "Neem alle tijd die je nodig hebt.",
+      "keepPlaying": "Doorgaan met spelen",
+      "startAgain": "Opnieuw beginnen",
+      "settings": "Instellingen",
+      "games": "Spellen",
+      "handsCountSingular": "{{count}} hand",
+      "handsCountPlural": "{{count}} handen",
+      "bodyOk": "lichaam ✓",
+      "headline": {
+        "levelCleared": "Level {{n}} gehaald!",
+        "passedAgain": "Opnieuw gehaald!",
+        "brilliant": "Fantastisch!",
+        "greatWork": "Heel goed gedaan!",
+        "goodTry": "Goede poging!"
+      },
+      "rows": {
+        "gotIdea": {
+          "label": "Het idee begrepen",
+          "hint": "correct + goed antwoord onnauwkeurig bereikt"
+        },
+        "onTheirOwn": {
+          "label": "Helemaal zelf",
+          "hint": "correct zonder enige hulp"
+        },
+        "thinkingTime": {
+          "label": "Denktijd",
+          "hint": "instructie → begon te bewegen"
+        },
+        "movingTime": {
+          "label": "Bewegingstijd",
+          "hint": "begon te bewegen → raakte aan"
+        },
+        "reachDirectness": {
+          "label": "Reiknauwkeurigheid",
+          "hint": "100% = rechtstreeks naar het doel"
+        },
+        "stoppedWhenTold": {
+          "label": "Stopte toen het werd gezegd",
+          "hint": "niet-gaan proeven volgehouden"
+        },
+        "timingSteadiness": {
+          "label": "Ritmestabiliteit",
+          "hint": "lager = gelijkmatiger"
+        }
+      },
+      "pointsWord": "punten",
+      "pointsTally": "{{total}} punten in totaal",
+      "unlockLine": "Level {{n}} is open",
+      "unlockEffortSuffix": " — bleef proberen, dus het ging open",
+      "allFiveDone": "Alle vijf levels klaar — je hebt deze route afgemaakt",
+      "forGrownUps": "Voor volwassenen",
+      "nextUpLabel": "Volgende:",
+      "workingOnSuffix": " · werkt aan {{focus}}",
+      "playLevel": "Speel level {{n}}",
+      "playAgain": "Nog eens spelen",
+      "levelAgain": "Level {{n}} nog eens",
+      "nextGame": "Volgend spel",
+      "progress": "Voortgang"
+    },
+    "settings": {
+      "dialogAriaLabel": "Instellingen van het camera-spel",
+      "title": "Spelinstellingen",
+      "closeAriaLabel": "Instellingen sluiten",
+      "tabs": {
+        "sound": "Geluid",
+        "vision": "Beeld",
+        "body": "Lichaam",
+        "help": "Hulp",
+        "data": "Gegevens"
+      },
+      "sound": {
+        "volume": "Geluid",
+        "speech": "Gesproken instructies",
+        "speechHint": "Leest elke instructie luid voor",
+        "speechTestHello": "Hallo",
+        "speechRate": "Spreeksnelheid",
+        "speechRateTest": "Raak de rode cirkel aan",
+        "instruction": "Instructies gegeven door",
+        "instructionBoth": "Stem + tekst",
+        "instructionAudio": "Alleen stem",
+        "instructionVisual": "Alleen tekst",
+        "haptics": "Trilling",
+        "hapticsHintVibrate": "Dit apparaat heeft een trilmotor",
+        "hapticsHintGamepad": "Gebruikt de verbonden controller",
+        "hapticsHintNone": "Geen motor gevonden — in plaats daarvan wordt een diepe geluidspuls gebruikt",
+        "hapticIntensity": "Trilsterkte"
+      },
+      "vision": {
+        "reducedMotion": "Rustige beelden",
+        "reducedMotionHint": "Geen deeltjes, geen pulsen, geen schermflitsen",
+        "highContrast": "Hoog contrast",
+        "highContrastHint": "Sterkere contouren en een donkerdere achtergrond achter doelen",
+        "visualClutter": "Schermdetail",
+        "visualClutterNormal": "Normaal",
+        "visualClutterMinimal": "Minimaal",
+        "captions": "Altijd tekst tonen",
+        "captionsHint": "Houdt de geschreven instructie samen met de stem op het scherm",
+        "mirrorView": "Beeld spiegelen",
+        "mirrorViewHint": "Aan = zoals een spiegel, wat bijna elk kind verwacht",
+        "showSkeleton": "Skelet tonen",
+        "showSkeletonHint": "Tekent de getrackte omtrek van hand en lichaam"
+      },
+      "body": {
+        "seated": "Zittend spelen",
+        "seatedHint": "Houdt elk doel binnen een zittend bereik",
+        "singleHand": "Te gebruiken handen",
+        "singleHandBoth": "Beide / willekeurig",
+        "singleHandLeft": "Alleen links",
+        "singleHandRight": "Alleen rechts",
+        "largeTargets": "Grote doelen",
+        "largeTargetsHint": "Maakt alles 45% groter",
+        "extraTime": "Extra tijd",
+        "extraTimeHint": "Vermenigvuldigt elk reactievenster. Snelheid is nooit het punt.",
+        "extraTimeStandard": "Standaard",
+        "dwellMs": "Aanraaktijd",
+        "dwellMsHint": "Hoe lang een vinger op een doel blijft rusten om het te kiezen. Meer tijd helpt een trillende hand.",
+        "handSwap": "Linker- / rechterhand wisselen",
+        "handSwapHintWithDate": "Bereik ingesteld op {{date}}. Zet dit aan als het spel de verkeerde hand noemt.",
+        "handSwapHintNoDate": "Zet dit aan als het spel de verkeerde hand noemt. Vraag het kind om ter controle de rechterhand op te steken."
+      },
+      "help": {
+        "promptMode": "Hulpniveau",
+        "promptModeHint": "Hoeveel hulp het spel geeft. Adaptief vermindert dit naarmate het kind zonder die hulp slaagt.",
+        "promptModeAdaptive": "Adaptief",
+        "adaptiveStageHelpTitle": "Adaptief.",
+        "adaptiveStageHelpBody": "Begint met een demonstratie en vermindert één fase na vijf van de zes juiste antwoorden zonder de hulp. Gaat één fase terug na twee fouten.",
+        "difficultyMode": "Moeilijkheid",
+        "difficultyModeHint": "Adaptief verandert één eis per keer — doelgrootte, dan aantal keuzes, dan gelijkenis van afleiders. Vast houdt één enkel niveau van de route vast.",
+        "difficultyModeAdaptive": "Adaptief",
+        "difficultyModeFixed": "Vast",
+        "fixedLevel": "Vastgezet op routelevel",
+        "fixedLevelHint": "Speelt en beoordeelt elke ronde op dit level, wat het kind ook kiest. Een geslaagde ronde wordt geregistreerd als een echte prestatie.",
+        "unlockAll": "Alle levels ontgrendelen (volwassene)",
+        "unlockAllHint": "Voor een kind dat al voorbij level 1 is, of om een level te testen. Het halen moet nog steeds verdiend worden.",
+        "stageGTitle": "Fase G — overdracht naar de echte wereld.",
+        "stageGSuffix": "Een hoge score hier is geen bewijs dat de vaardigheid is gegeneraliseerd; dat moet buiten het scherm gecontroleerd worden."
+      },
+      "data": {
+        "telemetry": "Analysegegevens opnemen",
+        "telemetryHint": "Nauwkeurigheid per poging, denktijd, bewegingstijd en reikkwaliteit. Alleen cijfers — nooit video of beeld.",
+        "showMetrics": "Live trackingcijfers tonen",
+        "showMetricsHint": "Framerate, detectietijd en cameravertraging, om een sessie op te zetten",
+        "cameraNote": "Camerabeelden worden alleen op dit apparaat verwerkt. Geen beeld wordt opgeslagen of geüpload, noch door ons, noch door iemand anders.",
+        "recordingOnSince": "Gegevensregistratie ingeschakeld op {{date}}",
+        "eraseProfile": "Het profiel en de geschiedenis van dit kind wissen",
+        "eraseConfirm": "De reikcalibratie, het vaardighedenprofiel, de levelvoortgang, de punten en elke opgeslagen ronde wissen?",
+        "erase": "Wissen",
+        "keep": "Bewaren"
+      },
+      "resetTitle": "Terug naar de standaardinstellingen",
+      "reset": "Terugzetten",
+      "footNoteInGame": "Wijzigingen gelden vanaf de volgende beurt",
+      "footNoteSaved": "Opgeslagen op dit apparaat",
+      "done": "Klaar"
+    },
+    "levelPips": {
+      "chooseLevel": "Kies een level",
+      "levelProgress": "Levelvoortgang",
+      "levelUnlocked": "Level {{n}} — {{name}}",
+      "clearedSuffix": " · gehaald",
+      "levelLocked": "Level {{n}} — gaat open als level {{prev}} gehaald is"
+    },
+    "insights": {
+      "title": "Voortgang en analyse",
+      "dashboardAriaLabel": "Leerdashboard",
+      "dashboardTitle": "Het volledige leerdashboard van dit kind, met een samenvatting van dit rapport gekoppeld",
+      "refreshAriaLabel": "Vernieuwen",
+      "exportAriaLabel": "Exporteren",
+      "exportTitle": "De gegevens per poging downloaden als CSV",
+      "backAriaLabel": "Terug",
+      "empty": {
+        "title": "Nog niets opgenomen",
+        "body": "Speel een camera-spel en elke beurt wordt hier gemeten — wat begrepen werd, hoeveel hulp nodig was, hoelang het denken duurde en hoelang het bewegen, elk apart gehouden.",
+        "cta": "Naar de spellen"
+      },
+      "kpis": {
+        "gotIdea": {
+          "label": "Het idee begrepen",
+          "hint": "Correct, plus goed antwoord onnauwkeurig of laat bereikt. Dit is het begripscijfer."
+        },
+        "onTheirOwn": {
+          "label": "Helemaal zelf",
+          "hint": "Correct zonder markering en zonder demonstratie. Het zelfstandigheidscijfer."
+        },
+        "thinkingTime": {
+          "label": "Denktijd",
+          "hint": "Mediane tijd van de instructie tot de eerste bedoelde beweging. Een beslissingsmaat, geen motorische."
+        },
+        "movingTime": {
+          "label": "Bewegingstijd",
+          "hint": "Mediane tijd vanaf het begin van de beweging tot het aanraken van het doel. Een motorische maat, volledig los van de nauwkeurigheid."
+        },
+        "reachDirectness": {
+          "label": "Reiknauwkeurigheid",
+          "hint": "Afstand in rechte lijn ÷ het pad dat de hand daadwerkelijk aflegde. 100% is perfect rechtstreeks."
+        },
+        "turnsPlayed": {
+          "label": "Gespeelde beurten",
+          "hintSingular": "{{sessions}} ronde · {{minutes}} min",
+          "hintPlural": "{{sessions}} rondes · {{minutes}} min"
+        }
+      },
+      "tabs": {
+        "journey": "Route",
+        "overview": "Overzicht",
+        "domains": "Vaardigheden",
+        "motor": "Beweging",
+        "life": "Leven"
+      },
+      "noRounds": {
+        "title": "Geen rondes opgenomen",
+        "note": "De route hierboven is intact.",
+        "body": "De gegevens per poging zijn gewist, dus er is hier niets te analyseren. Levels en punten worden apart opgeslagen en staan nog op het tabblad Route. Speel een ronde en deze tabbladen vullen zich weer."
+      },
+      "journeyTab": {
+        "whereTheyAre": {
+          "title": "Waar ze staan",
+          "note": "Gehaalde levels per groep. De groep waarin het kind vooruitgang boekt, is het ontwikkelingsgebied waaraan het echt werkt, wat nuttiger is dan een totaal."
+        },
+        "stats": {
+          "levelsCleared": "levels gehaald",
+          "gamesPlayed": "spellen gespeeld",
+          "daysPlayed": "dagen gespeeld",
+          "points": "punten",
+          "rank": "rang"
+        },
+        "chartTooltip": "{{levels}} van {{possible}} levels · {{played}}/{{games}} spellen geprobeerd",
+        "noJourneys": "Nog geen route begonnen.",
+        "levelPerGame": {
+          "title": "Bereikt level, per spel",
+          "noteStuckSingular": "{{count}} spel meerdere keren gespeeld zonder iets te halen — eerst weergegeven. Dat level vraagt iets dat dit kind nog niet kan.",
+          "noteStuckPlural": "{{count}} spellen meerdere keren gespeeld zonder iets te halen — eerst weergegeven. Die levels vragen iets dat dit kind nog niet kan.",
+          "noteOk": "Gespeelde spellen, de meest vooruitgeschreven eerst. Een spel dat herhaaldelijk gespeeld wordt zonder iets te halen zou boven verschijnen."
+        },
+        "stuckIconTitle": "Meerdere keren gespeeld, niets gehaald",
+        "noLevels": "geen levels",
+        "levelsClearedTitle": "Levels gehaald",
+        "roundsPlayedTitle": "Rondes gespeeld",
+        "playedSuffix": "gespeeld",
+        "noGamesPlayed": "Nog geen spel gespeeld.",
+        "serverRowNote": "{{count}} spellen met routegegevens op de server, op alle apparaten van dit kind",
+        "howEarned": {
+          "title": "Hoe deze voortgang is behaald",
+          "note": "Drie verschillende claims, bewust niet bij elkaar opgeteld.",
+          "demonstrated": {
+            "name": "Aangetoond",
+            "text": "Het kind heeft de begripsgrens van het level gehaald. Dit is bewijs."
+          },
+          "effort": {
+            "name": "Toegekend voor doorzettingsvermogen",
+            "text": "Drie pogingen die dicht bij de grens kwamen. Het level ging toch open, zodat één slecht afgestemd level het gebruik van de app door een kind niet kan beëindigen — maar het is geen bewijs dat het de grens heeft gehaald."
+          },
+          "implied": {
+            "name": "Afgeleid",
+            "text": "Toegekend omdat een moeilijker level is gehaald, en elk level minstens zo veeleisend is als het level ervoor. Nooit direct waargenomen."
+          },
+          "remote": {
+            "name": "Herstelt van een ander apparaat",
+            "tooltip": "Herstelt van het andere apparaat van dit kind. De gegevens tonen welke levels zijn gehaald, maar niet hoe, dus dit apparaat heeft daarvoor geen bewijs.",
+            "text": "Kwam van de server, die registreert welke levels zijn gehaald, maar niet hoe. Geen bewijs op dit apparaat."
+          },
+          "footer": "Geen van deze drie is bewijs van overdracht naar de echte wereld. Een gehaald level betekent dat het kind de taak op een scherm heeft gedaan."
+        }
+      },
+      "overviewTab": {
+        "trend": {
+          "title": "Begrip en zelfstandigheid over tijd",
+          "note": "Twee lijnen, omdat ze apart bewegen. Een kind kan meer begrijpen terwijl het nog steeds evenveel hulp nodig heeft."
+        },
+        "understood": "Begrepen",
+        "independent": "Zelfstandig",
+        "trendPlaceholder": "Speel op een tweede dag om hier een trend te zien.",
+        "promptMix": {
+          "title": "Hoeveel hulp nodig was",
+          "note": "Aandeel van beurten in elke hulpfase. Verminderen van A naar D is het doel; fase G wordt buiten het scherm door een volwassene gecontroleerd en kan nooit door het spel worden toegekend."
+        },
+        "turns": "Beurten",
+        "promptPlaceholder": "Nog geen hulpgegevens.",
+        "gamesPlayed": {
+          "title": "Gespeelde spellen",
+          "note": "Nauwkeurigheid en zelfstandigheid per spel, meest gespeelde eerst."
+        },
+        "understoodTitle": "Begrepen",
+        "independentTitle": "Zelfstandig",
+        "medianThinkingTitle": "Mediane denktijd",
+        "serverRowNote": "{{count}} spellen op de server geregistreerd op alle apparaten"
+      },
+      "domainsTab": {
+        "profile": {
+          "title": "Vaardighedenprofiel",
+          "note": "Een lopende schatting per functioneel domein, alleen uit gedrag in het spel. Domeinen met minder dan drie beurten zijn verborgen omdat de schatting ruis zou zijn."
+        },
+        "estimate": "Schatting",
+        "profilePlaceholder": "Speel nog een paar spellen — minstens drie domeinen hebben gegevens nodig voordat een profiel zin heeft.",
+        "weakest": {
+          "title": "De zwakste eerst",
+          "note": "Nauwkeurigheid bij beurten gemarkeerd met elk domein. De laagste balken zijn waar de volgende sessie het meest de moeite waard is."
+        },
+        "accuracy": "Nauwkeurigheid",
+        "accuracyTooltip": "{{pct}}% van {{trials}} beurten",
+        "weakestPlaceholder": "Nog geen domeingegevens.",
+        "promptPerGame": {
+          "title": "Hulpfase per spel",
+          "note": "Waar het kind momenteel staat op de hulpladder in elke activiteit."
+        }
+      },
+      "motorTab": {
+        "leftHand": "Linkerhand",
+        "rightHand": "Rechterhand",
+        "leftRight": {
+          "title": "Links en rechts",
+          "note": "Dezelfde taak, elke hand. Een consistent verschil in nauwkeurigheid of richting verdient de aandacht van een volwassene; een verschil alleen in snelheid vaak niet."
+        },
+        "accuracyTitle": "Nauwkeurigheid",
+        "medianThinkingTitle": "Mediane denktijd",
+        "reachDirectnessTitle": "Reiknauwkeurigheid",
+        "turnsCountSingular": "{{count}} beurt",
+        "turnsCountPlural": "{{count}} beurten",
+        "dominantHandNote": "Spontaan voorkeurshand: {{hand}} ({{left}} linkse / {{right}} rechtse grepen)",
+        "leftRightPlaceholder": "Nog geen gegevens per hand.",
+        "rhythm": {
+          "title": "Ritme en timing",
+          "note": "Stabiliteit is de standaardafwijking van de timingfout en is het cijfer dat telt — een constante afwijking is slechts een afwijking, en een deel ervan is de cameravertraging, die elke sessie wordt gemeten en afgetrokken."
+        },
+        "steadiness": "Stabiliteit",
+        "offset": "Afwijking",
+        "rhythmPlaceholder": "Speel een paar keer Ritme-Bereik om hier de timing te zien.",
+        "reachEnvelope": {
+          "title": "Reikgebied",
+          "note": "De gecalibreerde speelruimte waarin elk spel zijn doelen plaatst."
+        },
+        "width": "Breedte",
+        "height": "Hoogte",
+        "leftRightDifference": "Verschil links/rechts",
+        "setDate": "Ingesteld op {{date}}",
+        "ofFrame": "van het beeld",
+        "reachPlaceholderPrefix": "Niet gecalibreerd. Voer",
+        "reachPlaceholderSuffix": "uit — tot die tijd gebruiken doelen een generiek gebied en zal een beperkt bereik eruitzien als slechte nauwkeurigheid."
+      },
+      "lifeTab": {
+        "practised": {
+          "title": "Geoefende levensvaardigheden",
+          "note": "Gegroepeerd naar de praktische vaardigheid waarnaar elk spel overdraagt, niet naar het spel."
+        },
+        "alonePct": "{{pct}}% alleen",
+        "roundsSingular": "{{count}} ronde",
+        "roundsPlural": "{{count}} rondes",
+        "practisedPlaceholder": "Nog geen levensvaardigheden-spel gespeeld.",
+        "routine": {
+          "title": "Routinestappen zonder hulp gedaan",
+          "note": "Voor volgordespellen zoals handen wassen: hoeveel stappen gingen zonder herinnering in de juiste volgorde. 3/7 → 5/7 → 6/7 is hoe echte voortgang eruitziet."
+        },
+        "routinePlaceholder": "Speel een routinespel (wassen, aankleden, de straat oversteken) om dit te zien.",
+        "transfer": {
+          "title": "Overdracht naar de echte wereld",
+          "note": "De fase die het spel niet kan toekennen."
+        },
+        "transferP1Bold": "Fase G wordt gecontroleerd door een persoon, buiten het scherm.",
+        "transferP1Rest": "Een kind dat de tandenborstel uit vijf plaatjes kan kiezen, heeft nog niet laten zien dat het de echte tandenborstel in de echte badkamer kan pakken.",
+        "transferP2": "Gebruik de routinescores hierboven om te beslissen wanneer het de moeite waard is een vaardigheid echt uit te proberen, en noteer dan wat er gebeurde in je eigen notities — deze app beweert bewust niet dat te hebben gemeten."
+      },
+      "footer": {
+        "disclaimer": "Dit zijn beschrijvingen van wat er in de spellen gebeurde, geen klinische metingen. Een hoge score is geen bewijs dat een vaardigheid overdraagt buiten het scherm — dat moet in het echte leven gecontroleerd worden.",
+        "erase": "Wissen",
+        "confirmText": "Alle opgenomen rondes wissen?",
+        "confirmYes": "Ja, wissen",
+        "confirmKeep": "Bewaren"
+      }
+    },
+    "groups": {
+      "body": {
+        "title": "Lichaam en Bereik",
+        "short": "Lichaam",
+        "blurb": "Reiken, richten, twee handen gebruiken, het midden kruisen"
+      },
+      "look": {
+        "title": "Kijken en Vinden",
+        "short": "Kijken",
+        "blurb": "Het juiste vinden, luisteren, lezen, ruimtewoorden"
+      },
+      "stop": {
+        "title": "Stoppen en Denken",
+        "short": "Stoppen",
+        "blurb": "Wachten, bevriezen, afleidingen negeren, regels veranderen"
+      },
+      "remember": {
+        "title": "Onthouden",
+        "short": "Geheugen",
+        "blurb": "Dingen in gedachten houden, een volgorde kopiëren, ontbrekende items"
+      },
+      "learn": {
+        "title": "Letters en Cijfers",
+        "short": "ABC 123",
+        "blurb": "Klanken, spelling, schrijven, tellen, geld"
+      },
+      "move": {
+        "title": "Bewegen en Kopiëren",
+        "short": "Bewegen",
+        "blurb": "Ritme, imitatie, natrekken, tekenen in de lucht"
+      },
+      "day": {
+        "title": "Mijn Dag",
+        "short": "Mijn Dag",
+        "blurb": "Wassen, aankleden, inpakken, opruimen, veilig blijven"
+      },
+      "together": {
+        "title": "Praten en Samen",
+        "short": "Samen",
+        "blurb": "Instructies volgen, gevoelens, om hulp vragen"
+      }
+    },
+    "domains": {
+      "visualDiscrimination": "Visuele aandacht",
+      "auditoryComprehension": "Luisteren",
+      "readingSymbol": "Lezen",
+      "reactionSpeed": "Reactie",
+      "reachAccuracy": "Reiken",
+      "sustainedAttention": "Aandacht",
+      "workingMemory": "Werkgeheugen",
+      "sequencing": "Volgordes",
+      "inhibition": "Stoppen & wachten",
+      "cognitiveFlexibility": "Regels veranderen",
+      "bilateralCoordination": "Beide handen",
+      "motorPlanning": "Motorische planning",
+      "spatialConcepts": "Ruimtewoorden",
+      "socialReasoning": "Sociaal denken",
+      "independence": "Zelfstandigheid"
+    },
+    "lifeSkills": {
+      "hygiene": "Hygiëne",
+      "dressing": "Aankleden",
+      "school": "Schoolvoorbereiding",
+      "kitchen": "Keuken",
+      "shopping": "Boodschappen",
+      "money": "Geld",
+      "roadSafety": "Verkeersveiligheid",
+      "homeSafety": "Veiligheid thuis",
+      "chores": "Huishoudelijke klusjes",
+      "routines": "Dagelijkse routine",
+      "communication": "Communicatie",
+      "help": "Om hulp vragen",
+      "socialPlay": "Sociaal spelen",
+      "literacy": "Vroege geletterdheid",
+      "numeracy": "Gecijferdheid",
+      "navigation": "Je weg vinden",
+      "selfRegulation": "Zelfregulatie",
+      "bodyAwareness": "Lichaamsbewustzijn",
+      "instructions": "Instructies volgen",
+      "independence": "Zelfstandigheid"
+    },
+    "levels": {
+      "1": "Eerste Stappen",
+      "2": "Opwarmen",
+      "3": "Wordt Beter",
+      "4": "Sterk",
+      "5": "Kampioen"
+    },
+    "ranks": {
+      "explorer": "Ontdekker",
+      "pathfinder": "Padvinder",
+      "trailblazer": "Pionier",
+      "skyWalker": "Hemelwandelaar",
+      "starRider": "Sterrenruiter",
+      "legend": "Legende",
+      "grandChampion": "Grote Kampioen"
+    },
+    "badges": {
+      "first-game": {
+        "name": "Begonnen",
+        "how": "Speelde zijn eerste camera-spel"
+      },
+      "space-set": {
+        "name": "Mijn Plek",
+        "how": "Heeft zijn bereik ingesteld"
+      },
+      "five-days": {
+        "name": "Doorgegaan",
+        "how": "Speelde op vijf verschillende dagen"
+      },
+      "level-3": {
+        "name": "Halverwege",
+        "how": "Haalde drie levels van een spel"
+      },
+      "all-five": {
+        "name": "Hele Route",
+        "how": "Haalde alle vijf levels van een spel"
+      },
+      "ten-games": {
+        "name": "Ontdekker",
+        "how": "Probeerde tien verschillende spellen"
+      },
+      "every-group": {
+        "name": "Van Alles Wat",
+        "how": "Speelde een spel uit elke groep"
+      },
+      "both-hands": {
+        "name": "Twee Handen",
+        "how": "Gebruikte beide handen flink"
+      },
+      "on-my-own": {
+        "name": "Helemaal Zelf",
+        "how": "Antwoordde zonder hulp in een spel"
+      },
+      "whole-day": {
+        "name": "Hele Dag",
+        "how": "Maakte een hele-dag-missie af"
+      }
+    },
+    "promptStages": {
+      "A": {
+        "name": "Demonstratie",
+        "help": "Het antwoord pulseert en een geanimeerde hand toont de beweging."
+      },
+      "B": {
+        "name": "Begeleide oefening",
+        "help": "Gesproken instructie plus een markering op het antwoord. Geen demonstratie."
+      },
+      "C": {
+        "name": "Verminderde hulp",
+        "help": "Gesproken instructie; het antwoord wordt alleen kort in het begin gemarkeerd."
+      },
+      "D": {
+        "name": "Zelfstandig",
+        "help": "Alleen instructie. Geen markering."
+      },
+      "E": {
+        "name": "Met afleiders",
+        "help": "Zelfstandig, met sterk verwante foute antwoorden op het scherm."
+      },
+      "F": {
+        "name": "Realistische context",
+        "help": "De instructie is een situatie, geen label: \"het is bedtijd — wat heb je nodig?\""
+      },
+      "G": {
+        "name": "Overdracht naar de echte wereld",
+        "help": "Gecontroleerd door een volwassene buiten het scherm. Het spel kent dit nooit toe."
+      }
+    },
+    "dimensions": {
+      "targetSize": "Doelgrootte",
+      "choices": "Aantal keuzes",
+      "distractors": "Gelijkenis van afleiders",
+      "eccentricity": "Reikafstand",
+      "steps": "Instructiestappen",
+      "memorySpan": "Geheugenspanne",
+      "showMs": "Weergavetijd",
+      "window": "Reactievenster",
+      "ruleSwitch": "Regelwissel",
+      "hands": "Handvereiste",
+      "midline": "Midlijn kruisen",
+      "pace": "Tempo",
+      "noGoRate": "Niet-gaan-frequentie",
+      "tolerance": "Padtolerantie",
+      "holdMs": "Vasthoudduur"
+    },
+    "levelChange": {
+      "first": "Alles groot, langzaam en met hulp",
+      "none": "Iets meer oefening hierin",
+      "moreSuffix": " · en meer",
+      "harderWords": {
+        "targetSize": "kleinere doelen",
+        "choices": "meer keuzes",
+        "distractors": "lastigere foute antwoorden",
+        "eccentricity": "verder reiken",
+        "steps": "meer stappen om te onthouden",
+        "memorySpan": "meer om te onthouden",
+        "showMs": "een kortere blik",
+        "window": "minder wachttijd",
+        "ruleSwitch": "de regel verandert",
+        "hands": "beide handen",
+        "midline": "naar de andere kant reiken",
+        "pace": "een sneller tempo",
+        "noGoRate": "vaker stoppen",
+        "tolerance": "een smaller pad",
+        "holdMs": "langer vasthouden"
+      }
+    },
+    "points": {
+      "playedSingular": "{{count}} beurt gespeeld",
+      "playedPlural": "{{count}} beurten gespeeld",
+      "gotItRight": "Goed geraden",
+      "levelBonus": "Level {{n}}-bonus",
+      "bestYet": "Je beste tot nu toe!",
+      "levelClearedRow": "Level gehaald",
+      "levelPassedAgain": "Level opnieuw gehaald",
+      "firstGameToday": "Eerste spel vandaag"
+    },
+    "advice": {
+      "moreTurns": "Speel nog een paar beurten om dit level af te maken",
+      "getBar": "Haal {{bar}}% van de beurten goed om het volgende level te openen"
+    },
+    "games": {
+      "setup-space": {
+        "title": "Mijn Plek Instellen",
+        "how": "Vijf eenvoudige rekoefeningen zodat elk spel precies landt waar je kunt reiken. Doe dit eerst één keer."
+      },
+      "ball-pop": {
+        "title": "Ballon Prikken",
+        "how": "Ballonnen verschijnen binnen je bereik — prik elke voordat die wegdrijft."
+      },
+      "number-hunt": {
+        "title": "Cijferjacht met het Hele Lichaam",
+        "how": "Cijfers verschijnen hoog, laag, links en rechts. Gebruik je hele lichaam om ze te bereiken."
+      },
+      "two-hand-catch": {
+        "title": "Vangen met Twee Handen",
+        "how": "Twee vormen, een voor elke hand. Raak ze allebei op hetzelfde moment aan."
+      },
+      "cross-the-middle": {
+        "title": "Steek het Midden Over",
+        "how": "Je linkerhand haalt dingen aan de rechterkant, en omgekeerd."
+      },
+      "left-or-right": {
+        "title": "Links of Rechts?",
+        "how": "\"Raak het aan met je LINKERHAND.\" Weten welke welke is."
+      },
+      "reach-near-far": {
+        "title": "Reik Dichtbij en Ver",
+        "how": "Sommige dingen zijn dichtbij, andere precies aan de rand van je bereik."
+      },
+      "find-touch-colour": {
+        "title": "Vind en Raak Aan",
+        "how": "\"Raak de blauwe aan.\" Eerst kleuren, dan vormen en cijfers."
+      },
+      "find-shape": {
+        "title": "Vind de Vorm",
+        "how": "\"Raak de driehoek aan.\" Tien vormen, sommige makkelijk te verwarren."
+      },
+      "read-and-find": {
+        "title": "Lees en Vind",
+        "how": "Het woord CIRKEL verschijnt. Raak de cirkel aan. Niets wordt voorgelezen."
+      },
+      "listen-and-find": {
+        "title": "Luister en Vind",
+        "how": "Een stem zegt het woord. Niets staat geschreven. Vind wat je hoort."
+      },
+      "search-the-room": {
+        "title": "Zoek in de Kamer",
+        "how": "Één goed antwoord verborgen tussen veel zeer vergelijkbare dingen."
+      },
+      "big-or-small": {
+        "title": "Groot of Klein?",
+        "how": "Groter, kleiner, meer, minder — de vergelijkingswoorden."
+      },
+      "above-or-below": {
+        "title": "Boven of Onder?",
+        "how": "\"Raak de kat boven de doos aan.\" Ruimtewoorden, in de ruimte."
+      },
+      "which-animal": {
+        "title": "Welke Groep?",
+        "how": "\"Raak het boerderijdier aan.\" De wereld indelen in soorten."
+      },
+      "go-no-go-animals": {
+        "title": "Alleen Huisdieren!",
+        "how": "Raak de huisdieren aan. Laat de wilde dieren helemaal met rust."
+      },
+      "rule-switch": {
+        "title": "Regelwissel",
+        "how": "Raak de dieren aan… dan verandert de regel plotseling naar voertuigen."
+      },
+      "safe-or-not": {
+        "title": "Veilige Handen",
+        "how": "Raak aan wat veilig is om vast te houden. Raak nooit aan wat dat niet is."
+      },
+      "red-light-green-light": {
+        "title": "Rood Licht, Groen Licht",
+        "how": "Beweeg als het groen is. Bevries helemaal als het rood wordt."
+      },
+      "traffic-light-body": {
+        "title": "Verkeerslichtspel",
+        "how": "Groen lopen, oranje klaarmaken, rood bevriezen — zoals een echte oversteekplaats."
+      },
+      "wait-for-it": {
+        "title": "Wacht Erop",
+        "how": "De ster is daar — maar raak hem niet aan tot hij groen wordt."
+      },
+      "calm-movement": {
+        "title": "Rustige Beweging",
+        "how": "Blijf bewegen, maar zacht. Niet te stil, niet te wild."
+      },
+      "fast-vs-slow": {
+        "title": "Snel of Langzaam",
+        "how": "Beweeg je armen snel, dan heel langzaam. Kies je eigen snelheid."
+      },
+      "vanishing-target": {
+        "title": "Verdwijnend Doel",
+        "how": "Een letter flitst op, dan verdwijnt hij. Welke was het?"
+      },
+      "simon-reach": {
+        "title": "Simon Reikt",
+        "how": "Kijk naar de volgorde waarin de vormen oplichten, kopieer hem dan precies."
+      },
+      "copy-the-pattern": {
+        "title": "Kopieer het Patroon",
+        "how": "Rood, blauw, geel, rood — kijk naar het kleurenpatroon, herhaal het dan."
+      },
+      "repair-the-sequence": {
+        "title": "Herstel de Volgorde",
+        "how": "1, 2, ?, 4 — welke ontbreekt?"
+      },
+      "repair-the-alphabet": {
+        "title": "Herstel het Alfabet",
+        "how": "A, B, ?, D — vind de letter die eruit is gevallen."
+      },
+      "whats-missing": {
+        "title": "Wat Ontbreekt?",
+        "how": "Kijk in de schooltas, zeg dan wat er ontbreekt."
+      },
+      "grocery-mission": {
+        "title": "Boodschappen-Missie",
+        "how": "\"Haal melk, een appel en brood.\" Houd de lijst in je hoofd en haal ze op."
+      },
+      "phonics-reach": {
+        "title": "Klankreik",
+        "how": "Je hoort /b/. Reik naar de letter die dat geluid maakt."
+      },
+      "beginning-sound": {
+        "title": "Beginklank",
+        "how": "\"Welke begint met /k/?\" Reik naar de kat."
+      },
+      "word-builder": {
+        "title": "Woordenbouwer",
+        "how": "Spel K-A-T door de letters in volgorde te reiken."
+      },
+      "word-and-picture": {
+        "title": "Woord en Plaatje",
+        "how": "Het woord ZON verschijnt. Raak het bijpassende plaatje aan."
+      },
+      "air-writing": {
+        "title": "Luchtschrijven",
+        "how": "Schrijf letters en cijfers in de lucht met je vinger."
+      },
+      "number-match": {
+        "title": "Hoeveel Zijn Het?",
+        "how": "Het cijfer 5 verschijnt. Raak de groep met vijf dingen aan."
+      },
+      "count-and-collect": {
+        "title": "Tel en Verzamel",
+        "how": "\"Verzamel vier appels.\" Tellen terwijl je beweegt."
+      },
+      "money-shop": {
+        "title": "Geldwinkel",
+        "how": "De appel kost 30 cent. Kies de munten die ervoor betalen."
+      },
+      "sentence-order": {
+        "title": "Zinsvolgorde",
+        "how": "Ik / wil / water — zet de woorden in de juiste volgorde."
+      },
+      "rhythm-reach": {
+        "title": "Ritmereik",
+        "how": "Raak de vorm precies op elke tik aan. Perfect, geweldig, dichtbij — alles telt."
+      },
+      "mirror-me": {
+        "title": "Spiegel Mij",
+        "how": "Kopieer de houding die het kleine figuurtje aanneemt."
+      },
+      "copy-my-gesture": {
+        "title": "Kopieer Mijn Gebaar",
+        "how": "Zwaaien, duim omhoog, wijzen, open hand — de gebaren die mensen gebruiken."
+      },
+      "personal-space": {
+        "title": "Mijn Ruimtebubbel",
+        "how": "Houd je lichaam in je bubbel — stap er dan net buiten."
+      },
+      "trace-the-road": {
+        "title": "Volg de Weg",
+        "how": "Stuur je vinger langs de bochtige weg zonder eraf te gaan."
+      },
+      "shape-drawing": {
+        "title": "Vormen Tekenen",
+        "how": "Teken een cirkel, een vierkant, een ster — in de lucht."
+      },
+      "ar-maze": {
+        "title": "Vingerdoolhof",
+        "how": "Vind je weg door het doolhof zonder de muren aan te raken."
+      },
+      "pinch-and-write": {
+        "title": "Knijp en Schrijf",
+        "how": "Knijp je vinger en duim samen om de pen te vasthouden, schrijf dan. Zoals een echte pengreep."
+      },
+      "handwashing": {
+        "title": "Was Je Handen",
+        "how": "Beginnen, nat maken, zeep, inwrijven, afspoelen, drogen — alles in de juiste volgorde."
+      },
+      "toothbrushing": {
+        "title": "Poets Je Tanden",
+        "how": "Elke stap van het poetsen, in volgorde."
+      },
+      "getting-dressed": {
+        "title": "Aankleden",
+        "how": "Onderbroek, shirt, broek, sokken, schoenen — de volgorde doet ertoe."
+      },
+      "morning-routine": {
+        "title": "Ochtendroutine",
+        "how": "Wakker worden, toilet, wassen, aankleden, ontbijt, tas."
+      },
+      "pack-my-bag": {
+        "title": "Pak Mijn Schooltas",
+        "how": "Neem wat je nodig hebt voor school. Laat de rest achter."
+      },
+      "sort-the-groceries": {
+        "title": "Sorteer de Boodschappen",
+        "how": "Knijp om het op te pakken, laat het dan vallen in de koelkast, vriezer of kast."
+      },
+      "laundry-sort": {
+        "title": "Was Sorteren",
+        "how": "Lichte kleuren in de ene wasmand, donkere in de andere."
+      },
+      "tidy-the-room": {
+        "title": "Ruim de Kamer Op",
+        "how": "Alles gaat terug naar de kamer waar het bij hoort."
+      },
+      "where-does-it-go": {
+        "title": "Waar Hoort Dit?",
+        "how": "Melk — koelkast, vriezer of kast? Raak de juiste aan."
+      },
+      "hot-sharp-safe": {
+        "title": "Heet, Scherp of Veilig",
+        "how": "Welke wordt heet? Welke is scherp? Welke is veilig?"
+      },
+      "safe-or-unsafe": {
+        "title": "Veilig of Niet Veilig?",
+        "how": "Raak soms het veilige aan, wijs soms het gevaarlijke aan."
+      },
+      "crossing-the-road": {
+        "title": "De Straat Oversteken",
+        "how": "Stop, kijk, luister, wacht, steek over — de volgorde die je veilig houdt."
+      },
+      "clean-or-dirty": {
+        "title": "Moet Gewassen Worden?",
+        "how": "Sokken gaan in de was. Boeken niet. Welke moet gewassen worden?"
+      },
+      "my-day": {
+        "title": "Mijn Hele Dag",
+        "how": "Wassen, aankleden, inpakken, betalen, de straat oversteken, naar de leerkracht luisteren, om hulp vragen. De hele dag, in één keer.",
+        "opening": "Goedemorgen! Laten we de dag samen doorkomen.",
+        "openingSay": "Goedemorgen. Laten we de dag samen doorkomen.",
+        "chain": {
+          "wash": {
+            "title": "Was je handen",
+            "say": "Was eerst je handen."
+          },
+          "dress": {
+            "title": "Kleed je aan",
+            "say": "Kleed je nu aan. Wat gaat er eerst aan?"
+          },
+          "pack": {
+            "title": "Pak je tas",
+            "say": "Pak wat je nodig hebt voor school."
+          },
+          "pay": {
+            "title": "Betaal de lunch",
+            "say": "Je hebt munten nodig voor je lunch."
+          },
+          "road": {
+            "title": "Steek de straat over",
+            "say": "Tijd om de straat over te steken. Groen betekent lopen, rood betekent bevriezen."
+          },
+          "classroom": {
+            "title": "Luister naar de leerkracht",
+            "say": "De leerkracht heeft drie dingen voor je te doen."
+          },
+          "help": {
+            "title": "Om hulp vragen",
+            "say": "Je kunt je potlood niet vinden. Wat kun je doen?"
+          }
+        }
+      },
+      "follow-two": {
+        "title": "Volg Twee Dingen",
+        "how": "\"Raak de ster aan, klap dan in je handen.\" Twee dingen, in volgorde."
+      },
+      "follow-three": {
+        "title": "Volg Drie Dingen",
+        "how": "\"Raak de 3 aan, klap, raak dan de blauwe aan.\" Drie, in volgorde."
+      },
+      "emotion-match": {
+        "title": "Hoe Zouden Ze Zich Voelen?",
+        "how": "Er gebeurt iets in het verhaal. Welk gevoel past?"
+      },
+      "what-should-i-do": {
+        "title": "Wat Moet Ik Doen?",
+        "how": "\"Iemand liet zijn potlood vallen.\" Wat is het aardige om te doen?"
+      },
+      "ask-for-help": {
+        "title": "Vraag om Hulp",
+        "how": "De pot gaat niet open. Kiezen om te vragen is het antwoord."
+      },
+      "stay-safe-choices": {
+        "title": "Stop, Denk, Doe",
+        "how": "Er is iets misgegaan. Stop, denk, kies dan wat je doet."
+      },
+      "time-of-day": {
+        "title": "Wanneer Doen We Dat?",
+        "how": "Tandenborstel — 's ochtends of 's avonds? Dingen koppelen aan tijden van de dag."
+      },
+      "coin-names": {
+        "title": "Welke Munt?",
+        "how": "\"Welke is vijftig cent?\" Geld benoemen en vinden."
+      }
+    },
+    "recommend": {
+      "helpsWith": "Helpt met {{domain}}"
+    }
   }
 }

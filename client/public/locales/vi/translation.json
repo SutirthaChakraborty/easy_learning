@@ -40,7 +40,7 @@
     "enterWorld": "Vào Thế Giới"
   },
   "login": {
-    "joinTitle": "Tham gia Learningo!",
+    "joinTitle": "Tham gia Learnigo!",
     "welcomeBack": "Chào Mừng Trở Lại!",
     "createAccountSubtitle": "Tạo tài khoản để bắt đầu học",
     "continueJourneySubtitle": "Đăng nhập để tiếp tục hành trình",
@@ -332,7 +332,7 @@
     "playAgain": "Chơi Lại"
   },
   "roleSelect": {
-    "welcomeTitle": "Chào mừng đến với Learningo",
+    "welcomeTitle": "Chào mừng đến với Learnigo",
     "welcomeSubtitle": "Chọn cách bạn muốn đăng nhập",
     "signInAs": "Đăng nhập với vai trò...",
     "roles": {
@@ -347,8 +347,8 @@
   "aboutUs": {
     "badge": "Câu chuyện của chúng tôi",
     "heroTitle": "Học tập, được tái hiện cho mọi kiểu tư duy",
-    "heroSubtitle": "Learningo là một nền tảng học tập dựa trên trò chơi, được xây dựng cho trẻ em mắc chứng khó đọc và thần kinh đa dạng — nơi đọc, viết và nói giống như một cuộc phiêu lưu, không phải một cuộc chiến.",
-    "paragraph": "Chúng tôi tin rằng mỗi trẻ học theo cách khác nhau, và sự khác biệt đó là điều nên được tôn vinh, không phải sửa chữa. Learningo biến các bài học thành những vòng chơi ngắn, khuyến khích với hỗ trợ âm thanh, hình ảnh vui nhộn và phản hồi tích cực ngay lập tức — để trẻ xây dựng sự tự tin thật sự, từng ngôi sao một.",
+    "heroSubtitle": "Learnigo là một nền tảng học tập dựa trên trò chơi, được xây dựng cho trẻ em mắc chứng khó đọc và thần kinh đa dạng — nơi đọc, viết và nói giống như một cuộc phiêu lưu, không phải một cuộc chiến.",
+    "paragraph": "Chúng tôi tin rằng mỗi trẻ học theo cách khác nhau, và sự khác biệt đó là điều nên được tôn vinh, không phải sửa chữa. Learnigo biến các bài học thành những vòng chơi ngắn, khuyến khích với hỗ trợ âm thanh, hình ảnh vui nhộn và phản hồi tích cực ngay lập tức — để trẻ xây dựng sự tự tin thật sự, từng ngôi sao một.",
     "worldsTitle": "Chọn Thế Giới Của Bạn",
     "worlds": {
       "english": {
@@ -364,7 +364,7 @@
         "text": "Những hoạt động dựa trên sự tò mò khiến việc khám phá trở nên thú vị, từng thí nghiệm một."
       }
     },
-    "valuesTitle": "Vì Sao Các Gia Đình Yêu Thích Learningo",
+    "valuesTitle": "Vì Sao Các Gia Đình Yêu Thích Learnigo",
     "values": {
       "care": {
         "title": "Được Tạo Ra Với Sự Quan Tâm",
@@ -393,7 +393,7 @@
   "contactUs": {
     "badge": "Chúng Tôi Luôn Sẵn Sàng Giúp Đỡ",
     "heroTitle": "Hãy Cùng Trò Chuyện!",
-    "heroSubtitle": "Bạn có câu hỏi, ý tưởng hay gặp một trục trặc nhỏ? Gửi cho chúng tôi một tin nhắn và nhóm Learningo sẽ liên hệ lại với bạn sớm.",
+    "heroSubtitle": "Bạn có câu hỏi, ý tưởng hay gặp một trục trặc nhỏ? Gửi cho chúng tôi một tin nhắn và nhóm Learnigo sẽ liên hệ lại với bạn sớm.",
     "reassurances": {
       "support": {
         "title": "Hỗ Trợ Thân Thiện",
@@ -432,7 +432,7 @@
     "sending": "Đang gửi…",
     "sendMessage": "Gửi Tin Nhắn",
     "successTitle": "Đã gửi tin nhắn!",
-    "successText": "Nhóm Learningo sẽ liên hệ lại với bạn sớm.",
+    "successText": "Nhóm Learnigo sẽ liên hệ lại với bạn sớm.",
     "sendAnother": "Gửi tin nhắn khác",
     "errors": {
       "name": "Vui lòng nhập họ và tên đầy đủ",
@@ -442,5 +442,1004 @@
     },
     "errorServer": "Đã có lỗi xảy ra. Vui lòng thử lại.",
     "errorNetwork": "Không thể kết nối đến máy chủ. Vui lòng thử lại."
+  },
+  "ar": {
+    "common": {
+      "back": "Quay lại",
+      "settings": "Cài đặt",
+      "closeSettings": "Đóng cài đặt",
+      "done": "Xong",
+      "reset": "Đặt lại",
+      "keep": "Giữ lại",
+      "erase": "Xóa",
+      "games": "Trò chơi",
+      "pause": "Tạm dừng",
+      "play": "Chơi",
+      "tryAgain": "Thử lại",
+      "playAgain": "Chơi lại",
+      "progress": "Tiến trình",
+      "harderArrow": "{{label}} → khó hơn",
+      "easierArrow": "{{label}} → dễ hơn"
+    },
+    "hub": {
+      "title": "Trò Chơi Camera",
+      "back": "Quay lại",
+      "progress": "Tiến trình",
+      "progressTitle": "Tiến trình và phân tích",
+      "settingsLabel": "Cài đặt",
+      "pointsTitle": "{{points}} điểm · {{rank}}",
+      "pointsTitleWithNext": "{{points}} điểm · {{rank}} · còn {{toNext}} để đạt {{next}}",
+      "setupTitle": "Bắt đầu tại đây — Thiết Lập Không Gian Của Tôi",
+      "setupSubtitle": "Năm động tác giãn cơ đơn giản để mỗi trò chơi rơi đúng vào chỗ trẻ có thể chạm tới",
+      "calloutPlay": "Chơi",
+      "levelOf": "Cấp {{n}} trên {{total}}",
+      "groupTooltip": "{{title}} — {{blurb}}",
+      "groupTooltipWithStats": "{{title}} — {{blurb}} · {{levels}} trên {{possible}} cấp",
+      "footRunsOnDevice": "Chạy trên thiết bị này · không video nào được ghi lại",
+      "footCountSingular": "{{count}} trò chơi",
+      "footCountPlural": "{{count}} trò chơi",
+      "footLevelsCleared": "{{count}} cấp đã hoàn thành",
+      "footGamesInAll": "tổng cộng {{count}} trò chơi",
+      "pageLabel": "Trang {{n}}",
+      "previousPage": "Trang trước",
+      "nextPage": "Trang sau",
+      "groupsAriaLabel": "Nhóm trò chơi",
+      "newBadge": "Mới",
+      "setupNote": "Thiết lập · không có cấp",
+      "readOutTitle": "{{title}} — cấp {{level}} trên {{total}}: {{change}}",
+      "allFiveCleared": "Đã hoàn thành cả năm cấp",
+      "readOutAriaLabel": "Đọc {{title}}",
+      "readThisOut": "Đọc nội dung này",
+      "recommend": {
+        "carryOn": "Tiếp tục hành trình của con",
+        "practising": "Đang luyện tập {{domain}}",
+        "tryNew": "Thử một điều mới",
+        "champion": "Chơi một cấp nhà quán quân"
+      }
+    },
+    "game": {
+      "notFoundTitle": "Trò chơi này không có ở đây",
+      "notFoundBody": "Liên kết này dẫn đến {{id}}, không có trong danh mục.",
+      "backToGames": "Quay lại trò chơi camera"
+    },
+    "stage": {
+      "cameraHelp": {
+        "cameraDenied": {
+          "title": "Camera đang bị chặn",
+          "body": "Những trò chơi này cần camera để con có thể tự nhìn thấy mình và đưa tay chạm đồ vật. Hãy cho phép quyền truy cập camera trong trình duyệt, sau đó nhấn Thử lại."
+        },
+        "cameraMissing": {
+          "title": "Không tìm thấy camera",
+          "body": "Chúng tôi không thể tìm thấy camera trên thiết bị này. Hãy cắm một camera, hoặc mở trò chơi trên điện thoại hoặc máy tính bảng."
+        },
+        "cameraUnsupported": {
+          "title": "Trình duyệt này không thể chạy trò chơi camera",
+          "body": "Hãy mở trò chơi trong Chrome, Edge hoặc Safari qua https. Trên điện thoại, hãy dùng trình duyệt tích hợp sẵn."
+        },
+        "modelFailed": {
+          "title": "Không thể bắt đầu theo dõi bàn tay",
+          "body": "Mô hình theo dõi không tải được. Hãy kiểm tra kết nối của con và nhấn Thử lại."
+        }
+      },
+      "backAriaLabel": "Quay lại trò chơi",
+      "settingsAriaLabel": "Cài đặt",
+      "pauseAriaLabel": "Tạm dừng",
+      "playAriaLabel": "Chơi",
+      "levelOfShort": "Cấp {{level}} trên {{total}}",
+      "levelTag": "C{{level}}",
+      "getReady": "Chuẩn bị nào!",
+      "showMeYourHand": "Cho tôi xem tay con",
+      "turningOnCamera": "Đang mở camera và tải theo dõi bàn tay…",
+      "gettingReady": "Đang chuẩn bị…",
+      "start": "Bắt đầu — mở camera",
+      "privacyNote": "Camera chỉ hoạt động trên thiết bị này. Không video nào được ghi lại, lưu lại hoặc gửi đi bất cứ đâu.",
+      "sensoryMotorSettings": "Cài đặt giác quan & vận động",
+      "tryAgain": "Thử lại",
+      "backToGames": "Quay lại trò chơi",
+      "paused": "Đã tạm dừng",
+      "pausedSub": "Con cứ dành bao nhiêu thời gian con cần.",
+      "keepPlaying": "Tiếp tục chơi",
+      "startAgain": "Bắt đầu lại",
+      "settings": "Cài đặt",
+      "games": "Trò chơi",
+      "handsCountSingular": "{{count}} tay",
+      "handsCountPlural": "{{count}} tay",
+      "bodyOk": "cơ thể ✓",
+      "headline": {
+        "levelCleared": "Đã hoàn thành cấp {{n}}!",
+        "passedAgain": "Lại hoàn thành rồi!",
+        "brilliant": "Xuất sắc!",
+        "greatWork": "Làm rất tốt!",
+        "goodTry": "Cố gắng tốt lắm!"
+      },
+      "rows": {
+        "gotIdea": {
+          "label": "Hiểu được ý tưởng",
+          "hint": "đúng + đạt được câu trả lời đúng một cách chưa chính xác"
+        },
+        "onTheirOwn": {
+          "label": "Tự làm một mình",
+          "hint": "đúng mà không có bất kỳ sự trợ giúp nào"
+        },
+        "thinkingTime": {
+          "label": "Thời gian suy nghĩ",
+          "hint": "hướng dẫn → bắt đầu di chuyển"
+        },
+        "movingTime": {
+          "label": "Thời gian di chuyển",
+          "hint": "bắt đầu di chuyển → chạm vào"
+        },
+        "reachDirectness": {
+          "label": "Độ chính xác khi đưa tay",
+          "hint": "100% = đi thẳng đến mục tiêu"
+        },
+        "stoppedWhenTold": {
+          "label": "Dừng lại khi được yêu cầu",
+          "hint": "giữ được các lần thử không-nên-làm"
+        },
+        "timingSteadiness": {
+          "label": "Độ ổn định nhịp điệu",
+          "hint": "thấp hơn = ổn định hơn"
+        }
+      },
+      "pointsWord": "điểm",
+      "pointsTally": "tổng cộng {{total}} điểm",
+      "unlockLine": "Cấp {{n}} đã mở",
+      "unlockEffortSuffix": " — đã tiếp tục cố gắng, nên đã được mở",
+      "allFiveDone": "Đã hoàn thành cả năm cấp — con đã hoàn tất hành trình này",
+      "forGrownUps": "Dành cho người lớn",
+      "nextUpLabel": "Tiếp theo:",
+      "workingOnSuffix": " · đang luyện tập {{focus}}",
+      "playLevel": "Chơi cấp {{n}}",
+      "playAgain": "Chơi lại",
+      "levelAgain": "Chơi lại cấp {{n}}",
+      "nextGame": "Trò chơi tiếp theo",
+      "progress": "Tiến trình"
+    },
+    "settings": {
+      "dialogAriaLabel": "Cài đặt trò chơi camera",
+      "title": "Cài đặt trò chơi",
+      "closeAriaLabel": "Đóng cài đặt",
+      "tabs": {
+        "sound": "Âm thanh",
+        "vision": "Hình ảnh",
+        "body": "Cơ thể",
+        "help": "Trợ giúp",
+        "data": "Dữ liệu"
+      },
+      "sound": {
+        "volume": "Âm thanh",
+        "speech": "Hướng dẫn bằng giọng nói",
+        "speechHint": "Đọc to mỗi hướng dẫn",
+        "speechTestHello": "Xin chào",
+        "speechRate": "Tốc độ nói",
+        "speechRateTest": "Chạm vào hình tròn màu đỏ",
+        "instruction": "Hướng dẫn được đưa ra qua",
+        "instructionBoth": "Giọng nói + chữ viết",
+        "instructionAudio": "Chỉ giọng nói",
+        "instructionVisual": "Chỉ chữ viết",
+        "haptics": "Rung",
+        "hapticsHintVibrate": "Thiết bị này có động cơ rung",
+        "hapticsHintGamepad": "Đang sử dụng tay cầm đã kết nối",
+        "hapticsHintNone": "Không tìm thấy động cơ — thay vào đó sẽ dùng một xung âm thanh trầm",
+        "hapticIntensity": "Cường độ rung"
+      },
+      "vision": {
+        "reducedMotion": "Hình ảnh nhẹ nhàng",
+        "reducedMotionHint": "Không có hạt hiệu ứng, không nhấp nháy, không chớp màn hình",
+        "highContrast": "Độ tương phản cao",
+        "highContrastHint": "Đường viền rõ hơn và nền tối hơn phía sau các mục tiêu",
+        "visualClutter": "Mức độ chi tiết trên màn hình",
+        "visualClutterNormal": "Bình thường",
+        "visualClutterMinimal": "Tối giản",
+        "captions": "Luôn hiển thị chữ",
+        "captionsHint": "Giữ hướng dẫn bằng chữ trên màn hình cùng với giọng nói",
+        "mirrorView": "Lật gương hình ảnh",
+        "mirrorViewHint": "Bật = giống như soi gương, điều mà hầu hết trẻ em mong đợi",
+        "showSkeleton": "Hiển thị khung xương",
+        "showSkeletonHint": "Vẽ đường viền bàn tay và cơ thể đang được theo dõi"
+      },
+      "body": {
+        "seated": "Chơi khi ngồi",
+        "seatedHint": "Giữ mọi mục tiêu trong tầm tay khi ngồi",
+        "singleHand": "Tay sử dụng",
+        "singleHandBoth": "Tay nào cũng được / cả hai",
+        "singleHandLeft": "Chỉ tay trái",
+        "singleHandRight": "Chỉ tay phải",
+        "largeTargets": "Mục tiêu lớn",
+        "largeTargetsHint": "Làm mọi thứ lớn hơn 45%",
+        "extraTime": "Thời gian thêm",
+        "extraTimeHint": "Tăng gấp nhiều lần mỗi khoảng thời gian phản hồi. Tốc độ không bao giờ là điều quan trọng.",
+        "extraTimeStandard": "Chuẩn",
+        "dwellMs": "Thời gian chạm",
+        "dwellMsHint": "Ngón tay cần dừng trên mục tiêu bao lâu để chọn nó. Thời gian lâu hơn giúp một bàn tay run.",
+        "handSwap": "Đổi tay trái / phải",
+        "handSwapHintWithDate": "Tầm với đã được thiết lập vào {{date}}. Hãy bật tùy chọn này nếu trò chơi gọi sai tay.",
+        "handSwapHintNoDate": "Hãy bật tùy chọn này nếu trò chơi gọi sai tay. Hãy yêu cầu trẻ giơ tay phải lên để kiểm tra."
+      },
+      "help": {
+        "promptMode": "Mức độ trợ giúp",
+        "promptModeHint": "Trò chơi hỗ trợ bao nhiêu. Chế độ thích ứng sẽ giảm dần khi trẻ thành công mà không cần trợ giúp.",
+        "promptModeAdaptive": "Thích ứng",
+        "adaptiveStageHelpTitle": "Thích ứng.",
+        "adaptiveStageHelpBody": "Bắt đầu bằng cách làm mẫu và giảm một mức sau khi trả lời đúng năm trong sáu lần mà không cần trợ giúp. Lùi lại một mức sau hai lần sai.",
+        "difficultyMode": "Độ khó",
+        "difficultyModeHint": "Chế độ thích ứng thay đổi một yêu cầu mỗi lần — trước là kích thước mục tiêu, sau đó là số lựa chọn, rồi đến độ giống nhau của các phương án gây nhiễu. Chế độ cố định chỉ giữ một cấp duy nhất của hành trình.",
+        "difficultyModeAdaptive": "Thích ứng",
+        "difficultyModeFixed": "Cố định",
+        "fixedLevel": "Cố định ở cấp của hành trình",
+        "fixedLevelHint": "Chơi và tính điểm mỗi lượt ở cấp này, dù trẻ chọn cấp nào. Một lần đạt sẽ được ghi nhận như một lần hoàn thành thực sự.",
+        "unlockAll": "Mở khóa tất cả các cấp (dành cho người lớn)",
+        "unlockAllHint": "Dành cho trẻ đã qua cấp 1, hoặc để thử nghiệm một cấp. Việc hoàn thành vẫn phải tự đạt được.",
+        "stageGTitle": "Giai đoạn G — chuyển giao sang thế giới thực.",
+        "stageGSuffix": "Điểm số cao ở đây không phải là bằng chứng cho thấy kỹ năng đã được tổng quát hóa; điều đó cần được kiểm tra ngoài màn hình."
+      },
+      "data": {
+        "telemetry": "Ghi lại dữ liệu phân tích",
+        "telemetryHint": "Độ chính xác theo từng lần thử, thời gian suy nghĩ, thời gian di chuyển và chất lượng đưa tay. Chỉ là số liệu — không bao giờ là video hay hình ảnh.",
+        "showMetrics": "Hiển thị số liệu theo dõi trực tiếp",
+        "showMetricsHint": "Tốc độ khung hình, thời gian phát hiện và độ trễ camera, dùng để thiết lập một buổi chơi",
+        "cameraNote": "Khung hình camera chỉ được xử lý trên thiết bị này. Không khung hình nào được lưu trữ hoặc tải lên, bởi chúng tôi hoặc bất kỳ ai khác.",
+        "recordingOnSince": "Ghi dữ liệu được bật vào {{date}}",
+        "eraseProfile": "Xóa hồ sơ và lịch sử của trẻ này",
+        "eraseConfirm": "Xóa việc hiệu chỉnh tầm với, hồ sơ năng lực, tiến trình cấp độ, điểm số và mọi lượt đã lưu?",
+        "erase": "Xóa",
+        "keep": "Giữ lại"
+      },
+      "resetTitle": "Quay về cài đặt mặc định",
+      "reset": "Đặt lại",
+      "footNoteInGame": "Thay đổi sẽ áp dụng từ lượt tiếp theo",
+      "footNoteSaved": "Đã lưu trên thiết bị này",
+      "done": "Xong"
+    },
+    "levelPips": {
+      "chooseLevel": "Chọn một cấp",
+      "levelProgress": "Tiến trình cấp",
+      "levelUnlocked": "Cấp {{n}} — {{name}}",
+      "clearedSuffix": " · đã hoàn thành",
+      "levelLocked": "Cấp {{n}} — sẽ mở khi hoàn thành cấp {{prev}}"
+    },
+    "insights": {
+      "title": "Tiến trình và phân tích",
+      "dashboardAriaLabel": "Bảng học tập",
+      "dashboardTitle": "Bảng học tập đầy đủ của trẻ này, kèm liên kết đến bản tóm tắt của báo cáo này",
+      "refreshAriaLabel": "Làm mới",
+      "exportAriaLabel": "Xuất",
+      "exportTitle": "Tải dữ liệu theo từng lần thử dưới dạng CSV",
+      "backAriaLabel": "Quay lại",
+      "empty": {
+        "title": "Chưa có gì được ghi lại",
+        "body": "Hãy chơi một trò chơi camera và mỗi lượt sẽ được đo ở đây — những gì đã hiểu, cần bao nhiêu trợ giúp, mất bao lâu để suy nghĩ và bao lâu để di chuyển, mỗi thứ được lưu riêng.",
+        "cta": "Đi đến trò chơi"
+      },
+      "kpis": {
+        "gotIdea": {
+          "label": "Hiểu được ý tưởng",
+          "hint": "Đúng, cộng thêm việc đạt được câu trả lời đúng một cách chưa chính xác hoặc chậm. Đây là con số thể hiện sự hiểu bài."
+        },
+        "onTheirOwn": {
+          "label": "Tự làm một mình",
+          "hint": "Đúng mà không có gợi ý và không có làm mẫu. Con số thể hiện sự tự lập."
+        },
+        "thinkingTime": {
+          "label": "Thời gian suy nghĩ",
+          "hint": "Thời gian trung vị từ lúc có hướng dẫn đến động tác có chủ ý đầu tiên. Đây là thước đo về việc quyết định, không phải vận động."
+        },
+        "movingTime": {
+          "label": "Thời gian di chuyển",
+          "hint": "Thời gian trung vị từ lúc bắt đầu di chuyển đến lúc chạm vào mục tiêu. Đây là thước đo vận động, được tách hoàn toàn khỏi độ chính xác."
+        },
+        "reachDirectness": {
+          "label": "Độ chính xác khi đưa tay",
+          "hint": "Khoảng cách đường thẳng ÷ đường đi thực tế của tay. 100% nghĩa là hoàn toàn đi thẳng."
+        },
+        "turnsPlayed": {
+          "label": "Số lượt đã chơi",
+          "hintSingular": "{{sessions}} lượt · {{minutes}} phút",
+          "hintPlural": "{{sessions}} lượt · {{minutes}} phút"
+        }
+      },
+      "tabs": {
+        "journey": "Hành trình",
+        "overview": "Tổng quan",
+        "domains": "Kỹ năng",
+        "motor": "Vận động",
+        "life": "Cuộc sống"
+      },
+      "noRounds": {
+        "title": "Không có lượt nào được ghi lại",
+        "note": "Hành trình ở trên vẫn còn nguyên vẹn.",
+        "body": "Dữ liệu theo từng lần thử đã bị xóa, vì vậy không có gì để phân tích ở đây. Cấp độ và điểm số được lưu riêng và vẫn còn trong thẻ Hành trình. Hãy chơi một lượt và các thẻ này sẽ đầy trở lại."
+      },
+      "journeyTab": {
+        "whereTheyAre": {
+          "title": "Trẻ đang ở đâu",
+          "note": "Các cấp đã hoàn thành theo từng nhóm. Nhóm mà trẻ đang tiến bộ là lĩnh vực phát triển mà trẻ thực sự đang làm việc, điều này hữu ích hơn một tổng số chung."
+        },
+        "stats": {
+          "levelsCleared": "cấp đã hoàn thành",
+          "gamesPlayed": "trò chơi đã chơi",
+          "daysPlayed": "ngày đã chơi",
+          "points": "điểm",
+          "rank": "danh hiệu"
+        },
+        "chartTooltip": "{{levels}} trên {{possible}} cấp · {{played}}/{{games}} trò chơi đã thử",
+        "noJourneys": "Chưa có hành trình nào được bắt đầu.",
+        "levelPerGame": {
+          "title": "Cấp đạt được, theo từng trò chơi",
+          "noteStuckSingular": "{{count}} trò chơi đã được chơi nhiều lần mà không hoàn thành được gì — được hiển thị đầu tiên. Cấp đó đang yêu cầu điều mà trẻ này chưa làm được.",
+          "noteStuckPlural": "{{count}} trò chơi đã được chơi nhiều lần mà không hoàn thành được gì — được hiển thị đầu tiên. Những cấp đó đang yêu cầu điều mà trẻ này chưa làm được.",
+          "noteOk": "Các trò chơi đã chơi, những trò tiến bộ nhất được hiển thị trước. Một trò chơi được chơi nhiều lần mà không hoàn thành gì sẽ xuất hiện ở trên cùng."
+        },
+        "stuckIconTitle": "Đã chơi nhiều lần, không hoàn thành được gì",
+        "noLevels": "không có cấp",
+        "levelsClearedTitle": "Cấp đã hoàn thành",
+        "roundsPlayedTitle": "Lượt đã chơi",
+        "playedSuffix": "lượt đã chơi",
+        "noGamesPlayed": "Chưa có trò chơi nào được chơi.",
+        "serverRowNote": "{{count}} trò chơi có dữ liệu hành trình trên máy chủ, trên tất cả các thiết bị của trẻ này",
+        "howEarned": {
+          "title": "Tiến trình này đã đạt được như thế nào",
+          "note": "Ba khẳng định khác nhau, chủ ý không được cộng lại với nhau.",
+          "demonstrated": {
+            "name": "Đã chứng minh",
+            "text": "Trẻ đã đạt đến mức hiểu bài yêu cầu của cấp này. Đây là một bằng chứng."
+          },
+          "effort": {
+            "name": "Được trao vì sự kiên trì",
+            "text": "Ba lần thử đã đến gần mức yêu cầu. Cấp này vẫn được mở, nên một cấp không phù hợp sẽ không thể chấm dứt việc trẻ sử dụng ứng dụng — nhưng đây không phải là bằng chứng cho thấy trẻ đã đạt mức yêu cầu."
+          },
+          "implied": {
+            "name": "Được suy ra",
+            "text": "Được ghi nhận vì một cấp khó hơn đã được hoàn thành, và mỗi cấp đều có yêu cầu ít nhất bằng cấp dưới nó. Chưa bao giờ được quan sát trực tiếp."
+          },
+          "remote": {
+            "name": "Đã khôi phục từ thiết bị khác",
+            "tooltip": "Đã khôi phục từ thiết bị khác của trẻ này. Dữ liệu cho biết những cấp nào đã hoàn thành nhưng không cho biết làm thế nào, nên thiết bị này không có bằng chứng về điều đó.",
+            "text": "Được gửi từ máy chủ, nơi ghi lại những cấp nào đã hoàn thành nhưng không ghi lại cách thực hiện. Không có bằng chứng trên thiết bị này."
+          },
+          "footer": "Không điều nào trong ba điều này là bằng chứng của việc chuyển giao sang thế giới thực. Một cấp đã hoàn thành chỉ có nghĩa là trẻ đã thực hiện nhiệm vụ trên màn hình."
+        }
+      },
+      "overviewTab": {
+        "trend": {
+          "title": "Sự hiểu bài và tự lập theo thời gian",
+          "note": "Hai đường biểu diễn, vì chúng thay đổi riêng biệt. Một trẻ có thể hiểu nhiều hơn mà vẫn cần lượng trợ giúp như trước."
+        },
+        "understood": "Đã hiểu",
+        "independent": "Tự lập",
+        "trendPlaceholder": "Hãy chơi vào ngày thứ hai để thấy một xu hướng ở đây.",
+        "promptMix": {
+          "title": "Cần bao nhiêu trợ giúp",
+          "note": "Tỷ lệ các lượt ở mỗi giai đoạn trợ giúp. Mục tiêu là giảm dần từ A đến D; giai đoạn G được người lớn kiểm tra ngoài màn hình và trò chơi không bao giờ có thể trao giai đoạn này."
+        },
+        "turns": "Lượt",
+        "promptPlaceholder": "Chưa có dữ liệu trợ giúp.",
+        "gamesPlayed": {
+          "title": "Trò chơi đã chơi",
+          "note": "Độ chính xác và sự tự lập theo từng trò chơi, những trò được chơi nhiều nhất hiển thị trước."
+        },
+        "understoodTitle": "Đã hiểu",
+        "independentTitle": "Tự lập",
+        "medianThinkingTitle": "Thời gian suy nghĩ trung vị",
+        "serverRowNote": "{{count}} trò chơi được ghi lại trên máy chủ trên tất cả các thiết bị"
+      },
+      "domainsTab": {
+        "profile": {
+          "title": "Hồ sơ năng lực",
+          "note": "Một ước tính liên tục cho mỗi lĩnh vực chức năng, chỉ dựa trên hành vi trong trò chơi. Các lĩnh vực có ít hơn ba lượt bị ẩn vì ước tính đó sẽ chỉ là nhiễu."
+        },
+        "estimate": "Ước tính",
+        "profilePlaceholder": "Hãy chơi thêm vài trò chơi — ít nhất ba lĩnh vực cần có dữ liệu trước khi hồ sơ có ý nghĩa.",
+        "weakest": {
+          "title": "Yếu nhất trước tiên",
+          "note": "Độ chính xác của các lượt được gắn với mỗi lĩnh vực. Các cột thấp nhất là nơi buổi học tiếp theo đáng để đầu tư nhất."
+        },
+        "accuracy": "Độ chính xác",
+        "accuracyTooltip": "{{pct}}% trong {{trials}} lượt",
+        "weakestPlaceholder": "Chưa có dữ liệu lĩnh vực.",
+        "promptPerGame": {
+          "title": "Giai đoạn trợ giúp theo từng trò chơi",
+          "note": "Vị trí hiện tại của trẻ trên nấc thang trợ giúp trong mỗi hoạt động."
+        }
+      },
+      "motorTab": {
+        "leftHand": "Tay trái",
+        "rightHand": "Tay phải",
+        "leftRight": {
+          "title": "Tay trái và tay phải",
+          "note": "Cùng một nhiệm vụ, cho mỗi tay. Một sự khác biệt liên tục về độ chính xác hoặc độ thẳng hướng đáng được người lớn chú ý; một sự khác biệt chỉ về tốc độ thường thì không."
+        },
+        "accuracyTitle": "Độ chính xác",
+        "medianThinkingTitle": "Thời gian suy nghĩ trung vị",
+        "reachDirectnessTitle": "Độ chính xác khi đưa tay",
+        "turnsCountSingular": "{{count}} lượt",
+        "turnsCountPlural": "{{count}} lượt",
+        "dominantHandNote": "Tay được ưa thích một cách tự nhiên: {{hand}} ({{left}} lần với tay trái / {{right}} lần với tay phải)",
+        "leftRightPlaceholder": "Chưa có dữ liệu theo từng tay.",
+        "rhythm": {
+          "title": "Nhịp điệu và thời gian",
+          "note": "Độ ổn định là độ lệch chuẩn của sai số thời gian và đây là con số quan trọng — một độ lệch cố định chỉ là một độ lệch, và một phần của nó là độ trễ camera, được đo và trừ đi trong mỗi buổi chơi."
+        },
+        "steadiness": "Độ ổn định",
+        "offset": "Độ lệch",
+        "rhythmPlaceholder": "Hãy chơi Chạm Theo Nhịp vài lần để thấy thời gian ở đây.",
+        "reachEnvelope": {
+          "title": "Vùng tầm với",
+          "note": "Không gian chơi đã được hiệu chỉnh mà mỗi trò chơi đặt các mục tiêu vào đó."
+        },
+        "width": "Chiều rộng",
+        "height": "Chiều cao",
+        "leftRightDifference": "Sự khác biệt trái/phải",
+        "setDate": "Được thiết lập vào {{date}}",
+        "ofFrame": "so với khung hình",
+        "reachPlaceholderPrefix": "Chưa được hiệu chỉnh. Hãy chạy",
+        "reachPlaceholderSuffix": "— trước khi đó, các mục tiêu sẽ dùng một vùng chung, và tầm với bị hạn chế sẽ trông giống như độ chính xác kém."
+      },
+      "lifeTab": {
+        "practised": {
+          "title": "Các kỹ năng sống đã luyện tập",
+          "note": "Được nhóm theo kỹ năng thực tế mà mỗi trò chơi chuyển giao đến, không theo trò chơi."
+        },
+        "alonePct": "{{pct}}% tự làm một mình",
+        "roundsSingular": "{{count}} lượt",
+        "roundsPlural": "{{count}} lượt",
+        "practisedPlaceholder": "Chưa có trò chơi kỹ năng sống nào được chơi.",
+        "routine": {
+          "title": "Các bước quy trình thực hiện không cần trợ giúp",
+          "note": "Đối với các trò chơi theo chuỗi như rửa tay: bao nhiêu bước đã được thực hiện theo đúng thứ tự mà không cần nhắc nhở. 3/7 → 5/7 → 6/7 là hình ảnh của sự tiến bộ thực sự."
+        },
+        "routinePlaceholder": "Hãy chơi một trò chơi quy trình (tắm rửa, mặc quần áo, qua đường) để xem điều này.",
+        "transfer": {
+          "title": "Chuyển giao sang thế giới thực",
+          "note": "Giai đoạn mà trò chơi không thể trao được."
+        },
+        "transferP1Bold": "Giai đoạn G được một người kiểm tra, ngoài màn hình.",
+        "transferP1Rest": "Một trẻ có thể chọn chiếc bàn chải đánh răng trong năm hình ảnh vẫn chưa cho thấy rằng trẻ có thể cầm được chiếc bàn chải đánh răng thật trong phòng tắm thật.",
+        "transferP2": "Hãy dùng điểm số quy trình ở trên để quyết định khi nào một kỹ năng đáng để thử thực sự, rồi ghi lại điều đã xảy ra trong ghi chú của riêng con — ứng dụng này chủ ý không khẳng định đã đo được điều đó."
+      },
+      "footer": {
+        "disclaimer": "Đây là những mô tả về những gì đã xảy ra trong các trò chơi, không phải là các số đo lâm sàng. Một điểm số cao không phải là bằng chứng cho thấy một kỹ năng chuyển giao ra ngoài màn hình — điều đó cần được kiểm tra trong đời thực.",
+        "erase": "Xóa",
+        "confirmText": "Xóa tất cả các lượt đã ghi lại?",
+        "confirmYes": "Có, xóa",
+        "confirmKeep": "Giữ lại"
+      }
+    },
+    "groups": {
+      "body": {
+        "title": "Cơ Thể và Tầm Với",
+        "short": "Cơ thể",
+        "blurb": "Đưa tay, nhằm mục tiêu, dùng hai tay, vượt qua đường giữa cơ thể"
+      },
+      "look": {
+        "title": "Nhìn và Tìm",
+        "short": "Nhìn",
+        "blurb": "Tìm ra điều đúng, nghe, đọc, các từ về không gian"
+      },
+      "stop": {
+        "title": "Dừng và Suy Nghĩ",
+        "short": "Dừng",
+        "blurb": "Chờ đợi, đứng im, bỏ qua những điều gây phân tâm, thay đổi quy tắc"
+      },
+      "remember": {
+        "title": "Ghi Nhớ",
+        "short": "Ghi nhớ",
+        "blurb": "Giữ mọi thứ trong đầu, bắt chước thứ tự, các mục bị thiếu"
+      },
+      "learn": {
+        "title": "Chữ Cái và Số",
+        "short": "ABC 123",
+        "blurb": "Âm thanh, đánh vần, viết, đếm, tiền"
+      },
+      "move": {
+        "title": "Di Chuyển và Bắt Chước",
+        "short": "Di chuyển",
+        "blurb": "Nhịp điệu, bắt chước, vẽ theo nét, vẽ trong không khí"
+      },
+      "day": {
+        "title": "Ngày Của Tôi",
+        "short": "Ngày Của Tôi",
+        "blurb": "Tắm rửa, mặc quần áo, soạn đồ, sắp xếp, giữ an toàn"
+      },
+      "together": {
+        "title": "Nói Chuyện và Cùng Nhau",
+        "short": "Cùng nhau",
+        "blurb": "Làm theo hướng dẫn, cảm xúc, yêu cầu trợ giúp"
+      }
+    },
+    "domains": {
+      "visualDiscrimination": "Sự chú ý thị giác",
+      "auditoryComprehension": "Nghe hiểu",
+      "readingSymbol": "Đọc",
+      "reactionSpeed": "Phản xạ",
+      "reachAccuracy": "Độ chính xác khi đưa tay",
+      "sustainedAttention": "Sự chú ý",
+      "workingMemory": "Trí nhớ làm việc",
+      "sequencing": "Sắp xếp thứ tự",
+      "inhibition": "Dừng lại & chờ đợi",
+      "cognitiveFlexibility": "Thay đổi quy tắc",
+      "bilateralCoordination": "Cả hai tay",
+      "motorPlanning": "Lập kế hoạch vận động",
+      "spatialConcepts": "Từ về không gian",
+      "socialReasoning": "Tư duy xã hội",
+      "independence": "Tự lập"
+    },
+    "lifeSkills": {
+      "hygiene": "Vệ sinh",
+      "dressing": "Mặc quần áo",
+      "school": "Chuẩn bị đi học",
+      "kitchen": "Nhà bếp",
+      "shopping": "Đi mua sắm",
+      "money": "Tiền",
+      "roadSafety": "An toàn giao thông",
+      "homeSafety": "An toàn trong nhà",
+      "chores": "Việc nhà",
+      "routines": "Thói quen hàng ngày",
+      "communication": "Giao tiếp",
+      "help": "Yêu cầu trợ giúp",
+      "socialPlay": "Chơi cùng bạn",
+      "literacy": "Khả năng đọc viết sớm",
+      "numeracy": "Khả năng về số",
+      "navigation": "Tìm đường",
+      "selfRegulation": "Tự điều chỉnh",
+      "bodyAwareness": "Nhận thức về cơ thể",
+      "instructions": "Làm theo hướng dẫn",
+      "independence": "Tự lập"
+    },
+    "levels": {
+      "1": "Những Bước Đầu Tiên",
+      "2": "Khởi Động",
+      "3": "Đang Tiến Bộ",
+      "4": "Mạnh Mẽ",
+      "5": "Nhà Quán Quân"
+    },
+    "ranks": {
+      "explorer": "Nhà Thám Hiểm",
+      "pathfinder": "Người Tìm Đường",
+      "trailblazer": "Người Khai Phá",
+      "skyWalker": "Người Bước Trên Mây",
+      "starRider": "Người Cưỡi Sao",
+      "legend": "Huyền Thoại",
+      "grandChampion": "Đại Quán Quân"
+    },
+    "badges": {
+      "first-game": {
+        "name": "Đã Bắt Đầu",
+        "how": "Đã chơi trò chơi camera đầu tiên"
+      },
+      "space-set": {
+        "name": "Không Gian Của Tôi",
+        "how": "Đã thiết lập tầm với của mình"
+      },
+      "five-days": {
+        "name": "Đã Tiếp Tục",
+        "how": "Đã chơi vào năm ngày khác nhau"
+      },
+      "level-3": {
+        "name": "Đi Được Nửa Đường",
+        "how": "Đã hoàn thành ba cấp của một trò chơi"
+      },
+      "all-five": {
+        "name": "Hành Trình Trọn Vẹn",
+        "how": "Đã hoàn thành cả năm cấp của một trò chơi"
+      },
+      "ten-games": {
+        "name": "Nhà Thám Hiểm",
+        "how": "Đã thử mười trò chơi khác nhau"
+      },
+      "every-group": {
+        "name": "Thử Hết Mọi Thứ",
+        "how": "Đã chơi một trò chơi từ mỗi nhóm"
+      },
+      "both-hands": {
+        "name": "Hai Tay",
+        "how": "Đã dùng cả hai tay rất nhiều"
+      },
+      "on-my-own": {
+        "name": "Tự Mình Làm Được",
+        "how": "Đã trả lời mà không cần trợ giúp trong một trò chơi"
+      },
+      "whole-day": {
+        "name": "Cả Một Ngày",
+        "how": "Đã hoàn thành một nhiệm vụ trọn một ngày"
+      }
+    },
+    "promptStages": {
+      "A": {
+        "name": "Làm Mẫu",
+        "help": "Câu trả lời nhấp nháy và một bàn tay hoạt hình minh họa cách đưa tay."
+      },
+      "B": {
+        "name": "Luyện Tập Có Hướng Dẫn",
+        "help": "Hướng dẫn bằng giọng nói cộng với làm nổi bật câu trả lời. Không làm mẫu."
+      },
+      "C": {
+        "name": "Trợ Giúp Giảm Dần",
+        "help": "Hướng dẫn bằng giọng nói; câu trả lời chỉ được làm nổi bật trong thời gian ngắn lúc đầu."
+      },
+      "D": {
+        "name": "Tự Lập",
+        "help": "Chỉ có hướng dẫn. Không làm nổi bật."
+      },
+      "E": {
+        "name": "Có Phương Án Gây Nhiễu",
+        "help": "Tự lập, với những câu trả lời sai rất giống nhau trên màn hình."
+      },
+      "F": {
+        "name": "Bối Cảnh Đời Thực",
+        "help": "Hướng dẫn là một tình huống, không phải một nhãn: \"đến giờ đi ngủ rồi — con cần gì nhỉ?\""
+      },
+      "G": {
+        "name": "Chuyển Giao Sang Thế Giới Thực",
+        "help": "Được người lớn kiểm tra ngoài màn hình. Trò chơi không bao giờ có thể trao giai đoạn này."
+      }
+    },
+    "dimensions": {
+      "targetSize": "Kích thước mục tiêu",
+      "choices": "Số lượng lựa chọn",
+      "distractors": "Độ giống nhau của phương án gây nhiễu",
+      "eccentricity": "Khoảng cách tầm với",
+      "steps": "Số bước hướng dẫn",
+      "memorySpan": "Khoảng ghi nhớ",
+      "showMs": "Thời gian hiển thị",
+      "window": "Khoảng thời gian phản hồi",
+      "ruleSwitch": "Thay đổi quy tắc",
+      "hands": "Yêu cầu về tay",
+      "midline": "Vượt qua đường giữa cơ thể",
+      "pace": "Nhịp độ",
+      "noGoRate": "Tần suất không-nên-làm",
+      "tolerance": "Độ sai cho phép của đường đi",
+      "holdMs": "Thời gian giữ"
+    },
+    "levelChange": {
+      "first": "Tất cả lớn, chậm và có trợ giúp",
+      "none": "Luyện tập thêm một chút về điều này",
+      "moreSuffix": " · và nhiều hơn nữa",
+      "harderWords": {
+        "targetSize": "mục tiêu nhỏ hơn",
+        "choices": "nhiều lựa chọn hơn",
+        "distractors": "câu trả lời sai tinh vi hơn",
+        "eccentricity": "tầm với xa hơn",
+        "steps": "nhiều bước cần nhớ hơn",
+        "memorySpan": "nhiều điều cần giữ trong đầu hơn",
+        "showMs": "thời gian nhìn ngắn hơn",
+        "window": "thời gian chờ ít hơn",
+        "ruleSwitch": "quy tắc thay đổi",
+        "hands": "cả hai tay",
+        "midline": "đưa tay sang phía đối diện",
+        "pace": "nhịp độ nhanh hơn",
+        "noGoRate": "số lần cần dừng nhiều hơn",
+        "tolerance": "đường đi hẹp hơn",
+        "holdMs": "giữ lâu hơn"
+      }
+    },
+    "points": {
+      "playedSingular": "đã chơi {{count}} lượt",
+      "playedPlural": "đã chơi {{count}} lượt",
+      "gotItRight": "Đã trả lời đúng",
+      "levelBonus": "Thưởng cấp {{n}}",
+      "bestYet": "Kỷ lục tốt nhất của con!",
+      "levelClearedRow": "Đã hoàn thành cấp",
+      "levelPassedAgain": "Lại hoàn thành cấp",
+      "firstGameToday": "Trò chơi đầu tiên hôm nay"
+    },
+    "advice": {
+      "moreTurns": "Hãy chơi thêm vài lượt nữa để hoàn thành cấp này",
+      "getBar": "Hãy trả lời đúng {{bar}}% số lượt để mở cấp tiếp theo"
+    },
+    "games": {
+      "setup-space": {
+        "title": "Thiết Lập Không Gian Của Tôi",
+        "how": "Năm động tác giãn cơ đơn giản để mỗi trò chơi rơi đúng vào chỗ con có thể chạm tới. Hãy làm điều này một lần, trước tiên."
+      },
+      "ball-pop": {
+        "title": "Làm Nổ Bóng Bay",
+        "how": "Những quả bóng bay xuất hiện trong tầm với của con — làm nổ mỗi quả trước khi nó bay đi."
+      },
+      "number-hunt": {
+        "title": "Săn Số Bằng Cả Cơ Thể",
+        "how": "Các số xuất hiện ở trên cao, dưới thấp, bên trái và bên phải. Hãy dùng cả cơ thể để chạm đến chúng."
+      },
+      "two-hand-catch": {
+        "title": "Bắt Bằng Hai Tay",
+        "how": "Hai hình dạng, mỗi hình cho một tay. Hãy chạm vào cả hai cùng một lúc."
+      },
+      "cross-the-middle": {
+        "title": "Vượt Qua Đường Giữa",
+        "how": "Tay trái của con lấy đồ ở bên phải, và ngược lại."
+      },
+      "left-or-right": {
+        "title": "Trái hay Phải?",
+        "how": "\"Chạm vào nó bằng tay TRÁI của con.\" Biết được tay nào là tay nào."
+      },
+      "reach-near-far": {
+        "title": "Chạm Tới Gần và Xa",
+        "how": "Một số thứ ở gần, một số thứ nằm ngay rìa tầm với của con."
+      },
+      "find-touch-colour": {
+        "title": "Tìm và Chạm",
+        "how": "\"Chạm vào cái màu xanh.\" Màu sắc trước, sau đó là hình dạng và số."
+      },
+      "find-shape": {
+        "title": "Tìm Hình Dạng",
+        "how": "\"Chạm vào hình tam giác.\" Mười hình dạng, một số dễ nhầm lẫn."
+      },
+      "read-and-find": {
+        "title": "Đọc và Tìm",
+        "how": "Từ CIRCLE (hình tròn) xuất hiện. Hãy chạm vào hình tròn. Không có gì được đọc to."
+      },
+      "listen-and-find": {
+        "title": "Nghe và Tìm",
+        "how": "Một giọng nói đọc từ đó. Không có gì được viết ra. Hãy tìm thứ con nghe thấy."
+      },
+      "search-the-room": {
+        "title": "Tìm Trong Phòng",
+        "how": "Một câu trả lời đúng duy nhất ẩn giữa rất nhiều thứ rất giống nhau."
+      },
+      "big-or-small": {
+        "title": "To hay Nhỏ?",
+        "how": "To hơn, nhỏ hơn, nhiều hơn, ít hơn — những từ so sánh."
+      },
+      "above-or-below": {
+        "title": "Trên hay Dưới?",
+        "how": "\"Chạm vào con mèo ở trên cái hộp.\" Những từ về không gian, trong không gian."
+      },
+      "which-animal": {
+        "title": "Nhóm Nào?",
+        "how": "\"Chạm vào con vật nông trại.\" Phân loại thế giới thành các loại."
+      },
+      "go-no-go-animals": {
+        "title": "Chỉ Vật Nuôi Thôi!",
+        "how": "Hãy chạm vào các vật nuôi. Đừng đụng vào động vật hoang dã."
+      },
+      "rule-switch": {
+        "title": "Thay Đổi Quy Tắc",
+        "how": "Chạm vào các con vật… rồi bất ngờ quy tắc đổi thành phương tiện giao thông."
+      },
+      "safe-or-not": {
+        "title": "Tay An Toàn",
+        "how": "Hãy chạm vào những gì an toàn để cầm. Đừng bao giờ chạm vào những gì không an toàn."
+      },
+      "red-light-green-light": {
+        "title": "Đèn Đỏ, Đèn Xanh",
+        "how": "Hãy di chuyển khi đèn xanh. Đứng im hoàn toàn khi đèn chuyển đỏ."
+      },
+      "traffic-light-body": {
+        "title": "Trò Chơi Đèn Giao Thông",
+        "how": "Xanh đi, vàng chuẩn bị, đỏ đứng im — giống như một chỗ qua đường thật."
+      },
+      "wait-for-it": {
+        "title": "Hãy Chờ Đợi",
+        "how": "Ngôi sao đang ở đó — nhưng đừng chạm vào nó cho đến khi nó chuyển sang xanh."
+      },
+      "calm-movement": {
+        "title": "Chuyển Động Nhẹ Nhàng",
+        "how": "Hãy tiếp tục di chuyển, nhưng nhẹ nhàng thôi. Không quá im lặng, không quá dữ dội."
+      },
+      "fast-vs-slow": {
+        "title": "Nhanh hay Chậm",
+        "how": "Hãy di chuyển cánh tay nhanh, rồi rất chậm. Hãy chọn tốc độ của riêng con."
+      },
+      "vanishing-target": {
+        "title": "Mục Tiêu Biến Mất",
+        "how": "Một chữ cái hiện lên nhanh, rồi biến mất. Đó là chữ nào vậy?"
+      },
+      "simon-reach": {
+        "title": "Simon Đưa Tay",
+        "how": "Hãy quan sát thứ tự các hình dạng sáng lên, rồi làm theo chính xác."
+      },
+      "copy-the-pattern": {
+        "title": "Bắt Chước Mẫu",
+        "how": "Đỏ, xanh, vàng, đỏ — hãy quan sát mẫu màu sắc, rồi lặp lại."
+      },
+      "repair-the-sequence": {
+        "title": "Sửa Chuỗi Số",
+        "how": "1, 2, ?, 4 — số nào bị thiếu?"
+      },
+      "repair-the-alphabet": {
+        "title": "Sửa Bảng Chữ Cái",
+        "how": "A, B, ?, D — hãy tìm chữ cái đã rơi ra."
+      },
+      "whats-missing": {
+        "title": "Thiếu Cái Gì?",
+        "how": "Hãy nhìn vào cặp đi học, rồi nói xem thứ gì đã biến mất."
+      },
+      "grocery-mission": {
+        "title": "Nhiệm Vụ Mua Sắm",
+        "how": "\"Lấy sữa, một quả táo và bánh mì.\" Hãy giữ danh sách trong đầu và đi tìm chúng."
+      },
+      "phonics-reach": {
+        "title": "Đưa Tay Theo Âm",
+        "how": "Con nghe thấy âm /b/. Hãy đưa tay đến chữ cái tạo ra âm đó."
+      },
+      "beginning-sound": {
+        "title": "Âm Đầu",
+        "how": "\"Cái nào bắt đầu bằng /k/?\" Hãy đưa tay đến con mèo."
+      },
+      "word-builder": {
+        "title": "Người Xây Từ",
+        "how": "Hãy đánh vần C-A-T (con mèo) bằng cách chạm vào các chữ cái theo thứ tự."
+      },
+      "word-and-picture": {
+        "title": "Từ và Hình Ảnh",
+        "how": "Từ SUN (mặt trời) xuất hiện. Hãy chạm vào hình ảnh phù hợp."
+      },
+      "air-writing": {
+        "title": "Viết Trong Không Khí",
+        "how": "Hãy viết chữ cái và số trong không khí bằng ngón tay của con."
+      },
+      "number-match": {
+        "title": "Có Bao Nhiêu?",
+        "how": "Số 5 xuất hiện. Hãy chạm vào nhóm có năm thứ."
+      },
+      "count-and-collect": {
+        "title": "Đếm và Thu Thập",
+        "how": "\"Hãy thu thập bốn quả táo.\" Đếm khi di chuyển."
+      },
+      "money-shop": {
+        "title": "Cửa Hàng Tiền",
+        "how": "Quả táo giá 30 xu. Hãy chọn những đồng tiền để trả đủ số đó."
+      },
+      "sentence-order": {
+        "title": "Thứ Tự Câu",
+        "how": "Tôi / muốn / nước — hãy sắp xếp các từ theo thứ tự đúng."
+      },
+      "rhythm-reach": {
+        "title": "Đưa Tay Theo Nhịp",
+        "how": "Hãy chạm vào hình dạng đúng lúc mỗi nhịp. Hoàn hảo, rất tốt, gần đúng — tất cả đều được tính."
+      },
+      "mirror-me": {
+        "title": "Bắt Chước Tôi",
+        "how": "Hãy bắt chước tư thế mà hình người nhỏ đang giữ."
+      },
+      "copy-my-gesture": {
+        "title": "Bắt Chước Cử Chỉ Của Tôi",
+        "how": "Vẫy tay, giơ ngón tay cái lên, chỉ tay, mở lòng bàn tay — những cử chỉ mà mọi người sử dụng."
+      },
+      "personal-space": {
+        "title": "Bong Bóng Không Gian Của Tôi",
+        "how": "Hãy giữ cơ thể con trong bong bóng của con — rồi bước ra ngay bên ngoài nó."
+      },
+      "trace-the-road": {
+        "title": "Vẽ Theo Con Đường",
+        "how": "Hãy lái ngón tay con dọc theo con đường ngoằn ngoèo mà không đi lệch ra ngoài."
+      },
+      "shape-drawing": {
+        "title": "Vẽ Hình Dạng",
+        "how": "Hãy vẽ một hình tròn, một hình vuông, một ngôi sao — trong không khí."
+      },
+      "ar-maze": {
+        "title": "Mê Cung Bằng Ngón Tay",
+        "how": "Hãy tìm đường qua mê cung mà không chạm vào các bức tường."
+      },
+      "pinch-and-write": {
+        "title": "Chụm Tay và Viết",
+        "how": "Hãy chụm ngón tay và ngón cái lại để giữ bút, rồi viết. Giống như cách cầm bút chì thật."
+      },
+      "handwashing": {
+        "title": "Rửa Tay Của Tôi",
+        "how": "Bắt đầu, làm ướt, xà phòng, chà xát, rửa sạch, lau khô — tất cả theo đúng thứ tự."
+      },
+      "toothbrushing": {
+        "title": "Đánh Răng Của Tôi",
+        "how": "Mỗi bước đánh răng, theo thứ tự."
+      },
+      "getting-dressed": {
+        "title": "Mặc Quần Áo",
+        "how": "Đồ lót, áo, quần, tất, giày — thứ tự rất quan trọng."
+      },
+      "morning-routine": {
+        "title": "Thói Quen Buổi Sáng",
+        "how": "Thức dậy, đi vệ sinh, tắm rửa, mặc quần áo, ăn sáng, mang cặp."
+      },
+      "pack-my-bag": {
+        "title": "Soạn Cặp Đi Học Của Tôi",
+        "how": "Hãy lấy những gì con cần cho việc đi học. Hãy để lại phần còn lại."
+      },
+      "sort-the-groceries": {
+        "title": "Sắp Xếp Đồ Mua Sắm",
+        "how": "Hãy chụm tay để nhấc nó lên, rồi thả nó vào tủ lạnh, tủ đông hoặc tủ đồ."
+      },
+      "laundry-sort": {
+        "title": "Phân Loại Đồ Giặt",
+        "how": "Đồ màu sáng vào một giỏ, đồ màu tối vào giỏ khác."
+      },
+      "tidy-the-room": {
+        "title": "Dọn Dẹp Phòng",
+        "how": "Mọi thứ trở về đúng phòng thuộc về nó."
+      },
+      "where-does-it-go": {
+        "title": "Cái Này Để Ở Đâu?",
+        "how": "Sữa — tủ lạnh, tủ đông, hay tủ đồ? Hãy chạm vào cái đúng."
+      },
+      "hot-sharp-safe": {
+        "title": "Nóng, Sắc Hay An Toàn",
+        "how": "Cái nào trở nên nóng? Cái nào sắc? Cái nào an toàn?"
+      },
+      "safe-or-unsafe": {
+        "title": "An Toàn hay Không An Toàn?",
+        "how": "Đôi khi hãy chạm vào thứ an toàn, đôi khi chỉ ra thứ nguy hiểm."
+      },
+      "crossing-the-road": {
+        "title": "Qua Đường",
+        "how": "Dừng lại, nhìn, nghe, chờ, qua đường — thứ tự giữ con được an toàn."
+      },
+      "clean-or-dirty": {
+        "title": "Cần Giặt Không?",
+        "how": "Tất đi giặt. Sách thì không. Cái nào cần giặt?"
+      },
+      "my-day": {
+        "title": "Cả Ngày Của Tôi",
+        "how": "Rửa tay, mặc quần áo, soạn cặp, trả tiền, qua đường, nghe cô giáo, yêu cầu trợ giúp. Cả ngày, trong một lần.",
+        "opening": "Chào buổi sáng! Hãy cùng vượt qua một ngày nhé.",
+        "openingSay": "Chào buổi sáng. Hãy cùng vượt qua một ngày nhé.",
+        "chain": {
+          "wash": {
+            "title": "Rửa tay con",
+            "say": "Đầu tiên, hãy rửa tay con."
+          },
+          "dress": {
+            "title": "Mặc quần áo",
+            "say": "Giờ hãy mặc quần áo. Thứ gì mặc trước?"
+          },
+          "pack": {
+            "title": "Soạn cặp của con",
+            "say": "Hãy soạn những gì con cần cho việc đi học."
+          },
+          "pay": {
+            "title": "Trả tiền ăn trưa",
+            "say": "Con cần tiền xu để trả tiền ăn trưa."
+          },
+          "road": {
+            "title": "Qua đường",
+            "say": "Đến lúc qua đường rồi. Xanh nghĩa là đi, đỏ nghĩa là đứng im."
+          },
+          "classroom": {
+            "title": "Nghe cô giáo",
+            "say": "Cô giáo có ba việc muốn con làm."
+          },
+          "help": {
+            "title": "Yêu cầu trợ giúp",
+            "say": "Con không tìm được bút chì của mình. Con có thể làm gì?"
+          }
+        }
+      },
+      "follow-two": {
+        "title": "Làm Theo Hai Điều",
+        "how": "\"Chạm vào ngôi sao, rồi vỗ tay.\" Hai điều, theo thứ tự."
+      },
+      "follow-three": {
+        "title": "Làm Theo Ba Điều",
+        "how": "\"Chạm vào số 3, vỗ tay, rồi chạm vào cái màu xanh.\" Ba điều, theo thứ tự."
+      },
+      "emotion-match": {
+        "title": "Họ Sẽ Cảm Thấy Thế Nào?",
+        "how": "Có điều gì đó xảy ra trong câu chuyện. Cảm xúc nào phù hợp?"
+      },
+      "what-should-i-do": {
+        "title": "Tôi Nên Làm Gì?",
+        "how": "\"Ai đó làm rơi bút chì của họ.\" Việc tốt bụng nên làm là gì?"
+      },
+      "ask-for-help": {
+        "title": "Yêu Cầu Trợ Giúp",
+        "how": "Cái lọ không mở được. Chọn việc hỏi xin giúp là câu trả lời."
+      },
+      "stay-safe-choices": {
+        "title": "Dừng Lại, Suy Nghĩ, Hành Động",
+        "how": "Có điều gì đó không đúng xảy ra. Hãy dừng lại, suy nghĩ, rồi chọn việc cần làm."
+      },
+      "time-of-day": {
+        "title": "Khi Nào Chúng Ta Làm Việc Đó?",
+        "how": "Bàn chải đánh răng — sáng hay tối? Ghép các thứ với thời điểm trong ngày."
+      },
+      "coin-names": {
+        "title": "Đồng Xu Nào?",
+        "how": "\"Cái nào là năm mươi xu?\" Gọi tên và tìm tiền."
+      }
+    },
+    "recommend": {
+      "helpsWith": "Giúp ích cho {{domain}}"
+    }
   }
 }

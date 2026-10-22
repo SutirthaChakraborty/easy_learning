@@ -39,16 +39,16 @@ const AboutUs = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="About Learningo | Learning, Reimagined for Every Kind of Mind"
-        description="Learningo is a play-first learning platform built for dyslexic and neurodivergent learners, turning reading, writing, speaking, maths and science into a short, encouraging adventure."
+        title="About Learnigo | Learning, Reimagined for Every Kind of Mind"
+        description="Learnigo is a play-first learning platform built for dyslexic and neurodivergent learners, turning reading, writing, speaking, maths and science into a short, encouraging adventure."
         path="/about-us"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "AboutPage",
-          name: "About Learningo",
-          description: "Learningo is a play-first learning platform built for dyslexic and neurodivergent learners.",
+          name: "About Learnigo",
+          description: "Learnigo is a play-first learning platform built for dyslexic and neurodivergent learners.",
           url: "https://www.learnigo.eu/about-us",
-          isPartOf: { "@type": "WebSite", name: "Learningo", url: "https://www.learnigo.eu" },
+          isPartOf: { "@type": "WebSite", name: "Learnigo", url: "https://www.learnigo.eu" },
         }}
       />
       <VideoBackground />
@@ -104,7 +104,7 @@ const AboutUs = () => {
             <FaLightbulb /> Learn about dyslexia, ADHD and other learning differences
           </a>
           <a href="/who-we-help" className={styles.contactLink}>
-            <FaGlobeAmericas /> See who Learningo helps — parents, schools, NGOs & therapists
+            <FaGlobeAmericas /> See who Learnigo helps — parents, schools, NGOs & therapists
           </a>
           <a href="/faq" className={styles.contactLink}>
             <FaEnvelope /> Have a question? Check our FAQ

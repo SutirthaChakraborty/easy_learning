@@ -40,7 +40,7 @@
     "enterWorld": "Masuk Dunia"
   },
   "login": {
-    "joinTitle": "Bergabung dengan Learningo!",
+    "joinTitle": "Bergabung dengan Learnigo!",
     "welcomeBack": "Selamat Datang Kembali!",
     "createAccountSubtitle": "Buat akun untuk mulai belajar",
     "continueJourneySubtitle": "Masuk untuk melanjutkan perjalananmu",
@@ -332,7 +332,7 @@
     "playAgain": "Main Lagi"
   },
   "roleSelect": {
-    "welcomeTitle": "Selamat datang di Learningo",
+    "welcomeTitle": "Selamat datang di Learnigo",
     "welcomeSubtitle": "Pilih cara kamu ingin masuk",
     "signInAs": "Masuk sebagai...",
     "roles": {
@@ -347,8 +347,8 @@
   "aboutUs": {
     "badge": "Kisah Kami",
     "heroTitle": "Belajar, dirancang ulang untuk setiap jenis pikiran",
-    "heroSubtitle": "Learningo adalah platform belajar berbasis permainan yang dibuat untuk anak-anak disleksia dan neurodivergen — di mana membaca, menulis, dan berbicara terasa seperti petualangan, bukan perjuangan.",
-    "paragraph": "Kami percaya setiap anak belajar dengan cara berbeda, dan perbedaan itu patut dirayakan, bukan diperbaiki. Learningo mengubah pelajaran menjadi sesi singkat yang menyemangati dengan dukungan audio, visual yang menyenangkan, dan umpan balik positif instan — agar anak-anak membangun kepercayaan diri yang nyata, satu bintang pada satu waktu.",
+    "heroSubtitle": "Learnigo adalah platform belajar berbasis permainan yang dibuat untuk anak-anak disleksia dan neurodivergen — di mana membaca, menulis, dan berbicara terasa seperti petualangan, bukan perjuangan.",
+    "paragraph": "Kami percaya setiap anak belajar dengan cara berbeda, dan perbedaan itu patut dirayakan, bukan diperbaiki. Learnigo mengubah pelajaran menjadi sesi singkat yang menyemangati dengan dukungan audio, visual yang menyenangkan, dan umpan balik positif instan — agar anak-anak membangun kepercayaan diri yang nyata, satu bintang pada satu waktu.",
     "worldsTitle": "Pilih Duniamu",
     "worlds": {
       "english": {
@@ -364,7 +364,7 @@
         "text": "Aktivitas berbasis rasa ingin tahu yang membuat penemuan menjadi mengasyikkan, satu eksperimen pada satu waktu."
       }
     },
-    "valuesTitle": "Mengapa Keluarga Menyukai Learningo",
+    "valuesTitle": "Mengapa Keluarga Menyukai Learnigo",
     "values": {
       "care": {
         "title": "Dibuat dengan Peduli",
@@ -393,7 +393,7 @@
   "contactUs": {
     "badge": "Kami Siap Membantu",
     "heroTitle": "Ayo Bicara!",
-    "heroSubtitle": "Punya pertanyaan, ide, atau mengalami masalah kecil? Kirimkan pesan dan tim Learningo akan segera menghubungimu kembali.",
+    "heroSubtitle": "Punya pertanyaan, ide, atau mengalami masalah kecil? Kirimkan pesan dan tim Learnigo akan segera menghubungimu kembali.",
     "reassurances": {
       "support": {
         "title": "Dukungan Ramah",
@@ -432,7 +432,7 @@
     "sending": "Mengirim…",
     "sendMessage": "Kirim Pesan",
     "successTitle": "Pesan terkirim!",
-    "successText": "Tim Learningo akan segera menghubungimu kembali.",
+    "successText": "Tim Learnigo akan segera menghubungimu kembali.",
     "sendAnother": "Kirim pesan lain",
     "errors": {
       "name": "Masukkan nama lengkapmu",
@@ -442,5 +442,1004 @@
     },
     "errorServer": "Terjadi kesalahan. Silakan coba lagi.",
     "errorNetwork": "Tidak dapat menghubungi server. Silakan coba lagi."
+  },
+  "ar": {
+    "common": {
+      "back": "Kembali",
+      "settings": "Pengaturan",
+      "closeSettings": "Tutup pengaturan",
+      "done": "Selesai",
+      "reset": "Atur ulang",
+      "keep": "Simpan",
+      "erase": "Hapus",
+      "games": "Permainan",
+      "pause": "Jeda",
+      "play": "Main",
+      "tryAgain": "Coba lagi",
+      "playAgain": "Main lagi",
+      "progress": "Kemajuan",
+      "harderArrow": "{{label}} → lebih sulit",
+      "easierArrow": "{{label}} → lebih mudah"
+    },
+    "hub": {
+      "title": "Permainan Kamera",
+      "back": "Kembali",
+      "progress": "Kemajuan",
+      "progressTitle": "Kemajuan dan analisis",
+      "settingsLabel": "Pengaturan",
+      "pointsTitle": "{{points}} poin · {{rank}}",
+      "pointsTitleWithNext": "{{points}} poin · {{rank}} · {{toNext}} lagi untuk {{next}}",
+      "setupTitle": "Mulai di sini — Menyiapkan Ruang Saya",
+      "setupSubtitle": "Lima gerakan peregangan sederhana agar setiap permainan muncul tepat di tempat yang bisa dijangkau anak ini",
+      "calloutPlay": "Main",
+      "levelOf": "Level {{n}} dari {{total}}",
+      "groupTooltip": "{{title}} — {{blurb}}",
+      "groupTooltipWithStats": "{{title}} — {{blurb}} · {{levels}} dari {{possible}} level",
+      "footRunsOnDevice": "Berjalan di perangkat ini · tidak ada video yang direkam",
+      "footCountSingular": "{{count}} permainan",
+      "footCountPlural": "{{count}} permainan",
+      "footLevelsCleared": "{{count}} level berhasil dilewati",
+      "footGamesInAll": "{{count}} permainan semuanya",
+      "pageLabel": "Halaman {{n}}",
+      "previousPage": "Halaman sebelumnya",
+      "nextPage": "Halaman berikutnya",
+      "groupsAriaLabel": "Kelompok permainan",
+      "newBadge": "Baru",
+      "setupNote": "Persiapan · tanpa level",
+      "readOutTitle": "{{title}} — level {{level}} dari {{total}}: {{change}}",
+      "allFiveCleared": "Kelima level berhasil dilewati",
+      "readOutAriaLabel": "Bacakan {{title}}",
+      "readThisOut": "Bacakan ini",
+      "recommend": {
+        "carryOn": "Lanjutkan perjalananmu",
+        "practising": "Berlatih {{domain}}",
+        "tryNew": "Coba sesuatu yang baru",
+        "champion": "Main level juara"
+      }
+    },
+    "game": {
+      "notFoundTitle": "Permainan ini tidak ada di sini",
+      "notFoundBody": "Tautan ini mengarah ke {{id}}, yang tidak ada dalam katalog.",
+      "backToGames": "Kembali ke permainan kamera"
+    },
+    "stage": {
+      "cameraHelp": {
+        "cameraDenied": {
+          "title": "Kamera diblokir",
+          "body": "Permainan ini membutuhkan kamera agar kamu bisa melihat dirimu sendiri dan menjangkau benda. Izinkan akses kamera di browser-mu, lalu tekan Coba Lagi."
+        },
+        "cameraMissing": {
+          "title": "Kamera tidak ditemukan",
+          "body": "Kami tidak dapat menemukan kamera di perangkat ini. Pasang kamera, atau buka permainan di ponsel atau tablet."
+        },
+        "cameraUnsupported": {
+          "title": "Browser ini tidak dapat menjalankan permainan kamera",
+          "body": "Buka permainan di Chrome, Edge, atau Safari melalui https. Di ponsel, gunakan browser bawaan."
+        },
+        "modelFailed": {
+          "title": "Tidak dapat memulai pelacakan tangan",
+          "body": "Model pelacakan gagal dimuat. Periksa koneksimu dan tekan Coba Lagi."
+        }
+      },
+      "backAriaLabel": "Kembali ke permainan",
+      "settingsAriaLabel": "Pengaturan",
+      "pauseAriaLabel": "Jeda",
+      "playAriaLabel": "Main",
+      "levelOfShort": "Level {{level}} dari {{total}}",
+      "levelTag": "L{{level}}",
+      "getReady": "Bersiaplah!",
+      "showMeYourHand": "Tunjukkan tanganmu padaku",
+      "turningOnCamera": "Menyalakan kamera dan memuat pelacakan tangan…",
+      "gettingReady": "Sedang bersiap…",
+      "start": "Mulai — nyalakan kamera",
+      "privacyNote": "Kamera hanya berjalan di perangkat ini. Tidak ada video yang direkam, disimpan, atau dikirim ke mana pun.",
+      "sensoryMotorSettings": "Pengaturan sensorik & motorik",
+      "tryAgain": "Coba lagi",
+      "backToGames": "Kembali ke permainan",
+      "paused": "Dijeda",
+      "pausedSub": "Ambil waktu sebanyak yang kamu butuhkan.",
+      "keepPlaying": "Lanjutkan bermain",
+      "startAgain": "Mulai lagi",
+      "settings": "Pengaturan",
+      "games": "Permainan",
+      "handsCountSingular": "{{count}} tangan",
+      "handsCountPlural": "{{count}} tangan",
+      "bodyOk": "tubuh ✓",
+      "headline": {
+        "levelCleared": "Level {{n}} berhasil dilewati!",
+        "passedAgain": "Berhasil lagi!",
+        "brilliant": "Hebat sekali!",
+        "greatWork": "Kerja yang bagus!",
+        "goodTry": "Usaha yang bagus!"
+      },
+      "rows": {
+        "gotIdea": {
+          "label": "Memahami idenya",
+          "hint": "benar + jawaban benar tercapai dengan kurang tepat"
+        },
+        "onTheirOwn": {
+          "label": "Sendiri",
+          "hint": "benar tanpa bantuan apa pun"
+        },
+        "thinkingTime": {
+          "label": "Waktu berpikir",
+          "hint": "instruksi → mulai bergerak"
+        },
+        "movingTime": {
+          "label": "Waktu bergerak",
+          "hint": "mulai bergerak → menyentuh"
+        },
+        "reachDirectness": {
+          "label": "Ketepatan jangkauan",
+          "hint": "100% = langsung ke target"
+        },
+        "stoppedWhenTold": {
+          "label": "Berhenti saat diberi tahu",
+          "hint": "percobaan jangan-lakukan ditahan"
+        },
+        "timingSteadiness": {
+          "label": "Kestabilan ritme",
+          "hint": "lebih rendah = lebih konsisten"
+        }
+      },
+      "pointsWord": "poin",
+      "pointsTally": "{{total}} poin semuanya",
+      "unlockLine": "Level {{n}} terbuka",
+      "unlockEffortSuffix": " — terus mencoba, jadi terbuka",
+      "allFiveDone": "Kelima level selesai — kamu menyelesaikan perjalanan ini",
+      "forGrownUps": "Untuk orang dewasa",
+      "nextUpLabel": "Selanjutnya:",
+      "workingOnSuffix": " · sedang berlatih {{focus}}",
+      "playLevel": "Main level {{n}}",
+      "playAgain": "Main lagi",
+      "levelAgain": "Level {{n}} lagi",
+      "nextGame": "Permainan berikutnya",
+      "progress": "Kemajuan"
+    },
+    "settings": {
+      "dialogAriaLabel": "Pengaturan permainan kamera",
+      "title": "Pengaturan permainan",
+      "closeAriaLabel": "Tutup pengaturan",
+      "tabs": {
+        "sound": "Suara",
+        "vision": "Visual",
+        "body": "Tubuh",
+        "help": "Bantuan",
+        "data": "Data"
+      },
+      "sound": {
+        "volume": "Suara",
+        "speech": "Instruksi lisan",
+        "speechHint": "Membacakan setiap instruksi dengan suara",
+        "speechTestHello": "Halo",
+        "speechRate": "Kecepatan bicara",
+        "speechRateTest": "Sentuh lingkaran merah",
+        "instruction": "Instruksi diberikan melalui",
+        "instructionBoth": "Suara + teks",
+        "instructionAudio": "Hanya suara",
+        "instructionVisual": "Hanya teks",
+        "haptics": "Getaran",
+        "hapticsHintVibrate": "Perangkat ini memiliki motor getar",
+        "hapticsHintGamepad": "Menggunakan kontroler yang terhubung",
+        "hapticsHintNone": "Tidak ada motor yang ditemukan — sebagai gantinya digunakan detak suara rendah",
+        "hapticIntensity": "Kekuatan getaran"
+      },
+      "vision": {
+        "reducedMotion": "Tampilan yang tenang",
+        "reducedMotionHint": "Tanpa partikel, tanpa kedipan, tanpa kilatan layar",
+        "highContrast": "Kontras tinggi",
+        "highContrastHint": "Garis tepi yang lebih tegas dan latar belakang lebih gelap di belakang target",
+        "visualClutter": "Detail di layar",
+        "visualClutterNormal": "Normal",
+        "visualClutterMinimal": "Minimal",
+        "captions": "Selalu tampilkan teks",
+        "captionsHint": "Menjaga instruksi tertulis tetap di layar bersama suara",
+        "mirrorView": "Cerminkan gambar",
+        "mirrorViewHint": "Aktif = seperti cermin, yang diharapkan oleh hampir setiap anak",
+        "showSkeleton": "Tampilkan rangka",
+        "showSkeletonHint": "Menggambar garis luar tangan dan tubuh yang terlacak"
+      },
+      "body": {
+        "seated": "Bermain sambil duduk",
+        "seatedHint": "Menjaga setiap target tetap dalam jangkauan sambil duduk",
+        "singleHand": "Tangan yang digunakan",
+        "singleHandBoth": "Salah satu / keduanya",
+        "singleHandLeft": "Hanya kiri",
+        "singleHandRight": "Hanya kanan",
+        "largeTargets": "Target besar",
+        "largeTargetsHint": "Membuat semuanya 45% lebih besar",
+        "extraTime": "Waktu tambahan",
+        "extraTimeHint": "Melipatgandakan setiap jendela respons. Kecepatan bukanlah tujuannya.",
+        "extraTimeStandard": "Standar",
+        "dwellMs": "Waktu sentuh",
+        "dwellMsHint": "Berapa lama jari harus diam di atas target untuk memilihnya. Waktu lebih lama membantu tangan yang gemetar.",
+        "handSwap": "Tukar tangan kiri / kanan",
+        "handSwapHintWithDate": "Jangkauan diatur pada {{date}}. Aktifkan ini jika permainan menyebut tangan yang salah.",
+        "handSwapHintNoDate": "Aktifkan ini jika permainan menyebut tangan yang salah. Minta anak mengangkat tangan kanannya untuk memeriksa."
+      },
+      "help": {
+        "promptMode": "Tingkat bantuan",
+        "promptModeHint": "Seberapa banyak bantuan yang diberikan permainan. Adaptif menguranginya saat anak berhasil tanpa bantuan.",
+        "promptModeAdaptive": "Adaptif",
+        "adaptiveStageHelpTitle": "Adaptif.",
+        "adaptiveStageHelpBody": "Dimulai dengan demonstrasi dan berkurang satu tahap setelah lima dari enam jawaban benar tanpa bantuan. Mundur satu tahap setelah dua kesalahan.",
+        "difficultyMode": "Kesulitan",
+        "difficultyModeHint": "Adaptif mengubah satu tuntutan dalam satu waktu — ukuran target, lalu jumlah pilihan, lalu kemiripan pengalih perhatian. Tetap mempertahankan satu level perjalanan saja.",
+        "difficultyModeAdaptive": "Adaptif",
+        "difficultyModeFixed": "Tetap",
+        "fixedLevel": "Dipatok pada level perjalanan",
+        "fixedLevelHint": "Memainkan dan menilai setiap ronde pada level ini, apa pun yang dipilih anak. Kelulusan dicatat sebagai keberhasilan sungguhan.",
+        "unlockAll": "Buka semua level (dewasa)",
+        "unlockAllHint": "Untuk anak yang sudah melewati level 1, atau untuk menguji satu level. Keberhasilan tetap harus diraih.",
+        "stageGTitle": "Tahap G — transfer ke dunia nyata.",
+        "stageGSuffix": "Nilai tinggi di sini bukan bukti bahwa keterampilan tersebut telah menggeneralisasi; itu harus diperiksa di luar layar."
+      },
+      "data": {
+        "telemetry": "Rekam data analisis",
+        "telemetryHint": "Akurasi per percobaan, waktu berpikir, waktu bergerak, dan kualitas jangkauan. Hanya angka — tidak pernah video atau gambar.",
+        "showMetrics": "Tampilkan angka pelacakan langsung",
+        "showMetricsHint": "Kecepatan bingkai, waktu deteksi, dan keterlambatan kamera, untuk menyiapkan sesi",
+        "cameraNote": "Bingkai kamera diproses hanya di perangkat ini. Tidak ada bingkai yang disimpan atau diunggah, baik oleh kami maupun orang lain.",
+        "recordingOnSince": "Perekaman data diaktifkan pada {{date}}",
+        "eraseProfile": "Hapus profil dan riwayat anak ini",
+        "eraseConfirm": "Hapus kalibrasi jangkauan, profil kemampuan, kemajuan level, poin, dan setiap ronde yang tersimpan?",
+        "erase": "Hapus",
+        "keep": "Simpan"
+      },
+      "resetTitle": "Kembali ke pengaturan bawaan",
+      "reset": "Atur ulang",
+      "footNoteInGame": "Perubahan berlaku mulai giliran berikutnya",
+      "footNoteSaved": "Disimpan di perangkat ini",
+      "done": "Selesai"
+    },
+    "levelPips": {
+      "chooseLevel": "Pilih sebuah level",
+      "levelProgress": "Kemajuan level",
+      "levelUnlocked": "Level {{n}} — {{name}}",
+      "clearedSuffix": " · berhasil dilewati",
+      "levelLocked": "Level {{n}} — terbuka saat level {{prev}} berhasil dilewati"
+    },
+    "insights": {
+      "title": "Kemajuan dan analisis",
+      "dashboardAriaLabel": "Dasbor pembelajaran",
+      "dashboardTitle": "Dasbor pembelajaran lengkap anak ini, dengan ringkasan laporan ini yang tertaut",
+      "refreshAriaLabel": "Segarkan",
+      "exportAriaLabel": "Ekspor",
+      "exportTitle": "Unduh data per percobaan sebagai CSV",
+      "backAriaLabel": "Kembali",
+      "empty": {
+        "title": "Belum ada yang tercatat",
+        "body": "Mainkan permainan kamera dan setiap giliran diukur di sini — apa yang dipahami, berapa banyak bantuan yang dibutuhkan, berapa lama waktu berpikir dan bergerak, masing-masing dicatat secara terpisah.",
+        "cta": "Pergi ke permainan"
+      },
+      "kpis": {
+        "gotIdea": {
+          "label": "Memahami idenya",
+          "hint": "Benar, ditambah jawaban benar yang tercapai dengan kurang tepat atau terlambat. Ini adalah angka pemahaman."
+        },
+        "onTheirOwn": {
+          "label": "Sendiri",
+          "hint": "Benar tanpa penyorotan dan tanpa demonstrasi. Angka kemandirian."
+        },
+        "thinkingTime": {
+          "label": "Waktu berpikir",
+          "hint": "Waktu median dari instruksi hingga gerakan yang disengaja pertama. Ukuran keputusan, bukan motorik."
+        },
+        "movingTime": {
+          "label": "Waktu bergerak",
+          "hint": "Waktu median dari mulai bergerak hingga menyentuh target. Ukuran motorik, dipisahkan sepenuhnya dari akurasi."
+        },
+        "reachDirectness": {
+          "label": "Ketepatan jangkauan",
+          "hint": "Jarak garis lurus ÷ jalur yang sebenarnya dilalui tangan. 100% berarti sepenuhnya langsung."
+        },
+        "turnsPlayed": {
+          "label": "Giliran yang dimainkan",
+          "hintSingular": "{{sessions}} ronde · {{minutes}} mnt",
+          "hintPlural": "{{sessions}} ronde · {{minutes}} mnt"
+        }
+      },
+      "tabs": {
+        "journey": "Perjalanan",
+        "overview": "Ikhtisar",
+        "domains": "Keterampilan",
+        "motor": "Gerakan",
+        "life": "Kehidupan"
+      },
+      "noRounds": {
+        "title": "Tidak ada ronde yang tercatat",
+        "note": "Perjalanan di atas masih utuh.",
+        "body": "Data per percobaan telah dihapus, sehingga tidak ada yang bisa dianalisis di sini. Level dan poin disimpan secara terpisah dan tetap ada di tab Perjalanan. Mainkan satu ronde dan tab-tab ini akan terisi kembali."
+      },
+      "journeyTab": {
+        "whereTheyAre": {
+          "title": "Di mana mereka sekarang",
+          "note": "Level yang berhasil dilewati per kelompok. Kelompok tempat anak sedang berkembang adalah domain perkembangan yang benar-benar sedang dikerjakannya, yang lebih berguna daripada total keseluruhan."
+        },
+        "stats": {
+          "levelsCleared": "level berhasil dilewati",
+          "gamesPlayed": "permainan dimainkan",
+          "daysPlayed": "hari dimainkan",
+          "points": "poin",
+          "rank": "pangkat"
+        },
+        "chartTooltip": "{{levels}} dari {{possible}} level · {{played}}/{{games}} permainan dicoba",
+        "noJourneys": "Belum ada perjalanan yang dimulai.",
+        "levelPerGame": {
+          "title": "Level yang tercapai, per permainan",
+          "noteStuckSingular": "{{count}} permainan dimainkan berkali-kali tanpa berhasil melewati apa pun — ditampilkan lebih dulu. Level itu menuntut sesuatu yang belum bisa dilakukan anak ini.",
+          "noteStuckPlural": "{{count}} permainan dimainkan berkali-kali tanpa berhasil melewati apa pun — ditampilkan lebih dulu. Level-level itu menuntut sesuatu yang belum bisa dilakukan anak ini.",
+          "noteOk": "Permainan yang dimainkan, yang paling berkembang ditampilkan lebih dulu. Permainan yang dimainkan berulang kali tanpa berhasil melewati apa pun akan muncul di atas."
+        },
+        "stuckIconTitle": "Dimainkan berkali-kali, tidak ada yang berhasil dilewati",
+        "noLevels": "tanpa level",
+        "levelsClearedTitle": "Level berhasil dilewati",
+        "roundsPlayedTitle": "Ronde dimainkan",
+        "playedSuffix": "kali dimainkan",
+        "noGamesPlayed": "Belum ada permainan yang dimainkan.",
+        "serverRowNote": "{{count}} permainan dengan data perjalanan di server, di semua perangkat anak ini",
+        "howEarned": {
+          "title": "Bagaimana kemajuan ini diraih",
+          "note": "Tiga klaim berbeda, dengan sengaja tidak dijumlahkan bersama.",
+          "demonstrated": {
+            "name": "Terbukti",
+            "text": "Anak mencapai standar pemahaman level tersebut. Ini adalah bukti."
+          },
+          "effort": {
+            "name": "Diberikan karena kegigihan",
+            "text": "Tiga percobaan yang mendekati standar. Level tetap terbuka, sehingga satu level yang kurang sesuai tidak dapat menghentikan penggunaan aplikasi oleh anak — tetapi ini bukan bukti bahwa mereka mencapai standar tersebut."
+          },
+          "implied": {
+            "name": "Disimpulkan",
+            "text": "Diberikan karena level yang lebih sulit berhasil dilewati, dan setiap level setidaknya sama menuntutnya dengan level di bawahnya. Tidak pernah diamati secara langsung."
+          },
+          "remote": {
+            "name": "Dipulihkan dari perangkat lain",
+            "tooltip": "Dipulihkan dari perangkat lain milik anak ini. Data menunjukkan level mana yang berhasil dilewati tetapi tidak bagaimana caranya, sehingga perangkat ini tidak memiliki bukti untuk itu.",
+            "text": "Berasal dari server, yang mencatat level mana yang berhasil dilewati tetapi tidak bagaimana caranya. Tidak ada bukti di perangkat ini."
+          },
+          "footer": "Tidak satu pun dari ketiga hal ini merupakan bukti transfer ke dunia nyata. Level yang berhasil dilewati berarti anak melakukan tugas tersebut di layar."
+        }
+      },
+      "overviewTab": {
+        "trend": {
+          "title": "Pemahaman dan kemandirian dari waktu ke waktu",
+          "note": "Dua garis, karena keduanya bergerak secara terpisah. Seorang anak bisa memahami lebih banyak sambil tetap membutuhkan bantuan sebanyak sebelumnya."
+        },
+        "understood": "Dipahami",
+        "independent": "Mandiri",
+        "trendPlaceholder": "Main di hari kedua untuk melihat tren di sini.",
+        "promptMix": {
+          "title": "Berapa banyak bantuan yang dibutuhkan",
+          "note": "Proporsi giliran pada setiap tahap bantuan. Mengurangi dari A ke D adalah tujuannya; tahap G diperiksa di luar layar oleh orang dewasa dan tidak akan pernah bisa diberikan oleh permainan."
+        },
+        "turns": "Giliran",
+        "promptPlaceholder": "Belum ada data bantuan.",
+        "gamesPlayed": {
+          "title": "Permainan dimainkan",
+          "note": "Akurasi dan kemandirian per permainan, yang paling sering dimainkan ditampilkan lebih dulu."
+        },
+        "understoodTitle": "Dipahami",
+        "independentTitle": "Mandiri",
+        "medianThinkingTitle": "Waktu berpikir median",
+        "serverRowNote": "{{count}} permainan tercatat di server di semua perangkat"
+      },
+      "domainsTab": {
+        "profile": {
+          "title": "Profil kemampuan",
+          "note": "Perkiraan berkelanjutan per domain fungsional, hanya dari perilaku dalam permainan. Domain dengan kurang dari tiga giliran disembunyikan karena perkiraannya akan menjadi hanya gangguan data."
+        },
+        "estimate": "Perkiraan",
+        "profilePlaceholder": "Mainkan beberapa permainan lagi — setidaknya tiga domain membutuhkan data sebelum sebuah profil menjadi bermakna.",
+        "weakest": {
+          "title": "Yang paling lemah dulu",
+          "note": "Akurasi pada giliran yang ditandai dengan setiap domain. Batang terendah adalah tempat sesi berikutnya paling layak diinvestasikan."
+        },
+        "accuracy": "Akurasi",
+        "accuracyTooltip": "{{pct}}% dari {{trials}} giliran",
+        "weakestPlaceholder": "Belum ada data domain.",
+        "promptPerGame": {
+          "title": "Tahap bantuan per permainan",
+          "note": "Di mana anak saat ini berada pada tangga bantuan dalam setiap aktivitas."
+        }
+      },
+      "motorTab": {
+        "leftHand": "Tangan kiri",
+        "rightHand": "Tangan kanan",
+        "leftRight": {
+          "title": "Kiri dan kanan",
+          "note": "Tugas yang sama, untuk setiap tangan. Perbedaan akurasi atau ketepatan arah yang konsisten layak mendapat perhatian orang dewasa; perbedaan hanya pada kecepatan sering kali tidak."
+        },
+        "accuracyTitle": "Akurasi",
+        "medianThinkingTitle": "Waktu berpikir median",
+        "reachDirectnessTitle": "Ketepatan jangkauan",
+        "turnsCountSingular": "{{count}} giliran",
+        "turnsCountPlural": "{{count}} giliran",
+        "dominantHandNote": "Tangan yang secara spontan disukai: {{hand}} ({{left}} jangkauan kiri / {{right}} kanan)",
+        "leftRightPlaceholder": "Belum ada data per tangan.",
+        "rhythm": {
+          "title": "Ritme dan waktu",
+          "note": "Kestabilan adalah standar deviasi kesalahan waktu dan itulah angka yang penting — pergeseran yang konsisten hanyalah sebuah pergeseran, dan sebagian darinya adalah keterlambatan kamera, yang diukur dan dikurangi pada setiap sesi."
+        },
+        "steadiness": "Kestabilan",
+        "offset": "Pergeseran",
+        "rhythmPlaceholder": "Mainkan Jangkauan Ritme beberapa kali untuk melihat waktu di sini.",
+        "reachEnvelope": {
+          "title": "Area jangkauan",
+          "note": "Ruang bermain yang terkalibrasi tempat setiap permainan menempatkan targetnya."
+        },
+        "width": "Lebar",
+        "height": "Tinggi",
+        "leftRightDifference": "Perbedaan kiri/kanan",
+        "setDate": "Diatur pada {{date}}",
+        "ofFrame": "dari bingkai",
+        "reachPlaceholderPrefix": "Belum terkalibrasi. Jalankan",
+        "reachPlaceholderSuffix": "— sampai saat itu target menggunakan area umum, dan jangkauan yang terbatas akan terlihat seperti akurasi yang buruk."
+      },
+      "lifeTab": {
+        "practised": {
+          "title": "Keterampilan hidup yang dilatih",
+          "note": "Dikelompokkan berdasarkan keterampilan dunia nyata yang dipindahkan oleh setiap permainan, bukan berdasarkan permainannya."
+        },
+        "alonePct": "{{pct}}% sendiri",
+        "roundsSingular": "{{count}} ronde",
+        "roundsPlural": "{{count}} ronde",
+        "practisedPlaceholder": "Belum ada permainan keterampilan hidup yang dimainkan.",
+        "routine": {
+          "title": "Langkah rutinitas yang dilakukan tanpa bantuan",
+          "note": "Untuk permainan urutan seperti mencuci tangan: berapa banyak langkah yang dilakukan dalam urutan yang benar tanpa pengingat. 3/7 → 5/7 → 6/7 adalah seperti apa kemajuan yang sesungguhnya."
+        },
+        "routinePlaceholder": "Mainkan permainan rutinitas (mencuci, berpakaian, menyeberang jalan) untuk melihat ini.",
+        "transfer": {
+          "title": "Transfer ke dunia nyata",
+          "note": "Tahap yang tidak dapat diberikan oleh permainan."
+        },
+        "transferP1Bold": "Tahap G diperiksa oleh seseorang, di luar layar.",
+        "transferP1Rest": "Seorang anak yang dapat memilih sikat gigi dari lima gambar belum menunjukkan bahwa ia bisa mengambil sikat gigi yang sesungguhnya di kamar mandi yang sesungguhnya.",
+        "transferP2": "Gunakan skor rutinitas di atas untuk menentukan kapan sebuah keterampilan layak dicoba secara sungguhan, lalu catat apa yang terjadi di catatanmu sendiri — aplikasi ini dengan sengaja tidak mengklaim telah mengukur hal itu."
+      },
+      "footer": {
+        "disclaimer": "Ini adalah deskripsi tentang apa yang terjadi dalam permainan, bukan pengukuran klinis. Nilai tinggi bukan bukti bahwa sebuah keterampilan berpindah keluar dari layar — itu harus diperiksa dalam kehidupan nyata.",
+        "erase": "Hapus",
+        "confirmText": "Hapus semua ronde yang tercatat?",
+        "confirmYes": "Ya, hapus",
+        "confirmKeep": "Simpan"
+      }
+    },
+    "groups": {
+      "body": {
+        "title": "Tubuh dan Jangkauan",
+        "short": "Tubuh",
+        "blurb": "Menjangkau, membidik, menggunakan dua tangan, melintasi tengah tubuh"
+      },
+      "look": {
+        "title": "Melihat dan Menemukan",
+        "short": "Melihat",
+        "blurb": "Menemukan yang benar, mendengarkan, membaca, kata-kata ruang"
+      },
+      "stop": {
+        "title": "Berhenti dan Berpikir",
+        "short": "Berhenti",
+        "blurb": "Menunggu, membeku, mengabaikan gangguan, mengubah aturan"
+      },
+      "remember": {
+        "title": "Mengingat",
+        "short": "Ingatan",
+        "blurb": "Menyimpan hal di pikiran, menyalin urutan, item yang hilang"
+      },
+      "learn": {
+        "title": "Huruf dan Angka",
+        "short": "ABC 123",
+        "blurb": "Suara, mengeja, menulis, menghitung, uang"
+      },
+      "move": {
+        "title": "Bergerak dan Menyalin",
+        "short": "Bergerak",
+        "blurb": "Ritme, menirukan, menjiplak, menggambar di udara"
+      },
+      "day": {
+        "title": "Hari Saya",
+        "short": "Hari Saya",
+        "blurb": "Mencuci, berpakaian, mengepak, merapikan, tetap aman"
+      },
+      "together": {
+        "title": "Berbicara dan Bersama",
+        "short": "Bersama",
+        "blurb": "Mengikuti instruksi, perasaan, meminta bantuan"
+      }
+    },
+    "domains": {
+      "visualDiscrimination": "Perhatian visual",
+      "auditoryComprehension": "Mendengarkan",
+      "readingSymbol": "Membaca",
+      "reactionSpeed": "Reaksi",
+      "reachAccuracy": "Ketepatan jangkauan",
+      "sustainedAttention": "Perhatian",
+      "workingMemory": "Memori kerja",
+      "sequencing": "Pengurutan",
+      "inhibition": "Berhenti & menunggu",
+      "cognitiveFlexibility": "Mengubah aturan",
+      "bilateralCoordination": "Kedua tangan",
+      "motorPlanning": "Perencanaan motorik",
+      "spatialConcepts": "Kata-kata ruang",
+      "socialReasoning": "Pemikiran sosial",
+      "independence": "Kemandirian"
+    },
+    "lifeSkills": {
+      "hygiene": "Kebersihan",
+      "dressing": "Berpakaian",
+      "school": "Persiapan sekolah",
+      "kitchen": "Dapur",
+      "shopping": "Berbelanja",
+      "money": "Uang",
+      "roadSafety": "Keselamatan jalan",
+      "homeSafety": "Keselamatan di rumah",
+      "chores": "Pekerjaan rumah",
+      "routines": "Rutinitas harian",
+      "communication": "Komunikasi",
+      "help": "Meminta bantuan",
+      "socialPlay": "Bermain sosial",
+      "literacy": "Literasi dini",
+      "numeracy": "Kemampuan berhitung",
+      "navigation": "Menemukan arah",
+      "selfRegulation": "Pengaturan diri",
+      "bodyAwareness": "Kesadaran tubuh",
+      "instructions": "Mengikuti instruksi",
+      "independence": "Kemandirian"
+    },
+    "levels": {
+      "1": "Langkah Pertama",
+      "2": "Pemanasan",
+      "3": "Semakin Baik",
+      "4": "Kuat",
+      "5": "Juara"
+    },
+    "ranks": {
+      "explorer": "Penjelajah",
+      "pathfinder": "Pencari Jalan",
+      "trailblazer": "Perintis",
+      "skyWalker": "Pejalan Langit",
+      "starRider": "Penunggang Bintang",
+      "legend": "Legenda",
+      "grandChampion": "Juara Agung"
+    },
+    "badges": {
+      "first-game": {
+        "name": "Mulai",
+        "how": "Memainkan permainan kamera pertamanya"
+      },
+      "space-set": {
+        "name": "Ruang Saya",
+        "how": "Mengatur jangkauannya"
+      },
+      "five-days": {
+        "name": "Terus Berlanjut",
+        "how": "Bermain pada lima hari yang berbeda"
+      },
+      "level-3": {
+        "name": "Separuh Jalan",
+        "how": "Berhasil melewati tiga level sebuah permainan"
+      },
+      "all-five": {
+        "name": "Perjalanan Lengkap",
+        "how": "Berhasil melewati kelima level sebuah permainan"
+      },
+      "ten-games": {
+        "name": "Penjelajah",
+        "how": "Mencoba sepuluh permainan berbeda"
+      },
+      "every-group": {
+        "name": "Mencoba Semuanya",
+        "how": "Memainkan satu permainan dari setiap kelompok"
+      },
+      "both-hands": {
+        "name": "Dua Tangan",
+        "how": "Menggunakan kedua tangan dengan cukup banyak"
+      },
+      "on-my-own": {
+        "name": "Sendiri",
+        "how": "Menjawab tanpa bantuan dalam sebuah permainan"
+      },
+      "whole-day": {
+        "name": "Sehari Penuh",
+        "how": "Menyelesaikan misi satu hari penuh"
+      }
+    },
+    "promptStages": {
+      "A": {
+        "name": "Demonstrasi",
+        "help": "Jawaban berdenyut dan sebuah tangan animasi menunjukkan cara menjangkau."
+      },
+      "B": {
+        "name": "Latihan terbimbing",
+        "help": "Instruksi lisan ditambah sorotan pada jawaban. Tanpa demonstrasi."
+      },
+      "C": {
+        "name": "Bantuan berkurang",
+        "help": "Instruksi lisan; jawaban hanya disorot sebentar di awal."
+      },
+      "D": {
+        "name": "Mandiri",
+        "help": "Hanya instruksi. Tanpa sorotan."
+      },
+      "E": {
+        "name": "Dengan pengalih perhatian",
+        "help": "Mandiri, dengan jawaban salah yang sangat mirip di layar."
+      },
+      "F": {
+        "name": "Konteks kehidupan nyata",
+        "help": "Instruksinya adalah sebuah situasi, bukan label: \"sudah waktunya tidur — apa yang kamu butuhkan?\""
+      },
+      "G": {
+        "name": "Transfer ke dunia nyata",
+        "help": "Diperiksa oleh orang dewasa di luar layar. Permainan ini tidak akan pernah memberikannya."
+      }
+    },
+    "dimensions": {
+      "targetSize": "Ukuran target",
+      "choices": "Jumlah pilihan",
+      "distractors": "Kemiripan pengalih perhatian",
+      "eccentricity": "Jarak jangkauan",
+      "steps": "Langkah instruksi",
+      "memorySpan": "Jangkauan memori",
+      "showMs": "Durasi tampilan",
+      "window": "Jendela respons",
+      "ruleSwitch": "Perubahan aturan",
+      "hands": "Tuntutan tangan",
+      "midline": "Melintasi garis tengah",
+      "pace": "Tempo",
+      "noGoRate": "Frekuensi jangan-lakukan",
+      "tolerance": "Toleransi jalur",
+      "holdMs": "Durasi tahan"
+    },
+    "levelChange": {
+      "first": "Semuanya besar, lambat, dan dibantu",
+      "none": "Sedikit lebih banyak latihan pada ini",
+      "moreSuffix": " · dan lainnya",
+      "harderWords": {
+        "targetSize": "target lebih kecil",
+        "choices": "lebih banyak pilihan",
+        "distractors": "jawaban salah yang lebih menipu",
+        "eccentricity": "jangkauan lebih jauh",
+        "steps": "lebih banyak langkah untuk diingat",
+        "memorySpan": "lebih banyak yang harus diingat",
+        "showMs": "tampilan lebih singkat",
+        "window": "waktu tunggu lebih sedikit",
+        "ruleSwitch": "aturan berubah",
+        "hands": "kedua tangan",
+        "midline": "menjangkau ke sisi lain",
+        "pace": "tempo lebih cepat",
+        "noGoRate": "lebih sering harus berhenti",
+        "tolerance": "jalur lebih sempit",
+        "holdMs": "tahan lebih lama"
+      }
+    },
+    "points": {
+      "playedSingular": "{{count}} giliran dimainkan",
+      "playedPlural": "{{count}} giliran dimainkan",
+      "gotItRight": "Berhasil dengan benar",
+      "levelBonus": "Bonus level {{n}}",
+      "bestYet": "Rekor terbaikmu!",
+      "levelClearedRow": "Level berhasil dilewati",
+      "levelPassedAgain": "Level berhasil dilewati lagi",
+      "firstGameToday": "Permainan pertama hari ini"
+    },
+    "advice": {
+      "moreTurns": "Mainkan beberapa giliran lagi untuk menyelesaikan level ini",
+      "getBar": "Capai {{bar}}% giliran dengan benar untuk membuka level berikutnya"
+    },
+    "games": {
+      "setup-space": {
+        "title": "Menyiapkan Ruang Saya",
+        "how": "Lima gerakan peregangan sederhana agar setiap permainan muncul tepat di tempat yang bisa kamu jangkau. Lakukan ini sekali, lebih dulu."
+      },
+      "ball-pop": {
+        "title": "Meletuskan Balon",
+        "how": "Balon muncul dalam jangkauanmu — letuskan masing-masing sebelum melayang pergi."
+      },
+      "number-hunt": {
+        "title": "Berburu Angka dengan Seluruh Tubuh",
+        "how": "Angka muncul tinggi, rendah, kiri, dan kanan. Gunakan seluruh tubuhmu untuk menjangkaunya."
+      },
+      "two-hand-catch": {
+        "title": "Menangkap dengan Dua Tangan",
+        "how": "Dua bentuk, satu untuk masing-masing tangan. Sentuh keduanya pada saat yang sama."
+      },
+      "cross-the-middle": {
+        "title": "Melintasi Tengah Tubuh",
+        "how": "Tangan kirimu mengambil benda di sisi kanan, dan sebaliknya."
+      },
+      "left-or-right": {
+        "title": "Kiri atau Kanan?",
+        "how": "\"Sentuh itu dengan tangan KIRImu.\" Mengetahui mana yang mana."
+      },
+      "reach-near-far": {
+        "title": "Menjangkau Dekat dan Jauh",
+        "how": "Beberapa benda dekat, beberapa tepat di ujung jangkauanmu."
+      },
+      "find-touch-colour": {
+        "title": "Temukan dan Sentuh",
+        "how": "\"Sentuh yang biru.\" Warna dulu, lalu bentuk dan angka."
+      },
+      "find-shape": {
+        "title": "Temukan Bentuknya",
+        "how": "\"Sentuh segitiganya.\" Sepuluh bentuk, beberapa mudah tertukar."
+      },
+      "read-and-find": {
+        "title": "Baca dan Temukan",
+        "how": "Kata CIRCLE (lingkaran) muncul. Sentuh lingkarannya. Tidak ada yang dibacakan."
+      },
+      "listen-and-find": {
+        "title": "Dengar dan Temukan",
+        "how": "Sebuah suara mengucapkan kata itu. Tidak ada yang tertulis. Temukan apa yang kamu dengar."
+      },
+      "search-the-room": {
+        "title": "Cari di Dalam Ruangan",
+        "how": "Satu jawaban benar tersembunyi di antara banyak benda yang sangat mirip."
+      },
+      "big-or-small": {
+        "title": "Besar atau Kecil?",
+        "how": "Lebih besar, lebih kecil, lebih banyak, lebih sedikit — kata-kata perbandingan."
+      },
+      "above-or-below": {
+        "title": "Di Atas atau Di Bawah?",
+        "how": "\"Sentuh kucing di atas kotak.\" Kata-kata ruang, di dalam ruang."
+      },
+      "which-animal": {
+        "title": "Kelompok Mana?",
+        "how": "\"Sentuh hewan peternakan.\" Mengelompokkan dunia ke dalam jenis-jenis."
+      },
+      "go-no-go-animals": {
+        "title": "Hanya Hewan Peliharaan!",
+        "how": "Sentuh hewan peliharaan. Biarkan hewan liar sepenuhnya tanpa disentuh."
+      },
+      "rule-switch": {
+        "title": "Perubahan Aturan",
+        "how": "Sentuh hewan… lalu tiba-tiba aturannya berubah menjadi kendaraan."
+      },
+      "safe-or-not": {
+        "title": "Tangan Aman",
+        "how": "Sentuh yang aman untuk dipegang. Jangan pernah sentuh yang tidak aman."
+      },
+      "red-light-green-light": {
+        "title": "Lampu Merah, Lampu Hijau",
+        "how": "Bergeraklah saat lampu hijau. Berhenti total saat lampu berubah merah."
+      },
+      "traffic-light-body": {
+        "title": "Permainan Lampu Lalu Lintas",
+        "how": "Hijau berjalan, kuning bersiap, merah berhenti — seperti penyeberangan yang sesungguhnya."
+      },
+      "wait-for-it": {
+        "title": "Tunggu Saatnya",
+        "how": "Bintangnya ada di sana — tetapi jangan sentuh sampai berubah hijau."
+      },
+      "calm-movement": {
+        "title": "Gerakan yang Tenang",
+        "how": "Teruslah bergerak, tapi dengan lembut. Jangan terlalu diam, jangan terlalu liar."
+      },
+      "fast-vs-slow": {
+        "title": "Cepat atau Lambat",
+        "how": "Gerakkan lenganmu dengan cepat, lalu sangat lambat. Pilih kecepatanmu sendiri."
+      },
+      "vanishing-target": {
+        "title": "Target yang Menghilang",
+        "how": "Sebuah huruf berkedip sebentar, lalu menghilang. Yang mana itu?"
+      },
+      "simon-reach": {
+        "title": "Simon Menjangkau",
+        "how": "Perhatikan urutan bentuk menyala, lalu tiru persis."
+      },
+      "copy-the-pattern": {
+        "title": "Tiru Polanya",
+        "how": "Merah, biru, kuning, merah — perhatikan pola warnanya, lalu ulangi."
+      },
+      "repair-the-sequence": {
+        "title": "Perbaiki Urutannya",
+        "how": "1, 2, ?, 4 — yang mana yang hilang?"
+      },
+      "repair-the-alphabet": {
+        "title": "Perbaiki Alfabetnya",
+        "how": "A, B, ?, D — temukan huruf yang terjatuh."
+      },
+      "whats-missing": {
+        "title": "Apa yang Hilang?",
+        "how": "Lihat ke dalam tas sekolah, lalu katakan apa yang hilang."
+      },
+      "grocery-mission": {
+        "title": "Misi Belanja",
+        "how": "\"Ambil susu, satu apel, dan roti.\" Simpan daftarnya di kepala dan temukan barangnya."
+      },
+      "phonics-reach": {
+        "title": "Menjangkau Fonik",
+        "how": "Kamu mendengar /b/. Jangkau huruf yang menghasilkan suara itu."
+      },
+      "beginning-sound": {
+        "title": "Suara Awal",
+        "how": "\"Mana yang mulai dengan /k/?\" Jangkau kucingnya."
+      },
+      "word-builder": {
+        "title": "Penyusun Kata",
+        "how": "Eja K-U-C-I-N-G dengan menjangkau huruf-hurufnya secara berurutan."
+      },
+      "word-and-picture": {
+        "title": "Kata dan Gambar",
+        "how": "Kata MATAHARI muncul. Sentuh gambar yang sesuai."
+      },
+      "air-writing": {
+        "title": "Menulis di Udara",
+        "how": "Tulis huruf dan angka di udara dengan jarimu."
+      },
+      "number-match": {
+        "title": "Ada Berapa?",
+        "how": "Angka 5 muncul. Sentuh kelompok yang memiliki lima benda."
+      },
+      "count-and-collect": {
+        "title": "Hitung dan Kumpulkan",
+        "how": "\"Kumpulkan empat apel.\" Menghitung sambil bergerak."
+      },
+      "money-shop": {
+        "title": "Toko Uang",
+        "how": "Apelnya seharga 30 sen. Pilih koin yang membayarnya."
+      },
+      "sentence-order": {
+        "title": "Urutan Kalimat",
+        "how": "Saya / ingin / air — susun kata-kata dalam urutan yang benar."
+      },
+      "rhythm-reach": {
+        "title": "Jangkauan Ritme",
+        "how": "Sentuh bentuknya tepat pada setiap ketukan. Sempurna, bagus, hampir — semuanya dihitung."
+      },
+      "mirror-me": {
+        "title": "Tiru Aku",
+        "how": "Tiru posisi yang dipegang oleh sosok kecil itu."
+      },
+      "copy-my-gesture": {
+        "title": "Tiru Gestur Saya",
+        "how": "Melambaikan tangan, jempol ke atas, menunjuk, telapak terbuka — gestur yang digunakan orang."
+      },
+      "personal-space": {
+        "title": "Gelembung Ruang Saya",
+        "how": "Jaga tubuhmu di dalam gelembungmu — lalu melangkahlah tepat ke luarnya."
+      },
+      "trace-the-road": {
+        "title": "Jiplak Jalannya",
+        "how": "Kendarai jarimu sepanjang jalan yang berliku tanpa keluar jalur."
+      },
+      "shape-drawing": {
+        "title": "Menggambar Bentuk",
+        "how": "Gambar lingkaran, kotak, bintang — di udara."
+      },
+      "ar-maze": {
+        "title": "Labirin Jari",
+        "how": "Temukan jalanmu melalui labirin tanpa menyentuh dindingnya."
+      },
+      "pinch-and-write": {
+        "title": "Jepit dan Tulis",
+        "how": "Jepit jari dan jempolmu untuk memegang pena, lalu tulis. Seperti cara memegang pensil yang sesungguhnya."
+      },
+      "handwashing": {
+        "title": "Cuci Tangan Saya",
+        "how": "Mulai, basahi, sabun, gosok, bilas, keringkan — semua dalam urutan yang benar."
+      },
+      "toothbrushing": {
+        "title": "Sikat Gigi Saya",
+        "how": "Setiap langkah menyikat gigi, secara berurutan."
+      },
+      "getting-dressed": {
+        "title": "Berpakaian",
+        "how": "Pakaian dalam, atasan, celana, kaus kaki, sepatu — urutannya penting."
+      },
+      "morning-routine": {
+        "title": "Rutinitas Pagi",
+        "how": "Bangun tidur, toilet, mencuci, berpakaian, sarapan, tas."
+      },
+      "pack-my-bag": {
+        "title": "Mengepak Tas Sekolah Saya",
+        "how": "Ambil yang kamu butuhkan untuk sekolah. Tinggalkan sisanya."
+      },
+      "sort-the-groceries": {
+        "title": "Memilah Belanjaan",
+        "how": "Jepit untuk mengambilnya, lalu masukkan ke kulkas, freezer, atau lemari."
+      },
+      "laundry-sort": {
+        "title": "Memilah Cucian",
+        "how": "Yang terang di satu keranjang, yang gelap di keranjang lain."
+      },
+      "tidy-the-room": {
+        "title": "Merapikan Kamar",
+        "how": "Semuanya kembali ke kamar yang menjadi tempatnya."
+      },
+      "where-does-it-go": {
+        "title": "Ini Harus Ditaruh Di Mana?",
+        "how": "Susu — kulkas, freezer, atau lemari? Sentuh yang benar."
+      },
+      "hot-sharp-safe": {
+        "title": "Panas, Tajam, atau Aman",
+        "how": "Mana yang menjadi panas? Mana yang tajam? Mana yang aman?"
+      },
+      "safe-or-unsafe": {
+        "title": "Aman atau Tidak Aman?",
+        "how": "Kadang sentuh yang aman, kadang tunjuk yang berbahaya."
+      },
+      "crossing-the-road": {
+        "title": "Menyeberang Jalan",
+        "how": "Berhenti, lihat, dengar, tunggu, menyeberang — urutan yang membuatmu tetap aman."
+      },
+      "clean-or-dirty": {
+        "title": "Perlu Dicuci?",
+        "how": "Kaus kaki masuk cucian. Buku tidak. Mana yang perlu dicuci?"
+      },
+      "my-day": {
+        "title": "Seharian Penuh Saya",
+        "how": "Mencuci, berpakaian, mengepak, membayar, menyeberang jalan, mendengarkan guru, meminta bantuan. Sehari penuh, sekaligus.",
+        "opening": "Selamat pagi! Ayo kita lalui hari ini bersama-sama.",
+        "openingSay": "Selamat pagi. Ayo kita lalui hari ini bersama-sama.",
+        "chain": {
+          "wash": {
+            "title": "Cuci tanganmu",
+            "say": "Pertama, cuci tanganmu."
+          },
+          "dress": {
+            "title": "Berpakaianlah",
+            "say": "Sekarang berpakaianlah. Apa yang dipakai lebih dulu?"
+          },
+          "pack": {
+            "title": "Kepak tasmu",
+            "say": "Kepak yang kamu butuhkan untuk sekolah."
+          },
+          "pay": {
+            "title": "Bayar makan siang",
+            "say": "Kamu butuh koin untuk makan siangmu."
+          },
+          "road": {
+            "title": "Seberangi jalan",
+            "say": "Waktunya menyeberangi jalan. Hijau berarti berjalan, merah berarti berhenti."
+          },
+          "classroom": {
+            "title": "Dengarkan gurumu",
+            "say": "Gurumu punya tiga hal yang harus kamu lakukan."
+          },
+          "help": {
+            "title": "Meminta bantuan",
+            "say": "Kamu tidak bisa menemukan pensilmu. Apa yang bisa kamu lakukan?"
+          }
+        }
+      },
+      "follow-two": {
+        "title": "Ikuti Dua Hal",
+        "how": "\"Sentuh bintangnya, lalu bertepuk tangan.\" Dua hal, secara berurutan."
+      },
+      "follow-three": {
+        "title": "Ikuti Tiga Hal",
+        "how": "\"Sentuh angka 3, tepuk tangan, lalu sentuh yang biru.\" Tiga hal, secara berurutan."
+      },
+      "emotion-match": {
+        "title": "Bagaimana Perasaan Mereka?",
+        "how": "Sesuatu terjadi dalam cerita. Perasaan mana yang sesuai?"
+      },
+      "what-should-i-do": {
+        "title": "Apa yang Harus Saya Lakukan?",
+        "how": "\"Seseorang menjatuhkan pensilnya.\" Apa hal baik yang bisa dilakukan?"
+      },
+      "ask-for-help": {
+        "title": "Minta Bantuan",
+        "how": "Toplesnya tidak bisa dibuka. Memilih untuk bertanya adalah jawabannya."
+      },
+      "stay-safe-choices": {
+        "title": "Berhenti, Pikirkan, Lakukan",
+        "how": "Sesuatu berjalan tidak sesuai rencana. Berhenti, berpikirlah, lalu pilih apa yang harus dilakukan."
+      },
+      "time-of-day": {
+        "title": "Kapan Kita Melakukannya?",
+        "how": "Sikat gigi — pagi atau malam? Mencocokkan hal-hal dengan waktu dalam sehari."
+      },
+      "coin-names": {
+        "title": "Koin yang Mana?",
+        "how": "\"Mana yang lima puluh sen?\" Menyebutkan dan menemukan uang."
+      }
+    },
+    "recommend": {
+      "helpsWith": "Membantu dalam {{domain}}"
+    }
   }
 }

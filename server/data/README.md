@@ -1,4 +1,4 @@
-# LearningO — Dyslexia-Friendly / Life-Skills Question Bank
+# Learnigo — Dyslexia-Friendly / Life-Skills Question Bank
 
 Target: children with dyslexia and other learning differences, approx. ages 5–10.
 Structure: one JSON file per **Subject × Module** (12 files total).

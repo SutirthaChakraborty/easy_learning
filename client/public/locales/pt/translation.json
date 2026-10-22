@@ -40,7 +40,7 @@
     "enterWorld": "Entrar no Mundo"
   },
   "login": {
-    "joinTitle": "Junte-se ao Learningo!",
+    "joinTitle": "Junte-se ao Learnigo!",
     "welcomeBack": "Bem-vindo de volta!",
     "createAccountSubtitle": "Crie sua conta para começar a aprender",
     "continueJourneySubtitle": "Entre para continuar sua jornada",
@@ -332,7 +332,7 @@
     "playAgain": "Jogar novamente"
   },
   "roleSelect": {
-    "welcomeTitle": "Bem-vindo ao Learningo",
+    "welcomeTitle": "Bem-vindo ao Learnigo",
     "welcomeSubtitle": "Escolha como deseja entrar",
     "signInAs": "Entrar como...",
     "roles": {
@@ -347,8 +347,8 @@
   "aboutUs": {
     "badge": "Nossa história",
     "heroTitle": "Aprendizagem, reinventada para cada tipo de mente",
-    "heroSubtitle": "O Learningo é uma plataforma de aprendizagem baseada em jogos, criada para crianças disléxicas e neurodivergentes — onde ler, escrever e falar parecem uma aventura, não uma luta.",
-    "paragraph": "Acreditamos que cada criança aprende de forma diferente, e essa diferença é algo a celebrar, não a corrigir. O Learningo transforma as lições em rodadas curtas e encorajadoras com suporte de áudio, visuais divertidos e feedback positivo instantâneo — para que as crianças construam confiança real, uma estrela por vez.",
+    "heroSubtitle": "O Learnigo é uma plataforma de aprendizagem baseada em jogos, criada para crianças disléxicas e neurodivergentes — onde ler, escrever e falar parecem uma aventura, não uma luta.",
+    "paragraph": "Acreditamos que cada criança aprende de forma diferente, e essa diferença é algo a celebrar, não a corrigir. O Learnigo transforma as lições em rodadas curtas e encorajadoras com suporte de áudio, visuais divertidos e feedback positivo instantâneo — para que as crianças construam confiança real, uma estrela por vez.",
     "worldsTitle": "Escolha o Seu Mundo",
     "worlds": {
       "english": {
@@ -364,7 +364,7 @@
         "text": "Atividades guiadas pela curiosidade que tornam a descoberta empolgante, um experimento por vez."
       }
     },
-    "valuesTitle": "Por Que as Famílias Amam o Learningo",
+    "valuesTitle": "Por Que as Famílias Amam o Learnigo",
     "values": {
       "care": {
         "title": "Feito com Cuidado",
@@ -393,7 +393,7 @@
   "contactUs": {
     "badge": "Estamos Aqui para Ajudar",
     "heroTitle": "Vamos Conversar!",
-    "heroSubtitle": "Tem uma pergunta, uma ideia ou um pequeno problema? Envie-nos uma mensagem e a equipe do Learningo retornará em breve.",
+    "heroSubtitle": "Tem uma pergunta, uma ideia ou um pequeno problema? Envie-nos uma mensagem e a equipe do Learnigo retornará em breve.",
     "reassurances": {
       "support": {
         "title": "Suporte Amigável",
@@ -432,7 +432,7 @@
     "sending": "Enviando…",
     "sendMessage": "Enviar Mensagem",
     "successTitle": "Mensagem enviada!",
-    "successText": "A equipe do Learningo retornará em breve.",
+    "successText": "A equipe do Learnigo retornará em breve.",
     "sendAnother": "Enviar outra mensagem",
     "errors": {
       "name": "Digite seu nome completo",
@@ -442,5 +442,1004 @@
     },
     "errorServer": "Algo deu errado. Por favor, tente novamente.",
     "errorNetwork": "Não foi possível conectar ao servidor. Por favor, tente novamente."
+  },
+  "ar": {
+    "common": {
+      "back": "Voltar",
+      "settings": "Configurações",
+      "closeSettings": "Fechar configurações",
+      "done": "Concluído",
+      "reset": "Redefinir",
+      "keep": "Manter",
+      "erase": "Apagar",
+      "games": "Jogos",
+      "pause": "Pausar",
+      "play": "Jogar",
+      "tryAgain": "Tentar de novo",
+      "playAgain": "Jogar de novo",
+      "progress": "Progresso",
+      "harderArrow": "{{label}} → mais difícil",
+      "easierArrow": "{{label}} → mais fácil"
+    },
+    "hub": {
+      "title": "Jogos com Câmera",
+      "back": "Voltar",
+      "progress": "Progresso",
+      "progressTitle": "Progresso e análise",
+      "settingsLabel": "Configurações",
+      "pointsTitle": "{{points}} pontos · {{rank}}",
+      "pointsTitleWithNext": "{{points}} pontos · {{rank}} · {{toNext}} para {{next}}",
+      "setupTitle": "Comece aqui — Preparar Meu Espaço",
+      "setupSubtitle": "Cinco alongamentos para que cada jogo caia onde esta criança consegue alcançar",
+      "calloutPlay": "Jogar",
+      "levelOf": "Nível {{n}} de {{total}}",
+      "groupTooltip": "{{title}} — {{blurb}}",
+      "groupTooltipWithStats": "{{title}} — {{blurb}} · {{levels}} de {{possible}} níveis",
+      "footRunsOnDevice": "Funciona neste dispositivo · nenhum vídeo é gravado",
+      "footCountSingular": "{{count}} jogo",
+      "footCountPlural": "{{count}} jogos",
+      "footLevelsCleared": "{{count}} níveis concluídos",
+      "footGamesInAll": "{{count}} jogos em total",
+      "pageLabel": "Página {{n}}",
+      "previousPage": "Página anterior",
+      "nextPage": "Próxima página",
+      "groupsAriaLabel": "Grupos de jogos",
+      "newBadge": "Novo",
+      "setupNote": "Preparação · sem níveis",
+      "readOutTitle": "{{title}} — nível {{level}} de {{total}}: {{change}}",
+      "allFiveCleared": "Os cinco níveis concluídos",
+      "readOutAriaLabel": "Ler {{title}}",
+      "readThisOut": "Ler isto em voz alta",
+      "recommend": {
+        "carryOn": "Continue sua jornada",
+        "practising": "Praticando {{domain}}",
+        "tryNew": "Experimente algo novo",
+        "champion": "Jogue um nível de campeão"
+      }
+    },
+    "game": {
+      "notFoundTitle": "Esse jogo não está aqui",
+      "notFoundBody": "O link aponta para {{id}}, que não está no catálogo.",
+      "backToGames": "Voltar aos jogos com câmera"
+    },
+    "stage": {
+      "cameraHelp": {
+        "cameraDenied": {
+          "title": "A câmera está bloqueada",
+          "body": "Esses jogos precisam da câmera para que você possa se ver e alcançar as coisas. Permita o acesso à câmera no seu navegador e pressione Tentar de novo."
+        },
+        "cameraMissing": {
+          "title": "Nenhuma câmera encontrada",
+          "body": "Não conseguimos encontrar uma câmera neste dispositivo. Conecte uma, ou abra os jogos em um celular ou tablet."
+        },
+        "cameraUnsupported": {
+          "title": "Este navegador não pode executar os jogos com câmera",
+          "body": "Abra os jogos no Chrome, Edge ou Safari com https. Em um celular, use o navegador integrado."
+        },
+        "modelFailed": {
+          "title": "Não foi possível iniciar o rastreamento de mãos",
+          "body": "O modelo de rastreamento falhou ao carregar. Verifique sua conexão e pressione Tentar de novo."
+        }
+      },
+      "backAriaLabel": "Voltar aos jogos",
+      "settingsAriaLabel": "Configurações",
+      "pauseAriaLabel": "Pausar",
+      "playAriaLabel": "Jogar",
+      "levelOfShort": "Nível {{level}} de {{total}}",
+      "levelTag": "N{{level}}",
+      "getReady": "Prepare-se!",
+      "showMeYourHand": "Mostre-me sua mão",
+      "turningOnCamera": "Ligando a câmera e carregando o rastreamento de mãos…",
+      "gettingReady": "Preparando…",
+      "start": "Começar — ligar câmera",
+      "privacyNote": "A câmera funciona apenas neste dispositivo. Nenhum vídeo é gravado, salvo ou enviado a lugar nenhum.",
+      "sensoryMotorSettings": "Configurações sensoriais e motoras",
+      "tryAgain": "Tentar de novo",
+      "backToGames": "Voltar aos jogos",
+      "paused": "Pausado",
+      "pausedSub": "Leve todo o tempo que precisar.",
+      "keepPlaying": "Continuar jogando",
+      "startAgain": "Começar de novo",
+      "settings": "Configurações",
+      "games": "Jogos",
+      "handsCountSingular": "{{count}} mão",
+      "handsCountPlural": "{{count}} mãos",
+      "bodyOk": "corpo ✓",
+      "headline": {
+        "levelCleared": "Nível {{n}} concluído!",
+        "passedAgain": "Passou de novo!",
+        "brilliant": "Brilhante!",
+        "greatWork": "Ótimo trabalho!",
+        "goodTry": "Boa tentativa!"
+      },
+      "rows": {
+        "gotIdea": {
+          "label": "Entendeu a ideia",
+          "hint": "correto + resposta certa alcançada com imprecisão"
+        },
+        "onTheirOwn": {
+          "label": "Por conta própria",
+          "hint": "correto sem nenhuma ajuda"
+        },
+        "thinkingTime": {
+          "label": "Tempo de pensar",
+          "hint": "instrução → começou a se mover"
+        },
+        "movingTime": {
+          "label": "Tempo de se mover",
+          "hint": "começou a se mover → tocou"
+        },
+        "reachDirectness": {
+          "label": "Precisão do alcance",
+          "hint": "100% = direto ao alvo"
+        },
+        "stoppedWhenTold": {
+          "label": "Parou quando foi avisado",
+          "hint": "tentativas de não-ir contidas"
+        },
+        "timingSteadiness": {
+          "label": "Estabilidade do ritmo",
+          "hint": "mais baixo = mais constante"
+        }
+      },
+      "pointsWord": "pontos",
+      "pointsTally": "{{total}} pontos em total",
+      "unlockLine": "O nível {{n}} está aberto",
+      "unlockEffortSuffix": " — continuou tentando, então abriu",
+      "allFiveDone": "Os cinco níveis concluídos — você terminou esta jornada",
+      "forGrownUps": "Para os adultos",
+      "nextUpLabel": "Próximo:",
+      "workingOnSuffix": " · trabalhando em {{focus}}",
+      "playLevel": "Jogar nível {{n}}",
+      "playAgain": "Jogar de novo",
+      "levelAgain": "Nível {{n}} de novo",
+      "nextGame": "Próximo jogo",
+      "progress": "Progresso"
+    },
+    "settings": {
+      "dialogAriaLabel": "Configurações do jogo com câmera",
+      "title": "Configurações de jogo",
+      "closeAriaLabel": "Fechar configurações",
+      "tabs": {
+        "sound": "Som",
+        "vision": "Visão",
+        "body": "Corpo",
+        "help": "Ajuda",
+        "data": "Dados"
+      },
+      "sound": {
+        "volume": "Som",
+        "speech": "Instruções faladas",
+        "speechHint": "Lê cada instrução em voz alta",
+        "speechTestHello": "Olá",
+        "speechRate": "Velocidade da fala",
+        "speechRateTest": "Toque no círculo vermelho",
+        "instruction": "Instruções dadas por",
+        "instructionBoth": "Voz + texto",
+        "instructionAudio": "Apenas voz",
+        "instructionVisual": "Apenas texto",
+        "haptics": "Vibração",
+        "hapticsHintVibrate": "Este dispositivo tem um motor de vibração",
+        "hapticsHintGamepad": "Usando o controle conectado",
+        "hapticsHintNone": "Nenhum motor encontrado — um pulso de som grave é usado em vez disso",
+        "hapticIntensity": "Intensidade da vibração"
+      },
+      "vision": {
+        "reducedMotion": "Visuais calmos",
+        "reducedMotionHint": "Sem partículas, sem pulsos, sem flashes de tela",
+        "highContrast": "Alto contraste",
+        "highContrastHint": "Contornos mais fortes e um fundo mais escuro atrás dos alvos",
+        "visualClutter": "Detalhe na tela",
+        "visualClutterNormal": "Normal",
+        "visualClutterMinimal": "Mínimo",
+        "captions": "Mostrar texto sempre",
+        "captionsHint": "Mantém a instrução escrita na tela junto com a voz",
+        "mirrorView": "Espelhar a imagem",
+        "mirrorViewHint": "Ativado = como um espelho, que é o que quase toda criança espera",
+        "showSkeleton": "Mostrar esqueleto",
+        "showSkeletonHint": "Desenha o contorno rastreado da mão e do corpo"
+      },
+      "body": {
+        "seated": "Jogo sentado",
+        "seatedHint": "Mantém cada alvo dentro de um alcance sentado",
+        "singleHand": "Mãos a usar",
+        "singleHandBoth": "Qualquer uma / ambas",
+        "singleHandLeft": "Somente esquerda",
+        "singleHandRight": "Somente direita",
+        "largeTargets": "Alvos grandes",
+        "largeTargetsHint": "Torna tudo 45% maior",
+        "extraTime": "Tempo extra",
+        "extraTimeHint": "Multiplica cada janela de resposta. A velocidade nunca é o ponto.",
+        "extraTimeStandard": "Padrão",
+        "dwellMs": "Tempo de toque",
+        "dwellMsHint": "Quanto tempo um dedo fica sobre um alvo para escolhê-lo. Mais tempo ajuda uma mão trêmula.",
+        "handSwap": "Trocar mão esquerda / direita",
+        "handSwapHintWithDate": "Alcance configurado em {{date}}. Ative isso se o jogo nomear a mão errada.",
+        "handSwapHintNoDate": "Ative isso se o jogo nomear a mão errada. Peça à criança para levantar a mão direita para verificar."
+      },
+      "help": {
+        "promptMode": "Nível de ajuda",
+        "promptModeHint": "Quanta ajuda o jogo dá. Adaptativo a reduz conforme a criança tem sucesso sem ela.",
+        "promptModeAdaptive": "Adaptativo",
+        "adaptiveStageHelpTitle": "Adaptativo.",
+        "adaptiveStageHelpBody": "Começa com uma demonstração e reduz uma etapa após cinco de seis respostas certas sem a ajuda. Retrocede uma etapa após dois erros.",
+        "difficultyMode": "Dificuldade",
+        "difficultyModeHint": "Adaptativo move uma exigência por vez — tamanho do alvo, depois número de opções, depois semelhança dos distratores. Fixa mantém um único nível da jornada.",
+        "difficultyModeAdaptive": "Adaptativo",
+        "difficultyModeFixed": "Fixa",
+        "fixedLevel": "Fixado no nível da jornada",
+        "fixedLevelHint": "Joga e pontua cada rodada neste nível, seja qual for o que a criança escolher. Uma aprovação é registrada como uma conquista real.",
+        "unlockAll": "Desbloquear todos os níveis (adulto)",
+        "unlockAllHint": "Para uma criança que já passou do nível 1, ou para testar um nível. Concluir ainda precisa ser conquistado.",
+        "stageGTitle": "Etapa G — transferência para o mundo real.",
+        "stageGSuffix": "Uma pontuação alta aqui não é evidência de que a habilidade se generalizou; isso precisa ser verificado fora da tela."
+      },
+      "data": {
+        "telemetry": "Registrar dados de análise",
+        "telemetryHint": "Precisão por tentativa, tempo de pensar, tempo de movimento e qualidade do alcance. Apenas números — nunca nenhum vídeo ou imagem.",
+        "showMetrics": "Mostrar números de rastreamento em tempo real",
+        "showMetricsHint": "Taxa de quadros, tempo de detecção e atraso da câmera, para preparar uma sessão",
+        "cameraNote": "Os quadros da câmera são processados apenas neste dispositivo. Nenhum quadro é armazenado ou enviado, por nós ou por qualquer outra pessoa.",
+        "recordingOnSince": "Registro de dados ativado em {{date}}",
+        "eraseProfile": "Apagar o perfil e o histórico desta criança",
+        "eraseConfirm": "Apagar a calibração de alcance, o perfil de capacidades, o progresso de nível, os pontos e todas as rodadas armazenadas?",
+        "erase": "Apagar",
+        "keep": "Manter"
+      },
+      "resetTitle": "Voltar aos padrões",
+      "reset": "Redefinir",
+      "footNoteInGame": "As alterações se aplicam no próximo turno",
+      "footNoteSaved": "Salvo neste dispositivo",
+      "done": "Concluído"
+    },
+    "levelPips": {
+      "chooseLevel": "Escolha um nível",
+      "levelProgress": "Progresso de nível",
+      "levelUnlocked": "Nível {{n}} — {{name}}",
+      "clearedSuffix": " · concluído",
+      "levelLocked": "Nível {{n}} — abre quando o nível {{prev}} for concluído"
+    },
+    "insights": {
+      "title": "Progresso e análise",
+      "dashboardAriaLabel": "Painel de aprendizagem",
+      "dashboardTitle": "O painel de aprendizagem completo desta criança, com um resumo deste relatório vinculado",
+      "refreshAriaLabel": "Atualizar",
+      "exportAriaLabel": "Exportar",
+      "exportTitle": "Baixar os dados por tentativa como CSV",
+      "backAriaLabel": "Voltar",
+      "empty": {
+        "title": "Nada registrado ainda",
+        "body": "Jogue um jogo com câmera e cada turno é medido aqui — o que foi entendido, quanta ajuda foi necessária, quanto tempo levou para pensar e quanto tempo levou para se mover, cada coisa separadamente.",
+        "cta": "Ir para os jogos"
+      },
+      "kpis": {
+        "gotIdea": {
+          "label": "Entendeu a ideia",
+          "hint": "Correto, mais resposta certa alcançada com imprecisão ou atraso. Este é o número de compreensão."
+        },
+        "onTheirOwn": {
+          "label": "Por conta própria",
+          "hint": "Correto sem destaque e sem demonstração. O número de independência."
+        },
+        "thinkingTime": {
+          "label": "Tempo de pensar",
+          "hint": "Tempo médio desde a instrução até o primeiro movimento intencional. Uma medida de decisão, não motora."
+        },
+        "movingTime": {
+          "label": "Tempo de se mover",
+          "hint": "Tempo médio desde que começou a se mover até tocar no alvo. Uma medida motora, mantida totalmente fora da precisão."
+        },
+        "reachDirectness": {
+          "label": "Precisão do alcance",
+          "hint": "Distância em linha reta ÷ o caminho que a mão realmente percorreu. 100% é perfeitamente direto."
+        },
+        "turnsPlayed": {
+          "label": "Turnos jogados",
+          "hintSingular": "{{sessions}} rodada · {{minutes}} min",
+          "hintPlural": "{{sessions}} rodadas · {{minutes}} min"
+        }
+      },
+      "tabs": {
+        "journey": "Jornada",
+        "overview": "Resumo",
+        "domains": "Habilidades",
+        "motor": "Movimento",
+        "life": "Vida"
+      },
+      "noRounds": {
+        "title": "Nenhuma rodada registrada",
+        "note": "A jornada acima está intacta.",
+        "body": "Os dados por tentativa foram apagados, então não há nada para analisar aqui. Os níveis e pontos são armazenados separadamente e continuam na aba Jornada. Jogue uma rodada e essas abas se enchem de novo."
+      },
+      "journeyTab": {
+        "whereTheyAre": {
+          "title": "Onde eles estão",
+          "note": "Níveis concluídos por grupo. O grupo em que a criança está progredindo é o domínio de desenvolvimento em que ela realmente está trabalhando, o que é mais útil do que um total."
+        },
+        "stats": {
+          "levelsCleared": "níveis concluídos",
+          "gamesPlayed": "jogos jogados",
+          "daysPlayed": "dias jogados",
+          "points": "pontos",
+          "rank": "classificação"
+        },
+        "chartTooltip": "{{levels}} de {{possible}} níveis · {{played}}/{{games}} jogos testados",
+        "noJourneys": "Nenhuma jornada iniciada ainda.",
+        "levelPerGame": {
+          "title": "Nível alcançado, por jogo",
+          "noteStuckSingular": "{{count}} jogo jogado várias vezes sem concluir nada — mostrado primeiro. Esse nível está pedindo algo que esta criança ainda não consegue fazer.",
+          "noteStuckPlural": "{{count}} jogos jogados várias vezes sem concluir nada — mostrados primeiro. Esse nível está pedindo algo que esta criança ainda não consegue fazer.",
+          "noteOk": "Jogos jogados, os mais avançados primeiro. Um jogo jogado repetidamente sem concluir nada apareceria no topo."
+        },
+        "stuckIconTitle": "Jogado várias vezes, nada concluído",
+        "noLevels": "sem níveis",
+        "levelsClearedTitle": "Níveis concluídos",
+        "roundsPlayedTitle": "Rodadas jogadas",
+        "playedSuffix": "jogadas",
+        "noGamesPlayed": "Nenhum jogo jogado ainda.",
+        "serverRowNote": "{{count}} jogos com dados de jornada no servidor, em todos os dispositivos desta criança",
+        "howEarned": {
+          "title": "Como esse progresso foi conquistado",
+          "note": "Três afirmações diferentes, deliberadamente não somadas entre si.",
+          "demonstrated": {
+            "name": "Demonstrado",
+            "text": "A criança atingiu o padrão de compreensão do nível. Isso é evidência."
+          },
+          "effort": {
+            "name": "Concedido por persistência",
+            "text": "Três tentativas que chegaram perto do padrão. O nível abriu de qualquer forma, então um nível mal ajustado não pode acabar com o uso do app por uma criança — mas não é evidência de que ela o atingiu."
+          },
+          "implied": {
+            "name": "Inferido",
+            "text": "Creditado porque um nível mais difícil foi concluído, e cada nível exige pelo menos tanto quanto o de baixo. Nunca observado diretamente."
+          },
+          "remote": {
+            "name": "Restaurado de outro dispositivo",
+            "tooltip": "Restaurado do outro dispositivo desta criança. Os dados trazem quais níveis foram concluídos, mas não como, então este dispositivo não tem evidência deles.",
+            "text": "Veio do servidor, que registra quais níveis foram concluídos, mas não como. Sem evidência neste dispositivo."
+          },
+          "footer": "Nenhuma dessas três é evidência de transferência para o mundo real. Um nível concluído significa que a criança fez a tarefa em uma tela."
+        }
+      },
+      "overviewTab": {
+        "trend": {
+          "title": "Compreensão e independência ao longo do tempo",
+          "note": "Duas linhas, porque se movem separadamente. Uma criança pode entender mais enquanto ainda precisa da mesma quantidade de ajuda."
+        },
+        "understood": "Entendido",
+        "independent": "Independente",
+        "trendPlaceholder": "Jogue em um segundo dia para ver uma tendência aqui.",
+        "promptMix": {
+          "title": "Quanta ajuda foi necessária",
+          "note": "Proporção de turnos em cada etapa de ajuda. Reduzir de A para D é o objetivo; a etapa G é verificada fora da tela por um adulto e nunca pode ser concedida pelo jogo."
+        },
+        "turns": "Turnos",
+        "promptPlaceholder": "Nenhum dado de ajuda ainda.",
+        "gamesPlayed": {
+          "title": "Jogos jogados",
+          "note": "Precisão e independência por jogo, os mais jogados primeiro."
+        },
+        "understoodTitle": "Entendido",
+        "independentTitle": "Independente",
+        "medianThinkingTitle": "Tempo médio de pensar",
+        "serverRowNote": "{{count}} jogos registrados no servidor em todos os dispositivos"
+      },
+      "domainsTab": {
+        "profile": {
+          "title": "Perfil de capacidades",
+          "note": "Uma estimativa contínua por domínio funcional, apenas a partir do comportamento no jogo. Domínios com menos de três turnos são ocultados porque a estimativa seria ruído."
+        },
+        "estimate": "Estimativa",
+        "profilePlaceholder": "Jogue mais alguns jogos — pelo menos três domínios precisam de dados antes que um perfil tenha sentido.",
+        "weakest": {
+          "title": "Os mais fracos primeiro",
+          "note": "Precisão nos turnos marcados com cada domínio. As barras mais baixas são onde a próxima sessão vale mais a pena."
+        },
+        "accuracy": "Precisão",
+        "accuracyTooltip": "{{pct}}% de {{trials}} turnos",
+        "weakestPlaceholder": "Nenhum dado de domínio ainda.",
+        "promptPerGame": {
+          "title": "Etapa de ajuda por jogo",
+          "note": "Onde a criança está atualmente na escada de ajuda em cada atividade."
+        }
+      },
+      "motorTab": {
+        "leftHand": "Mão esquerda",
+        "rightHand": "Mão direita",
+        "leftRight": {
+          "title": "Esquerda e direita",
+          "note": "A mesma tarefa, cada mão. Uma diferença consistente em precisão ou direção merece a atenção de um adulto; uma diferença só em velocidade muitas vezes não."
+        },
+        "accuracyTitle": "Precisão",
+        "medianThinkingTitle": "Tempo médio de pensar",
+        "reachDirectnessTitle": "Precisão do alcance",
+        "turnsCountSingular": "{{count}} turno",
+        "turnsCountPlural": "{{count}} turnos",
+        "dominantHandNote": "Mão preferida espontaneamente: {{hand}} ({{left}} alcances esquerdos / {{right}} direitos)",
+        "leftRightPlaceholder": "Nenhum dado por mão ainda.",
+        "rhythm": {
+          "title": "Ritmo e tempo",
+          "note": "A estabilidade é o desvio padrão do erro de tempo e é o número que importa — um desvio constante é apenas um desvio, e parte dele é o atraso da câmera, que é medido e subtraído em cada sessão."
+        },
+        "steadiness": "Estabilidade",
+        "offset": "Desvio",
+        "rhythmPlaceholder": "Jogue Alcance com Ritmo algumas vezes para ver o tempo aqui.",
+        "reachEnvelope": {
+          "title": "Área de alcance",
+          "note": "O espaço de jogo calibrado em que cada jogo coloca os alvos."
+        },
+        "width": "Largura",
+        "height": "Altura",
+        "leftRightDifference": "Diferença esquerda/direita",
+        "setDate": "Configurado em {{date}}",
+        "ofFrame": "do quadro",
+        "reachPlaceholderPrefix": "Não calibrado. Execute",
+        "reachPlaceholderSuffix": "— até então os alvos usam uma área genérica e um alcance restrito vai parecer baixa precisão."
+      },
+      "lifeTab": {
+        "practised": {
+          "title": "Habilidades de vida praticadas",
+          "note": "Agrupadas pela habilidade do mundo real para a qual cada jogo transfere, não pelo jogo."
+        },
+        "alonePct": "{{pct}}% sozinho",
+        "roundsSingular": "{{count}} rodada",
+        "roundsPlural": "{{count}} rodadas",
+        "practisedPlaceholder": "Nenhum jogo de habilidades de vida jogado ainda.",
+        "routine": {
+          "title": "Passos de rotina feitos sem ajuda",
+          "note": "Para jogos de sequência como lavar as mãos: quantos passos foram feitos na ordem certa sem um lembrete. 3/7 → 5/7 → 6/7 é como se vê um progresso real."
+        },
+        "routinePlaceholder": "Jogue um jogo de rotina (lavar, se vestir, cruzar a rua) para ver isso.",
+        "transfer": {
+          "title": "Transferência para o mundo real",
+          "note": "A etapa que o jogo não pode conceder."
+        },
+        "transferP1Bold": "A etapa G é verificada por uma pessoa, fora da tela.",
+        "transferP1Rest": "Uma criança que consegue escolher a escova de dentes entre cinco imagens ainda não demonstrou que consegue pegar a escova de dentes real no banheiro real.",
+        "transferP2": "Use as pontuações de rotina acima para decidir quando vale a pena experimentar uma habilidade de verdade, depois anote o que aconteceu em suas próprias notas — este app deliberadamente não afirma ter medido isso."
+      },
+      "footer": {
+        "disclaimer": "Estas são descrições do que aconteceu nos jogos, não medidas clínicas. Uma pontuação alta não é evidência de que uma habilidade se transfere para fora da tela — isso precisa ser verificado na vida real.",
+        "erase": "Apagar",
+        "confirmText": "Apagar todas as rodadas registradas?",
+        "confirmYes": "Sim, apagar",
+        "confirmKeep": "Manter"
+      }
+    },
+    "groups": {
+      "body": {
+        "title": "Corpo e Alcance",
+        "short": "Corpo",
+        "blurb": "Alcançar, apontar, usar duas mãos, cruzar o centro"
+      },
+      "look": {
+        "title": "Olhar e Encontrar",
+        "short": "Olhar",
+        "blurb": "Encontrar o certo, escutar, ler, palavras de espaço"
+      },
+      "stop": {
+        "title": "Parar e Pensar",
+        "short": "Parar",
+        "blurb": "Esperar, congelar, ignorar distrações, mudar regras"
+      },
+      "remember": {
+        "title": "Lembrar",
+        "short": "Memória",
+        "blurb": "Manter coisas na mente, copiar uma ordem, itens faltando"
+      },
+      "learn": {
+        "title": "Letras e Números",
+        "short": "ABC 123",
+        "blurb": "Sons, ortografia, escrita, contagem, dinheiro"
+      },
+      "move": {
+        "title": "Mover e Copiar",
+        "short": "Mover",
+        "blurb": "Ritmo, imitação, traçar, desenhar no ar"
+      },
+      "day": {
+        "title": "Meu Dia",
+        "short": "Meu Dia",
+        "blurb": "Lavar, vestir, empacotar, organizar, ficar seguro"
+      },
+      "together": {
+        "title": "Falar e Juntos",
+        "short": "Juntos",
+        "blurb": "Seguir instruções, sentimentos, pedir ajuda"
+      }
+    },
+    "domains": {
+      "visualDiscrimination": "Atenção visual",
+      "auditoryComprehension": "Escuta",
+      "readingSymbol": "Leitura",
+      "reactionSpeed": "Reação",
+      "reachAccuracy": "Alcance",
+      "sustainedAttention": "Atenção",
+      "workingMemory": "Memória de trabalho",
+      "sequencing": "Sequenciamento",
+      "inhibition": "Parar e esperar",
+      "cognitiveFlexibility": "Mudar de regras",
+      "bilateralCoordination": "Ambas as mãos",
+      "motorPlanning": "Planejamento motor",
+      "spatialConcepts": "Palavras de espaço",
+      "socialReasoning": "Pensamento social",
+      "independence": "Independência"
+    },
+    "lifeSkills": {
+      "hygiene": "Higiene",
+      "dressing": "Vestir-se",
+      "school": "Preparação escolar",
+      "kitchen": "Cozinha",
+      "shopping": "Compras",
+      "money": "Dinheiro",
+      "roadSafety": "Segurança no trânsito",
+      "homeSafety": "Segurança em casa",
+      "chores": "Tarefas domésticas",
+      "routines": "Rotina diária",
+      "communication": "Comunicação",
+      "help": "Pedir ajuda",
+      "socialPlay": "Brincadeira social",
+      "literacy": "Alfabetização inicial",
+      "numeracy": "Numeramento",
+      "navigation": "Se locomover",
+      "selfRegulation": "Autorregulação",
+      "bodyAwareness": "Consciência corporal",
+      "instructions": "Seguir instruções",
+      "independence": "Independência"
+    },
+    "levels": {
+      "1": "Primeiros Passos",
+      "2": "Aquecendo",
+      "3": "Melhorando",
+      "4": "Forte",
+      "5": "Campeão"
+    },
+    "ranks": {
+      "explorer": "Explorador",
+      "pathfinder": "Desbravador",
+      "trailblazer": "Pioneiro",
+      "skyWalker": "Caminhante do Céu",
+      "starRider": "Cavaleiro Estelar",
+      "legend": "Lenda",
+      "grandChampion": "Grande Campeão"
+    },
+    "badges": {
+      "first-game": {
+        "name": "Começou",
+        "how": "Jogou seu primeiro jogo com câmera"
+      },
+      "space-set": {
+        "name": "Meu Espaço",
+        "how": "Preparou seu alcance"
+      },
+      "five-days": {
+        "name": "Continuou",
+        "how": "Jogou em cinco dias diferentes"
+      },
+      "level-3": {
+        "name": "Na Metade",
+        "how": "Concluiu três níveis de um jogo"
+      },
+      "all-five": {
+        "name": "Jornada Completa",
+        "how": "Concluiu os cinco níveis de um jogo"
+      },
+      "ten-games": {
+        "name": "Explorador",
+        "how": "Tentou dez jogos diferentes"
+      },
+      "every-group": {
+        "name": "De Tudo um Pouco",
+        "how": "Jogou um jogo de cada grupo"
+      },
+      "both-hands": {
+        "name": "Duas Mãos",
+        "how": "Usou ambas as mãos bastante"
+      },
+      "on-my-own": {
+        "name": "Por Conta Própria",
+        "how": "Respondeu sem ajuda em um jogo"
+      },
+      "whole-day": {
+        "name": "Dia Completo",
+        "how": "Terminou uma missão de um dia inteiro"
+      }
+    },
+    "promptStages": {
+      "A": {
+        "name": "Demonstração",
+        "help": "A resposta pulsa e uma mão animada mostra o alcance."
+      },
+      "B": {
+        "name": "Prática guiada",
+        "help": "Instrução falada mais um destaque na resposta. Sem demonstração."
+      },
+      "C": {
+        "name": "Ajuda reduzida",
+        "help": "Instrução falada; a resposta se destaca apenas brevemente no início."
+      },
+      "D": {
+        "name": "Independente",
+        "help": "Apenas instrução. Sem destaque."
+      },
+      "E": {
+        "name": "Com distratores",
+        "help": "Independente, com respostas erradas bem parecidas na tela."
+      },
+      "F": {
+        "name": "Contexto da vida real",
+        "help": "A instrução é uma situação, não um rótulo: \"é hora de dormir — o que você precisa?\""
+      },
+      "G": {
+        "name": "Transferência para o mundo real",
+        "help": "Verificado por um adulto fora da tela. O jogo nunca concede isso."
+      }
+    },
+    "dimensions": {
+      "targetSize": "Tamanho do alvo",
+      "choices": "Número de opções",
+      "distractors": "Semelhança dos distratores",
+      "eccentricity": "Distância de alcance",
+      "steps": "Passos de instrução",
+      "memorySpan": "Amplitude de memória",
+      "showMs": "Tempo de exposição",
+      "window": "Janela de resposta",
+      "ruleSwitch": "Troca de regra",
+      "hands": "Exigência de mãos",
+      "midline": "Cruzamento da linha média",
+      "pace": "Ritmo",
+      "noGoRate": "Frequência de não-ir",
+      "tolerance": "Tolerância do traçado",
+      "holdMs": "Duração da espera"
+    },
+    "levelChange": {
+      "first": "Tudo grande, lento e com ajuda",
+      "none": "Um pouco mais de prática nisso",
+      "moreSuffix": " · e mais",
+      "harderWords": {
+        "targetSize": "alvos menores",
+        "choices": "mais opções para escolher",
+        "distractors": "respostas erradas mais enganosas",
+        "eccentricity": "mais distância para alcançar",
+        "steps": "mais passos para lembrar",
+        "memorySpan": "mais para manter na mente",
+        "showMs": "uma olhada mais curta",
+        "window": "menos tempo de espera",
+        "ruleSwitch": "a regra muda",
+        "hands": "ambas as mãos",
+        "midline": "alcançar o lado oposto",
+        "pace": "um ritmo mais rápido",
+        "noGoRate": "mais vezes para parar",
+        "tolerance": "um caminho mais estreito",
+        "holdMs": "uma espera mais longa"
+      }
+    },
+    "points": {
+      "playedSingular": "{{count}} turno jogado",
+      "playedPlural": "{{count}} turnos jogados",
+      "gotItRight": "Acertou",
+      "levelBonus": "Bônus de nível {{n}}",
+      "bestYet": "Seu melhor até agora!",
+      "levelClearedRow": "Nível concluído",
+      "levelPassedAgain": "Nível passou de novo",
+      "firstGameToday": "Primeiro jogo de hoje"
+    },
+    "advice": {
+      "moreTurns": "Jogue mais alguns turnos para terminar este nível",
+      "getBar": "Consiga {{bar}}% dos turnos certos para abrir o próximo nível"
+    },
+    "games": {
+      "setup-space": {
+        "title": "Preparar Meu Espaço",
+        "how": "Cinco alongamentos simples para que cada jogo caia exatamente onde você consegue alcançar. Faça isso uma vez, primeiro."
+      },
+      "ball-pop": {
+        "title": "Estoura Balões",
+        "how": "Balões aparecem ao seu alcance — estoure cada um antes que flutue para longe."
+      },
+      "number-hunt": {
+        "title": "Caça aos Números com o Corpo Todo",
+        "how": "Números aparecem em cima, embaixo, à esquerda e à direita. Use todo o seu corpo para alcançá-los."
+      },
+      "two-hand-catch": {
+        "title": "Pega com Duas Mãos",
+        "how": "Duas formas, uma para cada mão. Toque nas duas ao mesmo tempo."
+      },
+      "cross-the-middle": {
+        "title": "Cruze o Centro",
+        "how": "Sua mão esquerda busca coisas à direita, e vice-versa."
+      },
+      "left-or-right": {
+        "title": "Esquerda ou Direita?",
+        "how": "\"Toque com sua mão ESQUERDA.\" Saber qual é qual."
+      },
+      "reach-near-far": {
+        "title": "Alcance de Perto e de Longe",
+        "how": "Algumas coisas estão perto, outras bem na borda do seu alcance."
+      },
+      "find-touch-colour": {
+        "title": "Encontre e Toque",
+        "how": "\"Toque no azul.\" Cores primeiro, depois formas e números."
+      },
+      "find-shape": {
+        "title": "Encontre a Forma",
+        "how": "\"Toque no triângulo.\" Dez formas, algumas fáceis de confundir."
+      },
+      "read-and-find": {
+        "title": "Leia e Encontre",
+        "how": "A palavra CÍRCULO aparece. Toque no círculo. Nada é lido em voz alta."
+      },
+      "listen-and-find": {
+        "title": "Escute e Encontre",
+        "how": "Uma voz diz a palavra. Nada está escrito. Encontre o que você ouve."
+      },
+      "search-the-room": {
+        "title": "Procure no Quarto",
+        "how": "Uma única resposta certa escondida entre muitas bem parecidas."
+      },
+      "big-or-small": {
+        "title": "Grande ou Pequeno?",
+        "how": "Maior, menor, mais, menos — as palavras de comparação."
+      },
+      "above-or-below": {
+        "title": "Acima ou Abaixo?",
+        "how": "\"Toque no gato acima da caixa.\" Palavras de espaço, no espaço."
+      },
+      "which-animal": {
+        "title": "Qual Grupo?",
+        "how": "\"Toque no animal de fazenda.\" Classificando o mundo em tipos."
+      },
+      "go-no-go-animals": {
+        "title": "Só Bichinhos de Estimação!",
+        "how": "Toque nos bichinhos de estimação. Deixe os animais selvagens completamente em paz."
+      },
+      "rule-switch": {
+        "title": "Troca de Regra",
+        "how": "Toque nos animais… e de repente a regra muda para veículos."
+      },
+      "safe-or-not": {
+        "title": "Mãos Seguras",
+        "how": "Toque no que é seguro segurar. Nunca toque no que não é."
+      },
+      "red-light-green-light": {
+        "title": "Sinal Vermelho, Sinal Verde",
+        "how": "Mova-se quando estiver verde. Congele completamente quando ficar vermelho."
+      },
+      "traffic-light-body": {
+        "title": "Jogo do Semáforo",
+        "how": "Verde ande, amarelo prepare-se, vermelho congele — como uma faixa de pedestres de verdade."
+      },
+      "wait-for-it": {
+        "title": "Espere o Momento",
+        "how": "A estrela está lá — mas não a toque até ficar verde."
+      },
+      "calm-movement": {
+        "title": "Movimento Calmo",
+        "how": "Continue se movendo, mas com calma. Nem muito parado, nem muito agitado."
+      },
+      "fast-vs-slow": {
+        "title": "Rápido ou Lento",
+        "how": "Mova os braços rápido, depois bem devagar. Escolha sua própria velocidade."
+      },
+      "vanishing-target": {
+        "title": "Alvo que Desaparece",
+        "how": "Uma letra aparece rapidamente, depois desaparece. Qual era?"
+      },
+      "simon-reach": {
+        "title": "Simon Alcance",
+        "how": "Observe a ordem em que as formas se acendem, depois copie exatamente."
+      },
+      "copy-the-pattern": {
+        "title": "Copie o Padrão",
+        "how": "Vermelho, azul, amarelo, vermelho — observe o padrão de cores, depois repita."
+      },
+      "repair-the-sequence": {
+        "title": "Repare a Sequência",
+        "how": "1, 2, ?, 4 — qual está faltando?"
+      },
+      "repair-the-alphabet": {
+        "title": "Repare o Alfabeto",
+        "how": "A, B, ?, D — encontre a letra que caiu."
+      },
+      "whats-missing": {
+        "title": "O que Está Faltando?",
+        "how": "Olhe na mochila escolar, depois diga o que desapareceu."
+      },
+      "grocery-mission": {
+        "title": "Missão de Compras",
+        "how": "\"Pegue leite, uma maçã e pão.\" Mantenha a lista na mente e busque-os."
+      },
+      "phonics-reach": {
+        "title": "Alcance Fonético",
+        "how": "Você ouve /b/. Alcance a letra que faz esse som."
+      },
+      "beginning-sound": {
+        "title": "Som Inicial",
+        "how": "\"Qual começa com /k/?\" Alcance o gato."
+      },
+      "word-builder": {
+        "title": "Construtor de Palavras",
+        "how": "Escreva G-A-T-O alcançando as letras em ordem."
+      },
+      "word-and-picture": {
+        "title": "Palavra e Imagem",
+        "how": "A palavra SOL aparece. Toque na imagem que combina."
+      },
+      "air-writing": {
+        "title": "Escrita no Ar",
+        "how": "Escreva letras e números no ar com o dedo."
+      },
+      "number-match": {
+        "title": "Quantos Tem?",
+        "how": "O número 5 aparece. Toque no grupo que tem cinco coisas."
+      },
+      "count-and-collect": {
+        "title": "Conte e Colete",
+        "how": "\"Colete quatro maçãs.\" Contar enquanto se move."
+      },
+      "money-shop": {
+        "title": "Loja de Dinheiro",
+        "how": "A maçã custa 30 centavos. Escolha as moedas que a pagam."
+      },
+      "sentence-order": {
+        "title": "Ordem da Frase",
+        "how": "Eu / quero / água — coloque as palavras na ordem certa."
+      },
+      "rhythm-reach": {
+        "title": "Alcance com Ritmo",
+        "how": "Toque a forma exatamente em cada batida. Perfeito, ótimo, perto — tudo conta."
+      },
+      "mirror-me": {
+        "title": "Imite-me",
+        "how": "Copie a postura que a pequena figura está mantendo."
+      },
+      "copy-my-gesture": {
+        "title": "Copie Meu Gesto",
+        "how": "Acenar, polegar para cima, apontar, mão aberta — os gestos que as pessoas usam."
+      },
+      "personal-space": {
+        "title": "Minha Bolha de Espaço",
+        "how": "Mantenha seu corpo dentro da sua bolha — depois saia bem para fora dela."
+      },
+      "trace-the-road": {
+        "title": "Trace a Estrada",
+        "how": "Dirija seu dedo pela estrada sinuosa sem saltar para fora."
+      },
+      "shape-drawing": {
+        "title": "Desenho de Formas",
+        "how": "Desenhe um círculo, um quadrado, uma estrela — no ar."
+      },
+      "ar-maze": {
+        "title": "Labirinto com o Dedo",
+        "how": "Encontre o caminho pelo labirinto sem tocar nas paredes."
+      },
+      "pinch-and-write": {
+        "title": "Pince e Escreva",
+        "how": "Pince o dedo e o polegar para segurar o lápis, depois escreva. Como uma pegada real de lápis."
+      },
+      "handwashing": {
+        "title": "Lave as Mãos",
+        "how": "Toque para começar, molhe, sabão, esfregue, enxágue, seque — tudo na ordem certa."
+      },
+      "toothbrushing": {
+        "title": "Escove os Dentes",
+        "how": "Cada passo de escovar, em ordem."
+      },
+      "getting-dressed": {
+        "title": "Vestindo-se",
+        "how": "Roupa de baixo, camisa, calça, meias, sapatos — a ordem importa."
+      },
+      "morning-routine": {
+        "title": "Rotina Matinal",
+        "how": "Acordar, banheiro, lavar, vestir, café da manhã, mochila."
+      },
+      "pack-my-bag": {
+        "title": "Empacote Minha Mochila Escolar",
+        "how": "Leve o que precisa para a escola. Deixe o resto para trás."
+      },
+      "sort-the-groceries": {
+        "title": "Organize as Compras",
+        "how": "Pince para pegar, depois deixe cair na geladeira, no congelador ou no armário."
+      },
+      "laundry-sort": {
+        "title": "Organize a Roupa Suja",
+        "how": "As claras em uma cesta, as escuras na outra."
+      },
+      "tidy-the-room": {
+        "title": "Organize o Quarto",
+        "how": "Tudo volta para o quarto a que pertence."
+      },
+      "where-does-it-go": {
+        "title": "Onde Vai Isso?",
+        "how": "Leite — geladeira, congelador ou armário? Toque no certo."
+      },
+      "hot-sharp-safe": {
+        "title": "Quente, Afiado ou Seguro",
+        "how": "Qual esquenta? Qual é afiado? Qual é seguro?"
+      },
+      "safe-or-unsafe": {
+        "title": "Seguro ou Não Seguro?",
+        "how": "Às vezes toque no seguro, às vezes aponte o perigoso."
+      },
+      "crossing-the-road": {
+        "title": "Cruzando a Rua",
+        "how": "Pare, olhe, escute, espere, cruze — a ordem que mantém você seguro."
+      },
+      "clean-or-dirty": {
+        "title": "Precisa Lavar?",
+        "how": "As meias vão para a lavagem. Os livros não. Qual precisa ser lavado?"
+      },
+      "my-day": {
+        "title": "Meu Dia Completo",
+        "how": "Lave, vista-se, empacote, pague, cruze a rua, escute a professora, peça ajuda. O dia inteiro, de uma vez.",
+        "opening": "Bom dia! Vamos passar o dia juntos.",
+        "openingSay": "Bom dia. Vamos passar o dia juntos.",
+        "chain": {
+          "wash": {
+            "title": "Lave as mãos",
+            "say": "Primeiro, lave as mãos."
+          },
+          "dress": {
+            "title": "Vista-se",
+            "say": "Agora vista-se. O que vai primeiro?"
+          },
+          "pack": {
+            "title": "Empacote sua mochila",
+            "say": "Empacote o que precisa para a escola."
+          },
+          "pay": {
+            "title": "Pague o almoço",
+            "say": "Você precisa de moedas para o seu almoço."
+          },
+          "road": {
+            "title": "Cruze a rua",
+            "say": "Hora de cruzar a rua. Verde significa andar, vermelho significa congelar."
+          },
+          "classroom": {
+            "title": "Escute a professora",
+            "say": "A professora tem três coisas para você fazer."
+          },
+          "help": {
+            "title": "Pedir ajuda",
+            "say": "Você não consegue encontrar seu lápis. O que você pode fazer?"
+          }
+        }
+      },
+      "follow-two": {
+        "title": "Siga Duas Coisas",
+        "how": "\"Toque a estrela, depois bata palmas.\" Duas coisas, em ordem."
+      },
+      "follow-three": {
+        "title": "Siga Três Coisas",
+        "how": "\"Toque o 3, bata palmas, depois toque o azul.\" Três, em ordem."
+      },
+      "emotion-match": {
+        "title": "Como Eles se Sentiriam?",
+        "how": "Algo acontece na história. Qual sentimento combina?"
+      },
+      "what-should-i-do": {
+        "title": "O que Devo Fazer?",
+        "how": "\"Alguém deixou cair o lápis.\" Qual é a coisa gentil a fazer?"
+      },
+      "ask-for-help": {
+        "title": "Peça Ajuda",
+        "how": "O pote não abre. Escolher pedir ajuda é a resposta."
+      },
+      "stay-safe-choices": {
+        "title": "Pare, Pense, Aja",
+        "how": "Algo deu errado. Pare, pense, depois escolha o que fazer."
+      },
+      "time-of-day": {
+        "title": "Quando Fazemos Isso?",
+        "how": "Escova de dentes — de manhã ou de noite? Relacionar coisas com horários do dia."
+      },
+      "coin-names": {
+        "title": "Qual Moeda?",
+        "how": "\"Qual é a de cinquenta centavos?\" Nomear e encontrar dinheiro."
+      }
+    },
+    "recommend": {
+      "helpsWith": "Ajuda com {{domain}}"
+    }
   }
 }

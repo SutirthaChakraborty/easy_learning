@@ -40,7 +40,7 @@
     "enterWorld": "Entrer dans le Monde"
   },
   "login": {
-    "joinTitle": "Rejoignez Learningo !",
+    "joinTitle": "Rejoignez Learnigo !",
     "welcomeBack": "Bon retour !",
     "createAccountSubtitle": "Créez votre compte pour commencer à apprendre",
     "continueJourneySubtitle": "Connectez-vous pour continuer votre voyage",
@@ -332,7 +332,7 @@
     "playAgain": "Rejouer"
   },
   "roleSelect": {
-    "welcomeTitle": "Bienvenue sur Learningo",
+    "welcomeTitle": "Bienvenue sur Learnigo",
     "welcomeSubtitle": "Choisis comment tu veux te connecter",
     "signInAs": "Se connecter en tant que...",
     "roles": {
@@ -347,8 +347,8 @@
   "aboutUs": {
     "badge": "Notre histoire",
     "heroTitle": "Apprendre, réinventé pour chaque type d'esprit",
-    "heroSubtitle": "Learningo est une plateforme d'apprentissage ludique conçue pour les enfants dyslexiques et neuroatypiques — où lire, écrire et parler ressemblent à une aventure, pas à une lutte.",
-    "paragraph": "Nous croyons que chaque enfant apprend différemment, et que cette différence est à célébrer, pas à corriger. Learningo transforme les leçons en courtes séances motivantes avec un support audio, des visuels ludiques et un retour positif instantané — pour que les enfants développent une vraie confiance, étoile après étoile.",
+    "heroSubtitle": "Learnigo est une plateforme d'apprentissage ludique conçue pour les enfants dyslexiques et neuroatypiques — où lire, écrire et parler ressemblent à une aventure, pas à une lutte.",
+    "paragraph": "Nous croyons que chaque enfant apprend différemment, et que cette différence est à célébrer, pas à corriger. Learnigo transforme les leçons en courtes séances motivantes avec un support audio, des visuels ludiques et un retour positif instantané — pour que les enfants développent une vraie confiance, étoile après étoile.",
     "worldsTitle": "Choisis ton monde",
     "worlds": {
       "english": {
@@ -364,7 +364,7 @@
         "text": "Des activités guidées par la curiosité qui rendent la découverte passionnante, une expérience à la fois."
       }
     },
-    "valuesTitle": "Pourquoi les familles aiment Learningo",
+    "valuesTitle": "Pourquoi les familles aiment Learnigo",
     "values": {
       "care": {
         "title": "Conçu avec soin",
@@ -393,7 +393,7 @@
   "contactUs": {
     "badge": "Nous sommes là pour t'aider",
     "heroTitle": "Parlons-en !",
-    "heroSubtitle": "Une question, une idée ou un petit souci ? Envoie-nous un message et l'équipe Learningo te répondra bientôt.",
+    "heroSubtitle": "Une question, une idée ou un petit souci ? Envoie-nous un message et l'équipe Learnigo te répondra bientôt.",
     "reassurances": {
       "support": {
         "title": "Support amical",
@@ -432,7 +432,7 @@
     "sending": "Envoi en cours…",
     "sendMessage": "Envoyer le message",
     "successTitle": "Message envoyé !",
-    "successText": "L'équipe Learningo te répondra bientôt.",
+    "successText": "L'équipe Learnigo te répondra bientôt.",
     "sendAnother": "Envoyer un autre message",
     "errors": {
       "name": "Saisis ton nom complet",
@@ -442,5 +442,1004 @@
     },
     "errorServer": "Une erreur s'est produite. Merci de réessayer.",
     "errorNetwork": "Impossible de contacter le serveur. Merci de réessayer."
+  },
+  "ar": {
+    "common": {
+      "back": "Retour",
+      "settings": "Réglages",
+      "closeSettings": "Fermer les réglages",
+      "done": "Terminé",
+      "reset": "Réinitialiser",
+      "keep": "Garder",
+      "erase": "Effacer",
+      "games": "Jeux",
+      "pause": "Pause",
+      "play": "Jouer",
+      "tryAgain": "Réessayer",
+      "playAgain": "Rejouer",
+      "progress": "Progrès",
+      "harderArrow": "{{label}} → plus difficile",
+      "easierArrow": "{{label}} → plus facile"
+    },
+    "hub": {
+      "title": "Jeux avec Caméra",
+      "back": "Retour",
+      "progress": "Progrès",
+      "progressTitle": "Progrès et analyse",
+      "settingsLabel": "Réglages",
+      "pointsTitle": "{{points}} points · {{rank}}",
+      "pointsTitleWithNext": "{{points}} points · {{rank}} · {{toNext}} pour {{next}}",
+      "setupTitle": "Commencez ici — Préparer Mon Espace",
+      "setupSubtitle": "Cinq étirements pour que chaque jeu tombe là où cet enfant peut atteindre",
+      "calloutPlay": "Jouer",
+      "levelOf": "Niveau {{n}} sur {{total}}",
+      "groupTooltip": "{{title}} — {{blurb}}",
+      "groupTooltipWithStats": "{{title}} — {{blurb}} · {{levels}} sur {{possible}} niveaux",
+      "footRunsOnDevice": "Fonctionne sur cet appareil · aucune vidéo n'est enregistrée",
+      "footCountSingular": "{{count}} jeu",
+      "footCountPlural": "{{count}} jeux",
+      "footLevelsCleared": "{{count}} niveaux réussis",
+      "footGamesInAll": "{{count}} jeux en tout",
+      "pageLabel": "Page {{n}}",
+      "previousPage": "Page précédente",
+      "nextPage": "Page suivante",
+      "groupsAriaLabel": "Groupes de jeux",
+      "newBadge": "Nouveau",
+      "setupNote": "Préparation · sans niveaux",
+      "readOutTitle": "{{title}} — niveau {{level}} sur {{total}} : {{change}}",
+      "allFiveCleared": "Les cinq niveaux réussis",
+      "readOutAriaLabel": "Lire {{title}}",
+      "readThisOut": "Lire ceci à voix haute",
+      "recommend": {
+        "carryOn": "Continue ton parcours",
+        "practising": "S'exerce sur {{domain}}",
+        "tryNew": "Essaie quelque chose de nouveau",
+        "champion": "Joue un niveau de champion"
+      }
+    },
+    "game": {
+      "notFoundTitle": "Ce jeu n'est pas ici",
+      "notFoundBody": "Le lien pointe vers {{id}}, qui n'est pas dans le catalogue.",
+      "backToGames": "Retour aux jeux avec caméra"
+    },
+    "stage": {
+      "cameraHelp": {
+        "cameraDenied": {
+          "title": "La caméra est bloquée",
+          "body": "Ces jeux ont besoin de la caméra pour que tu puisses te voir et atteindre les objets. Autorise l'accès à la caméra dans ton navigateur, puis appuie sur Réessayer."
+        },
+        "cameraMissing": {
+          "title": "Aucune caméra trouvée",
+          "body": "Nous n'avons pas pu trouver de caméra sur cet appareil. Branche-en une, ou ouvre les jeux sur un téléphone ou une tablette."
+        },
+        "cameraUnsupported": {
+          "title": "Ce navigateur ne peut pas exécuter les jeux avec caméra",
+          "body": "Ouvre les jeux dans Chrome, Edge ou Safari via https. Sur un téléphone, utilise le navigateur intégré."
+        },
+        "modelFailed": {
+          "title": "Impossible de démarrer le suivi des mains",
+          "body": "Le modèle de suivi n'a pas pu se charger. Vérifie ta connexion et appuie sur Réessayer."
+        }
+      },
+      "backAriaLabel": "Retour aux jeux",
+      "settingsAriaLabel": "Réglages",
+      "pauseAriaLabel": "Pause",
+      "playAriaLabel": "Jouer",
+      "levelOfShort": "Niveau {{level}} sur {{total}}",
+      "levelTag": "N{{level}}",
+      "getReady": "Prépare-toi !",
+      "showMeYourHand": "Montre-moi ta main",
+      "turningOnCamera": "Activation de la caméra et chargement du suivi des mains…",
+      "gettingReady": "Préparation…",
+      "start": "Commencer — activer la caméra",
+      "privacyNote": "La caméra fonctionne uniquement sur cet appareil. Aucune vidéo n'est enregistrée, sauvegardée ou envoyée où que ce soit.",
+      "sensoryMotorSettings": "Réglages sensoriels et moteurs",
+      "tryAgain": "Réessayer",
+      "backToGames": "Retour aux jeux",
+      "paused": "En pause",
+      "pausedSub": "Prends tout le temps qu'il te faut.",
+      "keepPlaying": "Continuer à jouer",
+      "startAgain": "Recommencer",
+      "settings": "Réglages",
+      "games": "Jeux",
+      "handsCountSingular": "{{count}} main",
+      "handsCountPlural": "{{count}} mains",
+      "bodyOk": "corps ✓",
+      "headline": {
+        "levelCleared": "Niveau {{n}} réussi !",
+        "passedAgain": "Réussi encore !",
+        "brilliant": "Brillant !",
+        "greatWork": "Super travail !",
+        "goodTry": "Bon essai !"
+      },
+      "rows": {
+        "gotIdea": {
+          "label": "A compris l'idée",
+          "hint": "correct + bonne réponse atteinte avec imprécision"
+        },
+        "onTheirOwn": {
+          "label": "Tout seul",
+          "hint": "correct sans aucune aide"
+        },
+        "thinkingTime": {
+          "label": "Temps de réflexion",
+          "hint": "instruction → a commencé à bouger"
+        },
+        "movingTime": {
+          "label": "Temps de mouvement",
+          "hint": "a commencé à bouger → a touché"
+        },
+        "reachDirectness": {
+          "label": "Précision du geste",
+          "hint": "100 % = droit vers la cible"
+        },
+        "stoppedWhenTold": {
+          "label": "S'est arrêté quand on le lui a demandé",
+          "hint": "essais de non-réponse retenus"
+        },
+        "timingSteadiness": {
+          "label": "Stabilité du rythme",
+          "hint": "plus bas = plus régulier"
+        }
+      },
+      "pointsWord": "points",
+      "pointsTally": "{{total}} points en tout",
+      "unlockLine": "Le niveau {{n}} est ouvert",
+      "unlockEffortSuffix": " — il a continué d'essayer, donc ça s'est ouvert",
+      "allFiveDone": "Les cinq niveaux terminés — tu as fini ce parcours",
+      "forGrownUps": "Pour les adultes",
+      "nextUpLabel": "Ensuite :",
+      "workingOnSuffix": " · travaille sur {{focus}}",
+      "playLevel": "Jouer le niveau {{n}}",
+      "playAgain": "Rejouer",
+      "levelAgain": "Niveau {{n}} encore",
+      "nextGame": "Jeu suivant",
+      "progress": "Progrès"
+    },
+    "settings": {
+      "dialogAriaLabel": "Réglages du jeu avec caméra",
+      "title": "Réglages de jeu",
+      "closeAriaLabel": "Fermer les réglages",
+      "tabs": {
+        "sound": "Son",
+        "vision": "Vision",
+        "body": "Corps",
+        "help": "Aide",
+        "data": "Données"
+      },
+      "sound": {
+        "volume": "Son",
+        "speech": "Instructions parlées",
+        "speechHint": "Lit chaque instruction à voix haute",
+        "speechTestHello": "Bonjour",
+        "speechRate": "Vitesse de la voix",
+        "speechRateTest": "Touche le cercle rouge",
+        "instruction": "Instructions données par",
+        "instructionBoth": "Voix + texte",
+        "instructionAudio": "Voix seule",
+        "instructionVisual": "Texte seul",
+        "haptics": "Vibration",
+        "hapticsHintVibrate": "Cet appareil a un moteur de vibration",
+        "hapticsHintGamepad": "Utilise la manette connectée",
+        "hapticsHintNone": "Aucun moteur trouvé — une pulsation sonore grave est utilisée à la place",
+        "hapticIntensity": "Intensité de la vibration"
+      },
+      "vision": {
+        "reducedMotion": "Visuels calmes",
+        "reducedMotionHint": "Pas de particules, pas de pulsations, pas de flashs d'écran",
+        "highContrast": "Contraste élevé",
+        "highContrastHint": "Contours plus forts et fond plus sombre derrière les cibles",
+        "visualClutter": "Détail à l'écran",
+        "visualClutterNormal": "Normal",
+        "visualClutterMinimal": "Minimal",
+        "captions": "Toujours afficher le texte",
+        "captionsHint": "Garde l'instruction écrite à l'écran en plus de la voix",
+        "mirrorView": "Refléter l'image",
+        "mirrorViewHint": "Activé = comme un miroir, ce que presque tous les enfants attendent",
+        "showSkeleton": "Afficher le squelette",
+        "showSkeletonHint": "Dessine le contour suivi de la main et du corps"
+      },
+      "body": {
+        "seated": "Jeu assis",
+        "seatedHint": "Garde chaque cible dans une portée accessible assis",
+        "singleHand": "Mains à utiliser",
+        "singleHandBoth": "N'importe laquelle / les deux",
+        "singleHandLeft": "Gauche seulement",
+        "singleHandRight": "Droite seulement",
+        "largeTargets": "Grandes cibles",
+        "largeTargetsHint": "Rend tout 45 % plus grand",
+        "extraTime": "Temps supplémentaire",
+        "extraTimeHint": "Multiplie chaque fenêtre de réponse. La vitesse n'est jamais le but.",
+        "extraTimeStandard": "Standard",
+        "dwellMs": "Temps de contact",
+        "dwellMsHint": "Combien de temps un doigt reste sur une cible pour la choisir. Plus de temps aide une main tremblante.",
+        "handSwap": "Échanger main gauche / droite",
+        "handSwapHintWithDate": "Portée configurée le {{date}}. Active ceci si le jeu nomme la mauvaise main.",
+        "handSwapHintNoDate": "Active ceci si le jeu nomme la mauvaise main. Demande à l'enfant de lever la main droite pour vérifier."
+      },
+      "help": {
+        "promptMode": "Niveau d'aide",
+        "promptModeHint": "Combien d'aide le jeu donne. Adaptatif la réduit à mesure que l'enfant réussit sans elle.",
+        "promptModeAdaptive": "Adaptatif",
+        "adaptiveStageHelpTitle": "Adaptatif.",
+        "adaptiveStageHelpBody": "Commence par une démonstration et réduit d'une étape après cinq bonnes réponses sur six sans l'aide. Recule d'une étape après deux erreurs.",
+        "difficultyMode": "Difficulté",
+        "difficultyModeHint": "Adaptatif modifie une exigence à la fois — taille de la cible, puis nombre de choix, puis ressemblance des distracteurs. Fixe garde un seul niveau du parcours.",
+        "difficultyModeAdaptive": "Adaptatif",
+        "difficultyModeFixed": "Fixe",
+        "fixedLevel": "Fixé au niveau du parcours",
+        "fixedLevelHint": "Joue et note chaque manche à ce niveau, quel que soit celui que l'enfant choisit. Une réussite est enregistrée comme une vraie réussite.",
+        "unlockAll": "Débloquer tous les niveaux (adulte)",
+        "unlockAllHint": "Pour un enfant déjà passé le niveau 1, ou pour tester un niveau. Réussir doit toujours être mérité.",
+        "stageGTitle": "Étape G — transfert vers le monde réel.",
+        "stageGSuffix": "Un score élevé ici n'est pas la preuve que la compétence s'est généralisée ; cela doit être vérifié hors écran."
+      },
+      "data": {
+        "telemetry": "Enregistrer les données d'analyse",
+        "telemetryHint": "Précision par essai, temps de réflexion, temps de mouvement et qualité du geste. Seulement des nombres — jamais de vidéo ou d'image.",
+        "showMetrics": "Afficher les chiffres de suivi en direct",
+        "showMetricsHint": "Fréquence d'images, temps de détection et délai de la caméra, pour préparer une session",
+        "cameraNote": "Les images de la caméra sont traitées uniquement sur cet appareil. Aucune image n'est stockée ou envoyée, ni par nous ni par personne d'autre.",
+        "recordingOnSince": "Enregistrement des données activé le {{date}}",
+        "eraseProfile": "Effacer le profil et l'historique de cet enfant",
+        "eraseConfirm": "Effacer la calibration de portée, le profil de capacités, la progression de niveau, les points et chaque manche enregistrée ?",
+        "erase": "Effacer",
+        "keep": "Garder"
+      },
+      "resetTitle": "Revenir aux valeurs par défaut",
+      "reset": "Réinitialiser",
+      "footNoteInGame": "Les changements s'appliquent au prochain tour",
+      "footNoteSaved": "Enregistré sur cet appareil",
+      "done": "Terminé"
+    },
+    "levelPips": {
+      "chooseLevel": "Choisis un niveau",
+      "levelProgress": "Progression du niveau",
+      "levelUnlocked": "Niveau {{n}} — {{name}}",
+      "clearedSuffix": " · réussi",
+      "levelLocked": "Niveau {{n}} — s'ouvre quand le niveau {{prev}} est réussi"
+    },
+    "insights": {
+      "title": "Progrès et analyse",
+      "dashboardAriaLabel": "Tableau de bord d'apprentissage",
+      "dashboardTitle": "Le tableau de bord d'apprentissage complet de cet enfant, avec un résumé de ce rapport lié",
+      "refreshAriaLabel": "Actualiser",
+      "exportAriaLabel": "Exporter",
+      "exportTitle": "Télécharger les données par essai au format CSV",
+      "backAriaLabel": "Retour",
+      "empty": {
+        "title": "Rien enregistré pour l'instant",
+        "body": "Joue à un jeu avec caméra et chaque tour est mesuré ici — ce qui a été compris, combien d'aide a été nécessaire, combien de temps a pris la réflexion et combien de temps a pris le mouvement, chaque chose séparément.",
+        "cta": "Aller aux jeux"
+      },
+      "kpis": {
+        "gotIdea": {
+          "label": "A compris l'idée",
+          "hint": "Correct, plus bonne réponse atteinte avec imprécision ou en retard. C'est le chiffre de compréhension."
+        },
+        "onTheirOwn": {
+          "label": "Tout seul",
+          "hint": "Correct sans surbrillance et sans démonstration. Le chiffre d'autonomie."
+        },
+        "thinkingTime": {
+          "label": "Temps de réflexion",
+          "hint": "Temps médian entre l'instruction et le premier mouvement intentionnel. Une mesure de décision, pas motrice."
+        },
+        "movingTime": {
+          "label": "Temps de mouvement",
+          "hint": "Temps médian entre le début du mouvement et le contact avec la cible. Une mesure motrice, tenue totalement à part de la précision."
+        },
+        "reachDirectness": {
+          "label": "Précision du geste",
+          "hint": "Distance en ligne droite ÷ le chemin réellement parcouru par la main. 100 % est parfaitement direct."
+        },
+        "turnsPlayed": {
+          "label": "Tours joués",
+          "hintSingular": "{{sessions}} manche · {{minutes}} min",
+          "hintPlural": "{{sessions}} manches · {{minutes}} min"
+        }
+      },
+      "tabs": {
+        "journey": "Parcours",
+        "overview": "Aperçu",
+        "domains": "Compétences",
+        "motor": "Mouvement",
+        "life": "Vie"
+      },
+      "noRounds": {
+        "title": "Aucune manche enregistrée",
+        "note": "Le parcours ci-dessus est intact.",
+        "body": "Les données par essai ont été effacées, donc il n'y a rien à analyser ici. Les niveaux et les points sont stockés séparément et restent dans l'onglet Parcours. Joue une manche et ces onglets se remplissent à nouveau."
+      },
+      "journeyTab": {
+        "whereTheyAre": {
+          "title": "Où ils en sont",
+          "note": "Niveaux réussis par groupe. Le groupe dans lequel l'enfant progresse est le domaine de développement sur lequel il travaille réellement, ce qui est plus utile qu'un total."
+        },
+        "stats": {
+          "levelsCleared": "niveaux réussis",
+          "gamesPlayed": "jeux joués",
+          "daysPlayed": "jours joués",
+          "points": "points",
+          "rank": "rang"
+        },
+        "chartTooltip": "{{levels}} sur {{possible}} niveaux · {{played}}/{{games}} jeux essayés",
+        "noJourneys": "Aucun parcours commencé pour l'instant.",
+        "levelPerGame": {
+          "title": "Niveau atteint, par jeu",
+          "noteStuckSingular": "{{count}} jeu joué plusieurs fois sans rien réussir — affiché en premier. Ce niveau demande quelque chose que cet enfant ne sait pas encore faire.",
+          "noteStuckPlural": "{{count}} jeux joués plusieurs fois sans rien réussir — affichés en premier. Ces niveaux demandent quelque chose que cet enfant ne sait pas encore faire.",
+          "noteOk": "Jeux joués, les plus avancés en premier. Un jeu joué plusieurs fois sans rien réussir apparaîtrait en haut."
+        },
+        "stuckIconTitle": "Joué plusieurs fois, rien réussi",
+        "noLevels": "pas de niveaux",
+        "levelsClearedTitle": "Niveaux réussis",
+        "roundsPlayedTitle": "Manches jouées",
+        "playedSuffix": "jouées",
+        "noGamesPlayed": "Aucun jeu joué pour l'instant.",
+        "serverRowNote": "{{count}} jeux avec des données de parcours sur le serveur, sur tous les appareils de cet enfant",
+        "howEarned": {
+          "title": "Comment ce progrès a été obtenu",
+          "note": "Trois affirmations différentes, délibérément non additionnées.",
+          "demonstrated": {
+            "name": "Démontré",
+            "text": "L'enfant a atteint le seuil de compréhension du niveau. C'est une preuve."
+          },
+          "effort": {
+            "name": "Accordé pour la persévérance",
+            "text": "Trois tentatives qui se sont approchées du seuil. Le niveau s'est ouvert malgré tout, donc un niveau mal ajusté ne peut pas mettre fin à l'utilisation de l'appli par un enfant — mais ce n'est pas une preuve qu'il l'a atteint."
+          },
+          "implied": {
+            "name": "Déduit",
+            "text": "Crédité parce qu'un niveau plus difficile a été réussi, et chaque niveau exige au moins autant que celui du dessous. Jamais observé directement."
+          },
+          "remote": {
+            "name": "Restauré d'un autre appareil",
+            "tooltip": "Restauré de l'autre appareil de cet enfant. Les données indiquent quels niveaux ont été réussis mais pas comment, donc cet appareil n'a aucune preuve à leur sujet.",
+            "text": "Venu du serveur, qui enregistre quels niveaux ont été réussis mais pas comment. Aucune preuve sur cet appareil."
+          },
+          "footer": "Aucune de ces trois n'est une preuve de transfert vers le monde réel. Un niveau réussi signifie que l'enfant a fait la tâche sur un écran."
+        }
+      },
+      "overviewTab": {
+        "trend": {
+          "title": "Compréhension et autonomie dans le temps",
+          "note": "Deux lignes, car elles évoluent séparément. Un enfant peut comprendre davantage tout en ayant encore besoin de la même quantité d'aide."
+        },
+        "understood": "Compris",
+        "independent": "Autonome",
+        "trendPlaceholder": "Joue un deuxième jour pour voir une tendance ici.",
+        "promptMix": {
+          "title": "Combien d'aide a été nécessaire",
+          "note": "Part des tours à chaque étape d'aide. Réduire de A vers D est l'objectif ; l'étape G est vérifiée hors écran par un adulte et ne peut jamais être accordée par le jeu."
+        },
+        "turns": "Tours",
+        "promptPlaceholder": "Aucune donnée d'aide pour l'instant.",
+        "gamesPlayed": {
+          "title": "Jeux joués",
+          "note": "Précision et autonomie par jeu, les plus joués en premier."
+        },
+        "understoodTitle": "Compris",
+        "independentTitle": "Autonome",
+        "medianThinkingTitle": "Temps médian de réflexion",
+        "serverRowNote": "{{count}} jeux enregistrés sur le serveur sur tous les appareils"
+      },
+      "domainsTab": {
+        "profile": {
+          "title": "Profil de capacités",
+          "note": "Une estimation continue par domaine fonctionnel, à partir du comportement en jeu uniquement. Les domaines avec moins de trois tours sont masqués car l'estimation serait du bruit."
+        },
+        "estimate": "Estimation",
+        "profilePlaceholder": "Joue à quelques jeux de plus — au moins trois domaines ont besoin de données avant qu'un profil ait un sens.",
+        "weakest": {
+          "title": "Les plus faibles en premier",
+          "note": "Précision des tours étiquetés avec chaque domaine. Les barres les plus basses sont là où la prochaine session vaut le plus la peine d'être investie."
+        },
+        "accuracy": "Précision",
+        "accuracyTooltip": "{{pct}} % de {{trials}} tours",
+        "weakestPlaceholder": "Aucune donnée de domaine pour l'instant.",
+        "promptPerGame": {
+          "title": "Étape d'aide par jeu",
+          "note": "Où l'enfant se situe actuellement sur l'échelle d'aide dans chaque activité."
+        }
+      },
+      "motorTab": {
+        "leftHand": "Main gauche",
+        "rightHand": "Main droite",
+        "leftRight": {
+          "title": "Gauche et droite",
+          "note": "La même tâche, chaque main. Un écart constant de précision ou de direction mérite l'attention d'un adulte ; un écart seulement de vitesse souvent non."
+        },
+        "accuracyTitle": "Précision",
+        "medianThinkingTitle": "Temps médian de réflexion",
+        "reachDirectnessTitle": "Précision du geste",
+        "turnsCountSingular": "{{count}} tour",
+        "turnsCountPlural": "{{count}} tours",
+        "dominantHandNote": "Main spontanément préférée : {{hand}} ({{left}} gestes gauches / {{right}} droits)",
+        "leftRightPlaceholder": "Aucune donnée par main pour l'instant.",
+        "rhythm": {
+          "title": "Rythme et tempo",
+          "note": "La stabilité est l'écart type de l'erreur de timing et c'est le chiffre qui compte — un décalage constant n'est qu'un décalage, et une partie vient du délai de la caméra, qui est mesuré et soustrait à chaque session."
+        },
+        "steadiness": "Stabilité",
+        "offset": "Décalage",
+        "rhythmPlaceholder": "Joue à Rythme Atteinte quelques fois pour voir le timing ici.",
+        "reachEnvelope": {
+          "title": "Zone d'atteinte",
+          "note": "L'espace de jeu calibré dans lequel chaque jeu place les cibles."
+        },
+        "width": "Largeur",
+        "height": "Hauteur",
+        "leftRightDifference": "Différence gauche/droite",
+        "setDate": "Configuré le {{date}}",
+        "ofFrame": "du cadre",
+        "reachPlaceholderPrefix": "Non calibré. Lance",
+        "reachPlaceholderSuffix": "— jusque-là les cibles utilisent une zone générique et une portée limitée ressemblera à une faible précision."
+      },
+      "lifeTab": {
+        "practised": {
+          "title": "Compétences de vie pratiquées",
+          "note": "Regroupées par la compétence du monde réel vers laquelle chaque jeu transfère, pas par le jeu."
+        },
+        "alonePct": "{{pct}} % seul",
+        "roundsSingular": "{{count}} manche",
+        "roundsPlural": "{{count}} manches",
+        "practisedPlaceholder": "Aucun jeu de compétences de vie joué pour l'instant.",
+        "routine": {
+          "title": "Étapes de routine faites sans aide",
+          "note": "Pour les jeux de séquence comme se laver les mains : combien d'étapes se sont déroulées dans le bon ordre sans rappel. 3/7 → 5/7 → 6/7 est à quoi ressemble un vrai progrès."
+        },
+        "routinePlaceholder": "Joue à un jeu de routine (se laver, s'habiller, traverser la rue) pour voir cela.",
+        "transfer": {
+          "title": "Transfert vers le monde réel",
+          "note": "L'étape que le jeu ne peut pas accorder."
+        },
+        "transferP1Bold": "L'étape G est vérifiée par une personne, hors écran.",
+        "transferP1Rest": "Un enfant qui peut choisir la brosse à dents parmi cinq images n'a pas encore démontré qu'il peut saisir la vraie brosse à dents dans la vraie salle de bain.",
+        "transferP2": "Utilise les scores de routine ci-dessus pour décider quand une compétence vaut la peine d'être essayée pour de vrai, puis note ce qui s'est passé dans tes propres notes — cette appli n'affirme délibérément pas l'avoir mesuré."
+      },
+      "footer": {
+        "disclaimer": "Ce sont des descriptions de ce qui s'est passé dans les jeux, pas des mesures cliniques. Un score élevé n'est pas la preuve qu'une compétence se transfère hors écran — cela doit être vérifié dans la vraie vie.",
+        "erase": "Effacer",
+        "confirmText": "Effacer toutes les manches enregistrées ?",
+        "confirmYes": "Oui, effacer",
+        "confirmKeep": "Garder"
+      }
+    },
+    "groups": {
+      "body": {
+        "title": "Corps et Portée",
+        "short": "Corps",
+        "blurb": "Atteindre, viser, utiliser deux mains, croiser le centre"
+      },
+      "look": {
+        "title": "Regarder et Trouver",
+        "short": "Regarder",
+        "blurb": "Repérer le bon, écouter, lire, mots d'espace"
+      },
+      "stop": {
+        "title": "Arrêter et Réfléchir",
+        "short": "Arrêter",
+        "blurb": "Attendre, se figer, ignorer les distractions, changer les règles"
+      },
+      "remember": {
+        "title": "Se Souvenir",
+        "short": "Mémoire",
+        "blurb": "Garder des choses en tête, copier un ordre, éléments manquants"
+      },
+      "learn": {
+        "title": "Lettres et Chiffres",
+        "short": "ABC 123",
+        "blurb": "Sons, orthographe, écriture, compter, argent"
+      },
+      "move": {
+        "title": "Bouger et Copier",
+        "short": "Bouger",
+        "blurb": "Rythme, imitation, traçage, dessiner dans l'air"
+      },
+      "day": {
+        "title": "Ma Journée",
+        "short": "Ma Journée",
+        "blurb": "Se laver, s'habiller, faire son sac, ranger, rester en sécurité"
+      },
+      "together": {
+        "title": "Parler et Ensemble",
+        "short": "Ensemble",
+        "blurb": "Suivre des instructions, sentiments, demander de l'aide"
+      }
+    },
+    "domains": {
+      "visualDiscrimination": "Attention visuelle",
+      "auditoryComprehension": "Écoute",
+      "readingSymbol": "Lecture",
+      "reactionSpeed": "Réaction",
+      "reachAccuracy": "Précision du geste",
+      "sustainedAttention": "Attention",
+      "workingMemory": "Mémoire de travail",
+      "sequencing": "Séquençage",
+      "inhibition": "Arrêter et attendre",
+      "cognitiveFlexibility": "Changer de règles",
+      "bilateralCoordination": "Les deux mains",
+      "motorPlanning": "Planification motrice",
+      "spatialConcepts": "Mots d'espace",
+      "socialReasoning": "Pensée sociale",
+      "independence": "Autonomie"
+    },
+    "lifeSkills": {
+      "hygiene": "Hygiène",
+      "dressing": "S'habiller",
+      "school": "Préparation scolaire",
+      "kitchen": "Cuisine",
+      "shopping": "Courses",
+      "money": "Argent",
+      "roadSafety": "Sécurité routière",
+      "homeSafety": "Sécurité domestique",
+      "chores": "Tâches ménagères",
+      "routines": "Routine quotidienne",
+      "communication": "Communication",
+      "help": "Demander de l'aide",
+      "socialPlay": "Jeu social",
+      "literacy": "Littératie précoce",
+      "numeracy": "Numératie",
+      "navigation": "Se déplacer",
+      "selfRegulation": "Autorégulation",
+      "bodyAwareness": "Conscience corporelle",
+      "instructions": "Suivre des instructions",
+      "independence": "Autonomie"
+    },
+    "levels": {
+      "1": "Premiers Pas",
+      "2": "Échauffement",
+      "3": "Ça Progresse",
+      "4": "Fort",
+      "5": "Champion"
+    },
+    "ranks": {
+      "explorer": "Explorateur",
+      "pathfinder": "Éclaireur",
+      "trailblazer": "Pionnier",
+      "skyWalker": "Marcheur du Ciel",
+      "starRider": "Cavalier des Étoiles",
+      "legend": "Légende",
+      "grandChampion": "Grand Champion"
+    },
+    "badges": {
+      "first-game": {
+        "name": "Débuté",
+        "how": "A joué son premier jeu avec caméra"
+      },
+      "space-set": {
+        "name": "Mon Espace",
+        "how": "A configuré sa portée"
+      },
+      "five-days": {
+        "name": "A Continué",
+        "how": "A joué pendant cinq jours différents"
+      },
+      "level-3": {
+        "name": "À Mi-Chemin",
+        "how": "A réussi trois niveaux d'un jeu"
+      },
+      "all-five": {
+        "name": "Parcours Complet",
+        "how": "A réussi les cinq niveaux d'un jeu"
+      },
+      "ten-games": {
+        "name": "Explorateur",
+        "how": "A essayé dix jeux différents"
+      },
+      "every-group": {
+        "name": "Un Peu de Tout",
+        "how": "A joué un jeu de chaque groupe"
+      },
+      "both-hands": {
+        "name": "Deux Mains",
+        "how": "A bien utilisé les deux mains"
+      },
+      "on-my-own": {
+        "name": "Tout Seul",
+        "how": "A répondu sans aide dans un jeu"
+      },
+      "whole-day": {
+        "name": "Journée Entière",
+        "how": "A terminé une mission d'une journée entière"
+      }
+    },
+    "promptStages": {
+      "A": {
+        "name": "Démonstration",
+        "help": "La réponse pulse et une main animée montre le geste."
+      },
+      "B": {
+        "name": "Pratique guidée",
+        "help": "Instruction parlée plus une surbrillance sur la réponse. Pas de démonstration."
+      },
+      "C": {
+        "name": "Aide réduite",
+        "help": "Instruction parlée ; la réponse se met en surbrillance seulement brièvement au début."
+      },
+      "D": {
+        "name": "Autonome",
+        "help": "Instruction seulement. Pas de surbrillance."
+      },
+      "E": {
+        "name": "Avec distracteurs",
+        "help": "Autonome, avec des mauvaises réponses très proches à l'écran."
+      },
+      "F": {
+        "name": "Mise en situation réelle",
+        "help": "L'instruction est une situation, pas une étiquette : \"c'est l'heure du coucher — de quoi as-tu besoin ?\""
+      },
+      "G": {
+        "name": "Transfert vers le monde réel",
+        "help": "Vérifié par un adulte hors écran. Le jeu n'accorde jamais cela."
+      }
+    },
+    "dimensions": {
+      "targetSize": "Taille de la cible",
+      "choices": "Nombre de choix",
+      "distractors": "Ressemblance des distracteurs",
+      "eccentricity": "Distance de portée",
+      "steps": "Étapes d'instruction",
+      "memorySpan": "Portée de mémoire",
+      "showMs": "Temps d'exposition",
+      "window": "Fenêtre de réponse",
+      "ruleSwitch": "Changement de règle",
+      "hands": "Exigence de main",
+      "midline": "Croisement de la ligne médiane",
+      "pace": "Rythme",
+      "noGoRate": "Fréquence de non-réponse",
+      "tolerance": "Tolérance du tracé",
+      "holdMs": "Durée de maintien"
+    },
+    "levelChange": {
+      "first": "Tout grand, lent et aidé",
+      "none": "Un peu plus de pratique là-dessus",
+      "moreSuffix": " · et plus",
+      "harderWords": {
+        "targetSize": "cibles plus petites",
+        "choices": "plus de choix",
+        "distractors": "mauvaises réponses plus trompeuses",
+        "eccentricity": "plus loin à atteindre",
+        "steps": "plus d'étapes à mémoriser",
+        "memorySpan": "plus à garder en tête",
+        "showMs": "un coup d'œil plus court",
+        "window": "moins de temps d'attente",
+        "ruleSwitch": "la règle change",
+        "hands": "les deux mains",
+        "midline": "atteindre de l'autre côté",
+        "pace": "un rythme plus rapide",
+        "noGoRate": "plus de fois pour s'arrêter",
+        "tolerance": "un chemin plus étroit",
+        "holdMs": "un maintien plus long"
+      }
+    },
+    "points": {
+      "playedSingular": "{{count}} tour joué",
+      "playedPlural": "{{count}} tours joués",
+      "gotItRight": "A bien répondu",
+      "levelBonus": "Bonus de niveau {{n}}",
+      "bestYet": "Ton meilleur score !",
+      "levelClearedRow": "Niveau réussi",
+      "levelPassedAgain": "Niveau réussi encore",
+      "firstGameToday": "Premier jeu aujourd'hui"
+    },
+    "advice": {
+      "moreTurns": "Joue quelques tours de plus pour terminer ce niveau",
+      "getBar": "Réussis {{bar}} % des tours pour ouvrir le niveau suivant"
+    },
+    "games": {
+      "setup-space": {
+        "title": "Préparer Mon Espace",
+        "how": "Cinq étirements simples pour que chaque jeu tombe exactement là où tu peux atteindre. Fais ça une fois, d'abord."
+      },
+      "ball-pop": {
+        "title": "Fais Éclater les Ballons",
+        "how": "Des ballons apparaissent à ta portée — fais éclater chacun avant qu'il ne s'envole."
+      },
+      "number-hunt": {
+        "title": "Chasse aux Nombres avec Tout le Corps",
+        "how": "Des nombres apparaissent en haut, en bas, à gauche et à droite. Utilise tout ton corps pour les atteindre."
+      },
+      "two-hand-catch": {
+        "title": "Attrape à Deux Mains",
+        "how": "Deux formes, une pour chaque main. Touche-les toutes les deux au même moment."
+      },
+      "cross-the-middle": {
+        "title": "Traverse le Centre",
+        "how": "Ta main gauche va chercher des choses à droite, et inversement."
+      },
+      "left-or-right": {
+        "title": "Gauche ou Droite ?",
+        "how": "\"Touche-le avec ta main GAUCHE.\" Savoir laquelle est laquelle."
+      },
+      "reach-near-far": {
+        "title": "Atteindre Près et Loin",
+        "how": "Certaines choses sont proches, d'autres juste au bord de ta portée."
+      },
+      "find-touch-colour": {
+        "title": "Trouve et Touche",
+        "how": "\"Touche le bleu.\" Les couleurs d'abord, puis les formes et les nombres."
+      },
+      "find-shape": {
+        "title": "Trouve la Forme",
+        "how": "\"Touche le triangle.\" Dix formes, certaines faciles à confondre."
+      },
+      "read-and-find": {
+        "title": "Lis et Trouve",
+        "how": "Le mot CERCLE apparaît. Touche le cercle. Rien n'est lu à voix haute."
+      },
+      "listen-and-find": {
+        "title": "Écoute et Trouve",
+        "how": "Une voix dit le mot. Rien n'est écrit. Trouve ce que tu entends."
+      },
+      "search-the-room": {
+        "title": "Cherche dans la Pièce",
+        "how": "Une seule bonne réponse cachée parmi beaucoup de choses très similaires."
+      },
+      "big-or-small": {
+        "title": "Grand ou Petit ?",
+        "how": "Plus grand, plus petit, plus, moins — les mots de comparaison."
+      },
+      "above-or-below": {
+        "title": "Au-dessus ou En Dessous ?",
+        "how": "\"Touche le chat au-dessus de la boîte.\" Mots d'espace, dans l'espace."
+      },
+      "which-animal": {
+        "title": "Quel Groupe ?",
+        "how": "\"Touche l'animal de ferme.\" Classer le monde en catégories."
+      },
+      "go-no-go-animals": {
+        "title": "Que les Animaux de Compagnie !",
+        "how": "Touche les animaux de compagnie. Laisse les animaux sauvages complètement tranquilles."
+      },
+      "rule-switch": {
+        "title": "Changement de Règle",
+        "how": "Touche les animaux… puis soudain la règle change pour les véhicules."
+      },
+      "safe-or-not": {
+        "title": "Mains Sûres",
+        "how": "Touche ce qu'il est sûr de tenir. Ne touche jamais ce qui ne l'est pas."
+      },
+      "red-light-green-light": {
+        "title": "Feu Rouge, Feu Vert",
+        "how": "Bouge quand c'est vert. Fige-toi complètement quand ça devient rouge."
+      },
+      "traffic-light-body": {
+        "title": "Jeu du Feu de Signalisation",
+        "how": "Vert on marche, orange on se prépare, rouge on se fige — comme un vrai passage piéton."
+      },
+      "wait-for-it": {
+        "title": "Attends le Moment",
+        "how": "L'étoile est là — mais ne la touche pas avant qu'elle devienne verte."
+      },
+      "calm-movement": {
+        "title": "Mouvement Calme",
+        "how": "Continue à bouger, mais tout doucement. Pas trop immobile, pas trop sauvage."
+      },
+      "fast-vs-slow": {
+        "title": "Rapide ou Lent",
+        "how": "Bouge tes bras vite, puis très lentement. Choisis ta propre vitesse."
+      },
+      "vanishing-target": {
+        "title": "Cible Disparaissante",
+        "how": "Une lettre apparaît brièvement, puis disparaît. Laquelle était-ce ?"
+      },
+      "simon-reach": {
+        "title": "Simon Atteinte",
+        "how": "Observe l'ordre dans lequel les formes s'allument, puis copie-le exactement."
+      },
+      "copy-the-pattern": {
+        "title": "Copie le Motif",
+        "how": "Rouge, bleu, jaune, rouge — observe le motif de couleurs, puis répète-le."
+      },
+      "repair-the-sequence": {
+        "title": "Répare la Séquence",
+        "how": "1, 2, ?, 4 — lequel manque ?"
+      },
+      "repair-the-alphabet": {
+        "title": "Répare l'Alphabet",
+        "how": "A, B, ?, D — trouve la lettre qui est tombée."
+      },
+      "whats-missing": {
+        "title": "Qu'est-ce qui Manque ?",
+        "how": "Regarde dans le sac d'école, puis dis ce qui a disparu."
+      },
+      "grocery-mission": {
+        "title": "Mission Courses",
+        "how": "\"Prends du lait, une pomme et du pain.\" Garde la liste en tête et va les chercher."
+      },
+      "phonics-reach": {
+        "title": "Atteinte Phonétique",
+        "how": "Tu entends /b/. Atteins la lettre qui fait ce son."
+      },
+      "beginning-sound": {
+        "title": "Son Initial",
+        "how": "\"Lequel commence par /k/ ?\" Atteins le chat."
+      },
+      "word-builder": {
+        "title": "Constructeur de Mots",
+        "how": "Épelle C-H-A-T en atteignant les lettres dans l'ordre."
+      },
+      "word-and-picture": {
+        "title": "Mot et Image",
+        "how": "Le mot SOLEIL apparaît. Touche l'image qui correspond."
+      },
+      "air-writing": {
+        "title": "Écriture dans l'Air",
+        "how": "Écris des lettres et des nombres dans l'air avec ton doigt."
+      },
+      "number-match": {
+        "title": "Combien y en a-t-il ?",
+        "how": "Le nombre 5 apparaît. Touche le groupe qui a cinq choses."
+      },
+      "count-and-collect": {
+        "title": "Compte et Collecte",
+        "how": "\"Collecte quatre pommes.\" Compter en se déplaçant."
+      },
+      "money-shop": {
+        "title": "Boutique d'Argent",
+        "how": "La pomme coûte 30 centimes. Choisis les pièces qui la paient."
+      },
+      "sentence-order": {
+        "title": "Ordre de la Phrase",
+        "how": "Je / veux / de l'eau — mets les mots dans le bon ordre."
+      },
+      "rhythm-reach": {
+        "title": "Atteinte au Rythme",
+        "how": "Touche la forme exactement à chaque battement. Parfait, génial, proche — tout compte."
+      },
+      "mirror-me": {
+        "title": "Imite-Moi",
+        "how": "Copie la posture que la petite figure maintient."
+      },
+      "copy-my-gesture": {
+        "title": "Copie Mon Geste",
+        "how": "Saluer, pouce levé, pointer, paume ouverte — les gestes que les gens utilisent."
+      },
+      "personal-space": {
+        "title": "Ma Bulle d'Espace",
+        "how": "Garde ton corps dans ta bulle — puis sors juste en dehors."
+      },
+      "trace-the-road": {
+        "title": "Trace la Route",
+        "how": "Conduis ton doigt le long de la route sinueuse sans en sortir."
+      },
+      "shape-drawing": {
+        "title": "Dessin de Formes",
+        "how": "Dessine un cercle, un carré, une étoile — dans l'air."
+      },
+      "ar-maze": {
+        "title": "Labyrinthe au Doigt",
+        "how": "Trouve ton chemin dans le labyrinthe sans toucher les murs."
+      },
+      "pinch-and-write": {
+        "title": "Pince et Écris",
+        "how": "Pince ton doigt et ton pouce pour tenir le stylo, puis écris. Comme une vraie prise de crayon."
+      },
+      "handwashing": {
+        "title": "Lave-toi les Mains",
+        "how": "Démarre, mouille, savonne, frotte, rince, sèche — tout dans le bon ordre."
+      },
+      "toothbrushing": {
+        "title": "Brosse-toi les Dents",
+        "how": "Chaque étape du brossage, dans l'ordre."
+      },
+      "getting-dressed": {
+        "title": "S'habiller",
+        "how": "Sous-vêtements, haut, pantalon, chaussettes, chaussures — l'ordre compte."
+      },
+      "morning-routine": {
+        "title": "Routine du Matin",
+        "how": "Se réveiller, toilettes, se laver, s'habiller, petit-déjeuner, sac."
+      },
+      "pack-my-bag": {
+        "title": "Fais Mon Sac d'École",
+        "how": "Prends ce dont tu as besoin pour l'école. Laisse le reste."
+      },
+      "sort-the-groceries": {
+        "title": "Range les Courses",
+        "how": "Pince pour le ramasser, puis dépose-le dans le réfrigérateur, le congélateur ou le placard."
+      },
+      "laundry-sort": {
+        "title": "Trie le Linge",
+        "how": "Le clair dans un panier, le foncé dans l'autre."
+      },
+      "tidy-the-room": {
+        "title": "Range la Chambre",
+        "how": "Tout retourne dans la pièce à laquelle ça appartient."
+      },
+      "where-does-it-go": {
+        "title": "Où Ça Va ?",
+        "how": "Le lait — réfrigérateur, congélateur ou placard ? Touche le bon."
+      },
+      "hot-sharp-safe": {
+        "title": "Chaud, Coupant ou Sûr",
+        "how": "Lequel devient chaud ? Lequel est coupant ? Lequel est sûr ?"
+      },
+      "safe-or-unsafe": {
+        "title": "Sûr ou Pas Sûr ?",
+        "how": "Touche parfois ce qui est sûr, parfois pointe ce qui est dangereux."
+      },
+      "crossing-the-road": {
+        "title": "Traverser la Rue",
+        "how": "Arrête-toi, regarde, écoute, attends, traverse — l'ordre qui te garde en sécurité."
+      },
+      "clean-or-dirty": {
+        "title": "Besoin d'être Lavé ?",
+        "how": "Les chaussettes vont au lavage. Pas les livres. Lequel a besoin d'être lavé ?"
+      },
+      "my-day": {
+        "title": "Ma Journée Complète",
+        "how": "Se laver, s'habiller, faire son sac, payer, traverser la rue, écouter la maîtresse, demander de l'aide. Toute la journée, en une fois.",
+        "opening": "Bonjour ! Passons cette journée ensemble.",
+        "openingSay": "Bonjour. Passons cette journée ensemble.",
+        "chain": {
+          "wash": {
+            "title": "Lave-toi les mains",
+            "say": "D'abord, lave-toi les mains."
+          },
+          "dress": {
+            "title": "Habille-toi",
+            "say": "Maintenant habille-toi. Qu'est-ce qu'on met en premier ?"
+          },
+          "pack": {
+            "title": "Fais ton sac",
+            "say": "Prends ce dont tu as besoin pour l'école."
+          },
+          "pay": {
+            "title": "Paie le déjeuner",
+            "say": "Tu as besoin de pièces pour ton déjeuner."
+          },
+          "road": {
+            "title": "Traverse la rue",
+            "say": "Il est temps de traverser la rue. Vert veut dire marcher, rouge veut dire se figer."
+          },
+          "classroom": {
+            "title": "Écoute la maîtresse",
+            "say": "La maîtresse a trois choses à te faire faire."
+          },
+          "help": {
+            "title": "Demander de l'aide",
+            "say": "Tu ne trouves pas ton crayon. Que peux-tu faire ?"
+          }
+        }
+      },
+      "follow-two": {
+        "title": "Suis Deux Choses",
+        "how": "\"Touche l'étoile, puis tape dans tes mains.\" Deux choses, dans l'ordre."
+      },
+      "follow-three": {
+        "title": "Suis Trois Choses",
+        "how": "\"Touche le 3, tape des mains, puis touche le bleu.\" Trois, dans l'ordre."
+      },
+      "emotion-match": {
+        "title": "Comment Se Sentiraient-ils ?",
+        "how": "Quelque chose se passe dans l'histoire. Quel sentiment correspond ?"
+      },
+      "what-should-i-do": {
+        "title": "Que Devrais-je Faire ?",
+        "how": "\"Quelqu'un a fait tomber son crayon.\" Quelle est la chose gentille à faire ?"
+      },
+      "ask-for-help": {
+        "title": "Demande de l'Aide",
+        "how": "Le bocal ne s'ouvre pas. Choisir de demander est la réponse."
+      },
+      "stay-safe-choices": {
+        "title": "Arrête, Réfléchis, Agis",
+        "how": "Quelque chose s'est mal passé. Arrête-toi, réfléchis, puis choisis quoi faire."
+      },
+      "time-of-day": {
+        "title": "Quand Fait-on Ça ?",
+        "how": "Brosse à dents — le matin ou le soir ? Associer les choses aux moments de la journée."
+      },
+      "coin-names": {
+        "title": "Quelle Pièce ?",
+        "how": "\"Laquelle fait cinquante centimes ?\" Nommer et trouver l'argent."
+      }
+    },
+    "recommend": {
+      "helpsWith": "Aide avec {{domain}}"
+    }
   }
 }

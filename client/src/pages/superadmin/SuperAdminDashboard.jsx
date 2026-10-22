@@ -652,7 +652,7 @@ const SuperAdminDashboard = () => {
           </button>
         </div>
         <div className={styles.adminInfo}>
-          <p className={styles.adminName}>Learningo Super Admin</p>
+          <p className={styles.adminName}>Learnigo Super Admin</p>
           <p className={styles.adminEmail}>{superAdminUser?.email}</p>
         </div>
         <nav className={styles.nav}>
@@ -688,7 +688,7 @@ const SuperAdminDashboard = () => {
             <div className={styles.pageHeader}>
               <div>
                 <h1>Platform Overview</h1>
-                <p>Manages entire Learningo platform — organizations, users, content & subscriptions.</p>
+                <p>Manages entire Learnigo platform — organizations, users, content & subscriptions.</p>
               </div>
             </div>
             <div className={styles.statsGrid}>

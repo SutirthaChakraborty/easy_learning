@@ -1,6 +1,6 @@
-# Learningo — User Manual
+# Learnigo — User Manual
 
-A guide for the people who *use* Learningo day to day: students, parents, organization
+A guide for the people who *use* Learnigo day to day: students, parents, organization
 admins, and the platform super admin. For how the app is built, see
 [design-guide.md](./design-guide.md) — this document is about what you can click and what
 happens when you do.
@@ -56,10 +56,10 @@ The top navigation bar (visible on every page except sign-in/dashboard-style ful
 pages) gives you:
 
 - **Home** — back to the main screen
-- **About Us** — the Learningo story and mission
+- **About Us** — the Learnigo story and mission
 - **Games** — the Game Zone, home to the Camera Games (see §2.4)
 - **Dashboard** — your personal progress page (see §2.5)
-- **Contact Us** — reach the Learningo team with a question or issue
+- **Contact Us** — reach the Learnigo team with a question or issue
 - A **language switcher** — change the app's language at any time (see §7)
 - **Logout**
 
@@ -182,7 +182,7 @@ automatically.
 The **My Kids** section is where you manage your children:
 
 - **Add Kid** — enter their Name, Age, and Email. The email is used to link the kid to
-  their own Learningo student account, if they have one.
+  their own Learnigo student account, if they have one.
 - **Edit** (pencil) or **Remove** any kid you've added.
 - **Performance** (chart icon) — opens that kid's progress:
   - If their email matches a student account with recorded activity, you see their full
@@ -348,7 +348,7 @@ approve your own questions.
 ## 6. For the Super Admin
 
 There is exactly **one** Super Admin account for the whole platform (set up by whoever
-deploys/operates Learningo). It signs in with an **email and password** on the Super Admin
+deploys/operates Learnigo). It signs in with an **email and password** on the Super Admin
 login page — there's no self-registration or Google sign-in for this role.
 
 The Super Admin dashboard sidebar has:
@@ -390,7 +390,7 @@ and use **Reply & Resolve** to respond to a message and close it out.
 
 ## 7. Language support
 
-Learningo currently supports **14 languages**:
+Learnigo currently supports **14 languages**:
 
 English, Spanish, Portuguese, French, Italian, German, Dutch, Russian, Turkish, Chinese,
 Japanese, Korean, Indonesian, and Vietnamese.
@@ -403,7 +403,7 @@ language at any time — your choice is remembered on that device for next time.
 ## 8. Contact & support
 
 Anyone — student, parent/guardian, organization admin, teacher/tutor, or other — can reach
-the Learningo team via **Contact Us** in the navigation bar. Fill in who you are, your name,
+the Learnigo team via **Contact Us** in the navigation bar. Fill in who you are, your name,
 email, organization (optional), a subject, and your message (with an optional image/PDF
 attachment); it goes straight to the Super Admin's **Contact Messages** list. No account is
 required.

@@ -19,6 +19,7 @@
  */
 import { drawBanner, PALETTE, hexA, roundRect } from '../core/draw'
 import { getSettings } from '../core/settings'
+import { tGame } from '../core/arText'
 import { ENGINES } from './registry'
 
 export function missionEngine(game) {
@@ -33,6 +34,12 @@ export function missionEngine(game) {
     ...(game.config || {}),
   }
 
+  const title = tGame(game.id, 'title', game.title)
+  const opening = tGame(game.id, 'opening', cfg.opening || "Let's get through the day together")
+  const openingSay = tGame(game.id, 'openingSay', cfg.openingSay || cfg.opening || `${game.title}. Let us begin.`)
+  const stageTitle = (spec) => tGame(game.id, `chain.${spec.id}.title`, spec.title)
+  const stageSay = (spec) => tGame(game.id, `chain.${spec.id}.say`, spec.say || spec.title)
+
   let api = null
   let stageIndex = -1
   let current = null // { module, spec, subGame }
@@ -44,13 +51,13 @@ export function missionEngine(game) {
   function subGameFor(spec) {
     return {
       id: `${game.id}:${spec.id}`,
-      title: spec.title,
+      title: stageTitle(spec),
       engine: spec.engine,
       group: game.group,
       domains: spec.domains || game.domains,
       lifeSkill: spec.lifeSkill || game.lifeSkill,
       icon: spec.icon || game.icon,
-      how: spec.say || spec.title,
+      how: stageSay(spec),
       adaptive: spec.adaptive || game.adaptive,
       config: spec.config || {},
       // A mission stage is short by design — long enough to be a real attempt,
@@ -83,7 +90,7 @@ export function missionEngine(game) {
         api.setHud({ ...rest, trial: stageIndex + 1, total: cfg.chain.length })
       },
       finish: (result) => {
-        stageResults.push({ id: spec.id, title: spec.title, ...(result || {}) })
+        stageResults.push({ id: spec.id, title: stageTitle(spec), ...(result || {}) })
         advance()
       },
     }
@@ -102,17 +109,19 @@ export function missionEngine(game) {
     }
 
     const spec = cfg.chain[stageIndex]
+    const specTitle = stageTitle(spec)
+    const specSay = stageSay(spec)
     // A short interstitial: the story beat that makes this a day rather than a
     // playlist.
     interstitial = {
-      title: spec.title,
-      say: spec.say || spec.title,
+      title: specTitle,
+      say: specSay,
       until: api.clock.now() + 2600,
       index: stageIndex,
     }
-    api.setPrompt({ main: spec.title, sub: spec.say || '' })
+    api.setPrompt({ main: specTitle, sub: specSay || '' })
     api.sfx.whoosh()
-    void api.say(spec.say || spec.title, { main: spec.title, sub: '' })
+    void api.say(specSay, { main: specTitle, sub: '' })
     api.setHud({ trial: stageIndex + 1, total: cfg.chain.length })
 
     api.clock.after(2600, () => {
@@ -147,10 +156,10 @@ export function missionEngine(game) {
       stageResults = []
       ended = false
       api.setHud({ total: cfg.chain.length })
-      api.setPrompt({ main: game.title, sub: cfg.opening || "Let's get through the day together" })
-      void api.say(cfg.openingSay || cfg.opening || `${game.title}. Let us begin.`, {
-        main: game.title,
-        sub: cfg.opening || '',
+      api.setPrompt({ main: title, sub: opening })
+      void api.say(openingSay, {
+        main: title,
+        sub: opening,
       })
       api.clock.after(2400, advance)
     },

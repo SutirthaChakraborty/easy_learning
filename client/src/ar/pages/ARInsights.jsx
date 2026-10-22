@@ -16,6 +16,7 @@
  */
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import * as Recharts from 'recharts'
 import {
   FaArrowLeft, FaChartLine, FaHandPaper, FaBrain, FaHome, FaDownload,
@@ -27,9 +28,11 @@ import { loadProfile, CAPABILITIES, REACH_SPACE } from '../core/profile'
 import { DOMAIN_LABELS, LIFE_SKILL_LABELS, GROUPS } from '../catalog/groups'
 import { GAMES, GAME_BY_ID } from '../catalog/games'
 import { LEVELS, journeySnapshot, tileProgress, hasJourney } from '../core/journey'
-import { PROMPT_INFO, PROMPT_STAGES } from '../core/adaptive'
+import { PROMPT_STAGES, promptName } from '../core/adaptive'
+import { tGame, tGroup, tDomain, tLifeSkill } from '../core/arText'
 import { authHeaders } from '../../utils/authHeaders'
 import LevelPips from '../core/LevelPips'
+import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher'
 import VideoBackground from '../../components/VideoBackground/VideoBackground'
 import styles from './ARInsights.module.css'
 
@@ -43,15 +46,24 @@ const API = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'
 /* Five tabs have to fit a phone's width, so the labels are one word each where
    they can be. "Journey" leads because it answers the question an adult asks
    first — where is this child up to — and the analytical tabs answer why. */
-const TABS = [
-  { id: 'journey', label: 'Journey', icon: <FaRoute /> },
-  { id: 'overview', label: 'Overview', icon: <FaChartLine /> },
-  { id: 'domains', label: 'Skills', icon: <FaBrain /> },
-  { id: 'motor', label: 'Movement', icon: <FaHandPaper /> },
-  { id: 'life', label: 'Life', icon: <FaHome /> },
+const TAB_IDS = [
+  { id: 'journey', icon: <FaRoute /> },
+  { id: 'overview', icon: <FaChartLine /> },
+  { id: 'domains', icon: <FaBrain /> },
+  { id: 'motor', icon: <FaHandPaper /> },
+  { id: 'life', icon: <FaHome /> },
 ]
 
+const TAB_FALLBACKS = {
+  journey: 'Journey',
+  overview: 'Overview',
+  domains: 'Skills',
+  motor: 'Movement',
+  life: 'Life',
+}
+
 export default function ARInsights() {
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const [tab, setTab] = useState('journey')
   const [server, setServer] = useState(null)
@@ -65,7 +77,10 @@ export default function ARInsights() {
   const sessions = useMemo(() => readStored(localSessions, refreshKey), [refreshKey])
   const local = useMemo(() => aggregateLocal(sessions), [sessions])
   const profile = useMemo(() => readStored(loadProfile, refreshKey), [refreshKey])
-  const journey = useMemo(() => readStored(() => journeySnapshot(GAMES), refreshKey), [refreshKey])
+  // `i18n.language` matters here too: the snapshot carries translated badge
+  // and rank names that must recompute on a language switch.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const journey = useMemo(() => readStored(() => journeySnapshot(GAMES), refreshKey), [refreshKey, i18n.language])
 
   useEffect(() => {
     const prev = document.body.style.overflow
@@ -118,32 +133,33 @@ export default function ARInsights() {
     <div className={styles.page}>
       <VideoBackground />
       <header className={styles.head}>
-        <button className={styles.iconBtn} onClick={() => navigate('/games/ar')} aria-label="Back">
+        <button className={styles.iconBtn} onClick={() => navigate('/games/ar')} aria-label={t('ar.insights.backAriaLabel', 'Back')}>
           <FaArrowLeft />
         </button>
-        <h1 className={styles.title}>Progress &amp; analysis</h1>
+        <h1 className={styles.title}>{t('ar.insights.title', 'Progress & analysis')}</h1>
         <div className={styles.headRight}>
+          <LanguageSwitcher />
           <Link
             to="/dashboard"
             className={styles.iconBtn}
-            aria-label="Learning dashboard"
-            title="This child's full learning dashboard, with a summary of this report linked in"
+            aria-label={t('ar.insights.dashboardAriaLabel', 'Learning dashboard')}
+            title={t('ar.insights.dashboardTitle', "This child's full learning dashboard, with a summary of this report linked in")}
           >
             <FaChartBar />
           </Link>
           <button
             className={styles.iconBtn}
             onClick={() => setRefreshKey((k) => k + 1)}
-            aria-label="Refresh"
-            title="Refresh"
+            aria-label={t('ar.insights.refreshAriaLabel', 'Refresh')}
+            title={t('ar.insights.refreshAriaLabel', 'Refresh')}
           >
             <FaSync className={loading ? styles.spin : ''} />
           </button>
           <button
             className={styles.iconBtn}
             onClick={() => exportCsv(sessions)}
-            aria-label="Export"
-            title="Download the trial-level data as CSV"
+            aria-label={t('ar.insights.exportAriaLabel', 'Export')}
+            title={t('ar.insights.exportTitle', 'Download the trial-level data as CSV')}
             disabled={!hasTrials}
           >
             <FaDownload />
@@ -154,14 +170,15 @@ export default function ARInsights() {
       {empty ? (
         <div className={styles.emptyState}>
           <span className={styles.emptyIcon}>📊</span>
-          <h2>Nothing recorded yet</h2>
+          <h2>{t('ar.insights.empty.title', 'Nothing recorded yet')}</h2>
           <p>
-            Play a camera game and every turn is measured here — what was
-            understood, how much help was needed, how long thinking took and how
-            long moving took, each kept separate.
+            {t(
+              'ar.insights.empty.body',
+              'Play a camera game and every turn is measured here — what was understood, how much help was needed, how long thinking took and how long moving took, each kept separate.'
+            )}
           </p>
           <button className={styles.primary} onClick={() => navigate('/games/ar')}>
-            Go to the games
+            {t('ar.insights.empty.cta', 'Go to the games')}
           </button>
         </div>
       ) : (
@@ -169,49 +186,59 @@ export default function ARInsights() {
           {hasTrials && (
           <div className={styles.kpis}>
             <Kpi
-              label="Got the idea"
+              label={t('ar.insights.kpis.gotIdea.label', 'Got the idea')}
               value={pct(local.comprehensionPct)}
-              hint="Correct, plus right answer reached imprecisely or late. This is the understanding number."
+              hint={t('ar.insights.kpis.gotIdea.hint', 'Correct, plus right answer reached imprecisely or late. This is the understanding number.')}
               tone="good"
             />
             <Kpi
-              label="On their own"
+              label={t('ar.insights.kpis.onTheirOwn.label', 'On their own')}
               value={pct(local.independentPct)}
-              hint="Correct with no highlight and no demonstration. The independence number."
+              hint={t('ar.insights.kpis.onTheirOwn.hint', 'Correct with no highlight and no demonstration. The independence number.')}
               tone="good"
             />
             <Kpi
-              label="Thinking time"
+              label={t('ar.insights.kpis.thinkingTime.label', 'Thinking time')}
               value={ms(local.medianLatencyMs)}
-              hint="Median time from the instruction to the first intentional movement. A decision measure, not a motor one."
+              hint={t('ar.insights.kpis.thinkingTime.hint', 'Median time from the instruction to the first intentional movement. A decision measure, not a motor one.')}
             />
             <Kpi
-              label="Moving time"
+              label={t('ar.insights.kpis.movingTime.label', 'Moving time')}
               value={ms(local.medianMovementMs)}
-              hint="Median time from starting to move to touching the target. A motor measure, kept out of accuracy entirely."
+              hint={t('ar.insights.kpis.movingTime.hint', 'Median time from starting to move to touching the target. A motor measure, kept out of accuracy entirely.')}
             />
             <Kpi
-              label="Reach directness"
+              label={t('ar.insights.kpis.reachDirectness.label', 'Reach directness')}
               value={local.pathEfficiency == null ? '—' : `${Math.round(local.pathEfficiency * 100)}%`}
-              hint="Straight-line distance ÷ the path the hand actually travelled. 100% is perfectly direct."
+              hint={t('ar.insights.kpis.reachDirectness.hint', 'Straight-line distance ÷ the path the hand actually travelled. 100% is perfectly direct.')}
             />
             <Kpi
-              label="Turns played"
+              label={t('ar.insights.kpis.turnsPlayed.label', 'Turns played')}
               value={String(local.totalTrials)}
-              hint={`${local.sessions} round${local.sessions === 1 ? '' : 's'} · ${local.minutesPlayed} min`}
+              hint={
+                local.sessions === 1
+                  ? t('ar.insights.kpis.turnsPlayed.hintSingular', '{{sessions}} round · {{minutes}} min', {
+                      sessions: local.sessions,
+                      minutes: local.minutesPlayed,
+                    })
+                  : t('ar.insights.kpis.turnsPlayed.hintPlural', '{{sessions}} rounds · {{minutes}} min', {
+                      sessions: local.sessions,
+                      minutes: local.minutesPlayed,
+                    })
+              }
             />
           </div>
           )}
 
           <nav className={styles.tabs}>
-            {TABS.map((t) => (
+            {TAB_IDS.map((tabDef) => (
               <button
-                key={t.id}
-                className={`${styles.tab} ${tab === t.id ? styles.tabOn : ''}`}
-                onClick={() => setTab(t.id)}
+                key={tabDef.id}
+                className={`${styles.tab} ${tab === tabDef.id ? styles.tabOn : ''}`}
+                onClick={() => setTab(tabDef.id)}
               >
-                {t.icon}
-                <span>{t.label}</span>
+                {tabDef.icon}
+                <span>{t(`ar.insights.tabs.${tabDef.id}`, TAB_FALLBACKS[tabDef.id])}</span>
               </button>
             ))}
           </nav>
@@ -222,12 +249,12 @@ export default function ARInsights() {
               // The rounds were erased but the journey survived. Say which, so
               // an adult is not left wondering whether the app lost the data.
               <div className={styles.panes}>
-                <Card title="No recorded rounds" note="The journey above is intact.">
+                <Card title={t('ar.insights.noRounds.title', 'No recorded rounds')} note={t('ar.insights.noRounds.note', 'The journey above is intact.')}>
                   <Placeholder>
-                    The trial-level data has been erased, so there is nothing to
-                    analyse here. Levels and points are stored separately and are
-                    still on the Journey tab. Play a round and these tabs fill up
-                    again.
+                    {t(
+                      'ar.insights.noRounds.body',
+                      'The trial-level data has been erased, so there is nothing to analyse here. Levels and points are stored separately and are still on the Journey tab. Play a round and these tabs fill up again.'
+                    )}
                   </Placeholder>
                 </Card>
               </div>
@@ -245,17 +272,19 @@ export default function ARInsights() {
 
       <footer className={styles.foot}>
         <span className={styles.disclaimer}>
-          <FaInfoCircle /> These are descriptions of what happened in the games,
-          not clinical measures. A high score is not evidence that a skill
-          transfers off the screen — that has to be checked in real life.
+          <FaInfoCircle />{' '}
+          {t(
+            'ar.insights.footer.disclaimer',
+            'These are descriptions of what happened in the games, not clinical measures. A high score is not evidence that a skill transfers off the screen — that has to be checked in real life.'
+          )}
         </span>
         {!confirmWipe ? (
           <button className={styles.danger} onClick={() => setConfirmWipe(true)} disabled={!hasTrials}>
-            <FaTrash /> Erase
+            <FaTrash /> {t('ar.insights.footer.erase', 'Erase')}
           </button>
         ) : (
           <span className={styles.confirm}>
-            Erase all recorded rounds?
+            {t('ar.insights.footer.confirmText', 'Erase all recorded rounds?')}
             <button
               className={styles.danger}
               onClick={async () => {
@@ -273,10 +302,10 @@ export default function ARInsights() {
                 setRefreshKey((k) => k + 1)
               }}
             >
-              Yes, erase
+              {t('ar.insights.footer.confirmYes', 'Yes, erase')}
             </button>
             <button className={styles.ghost} onClick={() => setConfirmWipe(false)}>
-              Keep
+              {t('ar.insights.footer.confirmKeep', 'Keep')}
             </button>
           </span>
         )}
@@ -301,14 +330,15 @@ export default function ARInsights() {
  * independence.
  */
 function Journey({ journey, server }) {
+  const { t, i18n } = useTranslation()
   const byGroup = useMemo(
     () =>
       GROUPS.map((g) => {
         const st = journey.byGroup[g.id] || { games: 0, played: 0, levels: 0, possible: 0, points: 0 }
         return {
           id: g.id,
-          name: g.short,
-          title: g.title,
+          name: tGroup(g.id, 'short', g.short),
+          title: tGroup(g.id, 'title', g.title),
           // Percent, not a count: the groups hold 7 to 14 games each, so raw
           // counts would say "My Day is behind" when it is simply bigger.
           Complete: st.possible ? Math.round((st.levels / st.possible) * 100) : 0,
@@ -319,7 +349,8 @@ function Journey({ journey, server }) {
           pct: st.possible ? Math.round((st.levels / st.possible) * 100) : 0,
         }
       }),
-    [journey]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [journey, i18n.language]
   )
 
   // Stuck first. A game with several plays and nothing cleared is the single
@@ -332,7 +363,7 @@ function Journey({ journey, server }) {
         const game = GAME_BY_ID[g.gameId]
         return {
           ...g,
-          title: game?.title || g.gameId,
+          title: game ? tGame(game.id, 'title', game.title) : g.gameId,
           icon: game?.icon || FaGamepad,
           pips: game && hasJourney(game) ? tileProgress(game).pips : null,
           stuck: g.plays >= 3 && g.cleared === 0,
@@ -345,7 +376,8 @@ function Journey({ journey, server }) {
           b.plays - a.plays
       )
     return rows
-  }, [journey])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [journey, i18n.language])
 
   const possible = byGroup.reduce((s, g) => s + g.possible, 0)
   const stuckCount = games.filter((g) => g.stuck).length
@@ -363,8 +395,11 @@ function Journey({ journey, server }) {
   return (
     <div className={styles.panes}>
       <Card
-        title="Where they are"
-        note="Levels cleared per group. The group a child is progressing in is the developmental domain they are actually working on, which is more useful than a total."
+        title={t('ar.insights.journeyTab.whereTheyAre.title', 'Where they are')}
+        note={t(
+          'ar.insights.journeyTab.whereTheyAre.note',
+          'Levels cleared per group. The group a child is progressing in is the developmental domain they are actually working on, which is more useful than a total.'
+        )}
       >
         {/* Levels lead and points follow. Points are the child's currency and
             belong on an adult's screen as context, not as the thing their eye
@@ -376,22 +411,22 @@ function Journey({ journey, server }) {
               child is expected to clear every level of all 68 games, and a
               denominator nobody reaches makes real progress look like failure. */}
           <span className={styles.jStat}>
-            <strong>{journey.levelsCleared}</strong>levels cleared
+            <strong>{journey.levelsCleared}</strong>{t('ar.insights.journeyTab.stats.levelsCleared', 'levels cleared')}
           </span>
           <span className={styles.jStat}>
-            <strong>{journey.gamesPlayed}</strong>games played
+            <strong>{journey.gamesPlayed}</strong>{t('ar.insights.journeyTab.stats.gamesPlayed', 'games played')}
           </span>
           <span className={styles.jStat}>
-            <strong>{journey.daysPlayed}</strong>days played
+            <strong>{journey.daysPlayed}</strong>{t('ar.insights.journeyTab.stats.daysPlayed', 'days played')}
           </span>
           <span className={styles.jStat}>
-            <strong>{journey.points}</strong>points
+            <strong>{journey.points}</strong>{t('ar.insights.journeyTab.stats.points', 'points')}
           </span>
           <span className={styles.jStat}>
             <strong>
               <journey.rank.icon /> {journey.rank.name}
             </strong>
-            rank
+            {t('ar.insights.journeyTab.stats.rank', 'rank')}
           </span>
         </div>
         {possible > 0 ? (
@@ -412,7 +447,12 @@ function Journey({ journey, server }) {
               <Tooltip
                 contentStyle={TOOLTIP}
                 formatter={(_v, _n, p) => [
-                  `${p.payload.levels} of ${p.payload.possible} levels · ${p.payload.played}/${p.payload.games} games tried`,
+                  t('ar.insights.journeyTab.chartTooltip', '{{levels}} of {{possible}} levels · {{played}}/{{games}} games tried', {
+                    levels: p.payload.levels,
+                    possible: p.payload.possible,
+                    played: p.payload.played,
+                    games: p.payload.games,
+                  }),
                   p.payload.title,
                 ]}
               />
@@ -420,16 +460,27 @@ function Journey({ journey, server }) {
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <Placeholder>No journeys started yet.</Placeholder>
+          <Placeholder>{t('ar.insights.journeyTab.noJourneys', 'No journeys started yet.')}</Placeholder>
         )}
       </Card>
 
       <Card
-        title="Level reached, per game"
+        title={t('ar.insights.journeyTab.levelPerGame.title', 'Level reached, per game')}
         note={
           stuckCount
-            ? `${stuckCount} game${stuckCount === 1 ? '' : 's'} played several times with nothing cleared — shown first. That level is asking for something this child cannot do yet.`
-            : 'Games played, most progressed first. A game played repeatedly with nothing cleared would appear at the top.'
+            ? t(
+                stuckCount === 1
+                  ? 'ar.insights.journeyTab.levelPerGame.noteStuckSingular'
+                  : 'ar.insights.journeyTab.levelPerGame.noteStuckPlural',
+                stuckCount === 1
+                  ? '{{count}} game played several times with nothing cleared — shown first. That level is asking for something this child cannot do yet.'
+                  : '{{count}} games played several times with nothing cleared — shown first. That level is asking for something this child cannot do yet.',
+                { count: stuckCount }
+              )
+            : t(
+                'ar.insights.journeyTab.levelPerGame.noteOk',
+                'Games played, most progressed first. A game played repeatedly with nothing cleared would appear at the top.'
+              )
         }
       >
         {games.length ? (
@@ -438,75 +489,90 @@ function Journey({ journey, server }) {
               <div key={g.gameId} className={`${styles.row} ${g.stuck ? styles.rowWarn : ''}`}>
                 <span className={styles.rowIcon}><g.icon /></span>
                 <span className={styles.rowName}>
-                  {g.stuck && <FaExclamationTriangle className={styles.warnIcon} title="Played several times, nothing cleared" />}
+                  {g.stuck && (
+                    <FaExclamationTriangle
+                      className={styles.warnIcon}
+                      title={t('ar.insights.journeyTab.stuckIconTitle', 'Played several times, nothing cleared')}
+                    />
+                  )}
                   {g.title}
                 </span>
                 {g.pips ? (
                   <LevelPips pips={g.pips} size="sm" />
                 ) : (
-                  <span className={styles.rowStat}>no levels</span>
+                  <span className={styles.rowStat}>{t('ar.insights.journeyTab.noLevels', 'no levels')}</span>
                 )}
-                <span className={styles.rowStat} title="Levels cleared">
+                <span className={styles.rowStat} title={t('ar.insights.journeyTab.levelsClearedTitle', 'Levels cleared')}>
                   {g.cleared}/{LEVELS}
                 </span>
-                <span className={styles.rowStat} title="Rounds played">
-                  {g.plays} played
+                <span className={styles.rowStat} title={t('ar.insights.journeyTab.roundsPlayedTitle', 'Rounds played')}>
+                  {g.plays} {t('ar.insights.journeyTab.playedSuffix', 'played')}
                 </span>
               </div>
             ))}
             {server?.journey?.perGame?.length > games.length && (
               <div className={styles.rowNote}>
-                {server.journey.perGame.length} games with journey data on the server,
-                across all this child&apos;s devices
+                {t('ar.insights.journeyTab.serverRowNote', "{{count}} games with journey data on the server, across all this child's devices", {
+                  count: server.journey.perGame.length,
+                })}
               </div>
             )}
           </div>
         ) : (
-          <Placeholder>No games played yet.</Placeholder>
+          <Placeholder>{t('ar.insights.journeyTab.noGamesPlayed', 'No games played yet.')}</Placeholder>
         )}
       </Card>
 
       <Card
-        title="How that progress was earned"
-        note="Three different claims, deliberately not added together."
+        title={t('ar.insights.journeyTab.howEarned.title', 'How that progress was earned')}
+        note={t('ar.insights.journeyTab.howEarned.note', 'Three different claims, deliberately not added together.')}
       >
         {/* Each row carries its full text as a tooltip, because the prose is
             clamped to keep all three rows on screen at every size. */}
         <div className={styles.howList}>
           <div
             className={styles.howRow}
-            title="The child met the level's comprehension bar. This is evidence."
+            title={t('ar.insights.journeyTab.howEarned.demonstrated.text', "The child met the level's comprehension bar. This is evidence.")}
           >
             <span className={styles.howN}>{demonstrated}</span>
             <span className={styles.howText}>
-              <strong>Demonstrated</strong>
-              <span>The child met the level&apos;s comprehension bar. This is evidence.</span>
+              <strong>{t('ar.insights.journeyTab.howEarned.demonstrated.name', 'Demonstrated')}</strong>
+              <span>{t('ar.insights.journeyTab.howEarned.demonstrated.text', "The child met the level's comprehension bar. This is evidence.")}</span>
             </span>
           </div>
           <div
             className={styles.howRow}
-            title="Three attempts that landed close to the bar. The level opened anyway, so one badly-matched level cannot end a child's use of the app — but it is not evidence they met it."
+            title={t(
+              'ar.insights.journeyTab.howEarned.effort.text',
+              "Three attempts that landed close to the bar. The level opened anyway, so one badly-matched level cannot end a child's use of the app — but it is not evidence they met it."
+            )}
           >
             <span className={`${styles.howN} ${styles.howSoft}`}>{journey.clearedByEffort}</span>
             <span className={styles.howText}>
-              <strong>Given for persistence</strong>
+              <strong>{t('ar.insights.journeyTab.howEarned.effort.name', 'Given for persistence')}</strong>
               <span>
-                Three attempts that landed close to the bar. The level opened
-                anyway, so one badly-matched level cannot end a child&apos;s use of
-                the app — but it is not evidence they met it.
+                {t(
+                  'ar.insights.journeyTab.howEarned.effort.text',
+                  "Three attempts that landed close to the bar. The level opened anyway, so one badly-matched level cannot end a child's use of the app — but it is not evidence they met it."
+                )}
               </span>
             </span>
           </div>
           <div
             className={styles.howRow}
-            title="Credited because a harder level was cleared, and each level is at least as demanding as the one below. Never observed directly."
+            title={t(
+              'ar.insights.journeyTab.howEarned.implied.text',
+              'Credited because a harder level was cleared, and each level is at least as demanding as the one below. Never observed directly.'
+            )}
           >
             <span className={`${styles.howN} ${styles.howSoft}`}>{journey.clearedImplied}</span>
             <span className={styles.howText}>
-              <strong>Inferred</strong>
+              <strong>{t('ar.insights.journeyTab.howEarned.implied.name', 'Inferred')}</strong>
               <span>
-                Credited because a harder level was cleared, and each level is at
-                least as demanding as the one below. Never observed directly.
+                {t(
+                  'ar.insights.journeyTab.howEarned.implied.text',
+                  'Credited because a harder level was cleared, and each level is at least as demanding as the one below. Never observed directly.'
+                )}
               </span>
             </span>
           </div>
@@ -517,14 +583,19 @@ function Journey({ journey, server }) {
           {journey.clearedRemote > 0 && (
             <div
               className={styles.howRow}
-              title="Restored from this child's other device. The payload carries which levels cleared but not how, so this device has no evidence for them."
+              title={t(
+                'ar.insights.journeyTab.howEarned.remote.tooltip',
+                "Restored from this child's other device. The payload carries which levels cleared but not how, so this device has no evidence for them."
+              )}
             >
               <span className={`${styles.howN} ${styles.howSoft}`}>{journey.clearedRemote}</span>
               <span className={styles.howText}>
-                <strong>Restored from another device</strong>
+                <strong>{t('ar.insights.journeyTab.howEarned.remote.name', 'Restored from another device')}</strong>
                 <span>
-                  Came back from the server, which records which levels cleared
-                  but not how. No evidence on this device.
+                  {t(
+                    'ar.insights.journeyTab.howEarned.remote.text',
+                    'Came back from the server, which records which levels cleared but not how. No evidence on this device.'
+                  )}
                 </span>
               </span>
             </div>
@@ -542,8 +613,10 @@ function Journey({ journey, server }) {
         ) : null}
 
         <p className={styles.howFoot}>
-          None of these three is evidence of real-world transfer. A cleared level
-          means the child did the task on a screen.
+          {t(
+            'ar.insights.journeyTab.howEarned.footer',
+            'None of these three is evidence of real-world transfer. A cleared level means the child did the task on a screen.'
+          )}
         </p>
       </Card>
     </div>
@@ -551,6 +624,7 @@ function Journey({ journey, server }) {
 }
 
 function Overview({ local, server, sessions }) {
+  const { t, i18n } = useTranslation()
   const progression = useMemo(() => {
     const byDay = new Map()
     for (const s of sessions) {
@@ -577,25 +651,29 @@ function Overview({ local, server, sessions }) {
     const tally = Object.fromEntries(PROMPT_STAGES.map((p) => [p, 0]))
     let total = 0
     for (const s of sessions) {
-      for (const t of s.trials || []) {
-        if (t.promptLevel && tally[t.promptLevel] != null) {
-          tally[t.promptLevel]++
+      for (const trial of s.trials || []) {
+        if (trial.promptLevel && tally[trial.promptLevel] != null) {
+          tally[trial.promptLevel]++
           total++
         }
       }
     }
     return PROMPT_STAGES.filter((p) => tally[p] > 0).map((p) => ({
       stage: p,
-      name: PROMPT_INFO[p].name,
+      name: promptName(p),
       Turns: total ? Math.round((tally[p] / total) * 1000) / 10 : 0,
     }))
-  }, [sessions])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessions, i18n.language])
 
   return (
     <div className={styles.panes}>
       <Card
-        title="Understanding and independence over time"
-        note="Two lines, because they move separately. A child can understand more while still needing the same amount of help."
+        title={t('ar.insights.overviewTab.trend.title', 'Understanding and independence over time')}
+        note={t(
+          'ar.insights.overviewTab.trend.note',
+          'Two lines, because they move separately. A child can understand more while still needing the same amount of help.'
+        )}
       >
         {progression.length > 1 ? (
           <ResponsiveContainer width="100%" height="100%">
@@ -605,18 +683,21 @@ function Overview({ local, server, sessions }) {
               <YAxis domain={[0, 100]} tick={AXIS} stroke="rgba(255,255,255,0.2)" width={38} />
               <Tooltip contentStyle={TOOLTIP} />
               <Legend wrapperStyle={LEGEND} />
-              <Line type="monotone" dataKey="Understood" stroke="#7ee8ff" strokeWidth={2.5} dot={{ r: 3 }} />
-              <Line type="monotone" dataKey="Independent" stroke="#38d477" strokeWidth={2.5} dot={{ r: 3 }} />
+              <Line type="monotone" dataKey="Understood" name={t('ar.insights.overviewTab.understood', 'Understood')} stroke="#7ee8ff" strokeWidth={2.5} dot={{ r: 3 }} />
+              <Line type="monotone" dataKey="Independent" name={t('ar.insights.overviewTab.independent', 'Independent')} stroke="#38d477" strokeWidth={2.5} dot={{ r: 3 }} />
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <Placeholder>Play on a second day to see a trend here.</Placeholder>
+          <Placeholder>{t('ar.insights.overviewTab.trendPlaceholder', 'Play on a second day to see a trend here.')}</Placeholder>
         )}
       </Card>
 
       <Card
-        title="How much help was needed"
-        note="Share of turns at each prompt stage. Fading from A towards D is the goal; stage G is checked off-screen by an adult and can never be awarded by the game."
+        title={t('ar.insights.overviewTab.promptMix.title', 'How much help was needed')}
+        note={t(
+          'ar.insights.overviewTab.promptMix.note',
+          'Share of turns at each prompt stage. Fading from A towards D is the goal; stage G is checked off-screen by an adult and can never be awarded by the game.'
+        )}
       >
         {promptMix.length ? (
           <ResponsiveContainer width="100%" height="100%">
@@ -626,31 +707,31 @@ function Overview({ local, server, sessions }) {
               <YAxis tick={AXIS} stroke="rgba(255,255,255,0.2)" width={38} unit="%" />
               <Tooltip
                 contentStyle={TOOLTIP}
-                formatter={(v, _n, p) => [`${v}%`, PROMPT_INFO[p.payload.stage]?.name || '']}
+                formatter={(v, _n, p) => [`${v}%`, p.payload.name || '']}
               />
-              <Bar dataKey="Turns" fill="#b98cff" radius={[6, 6, 0, 0]} />
+              <Bar dataKey="Turns" name={t('ar.insights.overviewTab.turns', 'Turns')} fill="#b98cff" radius={[6, 6, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <Placeholder>No prompt data yet.</Placeholder>
+          <Placeholder>{t('ar.insights.overviewTab.promptPlaceholder', 'No prompt data yet.')}</Placeholder>
         )}
       </Card>
 
-      <Card title="Games played" note="Accuracy and independence per game, most-played first.">
+      <Card title={t('ar.insights.overviewTab.gamesPlayed.title', 'Games played')} note={t('ar.insights.overviewTab.gamesPlayed.note', 'Accuracy and independence per game, most-played first.')}>
         <div className={styles.table}>
           {local.games.slice(0, 8).map((g) => {
             const Icon = GAME_BY_ID[g.gameId]?.icon || FaGamepad
             return (
               <div key={g.gameId} className={styles.row}>
                 <span className={styles.rowIcon}><Icon /></span>
-                <span className={styles.rowName}>{g.title || g.gameId}</span>
-                <span className={styles.rowStat} title="Understood">
+                <span className={styles.rowName}>{tGame(g.gameId, 'title', g.title) || g.gameId}</span>
+                <span className={styles.rowStat} title={t('ar.insights.overviewTab.understoodTitle', 'Understood')}>
                   {pct(g.accuracyPct)}
                 </span>
-                <span className={styles.rowStat} title="Independent">
+                <span className={styles.rowStat} title={t('ar.insights.overviewTab.independentTitle', 'Independent')}>
                   {pct(g.independentPct)}
                 </span>
-                <span className={styles.rowStat} title="Median thinking time">
+                <span className={styles.rowStat} title={t('ar.insights.overviewTab.medianThinkingTitle', 'Median thinking time')}>
                   {ms(g.medianLatencyMs)}
                 </span>
               </div>
@@ -658,7 +739,9 @@ function Overview({ local, server, sessions }) {
           })}
           {server?.perGame?.length > local.games.length && (
             <div className={styles.rowNote}>
-              {server.perGame.length} games recorded on the server across all devices
+              {t('ar.insights.overviewTab.serverRowNote', '{{count}} games recorded on the server across all devices', {
+                count: server.perGame.length,
+              })}
             </div>
           )}
         </div>
@@ -668,51 +751,65 @@ function Overview({ local, server, sessions }) {
 }
 
 function Domains({ local, profile }) {
+  const { t, i18n } = useTranslation()
   const radar = useMemo(
     () =>
       CAPABILITIES.filter((c) => (profile.capabilities?.[c]?.n ?? 0) >= 3).map((c) => ({
-        domain: DOMAIN_LABELS[c] || c,
+        domain: tDomain(c, DOMAIN_LABELS[c] || c),
         Estimate: Math.round((profile.capabilities[c].value ?? 0) * 100),
         n: profile.capabilities[c].n,
       })),
-    [profile]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [profile, i18n.language]
   )
 
   const byDomain = useMemo(
     () =>
       Object.entries(local.byDomain || {})
-        .map(([k, v]) => ({ name: DOMAIN_LABELS[k] || k, Accuracy: v.accuracyPct ?? 0, trials: v.trials }))
+        .map(([k, v]) => ({ name: tDomain(k, DOMAIN_LABELS[k] || k), Accuracy: v.accuracyPct ?? 0, trials: v.trials }))
         .sort((a, b) => a.Accuracy - b.Accuracy)
         .slice(0, 9),
-    [local]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [local, i18n.language]
   )
 
   return (
     <div className={styles.panes}>
       <Card
-        title="Capability profile"
-        note="A running estimate per functional domain, from in-game behaviour only. Domains with fewer than three turns are hidden because the estimate would be noise."
+        title={t('ar.insights.domainsTab.profile.title', 'Capability profile')}
+        note={t(
+          'ar.insights.domainsTab.profile.note',
+          'A running estimate per functional domain, from in-game behaviour only. Domains with fewer than three turns are hidden because the estimate would be noise.'
+        )}
       >
         {radar.length >= 3 ? (
           <ResponsiveContainer width="100%" height="100%">
             <RadarChart data={radar} outerRadius="72%">
               <PolarGrid stroke="rgba(255,255,255,0.12)" />
               <PolarAngleAxis dataKey="domain" tick={{ ...AXIS, fontSize: 9 }} />
-              <Radar dataKey="Estimate" stroke="#7ee8ff" fill="#7ee8ff" fillOpacity={0.3} />
-              <Tooltip contentStyle={TOOLTIP} formatter={(v, _n, p) => [`${v}% (n=${p.payload.n})`, 'Estimate']} />
+              <Radar dataKey="Estimate" name={t('ar.insights.domainsTab.estimate', 'Estimate')} stroke="#7ee8ff" fill="#7ee8ff" fillOpacity={0.3} />
+              <Tooltip
+                contentStyle={TOOLTIP}
+                formatter={(v, _n, p) => [`${v}% (n=${p.payload.n})`, t('ar.insights.domainsTab.estimate', 'Estimate')]}
+              />
             </RadarChart>
           </ResponsiveContainer>
         ) : (
           <Placeholder>
-            Play a few more games — at least three domains need data before a
-            profile means anything.
+            {t(
+              'ar.insights.domainsTab.profilePlaceholder',
+              'Play a few more games — at least three domains need data before a profile means anything.'
+            )}
           </Placeholder>
         )}
       </Card>
 
       <Card
-        title="Weakest first"
-        note="Accuracy on turns tagged with each domain. The lowest bars are where the next session is worth spending."
+        title={t('ar.insights.domainsTab.weakest.title', 'Weakest first')}
+        note={t(
+          'ar.insights.domainsTab.weakest.note',
+          'Accuracy on turns tagged with each domain. The lowest bars are where the next session is worth spending.'
+        )}
       >
         {byDomain.length ? (
           <ResponsiveContainer width="100%" height="100%">
@@ -720,16 +817,25 @@ function Domains({ local, profile }) {
               <CartesianGrid stroke="rgba(255,255,255,0.07)" horizontal={false} />
               <XAxis type="number" domain={[0, 100]} tick={AXIS} stroke="rgba(255,255,255,0.2)" unit="%" />
               <YAxis type="category" dataKey="name" tick={{ ...AXIS, fontSize: 9 }} width={92} stroke="rgba(255,255,255,0.2)" />
-              <Tooltip contentStyle={TOOLTIP} formatter={(v, _n, p) => [`${v}% of ${p.payload.trials} turns`, 'Accuracy']} />
-              <Bar dataKey="Accuracy" fill="#38d477" radius={[0, 6, 6, 0]} />
+              <Tooltip
+                contentStyle={TOOLTIP}
+                formatter={(v, _n, p) => [
+                  t('ar.insights.domainsTab.accuracyTooltip', '{{pct}}% of {{trials}} turns', { pct: v, trials: p.payload.trials }),
+                  t('ar.insights.domainsTab.accuracy', 'Accuracy'),
+                ]}
+              />
+              <Bar dataKey="Accuracy" name={t('ar.insights.domainsTab.accuracy', 'Accuracy')} fill="#38d477" radius={[0, 6, 6, 0]} />
             </BarChart>
           </ResponsiveContainer>
         ) : (
-          <Placeholder>No domain data yet.</Placeholder>
+          <Placeholder>{t('ar.insights.domainsTab.weakestPlaceholder', 'No domain data yet.')}</Placeholder>
         )}
       </Card>
 
-      <Card title="Prompt stage per game" note="Where the child currently sits on the help ladder in each activity.">
+      <Card
+        title={t('ar.insights.domainsTab.promptPerGame.title', 'Prompt stage per game')}
+        note={t('ar.insights.domainsTab.promptPerGame.note', 'Where the child currently sits on the help ladder in each activity.')}
+      >
         <div className={styles.table}>
           {Object.entries(profile.games || {})
             .filter(([, g]) => g.trials > 0)
@@ -740,9 +846,9 @@ function Domains({ local, profile }) {
               return (
                 <div key={id} className={styles.row}>
                   <span className={styles.rowIcon}><Icon /></span>
-                  <span className={styles.rowName}>{GAME_BY_ID[id]?.title || id}</span>
+                  <span className={styles.rowName}>{tGame(id, 'title', GAME_BY_ID[id]?.title || id)}</span>
                   <span className={styles.stageChip}>{g.promptStage}</span>
-                  <span className={styles.rowStat}>{PROMPT_INFO[g.promptStage]?.name}</span>
+                  <span className={styles.rowStat}>{promptName(g.promptStage)}</span>
                 </div>
               )
             })}
@@ -753,9 +859,10 @@ function Domains({ local, profile }) {
 }
 
 function Motor({ local, profile, sessions }) {
+  const { t } = useTranslation()
   const hands = [
-    { name: 'Left hand', ...(local.byHand?.left || {}) },
-    { name: 'Right hand', ...(local.byHand?.right || {}) },
+    { side: 'left', name: t('ar.insights.motorTab.leftHand', 'Left hand'), ...(local.byHand?.left || {}) },
+    { side: 'right', name: t('ar.insights.motorTab.rightHand', 'Right hand'), ...(local.byHand?.right || {}) },
   ].filter((h) => h.trials)
 
   const timing = useMemo(() => {
@@ -774,42 +881,59 @@ function Motor({ local, profile, sessions }) {
   return (
     <div className={styles.panes}>
       <Card
-        title="Left and right"
-        note="Same task, each hand. A consistent gap in accuracy or directness is worth an adult's attention; a gap in speed alone often is not."
+        title={t('ar.insights.motorTab.leftRight.title', 'Left and right')}
+        note={t(
+          'ar.insights.motorTab.leftRight.note',
+          "Same task, each hand. A consistent gap in accuracy or directness is worth an adult's attention; a gap in speed alone often is not."
+        )}
       >
         {hands.length ? (
           <div className={styles.table}>
             {hands.map((h) => (
               <div key={h.name} className={styles.row}>
-                <span className={styles.rowIcon}>{h.name.startsWith('Left') ? '🫲' : '🫱'}</span>
+                <span className={styles.rowIcon}>{h.side === 'left' ? '🫲' : '🫱'}</span>
                 <span className={styles.rowName}>{h.name}</span>
-                <span className={styles.rowStat} title="Accuracy">
+                <span className={styles.rowStat} title={t('ar.insights.motorTab.accuracyTitle', 'Accuracy')}>
                   {pct(h.accuracyPct)}
                 </span>
-                <span className={styles.rowStat} title="Median thinking time">
+                <span className={styles.rowStat} title={t('ar.insights.motorTab.medianThinkingTitle', 'Median thinking time')}>
                   {ms(h.medianLatencyMs)}
                 </span>
-                <span className={styles.rowStat} title="Reach directness">
+                <span className={styles.rowStat} title={t('ar.insights.motorTab.reachDirectnessTitle', 'Reach directness')}>
                   {h.pathEfficiency == null ? '—' : `${Math.round(h.pathEfficiency * 100)}%`}
                 </span>
-                <span className={styles.rowStat}>{h.trials} turns</span>
+                <span className={styles.rowStat}>
+                  {h.trials === 1
+                    ? t('ar.insights.motorTab.turnsCountSingular', '{{count}} turn', { count: h.trials })
+                    : t('ar.insights.motorTab.turnsCountPlural', '{{count}} turns', { count: h.trials })}
+                </span>
               </div>
             ))}
             {profile.dominantHand && (
               <div className={styles.rowNote}>
-                Spontaneously preferred hand: <strong>{profile.dominantHand}</strong> (
-                {profile.handUse?.left || 0} left / {profile.handUse?.right || 0} right reaches)
+                {t(
+                  'ar.insights.motorTab.dominantHandNote',
+                  'Spontaneously preferred hand: {{hand}} ({{left}} left / {{right}} right reaches)',
+                  {
+                    hand: profile.dominantHand,
+                    left: profile.handUse?.left || 0,
+                    right: profile.handUse?.right || 0,
+                  }
+                )}
               </div>
             )}
           </div>
         ) : (
-          <Placeholder>No per-hand data yet.</Placeholder>
+          <Placeholder>{t('ar.insights.motorTab.leftRightPlaceholder', 'No per-hand data yet.')}</Placeholder>
         )}
       </Card>
 
       <Card
-        title="Rhythm timing"
-        note="Steadiness is the standard deviation of the timing error and is the meaningful number — a constant offset is just an offset, and part of it is camera lag, which is measured and subtracted per session."
+        title={t('ar.insights.motorTab.rhythm.title', 'Rhythm timing')}
+        note={t(
+          'ar.insights.motorTab.rhythm.note',
+          'Steadiness is the standard deviation of the timing error and is the meaningful number — a constant offset is just an offset, and part of it is camera lag, which is measured and subtracted per session.'
+        )}
       >
         {timing.length > 1 ? (
           <ResponsiveContainer width="100%" height="100%">
@@ -819,16 +943,16 @@ function Motor({ local, profile, sessions }) {
               <YAxis tick={AXIS} stroke="rgba(255,255,255,0.2)" width={40} unit="ms" />
               <Tooltip contentStyle={TOOLTIP} />
               <Legend wrapperStyle={LEGEND} />
-              <Line type="monotone" dataKey="Steadiness" stroke="#ffd93d" strokeWidth={2.5} dot={{ r: 3 }} />
-              <Line type="monotone" dataKey="Offset" stroke="#ff7ac0" strokeWidth={2} dot={{ r: 2 }} strokeDasharray="4 4" />
+              <Line type="monotone" dataKey="Steadiness" name={t('ar.insights.motorTab.steadiness', 'Steadiness')} stroke="#ffd93d" strokeWidth={2.5} dot={{ r: 3 }} />
+              <Line type="monotone" dataKey="Offset" name={t('ar.insights.motorTab.offset', 'Offset')} stroke="#ff7ac0" strokeWidth={2} dot={{ r: 2 }} strokeDasharray="4 4" />
             </LineChart>
           </ResponsiveContainer>
         ) : (
-          <Placeholder>Play Rhythm Reach a couple of times to see timing here.</Placeholder>
+          <Placeholder>{t('ar.insights.motorTab.rhythmPlaceholder', 'Play Rhythm Reach a couple of times to see timing here.')}</Placeholder>
         )}
       </Card>
 
-      <Card title="Reach envelope" note="The calibrated play space every game places targets inside.">
+      <Card title={t('ar.insights.motorTab.reachEnvelope.title', 'Reach envelope')} note={t('ar.insights.motorTab.reachEnvelope.note', 'The calibrated play space every game places targets inside.')}>
         {/* A calibration from the old cropped camera space is not shown as a
             current measurement — it is no longer used to place targets, and
             drawing it here would suggest otherwise. */}
@@ -847,26 +971,30 @@ function Motor({ local, profile, sessions }) {
             </div>
             <div className={styles.reachStats}>
               <span>
-                Width <strong>{Math.round((profile.reach.maxX - profile.reach.minX) * 100)}%</strong> of frame
+                {t('ar.insights.motorTab.width', 'Width')}{' '}
+                <strong>{Math.round((profile.reach.maxX - profile.reach.minX) * 100)}%</strong> {t('ar.insights.motorTab.ofFrame', 'of frame')}
               </span>
               <span>
-                Height <strong>{Math.round((profile.reach.maxY - profile.reach.minY) * 100)}%</strong>
+                {t('ar.insights.motorTab.height', 'Height')} <strong>{Math.round((profile.reach.maxY - profile.reach.minY) * 100)}%</strong>
               </span>
               {profile.reachMeta?.asymmetry != null && (
                 <span>
-                  Left/right difference <strong>{Math.round(profile.reachMeta.asymmetry * 100)}%</strong>
+                  {t('ar.insights.motorTab.leftRightDifference', 'Left/right difference')} <strong>{Math.round(profile.reachMeta.asymmetry * 100)}%</strong>
                 </span>
               )}
               <span className={styles.reachDate}>
-                Set {new Date(profile.reachCalibratedAt).toLocaleDateString()}
+                {t('ar.insights.motorTab.setDate', 'Set {{date}}', { date: new Date(profile.reachCalibratedAt).toLocaleDateString() })}
               </span>
             </div>
           </div>
         ) : (
           <Placeholder>
-            Not calibrated. Run <strong>Set Up My Space</strong> — until then targets
-            use a generic envelope and a restricted reach will look like poor
-            accuracy.
+            {t('ar.insights.motorTab.reachPlaceholderPrefix', 'Not calibrated. Run')}{' '}
+            <strong>{tGame('setup-space', 'title', 'Set Up My Space')}</strong>{' '}
+            {t(
+              'ar.insights.motorTab.reachPlaceholderSuffix',
+              '— until then targets use a generic envelope and a restricted reach will look like poor accuracy.'
+            )}
           </Placeholder>
         )}
       </Card>
@@ -875,6 +1003,7 @@ function Motor({ local, profile, sessions }) {
 }
 
 function LifeSkills({ sessions }) {
+  const { t } = useTranslation()
   const rows = useMemo(() => {
     const tally = new Map()
     for (const s of sessions) {
@@ -882,12 +1011,12 @@ function LifeSkills({ sessions }) {
       if (!skill) continue
       const row = tally.get(skill) || { skill, sessions: 0, trials: 0, correct: 0, independent: 0 }
       row.sessions++
-      for (const t of s.trials || []) {
-        if (t.accuracy === 'aborted') continue
+      for (const trial of s.trials || []) {
+        if (trial.accuracy === 'aborted') continue
         row.trials++
-        if (t.accuracy === 'correct' || t.accuracy === 'correctInhibit') {
+        if (trial.accuracy === 'correct' || trial.accuracy === 'correctInhibit') {
           row.correct++
-          if (!t.prompted) row.independent++
+          if (!trial.prompted) row.independent++
         }
       }
       tally.set(skill, row)
@@ -906,13 +1035,14 @@ function LifeSkills({ sessions }) {
     // that actually tracks "can they do this yet": 3/7 → 5/7 → 6/7 steps.
     const out = []
     for (const s of sessions) {
-      for (const t of s.trials || []) {
-        if (t.stepsCompletedIndependently == null || !t.steps) continue
+      for (const trial of s.trials || []) {
+        if (trial.stepsCompletedIndependently == null || !trial.steps) continue
         out.push({
-          game: GAME_BY_ID[s.gameId]?.title || s.gameId,
+          gameId: s.gameId,
+          game: tGame(s.gameId, 'title', GAME_BY_ID[s.gameId]?.title || s.gameId),
           at: (s.endedAt || '').slice(5, 10),
-          score: `${t.stepsCompletedIndependently}/${t.steps}`,
-          ratio: t.stepsCompletedIndependently / t.steps,
+          score: `${trial.stepsCompletedIndependently}/${trial.steps}`,
+          ratio: trial.stepsCompletedIndependently / trial.steps,
         })
       }
     }
@@ -922,32 +1052,37 @@ function LifeSkills({ sessions }) {
   return (
     <div className={styles.panes}>
       <Card
-        title="Life skills practised"
-        note="Grouped by the real-world skill each game transfers to, not by the game."
+        title={t('ar.insights.lifeTab.practised.title', 'Life skills practised')}
+        note={t('ar.insights.lifeTab.practised.note', 'Grouped by the real-world skill each game transfers to, not by the game.')}
       >
         {rows.length ? (
           <div className={styles.table}>
             {rows.slice(0, 9).map((r) => (
               <div key={r.skill} className={styles.row}>
-                <span className={styles.rowName}>{LIFE_SKILL_LABELS[r.skill] || r.skill}</span>
+                <span className={styles.rowName}>{tLifeSkill(r.skill, LIFE_SKILL_LABELS[r.skill] || r.skill)}</span>
                 <span className={styles.bar}>
                   <span className={styles.barFill} style={{ width: `${r.independentPct}%` }} />
                 </span>
-                <span className={styles.rowStat}>{r.independentPct}% alone</span>
+                <span className={styles.rowStat}>{t('ar.insights.lifeTab.alonePct', '{{pct}}% alone', { pct: r.independentPct })}</span>
                 <span className={styles.rowStat}>
-                  {r.sessions} round{r.sessions === 1 ? '' : 's'}
+                  {r.sessions === 1
+                    ? t('ar.insights.lifeTab.roundsSingular', '{{count}} round', { count: r.sessions })
+                    : t('ar.insights.lifeTab.roundsPlural', '{{count}} rounds', { count: r.sessions })}
                 </span>
               </div>
             ))}
           </div>
         ) : (
-          <Placeholder>No life-skill games played yet.</Placeholder>
+          <Placeholder>{t('ar.insights.lifeTab.practisedPlaceholder', 'No life-skill games played yet.')}</Placeholder>
         )}
       </Card>
 
       <Card
-        title="Routine steps done unaided"
-        note="For sequence games like handwashing: how many steps went in the right order without a reminder. 3/7 → 5/7 → 6/7 is what real progress looks like."
+        title={t('ar.insights.lifeTab.routine.title', 'Routine steps done unaided')}
+        note={t(
+          'ar.insights.lifeTab.routine.note',
+          'For sequence games like handwashing: how many steps went in the right order without a reminder. 3/7 → 5/7 → 6/7 is what real progress looks like.'
+        )}
       >
         {sequences.length ? (
           <div className={styles.table}>
@@ -963,24 +1098,27 @@ function LifeSkills({ sessions }) {
             ))}
           </div>
         ) : (
-          <Placeholder>Play a routine game (washing, dressing, crossing the road) to see this.</Placeholder>
+          <Placeholder>{t('ar.insights.lifeTab.routinePlaceholder', 'Play a routine game (washing, dressing, crossing the road) to see this.')}</Placeholder>
         )}
       </Card>
 
       <Card
-        title="Real-world transfer"
-        note="The stage the game cannot award."
+        title={t('ar.insights.lifeTab.transfer.title', 'Real-world transfer')}
+        note={t('ar.insights.lifeTab.transfer.note', 'The stage the game cannot award.')}
       >
         <div className={styles.transferNote}>
           <p>
-            <strong>Stage G is checked by a person, away from the screen.</strong>{' '}
-            A child who can pick the toothbrush out of five pictures has not yet
-            been shown to pick up the actual toothbrush in the actual bathroom.
+            <strong>{t('ar.insights.lifeTab.transferP1Bold', 'Stage G is checked by a person, away from the screen.')}</strong>{' '}
+            {t(
+              'ar.insights.lifeTab.transferP1Rest',
+              'A child who can pick the toothbrush out of five pictures has not yet been shown to pick up the actual toothbrush in the actual bathroom.'
+            )}
           </p>
           <p>
-            Use the routine scores above to decide when a skill is worth trying
-            for real, then record what happened in your own notes — this app
-            deliberately does not claim to have measured it.
+            {t(
+              'ar.insights.lifeTab.transferP2',
+              'Use the routine scores above to decide when a skill is worth trying for real, then record what happened in your own notes — this app deliberately does not claim to have measured it.'
+            )}
           </p>
         </div>
       </Card>

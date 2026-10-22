@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa'
 import DashboardView from '../../pages/DashboardView'
 
 // Read-only "view as student" dashboard, used by the admin and super-admin
-// dashboards to show a student's real Learningo dashboard (same data/UI the
+// dashboards to show a student's real Learnigo dashboard (same data/UI the
 // student sees) once that student is confirmed to exist in the learning DB.
 export default function StudentDashboardViewer({ apiBase, token, displayName, onClose }) {
   const thisYear = new Date().getFullYear()
