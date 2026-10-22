@@ -11,6 +11,7 @@
  */
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import {
   FaArrowLeft, FaPause, FaPlay, FaRedo, FaCog, FaCamera, FaTimes,
   FaStar, FaRegStar, FaChartLine, FaLightbulb, FaForward,
@@ -27,14 +28,17 @@ import { unlockAudio, sfx, haptic, cueFinish } from './feedback'
 import { unlockSpeech, speak, cancelSpeech } from './tts'
 import { scaledReachBox } from './profile'
 import { makeRng } from './geometry'
-import { nextTargetFor, PROMPT_INFO } from './adaptive'
+import { nextTargetFor, promptHelp } from './adaptive'
 import {
   beginRound, resolveLevel, recordRound, tileProgress, hasJourney,
   LEVEL_META, LEVELS,
 } from './journey'
 import { GAMES } from '../catalog/games'
+import { tGame, tLifeSkill, tDomain } from './arText'
+import { LIFE_SKILL_LABELS, DOMAIN_LABELS as GROUP_DOMAIN_LABELS } from '../catalog/groups'
 import LevelPips from './LevelPips'
 import SettingsSheet from './SettingsSheet'
+import LanguageSwitcher from '../../components/LanguageSwitcher/LanguageSwitcher'
 import styles from './ARStage.module.css'
 
 // `pointsFor` (journey.js) deliberately keeps its rows JSON-safe — that object
@@ -50,7 +54,14 @@ const POINTS_ROW_ICONS = {
   today: FaCalendarAlt,
 }
 
-const CAMERA_HELP = {
+const CAMERA_HELP_KEYS = {
+  CAMERA_DENIED: 'cameraDenied',
+  CAMERA_MISSING: 'cameraMissing',
+  CAMERA_UNSUPPORTED: 'cameraUnsupported',
+  MODEL_FAILED: 'modelFailed',
+}
+
+const CAMERA_HELP_FALLBACK = {
   CAMERA_DENIED: {
     title: 'Camera is blocked',
     body: 'These games need the camera so you can see yourself and reach for things. Allow camera access in your browser, then press Try again.',
@@ -69,7 +80,17 @@ const CAMERA_HELP = {
   },
 }
 
+function cameraHelpFor(t, code) {
+  const key = CAMERA_HELP_KEYS[code] || CAMERA_HELP_KEYS.MODEL_FAILED
+  const fallback = CAMERA_HELP_FALLBACK[code] || CAMERA_HELP_FALLBACK.MODEL_FAILED
+  return {
+    title: t(`ar.stage.cameraHelp.${key}.title`, fallback.title),
+    body: t(`ar.stage.cameraHelp.${key}.body`, fallback.body),
+  }
+}
+
 export default function ARStage({ game, onExit, onNext, level: requestedLevel = null }) {
+  const { t, i18n } = useTranslation()
   const navigate = useNavigate()
   const wrapRef = useRef(null)
   const videoRef = useRef(null)
@@ -456,7 +477,11 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
     // Short countdown so the child can get their hands into frame.
     setPhase('countdown')
     let n = 3
-    setPrompt({ main: 'Get ready!', sub: 'Show me your hand', chip: null })
+    setPrompt({
+      main: t('ar.stage.getReady', 'Get ready!'),
+      sub: t('ar.stage.showMeYourHand', 'Show me your hand'),
+      chip: null,
+    })
     const tick = () => {
       bannerRef.current = { text: String(n), until: Infinity, from: 0, ms: 500 }
       sfx.countdown(n)
@@ -602,7 +627,16 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
     []
   )
 
-  const domainLabels = useMemo(() => (game.domains || []).map(prettyDomain), [game.domains])
+  const title = tGame(game.id, 'title', game.title)
+  const how = tGame(game.id, 'how', game.how)
+  const lifeSkillLabel = game.lifeSkill ? tLifeSkill(game.lifeSkill, LIFE_SKILL_LABELS[game.lifeSkill]) : null
+  // `i18n.language` is a deliberate cache-buster, not a real dependency the
+  // linter can see used inside the callback (tDomain reads the i18n singleton
+  // directly) — it has to recompute the translated labels on a language switch.
+  const domainLabels = useMemo(
+    () => (game.domains || []).map((d) => tDomain(d, GROUP_DOMAIN_LABELS[d] || d)),
+    [game.domains, i18n.language] // eslint-disable-line react-hooks/exhaustive-deps
+  )
 
   return (
     <div className={styles.stage} ref={wrapRef} data-phase={phase}>
@@ -628,16 +662,16 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
       {/* ── top bar ── */}
       {phase !== 'intro' && phase !== 'error' && (
         <div className={styles.topBar}>
-          <button className={styles.iconBtn} onClick={exit} aria-label="Back to games">
+          <button className={styles.iconBtn} onClick={exit} aria-label={t('ar.stage.backAriaLabel', 'Back to games')}>
             <FaArrowLeft />
           </button>
 
           <div className={styles.topCentre}>
             <span className={styles.gameName}>
-              {game.title}
+              {title}
               {journeyOn && (
-                <span className={styles.levelTag} title={`Level ${level} of ${LEVELS}`}>
-                  <LevelIcon /> L{level}
+                <span className={styles.levelTag} title={t('ar.stage.levelOfShort', 'Level {{level}} of {{total}}', { level, total: LEVELS })}>
+                  <LevelIcon /> {t('ar.stage.levelTag', 'L{{level}}', { level })}
                 </span>
               )}
             </span>
@@ -650,20 +684,21 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
 
           <div className={styles.topRight}>
             {hud.streak > 1 && <span className={styles.streak}>🔥 {hud.streak}</span>}
-            <span className={styles.promptChip} title={PROMPT_INFO[hud.promptStage]?.help}>
+            <span className={styles.promptChip} title={promptHelp(hud.promptStage)}>
               {hud.promptStage}
             </span>
+            <LanguageSwitcher />
             <button
               className={styles.iconBtn}
               onClick={() => setShowSettings(true)}
-              aria-label="Settings"
+              aria-label={t('ar.stage.settingsAriaLabel', 'Settings')}
             >
               <FaCog />
             </button>
             <button
               className={styles.iconBtn}
               onClick={phase === 'playing' ? doPause : doResume}
-              aria-label={phase === 'playing' ? 'Pause' : 'Play'}
+              aria-label={phase === 'playing' ? t('ar.stage.pauseAriaLabel', 'Pause') : t('ar.stage.playAriaLabel', 'Play')}
               disabled={phase !== 'playing' && phase !== 'paused'}
             >
               {phase === 'playing' ? <FaPause /> : <FaPlay />}
@@ -691,8 +726,12 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
           <span>{liveMetrics.fps} fps</span>
           <span>{liveMetrics.detectMs} ms det</span>
           <span>~{liveMetrics.latencyMs} ms lag</span>
-          <span>{liveMetrics.hands} hand{liveMetrics.hands === 1 ? '' : 's'}</span>
-          {liveMetrics.body && <span>body ✓</span>}
+          <span>
+            {liveMetrics.hands === 1
+              ? t('ar.stage.handsCountSingular', '{{count}} hand', { count: liveMetrics.hands })
+              : t('ar.stage.handsCountPlural', '{{count}} hands', { count: liveMetrics.hands })}
+          </span>
+          {liveMetrics.body && <span>{t('ar.stage.bodyOk', 'body ✓')}</span>}
         </div>
       )}
 
@@ -700,12 +739,12 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
       {phase === 'intro' && (
         <div className={styles.sheet}>
           <div className={styles.introCard}>
-            <button className={styles.sheetClose} onClick={exit} aria-label="Back">
+            <button className={styles.sheetClose} onClick={exit} aria-label={t('ar.common.back', 'Back')}>
               <FaTimes />
             </button>
             <div className={styles.introIcon}><game.icon /></div>
-            <h1 className={styles.introTitle}>{game.title}</h1>
-            <p className={styles.introHow}>{game.how}</p>
+            <h1 className={styles.introTitle}>{title}</h1>
+            <p className={styles.introHow}>{how}</p>
 
             {journeyOn && progress && (
               <div className={styles.introLevels}>
@@ -738,20 +777,19 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
                   {d}
                 </span>
               ))}
-              {game.lifeSkillLabel && (
-                <span className={`${styles.tag} ${styles.tagLife}`}>{game.lifeSkillLabel}</span>
+              {lifeSkillLabel && (
+                <span className={`${styles.tag} ${styles.tagLife}`}>{lifeSkillLabel}</span>
               )}
             </div>
 
             <button className={styles.playBtn} onClick={startGame}>
-              <FaCamera /> Start — turn on camera
+              <FaCamera /> {t('ar.stage.start', 'Start — turn on camera')}
             </button>
             <p className={styles.privacyNote}>
-              The camera runs only on this device. No video is recorded, saved or sent
-              anywhere.
+              {t('ar.stage.privacyNote', 'The camera runs only on this device. No video is recorded, saved or sent anywhere.')}
             </p>
             <button className={styles.linkBtn} onClick={() => setShowSettings(true)}>
-              <FaCog /> Sensory &amp; motor settings
+              <FaCog /> {t('ar.stage.sensoryMotorSettings', 'Sensory & motor settings')}
             </button>
           </div>
         </div>
@@ -763,10 +801,10 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
           <div className={styles.introCard}>
             <div className={styles.introIcon}>📷</div>
             <h1 className={styles.introTitle}>
-              {(CAMERA_HELP[trackerError] || CAMERA_HELP.MODEL_FAILED).title}
+              {cameraHelpFor(t, trackerError).title}
             </h1>
             <p className={styles.introHow}>
-              {(CAMERA_HELP[trackerError] || CAMERA_HELP.MODEL_FAILED).body}
+              {cameraHelpFor(t, trackerError).body}
             </p>
             <button
               className={styles.playBtn}
@@ -775,10 +813,10 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
                 setPhase('intro')
               }}
             >
-              <FaRedo /> Try again
+              <FaRedo /> {t('ar.stage.tryAgain', 'Try again')}
             </button>
             <button className={styles.linkBtn} onClick={exit}>
-              Back to games
+              {t('ar.stage.backToGames', 'Back to games')}
             </button>
           </div>
         </div>
@@ -791,8 +829,8 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
             <div className={styles.spinner} />
             <p>
               {trackerStatus === 'starting'
-                ? 'Turning on the camera and loading hand tracking…'
-                : 'Getting ready…'}
+                ? t('ar.stage.turningOnCamera', 'Turning on the camera and loading hand tracking…')
+                : t('ar.stage.gettingReady', 'Getting ready…')}
             </p>
           </div>
         </div>
@@ -802,20 +840,20 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
       {phase === 'paused' && (
         <div className={styles.sheet}>
           <div className={styles.pauseCard}>
-            <h2>Paused</h2>
-            <p className={styles.pauseSub}>Take all the time you need.</p>
+            <h2>{t('ar.stage.paused', 'Paused')}</h2>
+            <p className={styles.pauseSub}>{t('ar.stage.pausedSub', 'Take all the time you need.')}</p>
             <div className={styles.pauseBtns}>
               <button className={styles.playBtn} onClick={doResume}>
-                <FaPlay /> Keep playing
+                <FaPlay /> {t('ar.stage.keepPlaying', 'Keep playing')}
               </button>
               <button className={styles.ghostBtn} onClick={doRestart}>
-                <FaRedo /> Start again
+                <FaRedo /> {t('ar.stage.startAgain', 'Start again')}
               </button>
               <button className={styles.ghostBtn} onClick={() => setShowSettings(true)}>
-                <FaCog /> Settings
+                <FaCog /> {t('ar.stage.settings', 'Settings')}
               </button>
               <button className={styles.ghostBtn} onClick={exit}>
-                <FaArrowLeft /> Games
+                <FaArrowLeft /> {t('ar.stage.games', 'Games')}
               </button>
             </div>
           </div>
@@ -862,35 +900,48 @@ export default function ARStage({ game, onExit, onNext, level: requestedLevel = 
  * and nothing on this screen rewards being fast.
  */
 function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNext, onInsights }) {
+  const { t } = useTranslation()
   const [showDetail, setShowDetail] = useState(false)
   const s = result.session.summary || {}
   const j = result.journey
   const pts = j?.points
 
   const headline = j?.unlockedLevel
-    ? `Level ${j.level} cleared!`
+    ? t('ar.stage.headline.levelCleared', 'Level {{n}} cleared!', { n: j.level })
     : j?.cleared
-      ? 'Passed again!'
+      ? t('ar.stage.headline.passedAgain', 'Passed again!')
       : result.stars === 3
-        ? 'Brilliant!'
+        ? t('ar.stage.headline.brilliant', 'Brilliant!')
         : result.stars === 2
-          ? 'Great work!'
-          : 'Good try!'
+          ? t('ar.stage.headline.greatWork', 'Great work!')
+          : t('ar.stage.headline.goodTry', 'Good try!')
 
   const rows = [
-    { label: 'Got the idea', value: fmtPct(s.comprehensionPct), hint: 'correct + right answer reached imprecisely' },
-    { label: 'On their own', value: fmtPct(s.independentPct), hint: 'correct with no prompt' },
-    { label: 'Thinking time', value: fmtMs(s.medianLatencyMs), hint: 'prompt → started moving' },
-    { label: 'Moving time', value: fmtMs(s.medianMovementMs), hint: 'started moving → touched' },
+    { label: t('ar.stage.rows.gotIdea.label', 'Got the idea'), value: fmtPct(s.comprehensionPct), hint: t('ar.stage.rows.gotIdea.hint', 'correct + right answer reached imprecisely') },
+    { label: t('ar.stage.rows.onTheirOwn.label', 'On their own'), value: fmtPct(s.independentPct), hint: t('ar.stage.rows.onTheirOwn.hint', 'correct with no prompt') },
+    { label: t('ar.stage.rows.thinkingTime.label', 'Thinking time'), value: fmtMs(s.medianLatencyMs), hint: t('ar.stage.rows.thinkingTime.hint', 'prompt → started moving') },
+    { label: t('ar.stage.rows.movingTime.label', 'Moving time'), value: fmtMs(s.medianMovementMs), hint: t('ar.stage.rows.movingTime.hint', 'started moving → touched') },
   ]
   if (s.pathEfficiency != null) {
-    rows.push({ label: 'Reach directness', value: `${Math.round(s.pathEfficiency * 100)}%`, hint: '100% = straight to the target' })
+    rows.push({
+      label: t('ar.stage.rows.reachDirectness.label', 'Reach directness'),
+      value: `${Math.round(s.pathEfficiency * 100)}%`,
+      hint: t('ar.stage.rows.reachDirectness.hint', '100% = straight to the target'),
+    })
   }
   if (s.inhibitionPct != null) {
-    rows.push({ label: 'Stopped when told', value: fmtPct(s.inhibitionPct), hint: 'no-go trials withheld' })
+    rows.push({
+      label: t('ar.stage.rows.stoppedWhenTold.label', 'Stopped when told'),
+      value: fmtPct(s.inhibitionPct),
+      hint: t('ar.stage.rows.stoppedWhenTold.hint', 'no-go trials withheld'),
+    })
   }
   if (s.timingVariabilityMs != null) {
-    rows.push({ label: 'Timing steadiness', value: `±${Math.round(s.timingVariabilityMs)} ms`, hint: 'lower = more consistent' })
+    rows.push({
+      label: t('ar.stage.rows.timingSteadiness.label', 'Timing steadiness'),
+      value: `±${Math.round(s.timingVariabilityMs)} ms`,
+      hint: t('ar.stage.rows.timingSteadiness.hint', 'lower = more consistent'),
+    })
   }
 
   return (
@@ -912,7 +963,7 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
           <div className={styles.pointsBlock}>
             <div className={styles.pointsTotal}>
               <span className={styles.pointsPlus}>+{pts.total}</span>
-              <span className={styles.pointsWord}>points</span>
+              <span className={styles.pointsWord}>{t('ar.stage.pointsWord', 'points')}</span>
             </div>
             <ul className={styles.pointsRows}>
               {pts.rows.map((r) => {
@@ -929,7 +980,7 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
               })}
             </ul>
             <p className={styles.pointsTally}>
-              {j.totalPoints} points in all · <j.rank.icon /> {j.rank.name}
+              {t('ar.stage.pointsTally', '{{total}} points in all', { total: j.totalPoints })} · <j.rank.icon /> {j.rank.name}
             </p>
           </div>
         )}
@@ -951,12 +1002,12 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
             />
             {j.unlockedLevel ? (
               <p className={styles.unlockLine}>
-                <FaUnlock /> Level {j.unlockedLevel} is open
-                {j.clearedBy === 'effort' ? ' — you kept trying, so it opened' : ''}
+                <FaUnlock /> {t('ar.stage.unlockLine', 'Level {{n}} is open', { n: j.unlockedLevel })}
+                {j.clearedBy === 'effort' ? t('ar.stage.unlockEffortSuffix', ' — you kept trying, so it opened') : ''}
               </p>
             ) : j.complete ? (
               <p className={styles.unlockLine}>
-                <FaTrophy /> All five levels done — you finished this journey
+                <FaTrophy /> {t('ar.stage.allFiveDone', 'All five levels done — you finished this journey')}
               </p>
             ) : (
               <p className={styles.adviceLine}>{j.advice}</p>
@@ -980,7 +1031,7 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
           onClick={() => setShowDetail((v) => !v)}
           aria-expanded={showDetail}
         >
-          {showDetail ? <FaChevronUp /> : <FaChevronDown />} For grown-ups
+          {showDetail ? <FaChevronUp /> : <FaChevronDown />} {t('ar.stage.forGrownUps', 'For grown-ups')}
         </button>
 
         {showDetail && (
@@ -995,8 +1046,8 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
             </div>
             {result.next && (
               <p className={styles.nextUp}>
-                <FaLightbulb /> Next: <strong>{result.next.promptName}</strong>
-                {result.next.focus ? ` · working on ${result.next.focus.toLowerCase()}` : ''}
+                <FaLightbulb /> {t('ar.stage.nextUpLabel', 'Next:')} <strong>{result.next.promptName}</strong>
+                {result.next.focus ? t('ar.stage.workingOnSuffix', ' · working on {{focus}}', { focus: result.next.focus.toLowerCase() }) : ''}
               </p>
             )}
           </>
@@ -1005,28 +1056,28 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
         <div className={styles.resultBtns}>
           {j?.nextLevel && j.nextLevelUnlocked ? (
             <button className={styles.playBtn} onClick={() => onPlayLevel(j.nextLevel)}>
-              <FaPlay /> Play level {j.nextLevel}
+              <FaPlay /> {t('ar.stage.playLevel', 'Play level {{n}}', { n: j.nextLevel })}
             </button>
           ) : (
             <button className={styles.playBtn} onClick={onAgain}>
-              <FaRedo /> Play again
+              <FaRedo /> {t('ar.stage.playAgain', 'Play again')}
             </button>
           )}
           {j?.nextLevel && j.nextLevelUnlocked && (
             <button className={styles.ghostBtn} onClick={onAgain}>
-              <FaRedo /> Level {j.level} again
+              <FaRedo /> {t('ar.stage.levelAgain', 'Level {{n}} again', { n: j.level })}
             </button>
           )}
           {onNext && (
             <button className={styles.ghostBtn} onClick={onNext}>
-              <FaForward /> Next game
+              <FaForward /> {t('ar.stage.nextGame', 'Next game')}
             </button>
           )}
           <button className={styles.ghostBtn} onClick={onExit}>
-            <FaArrowLeft /> Games
+            <FaArrowLeft /> {t('ar.stage.games', 'Games')}
           </button>
           <button className={styles.ghostBtn} onClick={onInsights}>
-            <FaChartLine /> Progress
+            <FaChartLine /> {t('ar.stage.progress', 'Progress')}
           </button>
         </div>
       </div>
@@ -1036,25 +1087,3 @@ function Results({ result, progress, pinned, onAgain, onPlayLevel, onExit, onNex
 
 const fmtPct = (v) => (v == null ? '—' : `${Math.round(v)}%`)
 const fmtMs = (v) => (v == null ? '—' : v >= 1000 ? `${(v / 1000).toFixed(1)} s` : `${Math.round(v)} ms`)
-
-const DOMAIN_LABELS = {
-  visualDiscrimination: 'Visual attention',
-  auditoryComprehension: 'Listening',
-  readingSymbol: 'Reading',
-  reactionSpeed: 'Reaction',
-  reachAccuracy: 'Reaching',
-  sustainedAttention: 'Attention',
-  workingMemory: 'Working memory',
-  sequencing: 'Sequencing',
-  inhibition: 'Stop &amp; wait',
-  cognitiveFlexibility: 'Flexibility',
-  bilateralCoordination: 'Two hands',
-  motorPlanning: 'Motor planning',
-  spatialConcepts: 'Space words',
-  socialReasoning: 'Social thinking',
-  independence: 'Independence',
-}
-
-function prettyDomain(d) {
-  return (DOMAIN_LABELS[d] || d).replace('&amp;', '&')
-}

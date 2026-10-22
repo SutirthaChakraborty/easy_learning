@@ -1,4 +1,4 @@
-# Learningo (easy_learning) — Design Guide
+# Learnigo (easy_learning) — Design Guide
 
 Read this before touching the code. It explains how the app is put together and gives
 copy-paste recipes for the changes developers make most often (new subject module, new
@@ -8,7 +8,7 @@ source files first.
 
 ## 1. What this is
 
-A learning platform for dyslexic children ("Learningo"). Kids practice English/Maths/
+A learning platform for dyslexic children ("Learnigo"). Kids practice English/Maths/
 Science through four skill modules (Listen, Read, Write, Speak) plus three standalone
 games (Spelling, Memory Match, Word Puzzle). Progress (XP, stars, streaks, achievements)
 is tracked on a personal dashboard. Schools/organizations can be onboarded by an org

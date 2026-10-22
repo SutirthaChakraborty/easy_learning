@@ -29,7 +29,7 @@ export default function LearningSupportByCountry() {
     return (
       <main className={styles.page}>
         <SEO
-          title={`${guide.name}: Learning Support Ideas for Children | Learningo`}
+          title={`${guide.name}: Learning Support Ideas for Children | Learnigo`}
           description={`Practical, respectful learning support ideas for families and educators in ${guide.name}, including accessible game-based practice for children who learn differently.`}
           path={path}
           structuredData={{
@@ -37,8 +37,8 @@ export default function LearningSupportByCountry() {
             "@type": "Article",
             headline: `${guide.name}: Learning Support Ideas for Children`,
             description: guide.issue,
-            author: { "@type": "Organization", name: "Learningo", url: SITE_URL },
-            publisher: { "@type": "Organization", name: "Learningo", url: SITE_URL },
+            author: { "@type": "Organization", name: "Learnigo", url: SITE_URL },
+            publisher: { "@type": "Organization", name: "Learnigo", url: SITE_URL },
             mainEntityOfPage: `${SITE_URL}${path}`,
           }}
         />
@@ -55,10 +55,10 @@ export default function LearningSupportByCountry() {
           <ul>{guide.approach.map((item) => <li key={item}>{item}</li>)}</ul>
           <aside className={styles.note}>
             <strong>A note for families and educators</strong>
-            <p>Learningo is an educational practice platform, not a diagnostic or medical service. A qualified local professional should guide assessment, accommodations and individual support.</p>
+            <p>Learnigo is an educational practice platform, not a diagnostic or medical service. A qualified local professional should guide assessment, accommodations and individual support.</p>
           </aside>
           <Link to="/learning-differences" className={styles.cta} style={{ display: "block", marginTop: 8 }}>Explore guides by learning difference <span aria-hidden="true">-&gt;</span></Link>
-          <Link to="/about-us" className={styles.cta}>See how Learningo turns practice into play <span aria-hidden="true">-&gt;</span></Link>
+          <Link to="/about-us" className={styles.cta}>See how Learnigo turns practice into play <span aria-hidden="true">-&gt;</span></Link>
         </section>
       </main>
     );
@@ -67,8 +67,8 @@ export default function LearningSupportByCountry() {
   return (
     <main className={styles.page}>
       <SEO
-        title="Learning Support by Country | Accessible Gamified Learning | Learningo"
-        description="Explore respectful learning support ideas for children who learn differently, with country context and accessible game-based practice from Learningo."
+        title="Learning Support by Country | Accessible Gamified Learning | Learnigo"
+        description="Explore respectful learning support ideas for children who learn differently, with country context and accessible game-based practice from Learnigo."
         path={pageUrl}
         structuredData={{
           "@context": "https://schema.org",
@@ -76,11 +76,11 @@ export default function LearningSupportByCountry() {
           name: "Learning Support by Country",
           description: "Country-aware learning support ideas for children who learn differently.",
           url: `${SITE_URL}${pageUrl}`,
-          isPartOf: { "@type": "WebSite", name: "Learningo", url: SITE_URL },
+          isPartOf: { "@type": "WebSite", name: "Learnigo", url: SITE_URL },
         }}
       />
       <header className={styles.hero}>
-        <span className={styles.eyebrow}>Learningo | Inclusive learning</span>
+        <span className={styles.eyebrow}>Learnigo | Inclusive learning</span>
         <h1>Learning support by country</h1>
         <p>Children and families face different school systems, languages and access challenges. These guides share practical starting points for accessible, game-based practice without pretending one approach fits every child.</p>
       </header>
@@ -98,7 +98,7 @@ export default function LearningSupportByCountry() {
           <Link to="/learning-differences" className={styles.link}>explore dyslexia, ADHD, dyscalculia, dysgraphia and autism spectrum guides <span aria-hidden="true">-&gt;</span></Link>
         </p>
         <p>
-          Not a parent? See how Learningo helps{" "}
+          Not a parent? See how Learnigo helps{" "}
           <Link to="/who-we-help/schools" className={styles.link}>schools and tutors</Link>,{" "}
           <Link to="/who-we-help/ngos" className={styles.link}>NGOs and nonprofits</Link>, and{" "}
           <Link to="/who-we-help/therapists" className={styles.link}>therapists and healthcare professionals</Link>. There's also{" "}

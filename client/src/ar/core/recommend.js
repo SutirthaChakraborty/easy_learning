@@ -10,6 +10,7 @@
  */
 import { GAMES } from '../catalog/games'
 import { DOMAIN_LABELS } from '../catalog/groups'
+import { tGame, tDomain, tRecommendHelps } from './arText'
 
 // Fewer trials than this and a percentage is noise, not a signal.
 const MIN_TRIALS = 3
@@ -23,9 +24,9 @@ const STRONG_ACCURACY = 80
  * as the insights screen's "weakest first" panel is.
  */
 export function gameStrengthsAndGrowth(insights, n = 3) {
-  const games = (insights?.perGame || []).filter(
-    (g) => g.trials >= MIN_TRIALS && g.accuracyPct != null
-  )
+  const games = (insights?.perGame || [])
+    .filter((g) => g.trials >= MIN_TRIALS && g.accuracyPct != null)
+    .map((g) => ({ ...g, title: tGame(g.gameId, 'title', g.title) }))
   const byAccuracyDesc = [...games].sort((a, b) => b.accuracyPct - a.accuracyPct)
 
   // With few games played, a naive top-n/bottom-n would show the same
@@ -47,7 +48,7 @@ export function weakestDomains(insights, n = 3) {
     .filter((d) => d.trials >= MIN_TRIALS && d.accuracyPct != null)
     .sort((a, b) => a.accuracyPct - b.accuracyPct)
     .slice(0, n)
-    .map((d) => ({ ...d, label: DOMAIN_LABELS[d.domain] || d.domain }))
+    .map((d) => ({ ...d, label: tDomain(d.domain, DOMAIN_LABELS[d.domain] || d.domain) }))
 }
 
 /**
@@ -77,9 +78,9 @@ export function suggestNextGames(insights, limit = 4) {
       seen.add(game.id)
       picks.push({
         gameId: game.id,
-        title: game.title,
+        title: tGame(game.id, 'title', game.title),
         icon: game.icon,
-        reason: `Helps with ${domain.label}`,
+        reason: tRecommendHelps('helpsWith', 'Helps with {{domain}}', { domain: domain.label }),
       })
     }
     if (picks.length >= limit) break

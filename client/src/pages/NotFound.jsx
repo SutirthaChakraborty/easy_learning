@@ -9,8 +9,8 @@ const NotFound = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="Page Not Found | Learningo"
-        description="The page you're looking for doesn't exist. Head back to Learningo to continue your learning adventure."
+        title="Page Not Found | Learnigo"
+        description="The page you're looking for doesn't exist. Head back to Learnigo to continue your learning adventure."
         path="/404"
         noIndex
       />
@@ -28,7 +28,7 @@ const NotFound = () => {
           The page you're looking for may have moved or no longer exists.
         </p>
         <Link to="/home" className={styles.ctaBtn}>
-          <FaHome /> Back to Learningo
+          <FaHome /> Back to Learnigo
         </Link>
       </FramerMotion.motion.div>
     </div>

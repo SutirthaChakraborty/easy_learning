@@ -29,15 +29,15 @@ const subjectIcons = { english: FaBook, maths: FaCalculator, science: FaMicrosco
 
 const subjectSEO = {
   english: {
-    title: "English Kingdom | Reading, Listening & Speaking Practice | Learningo",
+    title: "English Kingdom | Reading, Listening & Speaking Practice | Learnigo",
     description: "Practice English listening, reading, writing and speaking through short, gamified rounds — stories and dyslexia-friendly reading activities for kids.",
   },
   maths: {
-    title: "Maths Galaxy | Gamified Number Practice | Learningo",
+    title: "Maths Galaxy | Gamified Number Practice | Learnigo",
     description: "Build number confidence with short, gamified maths rounds that turn tricky problems into fun, pressure-free wins for children who learn differently.",
   },
   science: {
-    title: "Science Lab | Curiosity-Driven Learning | Learningo",
+    title: "Science Lab | Curiosity-Driven Learning | Learnigo",
     description: "Explore science through short, encouraging, gamified rounds — listening, reading, writing and speaking practice that makes discovery exciting.",
   },
 };

@@ -29,7 +29,7 @@ export default function LearningDifferences() {
     return (
       <main className={styles.page}>
         <SEO
-          title={`${item.name} in Children: A Family Guide | Learningo`}
+          title={`${item.name} in Children: A Family Guide | Learnigo`}
           description={`A plain-language guide to ${item.name} for families and educators, including how accessible game-based practice can fit alongside qualified support.`}
           path={path}
           structuredData={{
@@ -37,8 +37,8 @@ export default function LearningDifferences() {
             "@type": "Article",
             headline: `${item.name} in Children: A Family Guide`,
             description: item.issue,
-            author: { "@type": "Organization", name: "Learningo", url: SITE_URL },
-            publisher: { "@type": "Organization", name: "Learningo", url: SITE_URL },
+            author: { "@type": "Organization", name: "Learnigo", url: SITE_URL },
+            publisher: { "@type": "Organization", name: "Learnigo", url: SITE_URL },
             mainEntityOfPage: `${SITE_URL}${path}`,
           }}
         />
@@ -55,7 +55,7 @@ export default function LearningDifferences() {
           <ul>{item.approach.map((line) => <li key={line}>{line}</li>)}</ul>
           <aside className={styles.note}>
             <strong>A note for families and educators</strong>
-            <p>Learningo is an educational practice platform, not a diagnostic or medical service. A qualified local professional should guide any assessment, accommodation or individual support plan.</p>
+            <p>Learnigo is an educational practice platform, not a diagnostic or medical service. A qualified local professional should guide any assessment, accommodation or individual support plan.</p>
           </aside>
           <Link to="/learning-support-by-country" className={styles.cta}>See learning support ideas by country <span aria-hidden="true">-&gt;</span></Link>
         </section>
@@ -66,7 +66,7 @@ export default function LearningDifferences() {
   return (
     <main className={styles.page}>
       <SEO
-        title="Learning Differences Explained | Dyslexia, ADHD & More | Learningo"
+        title="Learning Differences Explained | Dyslexia, ADHD & More | Learnigo"
         description="Plain-language guides to dyslexia, ADHD, dyscalculia, dysgraphia and autism spectrum learning — and how accessible, game-based practice can fit alongside qualified support."
         path={pageUrl}
         structuredData={{
@@ -75,11 +75,11 @@ export default function LearningDifferences() {
           name: "Learning Differences Explained",
           description: "Plain-language guides to common learning differences in children.",
           url: `${SITE_URL}${pageUrl}`,
-          isPartOf: { "@type": "WebSite", name: "Learningo", url: SITE_URL },
+          isPartOf: { "@type": "WebSite", name: "Learnigo", url: SITE_URL },
         }}
       />
       <header className={styles.hero}>
-        <span className={styles.eyebrow}>Learningo | Inclusive learning</span>
+        <span className={styles.eyebrow}>Learnigo | Inclusive learning</span>
         <h1>Learning differences, explained</h1>
         <p>Every child's brain works differently. These plain-language guides cover common learning differences and how short, accessible, game-based practice can fit alongside a child's own school support.</p>
       </header>

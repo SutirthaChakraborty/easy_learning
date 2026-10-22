@@ -12,7 +12,7 @@ export const countryLearningGuides = [
     name: "United Kingdom",
     code: "GB",
     issue: "Learners may move between home, school and additional-needs support, so consistent routines and accessible practice can be difficult to maintain.",
-    context: "Learningo can provide playful practice that sits alongside a child's school support and does not claim to diagnose dyslexia or replace an education, health and care plan.",
+    context: "Learnigo can provide playful practice that sits alongside a child's school support and does not claim to diagnose dyslexia or replace an education, health and care plan.",
     approach: ["Use the same accessible routines across settings", "Let the child choose text, audio or movement support", "Review progress with teachers and families regularly"],
   },
   {
@@ -20,7 +20,7 @@ export const countryLearningGuides = [
     name: "India",
     code: "IN",
     issue: "Children learn across many languages, school contexts and levels of access to specialist support, making adaptable and low-pressure practice especially important.",
-    context: "Multilingual families can use Learningo's language options and gamified subject practice as an extra learning activity, while local educators guide language, curriculum and support decisions.",
+    context: "Multilingual families can use Learnigo's language options and gamified subject practice as an extra learning activity, while local educators guide language, curriculum and support decisions.",
     approach: ["Choose the language most comfortable for the child", "Build from small wins in English, maths or science", "Adapt examples to the child's school curriculum"],
   },
   {
@@ -52,7 +52,7 @@ export const countryLearningGuides = [
     name: "France",
     code: "FR",
     issue: "Families working through a formal support plan, such as a PPS arranged via the MDPH, often also want everyday practice that doesn't have to wait on paperwork to be useful.",
-    context: "Learningo can offer accessible, playful practice in the meantime, while an MDPH assessment, a PPS, AESH support at school, or a qualified professional's advice remain the source of truth for formal accommodations.",
+    context: "Learnigo can offer accessible, playful practice in the meantime, while an MDPH assessment, a PPS, AESH support at school, or a qualified professional's advice remain the source of truth for formal accommodations.",
     approach: ["Use short sessions that fit around school and therapy schedules", "Let the child choose the language and subject that feels easiest that day", "Share concrete wins with teachers and support staff"],
   },
   {
@@ -60,7 +60,7 @@ export const countryLearningGuides = [
     name: "Spain",
     code: "ES",
     issue: "Support for children with learning differences (dificultades del aprendizaje) can vary by region (comunidad autónoma), so families often piece together school support and home practice themselves.",
-    context: "Learningo can offer bite-sized, gamified practice in Spanish or another language alongside a child's regular classes, while the school's guidance team (equipo de orientación) and a qualified professional guide any formal support plan.",
+    context: "Learnigo can offer bite-sized, gamified practice in Spanish or another language alongside a child's regular classes, while the school's guidance team (equipo de orientación) and a qualified professional guide any formal support plan.",
     approach: ["Keep sessions short and encouraging", "Let the child pick the language that feels most comfortable", "Share specific progress notes with teachers"],
   },
   {
@@ -84,7 +84,7 @@ export const countryLearningGuides = [
     name: "Brazil",
     code: "BR",
     issue: "Brazilian law guarantees inclusive education (educação inclusiva) for children with learning differences, though how it's implemented can vary widely between schools and states.",
-    context: "Learningo can offer accessible, playful practice in Portuguese or another language at home, alongside a school's own AEE (Atendimento Educacional Especializado) support and a qualified professional's guidance.",
+    context: "Learnigo can offer accessible, playful practice in Portuguese or another language at home, alongside a school's own AEE (Atendimento Educacional Especializado) support and a qualified professional's guidance.",
     approach: ["Keep sessions short and encouraging", "Let the child choose the language that feels most natural", "Bring specific progress examples to school meetings"],
   },
   {
@@ -100,7 +100,7 @@ export const countryLearningGuides = [
     name: "Japan",
     code: "JP",
     issue: "Japanese schools offer tsukyu (resource room) support alongside regular classrooms as part of Tokubetsu Shien Kyoiku (Special Needs Education), so support often blends into everyday schooling.",
-    context: "Learningo can offer extra, game-based practice in Japanese or another language at home, alongside a child's tsukyu sessions and a qualified professional's guidance.",
+    context: "Learnigo can offer extra, game-based practice in Japanese or another language at home, alongside a child's tsukyu sessions and a qualified professional's guidance.",
     approach: ["Keep sessions short and low-pressure", "Practice in whichever language feels most comfortable", "Share concrete progress notes with the tsukyu teacher"],
   },
   {
@@ -116,7 +116,7 @@ export const countryLearningGuides = [
     name: "Turkey",
     code: "TR",
     issue: "Families in Turkey typically go through a RAM (Guidance and Research Centre) for diagnostic evaluation before accessing formal special education support.",
-    context: "Learningo can offer accessible, game-based practice in Turkish or another language at home, alongside a RAM evaluation and a qualified professional's guidance.",
+    context: "Learnigo can offer accessible, game-based practice in Turkish or another language at home, alongside a RAM evaluation and a qualified professional's guidance.",
     approach: ["Keep sessions short and low-pressure", "Let the child choose the language that feels easiest", "Share concrete progress notes with the school and RAM team"],
   },
   {
@@ -132,7 +132,7 @@ export const countryLearningGuides = [
     name: "Vietnam",
     code: "VN",
     issue: "Vietnam is expanding inclusive education in community schools for children with disabilities and learning differences, though specialist teacher availability still varies widely.",
-    context: "Learningo can offer accessible, game-based practice in Vietnamese or another language at home, alongside whatever school-based support is available and a qualified professional's guidance.",
+    context: "Learnigo can offer accessible, game-based practice in Vietnamese or another language at home, alongside whatever school-based support is available and a qualified professional's guidance.",
     approach: ["Keep sessions short and encouraging", "Let the child choose the language that feels most natural", "Bring specific progress examples to school meetings"],
   },
   {

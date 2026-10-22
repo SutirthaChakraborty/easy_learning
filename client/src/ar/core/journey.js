@@ -43,6 +43,7 @@ import { DIMENSIONS } from './adaptive'
 import { clamp } from './geometry'
 import { loadProfile, saveProfile } from './profile'
 import { getSettings } from './settings'
+import { tLevelName, tRank, tBadge, tHarderWord, tLevelChange, tPoints, tAdvice } from './arText'
 
 export const LEVELS = 5
 
@@ -87,14 +88,18 @@ const EFFORT_MARGIN = 20
 
 /** Child-facing ranks. Cosmetic; never used clinically. */
 export const RANKS = [
-  { at: 0, name: 'Explorer', icon: FaCompass },
-  { at: 250, name: 'Pathfinder', icon: FaMap },
-  { at: 750, name: 'Trailblazer', icon: FaMountain },
-  { at: 1750, name: 'Sky Walker', icon: GiBalloons },
-  { at: 3500, name: 'Star Rider', icon: FaMeteor },
-  { at: 6000, name: 'Legend', icon: FaCrown },
-  { at: 10000, name: 'Grand Champion', icon: FaMedal },
+  { id: 'explorer', at: 0, name: 'Explorer', icon: FaCompass },
+  { id: 'pathfinder', at: 250, name: 'Pathfinder', icon: FaMap },
+  { id: 'trailblazer', at: 750, name: 'Trailblazer', icon: FaMountain },
+  { id: 'skyWalker', at: 1750, name: 'Sky Walker', icon: GiBalloons },
+  { id: 'starRider', at: 3500, name: 'Star Rider', icon: FaMeteor },
+  { id: 'legend', at: 6000, name: 'Legend', icon: FaCrown },
+  { id: 'grandChampion', at: 10000, name: 'Grand Champion', icon: FaMedal },
 ]
+
+function translatedRank(r) {
+  return r && { ...r, name: tRank(r.id, r.name) }
+}
 
 export function rankFor(points = 0) {
   let cur = RANKS[0]
@@ -108,8 +113,8 @@ export function rankFor(points = 0) {
   }
   const span = next ? next.at - cur.at : 0
   return {
-    ...cur,
-    next,
+    ...translatedRank(cur),
+    next: translatedRank(next),
     toNext: next ? next.at - points : 0,
     progress: span ? clamp((points - cur.at) / span, 0, 1) : 1,
   }
@@ -198,15 +203,15 @@ export function levelBounds(game, level) {
  */
 export function levelChange(game, level) {
   const lv = clampLevel(level)
-  if (lv <= 1) return 'Everything big, slow and helped'
+  if (lv <= 1) return tLevelChange('first', 'Everything big, slow and helped')
   const before = levelPlan(game, lv - 1)
   const now = levelPlan(game, lv)
   const moved = Object.keys(now)
     .filter((d) => now[d] > before[d])
-    .map((d) => HARDER_WORDS[d] || DIMENSIONS[d].label.toLowerCase())
-  if (!moved.length) return 'A little more practice at this'
+    .map((d) => tHarderWord(d, HARDER_WORDS[d] || DIMENSIONS[d].label.toLowerCase()))
+  if (!moved.length) return tLevelChange('none', 'A little more practice at this')
   const shown = moved.slice(0, 2).join(' · ')
-  return moved.length > 2 ? `${shown} · and more` : shown
+  return moved.length > 2 ? `${shown}${tLevelChange('moreSuffix', ' · and more')}` : shown
 }
 
 /** Plain-language "this got harder" phrasing per dimension. */
@@ -419,17 +424,24 @@ export function pointsFor(opts) {
   // would just silently drop it. The renderer looks the icon up from `key`
   // (POINTS_ROW_ICONS in ARStage.jsx) instead.
   const played = 10 + Math.min(trials, 24) * 2
-  rows.push({ key: 'played', label: `${trials} turn${trials === 1 ? '' : 's'} played`, points: played })
+  rows.push({
+    key: 'played',
+    label:
+      trials === 1
+        ? tPoints('playedSingular', '{{count}} turn played', { count: trials })
+        : tPoints('playedPlural', '{{count}} turns played', { count: trials }),
+    points: played,
+  })
 
   const quality = Math.round(60 * (comprehension * 0.75 + independence * 0.25))
-  if (quality > 0) rows.push({ key: 'quality', label: 'Got it right', points: quality })
+  if (quality > 0) rows.push({ key: 'quality', label: tPoints('gotItRight', 'Got it right'), points: quality })
 
   const mult = journey ? 1 + (clampLevel(level) - 1) * 0.2 : 1
   let total = Math.round((played + quality) * mult)
   if (mult > 1) {
     rows.push({
       key: 'level',
-      label: `Level ${clampLevel(level)} bonus`,
+      label: tPoints('levelBonus', 'Level {{n}} bonus', { n: clampLevel(level) }),
       points: total - (played + quality),
       // The level bonus row's icon is the matching LEVEL_META entry, which the
       // renderer resolves from this plain number rather than from a component.
@@ -440,18 +452,18 @@ export function pointsFor(opts) {
   // "Play the same game better and your points go up": beating your own best on
   // this game and level is the largest single bonus available.
   if (beatBest) {
-    rows.push({ key: 'best', label: 'Your best yet!', points: 30 })
+    rows.push({ key: 'best', label: tPoints('bestYet', 'Your best yet!'), points: 30 })
     total += 30
   }
   if (cleared && firstClear) {
-    rows.push({ key: 'clear', label: 'Level cleared', points: 40 })
+    rows.push({ key: 'clear', label: tPoints('levelClearedRow', 'Level cleared'), points: 40 })
     total += 40
   } else if (cleared) {
-    rows.push({ key: 'again', label: 'Level passed again', points: 12 })
+    rows.push({ key: 'again', label: tPoints('levelPassedAgain', 'Level passed again'), points: 12 })
     total += 12
   }
   if (firstToday) {
-    rows.push({ key: 'today', label: 'First game today', points: 15 })
+    rows.push({ key: 'today', label: tPoints('firstGameToday', 'First game today'), points: 15 })
     total += 15
   }
 
@@ -478,6 +490,16 @@ export const BADGES = [
 ]
 
 const BADGE_BY_ID = Object.fromEntries(BADGES.map((b) => [b.id, b]))
+
+function translatedBadge(b) {
+  return (
+    b && {
+      ...b,
+      name: tBadge(b.id, 'name', b.name),
+      how: tBadge(b.id, 'how', b.how),
+    }
+  )
+}
 
 /**
  * @param {object[]} allGames the catalogue, injected so this module never
@@ -512,7 +534,7 @@ function earnedBadges(allGames = []) {
 }
 
 export function badgeInfo(id) {
-  return BADGE_BY_ID[id] || null
+  return translatedBadge(BADGE_BY_ID[id]) || null
 }
 
 // ── recording a finished round ───────────────────────────────────────────────
@@ -632,7 +654,7 @@ export function recordRound(game, summary, stars, opts = {}) {
   return {
     journey: journeyOn,
     level,
-    levelName: LEVEL_META[level - 1].name,
+    levelName: tLevelName(level, LEVEL_META[level - 1].name),
     levelIcon: LEVEL_META[level - 1].icon,
     bar,
     comprehensionPct: comprehension,
@@ -656,8 +678,8 @@ export function recordRound(game, summary, stars, opts = {}) {
     advice: cleared
       ? null
       : !enough
-        ? 'Play a few more turns to finish this level'
-        : `Get ${bar}% of the turns right to open the next level`,
+        ? tAdvice('moreTurns', 'Play a few more turns to finish this level')
+        : tAdvice('getBar', 'Get {{bar}}% of the turns right to open the next level', { bar }),
   }
 }
 

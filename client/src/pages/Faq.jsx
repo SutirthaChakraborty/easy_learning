@@ -4,35 +4,35 @@ import styles from "./Faq.module.css";
 
 const faqs = [
   {
-    q: "What is Learningo?",
-    a: "Learningo is a gamified learning platform built for children with dyslexia and other neurodivergent learners. It turns English, Maths and Science practice into short, encouraging rounds with audio support, playful visuals and instant positive feedback.",
+    q: "What is Learnigo?",
+    a: "Learnigo is a gamified learning platform built for children with dyslexia and other neurodivergent learners. It turns English, Maths and Science practice into short, encouraging rounds with audio support, playful visuals and instant positive feedback.",
   },
   {
-    q: "Is Learningo designed for children with dyslexia?",
-    a: "Yes. Learningo is built specifically with dyslexic and neurodivergent learners in mind — every round is short, uses audio support alongside text, and gives instant, encouraging feedback instead of red marks.",
+    q: "Is Learnigo designed for children with dyslexia?",
+    a: "Yes. Learnigo is built specifically with dyslexic and neurodivergent learners in mind — every round is short, uses audio support alongside text, and gives instant, encouraging feedback instead of red marks.",
   },
   {
-    q: "What age is Learningo suitable for?",
-    a: "Learningo is designed for children roughly aged 5 to 14, though families and educators are best placed to judge whether the pace and content suit an individual child.",
+    q: "What age is Learnigo suitable for?",
+    a: "Learnigo is designed for children roughly aged 5 to 14, though families and educators are best placed to judge whether the pace and content suit an individual child.",
   },
   {
-    q: "What subjects can my child practice on Learningo?",
+    q: "What subjects can my child practice on Learnigo?",
     a: "Three subjects, each with Listen, Read, Write and Speak practice: English (\"English Kingdom\"), Maths (\"Maths Galaxy\") and Science (\"Science Lab\"). There's also a story-based Learn mode and a camera-powered Game Zone.",
   },
   {
-    q: "Does Learningo use text-to-speech?",
-    a: "Yes. Learningo uses browser-based text-to-speech so a child can complete reading content without needing to decode every word unaided.",
+    q: "Does Learnigo use text-to-speech?",
+    a: "Yes. Learnigo uses browser-based text-to-speech so a child can complete reading content without needing to decode every word unaided.",
   },
   {
-    q: "What languages does Learningo support?",
-    a: "Learningo is available in 14 languages, switchable at any time from the navbar: English, Spanish, Portuguese, French, Italian, German, Dutch, Russian, Turkish, Chinese, Japanese, Korean, Indonesian and Vietnamese.",
+    q: "What languages does Learnigo support?",
+    a: "Learnigo is available in 14 languages, switchable at any time from the navbar: English, Spanish, Portuguese, French, Italian, German, Dutch, Russian, Turkish, Chinese, Japanese, Korean, Indonesian and Vietnamese.",
   },
   {
-    q: "Is Learningo a diagnostic tool for dyslexia?",
-    a: "No. Learningo is an educational practice platform, not a diagnostic or medical service. A qualified local professional should guide any assessment, accommodation or individual support plan.",
+    q: "Is Learnigo a diagnostic tool for dyslexia?",
+    a: "No. Learnigo is an educational practice platform, not a diagnostic or medical service. A qualified local professional should guide any assessment, accommodation or individual support plan.",
   },
   {
-    q: "Can schools and tutors use Learningo?",
+    q: "Can schools and tutors use Learnigo?",
     a: "Yes. Schools and coaching centres can sign up as an organization, with Admin and Teacher roles for managing batches, students and question content, alongside the regular Student and Parent accounts.",
   },
   {
@@ -55,8 +55,8 @@ const Faq = () => {
   return (
     <div className={styles.page}>
       <SEO
-        title="FAQ | Dyslexia Learning App Questions Answered | Learningo"
-        description="Common questions about Learningo — the dyslexia-friendly, gamified learning platform for kids: age range, languages, subjects, text-to-speech and more."
+        title="FAQ | Dyslexia Learning App Questions Answered | Learnigo"
+        description="Common questions about Learnigo — the dyslexia-friendly, gamified learning platform for kids: age range, languages, subjects, text-to-speech and more."
         path="/faq"
         structuredData={faqSchema}
       />
@@ -66,7 +66,7 @@ const Faq = () => {
         <span className={styles.badge}>Questions & Answers</span>
         <h1 className={styles.title}>Frequently Asked Questions</h1>
         <p className={styles.subtitle}>
-          Everything families and educators usually ask before trying Learningo.
+          Everything families and educators usually ask before trying Learnigo.
         </p>
       </div>
 

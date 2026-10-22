@@ -1,6 +1,6 @@
-# About Learningo (easy_learning)
+# About Learnigo (easy_learning)
 
-Learningo is a play-first, gamified learning platform built for children with dyslexia
+Learnigo is a play-first, gamified learning platform built for children with dyslexia
 and other neurodivergent learners. It turns school subjects into short, encouraging,
 audio-supported rounds — reading, writing, and speaking feel like an adventure instead of
 a struggle, with instant positive feedback (stars, XP, streaks) instead of red marks.
@@ -25,7 +25,7 @@ Read those for specifics. This page is the overview that ties them together.
 > "We believe every child learns differently, and that difference is something to
 > celebrate, not fix."
 
-Learningo (product name; the codebase and repo are still called `easy_learning`) exists
+Learnigo (product name; the codebase and repo are still called `easy_learning`) exists
 to make core literacy and numeracy practice accessible to kids whose brains work
 differently — without singling them out or making learning feel like a test. Every
 lesson is a short round with audio support, playful visuals, and immediate encouragement.
@@ -95,7 +95,7 @@ README.md §§2–6 and design-guide.md §5.4.
 
 ## 3. How it's built
 
-Learningo is a MERN-stack single-page application:
+Learnigo is a MERN-stack single-page application:
 
 | Layer | Technology |
 |---|---|

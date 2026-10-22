@@ -20,8 +20,8 @@ const GamesPage = () => {
       transition={{ duration: 0.4 }}
     >
       <SEO
-        title="Game Zone | Camera-Powered Learning Games | Learningo"
-        description="Play Learningo's camera-powered Game Zone — motion and hand-tracking games that turn English, maths and science practice into movement-based fun."
+        title="Game Zone | Camera-Powered Learning Games | Learnigo"
+        description="Play Learnigo's camera-powered Game Zone — motion and hand-tracking games that turn English, maths and science practice into movement-based fun."
         path="/games"
       />
       <VideoBackground />

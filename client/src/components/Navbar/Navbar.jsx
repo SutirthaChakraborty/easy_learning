@@ -35,7 +35,7 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <div className={styles.bar}>
         <Link to="/home" className={styles.logo} onClick={close}>
-          <img src={logo} alt="Learningo" />
+          <img src={logo} alt="Learnigo" />
         </Link>
 
         <div className={`${styles.menu} ${mobileOpen ? styles.menuOpen : ""}`}>

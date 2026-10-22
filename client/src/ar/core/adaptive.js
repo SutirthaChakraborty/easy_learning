@@ -27,6 +27,7 @@ import { gameState, saveGameState, updateCapability, personalWindowMs } from './
 import { getSettings } from './settings'
 import { clamp } from './geometry'
 import { activeLevel, levelBounds, levelPlan, hasJourney, clampLevel } from './journey'
+import { tPromptStage, tDimension, tCommon } from './arText'
 
 /**
  * The difficulty dimensions. Index 0 is always the most supported setting.
@@ -137,6 +138,23 @@ export const PROMPT_INFO = {
     distractorBoost: 2,
     offApp: true,
   },
+}
+
+/** Translated prompt-stage name, falling back to the English catalogue text. */
+export function promptName(stage) {
+  const info = PROMPT_INFO[stage] || PROMPT_INFO.A
+  return tPromptStage(stage, 'name', info.name)
+}
+
+/** Translated prompt-stage help text. */
+export function promptHelp(stage) {
+  const info = PROMPT_INFO[stage] || PROMPT_INFO.A
+  return tPromptStage(stage, 'help', info.help)
+}
+
+/** Translated difficulty-dimension label. */
+export function dimensionLabel(dim) {
+  return tDimension(dim, DIMENSIONS[dim]?.label || dim)
 }
 
 /**
@@ -346,15 +364,16 @@ export function describeStep(step) {
   const spec = DIMENSIONS[step.dim]
   if (!spec) return null
   const to = spec.values[step.to]
+  const label = dimensionLabel(step.dim)
   return {
     dim: step.dim,
-    label: spec.label,
+    label,
     direction: step.direction > 0 ? 'up' : 'down',
     value: to,
     text:
       step.direction > 0
-        ? `${spec.label} → harder`
-        : `${spec.label} → easier`,
+        ? tCommon('harderArrow', '{{label}} → harder', { label })
+        : tCommon('easierArrow', '{{label}} → easier', { label }),
   }
 }
 
@@ -376,8 +395,8 @@ export function nextTargetFor(game) {
   }
   return {
     promptStage: st.promptStage || 'A',
-    promptName: PROMPT_INFO[st.promptStage || 'A'].name,
-    focus: worst ? DIMENSIONS[worst.dim].label : null,
+    promptName: promptName(st.promptStage || 'A'),
+    focus: worst ? dimensionLabel(worst.dim) : null,
     progress: dims.length
       ? dims.reduce(
           (s, d) => s + (st.levels?.[d] ?? 0) / (DIMENSIONS[d].values.length - 1),

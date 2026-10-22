@@ -10,25 +10,33 @@
  * A locked pip is dimmed and shows a lock rather than being hidden: seeing that
  * there is more to come is the point of a journey.
  */
+import { useTranslation } from 'react-i18next'
 import { FaLock, FaStar, FaCheck } from 'react-icons/fa'
 import { LEVEL_META } from './journey'
+import { tLevelName } from './arText'
 import styles from './LevelPips.module.css'
 
 export default function LevelPips({ pips, size = 'md', onPick = null, showNames = false }) {
+  const { t } = useTranslation()
   const list = pips || []
 
   return (
     <div
       className={`${styles.path} ${styles[size]}`}
       role={onPick ? 'group' : undefined}
-      aria-label={onPick ? 'Choose a level' : 'Level progress'}
+      aria-label={onPick ? t('ar.levelPips.chooseLevel', 'Choose a level') : t('ar.levelPips.levelProgress', 'Level progress')}
     >
       {list.map((p, i) => {
         const meta = LEVEL_META[p.n - 1] || LEVEL_META[0]
+        const name = tLevelName(p.n, meta.name)
         const state = p.cleared ? 'cleared' : p.current ? 'current' : p.unlocked ? 'open' : 'locked'
         const title = p.unlocked
-          ? `Level ${p.n} — ${meta.name}${p.cleared ? ' · cleared' : ''}`
-          : `Level ${p.n} — opens when level ${p.n - 1} is cleared`
+          ? t('ar.levelPips.levelUnlocked', 'Level {{n}} — {{name}}', { n: p.n, name }) +
+            (p.cleared ? t('ar.levelPips.clearedSuffix', ' · cleared') : '')
+          : t('ar.levelPips.levelLocked', 'Level {{n}} — opens when level {{prev}} is cleared', {
+              n: p.n,
+              prev: p.n - 1,
+            })
         const face =
           state === 'locked' ? (
             <FaLock className={styles.glyph} />
@@ -71,7 +79,7 @@ export default function LevelPips({ pips, size = 'md', onPick = null, showNames 
             )}
             {showNames && (
               <span className={`${styles.name} ${p.unlocked ? '' : styles.nameOff}`}>
-                {meta.name}
+                {name}
               </span>
             )}
           </div>

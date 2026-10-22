@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
 const SITE_URL = (import.meta.env.VITE_SITE_URL || "https://www.learnigo.eu").replace(/\/$/, "");
-const DEFAULT_TITLE = "Learningo | Dyslexia-Friendly Learning Games for Kids";
-const DEFAULT_DESCRIPTION = "Learningo is a gamified learning platform for children with dyslexia and neurodivergent learners, covering reading, writing, maths and science practice in 14 languages.";
+const DEFAULT_TITLE = "Learnigo | Dyslexia-Friendly Learning Games for Kids";
+const DEFAULT_DESCRIPTION = "Learnigo is a gamified learning platform for children with dyslexia and neurodivergent learners, covering reading, writing, maths and science practice in 14 languages.";
 const DEFAULT_ROBOTS = "index, follow, max-image-preview:large";
 
 function upsertMeta(attribute, value, content) {
@@ -44,14 +44,14 @@ export default function SEO({
     }
     canonical.setAttribute("href", canonicalUrl);
 
-    let script = document.head.querySelector("script[data-learningo-schema]");
+    let script = document.head.querySelector("script[data-learnigo-schema]");
     if (noIndex) {
       script?.remove();
     } else {
       if (!script) {
         script = document.createElement("script");
         script.type = "application/ld+json";
-        script.dataset.learningoSchema = "true";
+        script.dataset.learnigoSchema = "true";
         document.head.appendChild(script);
       }
       script.textContent = JSON.stringify(structuredData || {
@@ -60,13 +60,13 @@ export default function SEO({
         name: title,
         description,
         url: canonicalUrl,
-        isPartOf: { "@type": "WebSite", name: "Learningo", url: SITE_URL },
+        isPartOf: { "@type": "WebSite", name: "Learnigo", url: SITE_URL },
       });
     }
 
     return () => {
       document.head.querySelector('link[rel="canonical"]')?.remove();
-      document.head.querySelector("script[data-learningo-schema]")?.remove();
+      document.head.querySelector("script[data-learnigo-schema]")?.remove();
       document.title = DEFAULT_TITLE;
       upsertMeta("name", "description", DEFAULT_DESCRIPTION);
       upsertMeta("name", "robots", DEFAULT_ROBOTS);

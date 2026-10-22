@@ -40,7 +40,7 @@
     "enterWorld": "进入世界"
   },
   "login": {
-    "joinTitle": "加入 Learningo！",
+    "joinTitle": "加入 Learnigo！",
     "welcomeBack": "欢迎回来！",
     "createAccountSubtitle": "创建账户，开始学习",
     "continueJourneySubtitle": "登录继续您的旅程",
@@ -332,7 +332,7 @@
     "playAgain": "再玩一次"
   },
   "roleSelect": {
-    "welcomeTitle": "欢迎使用 Learningo",
+    "welcomeTitle": "欢迎使用 Learnigo",
     "welcomeSubtitle": "选择你想要的登录方式",
     "signInAs": "以此身份登录...",
     "roles": {
@@ -347,8 +347,8 @@
   "aboutUs": {
     "badge": "我们的故事",
     "heroTitle": "为每一种思维方式重新设计的学习",
-    "heroSubtitle": "Learningo 是一个以游戏为先的学习平台，专为阅读障碍（诵读困难）和神经多样性儿童打造——在这里，阅读、写作和表达感觉像是一场冒险，而不是一场挣扎。",
-    "paragraph": "我们相信每个孩子的学习方式都不同，而这种不同值得庆祝，而不是被纠正。Learningo 将课程变成简短而鼓励人心的回合，配有语音支持、趣味视觉效果和即时正向反馈——让孩子们一颗星一颗星地建立起真正的自信。",
+    "heroSubtitle": "Learnigo 是一个以游戏为先的学习平台，专为阅读障碍（诵读困难）和神经多样性儿童打造——在这里，阅读、写作和表达感觉像是一场冒险，而不是一场挣扎。",
+    "paragraph": "我们相信每个孩子的学习方式都不同，而这种不同值得庆祝，而不是被纠正。Learnigo 将课程变成简短而鼓励人心的回合，配有语音支持、趣味视觉效果和即时正向反馈——让孩子们一颗星一颗星地建立起真正的自信。",
     "worldsTitle": "选择你的世界",
     "worlds": {
       "english": {
@@ -364,7 +364,7 @@
         "text": "由好奇心驱动的活动，让探索变得精彩——每次一个实验。"
       }
     },
-    "valuesTitle": "为什么家庭喜爱 Learningo",
+    "valuesTitle": "为什么家庭喜爱 Learnigo",
     "values": {
       "care": {
         "title": "用心打造",
@@ -393,7 +393,7 @@
   "contactUs": {
     "badge": "我们随时为你提供帮助",
     "heroTitle": "让我们聊聊！",
-    "heroSubtitle": "有问题、有想法，或者遇到了小麻烦？给我们留言吧，Learningo 团队会很快回复你。",
+    "heroSubtitle": "有问题、有想法，或者遇到了小麻烦？给我们留言吧，Learnigo 团队会很快回复你。",
     "reassurances": {
       "support": {
         "title": "亲切的支持",
@@ -432,7 +432,7 @@
     "sending": "发送中…",
     "sendMessage": "发送消息",
     "successTitle": "消息已发送！",
-    "successText": "Learningo 团队会很快回复你。",
+    "successText": "Learnigo 团队会很快回复你。",
     "sendAnother": "发送另一条消息",
     "errors": {
       "name": "请输入你的全名",
@@ -442,5 +442,1004 @@
     },
     "errorServer": "出错了，请重试。",
     "errorNetwork": "无法连接到服务器，请重试。"
+  },
+  "ar": {
+    "common": {
+      "back": "返回",
+      "settings": "设置",
+      "closeSettings": "关闭设置",
+      "done": "完成",
+      "reset": "重置",
+      "keep": "保留",
+      "erase": "删除",
+      "games": "游戏",
+      "pause": "暂停",
+      "play": "开始",
+      "tryAgain": "再试一次",
+      "playAgain": "再玩一次",
+      "progress": "进度",
+      "harderArrow": "{{label}} → 更难",
+      "easierArrow": "{{label}} → 更简单"
+    },
+    "hub": {
+      "title": "摄像头游戏",
+      "back": "返回",
+      "progress": "进度",
+      "progressTitle": "进度与分析",
+      "settingsLabel": "设置",
+      "pointsTitle": "{{points}} 分 · {{rank}}",
+      "pointsTitleWithNext": "{{points}} 分 · {{rank}} · 再得 {{toNext}} 分可升为{{next}}",
+      "setupTitle": "从这里开始 — 设置我的空间",
+      "setupSubtitle": "五个简单的伸展动作，让每个游戏都落在这个孩子能够到的地方",
+      "calloutPlay": "开始",
+      "levelOf": "第 {{n}} 关，共 {{total}} 关",
+      "groupTooltip": "{{title}} — {{blurb}}",
+      "groupTooltipWithStats": "{{title}} — {{blurb}} · {{possible}} 关中已完成 {{levels}} 关",
+      "footRunsOnDevice": "在本设备上运行 · 不录制任何视频",
+      "footCountSingular": "{{count}} 个游戏",
+      "footCountPlural": "{{count}} 个游戏",
+      "footLevelsCleared": "已通关 {{count}} 关",
+      "footGamesInAll": "共 {{count}} 个游戏",
+      "pageLabel": "第 {{n}} 页",
+      "previousPage": "上一页",
+      "nextPage": "下一页",
+      "groupsAriaLabel": "游戏分组",
+      "newBadge": "新",
+      "setupNote": "设置 · 无关卡",
+      "readOutTitle": "{{title}} — 第 {{level}} 关，共 {{total}} 关：{{change}}",
+      "allFiveCleared": "五个关卡全部通关",
+      "readOutAriaLabel": "朗读{{title}}",
+      "readThisOut": "朗读此内容",
+      "recommend": {
+        "carryOn": "继续你的旅程",
+        "practising": "正在练习{{domain}}",
+        "tryNew": "尝试新内容",
+        "champion": "挑战冠军关卡"
+      }
+    },
+    "game": {
+      "notFoundTitle": "这个游戏不存在",
+      "notFoundBody": "该链接指向的 {{id}} 不在目录中。",
+      "backToGames": "返回摄像头游戏"
+    },
+    "stage": {
+      "cameraHelp": {
+        "cameraDenied": {
+          "title": "摄像头被阻止",
+          "body": "这些游戏需要使用摄像头，这样你才能看到自己并伸手去触碰物体。请在浏览器中允许摄像头访问，然后按“再试一次”。"
+        },
+        "cameraMissing": {
+          "title": "未找到摄像头",
+          "body": "我们在此设备上找不到摄像头。请连接一个摄像头，或在手机或平板电脑上打开游戏。"
+        },
+        "cameraUnsupported": {
+          "title": "此浏览器无法运行摄像头游戏",
+          "body": "请通过 https 在 Chrome、Edge 或 Safari 中打开游戏。在手机上，请使用内置浏览器。"
+        },
+        "modelFailed": {
+          "title": "无法启动手部追踪",
+          "body": "追踪模型加载失败。请检查你的网络连接，然后按“再试一次”。"
+        }
+      },
+      "backAriaLabel": "返回游戏列表",
+      "settingsAriaLabel": "设置",
+      "pauseAriaLabel": "暂停",
+      "playAriaLabel": "开始",
+      "levelOfShort": "第 {{level}} 关，共 {{total}} 关",
+      "levelTag": "第{{level}}关",
+      "getReady": "准备好！",
+      "showMeYourHand": "让我看看你的手",
+      "turningOnCamera": "正在打开摄像头并加载手部追踪…",
+      "gettingReady": "准备中…",
+      "start": "开始 — 打开摄像头",
+      "privacyNote": "摄像头仅在本设备上运行。不会录制、保存或发送任何视频。",
+      "sensoryMotorSettings": "感知与运动设置",
+      "tryAgain": "再试一次",
+      "backToGames": "返回游戏列表",
+      "paused": "已暂停",
+      "pausedSub": "慢慢来，不用着急。",
+      "keepPlaying": "继续游戏",
+      "startAgain": "重新开始",
+      "settings": "设置",
+      "games": "游戏",
+      "handsCountSingular": "{{count}} 只手",
+      "handsCountPlural": "{{count}} 只手",
+      "bodyOk": "身体 ✓",
+      "headline": {
+        "levelCleared": "第 {{n}} 关通过！",
+        "passedAgain": "再次通过！",
+        "brilliant": "太棒了！",
+        "greatWork": "做得很好！",
+        "goodTry": "不错的尝试！"
+      },
+      "rows": {
+        "gotIdea": {
+          "label": "理解了意思",
+          "hint": "正确 + 不太精确但到达了正确答案"
+        },
+        "onTheirOwn": {
+          "label": "独立完成",
+          "hint": "没有任何提示的正确回答"
+        },
+        "thinkingTime": {
+          "label": "思考时间",
+          "hint": "指令 → 开始移动"
+        },
+        "movingTime": {
+          "label": "移动时间",
+          "hint": "开始移动 → 触碰到"
+        },
+        "reachDirectness": {
+          "label": "触碰准确度",
+          "hint": "100% = 直接到达目标"
+        },
+        "stoppedWhenTold": {
+          "label": "听到指令后停下",
+          "hint": "保持住了不该动的尝试"
+        },
+        "timingSteadiness": {
+          "label": "节奏稳定性",
+          "hint": "数值越低越稳定"
+        }
+      },
+      "pointsWord": "分",
+      "pointsTally": "共 {{total}} 分",
+      "unlockLine": "第 {{n}} 关已开启",
+      "unlockEffortSuffix": " — 一直坚持尝试，所以开启了",
+      "allFiveDone": "五个关卡全部完成 — 你完成了这段旅程",
+      "forGrownUps": "给大人看的数据",
+      "nextUpLabel": "接下来：",
+      "workingOnSuffix": " · 正在练习{{focus}}",
+      "playLevel": "开始第 {{n}} 关",
+      "playAgain": "再玩一次",
+      "levelAgain": "再玩一次第 {{n}} 关",
+      "nextGame": "下一个游戏",
+      "progress": "进度"
+    },
+    "settings": {
+      "dialogAriaLabel": "摄像头游戏设置",
+      "title": "游戏设置",
+      "closeAriaLabel": "关闭设置",
+      "tabs": {
+        "sound": "声音",
+        "vision": "视觉",
+        "body": "身体",
+        "help": "帮助",
+        "data": "数据"
+      },
+      "sound": {
+        "volume": "声音",
+        "speech": "语音指令",
+        "speechHint": "大声朗读每个提示",
+        "speechTestHello": "你好",
+        "speechRate": "语速",
+        "speechRateTest": "触碰红色的圆圈",
+        "instruction": "指令的呈现方式",
+        "instructionBoth": "语音 + 文字",
+        "instructionAudio": "仅语音",
+        "instructionVisual": "仅文字",
+        "haptics": "震动",
+        "hapticsHintVibrate": "此设备有震动马达",
+        "hapticsHintGamepad": "正在使用已连接的控制器",
+        "hapticsHintNone": "未找到震动马达 — 将改用低沉的声音脉冲代替",
+        "hapticIntensity": "震动强度"
+      },
+      "vision": {
+        "reducedMotion": "柔和画面",
+        "reducedMotionHint": "没有粒子效果、脉动或屏幕闪烁",
+        "highContrast": "高对比度",
+        "highContrastHint": "目标后面的轮廓更明显、背景更深色",
+        "visualClutter": "屏幕细节",
+        "visualClutterNormal": "正常",
+        "visualClutterMinimal": "精简",
+        "captions": "始终显示文字",
+        "captionsHint": "将书面提示与语音一起保留在屏幕上",
+        "mirrorView": "镜像画面",
+        "mirrorViewHint": "开启 = 像镜子一样，这是几乎每个孩子都期待的效果",
+        "showSkeleton": "显示骨架",
+        "showSkeletonHint": "绘制追踪到的手部和身体轮廓"
+      },
+      "body": {
+        "seated": "坐姿游玩",
+        "seatedHint": "确保每个目标都在坐姿可触及的范围内",
+        "singleHand": "使用的手",
+        "singleHandBoth": "任意一只 / 双手",
+        "singleHandLeft": "仅左手",
+        "singleHandRight": "仅右手",
+        "largeTargets": "更大的目标",
+        "largeTargetsHint": "将所有内容放大45%",
+        "extraTime": "额外时间",
+        "extraTimeHint": "成倍延长每次反应窗口。速度从来都不是重点。",
+        "extraTimeStandard": "标准",
+        "dwellMs": "触碰停留时长",
+        "dwellMsHint": "手指在目标上停留多久才算选中它。更长的时间能帮助手部不稳的孩子。",
+        "handSwap": "交换左右手",
+        "handSwapHintWithDate": "触碰范围已于{{date}}设置。如果游戏说出了错误的手，请开启此选项。",
+        "handSwapHintNoDate": "如果游戏说出了错误的手，请开启此选项。可以让孩子举起右手来核对。"
+      },
+      "help": {
+        "promptMode": "提示等级",
+        "promptModeHint": "游戏给予的帮助程度。自适应模式会随着孩子在无帮助下成功而逐渐减少提示。",
+        "promptModeAdaptive": "自适应",
+        "adaptiveStageHelpTitle": "自适应。",
+        "adaptiveStageHelpBody": "从示范开始，每六次中有五次在无提示的情况下答对后，就会减少一个阶段的提示。出现两次错误后会退回一个阶段。",
+        "difficultyMode": "难度",
+        "difficultyModeHint": "自适应模式每次只改变一个要求 — 先是目标大小，然后是选项数量，接着是干扰项的相似度。固定模式只保持旅程中的一个关卡。",
+        "difficultyModeAdaptive": "自适应",
+        "difficultyModeFixed": "固定",
+        "fixedLevel": "固定在旅程关卡",
+        "fixedLevelHint": "无论孩子选择哪个关卡，每一轮都会在这个关卡进行游玩和评分。通过将被记录为真正的通关。",
+        "unlockAll": "解锁所有关卡（家长专用）",
+        "unlockAllHint": "适用于已经通过第1关的孩子，或用于试玩某个关卡。通关仍然需要靠实力获得。",
+        "stageGTitle": "G阶段 — 迁移到现实世界。",
+        "stageGSuffix": "这里的高分并不能证明该能力已经泛化；这需要在屏幕之外进行核实。"
+      },
+      "data": {
+        "telemetry": "记录分析数据",
+        "telemetryHint": "每次试验的准确度、思考时间、移动时间和触碰质量。只记录数字 — 绝不记录任何视频或图像。",
+        "showMetrics": "显示实时追踪数据",
+        "showMetricsHint": "帧率、检测时间和摄像头延迟，用于设置游戏环境",
+        "cameraNote": "摄像头画面仅在本设备上处理。没有任何画面会被我们或任何人存储或上传。",
+        "recordingOnSince": "数据记录于{{date}}开启",
+        "eraseProfile": "删除此孩子的档案和历史记录",
+        "eraseConfirm": "要删除触碰范围校准、能力档案、关卡进度、积分以及每一轮保存的记录吗？",
+        "erase": "删除",
+        "keep": "保留"
+      },
+      "resetTitle": "恢复默认设置",
+      "reset": "重置",
+      "footNoteInGame": "更改将在下一轮生效",
+      "footNoteSaved": "已保存在本设备上",
+      "done": "完成"
+    },
+    "levelPips": {
+      "chooseLevel": "选择一个关卡",
+      "levelProgress": "关卡进度",
+      "levelUnlocked": "第 {{n}} 关 — {{name}}",
+      "clearedSuffix": " · 已通关",
+      "levelLocked": "第 {{n}} 关 — 通过第 {{prev}} 关后开启"
+    },
+    "insights": {
+      "title": "进度与分析",
+      "dashboardAriaLabel": "学习面板",
+      "dashboardTitle": "这个孩子完整的学习面板，并附有本报告的摘要链接",
+      "refreshAriaLabel": "刷新",
+      "exportAriaLabel": "导出",
+      "exportTitle": "将每次试验的数据下载为CSV文件",
+      "backAriaLabel": "返回",
+      "empty": {
+        "title": "尚未记录任何内容",
+        "body": "玩一个摄像头游戏，每一轮都会在这里被测量 — 理解了什么、需要多少帮助、思考花了多长时间、移动花了多长时间，每一项都分开记录。",
+        "cta": "前往游戏"
+      },
+      "kpis": {
+        "gotIdea": {
+          "label": "理解了意思",
+          "hint": "正确，加上不太精确或较晚才到达正确答案的情况。这是理解能力的数值。"
+        },
+        "onTheirOwn": {
+          "label": "独立完成",
+          "hint": "没有高亮提示也没有示范的正确回答。这是独立能力的数值。"
+        },
+        "thinkingTime": {
+          "label": "思考时间",
+          "hint": "从指令到第一个有意的动作之间的中位时间。这是决策方面的衡量，而不是运动方面的。"
+        },
+        "movingTime": {
+          "label": "移动时间",
+          "hint": "从开始移动到触碰到目标之间的中位时间。这是运动方面的衡量，与准确度完全分开统计。"
+        },
+        "reachDirectness": {
+          "label": "触碰准确度",
+          "hint": "直线距离 ÷ 手实际走过的路径。100%表示完全走了直线。"
+        },
+        "turnsPlayed": {
+          "label": "已玩回合数",
+          "hintSingular": "{{sessions}} 轮 · {{minutes}} 分钟",
+          "hintPlural": "{{sessions}} 轮 · {{minutes}} 分钟"
+        }
+      },
+      "tabs": {
+        "journey": "旅程",
+        "overview": "总览",
+        "domains": "能力",
+        "motor": "运动",
+        "life": "生活"
+      },
+      "noRounds": {
+        "title": "没有记录的回合",
+        "note": "上面的旅程记录完好无损。",
+        "body": "每次试验的数据已被删除，所以这里没有可分析的内容。关卡和积分是单独存储的，仍保留在“旅程”标签中。玩一轮游戏，这些标签就会重新填满数据。"
+      },
+      "journeyTab": {
+        "whereTheyAre": {
+          "title": "他们目前的情况",
+          "note": "按分组统计的已通关关卡。孩子正在推进的那个分组，就是他们实际正在努力的发展领域，这比一个总数更有意义。"
+        },
+        "stats": {
+          "levelsCleared": "已通关关卡",
+          "gamesPlayed": "已玩游戏",
+          "daysPlayed": "已玩天数",
+          "points": "积分",
+          "rank": "称号"
+        },
+        "chartTooltip": "{{possible}} 关中已通过 {{levels}} 关 · {{games}} 个游戏中已尝试 {{played}} 个",
+        "noJourneys": "尚未开始任何旅程。",
+        "levelPerGame": {
+          "title": "每个游戏达到的关卡",
+          "noteStuckSingular": "{{count}} 个游戏玩了多次都没有通关 — 排在最前面显示。那个关卡要求的东西，这个孩子还做不到。",
+          "noteStuckPlural": "{{count}} 个游戏玩了多次都没有通关 — 排在最前面显示。这些关卡要求的东西，这个孩子还做不到。",
+          "noteOk": "已玩的游戏，进度最靠前的排在最前面。反复玩却从未通关的游戏会出现在最上面。"
+        },
+        "stuckIconTitle": "多次游玩，没有通关",
+        "noLevels": "没有关卡",
+        "levelsClearedTitle": "已通关关卡",
+        "roundsPlayedTitle": "已玩回合数",
+        "playedSuffix": "次",
+        "noGamesPlayed": "尚未玩过任何游戏。",
+        "serverRowNote": "服务器上有 {{count}} 个游戏的旅程数据，涵盖这个孩子的所有设备",
+        "howEarned": {
+          "title": "这些进度是如何取得的",
+          "note": "三种不同的说法，故意没有相加在一起。",
+          "demonstrated": {
+            "name": "已证实",
+            "text": "孩子达到了该关卡的理解标准。这是证据。"
+          },
+          "effort": {
+            "name": "因坚持而给予",
+            "text": "三次尝试都接近标准。关卡还是开启了，所以一个不太合适的关卡不会结束孩子对应用的使用 — 但这并不能证明他们达到了标准。"
+          },
+          "implied": {
+            "name": "推断得出",
+            "text": "因为通过了更难的关卡而被认可，而每个关卡的要求至少不低于下面的关卡。从未被直接观察到。"
+          },
+          "remote": {
+            "name": "从另一台设备恢复",
+            "tooltip": "从这个孩子的另一台设备恢复的数据。数据显示哪些关卡已通关，但没有显示是如何通关的，所以这台设备没有相关证据。",
+            "text": "来自服务器，服务器记录了哪些关卡已通关，但没有记录是如何通关的。这台设备上没有相关证据。"
+          },
+          "footer": "这三项都不能证明已迁移到现实世界。通关一个关卡只意味着孩子在屏幕上完成了这个任务。"
+        }
+      },
+      "overviewTab": {
+        "trend": {
+          "title": "理解能力与独立能力随时间的变化",
+          "note": "两条线，因为它们各自独立变化。孩子可能理解得更多，但仍需要同样多的帮助。"
+        },
+        "understood": "理解",
+        "independent": "独立",
+        "trendPlaceholder": "在第二天玩一次，就能在这里看到变化趋势。",
+        "promptMix": {
+          "title": "需要多少帮助",
+          "note": "每个提示阶段所占的回合比例。目标是从A逐渐减少到D；G阶段由家长在屏幕之外核实，游戏永远不能自行授予。"
+        },
+        "turns": "回合数",
+        "promptPlaceholder": "尚无提示数据。",
+        "gamesPlayed": {
+          "title": "已玩游戏",
+          "note": "每个游戏的准确度和独立性，玩得最多的排在最前面。"
+        },
+        "understoodTitle": "理解",
+        "independentTitle": "独立",
+        "medianThinkingTitle": "中位思考时间",
+        "serverRowNote": "服务器上记录了所有设备共 {{count}} 个游戏"
+      },
+      "domainsTab": {
+        "profile": {
+          "title": "能力档案",
+          "note": "仅根据游戏中的表现，对每个功能领域做出持续的估算。少于三个回合的领域会被隐藏，因为那样的估算只是噪音。"
+        },
+        "estimate": "估算值",
+        "profilePlaceholder": "再玩几个游戏吧 — 至少三个领域需要有数据，档案才有意义。",
+        "weakest": {
+          "title": "最薄弱的排在最前面",
+          "note": "标记了每个领域的回合的准确度。最低的柱子就是下次练习最值得投入的地方。"
+        },
+        "accuracy": "准确度",
+        "accuracyTooltip": "{{trials}} 个回合中的 {{pct}}%",
+        "weakestPlaceholder": "尚无领域数据。",
+        "promptPerGame": {
+          "title": "每个游戏的提示阶段",
+          "note": "孩子目前在每项活动的帮助阶梯上所处的位置。"
+        }
+      },
+      "motorTab": {
+        "leftHand": "左手",
+        "rightHand": "右手",
+        "leftRight": {
+          "title": "左手和右手",
+          "note": "同一任务，每只手分别统计。准确度或方向上持续存在的差距值得家长关注；仅在速度上的差距往往不需要。"
+        },
+        "accuracyTitle": "准确度",
+        "medianThinkingTitle": "中位思考时间",
+        "reachDirectnessTitle": "触碰准确度",
+        "turnsCountSingular": "{{count}} 回合",
+        "turnsCountPlural": "{{count}} 回合",
+        "dominantHandNote": "自发偏好的手：{{hand}}（{{left}} 次左手触碰 / {{right}} 次右手触碰）",
+        "leftRightPlaceholder": "尚无各手数据。",
+        "rhythm": {
+          "title": "节奏与时机",
+          "note": "稳定性是时机误差的标准差，是真正重要的数值 — 持续存在的偏移只是一种偏移，其中一部分来自摄像头延迟，这部分会在每轮游戏中被测量并扣除。"
+        },
+        "steadiness": "稳定性",
+        "offset": "偏移量",
+        "rhythmPlaceholder": "多玩几次“节奏触碰”，就能在这里看到时机数据。",
+        "reachEnvelope": {
+          "title": "触碰范围",
+          "note": "每个游戏放置目标所依据的校准过的游玩空间。"
+        },
+        "width": "宽度",
+        "height": "高度",
+        "leftRightDifference": "左右差异",
+        "setDate": "设置于{{date}}",
+        "ofFrame": "占画面比例",
+        "reachPlaceholderPrefix": "尚未校准。请运行",
+        "reachPlaceholderSuffix": "— 在那之前，目标会使用通用范围，受限的触碰范围会显得像准确度不佳。"
+      },
+      "lifeTab": {
+        "practised": {
+          "title": "已练习的生活技能",
+          "note": "按每个游戏所迁移的现实生活技能分组，而不是按游戏分组。"
+        },
+        "alonePct": "{{pct}}% 独立完成",
+        "roundsSingular": "{{count}} 轮",
+        "roundsPlural": "{{count}} 轮",
+        "practisedPlaceholder": "尚未玩过任何生活技能游戏。",
+        "routine": {
+          "title": "无辅助完成的日常步骤",
+          "note": "对于像洗手这样的顺序游戏：有多少步骤是在没有提醒的情况下按正确顺序完成的。3/7 → 5/7 → 6/7 就是真正的进步模样。"
+        },
+        "routinePlaceholder": "玩一个日常生活游戏（洗漱、穿衣、过马路）就能看到这个数据。",
+        "transfer": {
+          "title": "迁移到现实世界",
+          "note": "游戏无法授予的阶段。"
+        },
+        "transferP1Bold": "G阶段由一个人在屏幕之外进行核实。",
+        "transferP1Rest": "能从五张图片中选出牙刷的孩子，还没有证明他们能在真正的浴室里拿起真正的牙刷。",
+        "transferP2": "可以参考上面的日常步骤得分，决定何时值得真正尝试某项技能，然后把发生的情况记在自己的笔记里 — 这个应用程序有意不声称自己测量到了这一点。"
+      },
+      "footer": {
+        "disclaimer": "这些只是对游戏中发生情况的描述，不是临床测量。高分并不能证明某项技能可以迁移到屏幕之外 — 这需要在现实生活中核实。",
+        "erase": "删除",
+        "confirmText": "要删除所有已记录的回合吗？",
+        "confirmYes": "是，删除",
+        "confirmKeep": "保留"
+      }
+    },
+    "groups": {
+      "body": {
+        "title": "身体与触碰",
+        "short": "身体",
+        "blurb": "伸手、瞄准、使用双手、跨越身体中线"
+      },
+      "look": {
+        "title": "观察与寻找",
+        "short": "观察",
+        "blurb": "找出正确的、听、读、空间词汇"
+      },
+      "stop": {
+        "title": "停止与思考",
+        "short": "停止",
+        "blurb": "等待、静止不动、忽略干扰、改变规则"
+      },
+      "remember": {
+        "title": "记忆",
+        "short": "记忆",
+        "blurb": "在脑中记住事物、复制顺序、找出缺失的项目"
+      },
+      "learn": {
+        "title": "字母与数字",
+        "short": "字母数字",
+        "blurb": "声音、拼写、书写、数数、钱币"
+      },
+      "move": {
+        "title": "移动与模仿",
+        "short": "移动",
+        "blurb": "节奏、模仿、描画、在空中画画"
+      },
+      "day": {
+        "title": "我的一天",
+        "short": "我的一天",
+        "blurb": "洗漱、穿衣、打包、整理、保持安全"
+      },
+      "together": {
+        "title": "交流与一起",
+        "short": "一起",
+        "blurb": "听从指令、情绪、寻求帮助"
+      }
+    },
+    "domains": {
+      "visualDiscrimination": "视觉注意力",
+      "auditoryComprehension": "听力",
+      "readingSymbol": "阅读",
+      "reactionSpeed": "反应力",
+      "reachAccuracy": "触碰能力",
+      "sustainedAttention": "注意力",
+      "workingMemory": "工作记忆",
+      "sequencing": "排序能力",
+      "inhibition": "停止与等待",
+      "cognitiveFlexibility": "切换规则",
+      "bilateralCoordination": "双手协调",
+      "motorPlanning": "运动规划",
+      "spatialConcepts": "空间词汇",
+      "socialReasoning": "社交思维",
+      "independence": "独立能力"
+    },
+    "lifeSkills": {
+      "hygiene": "卫生",
+      "dressing": "穿衣",
+      "school": "入学准备",
+      "kitchen": "厨房",
+      "shopping": "购物",
+      "money": "金钱",
+      "roadSafety": "交通安全",
+      "homeSafety": "居家安全",
+      "chores": "家务",
+      "routines": "日常作息",
+      "communication": "沟通",
+      "help": "寻求帮助",
+      "socialPlay": "社交游戏",
+      "literacy": "早期读写能力",
+      "numeracy": "数感能力",
+      "navigation": "辨认方向",
+      "selfRegulation": "自我调节",
+      "bodyAwareness": "身体意识",
+      "instructions": "听从指令",
+      "independence": "独立能力"
+    },
+    "levels": {
+      "1": "初出茅庐",
+      "2": "热身中",
+      "3": "渐入佳境",
+      "4": "实力提升",
+      "5": "冠军"
+    },
+    "ranks": {
+      "explorer": "探索者",
+      "pathfinder": "寻路者",
+      "trailblazer": "开拓者",
+      "skyWalker": "天空行者",
+      "starRider": "星辰骑士",
+      "legend": "传奇",
+      "grandChampion": "至尊冠军"
+    },
+    "badges": {
+      "first-game": {
+        "name": "开始啦",
+        "how": "玩了第一个摄像头游戏"
+      },
+      "space-set": {
+        "name": "我的空间",
+        "how": "设置了自己的触碰范围"
+      },
+      "five-days": {
+        "name": "坚持不懈",
+        "how": "在五个不同的日子玩过游戏"
+      },
+      "level-3": {
+        "name": "过半了",
+        "how": "通过了一个游戏的三个关卡"
+      },
+      "all-five": {
+        "name": "完整旅程",
+        "how": "通过了一个游戏的全部五个关卡"
+      },
+      "ten-games": {
+        "name": "探索者",
+        "how": "尝试了十个不同的游戏"
+      },
+      "every-group": {
+        "name": "样样都试",
+        "how": "玩过每个分组中的一个游戏"
+      },
+      "both-hands": {
+        "name": "双手并用",
+        "how": "充分使用了双手"
+      },
+      "on-my-own": {
+        "name": "独立完成",
+        "how": "在游戏中无帮助地回答正确"
+      },
+      "whole-day": {
+        "name": "完整一天",
+        "how": "完成了一整天的任务"
+      }
+    },
+    "promptStages": {
+      "A": {
+        "name": "示范",
+        "help": "答案会闪烁，并有一只动画手展示触碰动作。"
+      },
+      "B": {
+        "name": "引导练习",
+        "help": "语音指令加上答案的高亮提示。没有示范。"
+      },
+      "C": {
+        "name": "减少提示",
+        "help": "语音指令；答案只在开始时短暂高亮。"
+      },
+      "D": {
+        "name": "独立完成",
+        "help": "只有指令。没有高亮提示。"
+      },
+      "E": {
+        "name": "带干扰项",
+        "help": "独立完成，屏幕上有非常相似的错误答案。"
+      },
+      "F": {
+        "name": "贴近现实情境",
+        "help": "指令是一种情境，而不是一个标签：“到了睡觉时间了 — 你需要什么？”"
+      },
+      "G": {
+        "name": "迁移到现实世界",
+        "help": "由家长在屏幕之外核实。游戏永远不会自行授予这一阶段。"
+      }
+    },
+    "dimensions": {
+      "targetSize": "目标大小",
+      "choices": "选项数量",
+      "distractors": "干扰项相似度",
+      "eccentricity": "触碰距离",
+      "steps": "指令步骤数",
+      "memorySpan": "记忆广度",
+      "showMs": "展示时长",
+      "window": "反应窗口",
+      "ruleSwitch": "规则切换",
+      "hands": "用手要求",
+      "midline": "跨越身体中线",
+      "pace": "节奏速度",
+      "noGoRate": "不该动的频率",
+      "tolerance": "路径容差",
+      "holdMs": "保持时长"
+    },
+    "levelChange": {
+      "first": "一切都更大、更慢，并有更多帮助",
+      "none": "在这方面多练习一点",
+      "moreSuffix": " · 以及更多",
+      "harderWords": {
+        "targetSize": "更小的目标",
+        "choices": "更多的选项",
+        "distractors": "更棘手的错误答案",
+        "eccentricity": "更远的触碰距离",
+        "steps": "更多需要记住的步骤",
+        "memorySpan": "更多需要记在脑中的内容",
+        "showMs": "更短的展示时间",
+        "window": "更少的等待时间",
+        "ruleSwitch": "规则会改变",
+        "hands": "双手",
+        "midline": "需要跨到对侧",
+        "pace": "更快的节奏",
+        "noGoRate": "更多次需要停下",
+        "tolerance": "更窄的路径",
+        "holdMs": "更长的保持时间"
+      }
+    },
+    "points": {
+      "playedSingular": "玩了 {{count}} 回合",
+      "playedPlural": "玩了 {{count}} 回合",
+      "gotItRight": "答对了",
+      "levelBonus": "第 {{n}} 关奖励",
+      "bestYet": "你目前的最佳成绩！",
+      "levelClearedRow": "通关",
+      "levelPassedAgain": "再次通关",
+      "firstGameToday": "今天的第一个游戏"
+    },
+    "advice": {
+      "moreTurns": "再玩几个回合来完成这个关卡",
+      "getBar": "答对 {{bar}}% 的回合就能开启下一关"
+    },
+    "games": {
+      "setup-space": {
+        "title": "设置我的空间",
+        "how": "五个简单的伸展动作，让每个游戏都恰好落在你能够到的地方。先做一次就够了。"
+      },
+      "ball-pop": {
+        "title": "戳破气球",
+        "how": "气球会出现在你能够到的地方 — 在它飘走之前戳破每一个。"
+      },
+      "number-hunt": {
+        "title": "全身数字大搜寻",
+        "how": "数字会出现在高处、低处、左边和右边。用你的整个身体去触碰它们。"
+      },
+      "two-hand-catch": {
+        "title": "双手接接看",
+        "how": "两个形状，每只手一个。同时触碰两个。"
+      },
+      "cross-the-middle": {
+        "title": "跨越身体中线",
+        "how": "你的左手去拿右边的东西，右手去拿左边的东西。"
+      },
+      "left-or-right": {
+        "title": "左边还是右边？",
+        "how": "“用你的左手触碰它。”学会辨认左右。"
+      },
+      "reach-near-far": {
+        "title": "远近触碰",
+        "how": "有些东西离你很近，有些正好在你能够到的边缘。"
+      },
+      "find-touch-colour": {
+        "title": "找出并触碰",
+        "how": "“触碰蓝色的那个。”先学颜色，再学形状和数字。"
+      },
+      "find-shape": {
+        "title": "找出形状",
+        "how": "“触碰三角形。”十种形状，有些容易混淆。"
+      },
+      "read-and-find": {
+        "title": "阅读并寻找",
+        "how": "出现单词CIRCLE（圆形）。触碰圆形。没有任何朗读。"
+      },
+      "listen-and-find": {
+        "title": "听并寻找",
+        "how": "一个声音说出这个词。没有任何文字。找出你听到的东西。"
+      },
+      "search-the-room": {
+        "title": "在房间里搜索",
+        "how": "一个正确答案藏在很多非常相似的东西之中。"
+      },
+      "big-or-small": {
+        "title": "大还是小？",
+        "how": "更大、更小、更多、更少 — 比较类的词语。"
+      },
+      "above-or-below": {
+        "title": "上面还是下面？",
+        "how": "“触碰盒子上面的猫。”在空间中学习空间词汇。"
+      },
+      "which-animal": {
+        "title": "哪一组？",
+        "how": "“触碰农场动物。”把世界分成不同种类。"
+      },
+      "go-no-go-animals": {
+        "title": "只能是宠物！",
+        "how": "触碰宠物。完全不要碰野生动物。"
+      },
+      "rule-switch": {
+        "title": "规则切换",
+        "how": "触碰动物……然后规则突然变成了交通工具。"
+      },
+      "safe-or-not": {
+        "title": "安全的手",
+        "how": "触碰那些安全可以拿的东西。绝不触碰不安全的东西。"
+      },
+      "red-light-green-light": {
+        "title": "红灯绿灯",
+        "how": "绿灯时移动。变成红灯时完全静止不动。"
+      },
+      "traffic-light-body": {
+        "title": "交通灯游戏",
+        "how": "绿灯走，黄灯准备，红灯停 — 就像真正的过马路一样。"
+      },
+      "wait-for-it": {
+        "title": "等一等",
+        "how": "星星就在那里 — 但在它变绿之前不要触碰它。"
+      },
+      "calm-movement": {
+        "title": "平静的动作",
+        "how": "继续动，但要柔和。不要太静止，也不要太狂野。"
+      },
+      "fast-vs-slow": {
+        "title": "快还是慢",
+        "how": "先快速移动手臂，再非常缓慢地移动。自己选择速度。"
+      },
+      "vanishing-target": {
+        "title": "消失的目标",
+        "how": "一个字母闪现一下，然后消失。刚才是哪一个？"
+      },
+      "simon-reach": {
+        "title": "西蒙触碰",
+        "how": "观察形状亮起的顺序，然后准确地复制出来。"
+      },
+      "copy-the-pattern": {
+        "title": "复制图案",
+        "how": "红、蓝、黄、红 — 观察颜色图案，然后重复它。"
+      },
+      "repair-the-sequence": {
+        "title": "修复数列",
+        "how": "1、2、？、4 — 缺的是哪个数字？"
+      },
+      "repair-the-alphabet": {
+        "title": "修复字母表",
+        "how": "A、B、？、D — 找出掉落的字母。"
+      },
+      "whats-missing": {
+        "title": "少了什么？",
+        "how": "看一看书包里的东西，然后说出少了什么。"
+      },
+      "grocery-mission": {
+        "title": "购物任务",
+        "how": "“去拿牛奶、一个苹果和面包。”把清单记在脑中，然后去找到它们。"
+      },
+      "phonics-reach": {
+        "title": "拼读触碰",
+        "how": "你听到了 /b/ 的音。伸手去触碰发出这个音的字母。"
+      },
+      "beginning-sound": {
+        "title": "首音辨认",
+        "how": "“哪一个以 /k/ 开头？”伸手去触碰猫。"
+      },
+      "word-builder": {
+        "title": "单词拼写",
+        "how": "按顺序触碰字母，拼出C-A-T（猫）。"
+      },
+      "word-and-picture": {
+        "title": "单词与图片",
+        "how": "出现单词SUN（太阳）。触碰相匹配的图片。"
+      },
+      "air-writing": {
+        "title": "空中书写",
+        "how": "用你的手指在空中写字母和数字。"
+      },
+      "number-match": {
+        "title": "有多少个？",
+        "how": "出现数字5。触碰有五个东西的那一组。"
+      },
+      "count-and-collect": {
+        "title": "数数并收集",
+        "how": "“收集四个苹果。”在移动中数数。"
+      },
+      "money-shop": {
+        "title": "金钱商店",
+        "how": "苹果要30分钱。选出能付清这笔钱的硬币。"
+      },
+      "sentence-order": {
+        "title": "句子顺序",
+        "how": "我 / 想要 / 水 — 把单词按正确的顺序排好。"
+      },
+      "rhythm-reach": {
+        "title": "节奏触碰",
+        "how": "每个节拍都准确地触碰形状。完美、很棒、接近 — 都算数。"
+      },
+      "mirror-me": {
+        "title": "模仿我",
+        "how": "复制小人偶所保持的姿势。"
+      },
+      "copy-my-gesture": {
+        "title": "模仿我的手势",
+        "how": "挥手、竖起大拇指、指点、张开手掌 — 人们使用的各种手势。"
+      },
+      "personal-space": {
+        "title": "我的空间泡泡",
+        "how": "让你的身体保持在你的泡泡里面 — 然后再刚好走到泡泡外面。"
+      },
+      "trace-the-road": {
+        "title": "沿着道路描画",
+        "how": "沿着弯曲的道路移动你的手指，不要偏离。"
+      },
+      "shape-drawing": {
+        "title": "形状绘画",
+        "how": "画一个圆形、一个正方形、一个星形 — 都在空中画。"
+      },
+      "ar-maze": {
+        "title": "手指走迷宫",
+        "how": "找出走出迷宫的路，不要碰到墙壁。"
+      },
+      "pinch-and-write": {
+        "title": "捏笔书写",
+        "how": "用手指和拇指捏住笔，然后书写。就像真正握笔的姿势一样。"
+      },
+      "handwashing": {
+        "title": "洗手",
+        "how": "开始、弄湿、打肥皂、搓洗、冲洗、擦干 — 全部按正确的顺序进行。"
+      },
+      "toothbrushing": {
+        "title": "刷牙",
+        "how": "刷牙的每一个步骤，按顺序进行。"
+      },
+      "getting-dressed": {
+        "title": "穿衣服",
+        "how": "内衣、上衣、裤子、袜子、鞋子 — 顺序很重要。"
+      },
+      "morning-routine": {
+        "title": "早晨作息",
+        "how": "起床、上厕所、洗漱、穿衣、吃早餐、拿书包。"
+      },
+      "pack-my-bag": {
+        "title": "整理我的书包",
+        "how": "带上上学需要的东西。把其他的留下。"
+      },
+      "sort-the-groceries": {
+        "title": "整理购买的食品",
+        "how": "捏住把它拿起来，然后放进冰箱、冷冻室或橱柜里。"
+      },
+      "laundry-sort": {
+        "title": "分类脏衣服",
+        "how": "浅色的放一个篮子，深色的放另一个。"
+      },
+      "tidy-the-room": {
+        "title": "整理房间",
+        "how": "每件东西都回到属于它的房间。"
+      },
+      "where-does-it-go": {
+        "title": "这个该放哪里？",
+        "how": "牛奶 — 冰箱、冷冻室还是橱柜？触碰正确的那个。"
+      },
+      "hot-sharp-safe": {
+        "title": "热的、尖的还是安全的",
+        "how": "哪个会发热？哪个很尖？哪个是安全的？"
+      },
+      "safe-or-unsafe": {
+        "title": "安全还是不安全？",
+        "how": "有时触碰安全的东西，有时指出危险的东西。"
+      },
+      "crossing-the-road": {
+        "title": "过马路",
+        "how": "停、看、听、等、过 — 保护你安全的顺序。"
+      },
+      "clean-or-dirty": {
+        "title": "需要洗吗？",
+        "how": "袜子要洗。书不用洗。哪个需要洗？"
+      },
+      "my-day": {
+        "title": "我的一整天",
+        "how": "洗漱、穿衣、打包、付钱、过马路、听老师讲话、寻求帮助。一整天，一次完成。",
+        "opening": "早上好！让我们一起度过这一天。",
+        "openingSay": "早上好。让我们一起度过这一天。",
+        "chain": {
+          "wash": {
+            "title": "洗手",
+            "say": "首先，洗一下手。"
+          },
+          "dress": {
+            "title": "穿衣服",
+            "say": "现在穿衣服。先穿什么？"
+          },
+          "pack": {
+            "title": "整理书包",
+            "say": "准备好上学需要的东西。"
+          },
+          "pay": {
+            "title": "支付午餐费",
+            "say": "你需要硬币来支付午餐费。"
+          },
+          "road": {
+            "title": "过马路",
+            "say": "该过马路了。绿灯表示走，红灯表示停。"
+          },
+          "classroom": {
+            "title": "听老师讲话",
+            "say": "老师有三件事要你去做。"
+          },
+          "help": {
+            "title": "寻求帮助",
+            "say": "你找不到你的铅笔了。你能做什么？"
+          }
+        }
+      },
+      "follow-two": {
+        "title": "跟随两个指令",
+        "how": "“触碰星星，然后拍拍手。”两件事，按顺序完成。"
+      },
+      "follow-three": {
+        "title": "跟随三个指令",
+        "how": "“触碰3，拍手，然后触碰蓝色的。”三件事，按顺序完成。"
+      },
+      "emotion-match": {
+        "title": "他们会有什么感觉？",
+        "how": "故事里发生了一件事。哪种感觉最符合？"
+      },
+      "what-should-i-do": {
+        "title": "我应该怎么做？",
+        "how": "“有人把铅笔弄掉了。”做什么才是友善的做法？"
+      },
+      "ask-for-help": {
+        "title": "寻求帮助",
+        "how": "罐子打不开。选择开口寻求帮助就是答案。"
+      },
+      "stay-safe-choices": {
+        "title": "停下来，想一想，再行动",
+        "how": "出了点问题。停下来，想一想，然后选择该怎么做。"
+      },
+      "time-of-day": {
+        "title": "我们什么时候做这件事？",
+        "how": "牙刷 — 早上还是晚上？把事物和一天中的时间配对起来。"
+      },
+      "coin-names": {
+        "title": "是哪个硬币？",
+        "how": "“哪个是五十分的？”认识并找出钱币。"
+      }
+    },
+    "recommend": {
+      "helpsWith": "有助于提升{{domain}}"
+    }
   }
 }
