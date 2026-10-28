@@ -41,6 +41,8 @@ import LearningDifferences from "./pages/LearningDifferences";
 import WhoWeHelp from "./pages/WhoWeHelp";
 import ArLearningGames from "./pages/ArLearningGames";
 import Faq from "./pages/Faq";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 import NotFound from "./pages/NotFound";
 
 function AnimatedRoutes() {
@@ -73,6 +75,8 @@ function AnimatedRoutes() {
         <Route path="/who-we-help/:audience" element={<WhoWeHelp />} />
         <Route path="/ar-learning-games" element={<ArLearningGames />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/superadmin-login" element={<SuperAdminLogin />} />
         <Route path="/teacher-login" element={<TeacherLogin />} />
@@ -105,7 +109,7 @@ function AppLayout() {
   // camera session (gameplay or Insights) owns the whole viewport with its own
   // background.
   const hideBackground3D = isAR || [
-    "/", "/home", "/about-us", "/contact-us", "/faq",
+    "/", "/home", "/about-us", "/contact-us", "/faq", "/policy", "/terms-and-conditions",
     "/login", "/admin-login", "/superadmin-login", "/teacher-login", "/parent-login",
     "/games", "/games/ar", "/dashboard",
   ].includes(location.pathname)

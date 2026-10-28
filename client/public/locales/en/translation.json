@@ -10,7 +10,9 @@
     "science": "Science",
     "greeting": "Hello {{name}}",
     "contact": "Contact Us",
-    "about": "About Us"
+    "about": "About Us",
+    "policy": "Policy",
+    "terms": "T & C"
   },
   "hero": {
     "greeting": "Hi, {{name}}!",

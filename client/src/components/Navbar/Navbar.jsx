@@ -7,6 +7,7 @@ import { playSlide } from "../../utils/sounds";
 import {
   FaHome, FaInfoCircle, FaEnvelope, FaSignOutAlt,
   FaHandPaper, FaLayerGroup, FaGamepad, FaGlobe,
+  FaShieldAlt, FaFileContract,
 } from "react-icons/fa";
 import { RiBarChart2Fill } from "react-icons/ri";
 import { useAuth } from "../../context/AuthContext";
@@ -63,6 +64,16 @@ const Navbar = () => {
             <NavLink to="/contact-us" className={pillClass("navContact")} onClick={close}>
               <span className={styles.navIconWrap}><FaEnvelope className={styles.navIcon} /></span>
               {t("navbar.contact", { defaultValue: "Contact Us" })}
+            </NavLink>
+
+            <NavLink to="/policy" className={pillClass("navAbout")} onClick={close}>
+              <span className={styles.navIconWrap}><FaShieldAlt className={styles.navIcon} /></span>
+              {t("navbar.policy", { defaultValue: "Policy" })}
+            </NavLink>
+
+            <NavLink to="/terms-and-conditions" className={pillClass("navAbout")} onClick={close}>
+              <span className={styles.navIconWrap}><FaFileContract className={styles.navIcon} /></span>
+              {t("navbar.terms", { defaultValue: "T & C" })}
             </NavLink>
 
             {user && (
